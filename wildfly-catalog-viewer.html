@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WildFly Catalog Viewer</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            margin: auto;
+        }
+        h1 {
+            color: #1a73e8; /* Google Blue */
+            text-align: center;
+            border-bottom: 2px solid #1a73e8;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .catalog-description {
+            text-align: center;
+            font-style: italic;
+            color: #5f6368;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        .category {
+            margin-bottom: 25px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-left: 6px solid #1a73e8;
+            border-radius: 8px;
+            transition: box-shadow 0.3s ease;
+        }
+        .category:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        }
+        .category h2 {
+            margin-top: 0;
+            color: #1a73e8;
+            font-size: 1.8em;
+        }
+        .category-description {
+            font-size: 1em;
+            color: #5f6368;
+            margin-bottom: 15px;
+        }
+        .functionalities {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .functionalities li {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            margin-top: 10px;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .functionalities li strong {
+            color: #202124;
+            display: inline-block;
+            min-width: 150px; /* Align values */
+        }
+        .functionalities li .name {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #0056b3; /* Darker blue for functionality name */
+            margin-bottom: 8px;
+        }
+        .functionalities li .description {
+            margin-bottom: 5px;
+        }
+        .functionality-header {
+            cursor: pointer;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s ease;
+        }
+        .functionality-header:hover {
+            background-color: #dde2e6;
+        }
+        .functionality-header .name {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #0056b3;
+            margin-bottom: 0; /* Override previous margin */
+        }
+        .arrow {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+        .arrow.expanded {
+            transform: rotate(90deg);
+        }
+        .functionality-details {
+            padding: 10px;
+            border-top: 1px solid #e0e0e0;
+            display: none; /* Hidden by default */
+        }
+        .functionality-details.visible {
+            display: block;
+        }
+        .functionalities li a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        .functionalities li a:hover {
+            text-decoration: underline;
+        }
+        .boolean-true {
+            color: #34a853; /* Google Green */
+            font-weight: bold;
+        }
+        .boolean-false {
+            color: #ea4335; /* Google Red */
+            font-weight: bold;
+        }
+        .dependencies-header {
+            cursor: pointer;
+            padding: 8px;
+            background-color: #f1f3f5;
+            border-radius: 3px;
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+        .dependencies-header:hover {
+            background-color: #e9ecef;
+        }
+        .dependencies-arrow {
+            font-size: 0.9em;
+            transition: transform 0.3s ease;
+            margin-left: 5px;
+        }
+        .dependencies-arrow.expanded {
+            transform: rotate(90deg);
+        }
+        .dependencies-list {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-top: 5px;
+            display: none; /* Hidden by default */
+        }
+        .dependencies-list.visible {
+            display: block;
+        }
+        .dependencies-list li a {
+            /* Uses general 'a' styles or can be specific */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>WildFly Catalog</h1>
+        <div id="catalog-description" class="catalog-description"></div>
+        <div id="data-display"></div>
+    </div>
+
+    <script>
+        // jsonData will be fetched from the remote URL
+
+        function displayData(jsonData) { // jsonData is now a parameter
+            const catalogDescriptionDiv = document.getElementById('catalog-description');
+            if (jsonData.description) { 
+                catalogDescriptionDiv.textContent = jsonData.description;
+            } else {
+                catalogDescriptionDiv.textContent = "Catalog description not found.";
+            }
+
+
+            const dataDisplay = document.getElementById('data-display');
+            dataDisplay.innerHTML = ''; // Clear previous content
+
+            if (!jsonData.categories || !Array.isArray(jsonData.categories)) {
+                dataDisplay.innerHTML = '<p style="color: red;">Error: Categories data is missing or not in expected format.</p>';
+                console.error("Categories data is missing or not an array:", jsonData);
+                return;
+            }
+
+            jsonData.categories.forEach(category => {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'category';
+
+                const categoryTitle = document.createElement('h2');
+                categoryTitle.textContent = category.name;
+                categoryDiv.appendChild(categoryTitle);
+
+                if (category.description) {
+                    const categoryDesc = document.createElement('p');
+                    categoryDesc.className = 'category-description';
+                    categoryDesc.textContent = category.description;
+                    categoryDiv.appendChild(categoryDesc);
+                }
+
+                const functionalitiesUl = document.createElement('ul');
+                functionalitiesUl.className = 'functionalities';
+
+                category.functionalities.forEach(func => {
+                    const funcLi = document.createElement('li');
+                    // No padding/margin on li itself, will be handled by header/details
+                    funcLi.style.padding = "0";
+                    funcLi.style.margin = "10px 0";
+
+
+                    // Clickable Header
+                    const headerDiv = document.createElement('div');
+                    headerDiv.className = 'functionality-header';
+                    headerDiv.id = `func-${func.layer}`; // Add ID for linking
+
+                    const funcName = document.createElement('span'); // Use span for inline behavior with arrow
+                    funcName.className = 'name';
+                    funcName.textContent = func.layer; // Use func.layer for the header
+                    headerDiv.appendChild(funcName);
+
+                    const arrowSpan = document.createElement('span');
+                    arrowSpan.className = 'arrow';
+                    arrowSpan.innerHTML = '&#9654;'; // Right-pointing triangle
+                    headerDiv.appendChild(arrowSpan);
+
+                    funcLi.appendChild(headerDiv);
+
+                    // Details container (initially hidden)
+                    const detailsDiv = document.createElement('div');
+                    detailsDiv.className = 'functionality-details';
+
+                    // func.layer is now the header, so it's not displayed as a separate detail item.
+
+                    // Add back func.description as "Description"
+                    const funcDesc = document.createElement('div');
+                    funcDesc.className = 'description'; // Assuming 'description' class is styled appropriately
+                    funcDesc.innerHTML = `<strong>Description:</strong> ${func.description}`; // Use func.description here
+                    detailsDiv.appendChild(funcDesc);
+
+                    if (func.stability) {
+                        const stabilityDiv = document.createElement('div');
+                        stabilityDiv.innerHTML = `<strong>Stability:</strong> ${func.stability}`;
+                        detailsDiv.appendChild(stabilityDiv);
+                    }
+                    if (func.hasOwnProperty('cloudSpecific')) {
+                        const cloudDiv = document.createElement('div');
+                        const checkbox = document.createElement('input');
+                        checkbox.type = 'checkbox';
+                        checkbox.checked = func.cloudSpecific;
+                        checkbox.disabled = true;
+                        cloudDiv.innerHTML = `<strong>Cloud Specific:</strong> `;
+                        cloudDiv.appendChild(checkbox);
+                        detailsDiv.appendChild(cloudDiv);
+                    }
+                    if (func.hasOwnProperty('glowDiscoverable')) {
+                        const glowDiv = document.createElement('div');
+                        const checkbox = document.createElement('input');
+                        checkbox.type = 'checkbox';
+                        checkbox.checked = func.glowDiscoverable;
+                        checkbox.disabled = true;
+                        glowDiv.innerHTML = `<strong>Glow Discoverable:</strong> `;
+                        glowDiv.appendChild(checkbox);
+                        detailsDiv.appendChild(glowDiv);
+                    }
+                    if (func['feature-pack']) {
+                        const fpDiv = document.createElement('div');
+                        fpDiv.innerHTML = `<strong>Feature Pack:</strong> ${func['feature-pack']}`;
+                        detailsDiv.appendChild(fpDiv);
+                    }
+                    if (func.configuration) {
+                        const configDiv = document.createElement('div');
+                        configDiv.innerHTML = `<strong>Configuration:</strong> <a href="${func.configuration}" target="_blank" rel="noopener noreferrer">${func.configuration}</a>`;
+                        detailsDiv.appendChild(configDiv);
+                    }
+
+                    // Display Note if it exists
+                    if (func.note) {
+                        const noteDiv = document.createElement('div');
+                        noteDiv.innerHTML = `<strong>Note:</strong> ${func.note}`;
+                        detailsDiv.appendChild(noteDiv);
+                    }
+
+                    // Layer Dependencies
+                    if (func.layerDependencies && func.layerDependencies.length > 0) {
+                        const dependenciesContainer = document.createElement('div');
+                        dependenciesContainer.className = 'dependencies-container'; // For potential styling
+
+                        const depHeader = document.createElement('div');
+                        depHeader.className = 'dependencies-header';
+                        
+                        const depHeaderText = document.createElement('span');
+                        depHeaderText.textContent = 'Layer Dependencies';
+                        depHeader.appendChild(depHeaderText);
+
+                        const depArrow = document.createElement('span');
+                        depArrow.className = 'dependencies-arrow';
+                        depArrow.innerHTML = '&#9654;'; // Right-pointing triangle
+                        depHeader.appendChild(depArrow);
+                        
+                        dependenciesContainer.appendChild(depHeader);
+
+                        const depList = document.createElement('ul');
+                        depList.className = 'dependencies-list'; // Initially hidden by CSS
+
+                        func.layerDependencies.forEach(depLayerName => {
+                            const depLi = document.createElement('li');
+                            const depLink = document.createElement('a');
+                            depLink.href = `#func-${depLayerName}`;
+                            depLink.textContent = depLayerName;
+                            // Optional: Add click handler to scroll smoothly or highlight
+                            depLink.addEventListener('click', (e) => {
+                                e.preventDefault(); // Prevent default jump
+                                const targetElement = document.getElementById(`func-${depLayerName}`);
+                                if (targetElement) {
+                                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                    // Optionally expand the target if it's collapsed
+                                    const targetDetails = targetElement.nextElementSibling;
+                                    const targetArrow = targetElement.querySelector('.arrow');
+                                    if (targetDetails && targetDetails.classList.contains('functionality-details') && !targetDetails.classList.contains('visible')) {
+                                        targetDetails.classList.add('visible');
+                                        if(targetArrow) targetArrow.classList.add('expanded');
+                                    }
+                                    // Highlight briefly
+                                    targetElement.style.transition = 'background-color 0.1s ease-in-out';
+                                    targetElement.style.backgroundColor = '#e6f7ff'; // Light blue highlight
+                                    setTimeout(() => {
+                                        targetElement.style.backgroundColor = ''; // Reset
+                                    }, 1000);
+                                } else {
+                                    console.warn(`Dependency target #func-${depLayerName} not found.`);
+                                }
+                            });
+                            depLi.appendChild(depLink);
+                            depList.appendChild(depLi);
+                        });
+                        dependenciesContainer.appendChild(depList);
+                        detailsDiv.appendChild(dependenciesContainer);
+
+                        depHeader.addEventListener('click', () => {
+                            depList.classList.toggle('visible');
+                            depArrow.classList.toggle('expanded');
+                        });
+                    }
+                    funcLi.appendChild(detailsDiv);
+
+                    // Event listener for expanding/collapsing
+                    headerDiv.addEventListener('click', () => {
+                        detailsDiv.classList.toggle('visible');
+                        arrowSpan.classList.toggle('expanded');
+                    });
+
+                    functionalitiesUl.appendChild(funcLi);
+                });
+
+                categoryDiv.appendChild(functionalitiesUl);
+                dataDisplay.appendChild(categoryDiv);
+            });
+        }
+
+        // Fetch and display the data when the page loads
+        window.onload = () => {
+            const jsonUrl = 'https://raw.githubusercontent.com/jfdenise/wildfly-catalog/refs/heads/main/wildfly-catalog.json';
+            fetch(jsonUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status} while fetching ${jsonUrl}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    displayData(data);
+                })
+                .catch(error => {
+                    console.error('Error fetching or parsing JSON:', error);
+                    const dataDisplay = document.getElementById('data-display');
+                    dataDisplay.innerHTML = `<p style="color: red;">Error loading catalog data: ${error.message}. Check console for details.</p>`;
+                });
+        };
+    </script>
+</body>
+</html>
