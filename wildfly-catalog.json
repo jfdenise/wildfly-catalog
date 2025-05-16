@@ -1,0 +1,415 @@
+{
+    "description": " A Catalog of WildFly features to provision a WildFly server",
+    "categories": [
+        {
+            "name": "Base WildFly servers",
+            "description": "Base servers that can be enriched with more functionalities",
+            "functionalities": [
+                {
+                    "layer": "cloud-server",
+                    "description": "An extension of _jaxrs-server_ to address common cloud requirements.",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": false,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "layerDependencies": [
+                        "jaxrs-server",
+                        "ee-security",
+                        "jms-activemq",
+                        "observability",
+                        "resource-adapters"
+                    ]
+                },
+                {
+                    "layer": "datasources-web-server",
+                    "description": "A servlet container with support for datasources",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": false,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "layerDependencies": [
+                        "core-tools"
+                    ]
+                },
+                {
+                    "layer": "ee-core-profile-server",
+                    "description": "A Jakarta EE Core Profile server",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": false,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "layerDependencies": [
+                        "cdi",
+                        "jsonp",
+                        "jsonb",
+                        "jaxrs-core"
+                    ]
+                },
+                {
+                    "layer": "jaxrs-server",
+                    "description": "An extension of _datasources-web-server_ with support for Jakarta RESTful Web Services, CDI and JPA.",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": false,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "layerDependencies": [
+                        "datasources-web-server",
+                        "jaxrs",
+                        "bean-validation",
+                        "cdi",
+                        "jpa"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Jakarta EE",
+            "description": "Jakarta EE",
+            "functionalities": [
+                {
+                    "layer": "batch-jberet",
+                    "description": "Support for Jakarta Batch",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack"
+                },
+                {
+                    "layer": "bean-validation",
+                    "description": "Support for Jakarta Bean Validation",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "layerDependencies": [
+                        "cdi"
+                    ]
+                },
+                {
+                    "layer": "cdi",
+                    "description": "Support for Jakarta Contexts and Dependency Injection",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "layerDependencies": [
+                        "bean-validation"
+                    ]
+                },
+                {
+                    "layer": "ee-concurrency",
+                    "description": "Support for Jakarta EE Security",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "layerDependencies": [
+                        "naming"
+                    ]
+                },
+                {
+                    "layer": "ee-security",
+                    "description": "Support for Jakarta EE Security",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "layerDependencies": [
+                        "cdi"
+                    ]
+                },
+                {
+                    "layer": "ejb",
+                    "description": "Support for Jakarta Enterprise Beans, excluding the IIOP protocol",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack"
+                },
+                {
+                    "layer": "jaxrs",
+                    "description": "Support for Jakarta RESTful Web Services with optional ee-concurrency and deployment scanner layers.",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "layerDependencies": [
+                        "ee-concurrency",
+                        "jaxrs-core"
+                    ]
+                },
+                {
+                    "layer": "jaxrs-core",
+                    "description": "Support for Jakarta RESTful Web Services.",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack"
+                },
+                {
+                    "layer": "jpa",
+                    "description": "Support for JPA (using the latest WildFly supported Hibernate release)",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "note": "It must be explicitly excluded if jpa-distributed is in used.",
+                    "layerDependencies": [
+                        "bean-validation"
+                    ]
+                },
+                {
+                    "layer": "jpa-distributed",
+                    "description": "Support for JPA with a distributed second level cache.",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "note": "jpa must be explicitly excluded if jpa-distributed is in used.",
+                    "layerDependencies": [
+                        "bean-validation"
+                    ]
+                },
+                {
+                    "layer": "jsonb",
+                    "description": "Support for JSON Binding (Jakarta JSON Binding) provisioning the Jakarta JSON Binding API and Implementation modules.",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack"
+                },
+                {
+                    "layer": "jsonp",
+                    "description": "Support for JSON Processing (Jakarta JSON Processing) provisioning the Jakarta JSON Processing API and Implementation modules.",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack"
+                },
+
+                {
+                    "layer": "naming",
+                    "description": "Support for JNDI",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack"
+                },
+                {
+                    "layer": "resource-adapters",
+                    "description": "Support for deployment of Jakarta Connectors resource adapters.",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack"
+                }
+            ]
+        },
+        {
+            "name": "Jakarta Messaging",
+            "description": "Messaging broker",
+            "functionalities": [
+                {
+                    "layer": "messaging-activemq",
+                    "description": "Support for connections to a remote Jakarta Messaging broker",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "layerDependencies": [
+                        "resource-adapters"
+                    ]
+                },
+                {
+                    "layer": "remote-activemq",
+                    "description": "Support for connections to a remote Apache Activemq Artemis Jakarta Messaging broker",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack"
+                },
+                {
+                    "layer": "embedded-activemq",
+                    "description": "Support for an embedded Apache Activemq Artemis Jakarta Messaging broker.",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack"
+                }
+            ]
+        },
+        {
+            "name": "Management",
+            "description": "Management functionalities",
+            "functionalities": [
+                {
+                    "layer": "core-tools",
+                    "description": "Support for _jboss-cli_, _add-user_ and _elytron-tool_ launch scripts and configuration files",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": false,
+                    "glowAddOn": "wildfly-cli",
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack"
+                }
+            ]
+        },
+        {
+            "name": "Monitoring",
+            "description": "Functionalities to observe a running WildFly server",
+            "functionalities": [
+                {
+                    "layer": "observability",
+                    "description": "Aggregation if multiple monitoring functionalities",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "layerDependencies": [
+                        "health",
+                        "metrics",
+                        "microprofile-config",
+                        "microprofile-telemetry",
+                        "microprofile-health"
+                    ]
+                },
+                {
+                    "layer": "metrics",
+                    "description": "Support for base server metrics in Prometheus format.",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": false,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "glowAddOn": "metrics"
+                },
+                {
+                    "layer": "health",
+                    "description": "Support for runtime health checks.",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": false,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "glowAddOn": "health"
+                },
+                {
+                    "layer": "microprofile-health",
+                    "description": "Support for MicroProfile Config",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "layerDependencies": [
+                        "microprofile-config",
+                        "health"
+                    ]
+                },
+                {
+                    "layer": "microprofile-telemetry",
+                    "description": "Support for MicroProfile Telemetry",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "layerDependencies": [
+                        "cdi",
+                        "opentelemetry",
+                        "microprofile-config"
+                    ]
+                },
+                {
+                    "layer": "opentelemetry",
+                    "description": "Support for OpenTelemetry",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "layerDependencies": [
+                        "cdi"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Security",
+            "description": "Secure your server and deployments",
+            "functionalities": [
+                {
+                    "layer": "elytron-oidc-client",
+                    "description": "Support for securing deployment with OIDC",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack"
+                }
+            ]
+        },
+        {
+            "name": "Microprofile",
+            "description": "Microprofile specifications",
+            "functionalities": [
+                {
+                    "layer": "microprofile-config",
+                    "description": "Support for MicroProfile Config",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "layerDependencies": [
+                        "cdi"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Database",
+            "description": "Support for databases",
+            "functionalities": [
+                {
+                    "layer": "postgresql-datasource",
+                    "description": "A configurable PostgreSQL datasource",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.wildfly:wildfly-datasources-galleon-pack",
+                    "configuration": "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/postgresql/env.yaml"
+                },
+                {
+                    "layer": "mysql-datasource",
+                    "description": "A configurable MySQL datasource",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.wildfly:wildfly-datasources-galleon-pack",
+                    "configuration": "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/mysql/env.yaml"
+                }
+            ]
+        },
+        {
+            "name": "Preview",
+            "description": "Preview features",
+            "functionalities": [
+                {
+                    "layer": "mvc-krazo",
+                    "description": "Support for Jakarta MVC",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.wildfly:wildfly-preview-feature-pack"
+                }
+            ]
+        },
+        {
+            "name": "Incubating",
+            "description": "Functionalities that are incubating",
+            "functionalities": [
+                {
+                    "layer": "ai",
+                    "description": "Support for Langchain4j",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.wildfly:wildfly-ai-feature-pack"
+                }
+            ]
+        }
+    ]
+}
