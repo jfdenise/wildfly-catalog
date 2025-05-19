@@ -395,6 +395,14 @@
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack"
+                },
+                {
+                    "layer": "undertow-https",
+                    "description": "Support for securing web access with HTTPS",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack"
                 }
             ]
         },
