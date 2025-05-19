@@ -207,6 +207,49 @@
             font-family: Consolas, 'Courier New', monospace;
             font-size: 0.9em;
         }
+        /* Styles for Cloud XML Configuration */
+        .cloudxml-header {
+            cursor: pointer;
+            padding: 8px;
+            background-color: #fafafa; /* Slightly different background */
+            border-radius: 3px;
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+        .cloudxml-header:hover {
+            background-color: #f0f0f0;
+        }
+        .cloudxml-arrow {
+            font-size: 0.9em;
+            transition: transform 0.3s ease;
+            margin-left: 5px;
+        }
+        .cloudxml-arrow.expanded {
+            transform: rotate(90deg);
+        }
+        .cloudxml-list {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 5px;
+            display: none; /* Hidden by default */
+        }
+        .cloudxml-list.visible {
+            display: block;
+        }
+        .cloudxml-list pre {
+            background-color: #f0f8ff; /* AliceBlue, distinct from other XML */
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+            border: 1px solid #cce;
+        }
+        .cloudxml-list code {
+            font-family: Consolas, 'Courier New', monospace;
+            font-size: 0.9em;
+        }
     </style>
 </head>
 <body>
@@ -433,6 +476,44 @@
                             xmlArrow.classList.toggle('expanded');
                         });
                     }
+
+                    // Cloud XML Configuration
+                    if (func.cloudXmlConfiguration && Array.isArray(func.cloudXmlConfiguration) && func.cloudXmlConfiguration.length > 0) {
+                        const cloudXmlConfigContainer = document.createElement('div');
+                        cloudXmlConfigContainer.className = 'cloudxml-container';
+
+                        const cloudXmlHeader = document.createElement('div');
+                        cloudXmlHeader.className = 'cloudxml-header';
+                        
+                        const cloudXmlHeaderText = document.createElement('span');
+                        cloudXmlHeaderText.textContent = 'Cloud XML Configuration';
+                        cloudXmlHeader.appendChild(cloudXmlHeaderText);
+
+                        const cloudXmlArrow = document.createElement('span');
+                        cloudXmlArrow.className = 'cloudxml-arrow';
+                        cloudXmlArrow.innerHTML = '&#9654;'; // Right-pointing triangle
+                        cloudXmlHeader.appendChild(cloudXmlArrow);
+                        
+                        cloudXmlConfigContainer.appendChild(cloudXmlHeader);
+
+                        const cloudXmlContentDiv = document.createElement('div');
+                        cloudXmlContentDiv.className = 'cloudxml-list'; // CSS class handles visibility
+
+                        const preElement = document.createElement('pre');
+                        const codeElement = document.createElement('code');
+                        codeElement.className = 'language-xml'; // For potential syntax highlighting
+                        codeElement.textContent = func.cloudXmlConfiguration.join('\n').replace(/'/g, '"');
+                        preElement.appendChild(codeElement);
+                        cloudXmlContentDiv.appendChild(preElement);
+
+                        cloudXmlConfigContainer.appendChild(cloudXmlContentDiv);
+                        detailsDiv.appendChild(cloudXmlConfigContainer);
+
+                        cloudXmlHeader.addEventListener('click', () => {
+                            cloudXmlContentDiv.classList.toggle('visible');
+                            cloudXmlArrow.classList.toggle('expanded');
+                        });
+                    }
                     funcLi.appendChild(detailsDiv);
 
                     // Event listener for expanding/collapsing
@@ -451,7 +532,7 @@
 
         // Fetch and display the data when the page loads
         window.onload = () => {
-            const jsonUrl = 'https://raw.githubusercontent.com/jfdenise/wildfly-catalog/refs/heads/main/wildfly-catalog.json';
+            const jsonUrl = 'https://raw.githubusercontent.com/jfdenise/wildfly-catalog/refs/heads/xmlcontent/wildfly-catalog.json';
             fetch(jsonUrl)
                 .then(response => {
                     if (!response.ok) {
