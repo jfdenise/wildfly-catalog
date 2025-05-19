@@ -1257,7 +1257,7 @@
                 {
                     "layer": "mvc-krazo",
                     "description": "Support for Jakarta MVC",
-                    "stability": "default",
+                    "stability": "preview",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-preview-feature-pack"
