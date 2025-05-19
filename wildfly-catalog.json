@@ -19,7 +19,7 @@
                         "observability",
                         "resource-adapters"
                     ],
-                    "xmlConfiguration": "https://raw.githubusercontent.com/jfdenise/wildfly-catalog/refs/heads/main/configurations/baremetal/cloud-server-standalone.xml",
+                    "xmlConfiguration": "configurations/baremetal/cloud-server-standalone.xml",
                     "cloudXmlConfiguration": "https://raw.githubusercontent.com/jfdenise/wildfly-catalog/refs/heads/main/configurations/cloud/cloud-server-standalone.xml"
                 },
                 {
