@@ -72,7 +72,10 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack"
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "layerDependencies": [
+                        "cdi"
+                    ]
                 },
                 {
                     "layer": "bean-validation",
@@ -124,7 +127,60 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack"
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "layerDependencies": [
+                        "ejb-lite",
+                        "resource-adapters"
+                    ]
+                },
+                {
+                    "layer": "ejb-lite",
+                    "description": "Support for Jakarta Enterprise Beans Lite",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "layerDependencies": [
+                        "ejb-local-cache",
+                        "naming"
+                    ]
+                },
+                {
+                    "layer": "ejb-dist-cache",
+                    "description": "Infinispan-based distributed cache for stateful session beans.",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "note": "It must be explicitly excluded if ejb-local-cache is in used.",
+                    "layerDependencies": [
+                        "ejb-local-cache",
+                        "naming"
+                    ]
+                },
+                {
+                    "layer": "ejb-http-invoker",
+                    "description": "Support for invoking Jakarta Enterprise Beans over HTTP",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "layerDependencies": [
+                        "ejb-lite"
+                    ]
+                },
+                {
+                    "layer": "ejb-local-cache",
+                    "description": "Infinispan-based local cache for stateful session beans.",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "note": "It must be explicitly excluded if ejb-dist-cache is in used.",
+                    "layerDependencies": [
+                        "ejb-local-cache",
+                        "naming"
+                    ]
                 },
                 {
                     "layer": "jaxrs",
