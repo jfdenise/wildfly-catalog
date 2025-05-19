@@ -165,6 +165,48 @@
         .dependencies-list li a {
             /* Uses general 'a' styles or can be specific */
         }
+        .xmlconfig-header { /* Renamed from .lowlevel-header */
+            cursor: pointer;
+            padding: 8px;
+            background-color: #f8f9fa; /* Style for XML Configuration header */
+            border-radius: 3px;
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+        .xmlconfig-header:hover {
+            background-color: #e9ecef;
+        }
+        .xmlconfig-arrow { /* Renamed from .lowlevel-arrow */
+            font-size: 0.9em;
+            transition: transform 0.3s ease;
+            margin-left: 5px;
+        }
+        .xmlconfig-arrow.expanded {
+            transform: rotate(90deg);
+        }
+        .xmlconfig-list { /* Renamed from .lowlevel-list */
+            list-style-type: none; /* XML content will be in a <pre> block */
+            padding-left: 0;
+            margin-top: 5px;
+            display: none; /* Hidden by default */
+        }
+        .xmlconfig-list.visible {
+            display: block;
+        }
+        .xmlconfig-list pre {
+            background-color: #eef; /* Light background for XML block */
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto; /* Allow horizontal scrolling for long XML lines */
+            border: 1px solid #ddd;
+        }
+        .xmlconfig-list code {
+            font-family: Consolas, 'Courier New', monospace;
+            font-size: 0.9em;
+        }
     </style>
 </head>
 <body>
@@ -351,6 +393,44 @@
                         depHeader.addEventListener('click', () => {
                             depList.classList.toggle('visible');
                             depArrow.classList.toggle('expanded');
+                        });
+                    }
+
+                    // XML Configuration
+                    if (func.xmlConfiguration && Array.isArray(func.xmlConfiguration) && func.xmlConfiguration.length > 0) {
+                        const xmlConfigContainer = document.createElement('div');
+                        xmlConfigContainer.className = 'xmlconfig-container';
+
+                        const xmlHeader = document.createElement('div');
+                        xmlHeader.className = 'xmlconfig-header';
+                        
+                        const xmlHeaderText = document.createElement('span');
+                        xmlHeaderText.textContent = 'XML Configuration';
+                        xmlHeader.appendChild(xmlHeaderText);
+
+                        const xmlArrow = document.createElement('span');
+                        xmlArrow.className = 'xmlconfig-arrow';
+                        xmlArrow.innerHTML = '&#9654;'; // Right-pointing triangle
+                        xmlHeader.appendChild(xmlArrow);
+                        
+                        xmlConfigContainer.appendChild(xmlHeader);
+
+                        const xmlContentDiv = document.createElement('div'); // Changed from ul to div for <pre>
+                        xmlContentDiv.className = 'xmlconfig-list'; // CSS class handles visibility
+
+                        const preElement = document.createElement('pre');
+                        const codeElement = document.createElement('code');
+                        codeElement.className = 'language-xml'; // For potential syntax highlighting
+                        codeElement.textContent = func.xmlConfiguration.join('\n').replace(/'/g, '"');
+                        preElement.appendChild(codeElement);
+                        xmlContentDiv.appendChild(preElement); // Append pre directly
+
+                        xmlConfigContainer.appendChild(xmlContentDiv);
+                        detailsDiv.appendChild(xmlConfigContainer);
+
+                        xmlHeader.addEventListener('click', () => {
+                            xmlContentDiv.classList.toggle('visible');
+                            xmlArrow.classList.toggle('expanded');
                         });
                     }
                     funcLi.appendChild(detailsDiv);
