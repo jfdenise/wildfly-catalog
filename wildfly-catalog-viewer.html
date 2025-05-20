@@ -250,6 +250,32 @@
             font-family: Consolas, 'Courier New', monospace;
             font-size: 0.9em;
         }
+        .documentation-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #fdfdfd;
+            border: 1px solid #eaeaea;
+            border-radius: 8px;
+        }
+        .documentation-section h2 {
+            margin-top: 0;
+            color: #1a73e8; /* Changed to blue like main title */
+            font-size: 1.6em;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .documentation-section ul {
+            list-style-type: disc; /* Changed to disc for better visibility */
+            padding-left: 25px;
+            margin: 0;
+        }
+        .documentation-section li {
+            margin-bottom: 8px;
+        }
+        .documentation-section li a {
+            color: #007bff; /* Standard link blue */
+        }
         .tooltip-icon {
             display: inline-block;
             width: 16px;
@@ -283,8 +309,9 @@
         <h1 id="mainPageTitle">WildFly Catalog</h1>
         <!-- Removed catalog-description div as its content is now in H1 -->
         <div style="margin-bottom: 20px; text-align: center;">
-            <input type="search" id="searchInput" placeholder="Search catalog (e.g., category, layer, description)..." style="padding: 10px; width: 60%; border-radius: 4px; border: 1px solid #ccc; font-size: 1em;">
+            <input type="search" id="searchInput" placeholder="Search catalog (e.g., layer, description, note)..." style="padding: 10px; width: 60%; border-radius: 4px; border: 1px solid #ccc; font-size: 1em;">
         </div>
+        <div id="documentation-section" class="documentation-section" style="display: none;"></div>
         <div id="data-display"></div>
     </div>
 
@@ -388,17 +415,42 @@
             const mainPageTitleH1 = document.getElementById('mainPageTitle');
 
             if (jsonData.description && jsonData.description.trim() !== '') { 
-                // catalogDescriptionDiv.textContent = jsonData.description; // Removed
                 document.title = jsonData.description; 
                 if (mainPageTitleH1) {
                     mainPageTitleH1.textContent = jsonData.description;
                 }
             } else {
-                // catalogDescriptionDiv.textContent = "Catalog description not found."; // Removed
                 document.title = "WildFly Catalog Viewer"; 
-                if (mainPageTitleH1) { // Ensure H1 has a default if JSON description is missing
-                     mainPageTitleH1.textContent = "WildFly Catalog"; // Or "WildFly Catalog Viewer"
+                if (mainPageTitleH1) { 
+                     mainPageTitleH1.textContent = "WildFly Catalog Viewer"; // Consistent default
                 }
+            }
+
+            // Populate Documentation Section
+            const docSection = document.getElementById('documentation-section');
+            docSection.innerHTML = ''; // Clear previous
+            if (jsonData.documentation && Array.isArray(jsonData.documentation) && jsonData.documentation.length > 0) {
+                docSection.style.display = 'block'; // Show the section
+                const docTitle = document.createElement('h2');
+                docTitle.textContent = 'Documentation';
+                docSection.appendChild(docTitle);
+
+                const docList = document.createElement('ul');
+                jsonData.documentation.forEach(docItem => {
+                    if (docItem.name && docItem.url) {
+                        const listItem = document.createElement('li');
+                        const link = document.createElement('a');
+                        link.href = docItem.url;
+                        link.textContent = docItem.name;
+                        link.target = '_blank';
+                        link.rel = 'noopener noreferrer';
+                        listItem.appendChild(link);
+                        docList.appendChild(listItem);
+                    }
+                });
+                docSection.appendChild(docList);
+            } else {
+                docSection.style.display = 'none'; // Hide if no documentation
             }
 
 

@@ -6,10 +6,6 @@
             "url": "https://docs.wildfly.org/"
         },
         {
-            "name": "WildFly Galleon layers documentation",
-            "url": "https://docs.wildfly.org/36/Galleon_Guide.html#wildfly_galleon_layers"
-        },
-        {
             "name": "WildFly Glow documentation",
             "url": "https://docs.wildfly.org/wildfly-glow/"
         },
