@@ -1,5 +1,23 @@
 {
     "description": "Catalog of WildFly 36.0.1.Final features to provision a WildFly server",
+    "documentation": [
+        {
+            "name": "WildFly documentation",
+            "url": "https://docs.wildfly.org/"
+        },
+        {
+            "name": "WildFly Galleon layers documentation",
+            "url": "https://docs.wildfly.org/36/Galleon_Guide.html#wildfly_galleon_layers"
+        },
+        {
+            "name": "WildFly Glow documentation",
+            "url": "https://docs.wildfly.org/wildfly-glow/"
+        },
+        {
+            "name": "WildFly Maven Plugin documentation",
+            "url": "https://docs.wildfly.org/wildfly-maven-plugin/"
+        }
+    ],
     "legend": {
         "layer": "The Galleon layer name to use to provision the feature.",
         "description": "The textual description of the layer.",
@@ -16,7 +34,7 @@
     "categories": [
         {
             "name": "Base WildFly servers",
-            "description": "Base servers that can be enriched with more functionalities",
+            "description": "Base servers that can be enriched with more functionalities. ",
             "functionalities": [
                 {
                     "layer": "cloud-server",
