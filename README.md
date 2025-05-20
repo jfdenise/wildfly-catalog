@@ -1,5 +1,7 @@
 # wildfly-catalog
 
+This catalog is currently incomplete, it attempts to provide a base for discussing its content.
+
 * This catalog relies on a JSON file that contains the data we want to see exposed.
 * It JSON file should be built by hand to finely identify what needs to be exposed and how.
 * This catalog references some XML server configuration files that should be generated from the catalog json file.
