@@ -22,7 +22,7 @@
         "glowDiscoverable": "WildFly Glow (CLI or support in the WildFly Maven Plugin), can discover the layer from the API used in your deployment. If false, it must be added using the WildFly Glow addOn name.",
         "glowAddOn": "The name of the WildFly Glow addOn to use to provision this functionality when using Wildfly Glow.",
         "feature-pack": "The Galleon feature-pack that defines the layer.",
-        "layerDependencies": "The list of layers this layer depends on. All alyers are also provisioned when this layer is provisioned.",
+        "layerDependencies": "The list of layers this layer depends on. Those layers are also provisioned when this layer is provisioned.",
         "xmlConfiguration": "WildFly server XML server configuration that this layer produces.",
         "cloudXmlConfiguration": "WildFly server XML server configuration that this layer produces for the cloud."
     },
