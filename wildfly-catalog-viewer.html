@@ -475,6 +475,12 @@
                         checkbox.disabled = true;
                         detailsDiv.appendChild(createFieldElement('Glow Discoverable', checkbox, 'glowDiscoverable'));
                     }
+                    // Display Glow Add-On if it exists
+                    if (func.hasOwnProperty('glowAddOn')) { // Check for property existence
+                        // Assuming glowAddOn is a string or boolean. If boolean, might need checkbox like others.
+                        // For now, treating as string as per typical new field.
+                        detailsDiv.appendChild(createFieldElement('Glow Add-On', func.glowAddOn, 'glowAddOn'));
+                    }
                     if (func['feature-pack']) {
                          detailsDiv.appendChild(createFieldElement('Feature Pack', func['feature-pack'], 'feature-pack'));
                     }
