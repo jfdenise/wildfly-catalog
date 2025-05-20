@@ -45,6 +45,7 @@ They are automatically provisioned by layers that depend on them.
 
 ## Open questions
 
+* Should come-up with a correct list of categories.
 * Should we split the catalog into multiple JSON files then aggregated in a main catalog?
 ** Split the catalog per feature-pack and have some logic to aggregate the content in each category?
 ** Split only for incubating features.

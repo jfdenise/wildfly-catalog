@@ -500,7 +500,7 @@
                 {
                     "layer": "grpc",
                     "description": "Support for gRPC.",
-                    "stability": "community",
+                    "stability": "preview",
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly.extras.grpc:wildfly-grpc-feature-pack:0.1.3.Final"
                 }
