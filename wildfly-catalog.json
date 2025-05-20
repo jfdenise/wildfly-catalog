@@ -1,5 +1,5 @@
 {
-    "description": " A Catalog of WildFly features to provision a WildFly server",
+    "description": " A Catalog of WildFly 36.0.1.Final features to provision a WildFly server",
     "legend": {
         "layer": "The Galleon layer name to use to provision the feature.",
         "description": "The textual description of the layer.",
@@ -24,7 +24,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": false,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
                         "jaxrs-server",
                         "ee-security",
@@ -41,7 +41,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": false,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
                         "core-tools"
                     ],
@@ -54,7 +54,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": false,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
                         "cdi",
                         "jsonp",
@@ -70,7 +70,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": false,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
                         "datasources-web-server",
                         "jaxrs",
@@ -93,7 +93,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
                         "cdi"
                     ],
@@ -107,7 +107,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
                         "cdi"
                     ]
@@ -118,7 +118,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
                         "bean-validation"
                     ]
@@ -129,7 +129,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
                         "naming"
                     ]
@@ -140,7 +140,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
                         "ejb-lite",
                         "resource-adapters"
@@ -152,7 +152,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
                         "ejb-local-cache",
                         "naming"
@@ -164,7 +164,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
                         "ejb-lite"
                     ]
@@ -175,7 +175,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "note": "This layer must be explicitly excluded if ejb-dist-cache is in used.",
                     "layerDependencies": [
                         "ejb-lite",
@@ -188,7 +188,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
                         "ee-concurrency",
                         "jaxrs-core"
@@ -200,7 +200,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack"
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final"
                 },
                 {
                     "layer": "jpa",
@@ -208,7 +208,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "note": "This layer must be explicitly excluded if jpa-distributed is in used.",
                     "layerDependencies": [
                         "bean-validation"
@@ -220,7 +220,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack"
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final"
                 },
                 {
                     "layer": "jsonp",
@@ -228,7 +228,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack"
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final"
                 },
                 {
                     "layer": "naming",
@@ -236,7 +236,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack"
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final"
                 },
                 {
                     "layer": "resource-adapters",
@@ -244,7 +244,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack"
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final"
                 }
             ]
         },
@@ -258,7 +258,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "note": "ejb-local-cache layer must be explicitly excluded if ejb-dist-cache is in used.",
                     "layerDependencies": [
                         "ejb-local-cache",
@@ -271,7 +271,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "note": "jpa layer must be explicitly excluded if jpa-distributed is in used.",
                     "layerDependencies": [
                         "bean-validation"
@@ -288,7 +288,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
                         "resource-adapters"
                     ]
@@ -299,7 +299,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack"
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final"
                 },
                 {
                     "layer": "embedded-activemq",
@@ -307,7 +307,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack"
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final"
                 }
             ]
         },
@@ -322,7 +322,7 @@
                     "cloudSpecific": false,
                     "glowDiscoverable": false,
                     "glowAddOn": "wildfly-cli",
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "note": "When using the WildFly cloud feature-pack for cloud deployment, this layer will be automatically provisioned. It is required for execution of WildFly CLI scripts that occur at server boot time."
                 }
             ]
@@ -337,7 +337,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
                         "health",
                         "metrics",
@@ -352,7 +352,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": false,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "glowAddOn": "metrics"
                 },
                 {
@@ -361,7 +361,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": false,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "glowAddOn": "health",
                     "note": "When using the WildFly cloud feature-pack for cloud deployment, this layer will be automatically provisioned. It is required for POD health check."
                 },
@@ -371,7 +371,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
                         "microprofile-config",
                         "health"
@@ -383,7 +383,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
                         "cdi",
                         "opentelemetry",
@@ -396,7 +396,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
                         "cdi"
                     ]
@@ -413,7 +413,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack"
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final"
                 },
                 {
                     "layer": "undertow-https",
@@ -421,7 +421,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack"
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final"
                 }
             ]
         },
@@ -435,7 +435,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
                         "cdi"
                     ]
@@ -452,7 +452,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-datasources-galleon-pack",
+                    "feature-pack": "org.wildfly:wildfly-datasources-galleon-pack:10.0.0.Final",
                     "configuration": "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/postgresql/env.yaml"
                 },
                 {
@@ -461,7 +461,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-datasources-galleon-pack",
+                    "feature-pack": "org.wildfly:wildfly-datasources-galleon-pack:10.0.0.Final",
                     "configuration": "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/mysql/env.yaml"
                 }
             ]
@@ -476,7 +476,7 @@
                     "stability": "preview",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-preview-feature-pack"
+                    "feature-pack": "org.wildfly:wildfly-preview-feature-pack:36.0.1.Final"
                 }
             ]
         },
@@ -490,7 +490,7 @@
                     "stability": "default",
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
-                    "feature-pack": "org.wildfly:wildfly-ai-feature-pack"
+                    "feature-pack": "org.wildfly:wildfly-ai-feature-pack:0.5.0"
                 }
             ]
         }

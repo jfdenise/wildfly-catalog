@@ -282,11 +282,15 @@
     <div class="container">
         <h1>WildFly Catalog</h1>
         <div id="catalog-description" class="catalog-description"></div>
+        <div style="margin-bottom: 20px; text-align: center;">
+            <input type="search" id="searchInput" placeholder="Search catalog (e.g., layer, description, note)..." style="padding: 10px; width: 60%; border-radius: 4px; border: 1px solid #ccc; font-size: 1em;">
+        </div>
         <div id="data-display"></div>
     </div>
 
     <script>
         let activeTooltip = null;
+        let originalJsonData = null; // To store the full dataset for filtering
 
         function showTooltip(event) {
             event.stopPropagation(); // Prevent click from immediately closing due to document listener
@@ -755,7 +759,7 @@
 
         // Fetch and display the data when the page loads
         window.onload = () => {
-            const jsonUrl = 'https://raw.githubusercontent.com/jfdenise/wildfly-catalog/refs/heads/main/wildfly-catalog.json';
+            const jsonUrl = 'https://raw.githubusercontent.com/jfdenise/wildfly-catalog/refs/heads/main/wildfly-catalog.json'; // User updated this URL in a previous step, ensure it's correct.
             fetch(jsonUrl)
                 .then(response => {
                     if (!response.ok) {
@@ -764,7 +768,9 @@
                     return response.json();
                 })
                 .then(data => {
-                    displayData(data);
+                    originalJsonData = data; // Store the original full data
+                    displayData(originalJsonData); // Initial display
+                    setupSearchListener(); // Setup search after data is loaded
                 })
                 .catch(error => {
                     console.error('Error fetching or parsing JSON:', error);
@@ -772,6 +778,54 @@
                     dataDisplay.innerHTML = `<p style="color: red;">Error loading catalog data: ${error.message}. Check console for details.</p>`;
                 });
         };
+
+        function setupSearchListener() {
+            const searchInput = document.getElementById('searchInput');
+            if (!searchInput || !originalJsonData) return;
+
+            searchInput.addEventListener('input', () => {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+
+                if (searchTerm === '') {
+                    displayData(originalJsonData);
+                    return;
+                }
+
+                const filteredCategories = originalJsonData.categories.map(category => {
+                    const categoryNameMatches = category.name && category.name.toLowerCase().includes(searchTerm);
+                    const categoryDescriptionMatches = category.description && category.description.toLowerCase().includes(searchTerm);
+
+                    let functionalitiesToShow;
+
+                    if (categoryNameMatches || categoryDescriptionMatches) {
+                        // If category itself matches, we show it with ALL its original functionalities
+                        functionalitiesToShow = category.functionalities;
+                    } else {
+                        // If category doesn't match, filter its functionalities
+                        functionalitiesToShow = category.functionalities.filter(func => {
+                            const layerMatch = func.layer && func.layer.toLowerCase().includes(searchTerm);
+                            const descMatch = func.description && func.description.toLowerCase().includes(searchTerm);
+                            const noteMatch = func.note && func.note.toLowerCase().includes(searchTerm);
+                            const glowAddOnMatch = func.glowAddOn && typeof func.glowAddOn === 'string' && func.glowAddOn.toLowerCase().includes(searchTerm);
+                            const featurePackMatch = func['feature-pack'] && func['feature-pack'].toLowerCase().includes(searchTerm);
+                            return layerMatch || descMatch || noteMatch || glowAddOnMatch || featurePackMatch;
+                        });
+                    }
+
+                    // Only include the category if it matched OR it has functionalities to show after filtering
+                    if (categoryNameMatches || categoryDescriptionMatches || (functionalitiesToShow && functionalitiesToShow.length > 0)) {
+                        return { ...category, functionalities: functionalitiesToShow };
+                    }
+                    return null;
+                }).filter(category => category !== null); // Remove categories that became null
+
+                const filteredData = { 
+                    ...originalJsonData, 
+                    categories: filteredCategories 
+                };
+                displayData(filteredData);
+            });
+        }
     </script>
 </body>
 </html>
