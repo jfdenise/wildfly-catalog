@@ -101,13 +101,18 @@
                     "description": "Support for Jakarta Batch",
                     "stability": "default",
                     "glowDiscoverable": true,
+                    "glowRules": [
+                        {
+                            "name": "org.wildfly.rule.class",
+                            "value": "jakarta.batch.api.*"
+                        }
+                    ],
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
                         "cdi"
                     ],
                     "xmlConfiguration": "https://raw.githubusercontent.com/jfdenise/wildfly-catalog/refs/heads/main/configurations/baremetal/batch-jberet-standalone.xml",
                     "cloudXmlConfiguration": "https://raw.githubusercontent.com/jfdenise/wildfly-catalog/refs/heads/main/configurations/cloud/batch-jberet-standalone.xml"
-
                 },
                 {
                     "layer": "bean-validation",
