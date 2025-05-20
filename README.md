@@ -32,6 +32,7 @@ They are automatically provisioned by layers that depend on them.
 ## Cloud exposed information
 
 * If a layer is cloud specific (didn't find some yet, ...) the layer is marked as so.
+* Layers that are automatically provisioned for the cloud (health and core-tools) are advertised.
 * The XML produced in a cloud context (when the cloud FP is in use) is exposed.
 
 

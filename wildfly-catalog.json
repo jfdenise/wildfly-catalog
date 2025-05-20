@@ -322,7 +322,8 @@
                     "cloudSpecific": false,
                     "glowDiscoverable": false,
                     "glowAddOn": "wildfly-cli",
-                    "feature-pack": "org.wildfly:wildfly-galleon-pack"
+                    "feature-pack": "org.wildfly:wildfly-galleon-pack",
+                    "note": "When using the WildFly cloud feature-pack for cloud deployment, this layer will be automatically provisioned. It is required for execution of WildFly CLI scripts that occur at server boot time."
                 }
             ]
         },
@@ -361,7 +362,8 @@
                     "cloudSpecific": false,
                     "glowDiscoverable": false,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack",
-                    "glowAddOn": "health"
+                    "glowAddOn": "health",
+                    "note": "When using the WildFly cloud feature-pack for cloud deployment, this layer will be automatically provisioned. It is required for POD health check."
                 },
                 {
                     "layer": "microprofile-health",
