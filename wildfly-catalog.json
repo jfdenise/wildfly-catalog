@@ -37,6 +37,7 @@
                     "stability": "default",
                     "glowDiscoverable": false,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
+                    "layerSpecification": "https://raw.githubusercontent.com/wildfly/wildfly/refs/tags/36.0.1.Final/ee-feature-pack/galleon-shared/src/main/resources/layers/standalone/cloud-server/layer-spec.xml",
                     "layerDependencies": [
                         "jaxrs-server",
                         "ee-security",
@@ -53,6 +54,7 @@
                     "stability": "default",
                     "glowDiscoverable": false,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
+                    "layerSpecification": "https://raw.githubusercontent.com/wildfly/wildfly/refs/tags/36.0.1.Final/ee-feature-pack/galleon-shared/src/main/resources/layers/standalone/datasources-web-server/layer-spec.xml",
                     "layerDependencies": [
                         "core-tools"
                     ],
@@ -65,6 +67,7 @@
                     "stability": "default",
                     "glowDiscoverable": false,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
+                    "layerSpecification": "https://raw.githubusercontent.com/wildfly/wildfly/refs/tags/36.0.1.Final/ee-feature-pack/galleon-shared/src/main/resources/layers/standalone/ee-core-profile-server/layer-spec.xml",
                     "layerDependencies": [
                         "cdi",
                         "jsonp",
@@ -80,6 +83,7 @@
                     "stability": "default",
                     "glowDiscoverable": false,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
+                    "layerSpecification": "https://raw.githubusercontent.com/wildfly/wildfly/refs/tags/36.0.1.Final/ee-feature-pack/galleon-shared/src/main/resources/layers/standalone/jaxrs-server/layer-spec.xml",
                     "layerDependencies": [
                         "datasources-web-server",
                         "jaxrs",
@@ -101,12 +105,7 @@
                     "description": "Support for Jakarta Batch",
                     "stability": "default",
                     "glowDiscoverable": true,
-                    "glowRules": [
-                        {
-                            "name": "org.wildfly.rule.class",
-                            "value": "jakarta.batch.api.*"
-                        }
-                    ],
+                    "layerSpecification": "https://raw.githubusercontent.com/wildfly/wildfly/refs/tags/36.0.1.Final/ee-feature-pack/galleon-shared/src/main/resources/layers/standalone/batch-jberet/layer-spec.xml",
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
                         "cdi"
