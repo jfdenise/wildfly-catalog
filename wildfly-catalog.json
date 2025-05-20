@@ -176,7 +176,7 @@
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack",
-                    "note": "It must be explicitly excluded if ejb-dist-cache is in used.",
+                    "note": "This layer must be explicitly excluded if ejb-dist-cache is in used.",
                     "layerDependencies": [
                         "ejb-lite",
                         "naming"
@@ -209,7 +209,7 @@
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack",
-                    "note": "It must be explicitly excluded if jpa-distributed is in used.",
+                    "note": "This layer must be explicitly excluded if jpa-distributed is in used.",
                     "layerDependencies": [
                         "bean-validation"
                     ]
@@ -259,7 +259,7 @@
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack",
-                    "note": "It must be explicitly excluded if ejb-local-cache is in used.",
+                    "note": "ejb-local-cache layer must be explicitly excluded if ejb-dist-cache is in used.",
                     "layerDependencies": [
                         "ejb-local-cache",
                         "naming"
@@ -272,7 +272,7 @@
                     "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack",
-                    "note": "jpa must be explicitly excluded if jpa-distributed is in used.",
+                    "note": "jpa layer must be explicitly excluded if jpa-distributed is in used.",
                     "layerDependencies": [
                         "bean-validation"
                     ]
