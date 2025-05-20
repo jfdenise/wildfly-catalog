@@ -527,13 +527,7 @@
                     if (func.stability) {
                         detailsDiv.appendChild(createFieldElement('Stability', func.stability, 'stability'));
                     }
-                    if (func.hasOwnProperty('cloudSpecific')) {
-                        const checkbox = document.createElement('input');
-                        checkbox.type = 'checkbox';
-                        checkbox.checked = func.cloudSpecific;
-                        checkbox.disabled = true;
-                        detailsDiv.appendChild(createFieldElement('Cloud Specific', checkbox, 'cloudSpecific'));
-                    }
+                    // Removed cloudSpecific field rendering
                     if (func.hasOwnProperty('glowDiscoverable')) {
                         const checkbox = document.createElement('input');
                         checkbox.type = 'checkbox';

@@ -19,7 +19,6 @@
         "description": "The textual description of the layer.",
         "stability": "One of default, community, preview and experimental. community and default stability features are available by default.",
         "note": "To highlight a particularity that occurs when provisioning this layer.",
-        "cloudSpecific": "If the layer is to be used only when the cloud feature-pack is in use (for kubernetes and OpenShift deployments.",
         "glowDiscoverable": "WildFly Glow (CLI or support in the WildFly Maven Plugin), can discover the layer from the API used in your deployment. If false, it must be added using the WildFly Glow addOn name.",
         "glowAddOn": "The name of the WildFly Glow addOn to use to provision this functionality when using Wildfly Glow.",
         "feature-pack": "The Galleon feature-pack that defines the layer.",
@@ -36,7 +35,6 @@
                     "layer": "cloud-server",
                     "description": "An extension of _jaxrs-server_ to address common cloud requirements.",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": false,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
@@ -53,7 +51,6 @@
                     "layer": "datasources-web-server",
                     "description": "A servlet container with support for datasources",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": false,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
@@ -66,7 +63,6 @@
                     "layer": "ee-core-profile-server",
                     "description": "A Jakarta EE Core Profile server",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": false,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
@@ -82,7 +78,6 @@
                     "layer": "jaxrs-server",
                     "description": "An extension of _datasources-web-server_ with support for Jakarta RESTful Web Services, CDI and JPA.",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": false,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
@@ -105,7 +100,6 @@
                     "layer": "batch-jberet",
                     "description": "Support for Jakarta Batch",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
@@ -119,7 +113,6 @@
                     "layer": "bean-validation",
                     "description": "Support for Jakarta Bean Validation",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
@@ -130,7 +123,6 @@
                     "layer": "cdi",
                     "description": "Support for Jakarta Contexts and Dependency Injection",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
@@ -141,7 +133,6 @@
                     "layer": "ee-concurrency",
                     "description": "Support for Jakarta EE Security",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
@@ -152,7 +143,6 @@
                     "layer": "ejb",
                     "description": "Support for Jakarta Enterprise Beans, excluding the IIOP protocol",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
@@ -164,7 +154,6 @@
                     "layer": "ejb-lite",
                     "description": "Support for Jakarta Enterprise Beans Lite",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
@@ -176,7 +165,6 @@
                     "layer": "ejb-http-invoker",
                     "description": "Support for invoking Jakarta Enterprise Beans over HTTP",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
@@ -187,7 +175,6 @@
                     "layer": "ejb-local-cache",
                     "description": "Infinispan-based local cache for stateful session beans.",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "note": "This layer must be explicitly excluded if ejb-dist-cache is in used.",
@@ -200,7 +187,6 @@
                     "layer": "jaxrs",
                     "description": "Support for Jakarta RESTful Web Services with optional ee-concurrency and deployment scanner layers.",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
@@ -212,7 +198,6 @@
                     "layer": "jaxrs-core",
                     "description": "Support for Jakarta RESTful Web Services.",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final"
                 },
@@ -220,7 +205,6 @@
                     "layer": "jpa",
                     "description": "Support for JPA (using the latest WildFly supported Hibernate release)",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "note": "This layer must be explicitly excluded if jpa-distributed is in used.",
@@ -232,7 +216,6 @@
                     "layer": "jsonb",
                     "description": "Support for JSON Binding (Jakarta JSON Binding) provisioning the Jakarta JSON Binding API and Implementation modules.",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final"
                 },
@@ -240,7 +223,6 @@
                     "layer": "jsonp",
                     "description": "Support for JSON Processing (Jakarta JSON Processing) provisioning the Jakarta JSON Processing API and Implementation modules.",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final"
                 },
@@ -248,7 +230,6 @@
                     "layer": "naming",
                     "description": "Support for JNDI",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final"
                 },
@@ -256,7 +237,6 @@
                     "layer": "resource-adapters",
                     "description": "Support for deployment of Jakarta Connectors resource adapters.",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final"
                 }
@@ -270,7 +250,6 @@
                     "layer": "ejb-dist-cache",
                     "description": "Infinispan-based distributed cache for stateful session beans.",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "note": "ejb-local-cache layer must be explicitly excluded if ejb-dist-cache is in used.",
@@ -283,7 +262,6 @@
                     "layer": "jpa-distributed",
                     "description": "Support for JPA with a distributed second level cache.",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "note": "jpa layer must be explicitly excluded if jpa-distributed is in used.",
@@ -300,7 +278,6 @@
                     "layer": "messaging-activemq",
                     "description": "Support for connections to a remote Jakarta Messaging broker",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
@@ -311,7 +288,6 @@
                     "layer": "remote-activemq",
                     "description": "Support for connections to a remote Apache Activemq Artemis Jakarta Messaging broker",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final"
                 },
@@ -319,7 +295,6 @@
                     "layer": "embedded-activemq",
                     "description": "Support for an embedded Apache Activemq Artemis Jakarta Messaging broker.",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final"
                 }
@@ -333,7 +308,6 @@
                     "layer": "core-tools",
                     "description": "Support for _jboss-cli_, _add-user_ and _elytron-tool_ launch scripts and configuration files",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": false,
                     "glowAddOn": "wildfly-cli",
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
@@ -349,7 +323,6 @@
                     "layer": "observability",
                     "description": "Aggregation if multiple monitoring functionalities",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
@@ -364,7 +337,6 @@
                     "layer": "metrics",
                     "description": "Support for base server metrics in Prometheus format.",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": false,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "glowAddOn": "metrics"
@@ -373,7 +345,6 @@
                     "layer": "health",
                     "description": "Support for runtime health checks.",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": false,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "glowAddOn": "health",
@@ -383,7 +354,6 @@
                     "layer": "microprofile-health",
                     "description": "Support for MicroProfile Config",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
@@ -395,7 +365,6 @@
                     "layer": "microprofile-telemetry",
                     "description": "Support for MicroProfile Telemetry",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
@@ -408,7 +377,6 @@
                     "layer": "opentelemetry",
                     "description": "Support for OpenTelemetry",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
@@ -425,7 +393,6 @@
                     "layer": "elytron-oidc-client",
                     "description": "Support for securing deployment with OIDC",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final"
                 },
@@ -433,7 +400,6 @@
                     "layer": "keycloak-client-saml-ejb",
                     "description": "Support for securing your EJB with the keyloack SAML protocol.",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.keycloak:keycloak-saml-adapter-galleon-pack:26.1.2",
                     "note": "Not to be used when provisioning for the cloud if you are using the env variables to automatically configure SAML (SSO_URL, SSO_REALM)."
@@ -442,7 +408,6 @@
                     "layer": "keycloak-client-saml",
                     "description": "Support for securing your Web deployments with the keyloack SAML protocol.",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.keycloak:keycloak-saml-adapter-galleon-pack:26.1.2",
                     "note": "Not to be used when provisioning for the cloud if you are using the env variables to automatically configure SAML (SSO_URL, SSO_REALM)."
@@ -451,7 +416,6 @@
                     "layer": "undertow-https",
                     "description": "Support for securing web access with HTTPS",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final"
                 }
@@ -465,7 +429,6 @@
                     "layer": "microprofile-config",
                     "description": "Support for MicroProfile Config",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final",
                     "layerDependencies": [
@@ -482,7 +445,6 @@
                     "layer": "postgresql-datasource",
                     "description": "A configurable PostgreSQL datasource",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-datasources-galleon-pack:10.0.0.Final",
                     "configuration": "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/postgresql/env.yaml"
@@ -491,7 +453,6 @@
                     "layer": "mysql-datasource",
                     "description": "A configurable MySQL datasource",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-datasources-galleon-pack:10.0.0.Final",
                     "configuration": "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/mysql/env.yaml"
@@ -506,7 +467,6 @@
                     "layer": "mvc-krazo",
                     "description": "Support for Jakarta MVC",
                     "stability": "preview",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-preview-feature-pack:36.0.1.Final"
                 }
@@ -520,7 +480,6 @@
                     "layer": "ai",
                     "description": "Support for Langchain4j",
                     "stability": "default",
-                    "cloudSpecific": false,
                     "glowDiscoverable": true,
                     "feature-pack": "org.wildfly:wildfly-ai-feature-pack:0.5.0"
                 }
