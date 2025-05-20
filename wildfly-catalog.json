@@ -430,6 +430,24 @@
                     "feature-pack": "org.wildfly:wildfly-galleon-pack:36.0.1.Final"
                 },
                 {
+                    "layer": "keycloak-client-saml-ejb",
+                    "description": "Support for securing your EJB with the keyloack SAML protocol.",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.keycloak:keycloak-saml-adapter-galleon-pack:26.1.2",
+                    "note": "Not to be used when provisioning for the cloud if you are using the env variables to automatically configure SAML (SSO_URL, SSO_REALM)."
+                },
+                {
+                    "layer": "keycloak-client-saml",
+                    "description": "Support for securing your Web deployments with the keyloack SAML protocol.",
+                    "stability": "default",
+                    "cloudSpecific": false,
+                    "glowDiscoverable": true,
+                    "feature-pack": "org.keycloak:keycloak-saml-adapter-galleon-pack:26.1.2",
+                    "note": "Not to be used when provisioning for the cloud if you are using the env variables to automatically configure SAML (SSO_URL, SSO_REALM)."
+                },
+                {
                     "layer": "undertow-https",
                     "description": "Support for securing web access with HTTPS",
                     "stability": "default",
