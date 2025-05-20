@@ -7,7 +7,7 @@
         "note": "To highlight a particularity that occurs when provisioning this layer",
         "cloudSpecific": "If the layer is to be used only when the cloud feature-pack is in use (for kubernetes and OpenShift deployments.",
         "glowDiscoverable": "WildFly Glow (CLI or support in the WildFly Maven Plugin), can discover the layer from the API used in your deployment. if false, it must be added as a Glow addOn.",
-        "feature-pack": "The feature-pack that defines the layer.",
+        "feature-pack": "The Galleon feature-pack that defines the layer.",
         "layerDependencies": "The list of layers this layer depends on. All alyers are also provisioned when this one is provisioned.",
         "xmlConfiguration": "WildFly server XML server configuration that this layer produces.",
         "cloudXmlConfiguration": "WildFly server XML server configuration that this layer produces for the cloud."
