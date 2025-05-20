@@ -1,5 +1,5 @@
 {
-    "description": " A Catalog of WildFly 36.0.1.Final features to provision a WildFly server",
+    "description": "Catalog of WildFly 36.0.1.Final features to provision a WildFly server",
     "legend": {
         "layer": "The Galleon layer name to use to provision the feature.",
         "description": "The textual description of the layer.",

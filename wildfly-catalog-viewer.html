@@ -280,8 +280,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>WildFly Catalog</h1>
-        <div id="catalog-description" class="catalog-description"></div>
+        <h1 id="mainPageTitle">WildFly Catalog</h1>
+        <!-- Removed catalog-description div as its content is now in H1 -->
         <div style="margin-bottom: 20px; text-align: center;">
             <input type="search" id="searchInput" placeholder="Search catalog (e.g., layer, description, note)..." style="padding: 10px; width: 60%; border-radius: 4px; border: 1px solid #ccc; font-size: 1em;">
         </div>
@@ -384,11 +384,21 @@
                 return fieldDiv;
             };
             
-            const catalogDescriptionDiv = document.getElementById('catalog-description');
-            if (jsonData.description) { 
-                catalogDescriptionDiv.textContent = jsonData.description;
+            // const catalogDescriptionDiv = document.getElementById('catalog-description'); // No longer needed
+            const mainPageTitleH1 = document.getElementById('mainPageTitle');
+
+            if (jsonData.description && jsonData.description.trim() !== '') { 
+                // catalogDescriptionDiv.textContent = jsonData.description; // Removed
+                document.title = jsonData.description; 
+                if (mainPageTitleH1) {
+                    mainPageTitleH1.textContent = jsonData.description;
+                }
             } else {
-                catalogDescriptionDiv.textContent = "Catalog description not found.";
+                // catalogDescriptionDiv.textContent = "Catalog description not found."; // Removed
+                document.title = "WildFly Catalog Viewer"; 
+                if (mainPageTitleH1) { // Ensure H1 has a default if JSON description is missing
+                     mainPageTitleH1.textContent = "WildFly Catalog"; // Or "WildFly Catalog Viewer"
+                }
             }
 
 
