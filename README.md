@@ -6,11 +6,12 @@ This catalog is currently incomplete, it attempts to provide a base for discussi
 * This JSON file should be built by hand to finely identify what needs to be exposed and how.
 * This catalog references some XML server configuration files that should be generated from the catalog json file.
 * This catalog should be regenerated for each new WildFly release.
+* This catalog approach doesn't require new metadata in Galleon layers.
 * A proper workflow and tooling should be put in place to manage the catalog.
 
 ## Exposed content
 
-* A subset of galleon layers are exposed in the catalog. Mainly the layer that directly provide a non "core" functionality. 
+* Only a subset of Galleon layers are exposed in the catalog. Mainly the layer that directly provide a non "core" functionality. 
 Core functionalities are functionalities we don't want to see optional when a layer is provisioned. For example: elytron, transactions are not exposed. 
 They are automatically provisioned by layers that depend on them.
 * All the feature-packs that are located in the [WildFly galleon feature-packs repository](https://github.com/wildfly/wildfly-galleon-feature-packs) should be covered.
@@ -27,7 +28,7 @@ They are automatically provisioned by layers that depend on them.
 ## Exposed Glow information
 
 * Discoverability and addOn (if the layer is not discoverable) are exposed.
-* Glow rules are not exposed. This could be revisited, they seem quite low level.
+* Glow rules are not exposed, they are exposed already in the Glow documentation.
 
 ## Stability level
 
