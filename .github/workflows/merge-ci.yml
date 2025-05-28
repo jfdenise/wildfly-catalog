@@ -26,7 +26,7 @@ jobs:
           version=$(cat version.txt)
           cd catalog-generator
           mvn clean install
-          mvn exec:java -Dwildfly-version$version
+          mvn exec:java -Dwildfly-version=$version
           cd ..
           # Commit and push the changes.
           git config --global user.name "${{ github.actor }}"
