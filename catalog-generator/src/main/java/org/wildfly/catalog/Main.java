@@ -9,7 +9,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -32,9 +31,14 @@ public class Main {
         if (wildflyVersion == null) {
             throw new Exception("-Dwildfly-version=<version> must be set");
         }
+        boolean validateOnly = Boolean.getBoolean("validateOnly");
         Path rootDirectory = Paths.get("../docs");
         Path targetDirectory = rootDirectory.resolve(wildflyVersion).toAbsolutePath();
-        Files.createDirectories(targetDirectory);
+        if (!validateOnly) {
+            Files.createDirectories(targetDirectory);
+        } else {
+            System.out.println("Validate only that we can build a catalog");
+        }
         try (InputStream stream = Main.class.getResourceAsStream("wildfly-catalog.json")) {
             ObjectMapper mapper = new ObjectMapper();
             JsonNode node = mapper.readTree(stream);
@@ -170,52 +174,58 @@ public class Main {
                 }
                 categoriesArray.add(category);
             }
-            Path json = targetDirectory.resolve("wildfly-catalog.json");
-            Files.deleteIfExists(json);
-            mapper.writerWithDefaultPrettyPrinter().writeValue(json.toFile(), target);
+            if (!validateOnly) {
+                Path json = targetDirectory.resolve("wildfly-catalog.json");
+                Files.deleteIfExists(json);
+                mapper.writerWithDefaultPrettyPrinter().writeValue(json.toFile(), target);
+            }
         }
-        Path viewer = targetDirectory.resolve("index.html");
-        Files.deleteIfExists(viewer);
-        try (InputStream stream = Main.class.getResourceAsStream("wildfly-catalog-viewer.html")) {
-            try (InputStreamReader inputStreamReader = new InputStreamReader(stream, StandardCharsets.UTF_8)) {
-                try (BufferedReader bufferedReader = new BufferedReader(inputStreamReader)) {
-                    List<String> lines = bufferedReader.lines().collect(Collectors.toList());
-                    List<String> targetLines = new ArrayList<>();
-                    for (String line : lines) {
-                        line = line.replace("###REPLACE_WILDFLY_VERSION###", wildflyVersion);
+        if (!validateOnly) {
+            Path viewer = targetDirectory.resolve("index.html");
+            Files.deleteIfExists(viewer);
+            try (InputStream stream = Main.class.getResourceAsStream("wildfly-catalog-viewer.html")) {
+                try (InputStreamReader inputStreamReader = new InputStreamReader(stream, StandardCharsets.UTF_8)) {
+                    try (BufferedReader bufferedReader = new BufferedReader(inputStreamReader)) {
+                        List<String> lines = bufferedReader.lines().collect(Collectors.toList());
+                        List<String> targetLines = new ArrayList<>();
+                        for (String line : lines) {
+                            line = line.replace("###REPLACE_WILDFLY_VERSION###", wildflyVersion);
+                            targetLines.add(line);
+                        }
+                        Files.write(viewer, targetLines);
+                    }
+                }
+            }
+            String replaceTag = "<!-- ####REPLACE_LAST_VERSION#### -->";
+            String newEntry = "<li><a href=\"" + wildflyVersion + "/index.html\">" + wildflyVersion + "</a></li>";
+            // Update index
+            Path indexFile = rootDirectory.resolve("index.html").toAbsolutePath();
+            List<String> lines = Files.readAllLines(indexFile);
+            //Check if the index already exists
+            boolean exists = false;
+            for (String line : lines) {
+                if (line.contains(wildflyVersion)) {
+                    exists = true;
+                    break;
+                }
+            }
+            if (exists) {
+                System.out.println("Catalog for WildFly " + wildflyVersion + " already exists in the index, index not updated.");
+            } else {
+                List<String> targetLines = new ArrayList<>();
+                for (String line : lines) {
+                    if (line.contains(replaceTag)) {
+                        targetLines.add(newEntry);
+                        targetLines.add(replaceTag);
+                    } else {
                         targetLines.add(line);
                     }
-                    Files.write(viewer, targetLines);
                 }
+                Files.deleteIfExists(indexFile);
+                Files.write(indexFile, targetLines);
             }
-        }
-        String replaceTag = "<!-- ####REPLACE_LAST_VERSION#### -->";
-        String newEntry = "<li><a href=\"" + wildflyVersion + "/index.html\">" + wildflyVersion + "</a></li>";
-        // Update index
-        Path indexFile = rootDirectory.resolve("index.html").toAbsolutePath();
-        List<String> lines = Files.readAllLines(indexFile);
-        //Check if the index already exists
-        boolean exists = false;
-        for (String line : lines) {
-            if (line.contains(wildflyVersion)) {
-                exists = true;
-                break;
-            }
-        }
-        if (exists) {
-            System.out.println("Catalog for WildFly " + wildflyVersion + " already exists in the index, index not updated.");
         } else {
-            List<String> targetLines = new ArrayList<>();
-            for (String line : lines) {
-                if (line.contains(replaceTag)) {
-                    targetLines.add(newEntry);
-                    targetLines.add(replaceTag);
-                } else {
-                    targetLines.add(line);
-                }
-            }
-            Files.deleteIfExists(indexFile);
-            Files.write(indexFile, targetLines);
+            System.out.println("WildFly catalog generation validated");
         }
     }
 

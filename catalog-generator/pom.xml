@@ -14,8 +14,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <exec.mainClass>org.wildfly.catalog.Main</exec.mainClass>
   </properties>
-  <name>Generate WildFly catalog json file</name>
-  <description>Generate WildFly catalog json file</description>
+  <name>Generate WildFly catalog</name>
+  <description>Generate WildFly catalog</description>
   <dependencies>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
