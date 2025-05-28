@@ -30,5 +30,5 @@ jobs:
           version=$(cat version.txt)
           cd catalog-generator
           mvn clean install
-          mvn exec:java -Dwildfly-version$version -DvalidateOnly=true
+          mvn exec:java -Dwildfly-version=$version -DvalidateOnly=true
         shell: bash
