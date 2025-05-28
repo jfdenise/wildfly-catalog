@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -31,7 +32,8 @@ public class Main {
         if (wildflyVersion == null) {
             throw new Exception("-Dwildfly-version=<version> must be set");
         }
-        Path targetDirectory = Paths.get("../catalog/" + wildflyVersion).toAbsolutePath();
+        Path rootDirectory = Paths.get("../docs");
+        Path targetDirectory = rootDirectory.resolve(wildflyVersion).toAbsolutePath();
         Files.createDirectories(targetDirectory);
         try (InputStream stream = Main.class.getResourceAsStream("wildfly-catalog.json")) {
             ObjectMapper mapper = new ObjectMapper();
@@ -179,7 +181,7 @@ public class Main {
                 try (BufferedReader bufferedReader = new BufferedReader(inputStreamReader)) {
                     List<String> lines = bufferedReader.lines().collect(Collectors.toList());
                     List<String> targetLines = new ArrayList<>();
-                    for(String line : lines) {
+                    for (String line : lines) {
                         line = line.replace("###REPLACE_WILDFLY_VERSION###", wildflyVersion);
                         targetLines.add(line);
                     }
@@ -187,6 +189,22 @@ public class Main {
                 }
             }
         }
+        String replaceTag="<!-- ####REPLACE_LAST_VERSION#### -->";
+        String newEntry="<li><a href=\""+wildflyVersion+"/index.html\">"+wildflyVersion+"</a></li>";
+        // Update index
+        Path indexFile = rootDirectory.resolve("index.html").toAbsolutePath();
+        List<String> lines = Files.readAllLines(indexFile);
+        List<String> targetLines = new ArrayList<>();
+        for (String line : lines) {
+            if (line.contains(replaceTag)) {
+                targetLines.add(newEntry);
+                targetLines.add(replaceTag);
+            } else {
+                targetLines.add(line);
+            }            
+        }
+        Files.deleteIfExists(indexFile);
+        Files.write(indexFile, targetLines);
     }
 
 }
