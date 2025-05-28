@@ -1,4 +1,4 @@
-name: WildFly Catalog generation - CI on PR
+name: WildFly Catalog generation - CI on Merge
 
 on:
   push:
