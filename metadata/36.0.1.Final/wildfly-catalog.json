@@ -38,23 +38,23 @@
     "content": [
         {
             "description": "WildFly catalog",
-            "url": "https://raw.githubusercontent.com/jfdenise/wildfly/refs/heads/wildfly-catalog/galleon-pack/galleon-feature-pack/catalog/wildfly-catalog.json"
+            "url": "https://raw.githubusercontent.com/jfdenise/wildfly/refs/heads/wildfly-catalog/galleon-pack/galleon-feature-pack/catalog/feature-pack-metadata.json"
         },
         {
             "description": "WildFly Supported Dadatases catalog",
-            "url": "https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/refs/heads/catalog/catalog/wildfly-catalog.json"
+            "url": "https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/refs/heads/catalog/catalog/feature-pack-metadata.json"
         },
         {
             "description": "WildFly support for MyFaces catalog",
-            "url": "https://raw.githubusercontent.com/jfdenise/wildfly-myfaces-feature-pack/refs/heads/catalog/catalog/wildfly-catalog.json"
+            "url": "https://raw.githubusercontent.com/jfdenise/wildfly-myfaces-feature-pack/refs/heads/catalog/catalog/feature-pack-metadata.json"
         },
         {
             "description": "WildFly support for Keycloak SAML Adapter catalog",
-            "url": "https://raw.githubusercontent.com/jfdenise/keycloak/refs/heads/catalog/distribution/galleon-feature-packs/saml-adapter-galleon-pack/catalog/wildfly-catalog.json"
+            "url": "https://raw.githubusercontent.com/jfdenise/keycloak/refs/heads/catalog/distribution/galleon-feature-packs/saml-adapter-galleon-pack/catalog/feature-pack-metadata.json"
         },
         {
             "description": "WildFly support for AI",
-            "url": "https://raw.githubusercontent.com/jfdenise/wildfly-ai-feature-pack/refs/heads/catalog/ai-feature-pack/catalog/wildfly-catalog.json"
+            "url": "https://raw.githubusercontent.com/jfdenise/wildfly-ai-feature-pack/refs/heads/catalog/ai-feature-pack/catalog/feature-pack-metadata.json"
         }
     ]
 }
