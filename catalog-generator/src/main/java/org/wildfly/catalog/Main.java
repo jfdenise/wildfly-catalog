@@ -189,22 +189,34 @@ public class Main {
                 }
             }
         }
-        String replaceTag="<!-- ####REPLACE_LAST_VERSION#### -->";
-        String newEntry="<li><a href=\""+wildflyVersion+"/index.html\">"+wildflyVersion+"</a></li>";
+        String replaceTag = "<!-- ####REPLACE_LAST_VERSION#### -->";
+        String newEntry = "<li><a href=\"" + wildflyVersion + "/index.html\">" + wildflyVersion + "</a></li>";
         // Update index
         Path indexFile = rootDirectory.resolve("index.html").toAbsolutePath();
         List<String> lines = Files.readAllLines(indexFile);
-        List<String> targetLines = new ArrayList<>();
+        //Check if the index already exists
+        boolean exists = false;
         for (String line : lines) {
-            if (line.contains(replaceTag)) {
-                targetLines.add(newEntry);
-                targetLines.add(replaceTag);
-            } else {
-                targetLines.add(line);
-            }            
+            if (line.contains(wildflyVersion)) {
+                exists = true;
+                break;
+            }
         }
-        Files.deleteIfExists(indexFile);
-        Files.write(indexFile, targetLines);
+        if (exists) {
+            System.out.println("Catalog for WildFly " + wildflyVersion + " already exists in the index, index not updated.");
+        } else {
+            List<String> targetLines = new ArrayList<>();
+            for (String line : lines) {
+                if (line.contains(replaceTag)) {
+                    targetLines.add(newEntry);
+                    targetLines.add(replaceTag);
+                } else {
+                    targetLines.add(line);
+                }
+            }
+            Files.deleteIfExists(indexFile);
+            Files.write(indexFile, targetLines);
+        }
     }
 
 }
