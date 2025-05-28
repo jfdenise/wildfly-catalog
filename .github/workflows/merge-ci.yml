@@ -24,7 +24,7 @@ jobs:
         with:
           java-version: ${{ matrix.java }}
           distribution: 'temurin'
-      - name: Validate catalog generation
+      - name: Catalog generation
         run: |
           version=$(cat version.txt)
           cd catalog-generator
