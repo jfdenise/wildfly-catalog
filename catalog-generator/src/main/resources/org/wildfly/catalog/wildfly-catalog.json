@@ -1,0 +1,60 @@
+{
+    "documentation": [
+        {
+            "name": "WildFly documentation",
+            "url": "https://docs.wildfly.org/"
+        },
+        {
+            "name": "WildFly Management Model documentation",
+            "url": "https://docs.wildfly.org/36/wildscribe/index.html"
+        },
+        {
+            "name": "WildFly Glow documentation",
+            "url": "https://docs.wildfly.org/wildfly-glow/"
+        },
+        {
+            "name": "WildFly Maven Plugin documentation",
+            "url": "https://docs.wildfly.org/wildfly-maven-plugin/"
+        }
+    ],
+    "legend": {
+        "layer": "The Galleon layer name to use to provision the feature.",
+        "description": "The textual description of the layer.",
+        "stability": "One of default, community, preview and experimental. community and default stability features are available by default.",
+        "note": "To highlight a particularity that occurs when provisioning this layer.",
+        "glowDiscoverable": "WildFly Glow (CLI or support in the WildFly Maven Plugin), can discover the layer from the API used in your deployment. If false, it must be added using the WildFly Glow addOn name.",
+        "glowAddOn": "The name of the WildFly Glow addOn to use to provision this functionality when using Wildfly Glow.",
+        "glowRules": "The list of rules that WildFly Glow uses to discover that your deployment requires this layer (API in use, expected XML descriptor, ...).",
+        "feature-pack": "The Galleon feature-pack that defines the layer.",
+        "managementModel": "The part of the management model this layer brings to the server configuration. Can be empty if this layer only aggregates some layers.",
+        "dependencies": "The list of layers this layer depends on. Those layers are also provisioned when this layer is provisioned."
+    },
+    "cloud": [
+        {
+            "description": "Cloud feature-pack, configure differently layers.",
+            "url": "https://raw.githubusercontent.com/jfdenise/wildfly-cloud-galleon-pack/refs/heads/catalog/catalog/wildfly-catalog.json"
+        }
+    ],
+    "content": [
+        {
+            "description": "WildFly catalog",
+            "url": "https://raw.githubusercontent.com/jfdenise/wildfly/refs/heads/wildfly-catalog/galleon-pack/galleon-feature-pack/catalog/wildfly-catalog.json"
+        },
+        {
+            "description": "WildFly Supported Dadatases catalog",
+            "url": "https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/refs/heads/catalog/catalog/wildfly-catalog.json"
+        },
+        {
+            "description": "WildFly support for MyFaces catalog",
+            "url": "https://raw.githubusercontent.com/jfdenise/wildfly-myfaces-feature-pack/refs/heads/catalog/catalog/wildfly-catalog.json"
+        },
+        {
+            "description": "WildFly support for Keycloak SAML Adapter catalog",
+            "url": "https://raw.githubusercontent.com/jfdenise/keycloak/refs/heads/catalog/distribution/galleon-feature-packs/saml-adapter-galleon-pack/catalog/wildfly-catalog.json"
+        },
+        {
+            "description": "WildFly support for AI",
+            "url": "https://raw.githubusercontent.com/jfdenise/wildfly-ai-feature-pack/refs/heads/catalog/ai-feature-pack/catalog/wildfly-catalog.json"
+        }
+    ]
+}

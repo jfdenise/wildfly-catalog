@@ -1,0 +1,3026 @@
+{
+  "description" : "Catalog of WildFly 36.0.1.Final features (incomplete for now) to provision a WildFly server",
+  "documentation" : [ {
+    "name" : "WildFly documentation",
+    "url" : "https://docs.wildfly.org/"
+  }, {
+    "name" : "WildFly Management Model documentation",
+    "url" : "https://docs.wildfly.org/36/wildscribe/index.html"
+  }, {
+    "name" : "WildFly Glow documentation",
+    "url" : "https://docs.wildfly.org/wildfly-glow/"
+  }, {
+    "name" : "WildFly Maven Plugin documentation",
+    "url" : "https://docs.wildfly.org/wildfly-maven-plugin/"
+  } ],
+  "legend" : {
+    "layer" : "The Galleon layer name to use to provision the feature.",
+    "description" : "The textual description of the layer.",
+    "stability" : "One of default, community, preview and experimental. community and default stability features are available by default.",
+    "note" : "To highlight a particularity that occurs when provisioning this layer.",
+    "glowDiscoverable" : "WildFly Glow (CLI or support in the WildFly Maven Plugin), can discover the layer from the API used in your deployment. If false, it must be added using the WildFly Glow addOn name.",
+    "glowAddOn" : "The name of the WildFly Glow addOn to use to provision this functionality when using Wildfly Glow.",
+    "glowRules" : "The list of rules that WildFly Glow uses to discover that your deployment requires this layer (API in use, expected XML descriptor, ...).",
+    "feature-pack" : "The Galleon feature-pack that defines the layer.",
+    "managementModel" : "The part of the management model this layer brings to the server configuration. Can be empty if this layer only aggregates some layers.",
+    "dependencies" : "The list of layers this layer depends on. Those layers are also provisioned when this layer is provisioned."
+  },
+  "categories" : [ {
+    "name" : "AI",
+    "functionalities" : [ {
+      "name" : "ai",
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=ai"
+        } ]
+      },
+      "feature-pack" : "org.wildfly:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
+      "description" : "Support for Langchain4j",
+      "stability" : "experimental",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.class",
+        "value" : "dev.langchain4j.*,org.eclipse.microprofile.ai.llm.*"
+      }, {
+        "name" : "org.wildfly.rule.annotations",
+        "value" : "dev.langchain4j.*,org.eclipse.microprofile.ai.llm.*"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "gemini-chat-model",
+      "dependencies" : [ {
+        "name" : "ai",
+        "optional" : false
+      } ],
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=ai",
+          "children" : [ {
+            "address" : "gemini-chat-model=gemini",
+            "attributes" : {
+              "api-key" : "${env.GEMINI_API_KEY:YOUR_KEY_VALUE}",
+              "log-requests-responses" : "${org.wildfly.ai.gemini.chat.log,env.GEMINI_CHAT_LOG:true}",
+              "model-name" : "${org.wildfly.ai.gemini.chat.model.name,env.GEMINI_CHAT_MODEL_NAME:gemini-1.5-flash}"
+            }
+          } ]
+        } ]
+      },
+      "feature-pack" : "org.wildfly:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
+      "description" : "Support for Gemini chat model",
+      "glowAddOn" : "gemini-chat-model",
+      "stability" : "experimental",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.annotation.field.value",
+        "value" : "io.smallrye.llm.spi.RegisterAIService,chatModelName=gemini"
+      }, {
+        "name" : "org.wildfly.rule.configuration",
+        "value" : "https://raw.geminiusercontent.com/wildfly-extras/wildfly-ai-feature-pack/glow-layer-doc/gemini-chat-model/env.yaml"
+      }, {
+        "name" : "org.wildfly.rule.annotated.type",
+        "value" : "dev.langchain4j.model.chat.ChatModel,jakarta.inject.Named[value=gemini]"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "github-chat-model",
+      "dependencies" : [ {
+        "name" : "ai",
+        "optional" : false
+      } ],
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=ai",
+          "children" : [ {
+            "address" : "github-chat-model=github",
+            "attributes" : {
+              "api-key" : "${env.GITHUB_API_KEY:YOUR_KEY_VALUE}",
+              "endpoint" : "${org.wildfly.ai.github.chat.url,env.GITHUB_CHAT_URL:https://models.inference.ai.azure.com}",
+              "log-requests-responses" : "${org.wildfly.ai.github.chat.log,env.GITHUB_CHAT_LOG:true}",
+              "model-name" : "${org.wildfly.ai.github.chat.model.name,env.GITHUB_CHAT_MODEL_NAME:gpt-4o-mini}"
+            }
+          } ]
+        } ]
+      },
+      "feature-pack" : "org.wildfly:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
+      "description" : "Support for GitHub chat model",
+      "glowAddOn" : "github-chat-model",
+      "stability" : "experimental",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.annotation.field.value",
+        "value" : "io.smallrye.llm.spi.RegisterAIService,chatModelName=github"
+      }, {
+        "name" : "org.wildfly.rule.configuration",
+        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-ai-feature-pack/refs/tags/0.5.0/doc/glow-layer-doc/github-chat-model/env.yaml"
+      }, {
+        "name" : "org.wildfly.rule.annotated.type",
+        "value" : "dev.langchain4j.model.chat.ChatModel,jakarta.inject.Named[value=github]"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "mistral-ai-chat-model",
+      "dependencies" : [ {
+        "name" : "ai",
+        "optional" : false
+      } ],
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=ai",
+          "children" : [ {
+            "address" : "mistral-ai-chat-model=mistral",
+            "attributes" : {
+              "api-key" : "${env.MISTRAL_API_KEY:YOUR_KEY_VALUE}",
+              "base-url" : "${org.wildfly.ai.mistral.chat.url,env.MISTRAL_CHAT_URL:https://api.mistral.ai/v1}",
+              "log-requests" : "${org.wildfly.ai.mistral.chat.log.request,env.MISTRAL_CHAT_LOG_REQUEST:true}",
+              "log-responses" : "${org.wildfly.ai.mistral.chat.log.response,env.MISTRAL_CHAT_LOG_RESPONSE:true}",
+              "model-name" : "${org.wildfly.ai.mistral.chat.model.name,env.MISTRAL_CHAT_MODEL_NAME:mistral-small-latest}"
+            }
+          } ]
+        } ]
+      },
+      "feature-pack" : "org.wildfly:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
+      "description" : "Support for Mistral AI chat model",
+      "glowAddOn" : "mistral-ai-chat-model",
+      "stability" : "experimental",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.annotation.field.value",
+        "value" : "io.smallrye.llm.spi.RegisterAIService,chatModelName=mistral"
+      }, {
+        "name" : "org.wildfly.rule.configuration",
+        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-ai-feature-pack/refs/tags/0.5.0/doc/glow-layer-doc/mistral-ai-chat-model/env.yaml"
+      }, {
+        "name" : "org.wildfly.rule.annotated.type",
+        "value" : "dev.langchain4j.model.chat.ChatModel,jakarta.inject.Named[value=mistral]"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "neo4j-content-retriever",
+      "dependencies" : [ {
+        "name" : "ai",
+        "optional" : false
+      } ],
+      "managementModel" : { },
+      "feature-pack" : "org.wildfly:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
+      "description" : "Support for neo4j content retriever",
+      "glowAddOn" : "neo4j-content-retriever",
+      "stability" : "experimental",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.annotation.field.value",
+        "value" : "io.smallrye.llm.spi.RegisterAIService,contentRetrieverName=neo4j-retriever"
+      }, {
+        "name" : "org.wildfly.rule.configuration",
+        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-ai-feature-pack/refs/tags/0.5.0/doc/glow-layer-doc/neo4j-content-retriever/env.yaml"
+      }, {
+        "name" : "org.wildfly.rule.annotated.type",
+        "value" : "dev.langchain4j.rag.content.retriever.ContentRetriever,jakarta.inject.Named[value=neo4j-retriever]"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "ollama-chat-model",
+      "dependencies" : [ {
+        "name" : "ai",
+        "optional" : false
+      } ],
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=ai",
+          "children" : [ {
+            "address" : "ollama-chat-model=ollama",
+            "attributes" : {
+              "base-url" : "${org.wildfly.ai.ollama.chat.url,env.OLLAMA_CHAT_URL:http://127.0.0.1:11434}",
+              "connect-timeout" : "600000",
+              "log-requests" : "${org.wildfly.ai.ollama.chat.log.request,env.OLLAMA_CHAT_LOG_REQUEST:true}",
+              "log-responses" : "${org.wildfly.ai.ollama.chat.log.response,env.OLLAMA_CHAT_LOG_RESPONSE:true}",
+              "model-name" : "${org.wildfly.ai.ollama.chat.model.name,env.OLLAMA_CHAT_MODEL_NAME:llama3.1:8b}",
+              "temperature" : "${org.wildfly.ai.ollama.chat.temperature,env.OLLAMA_CHAT_TEMPERATURE:0.9}"
+            }
+          } ]
+        } ]
+      },
+      "feature-pack" : "org.wildfly:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
+      "description" : "Support for Ollama chat model",
+      "glowAddOn" : "ollama-chat-model",
+      "stability" : "experimental",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.annotation.field.value",
+        "value" : "io.smallrye.llm.spi.RegisterAIService,chatModelName=ollama"
+      }, {
+        "name" : "org.wildfly.rule.configuration",
+        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-ai-feature-pack/refs/tags/0.5.0/doc/glow-layer-doc/ollama-chat-model/env.yaml"
+      }, {
+        "name" : "org.wildfly.rule.annotated.type",
+        "value" : "dev.langchain4j.model.chat.ChatModel,jakarta.inject.Named[value=ollama]"
+      } ],
+      "glowDiscoverable" : true
+    } ]
+  }, {
+    "name" : "Base WildFly server",
+    "functionalities" : [ {
+      "name" : "cloud-server",
+      "managementModel" : { },
+      "dependencies" : [ {
+        "name" : "jaxrs-server",
+        "optional" : false
+      }, {
+        "name" : "ee-security",
+        "optional" : true
+      }, {
+        "name" : "jms-activemq",
+        "optional" : true
+      }, {
+        "name" : "observability",
+        "optional" : true
+      }, {
+        "name" : "resource-adapters",
+        "optional" : true
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "An extension of jaxrs-server to address common cloud requirements.",
+      "stability" : "default",
+      "glowDiscoverable" : false
+    }, {
+      "name" : "datasources-web-server",
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=elytron",
+          "children" : [ {
+            "address" : "http-authentication-factory=application-http-authentication",
+            "attributes" : {
+              "http-server-mechanism-factory" : "global",
+              "mechanism-configurations" : "[{mechanism-name=BASIC,mechanism-realm-configurations=[{realm-name=ApplicationRealm}]}]",
+              "security-domain" : "ApplicationDomain"
+            }
+          } ]
+        }, {
+          "address" : "subsystem=undertow",
+          "children" : [ {
+            "address" : "application-security-domain=other",
+            "attributes" : {
+              "security-domain" : "ApplicationDomain"
+            }
+          }, {
+            "address" : "server=default-server",
+            "children" : [ {
+              "address" : "setting=http-invoker",
+              "attributes" : {
+                "http-authentication-factory" : "application-http-authentication"
+              }
+            } ]
+          } ]
+        } ]
+      },
+      "dependencies" : [ {
+        "name" : "web-server",
+        "optional" : false
+      }, {
+        "name" : "core-server",
+        "optional" : false
+      }, {
+        "name" : "elytron",
+        "optional" : false
+      }, {
+        "name" : "core-tools",
+        "optional" : true
+      }, {
+        "name" : "datasources",
+        "optional" : true
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "A servlet container with support for datasources",
+      "stability" : "default",
+      "glowDiscoverable" : false
+    }, {
+      "name" : "ee-core-profile-server",
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=elytron",
+          "children" : [ {
+            "address" : "http-authentication-factory=application-http-authentication",
+            "attributes" : {
+              "http-server-mechanism-factory" : "global",
+              "mechanism-configurations" : "[{mechanism-name=BASIC,mechanism-realm-configurations=[{realm-name=ApplicationRealm}]}]",
+              "security-domain" : "ApplicationDomain"
+            }
+          } ]
+        }, {
+          "address" : "subsystem=undertow",
+          "children" : [ {
+            "address" : "application-security-domain=other",
+            "attributes" : {
+              "security-domain" : "ApplicationDomain"
+            }
+          }, {
+            "address" : "server=default-server",
+            "children" : [ {
+              "address" : "setting=http-invoker",
+              "attributes" : {
+                "http-authentication-factory" : "application-http-authentication"
+              }
+            } ]
+          } ]
+        } ]
+      },
+      "dependencies" : [ {
+        "name" : "core-server",
+        "optional" : false
+      }, {
+        "name" : "cdi",
+        "optional" : false
+      }, {
+        "name" : "ee-integration",
+        "optional" : false
+      }, {
+        "name" : "elytron",
+        "optional" : false
+      }, {
+        "name" : "jaxrs-core",
+        "optional" : false
+      }, {
+        "name" : "jsonp",
+        "optional" : false
+      }, {
+        "name" : "jsonb",
+        "optional" : false
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "A Jakarta EE Core Profile server",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.kind",
+        "value" : "default-base-layer"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "jaxrs-server",
+      "managementModel" : { },
+      "dependencies" : [ {
+        "name" : "datasources-web-server",
+        "optional" : false
+      }, {
+        "name" : "jaxrs",
+        "optional" : true
+      }, {
+        "name" : "bean-validation",
+        "optional" : true
+      }, {
+        "name" : "cdi",
+        "optional" : true
+      }, {
+        "name" : "jpa",
+        "optional" : true
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "An extension of 'datasources-web-server' with support for Jakarta RESTful Web Services, CDI and JPA.",
+      "stability" : "default",
+      "glowDiscoverable" : false
+    } ]
+  }, {
+    "name" : "Clustering",
+    "functionalities" : [ {
+      "name" : "ejb-dist-cache",
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "interface=private",
+          "attributes" : {
+            "inet-address" : "${jboss.bind.address.private:127.0.0.1}"
+          }
+        }, {
+          "address" : "socket-binding-group=standard-sockets",
+          "children" : [ {
+            "address" : "socket-binding=jgroups-mping",
+            "attributes" : {
+              "interface" : "private",
+              "multicast-address" : "${jboss.default.multicast.address:230.0.0.4}",
+              "multicast-port" : "45700"
+            }
+          }, {
+            "address" : "socket-binding=jgroups-tcp",
+            "attributes" : {
+              "interface" : "private",
+              "port" : "7600"
+            }
+          }, {
+            "address" : "socket-binding=jgroups-tcp-fd",
+            "attributes" : {
+              "interface" : "private",
+              "port" : "57600"
+            }
+          }, {
+            "address" : "socket-binding=jgroups-udp",
+            "attributes" : {
+              "interface" : "private",
+              "multicast-address" : "${jboss.default.multicast.address:230.0.0.4}",
+              "multicast-port" : "45688",
+              "port" : "55200"
+            }
+          }, {
+            "address" : "socket-binding=jgroups-udp-fd",
+            "attributes" : {
+              "interface" : "private",
+              "port" : "54200"
+            }
+          } ]
+        }, {
+          "address" : "subsystem=distributable-ejb",
+          "attributes" : {
+            "default-bean-management" : "default"
+          },
+          "children" : [ {
+            "address" : "client-mappings-registry=infinispan",
+            "attributes" : {
+              "cache" : "client-mappings",
+              "cache-container" : "ejb"
+            }
+          }, {
+            "address" : "infinispan-bean-management=default",
+            "attributes" : {
+              "cache-container" : "ejb",
+              "max-active-beans" : "10000"
+            }
+          }, {
+            "address" : "infinispan-timer-management=persistent",
+            "attributes" : {
+              "cache" : "persistent",
+              "cache-container" : "ejb",
+              "max-active-timers" : "10000"
+            }
+          }, {
+            "address" : "infinispan-timer-management=transient",
+            "attributes" : {
+              "cache" : "transient",
+              "cache-container" : "ejb",
+              "max-active-timers" : "10000"
+            }
+          } ]
+        }, {
+          "address" : "subsystem=ejb3",
+          "attributes" : {
+            "default-sfsb-cache" : "distributable",
+            "default-stateful-bean-access-timeout" : "5000"
+          },
+          "children" : [ {
+            "address" : "service=timer-service",
+            "attributes" : {
+              "default-persistent-timer-management" : "persistent",
+              "default-transient-timer-management" : "transient"
+            }
+          } ]
+        }, {
+          "address" : "subsystem=infinispan",
+          "children" : [ {
+            "address" : "cache-container=ejb",
+            "attributes" : {
+              "aliases" : "[sfsb]",
+              "default-cache" : "dist",
+              "marshaller" : "PROTOSTREAM",
+              "modules" : "[org.wildfly.clustering.ejb.infinispan]"
+            },
+            "children" : [ {
+              "address" : "distributed-cache=dist",
+              "children" : [ {
+                "address" : "component=expiration",
+                "attributes" : {
+                  "interval" : "0"
+                }
+              }, {
+                "address" : "component=locking",
+                "attributes" : {
+                  "isolation" : "REPEATABLE_READ"
+                }
+              }, {
+                "address" : "component=transaction",
+                "attributes" : {
+                  "mode" : "BATCH"
+                }
+              }, {
+                "address" : "store=file",
+                "attributes" : {
+                  "passivation" : "true",
+                  "purge" : "true"
+                }
+              } ]
+            }, {
+              "address" : "distributed-cache=persistent",
+              "children" : [ {
+                "address" : "component=expiration",
+                "attributes" : {
+                  "interval" : "0"
+                }
+              }, {
+                "address" : "component=locking",
+                "attributes" : {
+                  "isolation" : "REPEATABLE_READ"
+                }
+              }, {
+                "address" : "component=transaction",
+                "attributes" : {
+                  "mode" : "BATCH"
+                }
+              }, {
+                "address" : "store=file",
+                "attributes" : {
+                  "passivation" : "true"
+                }
+              } ]
+            }, {
+              "address" : "local-cache=transient",
+              "children" : [ {
+                "address" : "component=expiration",
+                "attributes" : {
+                  "interval" : "0"
+                }
+              }, {
+                "address" : "component=locking",
+                "attributes" : {
+                  "isolation" : "REPEATABLE_READ"
+                }
+              }, {
+                "address" : "component=transaction",
+                "attributes" : {
+                  "mode" : "BATCH"
+                }
+              }, {
+                "address" : "store=file",
+                "attributes" : {
+                  "passivation" : "true",
+                  "purge" : "true"
+                }
+              } ]
+            }, {
+              "address" : "replicated-cache=client-mappings",
+              "children" : [ {
+                "address" : "component=expiration",
+                "attributes" : {
+                  "interval" : "0"
+                }
+              } ]
+            }, {
+              "address" : "transport=jgroups",
+              "attributes" : {
+                "lock-timeout" : "60000"
+              }
+            } ]
+          } ]
+        }, {
+          "address" : "subsystem=jgroups",
+          "attributes" : {
+            "default-channel" : "ee"
+          },
+          "children" : [ {
+            "address" : "channel=ee",
+            "attributes" : {
+              "cluster" : "ejb",
+              "stack" : "udp"
+            }
+          }, {
+            "address" : "stack=tcp",
+            "children" : [ {
+              "address" : "protocol=FD_ALL3"
+            }, {
+              "address" : "protocol=FD_SOCK2",
+              "attributes" : {
+                "socket-binding" : "jgroups-tcp-fd"
+              }
+            }, {
+              "address" : "protocol=FRAG4"
+            }, {
+              "address" : "protocol=MERGE3"
+            }, {
+              "address" : "protocol=MFC"
+            }, {
+              "address" : "protocol=MPING",
+              "attributes" : {
+                "socket-binding" : "jgroups-mping"
+              }
+            }, {
+              "address" : "protocol=RED"
+            }, {
+              "address" : "protocol=UFC"
+            }, {
+              "address" : "protocol=UNICAST3"
+            }, {
+              "address" : "protocol=VERIFY_SUSPECT2"
+            }, {
+              "address" : "protocol=pbcast.GMS"
+            }, {
+              "address" : "protocol=pbcast.NAKACK2"
+            }, {
+              "address" : "protocol=pbcast.STABLE"
+            }, {
+              "address" : "transport=TCP",
+              "attributes" : {
+                "socket-binding" : "jgroups-tcp"
+              }
+            } ]
+          }, {
+            "address" : "stack=udp",
+            "children" : [ {
+              "address" : "protocol=FD_ALL3"
+            }, {
+              "address" : "protocol=FD_SOCK2",
+              "attributes" : {
+                "socket-binding" : "jgroups-udp-fd"
+              }
+            }, {
+              "address" : "protocol=FRAG4"
+            }, {
+              "address" : "protocol=MERGE3"
+            }, {
+              "address" : "protocol=MFC"
+            }, {
+              "address" : "protocol=PING"
+            }, {
+              "address" : "protocol=RED"
+            }, {
+              "address" : "protocol=UFC"
+            }, {
+              "address" : "protocol=UNICAST3"
+            }, {
+              "address" : "protocol=VERIFY_SUSPECT2"
+            }, {
+              "address" : "protocol=pbcast.GMS"
+            }, {
+              "address" : "protocol=pbcast.NAKACK2"
+            }, {
+              "address" : "protocol=pbcast.STABLE"
+            }, {
+              "address" : "transport=UDP",
+              "attributes" : {
+                "socket-binding" : "jgroups-udp"
+              }
+            } ]
+          } ]
+        } ]
+      },
+      "dependencies" : [ {
+        "name" : "transactions",
+        "optional" : false
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Infinispan-based distributed cache for stateful session beans.",
+      "note" : "ejb-local-cache layer must be explicitly excluded if ejb-dist-cache is in use.",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.profile-ha",
+        "value" : "ejb-local-cache"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "jpa-distributed",
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "interface=private",
+          "attributes" : {
+            "inet-address" : "${jboss.bind.address.private:127.0.0.1}"
+          }
+        }, {
+          "address" : "socket-binding-group=standard-sockets",
+          "children" : [ {
+            "address" : "socket-binding=jgroups-mping",
+            "attributes" : {
+              "interface" : "private",
+              "multicast-address" : "${jboss.default.multicast.address:230.0.0.4}",
+              "multicast-port" : "45700"
+            }
+          }, {
+            "address" : "socket-binding=jgroups-tcp",
+            "attributes" : {
+              "interface" : "private",
+              "port" : "7600"
+            }
+          }, {
+            "address" : "socket-binding=jgroups-tcp-fd",
+            "attributes" : {
+              "interface" : "private",
+              "port" : "57600"
+            }
+          }, {
+            "address" : "socket-binding=jgroups-udp",
+            "attributes" : {
+              "interface" : "private",
+              "multicast-address" : "${jboss.default.multicast.address:230.0.0.4}",
+              "multicast-port" : "45688",
+              "port" : "55200"
+            }
+          }, {
+            "address" : "socket-binding=jgroups-udp-fd",
+            "attributes" : {
+              "interface" : "private",
+              "port" : "54200"
+            }
+          } ]
+        }, {
+          "address" : "subsystem=infinispan",
+          "children" : [ {
+            "address" : "cache-container=hibernate",
+            "attributes" : {
+              "marshaller" : "JBOSS",
+              "modules" : "[org.infinispan.hibernate-cache]"
+            },
+            "children" : [ {
+              "address" : "invalidation-cache=entity",
+              "children" : [ {
+                "address" : "component=expiration",
+                "attributes" : {
+                  "max-idle" : "100000"
+                }
+              }, {
+                "address" : "memory=heap",
+                "attributes" : {
+                  "size" : "10000"
+                }
+              } ]
+            }, {
+              "address" : "local-cache=local-query",
+              "children" : [ {
+                "address" : "component=expiration",
+                "attributes" : {
+                  "max-idle" : "100000"
+                }
+              }, {
+                "address" : "memory=heap",
+                "attributes" : {
+                  "size" : "10000"
+                }
+              } ]
+            }, {
+              "address" : "local-cache=pending-puts",
+              "children" : [ {
+                "address" : "component=expiration",
+                "attributes" : {
+                  "max-idle" : "60000"
+                }
+              } ]
+            }, {
+              "address" : "replicated-cache=timestamps",
+              "children" : [ {
+                "address" : "component=expiration",
+                "attributes" : {
+                  "interval" : "0"
+                }
+              } ]
+            }, {
+              "address" : "transport=jgroups",
+              "attributes" : {
+                "lock-timeout" : "60000"
+              }
+            } ]
+          } ]
+        }, {
+          "address" : "subsystem=jgroups",
+          "attributes" : {
+            "default-channel" : "ee"
+          },
+          "children" : [ {
+            "address" : "channel=ee",
+            "attributes" : {
+              "cluster" : "ejb",
+              "stack" : "udp"
+            }
+          }, {
+            "address" : "stack=tcp",
+            "children" : [ {
+              "address" : "protocol=FD_ALL3"
+            }, {
+              "address" : "protocol=FD_SOCK2",
+              "attributes" : {
+                "socket-binding" : "jgroups-tcp-fd"
+              }
+            }, {
+              "address" : "protocol=FRAG4"
+            }, {
+              "address" : "protocol=MERGE3"
+            }, {
+              "address" : "protocol=MFC"
+            }, {
+              "address" : "protocol=MPING",
+              "attributes" : {
+                "socket-binding" : "jgroups-mping"
+              }
+            }, {
+              "address" : "protocol=RED"
+            }, {
+              "address" : "protocol=UFC"
+            }, {
+              "address" : "protocol=UNICAST3"
+            }, {
+              "address" : "protocol=VERIFY_SUSPECT2"
+            }, {
+              "address" : "protocol=pbcast.GMS"
+            }, {
+              "address" : "protocol=pbcast.NAKACK2"
+            }, {
+              "address" : "protocol=pbcast.STABLE"
+            }, {
+              "address" : "transport=TCP",
+              "attributes" : {
+                "socket-binding" : "jgroups-tcp"
+              }
+            } ]
+          }, {
+            "address" : "stack=udp",
+            "children" : [ {
+              "address" : "protocol=FD_ALL3"
+            }, {
+              "address" : "protocol=FD_SOCK2",
+              "attributes" : {
+                "socket-binding" : "jgroups-udp-fd"
+              }
+            }, {
+              "address" : "protocol=FRAG4"
+            }, {
+              "address" : "protocol=MERGE3"
+            }, {
+              "address" : "protocol=MFC"
+            }, {
+              "address" : "protocol=PING"
+            }, {
+              "address" : "protocol=RED"
+            }, {
+              "address" : "protocol=UFC"
+            }, {
+              "address" : "protocol=UNICAST3"
+            }, {
+              "address" : "protocol=VERIFY_SUSPECT2"
+            }, {
+              "address" : "protocol=pbcast.GMS"
+            }, {
+              "address" : "protocol=pbcast.NAKACK2"
+            }, {
+              "address" : "protocol=pbcast.STABLE"
+            }, {
+              "address" : "transport=UDP",
+              "attributes" : {
+                "socket-binding" : "jgroups-udp"
+              }
+            } ]
+          } ]
+        }, {
+          "address" : "subsystem=jpa",
+          "attributes" : {
+            "default-extended-persistence-inheritance" : "DEEP"
+          }
+        } ]
+      },
+      "dependencies" : [ {
+        "name" : "datasources",
+        "optional" : false
+      }, {
+        "name" : "bean-validation",
+        "optional" : true
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Support for JPA with a distributed second level cache.",
+      "note" : "jpa layer must be explicitly excluded if jpa-distributed is in use.",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.profile-ha",
+        "value" : "jpa"
+      } ],
+      "glowDiscoverable" : true
+    } ]
+  }, {
+    "name" : "Database",
+    "functionalities" : [ {
+      "name" : "db2-datasource",
+      "dependencies" : [ {
+        "name" : "datasources",
+        "optional" : false
+      }, {
+        "name" : "db2-driver",
+        "optional" : false
+      } ],
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=datasources",
+          "children" : [ {
+            "address" : "data-source=DB2DS",
+            "attributes" : {
+              "background-validation" : "${org.wildfly.datasources.db2.background-validation,env.DB2_BACKGROUND_VALIDATION:false}",
+              "background-validation-millis" : "${org.wildfly.datasources.db2.background-validation-millis,env.DB2_BACKGROUND_VALIDATION_MILLIS:10000}",
+              "connection-url" : "${org.wildfly.datasources.db2.connection-url,env.DB2_URL:jdbc:db2://${org.wildfly.datasources.db2.host,env.DB2_SERVICE_HOST,env.OPENSHIFT_DB2_DB_HOST,env.DB2_HOST:localhost}:${org.wildfly.datasources.db2.port,env.DB2_SERVICE_PORT,env.OPENSHIFT_DB2_DB_PORT,env.DB2_PORT:50000}/${org.wildfly.datasources.db2.database,env.DB2_DATABASE,env.OPENSHIFT_DB2_DB_NAME}}",
+              "driver-name" : "db2",
+              "enabled" : "${org.wildfly.datasources.db2.enabled, env.DB2_ENABLED:true}",
+              "exception-sorter-class-name" : "${org.wildfly.datasources.db2.exception-sorter-class-name, env.DB2_EXCEPTION_SORTER:org.jboss.jca.adapters.jdbc.extensions.db2.DB2ExceptionSorter}",
+              "flush-strategy" : "${org.wildfly.datasources.db2.flush-strategy,env.DB2_FLUSH_STRATEGY:FailingConnectionOnly}",
+              "idle-timeout-minutes" : "${org.wildfly.datasources.db2.idle-timeout-minutes,env.DB2_IDLE_TIMEOUT_MINUTES:30}",
+              "jndi-name" : "${org.wildfly.datasources.db2.jndi-name,env.DB2_JNDI:java:jboss/datasources/${org.wildfly.datasources.db2.datasource, env.DB2_DATASOURCE,env.OPENSHIFT_DB2_DATASOURCE:DB2DS}}",
+              "jta" : "${org.wildfly.datasources.db2.jta,env.DB2_JTA:true}",
+              "max-pool-size" : "${org.wildfly.datasources.db2.max-pool-size,env.DB2_MAX_POOL_SIZE:20}",
+              "min-pool-size" : "${org.wildfly.datasources.db2.min-pool-size,env.DB2_MIN_POOL_SIZE:0}",
+              "password" : "${org.wildfly.datasources.db2.password,env.DB2_PASSWORD,env.OPENSHIFT_DB2_DB_PASSWORD}",
+              "stale-connection-checker-class-name" : "${org.wildfly.datasources.db2.stale-connection-checker-class-name,env.DB2_STALE_CONNECTION_CHECKER:org.jboss.jca.adapters.jdbc.extensions.novendor.NullStaleConnectionChecker}",
+              "statistics-enabled" : "${wildfly.datasources.statistics-enabled:${wildfly.statistics-enabled:false}}",
+              "transaction-isolation" : "${org.wildfly.datasources.db2.transaction-isolation,env.DB2_TX_ISOLATION:TRANSACTION_READ_COMMITTED}",
+              "user-name" : "${org.wildfly.datasources.db2.user-name,env.DB2_USER,env.OPENSHIFT_DB2_DB_USERNAME}",
+              "valid-connection-checker-class-name" : "${org.wildfly.datasources.db2.valid-connection-checker-class-name,env.DB2_CONNECTION_CHECKER:org.jboss.jca.adapters.jdbc.extensions.db2.DB2ValidConnectionChecker}",
+              "validate-on-match" : "${org.wildfly.datasources.db2.validate-on-match,env.DB2_VALIDATE_ON_MATCH:true}"
+            }
+          } ]
+        } ]
+      },
+      "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:10.0.1.Final-SNAPSHOT",
+      "glowAddOn" : "db2",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.configuration",
+        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/db2/env.yaml"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "db2-default-datasource",
+      "dependencies" : [ {
+        "name" : "datasources",
+        "optional" : false
+      }, {
+        "name" : "db2-datasource",
+        "optional" : false
+      } ],
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=ee",
+          "children" : [ {
+            "address" : "service=default-bindings",
+            "attributes" : {
+              "datasource" : "${org.wildfly.datasources.db2.jndi-name,env.DB2_JNDI:java:jboss/datasources/${org.wildfly.datasources.db2.datasource, env.DB2_DATASOURCE,env.OPENSHIFT_DB2_DATASOURCE:DB2DS}}"
+            }
+          } ]
+        } ]
+      },
+      "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:10.0.1.Final-SNAPSHOT",
+      "glowAddOn" : "db2:default",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.configuration",
+        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/db2/env.yaml"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "db2-driver",
+      "dependencies" : [ {
+        "name" : "datasources",
+        "optional" : false
+      } ],
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=datasources",
+          "children" : [ {
+            "address" : "jdbc-driver=db2",
+            "attributes" : {
+              "driver-module-name" : "com.ibm.db2",
+              "driver-name" : "db2",
+              "driver-xa-datasource-class-name" : "com.ibm.db2.jcc.DB2XADataSource"
+            }
+          } ]
+        } ]
+      },
+      "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:10.0.1.Final-SNAPSHOT",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.xml-path",
+        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/datasource/driver,db2"
+      }, {
+        "name" : "org.wildfly.rule.annotation.field.value-url",
+        "value" : "jakarta.annotation.sql.DataSourceDefinition,url=jdbc:db2:*"
+      }, {
+        "name" : "org.wildfly.rule.xml-path-xa",
+        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/xa-datasource/driver,db2"
+      }, {
+        "name" : "org.wildfly.rule.annotation.field.value-className",
+        "value" : "jakarta.annotation.sql.DataSourceDefinition,className=com.ibm.db2.jcc.*"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "mariadb-datasource",
+      "dependencies" : [ {
+        "name" : "datasources",
+        "optional" : false
+      }, {
+        "name" : "mariadb-driver",
+        "optional" : false
+      } ],
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=datasources",
+          "children" : [ {
+            "address" : "data-source=MariaDBDS",
+            "attributes" : {
+              "background-validation" : "${org.wildfly.datasources.mariadb.background-validation,env.MARIADB_BACKGROUND_VALIDATION:false}",
+              "background-validation-millis" : "${org.wildfly.datasources.mariadb.background-validation-millis,env.MARIADB_BACKGROUND_VALIDATION_MILLIS:10000}",
+              "connection-url" : "${org.wildfly.datasources.mariadb.connection-url,env.MARIADB_URL:jdbc:mariadb://${org.wildfly.datasources.mariadb.host,env.MARIADB_SERVICE_HOST,env.MARIADB_HOST:localhost}:${org.wildfly.datasources.mariadb.port,env.MARIADB_SERVICE_PORT,env.MARIADB_PORT:3306}/${org.wildfly.datasources.mariadb.database,env.MARIADB_DATABASE}}",
+              "driver-name" : "mariadb",
+              "enabled" : "${org.wildfly.datasources.mariadb.enabled,env.MARIADB_ENABLED:true}",
+              "exception-sorter-class-name" : "${org.wildfly.datasources.mariadb.exception-sorter-class-name,env.MARIADB_EXCEPTION_SORTER:org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLExceptionSorter}",
+              "flush-strategy" : "${org.wildfly.datasources.mariadb.flush-strategy,env.MARIADB_FLUSH_STRATEGY:FailingConnectionOnly}",
+              "idle-timeout-minutes" : "${org.wildfly.datasources.mariadb.idle-timeout-minutes,env.MARIADB_IDLE_TIMEOUT_MINUTES:30}",
+              "jndi-name" : "${org.wildfly.datasources.mariadb.jndi-name,env.MARIADB_JNDI:java:jboss/datasources/${org.wildfly.datasources.mariadb.datasource,env.MARIADB_DATASOURCE:MariaDBDS}}",
+              "jta" : "${org.wildfly.datasources.mariadb.jta,env.MARIADB_JTA:true}",
+              "max-pool-size" : "${org.wildfly.datasources.mariadb.max-pool-size,env.MARIADB_MAX_POOL_SIZE:20}",
+              "min-pool-size" : "${org.wildfly.datasources.mariadb.min-pool-size,env.MARIADB_MIN_POOL_SIZE:0}",
+              "password" : "${org.wildfly.datasources.mariadb.password,env.MARIADB_PASSWORD}",
+              "stale-connection-checker-class-name" : "${org.wildfly.datasources.mariadb.stale-connection-checker-class-name,env.MARIADB_STALE_CONNECTION_CHECKER:org.jboss.jca.adapters.jdbc.extensions.novendor.NullStaleConnectionChecker}",
+              "statistics-enabled" : "${wildfly.datasources.statistics-enabled:${wildfly.statistics-enabled:false}}",
+              "transaction-isolation" : "${org.wildfly.datasources.mariadb.transaction-isolation,env.MARIADB_TX_ISOLATION:TRANSACTION_READ_COMMITTED}",
+              "user-name" : "${org.wildfly.datasources.mariadb.user-name,env.MARIADB_USER}",
+              "valid-connection-checker-class-name" : "${org.wildfly.datasources.mariadb.valid-connection-checker-class-name,env.MARIADB_CONNECTION_CHECKER:org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLValidConnectionChecker}",
+              "validate-on-match" : "${org.wildfly.datasources.mariadb.validate-on-match,env.MARIADB_VALIDATE_ON_MATCH:true}"
+            }
+          } ]
+        } ]
+      },
+      "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:10.0.1.Final-SNAPSHOT",
+      "glowAddOn" : "mariadb",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.configuration",
+        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/mariadb/env.yaml"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "mariadb-default-datasource",
+      "dependencies" : [ {
+        "name" : "datasources",
+        "optional" : false
+      }, {
+        "name" : "mariadb-datasource",
+        "optional" : false
+      } ],
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=ee",
+          "children" : [ {
+            "address" : "service=default-bindings",
+            "attributes" : {
+              "datasource" : "java:jboss/datasources/${env.MARIADB_DATASOURCE:MariaDBDS}"
+            }
+          } ]
+        } ]
+      },
+      "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:10.0.1.Final-SNAPSHOT",
+      "glowAddOn" : "mariadb:default",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.configuration",
+        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/mariadb/env.yaml"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "mariadb-driver",
+      "dependencies" : [ {
+        "name" : "datasources",
+        "optional" : false
+      } ],
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=datasources",
+          "children" : [ {
+            "address" : "jdbc-driver=mariadb",
+            "attributes" : {
+              "driver-module-name" : "org.mariadb.jdbc",
+              "driver-name" : "mariadb",
+              "driver-xa-datasource-class-name" : "org.mariadb.jdbc.MariaDbDataSource"
+            }
+          } ]
+        } ]
+      },
+      "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:10.0.1.Final-SNAPSHOT",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.xml-path",
+        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/datasource/driver,mariadb"
+      }, {
+        "name" : "org.wildfly.rule.annotation.field.value-url",
+        "value" : "jakarta.annotation.sql.DataSourceDefinition,url=jdbc:mariadb:*"
+      }, {
+        "name" : "org.wildfly.rule.xml-path-xa",
+        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/xa-datasource/driver,mariadb"
+      }, {
+        "name" : "org.wildfly.rule.annotation.field.value-className",
+        "value" : "jakarta.annotation.sql.DataSourceDefinition,className=org.mariadb.*"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "mssqlserver-datasource",
+      "dependencies" : [ {
+        "name" : "datasources",
+        "optional" : false
+      }, {
+        "name" : "mssqlserver-driver",
+        "optional" : false
+      } ],
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=datasources",
+          "children" : [ {
+            "address" : "data-source=MSSQLServerDS",
+            "attributes" : {
+              "background-validation" : "${org.wildfly.datasources.mssqlserver.background-validation,env.MSSQLSERVER_BACKGROUND_VALIDATION:false}",
+              "background-validation-millis" : "${org.wildfly.datasources.mssqlserver.background-validation-millis,env.MSSQLSERVER_BACKGROUND_VALIDATION_MILLIS:10000}",
+              "connection-url" : "${org.wildfly.datasources.mssqlserver.connection-url,env.MSSQLSERVER_URL:jdbc:sqlserver://${org.wildfly.datasources.mssqlserver.host,env.MSSQLSERVER_SERVICE_HOST,env.MSSQLSERVER_HOST:localhost}:${org.wildfly.datasources.mssqlserver.port,env.MSSQLSERVER_SERVICE_PORT,env.MSSQLSERVER_PORT:1433};DatabaseName\\=${org.wildfly.datasources.mssqlserver.database,env.MSSQLSERVER_DATABASE}}",
+              "driver-name" : "mssqlserver",
+              "enabled" : "${org.wildfly.datasources.mssqlserver.enabled, env.MSSQLSERVER_ENABLED:true}",
+              "exception-sorter-class-name" : "${org.wildfly.datasources.mssqlserver.exception-sorter-class-name, env.MSSQLSERVER_EXCEPTION_SORTER:org.jboss.jca.adapters.jdbc.extensions.mssql.MSSQLExceptionSorter}",
+              "flush-strategy" : "${org.wildfly.datasources.mssqlserver.flush-strategy,env.MSSQLSERVER_FLUSH_STRATEGY:FailingConnectionOnly}",
+              "idle-timeout-minutes" : "${org.wildfly.datasources.mssqlserver.idle-timeout-minutes,env.MSSQLSERVER_IDLE_TIMEOUT_MINUTES:30}",
+              "jndi-name" : "${org.wildfly.datasources.mssqlserver.jndi-name,env.MSSQLSERVER_JNDI:java:jboss/datasources/${org.wildfly.datasources.mssqlserver.datasource, env.MSSQLSERVER_DATASOURCE:MSSQLServerDS}}",
+              "jta" : "${org.wildfly.datasources.mssqlserver.jta,env.MSSQLSERVER_JTA:true}",
+              "max-pool-size" : "${org.wildfly.datasources.mssqlserver.max-pool-size,env.MSSQLSERVER_MAX_POOL_SIZE:20}",
+              "min-pool-size" : "${org.wildfly.datasources.mssqlserver.min-pool-size,env.MSSQLSERVER_MIN_POOL_SIZE:0}",
+              "password" : "${org.wildfly.datasources.mssqlserver.password,env.MSSQLSERVER_PASSWORD}",
+              "stale-connection-checker-class-name" : "${org.wildfly.datasources.mssqlserver.stale-connection-checker-class-name,env.MSSQLSERVER_STALE_CONNECTION_CHECKER:org.jboss.jca.adapters.jdbc.extensions.novendor.NullStaleConnectionChecker}",
+              "statistics-enabled" : "${wildfly.datasources.statistics-enabled:${wildfly.statistics-enabled:false}}",
+              "transaction-isolation" : "${org.wildfly.datasources.mssqlserver.transaction-isolation,env.MSSQLSERVER_TX_ISOLATION:TRANSACTION_READ_COMMITTED}",
+              "user-name" : "${org.wildfly.datasources.mssqlserver.user-name,env.MSSQLSERVER_USER}",
+              "valid-connection-checker-class-name" : "${org.wildfly.datasources.mssqlserver.valid-connection-checker-class-name,env.MSSQLSERVER_CONNECTION_CHECKER:org.jboss.jca.adapters.jdbc.extensions.mssql.MSSQLValidConnectionChecker}",
+              "validate-on-match" : "${org.wildfly.datasources.mssqlserver.validate-on-match,env.MSSQLSERVER_VALIDATE_ON_MATCH:true}"
+            }
+          } ]
+        } ]
+      },
+      "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:10.0.1.Final-SNAPSHOT",
+      "glowAddOn" : "mssqlserver",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.configuration",
+        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/mssqlserver/env.yaml"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "mssqlserver-default-datasource",
+      "dependencies" : [ {
+        "name" : "datasources",
+        "optional" : false
+      }, {
+        "name" : "mssqlserver-datasource",
+        "optional" : false
+      } ],
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=ee",
+          "children" : [ {
+            "address" : "service=default-bindings",
+            "attributes" : {
+              "datasource" : "java:jboss/datasources/${env.MSSQLSERVER_DATASOURCE:MSSQLServerDS}"
+            }
+          } ]
+        } ]
+      },
+      "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:10.0.1.Final-SNAPSHOT",
+      "glowAddOn" : "mssqlserver:default",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.configuration",
+        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/mssqlserver/env.yaml"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "mssqlserver-driver",
+      "dependencies" : [ {
+        "name" : "datasources",
+        "optional" : false
+      } ],
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=datasources",
+          "children" : [ {
+            "address" : "jdbc-driver=mssqlserver",
+            "attributes" : {
+              "driver-module-name" : "com.microsoft.sqlserver",
+              "driver-name" : "mssqlserver",
+              "driver-xa-datasource-class-name" : "com.microsoft.sqlserver.jdbc.SQLServerXADataSource"
+            }
+          } ]
+        } ]
+      },
+      "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:10.0.1.Final-SNAPSHOT",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.xml-path",
+        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/datasource/driver,mssqlserver"
+      }, {
+        "name" : "org.wildfly.rule.annotation.field.value-url",
+        "value" : "jakarta.annotation.sql.DataSourceDefinition,url=jdbc:sqlserver:*"
+      }, {
+        "name" : "org.wildfly.rule.xml-path-xa",
+        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/xa-datasource/driver,mssqlserver"
+      }, {
+        "name" : "org.wildfly.rule.annotation.field.value-className",
+        "value" : "jakarta.annotation.sql.DataSourceDefinition,className=com.microsoft.*"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "mysql-datasource",
+      "dependencies" : [ {
+        "name" : "datasources",
+        "optional" : false
+      }, {
+        "name" : "mysql-driver",
+        "optional" : false
+      } ],
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=datasources",
+          "children" : [ {
+            "address" : "data-source=MySQLDS",
+            "attributes" : {
+              "background-validation" : "${org.wildfly.datasources.mysql.background-validation,env.MYSQL_BACKGROUND_VALIDATION:false}",
+              "background-validation-millis" : "${org.wildfly.datasources.mysql.background-validation-millis,env.MYSQL_BACKGROUND_VALIDATION_MILLIS:10000}",
+              "connection-url" : "${org.wildfly.datasources.mysql.connection-url,env.MYSQL_URL:jdbc:mysql://${org.wildfly.datasources.mysql.host,env.MYSQL_SERVICE_HOST,env.OPENSHIFT_MYSQL_DB_HOST,env.MYSQL_HOST:localhost}:${org.wildfly.datasources.mysql.port,env.MYSQL_SERVICE_PORT,env.OPENSHIFT_MYSQL_DB_PORT,env.MYSQL_PORT:3306}/${org.wildfly.datasources.mysql.database,env.MYSQL_DATABASE,env.OPENSHIFT_MYSQL_DB_NAME}}",
+              "driver-name" : "mysql",
+              "enabled" : "${org.wildfly.datasources.mysql.enabled, env.MYSQL_ENABLED:true}",
+              "exception-sorter-class-name" : "${org.wildfly.datasources.mysql.exception-sorter-class-name, env.MYSQL_EXCEPTION_SORTER:org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLExceptionSorter}",
+              "flush-strategy" : "${org.wildfly.datasources.mysql.flush-strategy,env.MYSQL_FLUSH_STRATEGY:FailingConnectionOnly}",
+              "idle-timeout-minutes" : "${org.wildfly.datasources.mysql.idle-timeout-minutes,env.MYSQL_IDLE_TIMEOUT_MINUTES:30}",
+              "jndi-name" : "${org.wildfly.datasources.mysql.jndi-name,env.MYSQL_JNDI:java:jboss/datasources/${org.wildfly.datasources.mysql.datasource,env.OPENSHIFT_MYSQL_DATASOURCE,env.MYSQL_DATASOURCE:MySQLDS}}",
+              "jta" : "${org.wildfly.datasources.mysql.jta,env.MYSQL_JTA:true}",
+              "max-pool-size" : "${org.wildfly.datasources.mysql.max-pool-size,env.MYSQL_MAX_POOL_SIZE:20}",
+              "min-pool-size" : "${org.wildfly.datasources.mysql.min-pool-size,env.MYSQL_MIN_POOL_SIZE:0}",
+              "password" : "${org.wildfly.datasources.mysql.password,env.MYSQL_PASSWORD,env.OPENSHIFT_MYSQL_DB_PASSWORD}",
+              "stale-connection-checker-class-name" : "${org.wildfly.datasources.mysql.stale-connection-checker-class-name,env.MYSQL_STALE_CONNECTION_CHECKER:org.jboss.jca.adapters.jdbc.extensions.novendor.NullStaleConnectionChecker}",
+              "statistics-enabled" : "${wildfly.datasources.statistics-enabled:${wildfly.statistics-enabled:false}}",
+              "transaction-isolation" : "${org.wildfly.datasources.mysql.transaction-isolation,env.MYSQL_TX_ISOLATION:TRANSACTION_READ_COMMITTED}",
+              "user-name" : "${org.wildfly.datasources.mysql.user-name,env.MYSQL_USER,env.OPENSHIFT_MYSQL_DB_USERNAME}",
+              "valid-connection-checker-class-name" : "${org.wildfly.datasources.mysql.valid-connection-checker-class-name,env.MYSQL_CONNECTION_CHECKER:org.jboss.jca.adapters.jdbc.extensions.mysql.MySQLValidConnectionChecker}",
+              "validate-on-match" : "${org.wildfly.datasources.mysql.validate-on-match,env.MYSQL_VALIDATE_ON_MATCH:true}"
+            }
+          } ]
+        } ]
+      },
+      "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:10.0.1.Final-SNAPSHOT",
+      "glowAddOn" : "mysql",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.configuration",
+        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/mysql/env.yaml"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "mysql-default-datasource",
+      "dependencies" : [ {
+        "name" : "datasources",
+        "optional" : false
+      }, {
+        "name" : "mysql-datasource",
+        "optional" : false
+      } ],
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=ee",
+          "children" : [ {
+            "address" : "service=default-bindings",
+            "attributes" : {
+              "datasource" : "java:jboss/datasources/${env.OPENSHIFT_MYSQL_DATASOURCE,env.MYSQL_DATASOURCE:MySQLDS}"
+            }
+          } ]
+        } ]
+      },
+      "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:10.0.1.Final-SNAPSHOT",
+      "glowAddOn" : "mysql:default",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.configuration",
+        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/mysql/env.yaml"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "mysql-driver",
+      "dependencies" : [ {
+        "name" : "datasources",
+        "optional" : false
+      } ],
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=datasources",
+          "children" : [ {
+            "address" : "jdbc-driver=mysql",
+            "attributes" : {
+              "driver-module-name" : "com.mysql.jdbc",
+              "driver-name" : "mysql",
+              "driver-xa-datasource-class-name" : "com.mysql.cj.jdbc.MysqlXADataSource"
+            }
+          } ]
+        } ]
+      },
+      "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:10.0.1.Final-SNAPSHOT",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.xml-path",
+        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/datasource/driver,mysql"
+      }, {
+        "name" : "org.wildfly.rule.annotation.field.value-url",
+        "value" : "jakarta.annotation.sql.DataSourceDefinition,url=jdbc:mysql:*"
+      }, {
+        "name" : "org.wildfly.rule.xml-path-xa",
+        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/xa-datasource/driver,mysql"
+      }, {
+        "name" : "org.wildfly.rule.annotation.field.value-className",
+        "value" : "jakarta.annotation.sql.DataSourceDefinition,className=com.mysql.*"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "oracle-datasource",
+      "dependencies" : [ {
+        "name" : "datasources",
+        "optional" : false
+      }, {
+        "name" : "oracle-driver",
+        "optional" : false
+      } ],
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=datasources",
+          "children" : [ {
+            "address" : "data-source=OracleDS",
+            "attributes" : {
+              "background-validation" : "${org.wildfly.datasources.oracle.background-validation,env.ORACLE_BACKGROUND_VALIDATION:false}",
+              "background-validation-millis" : "${org.wildfly.datasources.oracle.background-validation-millis,env.ORACLE_BACKGROUND_VALIDATION_MILLIS:10000}",
+              "connection-url" : "${org.wildfly.datasources.oracle.connection-url,env.ORACLE_URL,env.OPENSHIFT_ORACLE_URL}",
+              "driver-name" : "oracle",
+              "enabled" : "${org.wildfly.datasources.oracle.enabled,env.ORACLE_ENABLED:true}",
+              "exception-sorter-class-name" : "${org.wildfly.datasources.oracle.exception-sorter-class-name,env.ORACLE_EXCEPTION_SORTER:org.jboss.jca.adapters.jdbc.extensions.oracle.OracleExceptionSorter}",
+              "flush-strategy" : "${org.wildfly.datasources.oracle.flush-strategy,env.ORACLE_FLUSH_STRATEGY:FailingConnectionOnly}",
+              "idle-timeout-minutes" : "${org.wildfly.datasources.oracle.idle-timeout-minutes,env.ORACLE_IDLE_TIMEOUT_MINUTES:30}",
+              "jndi-name" : "${org.wildfly.datasources.oracle.jndi-name,env.ORACLE_JNDI:java:jboss/datasources/${org.wildfly.datasources.oracle.datasource,env.ORACLE_DATASOURCE,env.OPENSHIFT_ORACLE_DATASOURCE:OracleDS}}",
+              "jta" : "${org.wildfly.datasources.oracle.jta,env.ORACLE_JTA:true}",
+              "max-pool-size" : "${org.wildfly.datasources.oracle.max-pool-size,env.ORACLE_MAX_POOL_SIZE:20}",
+              "min-pool-size" : "${org.wildfly.datasources.oracle.min-pool-size,env.ORACLE_MIN_POOL_SIZE:0}",
+              "password" : "${org.wildfly.datasources.oracle.password,env.ORACLE_PASSWORD,env.OPENSHIFT_ORACLE_DB_PASSWORD}",
+              "stale-connection-checker-class-name" : "${org.wildfly.datasources.oracle.stale-connection-checker-class-name,env.ORACLE_STALE_CONNECTION_CHECKER:org.jboss.jca.adapters.jdbc.extensions.novendor.NullStaleConnectionChecker}",
+              "statistics-enabled" : "${wildfly.datasources.statistics-enabled:${wildfly.statistics-enabled:false}}",
+              "transaction-isolation" : "${org.wildfly.datasources.oracle.transaction-isolation,env.ORACLE_TX_ISOLATION:TRANSACTION_READ_COMMITTED}",
+              "user-name" : "${org.wildfly.datasources.oracle.user-name,env.ORACLE_USER,env.OPENSHIFT_ORACLE_DB_USERNAME}",
+              "valid-connection-checker-class-name" : "${org.wildfly.datasources.oracle.valid-connection-checker-class-name,env.ORACLE_CONNECTION_CHECKER:org.jboss.jca.adapters.jdbc.extensions.oracle.OracleValidConnectionChecker}",
+              "validate-on-match" : "${org.wildfly.datasources.oracle.validate-on-match,env.ORACLE_VALIDATE_ON_MATCH:true}"
+            }
+          } ]
+        } ]
+      },
+      "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:10.0.1.Final-SNAPSHOT",
+      "glowAddOn" : "oracle",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.configuration",
+        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/oracle/env.yaml"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "oracle-default-datasource",
+      "dependencies" : [ {
+        "name" : "datasources",
+        "optional" : false
+      }, {
+        "name" : "oracle-datasource",
+        "optional" : false
+      } ],
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=ee",
+          "children" : [ {
+            "address" : "service=default-bindings",
+            "attributes" : {
+              "datasource" : "java:jboss/datasources/${env.ORACLE_DATASOURCE,env.OPENSHIFT_ORACLE_DATASOURCE:OracleDS}"
+            }
+          } ]
+        } ]
+      },
+      "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:10.0.1.Final-SNAPSHOT",
+      "glowAddOn" : "oracle:default",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.configuration",
+        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/oracle/env.yaml"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "oracle-driver",
+      "dependencies" : [ {
+        "name" : "datasources",
+        "optional" : false
+      } ],
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=datasources",
+          "children" : [ {
+            "address" : "jdbc-driver=oracle",
+            "attributes" : {
+              "driver-module-name" : "com.oracle.database.jdbc",
+              "driver-name" : "oracle",
+              "driver-xa-datasource-class-name" : "oracle.jdbc.xa.client.OracleXADataSource"
+            }
+          } ]
+        } ]
+      },
+      "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:10.0.1.Final-SNAPSHOT",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.xml-path",
+        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/datasource/driver,oracle"
+      }, {
+        "name" : "org.wildfly.rule.annotation.field.value-url",
+        "value" : "jakarta.annotation.sql.DataSourceDefinition,url=jdbc:oracle:*"
+      }, {
+        "name" : "org.wildfly.rule.xml-path-xa",
+        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/xa-datasource/driver,oracle"
+      }, {
+        "name" : "org.wildfly.rule.annotation.field.value-className",
+        "value" : "jakarta.annotation.sql.DataSourceDefinition,className=oracle.jdbc.*"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "postgresql-datasource",
+      "dependencies" : [ {
+        "name" : "datasources",
+        "optional" : false
+      }, {
+        "name" : "postgresql-driver",
+        "optional" : false
+      } ],
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=datasources",
+          "children" : [ {
+            "address" : "data-source=PostgreSQLDS",
+            "attributes" : {
+              "background-validation" : "${org.wildfly.datasources.postgresql.background-validation,env.POSTGRESQL_BACKGROUND_VALIDATION:false}",
+              "background-validation-millis" : "${org.wildfly.datasources.postgresql.background-validation-millis,env.POSTGRESQL_BACKGROUND_VALIDATION_MILLIS:10000}",
+              "connection-url" : "${org.wildfly.datasources.postgresql.connection-url,env.POSTGRESQL_URL:jdbc:postgresql://${org.wildfly.datasources.postgresql.host,env.POSTGRESQL_SERVICE_HOST,env.OPENSHIFT_POSTGRESQL_DB_HOST,env.POSTGRESQL_HOST:localhost}:${org.wildfly.datasources.postgresql.port,env.POSTGRESQL_SERVICE_PORT,env.OPENSHIFT_POSTGRESQL_DB_PORT,env.POSTGRESQL_PORT:5432}/${org.wildfly.datasources.postgresql.database,env.POSTGRESQL_DATABASE,env.OPENSHIFT_POSTGRESQL_DB_NAME}}",
+              "driver-name" : "postgresql",
+              "enabled" : "${org.wildfly.datasources.postgresql.enabled, env.POSTGRESQL_ENABLED:true}",
+              "exception-sorter-class-name" : "${org.wildfly.datasources.postgresql.exception-sorter-class-name, env.POSTGRESQL_EXCEPTION_SORTER:org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLExceptionSorter}",
+              "flush-strategy" : "${org.wildfly.datasources.postgresql.flush-strategy,env.POSTGRESQL_FLUSH_STRATEGY:FailingConnectionOnly}",
+              "idle-timeout-minutes" : "${org.wildfly.datasources.postgresql.idle-timeout-minutes,env.POSTGRESQL_IDLE_TIMEOUT_MINUTES:30}",
+              "jndi-name" : "${org.wildfly.datasources.postgresql.jndi-name,env.POSTGRESQL_JNDI:java:jboss/datasources/${org.wildfly.datasources.postgresql.datasource, env.POSTGRESQL_DATASOURCE,env.OPENSHIFT_POSTGRESQL_DATASOURCE:PostgreSQLDS}}",
+              "jta" : "${org.wildfly.datasources.postgresql.jta,env.POSTGRESQL_JTA:true}",
+              "max-pool-size" : "${org.wildfly.datasources.postgresql.max-pool-size,env.POSTGRESQL_MAX_POOL_SIZE:20}",
+              "min-pool-size" : "${org.wildfly.datasources.postgresql.min-pool-size,env.POSTGRESQL_MIN_POOL_SIZE:0}",
+              "password" : "${org.wildfly.datasources.postgresql.password,env.POSTGRESQL_PASSWORD,env.OPENSHIFT_POSTGRESQL_DB_PASSWORD}",
+              "stale-connection-checker-class-name" : "${org.wildfly.datasources.postgresql.stale-connection-checker-class-name,env.POSTGRESQL_STALE_CONNECTION_CHECKER:org.jboss.jca.adapters.jdbc.extensions.novendor.NullStaleConnectionChecker}",
+              "statistics-enabled" : "${wildfly.datasources.statistics-enabled:${wildfly.statistics-enabled:false}}",
+              "transaction-isolation" : "${org.wildfly.datasources.postgresql.transaction-isolation,env.POSTGRESQL_TX_ISOLATION:TRANSACTION_READ_COMMITTED}",
+              "user-name" : "${org.wildfly.datasources.postgresql.user-name,env.POSTGRESQL_USER,env.OPENSHIFT_POSTGRESQL_DB_USERNAME}",
+              "valid-connection-checker-class-name" : "${org.wildfly.datasources.postgresql.valid-connection-checker-class-name,env.POSTGRESQL_CONNECTION_CHECKER:org.jboss.jca.adapters.jdbc.extensions.postgres.PostgreSQLValidConnectionChecker}",
+              "validate-on-match" : "${org.wildfly.datasources.postgresql.validate-on-match,env.POSTGRESQL_VALIDATE_ON_MATCH:true}"
+            }
+          } ]
+        } ]
+      },
+      "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:10.0.1.Final-SNAPSHOT",
+      "glowAddOn" : "postgresql",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.configuration",
+        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/postgresql/env.yaml"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "postgresql-default-datasource",
+      "dependencies" : [ {
+        "name" : "datasources",
+        "optional" : false
+      }, {
+        "name" : "postgresql-datasource",
+        "optional" : false
+      } ],
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=ee",
+          "children" : [ {
+            "address" : "service=default-bindings",
+            "attributes" : {
+              "datasource" : "${org.wildfly.datasources.postgresql.jndi-name,env.POSTGRESQL_JNDI:java:jboss/datasources/${org.wildfly.datasources.postgresql.datasource, env.POSTGRESQL_DATASOURCE,env.OPENSHIFT_POSTGRESQL_DATASOURCE:PostgreSQLDS}}"
+            }
+          } ]
+        } ]
+      },
+      "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:10.0.1.Final-SNAPSHOT",
+      "glowAddOn" : "postgresql:default",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.configuration",
+        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/postgresql/env.yaml"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "postgresql-driver",
+      "dependencies" : [ {
+        "name" : "datasources",
+        "optional" : false
+      } ],
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=datasources",
+          "children" : [ {
+            "address" : "jdbc-driver=postgresql",
+            "attributes" : {
+              "driver-module-name" : "org.postgresql.jdbc",
+              "driver-name" : "postgresql",
+              "driver-xa-datasource-class-name" : "org.postgresql.xa.PGXADataSource"
+            }
+          } ]
+        } ]
+      },
+      "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:10.0.1.Final-SNAPSHOT",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.xml-path",
+        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/datasource/driver,postgresql"
+      }, {
+        "name" : "org.wildfly.rule.annotation.field.value-url",
+        "value" : "jakarta.annotation.sql.DataSourceDefinition,url=jdbc:postgresql:*"
+      }, {
+        "name" : "org.wildfly.rule.xml-path-xa",
+        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/xa-datasource/driver,postgresql"
+      }, {
+        "name" : "org.wildfly.rule.annotation.field.value-className",
+        "value" : "jakarta.annotation.sql.DataSourceDefinition,className=org.postgresql.*"
+      } ],
+      "glowDiscoverable" : true
+    } ]
+  }, {
+    "name" : "Jakarta EE",
+    "functionalities" : [ {
+      "name" : "batch-jberet",
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=batch-jberet",
+          "attributes" : {
+            "default-job-repository" : "in-memory",
+            "default-thread-pool" : "batch",
+            "security-domain" : "ApplicationDomain"
+          },
+          "children" : [ {
+            "address" : "in-memory-job-repository=in-memory"
+          }, {
+            "address" : "thread-pool=batch",
+            "attributes" : {
+              "keepalive-time" : "{ unit=SECONDS, time=30 }",
+              "max-threads" : "10",
+              "time" : "30",
+              "unit" : "SECONDS"
+            }
+          } ]
+        }, {
+          "address" : "subsystem=elytron",
+          "children" : [ {
+            "address" : "permission-set=default-permissions",
+            "attributes" : {
+              "class-name" : "org.wildfly.extension.batch.jberet.deployment.BatchPermission",
+              "module" : "org.wildfly.extension.batch.jberet",
+              "permissions" : "{ target-name=*, module=org.wildfly.extension.batch.jberet, class-name=org.wildfly.extension.batch.jberet.deployment.BatchPermission }",
+              "target-name" : "*"
+            }
+          } ]
+        } ]
+      },
+      "dependencies" : [ {
+        "name" : "cdi",
+        "optional" : false
+      }, {
+        "name" : "ee",
+        "optional" : false
+      }, {
+        "name" : "elytron",
+        "optional" : false
+      }, {
+        "name" : "transactions",
+        "optional" : false
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Support for Jakarta Batch",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.expected-file",
+        "value" : "/WEB-INF/classes/META-INF/batch-jobs"
+      }, {
+        "name" : "org.wildfly.rule.class",
+        "value" : "jakarta.batch.api.*"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "bean-validation",
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=bean-validation"
+        } ]
+      },
+      "dependencies" : [ {
+        "name" : "base-server",
+        "optional" : false
+      }, {
+        "name" : "cdi",
+        "optional" : true
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Support for Jakarta Bean Validation",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.class",
+        "value" : "jakarta.validation.*"
+      }, {
+        "name" : "org.wildfly.rule.annotations",
+        "value" : "jakarta.validation.*"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "cdi",
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=weld"
+        } ]
+      },
+      "dependencies" : [ {
+        "name" : "base-server",
+        "optional" : false
+      }, {
+        "name" : "bean-validation",
+        "optional" : true
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Support for Jakarta Contexts and Dependency Injection",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.expected-file",
+        "value" : "[/META-INF/beans.xml,/WEB-INF/beans.xml]"
+      }, {
+        "name" : "org.wildfly.rule.annotations",
+        "value" : "jakarta.inject,jakarta.enterprise.context"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "ee-concurrency",
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=ee",
+          "children" : [ {
+            "address" : "context-service=default",
+            "attributes" : {
+              "jndi-name" : "java:jboss/ee/concurrency/context/default"
+            }
+          }, {
+            "address" : "managed-executor-service=default",
+            "attributes" : {
+              "context-service" : "default",
+              "hung-task-termination-period" : "0",
+              "hung-task-threshold" : "60000",
+              "jndi-name" : "java:jboss/ee/concurrency/executor/default",
+              "keepalive-time" : "5000"
+            }
+          }, {
+            "address" : "managed-scheduled-executor-service=default",
+            "attributes" : {
+              "context-service" : "default",
+              "hung-task-termination-period" : "0",
+              "hung-task-threshold" : "60000",
+              "jndi-name" : "java:jboss/ee/concurrency/scheduler/default",
+              "keepalive-time" : "3000"
+            }
+          }, {
+            "address" : "managed-thread-factory=default",
+            "attributes" : {
+              "context-service" : "default",
+              "jndi-name" : "java:jboss/ee/concurrency/factory/default"
+            }
+          }, {
+            "address" : "service=default-bindings",
+            "attributes" : {
+              "context-service" : "java:jboss/ee/concurrency/context/default",
+              "managed-executor-service" : "java:jboss/ee/concurrency/executor/default",
+              "managed-scheduled-executor-service" : "java:jboss/ee/concurrency/scheduler/default",
+              "managed-thread-factory" : "java:jboss/ee/concurrency/factory/default"
+            }
+          } ]
+        } ]
+      },
+      "dependencies" : [ {
+        "name" : "naming",
+        "optional" : false
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Support for Jakarta EE Concurrency",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.class",
+        "value" : "jakarta.enterprise.concurrent"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "ejb",
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=ejb3",
+          "attributes" : {
+            "default-mdb-instance-pool" : "mdb-strict-max-pool",
+            "default-resource-adapter-name" : "${ejb.resource-adapter-name:activemq-ra.rar}"
+          },
+          "children" : [ {
+            "address" : "service=remote",
+            "attributes" : {
+              "connectors" : "[http-remoting-connector]",
+              "thread-pool-name" : "default"
+            },
+            "children" : [ {
+              "address" : "channel-creation-options=MAX_OUTBOUND_MESSAGES",
+              "attributes" : {
+                "type" : "remoting",
+                "value" : "1234"
+              }
+            } ]
+          }, {
+            "address" : "strict-max-bean-instance-pool=mdb-strict-max-pool",
+            "attributes" : {
+              "derive-size" : "from-cpu-count",
+              "timeout" : "5",
+              "timeout-unit" : "MINUTES"
+            }
+          } ]
+        }, {
+          "address" : "subsystem=naming",
+          "children" : [ {
+            "address" : "service=remote-naming"
+          } ]
+        } ]
+      },
+      "dependencies" : [ {
+        "name" : "ejb-lite",
+        "optional" : false
+      }, {
+        "name" : "resource-adapters",
+        "optional" : false
+      }, {
+        "name" : "messaging-activemq",
+        "optional" : true
+      }, {
+        "name" : "remoting",
+        "optional" : false
+      }, {
+        "name" : "undertow",
+        "optional" : false
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Support for Jakarta Enterprise Beans, excluding the IIOP protocol",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.class",
+        "value" : "jakarta.ejb.MessageDrivenContext"
+      }, {
+        "name" : "org.wildfly.rule.annotations",
+        "value" : "jakarta.ejb.MessageDriven,jakarta.ejb.Remote"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "ejb-http-invoker",
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=elytron",
+          "children" : [ {
+            "address" : "http-authentication-factory=application-http-authentication",
+            "attributes" : {
+              "http-server-mechanism-factory" : "global",
+              "mechanism-configurations" : "[{mechanism-name=BASIC,mechanism-realm-configurations=[{realm-name=ApplicationRealm}]}]",
+              "security-domain" : "ApplicationDomain"
+            }
+          } ]
+        }, {
+          "address" : "subsystem=undertow",
+          "children" : [ {
+            "address" : "server=default-server",
+            "children" : [ {
+              "address" : "setting=http-invoker",
+              "attributes" : {
+                "http-authentication-factory" : "application-http-authentication"
+              }
+            } ]
+          } ]
+        } ]
+      },
+      "dependencies" : [ {
+        "name" : "ejb-lite",
+        "optional" : false
+      }, {
+        "name" : "elytron",
+        "optional" : false
+      }, {
+        "name" : "undertow",
+        "optional" : false
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Support for invoking Jakarta Enterprise Beans over HTTP",
+      "glowAddOn" : "http-invoker",
+      "stability" : "default",
+      "glowDiscoverable" : false
+    }, {
+      "name" : "ejb-lite",
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=discovery"
+        }, {
+          "address" : "subsystem=ejb3",
+          "attributes" : {
+            "default-missing-method-permissions-deny-access" : "true",
+            "default-security-domain" : "other",
+            "default-sfsb-passivation-disabled-cache" : "simple",
+            "default-singleton-bean-access-timeout" : "5000",
+            "default-slsb-instance-pool" : "slsb-strict-max-pool",
+            "default-stateful-bean-access-timeout" : "5000",
+            "log-system-exceptions" : "true",
+            "statistics-enabled" : "${wildfly.ejb3.statistics-enabled:${wildfly.statistics-enabled:false}}"
+          },
+          "children" : [ {
+            "address" : "application-security-domain=other",
+            "attributes" : {
+              "security-domain" : "ApplicationDomain"
+            }
+          }, {
+            "address" : "distributable-cache=distributable"
+          }, {
+            "address" : "service=async",
+            "attributes" : {
+              "thread-pool-name" : "default"
+            }
+          }, {
+            "address" : "service=timer-service",
+            "attributes" : {
+              "default-data-store" : "default-file-store",
+              "thread-pool-name" : "default"
+            },
+            "children" : [ {
+              "address" : "file-data-store=default-file-store",
+              "attributes" : {
+                "path" : "timer-service-data",
+                "relative-to" : "jboss.server.data.dir"
+              }
+            } ]
+          }, {
+            "address" : "simple-cache=simple"
+          }, {
+            "address" : "strict-max-bean-instance-pool=slsb-strict-max-pool",
+            "attributes" : {
+              "derive-size" : "from-worker-pools",
+              "timeout" : "5",
+              "timeout-unit" : "MINUTES"
+            }
+          }, {
+            "address" : "thread-pool=default",
+            "attributes" : {
+              "keepalive-time" : "{ unit=SECONDS, time=60 }",
+              "max-threads" : "10",
+              "time" : "60",
+              "unit" : "SECONDS"
+            }
+          } ]
+        }, {
+          "address" : "subsystem=elytron",
+          "children" : [ {
+            "address" : "permission-set=default-permissions",
+            "attributes" : {
+              "class-name" : "org.jboss.ejb.client.RemoteEJBPermission",
+              "module" : "org.jboss.ejb-client",
+              "permissions" : "{ module=org.jboss.ejb-client, class-name=org.jboss.ejb.client.RemoteEJBPermission }"
+            }
+          } ]
+        } ]
+      },
+      "dependencies" : [ {
+        "name" : "transactions",
+        "optional" : false
+      }, {
+        "name" : "ejb-local-cache",
+        "optional" : true
+      }, {
+        "name" : "naming",
+        "optional" : false
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Support for Jakarta Enterprise Beans Lite",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.class",
+        "value" : "jakarta.ejb"
+      }, {
+        "name" : "org.wildfly.rule.annotations",
+        "value" : "jakarta.ejb"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "ejb-local-cache",
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=distributable-ejb",
+          "attributes" : {
+            "default-bean-management" : "default"
+          },
+          "children" : [ {
+            "address" : "client-mappings-registry=local"
+          }, {
+            "address" : "infinispan-bean-management=default",
+            "attributes" : {
+              "cache" : "passivation",
+              "cache-container" : "ejb",
+              "max-active-beans" : "10000"
+            }
+          }, {
+            "address" : "infinispan-timer-management=persistent",
+            "attributes" : {
+              "cache" : "persistent",
+              "cache-container" : "ejb",
+              "max-active-timers" : "10000"
+            }
+          }, {
+            "address" : "infinispan-timer-management=transient",
+            "attributes" : {
+              "cache" : "transient",
+              "cache-container" : "ejb",
+              "max-active-timers" : "10000"
+            }
+          } ]
+        }, {
+          "address" : "subsystem=ejb3",
+          "attributes" : {
+            "default-sfsb-cache" : "simple",
+            "default-stateful-bean-access-timeout" : "5000"
+          }
+        }, {
+          "address" : "subsystem=infinispan",
+          "children" : [ {
+            "address" : "cache-container=ejb",
+            "attributes" : {
+              "aliases" : "[sfsb]",
+              "default-cache" : "passivation",
+              "marshaller" : "PROTOSTREAM",
+              "modules" : "[org.wildfly.clustering.ejb.infinispan]"
+            },
+            "children" : [ {
+              "address" : "local-cache=passivation",
+              "children" : [ {
+                "address" : "component=expiration",
+                "attributes" : {
+                  "interval" : "0"
+                }
+              }, {
+                "address" : "store=file",
+                "attributes" : {
+                  "passivation" : "true"
+                }
+              } ]
+            }, {
+              "address" : "local-cache=persistent",
+              "children" : [ {
+                "address" : "component=expiration",
+                "attributes" : {
+                  "interval" : "0"
+                }
+              }, {
+                "address" : "component=locking",
+                "attributes" : {
+                  "isolation" : "REPEATABLE_READ"
+                }
+              }, {
+                "address" : "component=transaction",
+                "attributes" : {
+                  "mode" : "BATCH"
+                }
+              }, {
+                "address" : "store=file",
+                "attributes" : {
+                  "preload" : "true"
+                }
+              } ]
+            }, {
+              "address" : "local-cache=transient",
+              "children" : [ {
+                "address" : "component=expiration",
+                "attributes" : {
+                  "interval" : "0"
+                }
+              }, {
+                "address" : "component=locking",
+                "attributes" : {
+                  "isolation" : "REPEATABLE_READ"
+                }
+              }, {
+                "address" : "component=transaction",
+                "attributes" : {
+                  "mode" : "BATCH"
+                }
+              }, {
+                "address" : "store=file",
+                "attributes" : {
+                  "passivation" : "true",
+                  "purge" : "true"
+                }
+              } ]
+            } ]
+          } ]
+        } ]
+      },
+      "dependencies" : [ {
+        "name" : "transactions",
+        "optional" : false
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Infinispan-based local cache for stateful session beans.",
+      "note" : "This layer must be explicitly excluded if ejb-dist-cache is in use.",
+      "stability" : "default",
+      "glowDiscoverable" : false
+    }, {
+      "name" : "jaxrs",
+      "managementModel" : { },
+      "dependencies" : [ {
+        "name" : "deployment-scanner",
+        "optional" : true
+      }, {
+        "name" : "ee-concurrency",
+        "optional" : true
+      }, {
+        "name" : "jaxrs-core",
+        "optional" : false
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Support for Jakarta RESTful Web Services with optional ee-concurrency and deployment scanner layers.",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.xml-path",
+        "value" : "/WEB-INF/web.xml,/web-app/servlet/servlet-class,jakarta.ws.rs.core.Application"
+      }, {
+        "name" : "org.wildfly.rule.class",
+        "value" : "jakarta.ws.rs,jakarta.ws.rs.core"
+      }, {
+        "name" : "org.wildfly.rule.annotations",
+        "value" : "jakarta.ws.rs,jakarta.ws.rs.core"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "jaxrs-core",
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=jaxrs"
+        } ]
+      },
+      "dependencies" : [ {
+        "name" : "ee-integration",
+        "optional" : false
+      }, {
+        "name" : "servlet",
+        "optional" : false
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Support for Jakarta RESTful Web Services.",
+      "stability" : "default",
+      "glowDiscoverable" : false
+    }, {
+      "name" : "jpa",
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=infinispan",
+          "children" : [ {
+            "address" : "cache-container=hibernate",
+            "attributes" : {
+              "marshaller" : "JBOSS",
+              "modules" : "[org.infinispan.hibernate-cache]"
+            },
+            "children" : [ {
+              "address" : "local-cache=entity",
+              "children" : [ {
+                "address" : "component=expiration",
+                "attributes" : {
+                  "max-idle" : "100000"
+                }
+              }, {
+                "address" : "memory=heap",
+                "attributes" : {
+                  "size" : "10000"
+                }
+              } ]
+            }, {
+              "address" : "local-cache=local-query",
+              "children" : [ {
+                "address" : "component=expiration",
+                "attributes" : {
+                  "max-idle" : "100000"
+                }
+              }, {
+                "address" : "memory=heap",
+                "attributes" : {
+                  "size" : "10000"
+                }
+              } ]
+            }, {
+              "address" : "local-cache=pending-puts",
+              "children" : [ {
+                "address" : "component=expiration",
+                "attributes" : {
+                  "max-idle" : "60000"
+                }
+              } ]
+            }, {
+              "address" : "local-cache=timestamps",
+              "children" : [ {
+                "address" : "component=expiration",
+                "attributes" : {
+                  "interval" : "0"
+                }
+              } ]
+            } ]
+          } ]
+        }, {
+          "address" : "subsystem=jpa",
+          "attributes" : {
+            "default-extended-persistence-inheritance" : "DEEP"
+          }
+        } ]
+      },
+      "dependencies" : [ {
+        "name" : "datasources",
+        "optional" : false
+      }, {
+        "name" : "bean-validation",
+        "optional" : true
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Support for JPA (using the latest WildFly supported Hibernate release).",
+      "note" : "This layer must be explicitly excluded if jpa-distributed is in use.",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.expected-file",
+        "value" : "[/META-INF/persistence.xml,/WEB-INF/classes/META-INF/persistence.xml]"
+      }, {
+        "name" : "org.wildfly.rule.class",
+        "value" : "jakarta.persistence,jakarta.persistence.criteria"
+      }, {
+        "name" : "org.wildfly.rule.annotations",
+        "value" : "jakarta.persistence"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "jsf",
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=jsf"
+        } ]
+      },
+      "dependencies" : [ {
+        "name" : "web-server",
+        "optional" : false
+      }, {
+        "name" : "cdi",
+        "optional" : false
+      }, {
+        "name" : "bean-validation",
+        "optional" : true
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Support for Jakarta Faces.",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.expected-file",
+        "value" : "/WEB-INF/faces-config.xml"
+      }, {
+        "name" : "org.wildfly.rule.xml-path",
+        "value" : "/WEB-INF/web.xml,/web-app/servlet/servlet-class,jakarta.faces.webapp.FacesServlet"
+      }, {
+        "name" : "org.wildfly.rule.class",
+        "value" : "jakarta.faces.*"
+      }, {
+        "name" : "org.wildfly.rule.annotations",
+        "value" : "jakarta.faces.annotation"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "jsonb",
+      "managementModel" : { },
+      "dependencies" : [ {
+        "name" : "base-server",
+        "optional" : false
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Support for JSON Binding (Jakarta JSON Binding) provisioning the Jakarta JSON Binding API and Implementation modules.",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.class",
+        "value" : "jakarta.json.bind.*"
+      }, {
+        "name" : "org.wildfly.rule.annotations",
+        "value" : "jakarta.json.bind.annotation"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "jsonp",
+      "managementModel" : { },
+      "dependencies" : [ {
+        "name" : "base-server",
+        "optional" : false
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Support for JSON Processing (Jakarta JSON Processing) provisioning the Jakarta JSON Processing API and Implementation modules.",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.class",
+        "value" : "jakarta.json,jakarta.json.stream"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "myfaces",
+      "dependencies" : [ {
+        "name" : "cdi",
+        "optional" : false
+      }, {
+        "name" : "jsf",
+        "optional" : false
+      } ],
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=jsf",
+          "attributes" : {
+            "default-jsf-impl-slot" : "myfaces"
+          }
+        } ]
+      },
+      "feature-pack" : "org.wildfly:wildfly-myfaces-feature-pack:2.0.1.Final-SNAPSHOT",
+      "description" : "Support for Jakarta Faces, MyFaces implementation.",
+      "glowAddOn" : "myfaces",
+      "stability" : "default",
+      "glowDiscoverable" : false
+    }, {
+      "name" : "naming",
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=naming"
+        } ]
+      },
+      "dependencies" : [ {
+        "name" : "base-server",
+        "optional" : false
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Support for JNDI",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.class",
+        "value" : "javax.naming"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "resource-adapters",
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=jca",
+          "children" : [ {
+            "address" : "archive-validation=archive-validation",
+            "attributes" : {
+              "enabled" : "true",
+              "fail-on-error" : "true",
+              "fail-on-warn" : "false"
+            }
+          }, {
+            "address" : "bean-validation=bean-validation",
+            "attributes" : {
+              "enabled" : "true"
+            }
+          }, {
+            "address" : "bootstrap-context=default",
+            "attributes" : {
+              "name" : "default",
+              "workmanager" : "default"
+            }
+          }, {
+            "address" : "cached-connection-manager=cached-connection-manager",
+            "attributes" : {
+              "install" : "true"
+            }
+          }, {
+            "address" : "workmanager=default",
+            "attributes" : {
+              "name" : "default"
+            },
+            "children" : [ {
+              "address" : "long-running-threads=default",
+              "attributes" : {
+                "core-threads" : "50",
+                "keepalive-time" : "{ unit=SECONDS, time=10 }",
+                "max-threads" : "50",
+                "queue-length" : "50",
+                "time" : "10",
+                "unit" : "SECONDS"
+              }
+            }, {
+              "address" : "short-running-threads=default",
+              "attributes" : {
+                "core-threads" : "50",
+                "keepalive-time" : "{ unit=SECONDS, time=10 }",
+                "max-threads" : "50",
+                "queue-length" : "50",
+                "time" : "10",
+                "unit" : "SECONDS"
+              }
+            } ]
+          } ]
+        }, {
+          "address" : "subsystem=resource-adapters"
+        } ]
+      },
+      "dependencies" : [ {
+        "name" : "transactions",
+        "optional" : false
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Support for deployment of Jakarta Connectors resource adapters.",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.expected-file",
+        "value" : "[/META-INF/ra.xml,/META-INF/ironjacamar.xml]"
+      } ],
+      "glowDiscoverable" : true
+    } ]
+  }, {
+    "name" : "Jakarta MVC",
+    "functionalities" : [ {
+      "name" : "mvc-krazo",
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=mvc-krazo"
+        } ]
+      },
+      "dependencies" : [ {
+        "name" : "bean-validation",
+        "optional" : false
+      }, {
+        "name" : "cdi",
+        "optional" : false
+      }, {
+        "name" : "jaxrs-core",
+        "optional" : false
+      }, {
+        "name" : "jsf",
+        "optional" : true
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Support for Jakarta MVC",
+      "stability" : "preview",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.class",
+        "value" : "jakarta.mvc"
+      }, {
+        "name" : "org.wildfly.rule.annotations",
+        "value" : "jakarta.mvc"
+      } ],
+      "glowDiscoverable" : true
+    } ]
+  }, {
+    "name" : "Jakarta Messaging",
+    "functionalities" : [ {
+      "name" : "embedded-activemq",
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=ee",
+          "children" : [ {
+            "address" : "service=default-bindings",
+            "attributes" : {
+              "jms-connection-factory" : "java:jboss/DefaultJMSConnectionFactory"
+            }
+          } ]
+        }, {
+          "address" : "subsystem=elytron",
+          "children" : [ {
+            "address" : "http-authentication-factory=application-http-authentication",
+            "attributes" : {
+              "http-server-mechanism-factory" : "global",
+              "mechanism-configurations" : "[{mechanism-name=BASIC,mechanism-realm-configurations=[{realm-name=ApplicationRealm}]}]",
+              "security-domain" : "ApplicationDomain"
+            }
+          } ]
+        }, {
+          "address" : "subsystem=messaging-activemq",
+          "children" : [ {
+            "address" : "server=default",
+            "attributes" : {
+              "elytron-domain" : "ApplicationDomain",
+              "statistics-enabled" : "${wildfly.messaging-activemq.statistics-enabled:${wildfly.statistics-enabled:false}}"
+            },
+            "children" : [ {
+              "address" : "address-setting=#",
+              "attributes" : {
+                "dead-letter-address" : "jms.queue.DLQ",
+                "expiry-address" : "jms.queue.ExpiryQueue",
+                "max-size-bytes" : "10485760",
+                "message-counter-history-day-limit" : "10",
+                "page-size-bytes" : "2097152"
+              }
+            }, {
+              "address" : "connection-factory=InVmConnectionFactory",
+              "attributes" : {
+                "connectors" : "[in-vm]",
+                "entries" : "[java:/ConnectionFactory]"
+              }
+            }, {
+              "address" : "connection-factory=RemoteConnectionFactory",
+              "attributes" : {
+                "connectors" : "[http-connector]",
+                "entries" : "[java:jboss/exported/jms/RemoteConnectionFactory]"
+              }
+            }, {
+              "address" : "http-acceptor=http-acceptor",
+              "attributes" : {
+                "http-listener" : "default"
+              }
+            }, {
+              "address" : "http-acceptor=http-acceptor-throughput",
+              "attributes" : {
+                "http-listener" : "default",
+                "params" : "{batch-delay=50,direct-deliver=false}"
+              }
+            }, {
+              "address" : "http-connector=http-connector",
+              "attributes" : {
+                "endpoint" : "http-acceptor",
+                "socket-binding" : "http"
+              }
+            }, {
+              "address" : "http-connector=http-connector-throughput",
+              "attributes" : {
+                "endpoint" : "http-acceptor-throughput",
+                "params" : "{batch-delay=50}",
+                "socket-binding" : "http"
+              }
+            }, {
+              "address" : "in-vm-acceptor=in-vm",
+              "attributes" : {
+                "params" : "{buffer-pooling=false}",
+                "server-id" : "0"
+              }
+            }, {
+              "address" : "in-vm-connector=in-vm",
+              "attributes" : {
+                "params" : "{buffer-pooling=false}",
+                "server-id" : "0"
+              }
+            }, {
+              "address" : "jms-queue=DLQ",
+              "attributes" : {
+                "entries" : "[java:/jms/queue/DLQ]"
+              }
+            }, {
+              "address" : "jms-queue=ExpiryQueue",
+              "attributes" : {
+                "entries" : "[java:/jms/queue/ExpiryQueue]"
+              }
+            }, {
+              "address" : "pooled-connection-factory=activemq-ra",
+              "attributes" : {
+                "connectors" : "[in-vm]",
+                "entries" : "[java:/JmsXA,java:jboss/DefaultJMSConnectionFactory]",
+                "transaction" : "xa"
+              }
+            }, {
+              "address" : "security-setting=#",
+              "children" : [ {
+                "address" : "role=guest",
+                "attributes" : {
+                  "consume" : "true",
+                  "create-non-durable-queue" : "true",
+                  "delete-non-durable-queue" : "true",
+                  "send" : "true"
+                }
+              } ]
+            } ]
+          } ]
+        }, {
+          "address" : "subsystem=naming",
+          "children" : [ {
+            "address" : "service=remote-naming"
+          } ]
+        }, {
+          "address" : "subsystem=undertow",
+          "children" : [ {
+            "address" : "server=default-server",
+            "children" : [ {
+              "address" : "setting=http-invoker",
+              "attributes" : {
+                "http-authentication-factory" : "application-http-authentication"
+              }
+            } ]
+          } ]
+        } ]
+      },
+      "dependencies" : [ {
+        "name" : "messaging-activemq",
+        "optional" : false
+      }, {
+        "name" : "cdi",
+        "optional" : false
+      }, {
+        "name" : "ee",
+        "optional" : false
+      }, {
+        "name" : "naming",
+        "optional" : false
+      }, {
+        "name" : "elytron",
+        "optional" : false
+      }, {
+        "name" : "remoting",
+        "optional" : false
+      }, {
+        "name" : "undertow",
+        "optional" : false
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Support for an embedded Apache Activemq Artemis Jakarta Messaging broker.",
+      "glowAddOn" : "embedded-activemq",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.xml-path",
+        "value" : "[/WEB-INF/*-jms.xml,/META-INF/*-jms.xml],/messaging-deployment/server/jms-destinations"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "messaging-activemq",
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=messaging-activemq"
+        } ]
+      },
+      "dependencies" : [ {
+        "name" : "resource-adapters",
+        "optional" : false
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Support for connections to a remote Jakarta Messaging broker",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.expect-add-on-family",
+        "value" : "messaging"
+      }, {
+        "name" : "org.wildfly.rule.class",
+        "value" : "jakarta.jms"
+      }, {
+        "name" : "org.wildfly.rule.annotations",
+        "value" : "jakarta.jms"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "remote-activemq",
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "socket-binding-group=standard-sockets",
+          "children" : [ {
+            "address" : "remote-destination-outbound-socket-binding=messaging-activemq",
+            "attributes" : {
+              "host" : "${jboss.messaging.connector.host:localhost}",
+              "port" : "${jboss.messaging.connector.port:61616}"
+            }
+          } ]
+        }, {
+          "address" : "subsystem=ee",
+          "children" : [ {
+            "address" : "service=default-bindings",
+            "attributes" : {
+              "jms-connection-factory" : "java:jboss/DefaultJMSConnectionFactory"
+            }
+          } ]
+        }, {
+          "address" : "subsystem=messaging-activemq",
+          "children" : [ {
+            "address" : "pooled-connection-factory=activemq-ra",
+            "attributes" : {
+              "connectors" : "[artemis]",
+              "entries" : "[java:/JmsXA,java:jboss/DefaultJMSConnectionFactory]",
+              "password" : "guest",
+              "transaction" : "xa",
+              "user" : "guest"
+            }
+          }, {
+            "address" : "remote-connector=artemis",
+            "attributes" : {
+              "params" : "{use-nio=true,use-nio-global-worker-pool=true}",
+              "socket-binding" : "messaging-activemq"
+            }
+          } ]
+        } ]
+      },
+      "dependencies" : [ {
+        "name" : "messaging-activemq",
+        "optional" : false
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Support for connections to a remote Apache Activemq Artemis Jakarta Messaging broker",
+      "glowAddOn" : "remote-activemq",
+      "stability" : "default",
+      "glowDiscoverable" : false
+    } ]
+  }, {
+    "name" : "Management",
+    "functionalities" : [ {
+      "name" : "core-tools",
+      "managementModel" : { },
+      "dependencies" : [ {
+        "name" : "management",
+        "optional" : true
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Support for 'jboss-cli', 'add-user' and 'elytron-tool' launch scripts and configuration files",
+      "glowAddOn" : "wildfly-cli",
+      "stability" : "default",
+      "glowDiscoverable" : false
+    } ]
+  }, {
+    "name" : "Microprofile",
+    "functionalities" : [ {
+      "name" : "microprofile-config",
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=microprofile-config-smallrye"
+        } ]
+      },
+      "dependencies" : [ {
+        "name" : "cdi",
+        "optional" : false
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Support for MicroProfile Config",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.expected-file",
+        "value" : "[/META-INF/microprofile-config.properties,/WEB-INF/classes/META-INF/microprofile-config.properties]"
+      }, {
+        "name" : "org.wildfly.rule.class",
+        "value" : "org.eclipse.microprofile.config.*"
+      }, {
+        "name" : "org.wildfly.rule.annotations",
+        "value" : "org.eclipse.microprofile.config.inject"
+      } ],
+      "glowDiscoverable" : true
+    } ]
+  }, {
+    "name" : "Monitoring",
+    "functionalities" : [ {
+      "name" : "health",
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=health",
+          "attributes" : {
+            "security-enabled" : "false"
+          }
+        } ]
+      },
+      "dependencies" : [ {
+        "name" : "management",
+        "optional" : false
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Support for runtime health checks.",
+      "note" : "When using the WildFly cloud feature-pack for cloud deployment, this layer will be automatically provisioned. It is required for POD health check.",
+      "glowAddOn" : "health",
+      "stability" : "default",
+      "glowDiscoverable" : false
+    }, {
+      "name" : "metrics",
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=metrics",
+          "attributes" : {
+            "exposed-subsystems" : "[*]",
+            "prefix" : "${wildfly.metrics.prefix:wildfly}",
+            "security-enabled" : "false"
+          }
+        } ]
+      },
+      "dependencies" : [ {
+        "name" : "management",
+        "optional" : false
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Support for base server metrics in Prometheus format.",
+      "glowAddOn" : "metrics",
+      "stability" : "default",
+      "glowDiscoverable" : false
+    }, {
+      "name" : "microprofile-health",
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=microprofile-health-smallrye",
+          "attributes" : {
+            "empty-liveness-checks-status" : "${env.MP_HEALTH_EMPTY_LIVENESS_CHECKS_STATUS:UP}",
+            "empty-readiness-checks-status" : "${env.MP_HEALTH_EMPTY_READINESS_CHECKS_STATUS:UP}",
+            "empty-startup-checks-status" : "${env.MP_HEALTH_EMPTY_STARTUP_CHECKS_STATUS:UP}",
+            "security-enabled" : "false"
+          }
+        } ]
+      },
+      "dependencies" : [ {
+        "name" : "management",
+        "optional" : false
+      }, {
+        "name" : "microprofile-config",
+        "optional" : false
+      }, {
+        "name" : "health",
+        "optional" : false
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Support for MicroProfile Health",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.class",
+        "value" : "org.eclipse.microprofile.health.*"
+      }, {
+        "name" : "org.wildfly.rule.annotations",
+        "value" : "org.eclipse.microprofile.health"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "microprofile-telemetry",
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=microprofile-telemetry"
+        } ]
+      },
+      "dependencies" : [ {
+        "name" : "cdi",
+        "optional" : false
+      }, {
+        "name" : "opentelemetry",
+        "optional" : false
+      }, {
+        "name" : "microprofile-config",
+        "optional" : false
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Support for MicroProfile Telemetry",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.inclusion-mode",
+        "value" : "all-dependencies"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "observability",
+      "managementModel" : { },
+      "dependencies" : [ {
+        "name" : "metrics",
+        "optional" : true
+      }, {
+        "name" : "health",
+        "optional" : true
+      }, {
+        "name" : "microprofile-config",
+        "optional" : true
+      }, {
+        "name" : "microprofile-telemetry",
+        "optional" : true
+      }, {
+        "name" : "microprofile-health",
+        "optional" : true
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Aggregation of multiple monitoring functionalities",
+      "stability" : "default",
+      "glowDiscoverable" : false
+    }, {
+      "name" : "opentelemetry",
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=opentelemetry"
+        } ]
+      },
+      "dependencies" : [ {
+        "name" : "cdi",
+        "optional" : false
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Support for OpenTelemetry",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.class",
+        "value" : "io.opentelemetry.api.*,io.opentelemetry.sdk.*"
+      }, {
+        "name" : "org.wildfly.rule.annotations",
+        "value" : "io.opentelemetry.instrumentation.annotations"
+      } ],
+      "glowDiscoverable" : true
+    } ]
+  }, {
+    "name" : "Security",
+    "functionalities" : [ {
+      "name" : "elytron-oidc-client",
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=elytron-oidc-client"
+        } ]
+      },
+      "dependencies" : [ {
+        "name" : "elytron",
+        "optional" : false
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Support for securing deployment with OIDC",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.xml-path",
+        "value" : "/WEB-INF/web.xml,/web-app/login-config/auth-method,OIDC"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "keycloak-client-saml",
+      "dependencies" : [ {
+        "name" : "keycloak-saml",
+        "optional" : false
+      } ],
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=elytron",
+          "children" : [ {
+            "address" : "aggregate-http-server-mechanism-factory=keycloak-http-server-mechanism-factory",
+            "attributes" : {
+              "http-server-mechanism-factories" : "[keycloak-saml-http-server-mechanism-factory, global]"
+            }
+          }, {
+            "address" : "constant-realm-mapper=keycloak-saml-realm-mapper",
+            "attributes" : {
+              "realm-name" : "KeycloakSAMLRealm"
+            }
+          }, {
+            "address" : "custom-realm=KeycloakSAMLRealm",
+            "attributes" : {
+              "class-name" : "org.keycloak.adapters.saml.elytron.KeycloakSecurityRealm",
+              "module" : "org.keycloak.keycloak-saml-wildfly-elytron-adapter"
+            }
+          }, {
+            "address" : "http-authentication-factory=keycloak-http-authentication",
+            "attributes" : {
+              "http-server-mechanism-factory" : "keycloak-http-server-mechanism-factory",
+              "mechanism-configurations" : "[{mechanism-name=KEYCLOAK-SAML,mechanism-realm-configurations=[{realm-name=KeycloakSAMLRealm,realm-mapper=keycloak-saml-realm-mapper}]}]",
+              "security-domain" : "KeycloakDomain"
+            }
+          }, {
+            "address" : "security-domain=KeycloakDomain",
+            "attributes" : {
+              "default-realm" : "KeycloakSAMLRealm",
+              "permission-mapper" : "default-permission-mapper",
+              "realms" : "[{realm=KeycloakSAMLRealm}]",
+              "security-event-listener" : "local-audit"
+            }
+          }, {
+            "address" : "service-loader-http-server-mechanism-factory=keycloak-saml-http-server-mechanism-factory",
+            "attributes" : {
+              "module" : "org.keycloak.keycloak-saml-wildfly-elytron-adapter"
+            }
+          } ]
+        }, {
+          "address" : "subsystem=undertow",
+          "children" : [ {
+            "address" : "application-security-domain=other",
+            "attributes" : {
+              "http-authentication-factory" : "keycloak-http-authentication"
+            }
+          } ]
+        } ]
+      },
+      "feature-pack" : "org.keycloak:keycloak-saml-adapter-galleon-pack:999.0.0-SNAPSHOT",
+      "description" : "Support for securing your Web deployments with the keyloack SAML protocol.",
+      "note" : "Not to be used when provisioning for the cloud if you are using the env variables to automatically configure SAML (SSO_URL, SSO_REALM).",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.inclusion-mode",
+        "value" : "all-dependencies"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "keycloak-client-saml-ejb",
+      "dependencies" : [ {
+        "name" : "keycloak-client-saml",
+        "optional" : false
+      }, {
+        "name" : "ejb-lite",
+        "optional" : false
+      } ],
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=ejb3",
+          "children" : [ {
+            "address" : "application-security-domain=other",
+            "attributes" : {
+              "security-domain" : "KeycloakDomain"
+            }
+          } ]
+        } ]
+      },
+      "feature-pack" : "org.keycloak:keycloak-saml-adapter-galleon-pack:999.0.0-SNAPSHOT",
+      "description" : "Support for securing your EJB with the keyloack SAML protocol.",
+      "note" : "Not to be used when provisioning for the cloud if you are using the env variables to automatically configure SAML (SSO_URL, SSO_REALM).",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.inclusion-mode",
+        "value" : "all-dependencies"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "keycloak-saml",
+      "dependencies" : [ {
+        "name" : "ee",
+        "optional" : false
+      }, {
+        "name" : "elytron",
+        "optional" : false
+      }, {
+        "name" : "undertow",
+        "optional" : false
+      } ],
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=keycloak-saml"
+        } ]
+      },
+      "feature-pack" : "org.keycloak:keycloak-saml-adapter-galleon-pack:999.0.0-SNAPSHOT",
+      "description" : "Add the keyloack SAML subsystem to the server configuration.",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.xml-path",
+        "value" : "/WEB-INF/web.xml,/web-app/login-config/auth-method,KEYCLOAK-SAML"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "undertow-https",
+      "managementModel" : {
+        "address" : "/",
+        "children" : [ {
+          "address" : "subsystem=undertow",
+          "children" : [ {
+            "address" : "server=default-server",
+            "children" : [ {
+              "address" : "https-listener=https",
+              "attributes" : {
+                "enable-http2" : "true",
+                "socket-binding" : "https",
+                "ssl-context" : "applicationSSC"
+              }
+            } ]
+          } ]
+        } ]
+      },
+      "dependencies" : [ {
+        "name" : "elytron",
+        "optional" : false
+      }, {
+        "name" : "undertow",
+        "optional" : false
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Support for securing web access with HTTPS",
+      "glowAddOn" : "ssl",
+      "stability" : "default",
+      "glowDiscoverable" : false
+    } ]
+  } ]
+}

@@ -307,11 +307,32 @@
 <body>
     <div class="container">
         <h1 id="mainPageTitle">WildFly Catalog</h1>
-        <!-- Removed catalog-description div as its content is now in H1 -->
-        <div style="margin-bottom: 20px; text-align: center;">
-            <input type="search" id="searchInput" placeholder="Search catalog (e.g., layer, description, note)..." style="padding: 10px; width: 60%; border-radius: 4px; border: 1px solid #ccc; font-size: 1em;">
+        <!-- Moved JSON URL input and Load button here -->
+        <div style="margin-bottom: 10px; text-align: center;" hidden>
+            <label for="jsonUrlInput" style="margin-right: 5px; font-size: 0.9em;">WildFly metadata json file:</label>
+            <input type="text" id="jsonUrlInput" style="padding: 8px; width: 50%; border-radius: 4px; border: 1px solid #ccc; font-size: 0.9em;">
+            <button id="loadJsonButton" style="padding: 8px 12px; margin-left: 5px; border-radius: 4px; border: 1px solid #ccc; background-color: #e9ecef; cursor: pointer;">Load</button>
         </div>
+        <!-- Removed catalog-description div as its content is now in H1 -->
         <div id="documentation-section" class="documentation-section" style="display: none;"></div>
+        <div style="margin-bottom: 5px; text-align: center;">
+            <label for="stabilitySelect" style="margin-right: 5px; font-size: 0.9em;">Minimum stability level:</label>
+            <select id="stabilitySelect" style="padding: 10px; border-radius: 4px; border: 1px solid #ccc; font-size: 1em; margin-right: 10px;">
+                <option value="experimental" selected>Experimental</option>
+                <option value="preview">Preview</option>
+                <option value="community">Community</option>
+                <option value="default">Default</option>
+            </select>
+            <input type="search" id="searchInput" placeholder="Search catalog..." style="padding: 10px; width: 40%; border-radius: 4px; border: 1px solid #ccc; font-size: 1em;">
+        </div>
+        <div id="searchFields" style="margin-bottom: 20px; text-align: center; font-size: 0.9em;">
+            Search in:
+            <label style="margin-left: 10px;"><input type="checkbox" class="search-field-checkbox" value="layerName" checked> Layer Name</label>
+            <label style="margin-left: 10px;"><input type="checkbox" class="search-field-checkbox" value="description" checked> Description</label>
+            <label style="margin-left: 10px;"><input type="checkbox" class="search-field-checkbox" value="api" checked> Java API</label>
+            <label style="margin-left: 10px;"><input type="checkbox" class="search-field-checkbox" value="addOn" checked> Glow Add-On</label>
+            <label style="margin-left: 10px;"><input type="checkbox" class="search-field-checkbox" value="featurePack" checked> Feature Pack</label>
+        </div>
         <div id="data-display"></div>
     </div>
 
@@ -491,19 +512,19 @@
                     // Clickable Header
                     const headerDiv = document.createElement('div');
                     headerDiv.className = 'functionality-header';
-                    headerDiv.id = `func-${func.layer}`; // Add ID for linking
+                    headerDiv.id = `func-${func.name}`; // Add ID for linking, use func.name
 
                     const labelWrapper = document.createElement('span'); // Wrapper for icon and text
                     labelWrapper.style.display = 'flex'; // Align icon and text inline
                     labelWrapper.style.alignItems = 'center';
 
-                    const funcName = document.createElement('span'); // Use span for inline behavior with arrow
-                    funcName.className = 'name';
-                    funcName.textContent = func.layer; // Use func.layer for the header
-                    labelWrapper.appendChild(funcName); // Text first
+                    const funcNameElement = document.createElement('span'); // Use span for inline behavior with arrow
+                    funcNameElement.className = 'name';
+                    funcNameElement.textContent = func.name; // Use func.name for the header
+                    labelWrapper.appendChild(funcNameElement); // Text first
 
                     // Tooltip for layer header (after the name) has been REMOVED as per request.
-                    // if (legendData.layer) { ... }
+                    // if (legendData.layer) { ... } // Legend key for 'name' is 'layer'
                     headerDiv.appendChild(labelWrapper); // Add the wrapper to the header
 
                     const arrowSpan = document.createElement('span');
@@ -517,9 +538,9 @@
                     const detailsDiv = document.createElement('div');
                     detailsDiv.className = 'functionality-details';
 
-                    // func.layer is in the header, AND also displayed as a detail item.
-                    if (func.layer) { // Add Layer field in details
-                        detailsDiv.appendChild(createFieldElement('Layer', func.layer, 'layer'));
+                    // func.name is in the header, display it as 'Name' in details, using 'layer' for legend key.
+                    if (func.name) { 
+                        detailsDiv.appendChild(createFieldElement('Name', func.name, 'layer'));
                     }
 
                     detailsDiv.appendChild(createFieldElement('Description', func.description, 'description'));
@@ -544,22 +565,13 @@
                     if (func['feature-pack']) {
                          detailsDiv.appendChild(createFieldElement('Feature Pack', func['feature-pack'], 'feature-pack'));
                     }
-                    if (func.configuration) {
-                        const link = document.createElement('a');
-                        link.href = func.configuration;
-                        link.target = '_blank';
-                        link.rel = 'noopener noreferrer';
-                        link.textContent = func.configuration;
-                        detailsDiv.appendChild(createFieldElement('Configuration', link, 'configuration'));
-                    }
-
                     // Display Note if it exists
                     if (func.note) {
                         detailsDiv.appendChild(createFieldElement('Note', func.note, 'note'));
                     }
 
                     // Layer Dependencies
-                    if (func.layerDependencies && func.layerDependencies.length > 0) {
+                    if (func.dependencies && func.dependencies.length > 0) {
                         const dependenciesContainer = document.createElement('div');
                         dependenciesContainer.className = 'dependencies-container'; // For potential styling
 
@@ -575,11 +587,11 @@
                         depLabelWrapper.appendChild(depHeaderText); // Text first
 
                         // Add tooltip for Layer Dependencies header (after the text)
-                        if (legendData.layerDependencies) {
+                        if (legendData.dependencies) {
                             const tooltipIcon = document.createElement('span');
                             tooltipIcon.className = 'tooltip-icon';
                             tooltipIcon.textContent = '?';
-                            tooltipIcon.dataset.tooltipText = legendData.layerDependencies;
+                            tooltipIcon.dataset.tooltipText = legendData.dependencies;
                             tooltipIcon.addEventListener('click', (e) => {
                                 e.stopPropagation();
                                 if (activeTooltip && activeTooltip.triggerIcon === e.target) {
@@ -603,11 +615,23 @@
                         const depList = document.createElement('ul');
                         depList.className = 'dependencies-list'; // Initially hidden by CSS
 
-                        func.layerDependencies.forEach(depLayerName => {
+                        func.dependencies.forEach(depObj => {
+                            const depLayerName = depObj.name; // Extract name from dependency object
                             const depLi = document.createElement('li');
                             const depLink = document.createElement('a');
-                            depLink.href = `#func-${depLayerName}`;
+                            depLink.href = `#func-${depLayerName}`; // Link to func.name
                             depLink.textContent = depLayerName;
+                            depLi.appendChild(depLink); // Add link first
+                            
+                            if (depObj.optional) {
+                                const optionalSpan = document.createElement('span');
+                                optionalSpan.textContent = ' (optional)';
+                                optionalSpan.style.fontStyle = 'italic';
+                                optionalSpan.style.color = '#5f6368';
+                                optionalSpan.style.marginLeft = '4px';
+                                depLi.appendChild(optionalSpan); // Append the styled span after the link
+                            }
+
                             // Optional: Add click handler to scroll smoothly or highlight
                             depLink.addEventListener('click', (e) => {
                                 e.preventDefault(); // Prevent default jump
@@ -631,7 +655,6 @@
                                     console.warn(`Dependency target #func-${depLayerName} not found.`);
                                 }
                             });
-                            depLi.appendChild(depLink);
                             depList.appendChild(depLi);
                         });
                         dependenciesContainer.appendChild(depList);
@@ -643,29 +666,28 @@
                         });
                     }
 
-                    // XML Configuration - Fetched from URL
-                    if (func.xmlConfiguration && typeof func.xmlConfiguration === 'string' && func.xmlConfiguration.trim() !== '') {
-                        const xmlUrl = func.xmlConfiguration;
-                        const xmlConfigContainer = document.createElement('div');
-                        xmlConfigContainer.className = 'xmlconfig-container';
+                    // Display Management Model if it exists
+                    if (func.managementModel && Object.keys(func.managementModel).length > 0) {
+                        const mgmtModelContainer = document.createElement('div');
+                        mgmtModelContainer.className = 'management-model-container'; // Add a class for styling if needed
 
-                        const xmlHeader = document.createElement('div');
-                        xmlHeader.className = 'xmlconfig-header';
+                        const mgmtHeader = document.createElement('div');
+                        mgmtHeader.className = 'dependencies-header'; // Reuse style or create new
+                        mgmtHeader.style.backgroundColor = '#f0f8ff'; // Light blue to differentiate
 
-                        const xmlLabelWrapper = document.createElement('span');
-                        xmlLabelWrapper.style.display = 'flex';
-                        xmlLabelWrapper.style.alignItems = 'center';
-                        
-                        const xmlHeaderText = document.createElement('span');
-                        xmlHeaderText.textContent = 'XML Configuration';
-                        xmlLabelWrapper.appendChild(xmlHeaderText); // Text first
+                        const mgmtLabelWrapper = document.createElement('span');
+                        mgmtLabelWrapper.style.display = 'flex';
+                        mgmtLabelWrapper.style.alignItems = 'center';
 
-                        // Add tooltip for XML Configuration header (after the text)
-                        if (legendData.xmlConfiguration) {
+                        const mgmtHeaderText = document.createElement('span');
+                        mgmtHeaderText.textContent = 'Management Model';
+                        mgmtLabelWrapper.appendChild(mgmtHeaderText);
+
+                        if (legendData.managementModel) {
                             const tooltipIcon = document.createElement('span');
                             tooltipIcon.className = 'tooltip-icon';
                             tooltipIcon.textContent = '?';
-                            tooltipIcon.dataset.tooltipText = legendData.xmlConfiguration;
+                            tooltipIcon.dataset.tooltipText = legendData.managementModel;
                             tooltipIcon.addEventListener('click', (e) => {
                                 e.stopPropagation();
                                 if (activeTooltip && activeTooltip.triggerIcon === e.target) {
@@ -675,75 +697,99 @@
                                     showTooltip(e);
                                 }
                             });
-                            xmlLabelWrapper.appendChild(tooltipIcon);
+                            mgmtLabelWrapper.appendChild(tooltipIcon);
                         }
-                        xmlHeader.appendChild(xmlLabelWrapper);
+                        mgmtHeader.appendChild(mgmtLabelWrapper);
 
-                        const xmlArrow = document.createElement('span');
-                        xmlArrow.className = 'xmlconfig-arrow';
-                        xmlArrow.innerHTML = '&#9654;';
-                        xmlHeader.appendChild(xmlArrow);
+                        const mgmtArrow = document.createElement('span');
+                        mgmtArrow.className = 'dependencies-arrow'; // Reuse style or create new
+                        mgmtArrow.innerHTML = '&#9654;';
+                        mgmtHeader.appendChild(mgmtArrow);
                         
-                        xmlConfigContainer.appendChild(xmlHeader);
+                        mgmtModelContainer.appendChild(mgmtHeader);
 
-                        const xmlContentDiv = document.createElement('div');
-                        xmlContentDiv.className = 'xmlconfig-list';
+                        const mgmtContentDiv = document.createElement('div');
+                        mgmtContentDiv.className = 'dependencies-list'; // Reuse style or create new; initially hidden
+                        mgmtContentDiv.style.paddingLeft = '0px'; // Reset padding if reused from list
 
-                        const preElement = document.createElement('pre');
-                        const codeElement = document.createElement('code');
-                        codeElement.className = 'language-xml';
-                        codeElement.textContent = 'Loading XML...';
-                        preElement.appendChild(codeElement);
-                        xmlContentDiv.appendChild(preElement);
+                        // Render JSON with bold keys
+                        mgmtContentDiv.innerHTML = ''; // Clear previous content
+                        mgmtContentDiv.style.fontFamily = 'Consolas, "Courier New", monospace';
+                        mgmtContentDiv.style.backgroundColor = '#f5f5f5';
+                        mgmtContentDiv.style.padding = '10px';
+                        mgmtContentDiv.style.borderRadius = '4px';
+                        mgmtContentDiv.style.border = '1px solid #ddd';
+                        mgmtContentDiv.style.whiteSpace = 'pre-wrap';
+                        mgmtContentDiv.style.wordBreak = 'break-all';
                         
-                        xmlConfigContainer.appendChild(xmlContentDiv);
-                        detailsDiv.appendChild(xmlConfigContainer);
-
-                        xmlHeader.addEventListener('click', () => {
-                            xmlContentDiv.classList.toggle('visible');
-                            xmlArrow.classList.toggle('expanded');
-                            // Fetch only when first expanded, if not already fetched or if forced
-                            if (xmlContentDiv.classList.contains('visible') && codeElement.textContent === 'Loading XML...') {
-                                fetch(xmlUrl)
-                                    .then(response => {
-                                        if (!response.ok) { throw new Error(`HTTP error! status: ${response.status}`); }
-                                        return response.text();
-                                    })
-                                    .then(xmlText => {
-                                        codeElement.textContent = xmlText.replace(/'/g, '"');
-                                    })
-                                    .catch(error => {
-                                        console.error(`Error fetching XML from ${xmlUrl}:`, error);
-                                        codeElement.textContent = `Error loading XML: ${error.message}`;
-                                        codeElement.style.color = 'red';
-                                    });
+                        function renderJsonRecursive(obj, indentLevel = 0) {
+                            let html = '';
+                            const indent = '&nbsp;&nbsp;'.repeat(indentLevel);
+                            if (Array.isArray(obj)) {
+                                html += '[' + (obj.length > 0 ? '\n' : '');
+                                obj.forEach((item, index) => {
+                                    html += indent + '&nbsp;&nbsp;' + renderJsonRecursive(item, indentLevel + 1);
+                                    if (index < obj.length - 1) {
+                                        html += ',';
+                                    }
+                                    html += '\n';
+                                });
+                                html += (obj.length > 0 ? indent : '') + ']';
+                            } else if (typeof obj === 'object' && obj !== null) {
+                                html += '{' + (Object.keys(obj).length > 0 ? '\n' : '');
+                                Object.keys(obj).forEach((key, index, arr) => {
+                                    html += indent + '&nbsp;&nbsp;<strong style="color: #990055;">"' + key + '"</strong>: ';
+                                    html += renderJsonRecursive(obj[key], indentLevel + 1);
+                                    if (index < arr.length - 1) {
+                                        html += ',';
+                                    }
+                                    html += '\n';
+                                });
+                                html += (Object.keys(obj).length > 0 ? indent : '') + '}';
+                            } else if (typeof obj === 'string') {
+                                html += '<span style="color: #008000;">"' + obj.replace(/</g, '<').replace(/>/g, '>') + '"</span>';
+                            } else if (typeof obj === 'number') {
+                                html += '<span style="color: #0000ff;">' + obj + '</span>';
+                            } else if (typeof obj === 'boolean') {
+                                html += '<span style="color: #aa00ff;">' + obj + '</span>';
+                            } else if (obj === null) {
+                                html += '<span style="color: #777;">null</span>';
                             }
+                            return html;
+                        }
+                        mgmtContentDiv.innerHTML = renderJsonRecursive(func.managementModel);
+                        
+                        mgmtModelContainer.appendChild(mgmtContentDiv);
+                        detailsDiv.appendChild(mgmtModelContainer);
+
+                        mgmtHeader.addEventListener('click', () => {
+                            mgmtContentDiv.classList.toggle('visible');
+                            mgmtArrow.classList.toggle('expanded');
                         });
                     }
+                    
+                    // Display Glow Rules if they exist
+                    if (func.glowRules && func.glowRules.length > 0) {
+                        const glowRulesContainer = document.createElement('div');
+                        glowRulesContainer.className = 'glow-rules-container';
 
-                    // Cloud XML Configuration - Fetched from URL
-                    if (func.cloudXmlConfiguration && typeof func.cloudXmlConfiguration === 'string' && func.cloudXmlConfiguration.trim() !== '') {
-                        const cloudXmlUrl = func.cloudXmlConfiguration;
-                        const cloudXmlConfigContainer = document.createElement('div');
-                        cloudXmlConfigContainer.className = 'cloudxml-container';
+                        const glowHeader = document.createElement('div');
+                        glowHeader.className = 'dependencies-header'; // Reuse style
+                        glowHeader.style.backgroundColor = '#fff0f5'; // Lavender blush to differentiate
 
-                        const cloudXmlHeader = document.createElement('div');
-                        cloudXmlHeader.className = 'cloudxml-header';
+                        const glowLabelWrapper = document.createElement('span');
+                        glowLabelWrapper.style.display = 'flex';
+                        glowLabelWrapper.style.alignItems = 'center';
 
-                        const cloudXmlLabelWrapper = document.createElement('span');
-                        cloudXmlLabelWrapper.style.display = 'flex';
-                        cloudXmlLabelWrapper.style.alignItems = 'center';
-                        
-                        const cloudXmlHeaderText = document.createElement('span');
-                        cloudXmlHeaderText.textContent = 'Cloud XML Configuration';
-                        cloudXmlLabelWrapper.appendChild(cloudXmlHeaderText); // Text first
+                        const glowHeaderText = document.createElement('span');
+                        glowHeaderText.textContent = 'Glow Rules';
+                        glowLabelWrapper.appendChild(glowHeaderText);
 
-                        // Add tooltip for Cloud XML Configuration header (after the text)
-                        if (legendData.cloudXmlConfiguration) {
+                        if (legendData.glowRules) {
                             const tooltipIcon = document.createElement('span');
                             tooltipIcon.className = 'tooltip-icon';
                             tooltipIcon.textContent = '?';
-                            tooltipIcon.dataset.tooltipText = legendData.cloudXmlConfiguration;
+                            tooltipIcon.dataset.tooltipText = legendData.glowRules;
                             tooltipIcon.addEventListener('click', (e) => {
                                 e.stopPropagation();
                                 if (activeTooltip && activeTooltip.triggerIcon === e.target) {
@@ -753,50 +799,60 @@
                                     showTooltip(e);
                                 }
                             });
-                            cloudXmlLabelWrapper.appendChild(tooltipIcon);
+                            glowLabelWrapper.appendChild(tooltipIcon);
                         }
-                        cloudXmlHeader.appendChild(cloudXmlLabelWrapper);
+                        glowHeader.appendChild(glowLabelWrapper);
 
-                        const cloudXmlArrow = document.createElement('span');
-                        cloudXmlArrow.className = 'cloudxml-arrow';
-                        cloudXmlArrow.innerHTML = '&#9654;';
-                        cloudXmlHeader.appendChild(cloudXmlArrow);
-                        
-                        cloudXmlConfigContainer.appendChild(cloudXmlHeader);
+                        const glowArrow = document.createElement('span');
+                        glowArrow.className = 'dependencies-arrow'; // Reuse style
+                        glowArrow.innerHTML = '&#9654;';
+                        glowHeader.appendChild(glowArrow);
 
-                        const cloudXmlContentDiv = document.createElement('div');
-                        cloudXmlContentDiv.className = 'cloudxml-list';
+                        glowRulesContainer.appendChild(glowHeader);
 
-                        const preElement = document.createElement('pre');
-                        const codeElement = document.createElement('code');
-                        codeElement.className = 'language-xml';
-                        codeElement.textContent = 'Loading Cloud XML...';
-                        preElement.appendChild(codeElement);
-                        cloudXmlContentDiv.appendChild(preElement);
+                        const glowContentDiv = document.createElement('div');
+                        glowContentDiv.className = 'dependencies-list'; // Reuse style; initially hidden
+                        glowContentDiv.style.paddingLeft = '0px';
 
-                        cloudXmlConfigContainer.appendChild(cloudXmlContentDiv);
-                        detailsDiv.appendChild(cloudXmlConfigContainer);
+                        // Instead of a single pre block, iterate and display each rule
+                        func.glowRules.forEach(rule => {
+                            const ruleDiv = document.createElement('div');
+                            ruleDiv.style.padding = '2px 0';
+                            ruleDiv.style.fontFamily = 'Consolas, "Courier New", monospace';
+                            ruleDiv.style.fontSize = '0.9em';
 
-                        cloudXmlHeader.addEventListener('click', () => {
-                            cloudXmlContentDiv.classList.toggle('visible');
-                            cloudXmlArrow.classList.toggle('expanded');
-                            if (cloudXmlContentDiv.classList.contains('visible') && codeElement.textContent === 'Loading Cloud XML...') {
-                                fetch(cloudXmlUrl)
-                                    .then(response => {
-                                        if (!response.ok) { throw new Error(`HTTP error! status: ${response.status}`); }
-                                        return response.text();
-                                    })
-                                    .then(xmlText => {
-                                        codeElement.textContent = xmlText.replace(/'/g, '"');
-                                    })
-                                    .catch(error => {
-                                        console.error(`Error fetching Cloud XML from ${cloudXmlUrl}:`, error);
-                                        codeElement.textContent = `Error loading Cloud XML: ${error.message}`;
-                                        codeElement.style.color = 'red';
-                                    });
-                            }
+                            const nameSpan = document.createElement('strong'); // Use <strong> for semantic bolding
+                            nameSpan.textContent = `"${rule.name}": `; // Enclose name in quotes like JSON keys
+                            nameSpan.style.color = '#990055'; // Style like JSON keys from renderJsonRecursive
+                            ruleDiv.appendChild(nameSpan);
+
+                            const valueSpan = document.createElement('span');
+                            // Assuming rule.value is always a string for Glow Rules based on current data
+                            valueSpan.textContent = `"${String(rule.value).replace(/</g, '<').replace(/>/g, '>')}"`; // Enclose in quotes and escape
+                            valueSpan.style.color = '#008000'; // Style like JSON strings
+                            ruleDiv.appendChild(valueSpan);
+                            
+                            glowContentDiv.appendChild(ruleDiv);
+                        });
+                        // Apply consistent styling to the container
+                        glowContentDiv.style.fontFamily = 'Consolas, "Courier New", monospace';
+                        glowContentDiv.style.backgroundColor = '#f5f5f5';
+                        glowContentDiv.style.padding = '10px';
+                        glowContentDiv.style.borderRadius = '4px';
+                        glowContentDiv.style.border = '1px solid #ddd';
+                        glowContentDiv.style.whiteSpace = 'pre-wrap'; // Ensure wrapping if a value is very long
+                        glowContentDiv.style.wordBreak = 'break-all';
+
+
+                        glowRulesContainer.appendChild(glowContentDiv);
+                        detailsDiv.appendChild(glowRulesContainer);
+
+                        glowHeader.addEventListener('click', () => {
+                            glowContentDiv.classList.toggle('visible');
+                            glowArrow.classList.toggle('expanded');
                         });
                     }
+
                     funcLi.appendChild(detailsDiv);
 
                     // Event listener for expanding/collapsing
@@ -813,74 +869,157 @@
             });
         }
 
-        // Fetch and display the data when the page loads
-        window.onload = () => {
-            const jsonUrl = 'https://raw.githubusercontent.com/jfdenise/wildfly-catalog/refs/heads/main/wildfly-catalog.json'; // User updated this URL in a previous step, ensure it's correct.
-            fetch(jsonUrl)
+        const defaultJsonUrl = 'https://raw.githubusercontent.com/jfdenise/wildfly-catalog/refs/heads/main/catalog/###REPLACE_WILDFLY_VERSION###/wildfly-catalog.json?test=foo';
+
+        function loadCatalogData(url) {
+            const dataDisplay = document.getElementById('data-display');
+            dataDisplay.innerHTML = '<p>Loading catalog data...</p>'; // Show loading message
+            fetch(url)
                 .then(response => {
                     if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status} while fetching ${jsonUrl}`);
+                        throw new Error(`HTTP error! status: ${response.status} while fetching ${url}`);
                     }
                     return response.json();
                 })
                 .then(data => {
                     originalJsonData = data; // Store the original full data
-                    displayData(originalJsonData); // Initial display
-                    setupSearchListener(); // Setup search after data is loaded
+                    displayData(originalJsonData); // Display all data immediately on load
+
+                    // Set up listeners AFTER initial data display
+                    if (!document.getElementById('searchInput').listenerAttached) {
+                         setupSearchListener();
+                    }
+                    // performSearch will now only be called on user interaction
                 })
                 .catch(error => {
                     console.error('Error fetching or parsing JSON:', error);
-                    const dataDisplay = document.getElementById('data-display');
-                    dataDisplay.innerHTML = `<p style="color: red;">Error loading catalog data: ${error.message}. Check console for details.</p>`;
+                    dataDisplay.innerHTML = `<p style="color: red;">Error loading catalog data from ${url}: ${error.message}. Check console for details.</p>`;
+                    originalJsonData = null; // Clear data on error
+                    displayData({ categories: [], legend: {}, documentation: [] }); // Display empty structure
                 });
+        }
+
+        // Fetch and display the data when the page loads
+        window.onload = () => {
+            const jsonUrlInput = document.getElementById('jsonUrlInput');
+            jsonUrlInput.value = defaultJsonUrl; // Set default URL in the input field
+            loadCatalogData(defaultJsonUrl); // Load data from default URL
+
+            const loadJsonButton = document.getElementById('loadJsonButton');
+            loadJsonButton.addEventListener('click', () => {
+                const newUrl = jsonUrlInput.value.trim();
+                if (newUrl) {
+                    loadCatalogData(newUrl);
+                } else {
+                    alert("Please enter a valid JSON URL.");
+                }
+            });
         };
 
         function setupSearchListener() {
             const searchInput = document.getElementById('searchInput');
+            // Prevent adding multiple listeners if called again
+            if (searchInput.listenerAttached) return;
+
+            searchInput.listenerAttached = true; // Mark that listener is attached
+            // const searchInput = document.getElementById('searchInput'); // Duplicate declaration removed
             if (!searchInput || !originalJsonData) return;
 
-            searchInput.addEventListener('input', () => {
-                const searchTerm = searchInput.value.toLowerCase().trim();
+            const stabilitySelect = document.getElementById('stabilitySelect');
 
-                if (searchTerm === '') {
+            const performSearch = () => {
+                if (!originalJsonData) { // Guard against data not being loaded yet
+                    displayData({ categories: [], legend: {}, documentation: [] }); // Show empty/error state
+                    return;
+                }
+
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                // Ensure stabilitySelect.value is read reliably, fallback to 'experimental' if needed initially
+                const selectedStabilityValue = (stabilitySelect && stabilitySelect.value) ? stabilitySelect.value : "experimental";
+
+                // Display original data if search is empty AND 'experimental' (show all) stability is selected
+                if (searchTerm === '' && selectedStabilityValue.toLowerCase() === 'experimental') {
                     displayData(originalJsonData);
                     return;
                 }
 
                 const filteredCategories = originalJsonData.categories.map(category => {
-                    const categoryNameMatches = category.name && category.name.toLowerCase().includes(searchTerm);
-                    const categoryDescriptionMatches = category.description && category.description.toLowerCase().includes(searchTerm);
-
                     let functionalitiesToShow;
 
-                    if (categoryNameMatches || categoryDescriptionMatches) {
-                        // If category itself matches, we show it with ALL its original functionalities
-                        functionalitiesToShow = category.functionalities;
-                    } else {
-                        // If category doesn't match, filter its functionalities
-                        functionalitiesToShow = category.functionalities.filter(func => {
-                            const layerMatch = func.layer && func.layer.toLowerCase().includes(searchTerm);
-                            const descMatch = func.description && func.description.toLowerCase().includes(searchTerm);
-                            const noteMatch = func.note && func.note.toLowerCase().includes(searchTerm);
-                            const glowAddOnMatch = func.glowAddOn && typeof func.glowAddOn === 'string' && func.glowAddOn.toLowerCase().includes(searchTerm);
-                            const featurePackMatch = func['feature-pack'] && func['feature-pack'].toLowerCase().includes(searchTerm);
-                            return layerMatch || descMatch || noteMatch || glowAddOnMatch || featurePackMatch;
-                        });
-                    }
+                    functionalitiesToShow = category.functionalities.filter(func => {
+                        let termMatches = searchTerm === ''; // If no search term, all functionalities initially pass this check
 
-                    // Only include the category if it matched OR it has functionalities to show after filtering
-                    if (categoryNameMatches || categoryDescriptionMatches || (functionalitiesToShow && functionalitiesToShow.length > 0)) {
+                        if (searchTerm !== '') {
+                            const searchFieldsCheckboxes = document.querySelectorAll('.search-field-checkbox');
+                            let selectedFields = [];
+                            searchFieldsCheckboxes.forEach(checkbox => {
+                                if (checkbox.checked) {
+                                    selectedFields.push(checkbox.value);
+                                }
+                            });
+
+                            termMatches = false; // Reset for actual search term matching
+                            if (selectedFields.includes('layerName')) {
+                                if (func.name && func.name.toLowerCase().includes(searchTerm)) termMatches = true;
+                            }
+                            if (!termMatches && selectedFields.includes('description')) {
+                                if (func.description && func.description.toLowerCase().includes(searchTerm)) termMatches = true;
+                                else if (func.note && func.note.toLowerCase().includes(searchTerm)) termMatches = true;
+                            }
+                            if (!termMatches && selectedFields.includes('addOn')) {
+                                if (func.glowAddOn && typeof func.glowAddOn === 'string' && func.glowAddOn.toLowerCase().includes(searchTerm)) termMatches = true;
+                            }
+                            if (!termMatches && selectedFields.includes('featurePack')) {
+                                if (func['feature-pack'] && func['feature-pack'].toLowerCase().includes(searchTerm)) termMatches = true;
+                            }
+                            if (!termMatches && selectedFields.includes('api')) {
+                                if (func.glowRules && Array.isArray(func.glowRules)) {
+                                    if (func.glowRules.some(rule => rule.value && rule.value.toLowerCase().includes(searchTerm))) termMatches = true;
+                                }
+                            }
+                        }
+
+                        // Now, check stability filter with hierarchical logic
+                        let stabilityMatches = false;
+                        const funcStability = func.stability ? func.stability.toLowerCase() : 'default'; // Treat undefined/empty as 'default'
+
+                        switch (selectedStabilityValue.toLowerCase()) { // Use selectedStabilityValue
+                            case 'experimental':
+                                stabilityMatches = true; // Experimental shows all
+                                break;
+                            case 'preview':
+                                stabilityMatches = ['preview', 'community', 'default'].includes(funcStability);
+                                break;
+                            case 'community':
+                                stabilityMatches = ['community', 'default'].includes(funcStability);
+                                break;
+                            case 'default':
+                                stabilityMatches = (funcStability === 'default');
+                                break;
+                            default: // Should not happen with the select, but good practice
+                                stabilityMatches = true; 
+                        }
+                        
+                        // A functionality is shown if it matches the search term (or no term) AND the stability filter
+                        return termMatches && stabilityMatches;
+                    });
+
+                    // Include the category if it has functionalities to show after all filters
+                    if (functionalitiesToShow && functionalitiesToShow.length > 0) {
                         return { ...category, functionalities: functionalitiesToShow };
                     }
                     return null;
-                }).filter(category => category !== null); // Remove categories that became null
+                }).filter(category => category !== null);
 
-                const filteredData = { 
-                    ...originalJsonData, 
-                    categories: filteredCategories 
+                const filteredData = {
+                    ...originalJsonData,
+                    categories: filteredCategories
                 };
                 displayData(filteredData);
-            });
+            };
+
+            searchInput.addEventListener('input', performSearch);
+            stabilitySelect.addEventListener('change', performSearch);
         }
     </script>
 </body>
