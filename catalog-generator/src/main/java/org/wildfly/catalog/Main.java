@@ -51,24 +51,11 @@ public class Main {
         target.set("documentation", node.get("documentation"));
         target.set("legend", node.get("legend"));
         
-        // Generate legend for glow rules
+        // Glow rules description
         Properties glowRulesDescriptions = new Properties();
         String rulesURL = node.get("glowRulesDescriptions").asText();
         try(InputStream in = new URL(rulesURL).openStream()) {
             glowRulesDescriptions.load(in);
-//            ArrayNode glowRules = mapper.createArrayNode();
-//            target.set("glowRulesDescriptions", glowRules);
-//            for (String k : glowRulesDescriptions.stringPropertyNames()) {
-//                ObjectNode desc = mapper.createObjectNode();
-//                desc.put("name", k);
-//                String d = glowRulesDescriptions.getProperty(k);
-//                if (!d.endsWith(".")) {
-//                    d = d + ".";
-//                }
-//                d = d + glowRulesDescriptions.getProperty(k + ".value");
-//                desc.put("description", d);
-//                glowRules.add(desc);
-//            }
         }
         ArrayNode an = (ArrayNode) node.get("content");
         Iterator<JsonNode> it = an.elements();
