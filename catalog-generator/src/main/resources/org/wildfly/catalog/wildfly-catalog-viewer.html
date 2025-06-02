@@ -342,12 +342,22 @@
 
         function showTooltip(event) {
             event.stopPropagation(); // Prevent click from immediately closing due to document listener
+            
+            const icon = event.target; // The icon that was clicked
+
+            // If clicking the same icon that's already showing a tooltip, hide it.
+            if (activeTooltip && activeTooltip.triggerIcon === icon) {
+                activeTooltip.remove();
+                activeTooltip = null;
+                return; // Stop further processing
+            }
+
+            // If a tooltip is active (from a different icon), remove it before showing the new one.
             if (activeTooltip) {
                 activeTooltip.remove();
                 activeTooltip = null;
             }
 
-            const icon = event.target;
             const tooltipText = icon.dataset.tooltipText;
             // If tooltipText is null, undefined, or an empty/whitespace-only string, do not proceed.
             if (tooltipText == null || (typeof tooltipText === 'string' && tooltipText.trim() === '')) {
@@ -358,7 +368,9 @@
             tooltip.className = 'tooltip-box';
             tooltip.innerHTML = tooltipText; // Use innerHTML to allow simple HTML in tooltips if needed
             document.body.appendChild(tooltip);
-            activeTooltip = tooltip;
+            
+            activeTooltip = tooltip; // activeTooltip is the tooltip div
+            activeTooltip.triggerIcon = icon; // Associate the triggering icon with the active tooltip
 
             const iconRect = icon.getBoundingClientRect();
             tooltip.style.left = `${iconRect.right + 5 + window.scrollX}px`;
@@ -372,7 +384,6 @@
             if (tooltipRect.bottom > window.innerHeight) {
                  tooltip.style.top = `${iconRect.bottom - tooltipRect.height + window.scrollY}px`;
             }
-
 
             setTimeout(() => { // Add listener to remove tooltip on next click slightly delayed
                 document.addEventListener('click', hideTooltipOnClickOutside, { once: true });
@@ -409,16 +420,7 @@
                     tooltipIcon.className = 'tooltip-icon';
                     tooltipIcon.textContent = '?';
                     tooltipIcon.dataset.tooltipText = legendData[fieldKey];
-                    tooltipIcon.addEventListener('click', (e) => {
-                        e.stopPropagation(); // Prevent click from bubbling to document listener immediately
-                        if (activeTooltip && activeTooltip.triggerIcon === e.target) { 
-                            activeTooltip.remove(); 
-                            activeTooltip = null;
-                        } else {
-                            if(activeTooltip) activeTooltip.remove(); 
-                            showTooltip(e); 
-                        }
-                    });
+                    tooltipIcon.addEventListener('click', showTooltip); // MODIFIED
                     fieldDiv.appendChild(tooltipIcon);
                 }
 
@@ -592,15 +594,7 @@
                             tooltipIcon.className = 'tooltip-icon';
                             tooltipIcon.textContent = '?';
                             tooltipIcon.dataset.tooltipText = legendData.dependencies;
-                            tooltipIcon.addEventListener('click', (e) => {
-                                e.stopPropagation();
-                                if (activeTooltip && activeTooltip.triggerIcon === e.target) {
-                                    activeTooltip.remove(); activeTooltip = null;
-                                } else {
-                                    if(activeTooltip) activeTooltip.remove();
-                                    showTooltip(e);
-                                }
-                            });
+                            tooltipIcon.addEventListener('click', showTooltip); // MODIFIED
                             depLabelWrapper.appendChild(tooltipIcon);
                         }
                         depHeader.appendChild(depLabelWrapper);
@@ -688,15 +682,7 @@
                             tooltipIcon.className = 'tooltip-icon';
                             tooltipIcon.textContent = '?';
                             tooltipIcon.dataset.tooltipText = legendData.managementModel;
-                            tooltipIcon.addEventListener('click', (e) => {
-                                e.stopPropagation();
-                                if (activeTooltip && activeTooltip.triggerIcon === e.target) {
-                                    activeTooltip.remove(); activeTooltip = null;
-                                } else {
-                                    if(activeTooltip) activeTooltip.remove();
-                                    showTooltip(e);
-                                }
-                            });
+                            tooltipIcon.addEventListener('click', showTooltip); // MODIFIED
                             mgmtLabelWrapper.appendChild(tooltipIcon);
                         }
                         mgmtHeader.appendChild(mgmtLabelWrapper);
@@ -790,15 +776,7 @@
                             tooltipIcon.className = 'tooltip-icon';
                             tooltipIcon.textContent = '?';
                             tooltipIcon.dataset.tooltipText = legendData.glowRules;
-                            tooltipIcon.addEventListener('click', (e) => {
-                                e.stopPropagation();
-                                if (activeTooltip && activeTooltip.triggerIcon === e.target) {
-                                    activeTooltip.remove(); activeTooltip = null;
-                                } else {
-                                    if(activeTooltip) activeTooltip.remove();
-                                    showTooltip(e);
-                                }
-                            });
+                            tooltipIcon.addEventListener('click', showTooltip); // MODIFIED
                             glowLabelWrapper.appendChild(tooltipIcon);
                         }
                         glowHeader.appendChild(glowLabelWrapper);
@@ -814,26 +792,49 @@
                         glowContentDiv.className = 'dependencies-list'; // Reuse style; initially hidden
                         glowContentDiv.style.paddingLeft = '0px';
 
-                        // Instead of a single pre block, iterate and display each rule
+                        // MODIFIED SECTION for glowRules rendering
                         func.glowRules.forEach(rule => {
                             const ruleDiv = document.createElement('div');
                             ruleDiv.style.padding = '2px 0';
                             ruleDiv.style.fontFamily = 'Consolas, "Courier New", monospace';
                             ruleDiv.style.fontSize = '0.9em';
 
-                            const nameSpan = document.createElement('strong'); // Use <strong> for semantic bolding
-                            nameSpan.textContent = `"${rule.name}": `; // Enclose name in quotes like JSON keys
-                            nameSpan.style.color = '#990055'; // Style like JSON keys from renderJsonRecursive
-                            ruleDiv.appendChild(nameSpan);
+                            // Rule Name part
+                            const nameStrong = document.createElement('strong');
+                            nameStrong.textContent = `"${rule.name}": `;
+                            nameStrong.style.color = '#990055';
+                            ruleDiv.appendChild(nameStrong);
 
+                            if (rule.ruleDescription) {
+                                const tooltipIcon = document.createElement('span');
+                                tooltipIcon.className = 'tooltip-icon';
+                                tooltipIcon.textContent = '?';
+                                tooltipIcon.dataset.tooltipText = rule.ruleDescription;
+                                tooltipIcon.addEventListener('click', showTooltip); // Use improved showTooltip
+                                ruleDiv.appendChild(tooltipIcon);
+                            }
+
+                            ruleDiv.appendChild(document.createTextNode(' ')); // Space between name and value
+
+                            // Rule Value part
                             const valueSpan = document.createElement('span');
-                            // Assuming rule.value is always a string for Glow Rules based on current data
-                            valueSpan.textContent = `"${String(rule.value).replace(/</g, '<').replace(/>/g, '>')}"`; // Enclose in quotes and escape
-                            valueSpan.style.color = '#008000'; // Style like JSON strings
+                            valueSpan.textContent = `"${String(rule.value).replace(/</g, '<').replace(/>/g, '>')}"`;
+                            valueSpan.style.color = '#008000';
                             ruleDiv.appendChild(valueSpan);
+
+                            if (rule.valueDescription) {
+                                const tooltipIcon = document.createElement('span');
+                                tooltipIcon.className = 'tooltip-icon';
+                                tooltipIcon.textContent = '?';
+                                tooltipIcon.dataset.tooltipText = rule.valueDescription;
+                                tooltipIcon.addEventListener('click', showTooltip); // Use improved showTooltip
+                                ruleDiv.appendChild(tooltipIcon);
+                            }
                             
                             glowContentDiv.appendChild(ruleDiv);
                         });
+                        // END OF MODIFIED SECTION
+
                         // Apply consistent styling to the container
                         glowContentDiv.style.fontFamily = 'Consolas, "Courier New", monospace';
                         glowContentDiv.style.backgroundColor = '#f5f5f5';

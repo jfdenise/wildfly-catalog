@@ -40,10 +40,14 @@
       "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.class",
-        "value" : "dev.langchain4j.*,org.eclipse.microprofile.ai.llm.*"
+        "value" : "dev.langchain4j.*,org.eclipse.microprofile.ai.llm.*",
+        "ruleDescription" : "A Java type.",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `jakarta.ws.rs,jakarta.ws.rs.core`"
       }, {
         "name" : "org.wildfly.rule.annotations",
-        "value" : "dev.langchain4j.*,org.eclipse.microprofile.ai.llm.*"
+        "value" : "dev.langchain4j.*,org.eclipse.microprofile.ai.llm.*",
+        "ruleDescription" : "Expected annotations ",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `org.eclipse.microprofile.config.inject`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -72,13 +76,19 @@
       "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.annotation.field.value",
-        "value" : "io.smallrye.llm.spi.RegisterAIService,chatModelName=gemini"
+        "value" : "io.smallrye.llm.spi.RegisterAIService,chatModelName=gemini",
+        "ruleDescription" : "Expected annotation with field values. Field values can be regex. This rule can be added multiple time to a layer, it must contains a suffix to be unique.",
+        "valueDescription" : "The annotation with a field value. For example: `jakarta.annotation.sql.DataSourceDefinition,className=org.h2.*`"
       }, {
         "name" : "org.wildfly.rule.configuration",
-        "value" : "https://raw.geminiusercontent.com/wildfly-extras/wildfly-ai-feature-pack/glow-layer-doc/gemini-chat-model/env.yaml"
+        "value" : "https://raw.geminiusercontent.com/wildfly-extras/wildfly-ai-feature-pack/glow-layer-doc/gemini-chat-model/env.yaml",
+        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
+        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
       }, {
         "name" : "org.wildfly.rule.annotated.type",
-        "value" : "dev.langchain4j.model.chat.ChatModel,jakarta.inject.Named[value=gemini]"
+        "value" : "dev.langchain4j.model.chat.ChatModel,jakarta.inject.Named[value=gemini]",
+        "ruleDescription" : "Expected annotated type, annotation and annotation field values. Field values can be regex. This rule can take a suffix and be used multiple times for a given layer.",
+        "valueDescription" : "The type followed by the annotation (with some optional field=value). For example: `org.example.MyType,org.example.MyAnnotation[field1=foo,field2=bar*]`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -108,13 +118,19 @@
       "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.annotation.field.value",
-        "value" : "io.smallrye.llm.spi.RegisterAIService,chatModelName=github"
+        "value" : "io.smallrye.llm.spi.RegisterAIService,chatModelName=github",
+        "ruleDescription" : "Expected annotation with field values. Field values can be regex. This rule can be added multiple time to a layer, it must contains a suffix to be unique.",
+        "valueDescription" : "The annotation with a field value. For example: `jakarta.annotation.sql.DataSourceDefinition,className=org.h2.*`"
       }, {
         "name" : "org.wildfly.rule.configuration",
-        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-ai-feature-pack/refs/tags/0.5.0/doc/glow-layer-doc/github-chat-model/env.yaml"
+        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-ai-feature-pack/refs/tags/0.5.0/doc/glow-layer-doc/github-chat-model/env.yaml",
+        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
+        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
       }, {
         "name" : "org.wildfly.rule.annotated.type",
-        "value" : "dev.langchain4j.model.chat.ChatModel,jakarta.inject.Named[value=github]"
+        "value" : "dev.langchain4j.model.chat.ChatModel,jakarta.inject.Named[value=github]",
+        "ruleDescription" : "Expected annotated type, annotation and annotation field values. Field values can be regex. This rule can take a suffix and be used multiple times for a given layer.",
+        "valueDescription" : "The type followed by the annotation (with some optional field=value). For example: `org.example.MyType,org.example.MyAnnotation[field1=foo,field2=bar*]`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -145,13 +161,19 @@
       "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.annotation.field.value",
-        "value" : "io.smallrye.llm.spi.RegisterAIService,chatModelName=mistral"
+        "value" : "io.smallrye.llm.spi.RegisterAIService,chatModelName=mistral",
+        "ruleDescription" : "Expected annotation with field values. Field values can be regex. This rule can be added multiple time to a layer, it must contains a suffix to be unique.",
+        "valueDescription" : "The annotation with a field value. For example: `jakarta.annotation.sql.DataSourceDefinition,className=org.h2.*`"
       }, {
         "name" : "org.wildfly.rule.configuration",
-        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-ai-feature-pack/refs/tags/0.5.0/doc/glow-layer-doc/mistral-ai-chat-model/env.yaml"
+        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-ai-feature-pack/refs/tags/0.5.0/doc/glow-layer-doc/mistral-ai-chat-model/env.yaml",
+        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
+        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
       }, {
         "name" : "org.wildfly.rule.annotated.type",
-        "value" : "dev.langchain4j.model.chat.ChatModel,jakarta.inject.Named[value=mistral]"
+        "value" : "dev.langchain4j.model.chat.ChatModel,jakarta.inject.Named[value=mistral]",
+        "ruleDescription" : "Expected annotated type, annotation and annotation field values. Field values can be regex. This rule can take a suffix and be used multiple times for a given layer.",
+        "valueDescription" : "The type followed by the annotation (with some optional field=value). For example: `org.example.MyType,org.example.MyAnnotation[field1=foo,field2=bar*]`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -167,13 +189,19 @@
       "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.annotation.field.value",
-        "value" : "io.smallrye.llm.spi.RegisterAIService,contentRetrieverName=neo4j-retriever"
+        "value" : "io.smallrye.llm.spi.RegisterAIService,contentRetrieverName=neo4j-retriever",
+        "ruleDescription" : "Expected annotation with field values. Field values can be regex. This rule can be added multiple time to a layer, it must contains a suffix to be unique.",
+        "valueDescription" : "The annotation with a field value. For example: `jakarta.annotation.sql.DataSourceDefinition,className=org.h2.*`"
       }, {
         "name" : "org.wildfly.rule.configuration",
-        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-ai-feature-pack/refs/tags/0.5.0/doc/glow-layer-doc/neo4j-content-retriever/env.yaml"
+        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-ai-feature-pack/refs/tags/0.5.0/doc/glow-layer-doc/neo4j-content-retriever/env.yaml",
+        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
+        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
       }, {
         "name" : "org.wildfly.rule.annotated.type",
-        "value" : "dev.langchain4j.rag.content.retriever.ContentRetriever,jakarta.inject.Named[value=neo4j-retriever]"
+        "value" : "dev.langchain4j.rag.content.retriever.ContentRetriever,jakarta.inject.Named[value=neo4j-retriever]",
+        "ruleDescription" : "Expected annotated type, annotation and annotation field values. Field values can be regex. This rule can take a suffix and be used multiple times for a given layer.",
+        "valueDescription" : "The type followed by the annotation (with some optional field=value). For example: `org.example.MyType,org.example.MyAnnotation[field1=foo,field2=bar*]`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -205,13 +233,19 @@
       "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.annotation.field.value",
-        "value" : "io.smallrye.llm.spi.RegisterAIService,chatModelName=ollama"
+        "value" : "io.smallrye.llm.spi.RegisterAIService,chatModelName=ollama",
+        "ruleDescription" : "Expected annotation with field values. Field values can be regex. This rule can be added multiple time to a layer, it must contains a suffix to be unique.",
+        "valueDescription" : "The annotation with a field value. For example: `jakarta.annotation.sql.DataSourceDefinition,className=org.h2.*`"
       }, {
         "name" : "org.wildfly.rule.configuration",
-        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-ai-feature-pack/refs/tags/0.5.0/doc/glow-layer-doc/ollama-chat-model/env.yaml"
+        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-ai-feature-pack/refs/tags/0.5.0/doc/glow-layer-doc/ollama-chat-model/env.yaml",
+        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
+        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
       }, {
         "name" : "org.wildfly.rule.annotated.type",
-        "value" : "dev.langchain4j.model.chat.ChatModel,jakarta.inject.Named[value=ollama]"
+        "value" : "dev.langchain4j.model.chat.ChatModel,jakarta.inject.Named[value=ollama]",
+        "ruleDescription" : "Expected annotated type, annotation and annotation field values. Field values can be regex. This rule can take a suffix and be used multiple times for a given layer.",
+        "valueDescription" : "The type followed by the annotation (with some optional field=value). For example: `org.example.MyType,org.example.MyAnnotation[field1=foo,field2=bar*]`"
       } ],
       "glowDiscoverable" : true
     } ]
@@ -351,7 +385,9 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.kind",
-        "value" : "default-base-layer"
+        "value" : "default-base-layer",
+        "ruleDescription" : "A kind of layer",
+        "valueDescription" : "Can be `base-layer`, an aggregator, `default-base-layer`, the default base layer to include in all cases, `metadata-only` a layer that doesn't bring feature, just metadata to help discovery. "
       } ],
       "glowDiscoverable" : true
     }, {
@@ -667,7 +703,9 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.profile-ha",
-        "value" : "ejb-local-cache"
+        "value" : "ejb-local-cache",
+        "ruleDescription" : "References the counter part layer for the given profile. The rule name must be suffixed with the profile name. Known profile is 'ha'.",
+        "valueDescription" : "e.g.: Inside `singleton-ha` layer, this rule references the `org.wildfly.rule.profile-ha=singleton-local`. It means that when `singleton-local` is discovered and ha profile is enabled, `singleton-ha` is included."
       } ],
       "glowDiscoverable" : true
     }, {
@@ -881,7 +919,9 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.profile-ha",
-        "value" : "jpa"
+        "value" : "jpa",
+        "ruleDescription" : "References the counter part layer for the given profile. The rule name must be suffixed with the profile name. Known profile is 'ha'.",
+        "valueDescription" : "e.g.: Inside `singleton-ha` layer, this rule references the `org.wildfly.rule.profile-ha=singleton-local`. It means that when `singleton-local` is discovered and ha profile is enabled, `singleton-ha` is included."
       } ],
       "glowDiscoverable" : true
     } ]
@@ -931,7 +971,9 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.configuration",
-        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/db2/env.yaml"
+        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/db2/env.yaml",
+        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
+        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -960,7 +1002,9 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.configuration",
-        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/db2/env.yaml"
+        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/db2/env.yaml",
+        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
+        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -987,16 +1031,24 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.xml-path",
-        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/datasource/driver,db2"
+        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/datasource/driver,db2",
+        "ruleDescription" : "Lookup of XML path inside a set of files. If multiple rules exist, the rule name can be extended with a suffix `<rule name>-<suffix>`",
+        "valueDescription" : "Array of files followed by expected path and value. e.g.: `[/WEB-INF/.xml,/META-INF/.xml],/datasources/datasource/driver,h2`"
       }, {
         "name" : "org.wildfly.rule.annotation.field.value-url",
-        "value" : "jakarta.annotation.sql.DataSourceDefinition,url=jdbc:db2:*"
+        "value" : "jakarta.annotation.sql.DataSourceDefinition,url=jdbc:db2:*",
+        "ruleDescription" : "Expected annotation with field values. Field values can be regex. This rule can be added multiple time to a layer, it must contains a suffix to be unique.",
+        "valueDescription" : "The annotation with a field value. For example: `jakarta.annotation.sql.DataSourceDefinition,className=org.h2.*`"
       }, {
         "name" : "org.wildfly.rule.xml-path-xa",
-        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/xa-datasource/driver,db2"
+        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/xa-datasource/driver,db2",
+        "ruleDescription" : "Lookup of XML path inside a set of files. If multiple rules exist, the rule name can be extended with a suffix `<rule name>-<suffix>`",
+        "valueDescription" : "Array of files followed by expected path and value. e.g.: `[/WEB-INF/.xml,/META-INF/.xml],/datasources/datasource/driver,h2`"
       }, {
         "name" : "org.wildfly.rule.annotation.field.value-className",
-        "value" : "jakarta.annotation.sql.DataSourceDefinition,className=com.ibm.db2.jcc.*"
+        "value" : "jakarta.annotation.sql.DataSourceDefinition,className=com.ibm.db2.jcc.*",
+        "ruleDescription" : "Expected annotation with field values. Field values can be regex. This rule can be added multiple time to a layer, it must contains a suffix to be unique.",
+        "valueDescription" : "The annotation with a field value. For example: `jakarta.annotation.sql.DataSourceDefinition,className=org.h2.*`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -1043,7 +1095,9 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.configuration",
-        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/mariadb/env.yaml"
+        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/mariadb/env.yaml",
+        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
+        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -1072,7 +1126,9 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.configuration",
-        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/mariadb/env.yaml"
+        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/mariadb/env.yaml",
+        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
+        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -1099,16 +1155,24 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.xml-path",
-        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/datasource/driver,mariadb"
+        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/datasource/driver,mariadb",
+        "ruleDescription" : "Lookup of XML path inside a set of files. If multiple rules exist, the rule name can be extended with a suffix `<rule name>-<suffix>`",
+        "valueDescription" : "Array of files followed by expected path and value. e.g.: `[/WEB-INF/.xml,/META-INF/.xml],/datasources/datasource/driver,h2`"
       }, {
         "name" : "org.wildfly.rule.annotation.field.value-url",
-        "value" : "jakarta.annotation.sql.DataSourceDefinition,url=jdbc:mariadb:*"
+        "value" : "jakarta.annotation.sql.DataSourceDefinition,url=jdbc:mariadb:*",
+        "ruleDescription" : "Expected annotation with field values. Field values can be regex. This rule can be added multiple time to a layer, it must contains a suffix to be unique.",
+        "valueDescription" : "The annotation with a field value. For example: `jakarta.annotation.sql.DataSourceDefinition,className=org.h2.*`"
       }, {
         "name" : "org.wildfly.rule.xml-path-xa",
-        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/xa-datasource/driver,mariadb"
+        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/xa-datasource/driver,mariadb",
+        "ruleDescription" : "Lookup of XML path inside a set of files. If multiple rules exist, the rule name can be extended with a suffix `<rule name>-<suffix>`",
+        "valueDescription" : "Array of files followed by expected path and value. e.g.: `[/WEB-INF/.xml,/META-INF/.xml],/datasources/datasource/driver,h2`"
       }, {
         "name" : "org.wildfly.rule.annotation.field.value-className",
-        "value" : "jakarta.annotation.sql.DataSourceDefinition,className=org.mariadb.*"
+        "value" : "jakarta.annotation.sql.DataSourceDefinition,className=org.mariadb.*",
+        "ruleDescription" : "Expected annotation with field values. Field values can be regex. This rule can be added multiple time to a layer, it must contains a suffix to be unique.",
+        "valueDescription" : "The annotation with a field value. For example: `jakarta.annotation.sql.DataSourceDefinition,className=org.h2.*`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -1155,7 +1219,9 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.configuration",
-        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/mssqlserver/env.yaml"
+        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/mssqlserver/env.yaml",
+        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
+        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -1184,7 +1250,9 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.configuration",
-        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/mssqlserver/env.yaml"
+        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/mssqlserver/env.yaml",
+        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
+        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -1211,16 +1279,24 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.xml-path",
-        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/datasource/driver,mssqlserver"
+        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/datasource/driver,mssqlserver",
+        "ruleDescription" : "Lookup of XML path inside a set of files. If multiple rules exist, the rule name can be extended with a suffix `<rule name>-<suffix>`",
+        "valueDescription" : "Array of files followed by expected path and value. e.g.: `[/WEB-INF/.xml,/META-INF/.xml],/datasources/datasource/driver,h2`"
       }, {
         "name" : "org.wildfly.rule.annotation.field.value-url",
-        "value" : "jakarta.annotation.sql.DataSourceDefinition,url=jdbc:sqlserver:*"
+        "value" : "jakarta.annotation.sql.DataSourceDefinition,url=jdbc:sqlserver:*",
+        "ruleDescription" : "Expected annotation with field values. Field values can be regex. This rule can be added multiple time to a layer, it must contains a suffix to be unique.",
+        "valueDescription" : "The annotation with a field value. For example: `jakarta.annotation.sql.DataSourceDefinition,className=org.h2.*`"
       }, {
         "name" : "org.wildfly.rule.xml-path-xa",
-        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/xa-datasource/driver,mssqlserver"
+        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/xa-datasource/driver,mssqlserver",
+        "ruleDescription" : "Lookup of XML path inside a set of files. If multiple rules exist, the rule name can be extended with a suffix `<rule name>-<suffix>`",
+        "valueDescription" : "Array of files followed by expected path and value. e.g.: `[/WEB-INF/.xml,/META-INF/.xml],/datasources/datasource/driver,h2`"
       }, {
         "name" : "org.wildfly.rule.annotation.field.value-className",
-        "value" : "jakarta.annotation.sql.DataSourceDefinition,className=com.microsoft.*"
+        "value" : "jakarta.annotation.sql.DataSourceDefinition,className=com.microsoft.*",
+        "ruleDescription" : "Expected annotation with field values. Field values can be regex. This rule can be added multiple time to a layer, it must contains a suffix to be unique.",
+        "valueDescription" : "The annotation with a field value. For example: `jakarta.annotation.sql.DataSourceDefinition,className=org.h2.*`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -1267,7 +1343,9 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.configuration",
-        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/mysql/env.yaml"
+        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/mysql/env.yaml",
+        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
+        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -1296,7 +1374,9 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.configuration",
-        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/mysql/env.yaml"
+        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/mysql/env.yaml",
+        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
+        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -1323,16 +1403,24 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.xml-path",
-        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/datasource/driver,mysql"
+        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/datasource/driver,mysql",
+        "ruleDescription" : "Lookup of XML path inside a set of files. If multiple rules exist, the rule name can be extended with a suffix `<rule name>-<suffix>`",
+        "valueDescription" : "Array of files followed by expected path and value. e.g.: `[/WEB-INF/.xml,/META-INF/.xml],/datasources/datasource/driver,h2`"
       }, {
         "name" : "org.wildfly.rule.annotation.field.value-url",
-        "value" : "jakarta.annotation.sql.DataSourceDefinition,url=jdbc:mysql:*"
+        "value" : "jakarta.annotation.sql.DataSourceDefinition,url=jdbc:mysql:*",
+        "ruleDescription" : "Expected annotation with field values. Field values can be regex. This rule can be added multiple time to a layer, it must contains a suffix to be unique.",
+        "valueDescription" : "The annotation with a field value. For example: `jakarta.annotation.sql.DataSourceDefinition,className=org.h2.*`"
       }, {
         "name" : "org.wildfly.rule.xml-path-xa",
-        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/xa-datasource/driver,mysql"
+        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/xa-datasource/driver,mysql",
+        "ruleDescription" : "Lookup of XML path inside a set of files. If multiple rules exist, the rule name can be extended with a suffix `<rule name>-<suffix>`",
+        "valueDescription" : "Array of files followed by expected path and value. e.g.: `[/WEB-INF/.xml,/META-INF/.xml],/datasources/datasource/driver,h2`"
       }, {
         "name" : "org.wildfly.rule.annotation.field.value-className",
-        "value" : "jakarta.annotation.sql.DataSourceDefinition,className=com.mysql.*"
+        "value" : "jakarta.annotation.sql.DataSourceDefinition,className=com.mysql.*",
+        "ruleDescription" : "Expected annotation with field values. Field values can be regex. This rule can be added multiple time to a layer, it must contains a suffix to be unique.",
+        "valueDescription" : "The annotation with a field value. For example: `jakarta.annotation.sql.DataSourceDefinition,className=org.h2.*`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -1379,7 +1467,9 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.configuration",
-        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/oracle/env.yaml"
+        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/oracle/env.yaml",
+        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
+        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -1408,7 +1498,9 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.configuration",
-        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/oracle/env.yaml"
+        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/oracle/env.yaml",
+        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
+        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -1435,16 +1527,24 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.xml-path",
-        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/datasource/driver,oracle"
+        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/datasource/driver,oracle",
+        "ruleDescription" : "Lookup of XML path inside a set of files. If multiple rules exist, the rule name can be extended with a suffix `<rule name>-<suffix>`",
+        "valueDescription" : "Array of files followed by expected path and value. e.g.: `[/WEB-INF/.xml,/META-INF/.xml],/datasources/datasource/driver,h2`"
       }, {
         "name" : "org.wildfly.rule.annotation.field.value-url",
-        "value" : "jakarta.annotation.sql.DataSourceDefinition,url=jdbc:oracle:*"
+        "value" : "jakarta.annotation.sql.DataSourceDefinition,url=jdbc:oracle:*",
+        "ruleDescription" : "Expected annotation with field values. Field values can be regex. This rule can be added multiple time to a layer, it must contains a suffix to be unique.",
+        "valueDescription" : "The annotation with a field value. For example: `jakarta.annotation.sql.DataSourceDefinition,className=org.h2.*`"
       }, {
         "name" : "org.wildfly.rule.xml-path-xa",
-        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/xa-datasource/driver,oracle"
+        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/xa-datasource/driver,oracle",
+        "ruleDescription" : "Lookup of XML path inside a set of files. If multiple rules exist, the rule name can be extended with a suffix `<rule name>-<suffix>`",
+        "valueDescription" : "Array of files followed by expected path and value. e.g.: `[/WEB-INF/.xml,/META-INF/.xml],/datasources/datasource/driver,h2`"
       }, {
         "name" : "org.wildfly.rule.annotation.field.value-className",
-        "value" : "jakarta.annotation.sql.DataSourceDefinition,className=oracle.jdbc.*"
+        "value" : "jakarta.annotation.sql.DataSourceDefinition,className=oracle.jdbc.*",
+        "ruleDescription" : "Expected annotation with field values. Field values can be regex. This rule can be added multiple time to a layer, it must contains a suffix to be unique.",
+        "valueDescription" : "The annotation with a field value. For example: `jakarta.annotation.sql.DataSourceDefinition,className=org.h2.*`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -1491,7 +1591,9 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.configuration",
-        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/postgresql/env.yaml"
+        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/postgresql/env.yaml",
+        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
+        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -1520,7 +1622,9 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.configuration",
-        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/postgresql/env.yaml"
+        "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/postgresql/env.yaml",
+        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
+        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -1547,16 +1651,24 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.xml-path",
-        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/datasource/driver,postgresql"
+        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/datasource/driver,postgresql",
+        "ruleDescription" : "Lookup of XML path inside a set of files. If multiple rules exist, the rule name can be extended with a suffix `<rule name>-<suffix>`",
+        "valueDescription" : "Array of files followed by expected path and value. e.g.: `[/WEB-INF/.xml,/META-INF/.xml],/datasources/datasource/driver,h2`"
       }, {
         "name" : "org.wildfly.rule.annotation.field.value-url",
-        "value" : "jakarta.annotation.sql.DataSourceDefinition,url=jdbc:postgresql:*"
+        "value" : "jakarta.annotation.sql.DataSourceDefinition,url=jdbc:postgresql:*",
+        "ruleDescription" : "Expected annotation with field values. Field values can be regex. This rule can be added multiple time to a layer, it must contains a suffix to be unique.",
+        "valueDescription" : "The annotation with a field value. For example: `jakarta.annotation.sql.DataSourceDefinition,className=org.h2.*`"
       }, {
         "name" : "org.wildfly.rule.xml-path-xa",
-        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/xa-datasource/driver,postgresql"
+        "value" : "[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/xa-datasource/driver,postgresql",
+        "ruleDescription" : "Lookup of XML path inside a set of files. If multiple rules exist, the rule name can be extended with a suffix `<rule name>-<suffix>`",
+        "valueDescription" : "Array of files followed by expected path and value. e.g.: `[/WEB-INF/.xml,/META-INF/.xml],/datasources/datasource/driver,h2`"
       }, {
         "name" : "org.wildfly.rule.annotation.field.value-className",
-        "value" : "jakarta.annotation.sql.DataSourceDefinition,className=org.postgresql.*"
+        "value" : "jakarta.annotation.sql.DataSourceDefinition,className=org.postgresql.*",
+        "ruleDescription" : "Expected annotation with field values. Field values can be regex. This rule can be added multiple time to a layer, it must contains a suffix to be unique.",
+        "valueDescription" : "The annotation with a field value. For example: `jakarta.annotation.sql.DataSourceDefinition,className=org.h2.*`"
       } ],
       "glowDiscoverable" : true
     } ]
@@ -1615,10 +1727,14 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.expected-file",
-        "value" : "/WEB-INF/classes/META-INF/batch-jobs"
+        "value" : "/WEB-INF/classes/META-INF/batch-jobs",
+        "ruleDescription" : "Expect the existence of files or directories. If multiple rules exist, the rule name can be extended with a suffix `<rule name>-<suffix>`",
+        "valueDescription" : "An array of file paths. e.g.: `[/META-INF/beans.xml,/WEB-INF/beans.xml]`"
       }, {
         "name" : "org.wildfly.rule.class",
-        "value" : "jakarta.batch.api.*"
+        "value" : "jakarta.batch.api.*",
+        "ruleDescription" : "A Java type.",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `jakarta.ws.rs,jakarta.ws.rs.core`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -1641,10 +1757,14 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.class",
-        "value" : "jakarta.validation.*"
+        "value" : "jakarta.validation.*",
+        "ruleDescription" : "A Java type.",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `jakarta.ws.rs,jakarta.ws.rs.core`"
       }, {
         "name" : "org.wildfly.rule.annotations",
-        "value" : "jakarta.validation.*"
+        "value" : "jakarta.validation.*",
+        "ruleDescription" : "Expected annotations ",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `org.eclipse.microprofile.config.inject`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -1667,10 +1787,14 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.expected-file",
-        "value" : "[/META-INF/beans.xml,/WEB-INF/beans.xml]"
+        "value" : "[/META-INF/beans.xml,/WEB-INF/beans.xml]",
+        "ruleDescription" : "Expect the existence of files or directories. If multiple rules exist, the rule name can be extended with a suffix `<rule name>-<suffix>`",
+        "valueDescription" : "An array of file paths. e.g.: `[/META-INF/beans.xml,/WEB-INF/beans.xml]`"
       }, {
         "name" : "org.wildfly.rule.annotations",
-        "value" : "jakarta.inject,jakarta.enterprise.context"
+        "value" : "jakarta.inject,jakarta.enterprise.context",
+        "ruleDescription" : "Expected annotations ",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `org.eclipse.microprofile.config.inject`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -1728,7 +1852,9 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.class",
-        "value" : "jakarta.enterprise.concurrent"
+        "value" : "jakarta.enterprise.concurrent",
+        "ruleDescription" : "A Java type.",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `jakarta.ws.rs,jakarta.ws.rs.core`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -1790,10 +1916,14 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.class",
-        "value" : "jakarta.ejb.MessageDrivenContext"
+        "value" : "jakarta.ejb.MessageDrivenContext",
+        "ruleDescription" : "A Java type.",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `jakarta.ws.rs,jakarta.ws.rs.core`"
       }, {
         "name" : "org.wildfly.rule.annotations",
-        "value" : "jakarta.ejb.MessageDriven,jakarta.ejb.Remote"
+        "value" : "jakarta.ejb.MessageDriven,jakarta.ejb.Remote",
+        "ruleDescription" : "Expected annotations ",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `org.eclipse.microprofile.config.inject`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -1926,10 +2056,14 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.class",
-        "value" : "jakarta.ejb"
+        "value" : "jakarta.ejb",
+        "ruleDescription" : "A Java type.",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `jakarta.ws.rs,jakarta.ws.rs.core`"
       }, {
         "name" : "org.wildfly.rule.annotations",
-        "value" : "jakarta.ejb"
+        "value" : "jakarta.ejb",
+        "ruleDescription" : "Expected annotations ",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `org.eclipse.microprofile.config.inject`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -2072,13 +2206,19 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.xml-path",
-        "value" : "/WEB-INF/web.xml,/web-app/servlet/servlet-class,jakarta.ws.rs.core.Application"
+        "value" : "/WEB-INF/web.xml,/web-app/servlet/servlet-class,jakarta.ws.rs.core.Application",
+        "ruleDescription" : "Lookup of XML path inside a set of files. If multiple rules exist, the rule name can be extended with a suffix `<rule name>-<suffix>`",
+        "valueDescription" : "Array of files followed by expected path and value. e.g.: `[/WEB-INF/.xml,/META-INF/.xml],/datasources/datasource/driver,h2`"
       }, {
         "name" : "org.wildfly.rule.class",
-        "value" : "jakarta.ws.rs,jakarta.ws.rs.core"
+        "value" : "jakarta.ws.rs,jakarta.ws.rs.core",
+        "ruleDescription" : "A Java type.",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `jakarta.ws.rs,jakarta.ws.rs.core`"
       }, {
         "name" : "org.wildfly.rule.annotations",
-        "value" : "jakarta.ws.rs,jakarta.ws.rs.core"
+        "value" : "jakarta.ws.rs,jakarta.ws.rs.core",
+        "ruleDescription" : "Expected annotations ",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `org.eclipse.microprofile.config.inject`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -2176,13 +2316,19 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.expected-file",
-        "value" : "[/META-INF/persistence.xml,/WEB-INF/classes/META-INF/persistence.xml]"
+        "value" : "[/META-INF/persistence.xml,/WEB-INF/classes/META-INF/persistence.xml]",
+        "ruleDescription" : "Expect the existence of files or directories. If multiple rules exist, the rule name can be extended with a suffix `<rule name>-<suffix>`",
+        "valueDescription" : "An array of file paths. e.g.: `[/META-INF/beans.xml,/WEB-INF/beans.xml]`"
       }, {
         "name" : "org.wildfly.rule.class",
-        "value" : "jakarta.persistence,jakarta.persistence.criteria"
+        "value" : "jakarta.persistence,jakarta.persistence.criteria",
+        "ruleDescription" : "A Java type.",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `jakarta.ws.rs,jakarta.ws.rs.core`"
       }, {
         "name" : "org.wildfly.rule.annotations",
-        "value" : "jakarta.persistence"
+        "value" : "jakarta.persistence",
+        "ruleDescription" : "Expected annotations ",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `org.eclipse.microprofile.config.inject`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -2208,16 +2354,24 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.expected-file",
-        "value" : "/WEB-INF/faces-config.xml"
+        "value" : "/WEB-INF/faces-config.xml",
+        "ruleDescription" : "Expect the existence of files or directories. If multiple rules exist, the rule name can be extended with a suffix `<rule name>-<suffix>`",
+        "valueDescription" : "An array of file paths. e.g.: `[/META-INF/beans.xml,/WEB-INF/beans.xml]`"
       }, {
         "name" : "org.wildfly.rule.xml-path",
-        "value" : "/WEB-INF/web.xml,/web-app/servlet/servlet-class,jakarta.faces.webapp.FacesServlet"
+        "value" : "/WEB-INF/web.xml,/web-app/servlet/servlet-class,jakarta.faces.webapp.FacesServlet",
+        "ruleDescription" : "Lookup of XML path inside a set of files. If multiple rules exist, the rule name can be extended with a suffix `<rule name>-<suffix>`",
+        "valueDescription" : "Array of files followed by expected path and value. e.g.: `[/WEB-INF/.xml,/META-INF/.xml],/datasources/datasource/driver,h2`"
       }, {
         "name" : "org.wildfly.rule.class",
-        "value" : "jakarta.faces.*"
+        "value" : "jakarta.faces.*",
+        "ruleDescription" : "A Java type.",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `jakarta.ws.rs,jakarta.ws.rs.core`"
       }, {
         "name" : "org.wildfly.rule.annotations",
-        "value" : "jakarta.faces.annotation"
+        "value" : "jakarta.faces.annotation",
+        "ruleDescription" : "Expected annotations ",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `org.eclipse.microprofile.config.inject`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -2232,10 +2386,14 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.class",
-        "value" : "jakarta.json.bind.*"
+        "value" : "jakarta.json.bind.*",
+        "ruleDescription" : "A Java type.",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `jakarta.ws.rs,jakarta.ws.rs.core`"
       }, {
         "name" : "org.wildfly.rule.annotations",
-        "value" : "jakarta.json.bind.annotation"
+        "value" : "jakarta.json.bind.annotation",
+        "ruleDescription" : "Expected annotations ",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `org.eclipse.microprofile.config.inject`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -2250,7 +2408,9 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.class",
-        "value" : "jakarta.json,jakarta.json.stream"
+        "value" : "jakarta.json,jakarta.json.stream",
+        "ruleDescription" : "A Java type.",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `jakarta.ws.rs,jakarta.ws.rs.core`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -2293,7 +2453,9 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.class",
-        "value" : "javax.naming"
+        "value" : "javax.naming",
+        "ruleDescription" : "A Java type.",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `jakarta.ws.rs,jakarta.ws.rs.core`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -2365,7 +2527,9 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.expected-file",
-        "value" : "[/META-INF/ra.xml,/META-INF/ironjacamar.xml]"
+        "value" : "[/META-INF/ra.xml,/META-INF/ironjacamar.xml]",
+        "ruleDescription" : "Expect the existence of files or directories. If multiple rules exist, the rule name can be extended with a suffix `<rule name>-<suffix>`",
+        "valueDescription" : "An array of file paths. e.g.: `[/META-INF/beans.xml,/WEB-INF/beans.xml]`"
       } ],
       "glowDiscoverable" : true
     } ]
@@ -2397,10 +2561,14 @@
       "stability" : "preview",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.class",
-        "value" : "jakarta.mvc"
+        "value" : "jakarta.mvc",
+        "ruleDescription" : "A Java type.",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `jakarta.ws.rs,jakarta.ws.rs.core`"
       }, {
         "name" : "org.wildfly.rule.annotations",
-        "value" : "jakarta.mvc"
+        "value" : "jakarta.mvc",
+        "ruleDescription" : "Expected annotations ",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `org.eclipse.microprofile.config.inject`"
       } ],
       "glowDiscoverable" : true
     } ]
@@ -2569,7 +2737,9 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.xml-path",
-        "value" : "[/WEB-INF/*-jms.xml,/META-INF/*-jms.xml],/messaging-deployment/server/jms-destinations"
+        "value" : "[/WEB-INF/*-jms.xml,/META-INF/*-jms.xml],/messaging-deployment/server/jms-destinations",
+        "ruleDescription" : "Lookup of XML path inside a set of files. If multiple rules exist, the rule name can be extended with a suffix `<rule name>-<suffix>`",
+        "valueDescription" : "Array of files followed by expected path and value. e.g.: `[/WEB-INF/.xml,/META-INF/.xml],/datasources/datasource/driver,h2`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -2589,13 +2759,19 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.expect-add-on-family",
-        "value" : "messaging"
+        "value" : "messaging",
+        "ruleDescription" : "Family of add-on expected by the layer.",
+        "valueDescription" : "e.g.: `messaging`"
       }, {
         "name" : "org.wildfly.rule.class",
-        "value" : "jakarta.jms"
+        "value" : "jakarta.jms",
+        "ruleDescription" : "A Java type.",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `jakarta.ws.rs,jakarta.ws.rs.core`"
       }, {
         "name" : "org.wildfly.rule.annotations",
-        "value" : "jakarta.jms"
+        "value" : "jakarta.jms",
+        "ruleDescription" : "Expected annotations ",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `org.eclipse.microprofile.config.inject`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -2683,13 +2859,19 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.expected-file",
-        "value" : "[/META-INF/microprofile-config.properties,/WEB-INF/classes/META-INF/microprofile-config.properties]"
+        "value" : "[/META-INF/microprofile-config.properties,/WEB-INF/classes/META-INF/microprofile-config.properties]",
+        "ruleDescription" : "Expect the existence of files or directories. If multiple rules exist, the rule name can be extended with a suffix `<rule name>-<suffix>`",
+        "valueDescription" : "An array of file paths. e.g.: `[/META-INF/beans.xml,/WEB-INF/beans.xml]`"
       }, {
         "name" : "org.wildfly.rule.class",
-        "value" : "org.eclipse.microprofile.config.*"
+        "value" : "org.eclipse.microprofile.config.*",
+        "ruleDescription" : "A Java type.",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `jakarta.ws.rs,jakarta.ws.rs.core`"
       }, {
         "name" : "org.wildfly.rule.annotations",
-        "value" : "org.eclipse.microprofile.config.inject"
+        "value" : "org.eclipse.microprofile.config.inject",
+        "ruleDescription" : "Expected annotations ",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `org.eclipse.microprofile.config.inject`"
       } ],
       "glowDiscoverable" : true
     } ]
@@ -2767,10 +2949,14 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.class",
-        "value" : "org.eclipse.microprofile.health.*"
+        "value" : "org.eclipse.microprofile.health.*",
+        "ruleDescription" : "A Java type.",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `jakarta.ws.rs,jakarta.ws.rs.core`"
       }, {
         "name" : "org.wildfly.rule.annotations",
-        "value" : "org.eclipse.microprofile.health"
+        "value" : "org.eclipse.microprofile.health",
+        "ruleDescription" : "Expected annotations ",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `org.eclipse.microprofile.config.inject`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -2796,7 +2982,9 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.inclusion-mode",
-        "value" : "all-dependencies"
+        "value" : "all-dependencies",
+        "ruleDescription" : "Layers automatically included if all its dependencies are found.",
+        "valueDescription" : "e.g.: `all-dependencies`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -2839,10 +3027,14 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.class",
-        "value" : "io.opentelemetry.api.*,io.opentelemetry.sdk.*"
+        "value" : "io.opentelemetry.api.*,io.opentelemetry.sdk.*",
+        "ruleDescription" : "A Java type.",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `jakarta.ws.rs,jakarta.ws.rs.core`"
       }, {
         "name" : "org.wildfly.rule.annotations",
-        "value" : "io.opentelemetry.instrumentation.annotations"
+        "value" : "io.opentelemetry.instrumentation.annotations",
+        "ruleDescription" : "Expected annotations ",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `org.eclipse.microprofile.config.inject`"
       } ],
       "glowDiscoverable" : true
     } ]
@@ -2865,7 +3057,9 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.xml-path",
-        "value" : "/WEB-INF/web.xml,/web-app/login-config/auth-method,OIDC"
+        "value" : "/WEB-INF/web.xml,/web-app/login-config/auth-method,OIDC",
+        "ruleDescription" : "Lookup of XML path inside a set of files. If multiple rules exist, the rule name can be extended with a suffix `<rule name>-<suffix>`",
+        "valueDescription" : "Array of files followed by expected path and value. e.g.: `[/WEB-INF/.xml,/META-INF/.xml],/datasources/datasource/driver,h2`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -2931,7 +3125,9 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.inclusion-mode",
-        "value" : "all-dependencies"
+        "value" : "all-dependencies",
+        "ruleDescription" : "Layers automatically included if all its dependencies are found.",
+        "valueDescription" : "e.g.: `all-dependencies`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -2961,7 +3157,9 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.inclusion-mode",
-        "value" : "all-dependencies"
+        "value" : "all-dependencies",
+        "ruleDescription" : "Layers automatically included if all its dependencies are found.",
+        "valueDescription" : "e.g.: `all-dependencies`"
       } ],
       "glowDiscoverable" : true
     }, {
@@ -2987,7 +3185,9 @@
       "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.xml-path",
-        "value" : "/WEB-INF/web.xml,/web-app/login-config/auth-method,KEYCLOAK-SAML"
+        "value" : "/WEB-INF/web.xml,/web-app/login-config/auth-method,KEYCLOAK-SAML",
+        "ruleDescription" : "Lookup of XML path inside a set of files. If multiple rules exist, the rule name can be extended with a suffix `<rule name>-<suffix>`",
+        "valueDescription" : "Array of files followed by expected path and value. e.g.: `[/WEB-INF/.xml,/META-INF/.xml],/datasources/datasource/driver,h2`"
       } ],
       "glowDiscoverable" : true
     }, {

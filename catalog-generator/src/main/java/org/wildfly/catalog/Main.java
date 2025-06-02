@@ -21,6 +21,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Properties;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 
@@ -49,6 +50,13 @@ public class Main {
         target.put("description", "Catalog of WildFly " + wildflyVersion + " features (incomplete for now) to provision a WildFly server");
         target.set("documentation", node.get("documentation"));
         target.set("legend", node.get("legend"));
+        
+        // Glow rules description
+        Properties glowRulesDescriptions = new Properties();
+        String rulesURL = node.get("glowRulesDescriptions").asText();
+        try(InputStream in = new URL(rulesURL).openStream()) {
+            glowRulesDescriptions.load(in);
+        }
         ArrayNode an = (ArrayNode) node.get("content");
         Iterator<JsonNode> it = an.elements();
         Map<String, Map<String, JsonNode>> categories = new TreeMap<>();
@@ -89,7 +97,7 @@ public class Main {
                 String stability = null;
                 List<JsonNode> discoveryRules = new ArrayList<>();
                 while (properties.hasNext()) {
-                    JsonNode prop = properties.next();
+                    ObjectNode prop = (ObjectNode) properties.next();
                     String name = prop.get("name").asText();
                     if (name.equals("org.wildfly.category")) {
                         category = prop.get("value").asText();
@@ -116,11 +124,13 @@ public class Main {
                         String val = prop.get("value").asText();
                         if (val.equals("default-base-layer")) {
                             discoveryRules.add(prop);
+                            setRuleDescription(name, glowRulesDescriptions, prop);
                         }
                         continue;
                     }
                     if (name.startsWith("org.wildfly.rule") && !name.startsWith("org.wildfly.rule.add-on")) {
                         discoveryRules.add(prop);
+                        setRuleDescription(name, glowRulesDescriptions, prop);
                         continue;
                     }
                 }
@@ -231,4 +241,13 @@ public class Main {
         }
     }
 
+    private static void setRuleDescription(String name, Properties props, ObjectNode node) {
+        for(String k : props.stringPropertyNames()) {
+            if(name.startsWith(k)) {
+                node.put("ruleDescription", props.getProperty(k));
+                node.put("valueDescription", props.getProperty(k+".value"));
+                break;
+            }
+        }
+    } 
 }
