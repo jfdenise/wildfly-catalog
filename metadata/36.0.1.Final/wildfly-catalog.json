@@ -35,6 +35,7 @@
             "url": "https://raw.githubusercontent.com/jfdenise/wildfly-cloud-galleon-pack/refs/heads/catalog/catalog/wildfly-catalog.json"
         }
     ],
+    "glowRulesDescriptions": "https://raw.githubusercontent.com/wildfly/wildfly-galleon-feature-packs/refs/heads/release/maven/docs/rules.properties",
     "content": [
         {
             "description": "WildFly catalog",
