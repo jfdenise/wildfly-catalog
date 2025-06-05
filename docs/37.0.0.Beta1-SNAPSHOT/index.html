@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WildFly Catalog Viewer</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            margin: auto;
+        }
+        h1 {
+            color: #1a73e8; /* Google Blue */
+            text-align: center;
+            border-bottom: 2px solid #1a73e8;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .catalog-description {
+            text-align: center;
+            font-style: italic;
+            color: #5f6368;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        .category {
+            margin-bottom: 25px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-left: 6px solid #1a73e8;
+            border-radius: 8px;
+            transition: box-shadow 0.3s ease;
+        }
+        .category:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+        }
+        .category h2 {
+            margin-top: 0;
+            color: #1a73e8;
+            font-size: 1.8em;
+        }
+        .category-description {
+            font-size: 1em;
+            color: #5f6368;
+            margin-bottom: 15px;
+        }
+        .functionalities {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .functionalities li {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            margin-top: 10px;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .functionalities li strong {
+            color: #202124;
+            display: inline-block;
+            min-width: 150px; /* Align values */
+        }
+        .functionalities li .name {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #0056b3; /* Darker blue for functionality name */
+            margin-bottom: 8px;
+        }
+        .functionalities li .description {
+            margin-bottom: 5px;
+        }
+        .functionality-header {
+            cursor: pointer;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s ease;
+        }
+        .functionality-header:hover {
+            background-color: #dde2e6;
+        }
+        .functionality-header .name {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #0056b3;
+            margin-bottom: 0; /* Override previous margin */
+        }
+        .arrow {
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+        .arrow.expanded {
+            transform: rotate(90deg);
+        }
+        .functionality-details {
+            padding: 10px;
+            border-top: 1px solid #e0e0e0;
+            display: none; /* Hidden by default */
+        }
+        .functionality-details.visible {
+            display: block;
+        }
+        .functionalities li a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        .functionalities li a:hover {
+            text-decoration: underline;
+        }
+        .boolean-true {
+            color: #34a853; /* Google Green */
+            font-weight: bold;
+        }
+        .boolean-false {
+            color: #ea4335; /* Google Red */
+            font-weight: bold;
+        }
+        .dependencies-header {
+            cursor: pointer;
+            padding: 8px;
+            background-color: #f1f3f5;
+            border-radius: 3px;
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+        .dependencies-header:hover {
+            background-color: #e9ecef;
+        }
+        .dependencies-arrow {
+            font-size: 0.9em;
+            transition: transform 0.3s ease;
+            margin-left: 5px;
+        }
+        .dependencies-arrow.expanded {
+            transform: rotate(90deg);
+        }
+        .dependencies-list {
+            list-style-type: disc;
+            padding-left: 20px;
+            margin-top: 5px;
+            display: none; /* Hidden by default */
+        }
+        .dependencies-list.visible {
+            display: block;
+        }
+        .dependencies-list li a {
+            /* Uses general 'a' styles or can be specific */
+        }
+        .xmlconfig-header { /* Renamed from .lowlevel-header */
+            cursor: pointer;
+            padding: 8px;
+            background-color: #f8f9fa; /* Style for XML Configuration header */
+            border-radius: 3px;
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+        .xmlconfig-header:hover {
+            background-color: #e9ecef;
+        }
+        .xmlconfig-arrow { /* Renamed from .lowlevel-arrow */
+            font-size: 0.9em;
+            transition: transform 0.3s ease;
+            margin-left: 5px;
+        }
+        .xmlconfig-arrow.expanded {
+            transform: rotate(90deg);
+        }
+        .xmlconfig-list { /* Renamed from .lowlevel-list */
+            list-style-type: none; /* XML content will be in a <pre> block */
+            padding-left: 0;
+            margin-top: 5px;
+            display: none; /* Hidden by default */
+        }
+        .xmlconfig-list.visible {
+            display: block;
+        }
+        .xmlconfig-list pre {
+            background-color: #eef; /* Light background for XML block */
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto; /* Allow horizontal scrolling for long XML lines */
+            border: 1px solid #ddd;
+        }
+        .xmlconfig-list code {
+            font-family: Consolas, 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        /* Styles for Cloud XML Configuration */
+        .cloudxml-header {
+            cursor: pointer;
+            padding: 8px;
+            background-color: #fafafa; /* Slightly different background */
+            border-radius: 3px;
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+        .cloudxml-header:hover {
+            background-color: #f0f0f0;
+        }
+        .cloudxml-arrow {
+            font-size: 0.9em;
+            transition: transform 0.3s ease;
+            margin-left: 5px;
+        }
+        .cloudxml-arrow.expanded {
+            transform: rotate(90deg);
+        }
+        .cloudxml-list {
+            list-style-type: none;
+            padding-left: 0;
+            margin-top: 5px;
+            display: none; /* Hidden by default */
+        }
+        .cloudxml-list.visible {
+            display: block;
+        }
+        .cloudxml-list pre {
+            background-color: #f0f8ff; /* AliceBlue, distinct from other XML */
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+            border: 1px solid #cce;
+        }
+        .cloudxml-list code {
+            font-family: Consolas, 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+        .documentation-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #fdfdfd;
+            border: 1px solid #eaeaea;
+            border-radius: 8px;
+        }
+        .documentation-section h2 {
+            margin-top: 0;
+            color: #1a73e8; /* Changed to blue like main title */
+            font-size: 1.6em;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .documentation-section ul {
+            list-style-type: disc; /* Changed to disc for better visibility */
+            padding-left: 25px;
+            margin: 0;
+        }
+        .documentation-section li {
+            margin-bottom: 8px;
+        }
+        .documentation-section li a {
+            color: #007bff; /* Standard link blue */
+        }
+        .tooltip-icon {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background-color: #ccc;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 12px;
+            line-height: 16px;
+            cursor: help;
+            margin-left: 5px; /* Changed back to margin-left for positioning on the right */
+            font-weight: bold;
+        }
+        .tooltip-box {
+            position: absolute;
+            background-color: #333;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            z-index: 1000;
+            max-width: 300px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            border: 1px solid #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="mainPageTitle">WildFly Catalog</h1>
+        <!-- Moved JSON URL input and Load button here -->
+        <div style="margin-bottom: 10px; text-align: center;" hidden>
+            <label for="jsonUrlInput" style="margin-right: 5px; font-size: 0.9em;">WildFly metadata json file:</label>
+            <input type="text" id="jsonUrlInput" style="padding: 8px; width: 50%; border-radius: 4px; border: 1px solid #ccc; font-size: 0.9em;">
+            <button id="loadJsonButton" style="padding: 8px 12px; margin-left: 5px; border-radius: 4px; border: 1px solid #ccc; background-color: #e9ecef; cursor: pointer;">Load</button>
+        </div>
+        <!-- Removed catalog-description div as its content is now in H1 -->
+        <div id="documentation-section" class="documentation-section" style="display: none;"></div>
+        <div style="margin-bottom: 5px; text-align: center;">
+            <label for="stabilitySelect" style="margin-right: 5px; font-size: 0.9em;">Minimum stability level:</label>
+            <select id="stabilitySelect" style="padding: 10px; border-radius: 4px; border: 1px solid #ccc; font-size: 1em; margin-right: 10px;">
+                <option value="experimental" selected>Experimental</option>
+                <option value="preview">Preview</option>
+                <option value="community">Community</option>
+                <option value="default">Default</option>
+            </select>
+            <input type="search" id="searchInput" placeholder="Search catalog..." style="padding: 10px; width: 40%; border-radius: 4px; border: 1px solid #ccc; font-size: 1em;">
+        </div>
+        <div id="searchFields" style="margin-bottom: 20px; text-align: center; font-size: 0.9em;">
+            Search in:
+            <label style="margin-left: 10px;"><input type="checkbox" class="search-field-checkbox" value="layerName" checked> Layer Name</label>
+            <label style="margin-left: 10px;"><input type="checkbox" class="search-field-checkbox" value="description" checked> Description</label>
+            <label style="margin-left: 10px;"><input type="checkbox" class="search-field-checkbox" value="api" checked> Java API</label>
+            <label style="margin-left: 10px;"><input type="checkbox" class="search-field-checkbox" value="addOn" checked> Glow Add-On</label>
+            <label style="margin-left: 10px;"><input type="checkbox" class="search-field-checkbox" value="featurePack" checked> Feature Pack</label>
+        </div>
+        <div id="data-display"></div>
+    </div>
+
+    <script>
+        let activeTooltip = null;
+        let originalJsonData = null; // To store the full dataset for filtering
+
+        function showTooltip(event) {
+            event.stopPropagation(); // Prevent click from immediately closing due to document listener
+            
+            const icon = event.target; // The icon that was clicked
+
+            // If clicking the same icon that's already showing a tooltip, hide it.
+            if (activeTooltip && activeTooltip.triggerIcon === icon) {
+                activeTooltip.remove();
+                activeTooltip = null;
+                return; // Stop further processing
+            }
+
+            // If a tooltip is active (from a different icon), remove it before showing the new one.
+            if (activeTooltip) {
+                activeTooltip.remove();
+                activeTooltip = null;
+            }
+
+            const tooltipText = icon.dataset.tooltipText;
+            // If tooltipText is null, undefined, or an empty/whitespace-only string, do not proceed.
+            if (tooltipText == null || (typeof tooltipText === 'string' && tooltipText.trim() === '')) {
+                return;
+            }
+
+            const tooltip = document.createElement('div');
+            tooltip.className = 'tooltip-box';
+            tooltip.innerHTML = tooltipText; // Use innerHTML to allow simple HTML in tooltips if needed
+            document.body.appendChild(tooltip);
+            
+            activeTooltip = tooltip; // activeTooltip is the tooltip div
+            activeTooltip.triggerIcon = icon; // Associate the triggering icon with the active tooltip
+
+            const iconRect = icon.getBoundingClientRect();
+            tooltip.style.left = `${iconRect.right + 5 + window.scrollX}px`;
+            tooltip.style.top = `${iconRect.top + window.scrollY}px`;
+            
+            // Adjust if tooltip goes off-screen
+            const tooltipRect = tooltip.getBoundingClientRect();
+            if (tooltipRect.right > window.innerWidth) {
+                tooltip.style.left = `${iconRect.left - tooltipRect.width - 5 + window.scrollX}px`;
+            }
+            if (tooltipRect.bottom > window.innerHeight) {
+                 tooltip.style.top = `${iconRect.bottom - tooltipRect.height + window.scrollY}px`;
+            }
+
+            setTimeout(() => { // Add listener to remove tooltip on next click slightly delayed
+                document.addEventListener('click', hideTooltipOnClickOutside, { once: true });
+            }, 0);
+        }
+
+        function hideTooltipOnClickOutside(event) {
+            if (activeTooltip && !activeTooltip.contains(event.target) && event.target.className !== 'tooltip-icon') {
+                activeTooltip.remove();
+                activeTooltip = null;
+            } else if (activeTooltip && event.target.className === 'tooltip-icon' && event.target !== activeTooltip.triggerIcon) {
+                // Clicked on another icon, showTooltip will handle removing current and showing new
+            } else if (activeTooltip && event.target === activeTooltip.triggerIcon) {
+                 // Clicked on the same icon that triggered the current tooltip, effectively toggling it off
+                activeTooltip.remove();
+                activeTooltip = null;
+            }
+             // If event.target is inside activeTooltip, do nothing (allow interaction with tooltip content if any)
+        }
+
+
+        // jsonData will be fetched from the remote URL
+        function displayData(jsonData) { // jsonData is now a parameter
+            const legendData = jsonData.legend || {};
+
+            const createFieldElement = (labelText, fieldValue, fieldKey) => {
+                const fieldDiv = document.createElement('div');
+                const strongLabel = document.createElement('strong');
+                strongLabel.textContent = `${labelText}:`;
+                fieldDiv.appendChild(strongLabel);
+
+                if (legendData[fieldKey]) {
+                    const tooltipIcon = document.createElement('span');
+                    tooltipIcon.className = 'tooltip-icon';
+                    tooltipIcon.textContent = '?';
+                    tooltipIcon.dataset.tooltipText = legendData[fieldKey];
+                    tooltipIcon.addEventListener('click', showTooltip); // MODIFIED
+                    fieldDiv.appendChild(tooltipIcon);
+                }
+
+                if (typeof fieldValue === 'string' || typeof fieldValue === 'number') {
+                    fieldDiv.appendChild(document.createTextNode(` ${fieldValue}`));
+                } else if (fieldValue instanceof HTMLElement) {
+                     // Add space if it's an element like checkbox/link, assuming label is already there
+                    fieldDiv.appendChild(document.createTextNode(' ')); // Add space before element
+                    fieldDiv.appendChild(fieldValue);
+                }
+                return fieldDiv;
+            };
+            
+            // const catalogDescriptionDiv = document.getElementById('catalog-description'); // No longer needed
+            const mainPageTitleH1 = document.getElementById('mainPageTitle');
+
+            if (jsonData.description && jsonData.description.trim() !== '') { 
+                document.title = jsonData.description; 
+                if (mainPageTitleH1) {
+                    mainPageTitleH1.textContent = jsonData.description;
+                }
+            } else {
+                document.title = "WildFly Catalog Viewer"; 
+                if (mainPageTitleH1) { 
+                     mainPageTitleH1.textContent = "WildFly Catalog Viewer"; // Consistent default
+                }
+            }
+
+            // Populate Documentation Section
+            const docSection = document.getElementById('documentation-section');
+            docSection.innerHTML = ''; // Clear previous
+            if (jsonData.documentation && Array.isArray(jsonData.documentation) && jsonData.documentation.length > 0) {
+                docSection.style.display = 'block'; // Show the section
+                const docTitle = document.createElement('h2');
+                docTitle.textContent = 'Documentation';
+                docSection.appendChild(docTitle);
+
+                const docList = document.createElement('ul');
+                jsonData.documentation.forEach(docItem => {
+                    if (docItem.name && docItem.url) {
+                        const listItem = document.createElement('li');
+                        const link = document.createElement('a');
+                        link.href = docItem.url;
+                        link.textContent = docItem.name;
+                        link.target = '_blank';
+                        link.rel = 'noopener noreferrer';
+                        listItem.appendChild(link);
+                        docList.appendChild(listItem);
+                    }
+                });
+                docSection.appendChild(docList);
+            } else {
+                docSection.style.display = 'none'; // Hide if no documentation
+            }
+
+
+            const dataDisplay = document.getElementById('data-display');
+            dataDisplay.innerHTML = ''; // Clear previous content
+
+            if (!jsonData.categories || !Array.isArray(jsonData.categories)) {
+                dataDisplay.innerHTML = '<p style="color: red;">Error: Categories data is missing or not in expected format.</p>';
+                console.error("Categories data is missing or not an array:", jsonData);
+                return;
+            }
+
+            jsonData.categories.forEach(category => {
+                const categoryDiv = document.createElement('div');
+                categoryDiv.className = 'category';
+
+                const categoryTitle = document.createElement('h2');
+                categoryTitle.textContent = category.name;
+                categoryDiv.appendChild(categoryTitle);
+
+                if (category.description) {
+                    const categoryDesc = document.createElement('p');
+                    categoryDesc.className = 'category-description';
+                    categoryDesc.textContent = category.description;
+                    categoryDiv.appendChild(categoryDesc);
+                }
+
+                const functionalitiesUl = document.createElement('ul');
+                functionalitiesUl.className = 'functionalities';
+
+                category.functionalities.forEach(func => {
+                    const funcLi = document.createElement('li');
+                    // No padding/margin on li itself, will be handled by header/details
+                    funcLi.style.padding = "0";
+                    funcLi.style.margin = "10px 0";
+
+
+                    // Clickable Header
+                    const headerDiv = document.createElement('div');
+                    headerDiv.className = 'functionality-header';
+                    headerDiv.id = `func-${func.name}`; // Add ID for linking, use func.name
+
+                    const labelWrapper = document.createElement('span'); // Wrapper for icon and text
+                    labelWrapper.style.display = 'flex'; // Align icon and text inline
+                    labelWrapper.style.alignItems = 'center';
+
+                    const funcNameElement = document.createElement('span'); // Use span for inline behavior with arrow
+                    funcNameElement.className = 'name';
+                    funcNameElement.textContent = func.name; // Use func.name for the header
+                    labelWrapper.appendChild(funcNameElement); // Text first
+
+                    // Tooltip for layer header (after the name) has been REMOVED as per request.
+                    // if (legendData.layer) { ... } // Legend key for 'name' is 'layer'
+                    headerDiv.appendChild(labelWrapper); // Add the wrapper to the header
+
+                    const arrowSpan = document.createElement('span');
+                    arrowSpan.className = 'arrow';
+                    arrowSpan.innerHTML = '&#9654;'; // Right-pointing triangle
+                    headerDiv.appendChild(arrowSpan);
+
+                    funcLi.appendChild(headerDiv);
+
+                    // Details container (initially hidden)
+                    const detailsDiv = document.createElement('div');
+                    detailsDiv.className = 'functionality-details';
+
+                    // func.name is in the header, display it as 'Name' in details, using 'layer' for legend key.
+                    if (func.name) { 
+                        detailsDiv.appendChild(createFieldElement('Name', func.name, 'layer'));
+                    }
+
+                    detailsDiv.appendChild(createFieldElement('Description', func.description, 'description'));
+                    
+                    if (func.stability) {
+                        detailsDiv.appendChild(createFieldElement('Stability', func.stability, 'stability'));
+                    }
+                    // Removed cloudSpecific field rendering
+                    if (func.hasOwnProperty('glowDiscoverable')) {
+                        const checkbox = document.createElement('input');
+                        checkbox.type = 'checkbox';
+                        checkbox.checked = func.glowDiscoverable;
+                        checkbox.disabled = true;
+                        detailsDiv.appendChild(createFieldElement('Glow Discoverable', checkbox, 'glowDiscoverable'));
+                    }
+                    // Display Glow Add-On if it exists
+                    if (func.hasOwnProperty('glowAddOn')) { // Check for property existence
+                        // Assuming glowAddOn is a string or boolean. If boolean, might need checkbox like others.
+                        // For now, treating as string as per typical new field.
+                        detailsDiv.appendChild(createFieldElement('Glow Add-On', func.glowAddOn, 'glowAddOn'));
+                    }
+                    if (func['feature-pack']) {
+                         detailsDiv.appendChild(createFieldElement('Feature Pack', func['feature-pack'], 'feature-pack'));
+                    }
+                    // Display Note if it exists
+                    if (func.note) {
+                        detailsDiv.appendChild(createFieldElement('Note', func.note, 'note'));
+                    }
+
+                    // Layer Dependencies
+                    if (func.dependencies && func.dependencies.length > 0) {
+                        const dependenciesContainer = document.createElement('div');
+                        dependenciesContainer.className = 'dependencies-container'; // For potential styling
+
+                        const depHeader = document.createElement('div');
+                        depHeader.className = 'dependencies-header';
+                        
+                        const depLabelWrapper = document.createElement('span');
+                        depLabelWrapper.style.display = 'flex';
+                        depLabelWrapper.style.alignItems = 'center';
+
+                        const depHeaderText = document.createElement('span');
+                        depHeaderText.textContent = 'Layer Dependencies';
+                        depLabelWrapper.appendChild(depHeaderText); // Text first
+
+                        // Add tooltip for Layer Dependencies header (after the text)
+                        if (legendData.dependencies) {
+                            const tooltipIcon = document.createElement('span');
+                            tooltipIcon.className = 'tooltip-icon';
+                            tooltipIcon.textContent = '?';
+                            tooltipIcon.dataset.tooltipText = legendData.dependencies;
+                            tooltipIcon.addEventListener('click', showTooltip); // MODIFIED
+                            depLabelWrapper.appendChild(tooltipIcon);
+                        }
+                        depHeader.appendChild(depLabelWrapper);
+
+                        const depArrow = document.createElement('span');
+                        depArrow.className = 'dependencies-arrow';
+                        depArrow.innerHTML = '&#9654;'; // Right-pointing triangle
+                        depHeader.appendChild(depArrow);
+                        
+                        dependenciesContainer.appendChild(depHeader);
+
+                        const depList = document.createElement('ul');
+                        depList.className = 'dependencies-list'; // Initially hidden by CSS
+
+                        func.dependencies.forEach(depObj => {
+                            const depLayerName = depObj.name; // Extract name from dependency object
+                            const depLi = document.createElement('li');
+                            const depLink = document.createElement('a');
+                            depLink.href = `#func-${depLayerName}`; // Link to func.name
+                            depLink.textContent = depLayerName;
+                            depLi.appendChild(depLink); // Add link first
+                            
+                            if (depObj.optional) {
+                                const optionalSpan = document.createElement('span');
+                                optionalSpan.textContent = ' (optional)';
+                                optionalSpan.style.fontStyle = 'italic';
+                                optionalSpan.style.color = '#5f6368';
+                                optionalSpan.style.marginLeft = '4px';
+                                depLi.appendChild(optionalSpan); // Append the styled span after the link
+                            }
+
+                            // Optional: Add click handler to scroll smoothly or highlight
+                            depLink.addEventListener('click', (e) => {
+                                e.preventDefault(); // Prevent default jump
+                                const targetElement = document.getElementById(`func-${depLayerName}`);
+                                if (targetElement) {
+                                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                    // Optionally expand the target if it's collapsed
+                                    const targetDetails = targetElement.nextElementSibling;
+                                    const targetArrow = targetElement.querySelector('.arrow');
+                                    if (targetDetails && targetDetails.classList.contains('functionality-details') && !targetDetails.classList.contains('visible')) {
+                                        targetDetails.classList.add('visible');
+                                        if(targetArrow) targetArrow.classList.add('expanded');
+                                    }
+                                    // Highlight briefly
+                                    targetElement.style.transition = 'background-color 0.1s ease-in-out';
+                                    targetElement.style.backgroundColor = '#e6f7ff'; // Light blue highlight
+                                    setTimeout(() => {
+                                        targetElement.style.backgroundColor = ''; // Reset
+                                    }, 1000);
+                                } else {
+                                    console.warn(`Dependency target #func-${depLayerName} not found.`);
+                                }
+                            });
+                            depList.appendChild(depLi);
+                        });
+                        dependenciesContainer.appendChild(depList);
+                        detailsDiv.appendChild(dependenciesContainer);
+
+                        depHeader.addEventListener('click', () => {
+                            depList.classList.toggle('visible');
+                            depArrow.classList.toggle('expanded');
+                        });
+                    }
+
+                    // Display Management Model if it exists
+                    if (func.managementModel && Object.keys(func.managementModel).length > 0) {
+                        const mgmtModelContainer = document.createElement('div');
+                        mgmtModelContainer.className = 'management-model-container'; // Add a class for styling if needed
+
+                        const mgmtHeader = document.createElement('div');
+                        mgmtHeader.className = 'dependencies-header'; // Reuse style or create new
+                        mgmtHeader.style.backgroundColor = '#f0f8ff'; // Light blue to differentiate
+
+                        const mgmtLabelWrapper = document.createElement('span');
+                        mgmtLabelWrapper.style.display = 'flex';
+                        mgmtLabelWrapper.style.alignItems = 'center';
+
+                        const mgmtHeaderText = document.createElement('span');
+                        mgmtHeaderText.textContent = 'Management Model';
+                        mgmtLabelWrapper.appendChild(mgmtHeaderText);
+
+                        if (legendData.managementModel) {
+                            const tooltipIcon = document.createElement('span');
+                            tooltipIcon.className = 'tooltip-icon';
+                            tooltipIcon.textContent = '?';
+                            tooltipIcon.dataset.tooltipText = legendData.managementModel;
+                            tooltipIcon.addEventListener('click', showTooltip); // MODIFIED
+                            mgmtLabelWrapper.appendChild(tooltipIcon);
+                        }
+                        mgmtHeader.appendChild(mgmtLabelWrapper);
+
+                        const mgmtArrow = document.createElement('span');
+                        mgmtArrow.className = 'dependencies-arrow'; // Reuse style or create new
+                        mgmtArrow.innerHTML = '&#9654;';
+                        mgmtHeader.appendChild(mgmtArrow);
+                        
+                        mgmtModelContainer.appendChild(mgmtHeader);
+
+                        const mgmtContentDiv = document.createElement('div');
+                        mgmtContentDiv.className = 'dependencies-list'; // Reuse style or create new; initially hidden
+                        mgmtContentDiv.style.paddingLeft = '0px'; // Reset padding if reused from list
+
+                        // Render JSON with bold keys
+                        mgmtContentDiv.innerHTML = ''; // Clear previous content
+                        mgmtContentDiv.style.fontFamily = 'Consolas, "Courier New", monospace';
+                        mgmtContentDiv.style.backgroundColor = '#f5f5f5';
+                        mgmtContentDiv.style.padding = '10px';
+                        mgmtContentDiv.style.borderRadius = '4px';
+                        mgmtContentDiv.style.border = '1px solid #ddd';
+                        mgmtContentDiv.style.whiteSpace = 'pre-wrap';
+                        mgmtContentDiv.style.wordBreak = 'break-all';
+                        
+                        function renderJsonRecursive(obj, indentLevel = 0) {
+                            let html = '';
+                            const indent = '&nbsp;&nbsp;'.repeat(indentLevel);
+                            if (Array.isArray(obj)) {
+                                html += '[' + (obj.length > 0 ? '\n' : '');
+                                obj.forEach((item, index) => {
+                                    html += indent + '&nbsp;&nbsp;' + renderJsonRecursive(item, indentLevel + 1);
+                                    if (index < obj.length - 1) {
+                                        html += ',';
+                                    }
+                                    html += '\n';
+                                });
+                                html += (obj.length > 0 ? indent : '') + ']';
+                            } else if (typeof obj === 'object' && obj !== null) {
+                                html += '{' + (Object.keys(obj).length > 0 ? '\n' : '');
+                                Object.keys(obj).forEach((key, index, arr) => {
+                                    html += indent + '&nbsp;&nbsp;<strong style="color: #990055;">"' + key + '"</strong>: ';
+                                    html += renderJsonRecursive(obj[key], indentLevel + 1);
+                                    if (index < arr.length - 1) {
+                                        html += ',';
+                                    }
+                                    html += '\n';
+                                });
+                                html += (Object.keys(obj).length > 0 ? indent : '') + '}';
+                            } else if (typeof obj === 'string') {
+                                html += '<span style="color: #008000;">"' + obj.replace(/</g, '<').replace(/>/g, '>') + '"</span>';
+                            } else if (typeof obj === 'number') {
+                                html += '<span style="color: #0000ff;">' + obj + '</span>';
+                            } else if (typeof obj === 'boolean') {
+                                html += '<span style="color: #aa00ff;">' + obj + '</span>';
+                            } else if (obj === null) {
+                                html += '<span style="color: #777;">null</span>';
+                            }
+                            return html;
+                        }
+                        mgmtContentDiv.innerHTML = renderJsonRecursive(func.managementModel);
+                        
+                        mgmtModelContainer.appendChild(mgmtContentDiv);
+                        detailsDiv.appendChild(mgmtModelContainer);
+
+                        mgmtHeader.addEventListener('click', () => {
+                            mgmtContentDiv.classList.toggle('visible');
+                            mgmtArrow.classList.toggle('expanded');
+                        });
+                    }
+                    
+                    // Display Glow Rules if they exist
+                    if (func.glowRules && func.glowRules.length > 0) {
+                        const glowRulesContainer = document.createElement('div');
+                        glowRulesContainer.className = 'glow-rules-container';
+
+                        const glowHeader = document.createElement('div');
+                        glowHeader.className = 'dependencies-header'; // Reuse style
+                        glowHeader.style.backgroundColor = '#fff0f5'; // Lavender blush to differentiate
+
+                        const glowLabelWrapper = document.createElement('span');
+                        glowLabelWrapper.style.display = 'flex';
+                        glowLabelWrapper.style.alignItems = 'center';
+
+                        const glowHeaderText = document.createElement('span');
+                        glowHeaderText.textContent = 'Glow Rules';
+                        glowLabelWrapper.appendChild(glowHeaderText);
+
+                        if (legendData.glowRules) {
+                            const tooltipIcon = document.createElement('span');
+                            tooltipIcon.className = 'tooltip-icon';
+                            tooltipIcon.textContent = '?';
+                            tooltipIcon.dataset.tooltipText = legendData.glowRules;
+                            tooltipIcon.addEventListener('click', showTooltip); // MODIFIED
+                            glowLabelWrapper.appendChild(tooltipIcon);
+                        }
+                        glowHeader.appendChild(glowLabelWrapper);
+
+                        const glowArrow = document.createElement('span');
+                        glowArrow.className = 'dependencies-arrow'; // Reuse style
+                        glowArrow.innerHTML = '&#9654;';
+                        glowHeader.appendChild(glowArrow);
+
+                        glowRulesContainer.appendChild(glowHeader);
+
+                        const glowContentDiv = document.createElement('div');
+                        glowContentDiv.className = 'dependencies-list'; // Reuse style; initially hidden
+                        glowContentDiv.style.paddingLeft = '0px';
+
+                        // MODIFIED SECTION for glowRules rendering
+                        func.glowRules.forEach(rule => {
+                            const ruleDiv = document.createElement('div');
+                            ruleDiv.style.padding = '2px 0';
+                            ruleDiv.style.fontFamily = 'Consolas, "Courier New", monospace';
+                            ruleDiv.style.fontSize = '0.9em';
+
+                            // Rule Name part
+                            const nameStrong = document.createElement('strong');
+                            nameStrong.textContent = `"${rule.name}": `;
+                            nameStrong.style.color = '#990055';
+                            ruleDiv.appendChild(nameStrong);
+
+                            if (rule.ruleDescription) {
+                                const tooltipIcon = document.createElement('span');
+                                tooltipIcon.className = 'tooltip-icon';
+                                tooltipIcon.textContent = '?';
+                                tooltipIcon.dataset.tooltipText = rule.ruleDescription;
+                                tooltipIcon.addEventListener('click', showTooltip); // Use improved showTooltip
+                                ruleDiv.appendChild(tooltipIcon);
+                            }
+
+                            ruleDiv.appendChild(document.createTextNode(' ')); // Space between name and value
+
+                            // Rule Value part
+                            const valueSpan = document.createElement('span');
+                            valueSpan.textContent = `"${String(rule.value).replace(/</g, '<').replace(/>/g, '>')}"`;
+                            valueSpan.style.color = '#008000';
+                            ruleDiv.appendChild(valueSpan);
+
+                            if (rule.valueDescription) {
+                                const tooltipIcon = document.createElement('span');
+                                tooltipIcon.className = 'tooltip-icon';
+                                tooltipIcon.textContent = '?';
+                                tooltipIcon.dataset.tooltipText = rule.valueDescription;
+                                tooltipIcon.addEventListener('click', showTooltip); // Use improved showTooltip
+                                ruleDiv.appendChild(tooltipIcon);
+                            }
+                            
+                            glowContentDiv.appendChild(ruleDiv);
+                        });
+                        // END OF MODIFIED SECTION
+
+                        // Apply consistent styling to the container
+                        glowContentDiv.style.fontFamily = 'Consolas, "Courier New", monospace';
+                        glowContentDiv.style.backgroundColor = '#f5f5f5';
+                        glowContentDiv.style.padding = '10px';
+                        glowContentDiv.style.borderRadius = '4px';
+                        glowContentDiv.style.border = '1px solid #ddd';
+                        glowContentDiv.style.whiteSpace = 'pre-wrap'; // Ensure wrapping if a value is very long
+                        glowContentDiv.style.wordBreak = 'break-all';
+
+
+                        glowRulesContainer.appendChild(glowContentDiv);
+                        detailsDiv.appendChild(glowRulesContainer);
+
+                        glowHeader.addEventListener('click', () => {
+                            glowContentDiv.classList.toggle('visible');
+                            glowArrow.classList.toggle('expanded');
+                        });
+                    }
+
+                    funcLi.appendChild(detailsDiv);
+
+                    // Event listener for expanding/collapsing
+                    headerDiv.addEventListener('click', () => {
+                        detailsDiv.classList.toggle('visible');
+                        arrowSpan.classList.toggle('expanded');
+                    });
+
+                    functionalitiesUl.appendChild(funcLi);
+                });
+
+                categoryDiv.appendChild(functionalitiesUl);
+                dataDisplay.appendChild(categoryDiv);
+            });
+        }
+
+        const defaultJsonUrl = 'https://raw.githubusercontent.com/jfdenise/wildfly-catalog/refs/heads/main/docs/37.0.0.Beta1-SNAPSHOT/wildfly-catalog.json?test=foo';
+
+        function loadCatalogData(url) {
+            const dataDisplay = document.getElementById('data-display');
+            dataDisplay.innerHTML = '<p>Loading catalog data...</p>'; // Show loading message
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status} while fetching ${url}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    originalJsonData = data; // Store the original full data
+                    displayData(originalJsonData); // Display all data immediately on load
+
+                    // Set up listeners AFTER initial data display
+                    if (!document.getElementById('searchInput').listenerAttached) {
+                         setupSearchListener();
+                    }
+                    // performSearch will now only be called on user interaction
+                })
+                .catch(error => {
+                    console.error('Error fetching or parsing JSON:', error);
+                    dataDisplay.innerHTML = `<p style="color: red;">Error loading catalog data from ${url}: ${error.message}. Check console for details.</p>`;
+                    originalJsonData = null; // Clear data on error
+                    displayData({ categories: [], legend: {}, documentation: [] }); // Display empty structure
+                });
+        }
+
+        // Fetch and display the data when the page loads
+        window.onload = () => {
+            const jsonUrlInput = document.getElementById('jsonUrlInput');
+            jsonUrlInput.value = defaultJsonUrl; // Set default URL in the input field
+            loadCatalogData(defaultJsonUrl); // Load data from default URL
+
+            const loadJsonButton = document.getElementById('loadJsonButton');
+            loadJsonButton.addEventListener('click', () => {
+                const newUrl = jsonUrlInput.value.trim();
+                if (newUrl) {
+                    loadCatalogData(newUrl);
+                } else {
+                    alert("Please enter a valid JSON URL.");
+                }
+            });
+        };
+
+        function setupSearchListener() {
+            const searchInput = document.getElementById('searchInput');
+            // Prevent adding multiple listeners if called again
+            if (searchInput.listenerAttached) return;
+
+            searchInput.listenerAttached = true; // Mark that listener is attached
+            // const searchInput = document.getElementById('searchInput'); // Duplicate declaration removed
+            if (!searchInput || !originalJsonData) return;
+
+            const stabilitySelect = document.getElementById('stabilitySelect');
+
+            const performSearch = () => {
+                if (!originalJsonData) { // Guard against data not being loaded yet
+                    displayData({ categories: [], legend: {}, documentation: [] }); // Show empty/error state
+                    return;
+                }
+
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                // Ensure stabilitySelect.value is read reliably, fallback to 'experimental' if needed initially
+                const selectedStabilityValue = (stabilitySelect && stabilitySelect.value) ? stabilitySelect.value : "experimental";
+
+                // Display original data if search is empty AND 'experimental' (show all) stability is selected
+                if (searchTerm === '' && selectedStabilityValue.toLowerCase() === 'experimental') {
+                    displayData(originalJsonData);
+                    return;
+                }
+
+                const filteredCategories = originalJsonData.categories.map(category => {
+                    let functionalitiesToShow;
+
+                    functionalitiesToShow = category.functionalities.filter(func => {
+                        let termMatches = searchTerm === ''; // If no search term, all functionalities initially pass this check
+
+                        if (searchTerm !== '') {
+                            const searchFieldsCheckboxes = document.querySelectorAll('.search-field-checkbox');
+                            let selectedFields = [];
+                            searchFieldsCheckboxes.forEach(checkbox => {
+                                if (checkbox.checked) {
+                                    selectedFields.push(checkbox.value);
+                                }
+                            });
+
+                            termMatches = false; // Reset for actual search term matching
+                            if (selectedFields.includes('layerName')) {
+                                if (func.name && func.name.toLowerCase().includes(searchTerm)) termMatches = true;
+                            }
+                            if (!termMatches && selectedFields.includes('description')) {
+                                if (func.description && func.description.toLowerCase().includes(searchTerm)) termMatches = true;
+                                else if (func.note && func.note.toLowerCase().includes(searchTerm)) termMatches = true;
+                            }
+                            if (!termMatches && selectedFields.includes('addOn')) {
+                                if (func.glowAddOn && typeof func.glowAddOn === 'string' && func.glowAddOn.toLowerCase().includes(searchTerm)) termMatches = true;
+                            }
+                            if (!termMatches && selectedFields.includes('featurePack')) {
+                                if (func['feature-pack'] && func['feature-pack'].toLowerCase().includes(searchTerm)) termMatches = true;
+                            }
+                            if (!termMatches && selectedFields.includes('api')) {
+                                if (func.glowRules && Array.isArray(func.glowRules)) {
+                                    if (func.glowRules.some(rule => rule.value && rule.value.toLowerCase().includes(searchTerm))) termMatches = true;
+                                }
+                            }
+                        }
+
+                        // Now, check stability filter with hierarchical logic
+                        let stabilityMatches = false;
+                        const funcStability = func.stability ? func.stability.toLowerCase() : 'default'; // Treat undefined/empty as 'default'
+
+                        switch (selectedStabilityValue.toLowerCase()) { // Use selectedStabilityValue
+                            case 'experimental':
+                                stabilityMatches = true; // Experimental shows all
+                                break;
+                            case 'preview':
+                                stabilityMatches = ['preview', 'community', 'default'].includes(funcStability);
+                                break;
+                            case 'community':
+                                stabilityMatches = ['community', 'default'].includes(funcStability);
+                                break;
+                            case 'default':
+                                stabilityMatches = (funcStability === 'default');
+                                break;
+                            default: // Should not happen with the select, but good practice
+                                stabilityMatches = true; 
+                        }
+                        
+                        // A functionality is shown if it matches the search term (or no term) AND the stability filter
+                        return termMatches && stabilityMatches;
+                    });
+
+                    // Include the category if it has functionalities to show after all filters
+                    if (functionalitiesToShow && functionalitiesToShow.length > 0) {
+                        return { ...category, functionalities: functionalitiesToShow };
+                    }
+                    return null;
+                }).filter(category => category !== null);
+
+                const filteredData = {
+                    ...originalJsonData,
+                    categories: filteredCategories
+                };
+                displayData(filteredData);
+            };
+
+            searchInput.addEventListener('input', performSearch);
+            stabilitySelect.addEventListener('change', performSearch);
+        }
+    </script>
+</body>
+</html>
