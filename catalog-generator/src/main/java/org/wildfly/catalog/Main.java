@@ -74,9 +74,14 @@ public class Main {
             JsonNode fpList = mapper.readTree(new URL(url));
             ArrayNode fps = (ArrayNode) fpList.get("featurePacks");
             Iterator<JsonNode> it = fps.elements();
+            ArrayNode featurePacks = mapper.createArrayNode();
+            target.set("featurePacks", featurePacks);
             while (it.hasNext()) {
+                ObjectNode fpNode = mapper.createObjectNode();
+                featurePacks.add(fpNode);
                 String fp = it.next().asText();
                 System.out.println("FP " + fp);
+                fpNode.put("mavenCoordinates", fp);
                 // Mimic what we would do using maven. here we expect all to be in the cache
                 Path home = Paths.get(System.getProperty("user.home")).resolve(".m2").resolve("repository");
                 String[] coords = fp.split(":");
@@ -86,6 +91,12 @@ public class Main {
                 String metadataFileName = artifactId + "-"+version+"-metadata.json";
                 Path metadataFile = home.resolve(groupId).resolve(artifactId).resolve(version).resolve(metadataFileName);
                 JsonNode subCatalog = mapper.readTree(metadataFile.toFile().toURI().toURL());
+                String modelFileName = artifactId + "-"+version+"-model.json";
+                Path modelFile = home.resolve(groupId).resolve(artifactId).resolve(version).resolve(modelFileName);
+                if(Files.exists(modelFile)) {
+                    JsonNode model = mapper.readTree(modelFile.toFile().toURI().toURL());
+                    fpNode.set("managementModel", model);
+                }
                 generateCatalog(subCatalog, glowRulesDescriptions, categories, mapper);
             }
         }

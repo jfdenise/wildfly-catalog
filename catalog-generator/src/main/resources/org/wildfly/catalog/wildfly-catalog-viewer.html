@@ -315,6 +315,7 @@
         </div>
         <!-- Removed catalog-description div as its content is now in H1 -->
         <div id="documentation-section" class="documentation-section" style="display: none;"></div>
+        <div id="feature-packs-section" class="documentation-section" style="display: none;"></div>
         <div style="margin-bottom: 5px; text-align: center;">
             <label for="stabilitySelect" style="margin-right: 5px; font-size: 0.9em;">Minimum stability level:</label>
             <select id="stabilitySelect" style="padding: 10px; border-radius: 4px; border: 1px solid #ccc; font-size: 1em; margin-right: 10px;">
@@ -339,6 +340,11 @@
     <script>
         let activeTooltip = null;
         let originalJsonData = null; // To store the full dataset for filtering
+
+        function sanitizeForId(text) {
+            if (typeof text !== 'string') return '';
+            return text.replace(/[^a-zA-Z0-9-_]/g, '_');
+        }
 
         function showTooltip(event) {
             event.stopPropagation(); // Prevent click from immediately closing due to document listener
@@ -449,6 +455,42 @@
                 }
             }
 
+            function renderJsonRecursive(obj, indentLevel = 0) {
+                let html = '';
+                const indent = '&nbsp;&nbsp;'.repeat(indentLevel);
+                if (Array.isArray(obj)) {
+                    html += '[' + (obj.length > 0 ? '\n' : '');
+                    obj.forEach((item, index) => {
+                        html += indent + '&nbsp;&nbsp;' + renderJsonRecursive(item, indentLevel + 1);
+                        if (index < obj.length - 1) {
+                            html += ',';
+                        }
+                        html += '\n';
+                    });
+                    html += (obj.length > 0 ? indent : '') + ']';
+                } else if (typeof obj === 'object' && obj !== null) {
+                    html += '{' + (Object.keys(obj).length > 0 ? '\n' : '');
+                    Object.keys(obj).forEach((key, index, arr) => {
+                        html += indent + '&nbsp;&nbsp;<strong style="color: #990055;">"' + key + '"</strong>: ';
+                        html += renderJsonRecursive(obj[key], indentLevel + 1);
+                        if (index < arr.length - 1) {
+                            html += ',';
+                        }
+                        html += '\n';
+                    });
+                    html += (Object.keys(obj).length > 0 ? indent : '') + '}';
+                } else if (typeof obj === 'string') {
+                    html += '<span style="color: #008000;">"' + obj.replace(/</g, '<').replace(/>/g, '>') + '"</span>';
+                } else if (typeof obj === 'number') {
+                    html += '<span style="color: #0000ff;">' + obj + '</span>';
+                } else if (typeof obj === 'boolean') {
+                    html += '<span style="color: #aa00ff;">' + obj + '</span>';
+                } else if (obj === null) {
+                    html += '<span style="color: #777;">null</span>';
+                }
+                return html;
+            }
+
             // Populate Documentation Section
             const docSection = document.getElementById('documentation-section');
             docSection.innerHTML = ''; // Clear previous
@@ -476,6 +518,96 @@
                 docSection.style.display = 'none'; // Hide if no documentation
             }
 
+            // Populate Feature Packs Section
+            const featurePacksSection = document.getElementById('feature-packs-section');
+            featurePacksSection.innerHTML = ''; // Clear previous
+            if (jsonData.featurePacks && Array.isArray(jsonData.featurePacks) && jsonData.featurePacks.length > 0) {
+                featurePacksSection.style.display = 'block';
+                const fpSectionTitle = document.createElement('h2');
+                fpSectionTitle.textContent = 'Feature Packs';
+                featurePacksSection.appendChild(fpSectionTitle);
+
+                jsonData.featurePacks.forEach(fp => {
+                    const fpDiv = document.createElement('div');
+                    fpDiv.className = 'category'; // Reuse category styling
+                    fpDiv.id = `fp-${sanitizeForId(fp.mavenCoordinates)}`; // Add ID for linking
+
+                    const fpCoordsContainer = document.createElement('div');
+                    const fpCoordsElement = document.createElement('h3'); // Using h3 for mavenCoordinates
+                    fpCoordsElement.style.display = 'inline';
+                    fpCoordsElement.textContent = fp.mavenCoordinates;
+                    fpCoordsContainer.appendChild(fpCoordsElement);
+
+                    if (legendData.mavenCoordinates) { // Assuming 'mavenCoordinates' is the key in legend
+                        const tooltipIcon = document.createElement('span');
+                        tooltipIcon.className = 'tooltip-icon';
+                        tooltipIcon.textContent = '?';
+                        tooltipIcon.dataset.tooltipText = legendData.mavenCoordinates;
+                        tooltipIcon.addEventListener('click', showTooltip);
+                        tooltipIcon.style.marginLeft = '5px';
+                        fpCoordsContainer.appendChild(tooltipIcon);
+                    }
+                    fpDiv.appendChild(fpCoordsContainer);
+
+                    if (fp.managementModel && Object.keys(fp.managementModel).length > 0) {
+                        const mgmtModelContainer = document.createElement('div');
+                        mgmtModelContainer.className = 'management-model-container';
+
+                        const mgmtHeader = document.createElement('div');
+                        mgmtHeader.className = 'dependencies-header'; // Reuse style
+                        mgmtHeader.style.backgroundColor = '#e0f0ff'; // Light blue to differentiate
+
+                        const mgmtLabelWrapper = document.createElement('span');
+                        mgmtLabelWrapper.style.display = 'flex';
+                        mgmtLabelWrapper.style.alignItems = 'center';
+
+                        const mgmtHeaderText = document.createElement('span');
+                        mgmtHeaderText.textContent = 'Management Model';
+                        mgmtLabelWrapper.appendChild(mgmtHeaderText);
+
+                        if (legendData.featurePackManagementModel) { // Assuming specific legend key
+                            const tooltipIcon = document.createElement('span');
+                            tooltipIcon.className = 'tooltip-icon';
+                            tooltipIcon.textContent = '?';
+                            tooltipIcon.dataset.tooltipText = legendData.featurePackManagementModel;
+                            tooltipIcon.addEventListener('click', showTooltip);
+                            mgmtLabelWrapper.appendChild(tooltipIcon);
+                        }
+                        mgmtHeader.appendChild(mgmtLabelWrapper);
+
+                        const mgmtArrow = document.createElement('span');
+                        mgmtArrow.className = 'dependencies-arrow';
+                        mgmtArrow.innerHTML = '&#9654;';
+                        mgmtHeader.appendChild(mgmtArrow);
+                        
+                        mgmtModelContainer.appendChild(mgmtHeader);
+
+                        const mgmtContentDiv = document.createElement('div');
+                        mgmtContentDiv.className = 'dependencies-list'; // Reuse style; initially hidden
+                        mgmtContentDiv.style.paddingLeft = '0px';
+                        
+                        mgmtContentDiv.innerHTML = renderJsonRecursive(fp.managementModel);
+                        mgmtContentDiv.style.fontFamily = 'Consolas, "Courier New", monospace';
+                        mgmtContentDiv.style.backgroundColor = '#f0f5f0'; // Distinct background
+                        mgmtContentDiv.style.padding = '10px';
+                        mgmtContentDiv.style.borderRadius = '4px';
+                        mgmtContentDiv.style.border = '1px solid #d0d0d0';
+                        mgmtContentDiv.style.whiteSpace = 'pre-wrap';
+                        mgmtContentDiv.style.wordBreak = 'break-all';
+                        
+                        mgmtModelContainer.appendChild(mgmtContentDiv);
+                        fpDiv.appendChild(mgmtModelContainer);
+
+                        mgmtHeader.addEventListener('click', () => {
+                            mgmtContentDiv.classList.toggle('visible');
+                            mgmtArrow.classList.toggle('expanded');
+                        });
+                    }
+                    featurePacksSection.appendChild(fpDiv);
+                });
+            } else {
+                featurePacksSection.style.display = 'none';
+            }
 
             const dataDisplay = document.getElementById('data-display');
             dataDisplay.innerHTML = ''; // Clear previous content
@@ -565,7 +697,29 @@
                         detailsDiv.appendChild(createFieldElement('Glow Add-On', func.glowAddOn, 'glowAddOn'));
                     }
                     if (func['feature-pack']) {
-                         detailsDiv.appendChild(createFieldElement('Feature Pack', func['feature-pack'], 'feature-pack'));
+                        const fpValue = func['feature-pack'];
+                        const linkElement = document.createElement('a');
+                        const targetId = `fp-${sanitizeForId(fpValue)}`;
+                        linkElement.href = `#${targetId}`;
+                        linkElement.textContent = fpValue;
+                        linkElement.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            const targetElement = document.getElementById(targetId);
+                            if (targetElement) {
+                                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                // Highlight briefly
+                                targetElement.style.transition = 'background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out';
+                                targetElement.style.backgroundColor = '#e6f7ff'; // Light blue highlight
+                                targetElement.style.boxShadow = '0 0 12px rgba(26, 115, 232, 0.6)'; // Enhanced blue glow
+                                setTimeout(() => {
+                                    targetElement.style.backgroundColor = ''; // Reset
+                                    targetElement.style.boxShadow = ''; // Reset
+                                }, 1500);
+                            } else {
+                                console.warn(`Feature pack target #${targetId} not found.`);
+                            }
+                        });
+                        detailsDiv.appendChild(createFieldElement('Feature Pack', linkElement, 'feature-pack'));
                     }
                     // Display Note if it exists
                     if (func.note) {
@@ -708,41 +862,6 @@
                         mgmtContentDiv.style.whiteSpace = 'pre-wrap';
                         mgmtContentDiv.style.wordBreak = 'break-all';
                         
-                        function renderJsonRecursive(obj, indentLevel = 0) {
-                            let html = '';
-                            const indent = '&nbsp;&nbsp;'.repeat(indentLevel);
-                            if (Array.isArray(obj)) {
-                                html += '[' + (obj.length > 0 ? '\n' : '');
-                                obj.forEach((item, index) => {
-                                    html += indent + '&nbsp;&nbsp;' + renderJsonRecursive(item, indentLevel + 1);
-                                    if (index < obj.length - 1) {
-                                        html += ',';
-                                    }
-                                    html += '\n';
-                                });
-                                html += (obj.length > 0 ? indent : '') + ']';
-                            } else if (typeof obj === 'object' && obj !== null) {
-                                html += '{' + (Object.keys(obj).length > 0 ? '\n' : '');
-                                Object.keys(obj).forEach((key, index, arr) => {
-                                    html += indent + '&nbsp;&nbsp;<strong style="color: #990055;">"' + key + '"</strong>: ';
-                                    html += renderJsonRecursive(obj[key], indentLevel + 1);
-                                    if (index < arr.length - 1) {
-                                        html += ',';
-                                    }
-                                    html += '\n';
-                                });
-                                html += (Object.keys(obj).length > 0 ? indent : '') + '}';
-                            } else if (typeof obj === 'string') {
-                                html += '<span style="color: #008000;">"' + obj.replace(/</g, '<').replace(/>/g, '>') + '"</span>';
-                            } else if (typeof obj === 'number') {
-                                html += '<span style="color: #0000ff;">' + obj + '</span>';
-                            } else if (typeof obj === 'boolean') {
-                                html += '<span style="color: #aa00ff;">' + obj + '</span>';
-                            } else if (obj === null) {
-                                html += '<span style="color: #777;">null</span>';
-                            }
-                            return html;
-                        }
                         mgmtContentDiv.innerHTML = renderJsonRecursive(func.managementModel);
                         
                         mgmtModelContainer.appendChild(mgmtContentDiv);
@@ -896,7 +1015,7 @@
                     console.error('Error fetching or parsing JSON:', error);
                     dataDisplay.innerHTML = `<p style="color: red;">Error loading catalog data from ${url}: ${error.message}. Check console for details.</p>`;
                     originalJsonData = null; // Clear data on error
-                    displayData({ categories: [], legend: {}, documentation: [] }); // Display empty structure
+                    displayData({ categories: [], legend: {}, documentation: [], featurePacks: [] }); // Display empty structure
                 });
         }
 
@@ -930,7 +1049,7 @@
 
             const performSearch = () => {
                 if (!originalJsonData) { // Guard against data not being loaded yet
-                    displayData({ categories: [], legend: {}, documentation: [] }); // Show empty/error state
+                    displayData({ categories: [], legend: {}, documentation: [], featurePacks: [] }); // Show empty/error state
                     return;
                 }
 
