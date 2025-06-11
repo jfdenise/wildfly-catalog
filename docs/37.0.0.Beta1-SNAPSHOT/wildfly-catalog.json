@@ -11680,8 +11680,17 @@
       }
     },
     "configuration" : [ {
+      "attribute" : "/interface=management.inet-address",
+      "systemProperties" : [ "jboss.bind.address.management" ]
+    }, {
       "attribute" : "/interface=private.inet-address",
       "systemProperties" : [ "jboss.bind.address.private" ]
+    }, {
+      "attribute" : "/interface=public.inet-address",
+      "systemProperties" : [ "jboss.bind.address" ]
+    }, {
+      "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+      "systemProperties" : [ "jboss.socket.binding.port-offset" ]
     }, {
       "attribute" : "/socket-binding-group=standard-sockets/remote-destination-outbound-socket-binding=messaging-activemq.host",
       "systemProperties" : [ "jboss.messaging.connector.host" ]
@@ -11689,17 +11698,38 @@
       "attribute" : "/socket-binding-group=standard-sockets/remote-destination-outbound-socket-binding=messaging-activemq.port",
       "systemProperties" : [ "jboss.messaging.connector.port" ]
     }, {
+      "attribute" : "/socket-binding-group=standard-sockets/socket-binding=ajp.port",
+      "systemProperties" : [ "jboss.ajp.port" ]
+    }, {
+      "attribute" : "/socket-binding-group=standard-sockets/socket-binding=http.port",
+      "systemProperties" : [ "jboss.http.port" ]
+    }, {
+      "attribute" : "/socket-binding-group=standard-sockets/socket-binding=https.port",
+      "systemProperties" : [ "jboss.https.port" ]
+    }, {
       "attribute" : "/socket-binding-group=standard-sockets/socket-binding=jgroups-mping.multicast-address",
       "systemProperties" : [ "jboss.default.multicast.address" ]
     }, {
       "attribute" : "/socket-binding-group=standard-sockets/socket-binding=jgroups-udp.multicast-address",
       "systemProperties" : [ "jboss.default.multicast.address" ]
     }, {
+      "attribute" : "/socket-binding-group=standard-sockets/socket-binding=management-http.port",
+      "systemProperties" : [ "jboss.management.http.port" ]
+    }, {
+      "attribute" : "/socket-binding-group=standard-sockets/socket-binding=management-https.port",
+      "systemProperties" : [ "jboss.management.https.port" ]
+    }, {
+      "attribute" : "/subsystem=deployment-scanner/scanner=default.runtime-failure-causes-rollback",
+      "systemProperties" : [ "jboss.deployment.scanner.rollback.on.failure" ]
+    }, {
       "attribute" : "/subsystem=ejb3.default-resource-adapter-name",
       "systemProperties" : [ "ejb.resource-adapter-name" ]
     }, {
       "attribute" : "/subsystem=ejb3.statistics-enabled",
       "systemProperties" : [ "wildfly.ejb3.statistics-enabled", "wildfly.statistics-enabled" ]
+    }, {
+      "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+      "systemProperties" : [ "jboss.server.temp.dir" ]
     }, {
       "attribute" : "/subsystem=messaging-activemq/server=default.statistics-enabled",
       "systemProperties" : [ "wildfly.messaging-activemq.statistics-enabled", "wildfly.statistics-enabled" ]
@@ -11715,6 +11745,15 @@
     }, {
       "attribute" : "/subsystem=microprofile-health-smallrye.empty-startup-checks-status",
       "environmentVariables" : [ "MP_HEALTH_EMPTY_STARTUP_CHECKS_STATUS" ]
+    }, {
+      "attribute" : "/subsystem=transactions.node-identifier",
+      "systemProperties" : [ "jboss.tx.node.id" ]
+    }, {
+      "attribute" : "/subsystem=transactions.statistics-enabled",
+      "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+    }, {
+      "attribute" : "/subsystem=undertow.statistics-enabled",
+      "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.undertow.statistics-enabled" ]
     } ]
   }, {
     "mavenCoordinates" : "org.wildfly:wildfly-datasources-galleon-pack:10.0.1.Final-SNAPSHOT",
