@@ -549,7 +549,7 @@
                     }
                     fpDiv.appendChild(fpCoordsContainer);
 
-                    if (fp.managementModel && Object.keys(fp.managementModel).length > 0) {
+                    if (fp.modelReference && Object.keys(fp.modelReference).length > 0) {
                         const mgmtModelContainer = document.createElement('div');
                         mgmtModelContainer.className = 'management-model-container';
 
@@ -565,11 +565,11 @@
                         mgmtHeaderText.textContent = 'Management Model';
                         mgmtLabelWrapper.appendChild(mgmtHeaderText);
 
-                        if (legendData.featurePackManagementModel) { // Assuming specific legend key
+                        if (legendData.modelReference) { // Assuming specific legend key
                             const tooltipIcon = document.createElement('span');
                             tooltipIcon.className = 'tooltip-icon';
                             tooltipIcon.textContent = '?';
-                            tooltipIcon.dataset.tooltipText = legendData.featurePackManagementModel;
+                            tooltipIcon.dataset.tooltipText = legendData.modelReference;
                             tooltipIcon.addEventListener('click', showTooltip);
                             mgmtLabelWrapper.appendChild(tooltipIcon);
                         }
@@ -586,7 +586,7 @@
                         mgmtContentDiv.className = 'dependencies-list'; // Reuse style; initially hidden
                         mgmtContentDiv.style.paddingLeft = '0px';
                         
-                        mgmtContentDiv.innerHTML = renderJsonRecursive(fp.managementModel);
+                        mgmtContentDiv.innerHTML = renderJsonRecursive(fp.modelReference);
                         mgmtContentDiv.style.fontFamily = 'Consolas, "Courier New", monospace';
                         mgmtContentDiv.style.backgroundColor = '#f0f5f0'; // Distinct background
                         mgmtContentDiv.style.padding = '10px';
