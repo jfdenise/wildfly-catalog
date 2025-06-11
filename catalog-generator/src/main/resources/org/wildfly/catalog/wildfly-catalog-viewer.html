@@ -621,11 +621,11 @@
                         configHeaderText.textContent = 'Configuration';
                         configLabelWrapper.appendChild(configHeaderText);
 
-                        if (legendData.featurePackConfiguration) { 
+                        if (legendData.configuration) { 
                             const tooltipIcon = document.createElement('span');
                             tooltipIcon.className = 'tooltip-icon';
                             tooltipIcon.textContent = '?';
-                            tooltipIcon.dataset.tooltipText = legendData.featurePackConfiguration;
+                            tooltipIcon.dataset.tooltipText = legendData.configuration;
                             tooltipIcon.addEventListener('click', showTooltip);
                             configLabelWrapper.appendChild(tooltipIcon);
                         }
