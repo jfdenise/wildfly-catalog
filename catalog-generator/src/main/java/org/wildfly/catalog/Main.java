@@ -95,7 +95,7 @@ public class Main {
                 Path modelFile = home.resolve(groupId).resolve(artifactId).resolve(version).resolve(modelFileName);
                 if(Files.exists(modelFile)) {
                     JsonNode model = mapper.readTree(modelFile.toFile().toURI().toURL());
-                    fpNode.set("managementModel", model);
+                    fpNode.set("modelReference", model);
                 }
                 if(subCatalog.has("configuration")) {
                     fpNode.set("configuration", subCatalog.get("configuration"));

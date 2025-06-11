@@ -24,11 +24,13 @@
     "feature-pack" : "The Galleon feature-pack that defines the layer.",
     "managementModel" : "The part of the management model this layer brings to the server configuration. Can be empty if this layer only aggregates some layers.",
     "dependencies" : "The list of layers this layer depends on. Those layers are also provisioned when this layer is provisioned.",
-    "configuration" : "Environment variables and system properties that can be used to configure the server."
+    "configuration" : "Environment variables and system properties that can be used to configure the server.",
+    "modelReference" : "The model reference of the resources that this feature-pack can provision",
+    "mavenCoordinates" : "the Maven GroupId, ArtifactId and Version of the feature-pack to be used with provisioning tooling"
   },
   "featurePacks" : [ {
     "mavenCoordinates" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
-    "managementModel" : {
+    "modelReference" : {
       "description" : "The root node of the server-level management model.",
       "min-occurs" : 1,
       "max-occurs" : 1,
@@ -12149,7 +12151,7 @@
     } ]
   }, {
     "mavenCoordinates" : "org.keycloak:keycloak-saml-adapter-galleon-pack:999.0.0-SNAPSHOT",
-    "managementModel" : [ {
+    "modelReference" : [ {
       "address" : [ {
         "subsystem" : "keycloak-saml"
       } ],
@@ -13138,7 +13140,7 @@
     "mavenCoordinates" : "org.wildfly:wildfly-myfaces-feature-pack:2.0.1.Final-SNAPSHOT"
   }, {
     "mavenCoordinates" : "org.wildfly:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
-    "managementModel" : [ {
+    "modelReference" : [ {
       "address" : [ {
         "subsystem" : "mcp"
       } ],

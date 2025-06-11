@@ -28,7 +28,9 @@
         "feature-pack": "The Galleon feature-pack that defines the layer.",
         "managementModel": "The part of the management model this layer brings to the server configuration. Can be empty if this layer only aggregates some layers.",
         "dependencies": "The list of layers this layer depends on. Those layers are also provisioned when this layer is provisioned.",
-        "configuration": "Environment variables and system properties that can be used to configure the server."
+        "configuration": "Environment variables and system properties that can be used to configure the server.",
+        "modelReference": "The model reference of the resources that this feature-pack can provision",
+        "mavenCoordinates": "the Maven GroupId, ArtifactId and Version of the feature-pack to be used with provisioning tooling"
     },
     "cloud": [
         {
