@@ -746,7 +746,11 @@
                         fp.layers.forEach(layerName => {
                             const layerLi = document.createElement('li');
                             const layerLink = document.createElement('a');
-                            const targetId = `func-${sanitizeForId(layerName)}`; 
+                            let tid = `func-${sanitizeForId(layerName)}`; 
+                            if (fp.mavenCoordinates.includes("wildfly-cloud-galleon-pack")) {
+                              tid = `func-${sanitizeForId(fp.mavenCoordinates+'_'+layerName)}`;
+                            }
+                            const targetId = tid;
                             layerLink.href = `#${targetId}`;
                             layerLink.textContent = layerName;
 
@@ -879,8 +883,11 @@
 
                     const headerDiv = document.createElement('div');
                     headerDiv.className = 'functionality-header';
-                    headerDiv.id = `func-${func.name}`; 
-
+                    if (func['feature-pack'].includes("wildfly-cloud-galleon-pack")) {
+                      headerDiv.id = `func-${sanitizeForId(func['feature-pack'] +'_'+func.name)}`; 
+                    } else {
+                      headerDiv.id = `func-${sanitizeForId(func.name)}`;
+                    }
                     const labelWrapper = document.createElement('span'); 
                     labelWrapper.style.display = 'flex'; 
                     labelWrapper.style.alignItems = 'center';
