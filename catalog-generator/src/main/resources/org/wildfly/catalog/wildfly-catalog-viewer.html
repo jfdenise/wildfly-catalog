@@ -302,6 +302,14 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             border: 1px solid #555;
         }
+        .content-title-style {
+            color: #1a73e8;
+            font-size: 1.6em;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 10px;
+            margin-bottom: 20px; /* Increased slightly for better separation to controls */
+            margin-top: 30px;    /* Spacing from potential section above */
+        }
     </style>
 </head>
 <body>
@@ -316,6 +324,7 @@
         <!-- Removed catalog-description div as its content is now in H1 -->
         <div id="documentation-section" class="documentation-section" style="display: none;"></div>
         <div id="feature-packs-section" class="documentation-section" style="display: none;"></div>
+        <h2 class="content-title-style">WildFly Layers (grouped per category)</h2>
         <div style="margin-bottom: 5px; text-align: center;">
             <label for="stabilitySelect" style="margin-right: 5px; font-size: 0.9em;">Minimum stability level:</label>
             <select id="stabilitySelect" style="padding: 10px; border-radius: 4px; border: 1px solid #ccc; font-size: 1em; margin-right: 10px;">
