@@ -30,7 +30,8 @@
   },
   "featurePacks" : [ {
     "mavenCoordinates" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
-    "description" : "WildFly feature-pack to provision trimmed WildFly server.",
+    "name" : "WildFly: Galleon Pack",
+    "description" : "Parent for various Galleon feature pack modules",
     "layers" : [ "batch-jberet", "bean-validation", "cdi", "cloud-server", "core-tools", "datasources-web-server", "ee-concurrency", "ee-core-profile-server", "ejb", "ejb-dist-cache", "ejb-http-invoker", "ejb-lite", "ejb-local-cache", "elytron-oidc-client", "embedded-activemq", "health", "jaxrs", "jaxrs-core", "jaxrs-server", "jpa", "jpa-distributed", "jsf", "jsonb", "jsonp", "messaging-activemq", "metrics", "microprofile-config", "microprofile-health", "microprofile-telemetry", "mvc-krazo", "naming", "observability", "opentelemetry", "remote-activemq", "resource-adapters", "undertow-https" ],
     "modelReference" : {
       "description" : "The root node of the server-level management model.",
@@ -11683,11 +11684,13 @@
     }
   }, {
     "mavenCoordinates" : "org.wildfly:wildfly-datasources-galleon-pack:10.0.1.Final-SNAPSHOT",
-    "description" : "Feature-pack for WildFly that provides JDBC drivers and datasources for various databases.",
+    "name" : "Drivers and datasources for WildFly",
+    "description" : "Drivers and datasources for WildFly",
     "layers" : [ "db2-datasource", "db2-default-datasource", "db2-driver", "mariadb-datasource", "mariadb-default-datasource", "mariadb-driver", "mssqlserver-datasource", "mssqlserver-default-datasource", "mssqlserver-driver", "mysql-datasource", "mysql-default-datasource", "mysql-driver", "oracle-datasource", "oracle-default-datasource", "oracle-driver", "postgresql-datasource", "postgresql-default-datasource", "postgresql-driver" ]
   }, {
     "mavenCoordinates" : "org.keycloak:keycloak-saml-adapter-galleon-pack:999.0.0-SNAPSHOT",
-    "description" : "Feature-pack for WildFly that provides SAML support.",
+    "name" : "Keycloak Galleon Feature Pack: SAML Adapter",
+    "description" : "",
     "layers" : [ "keycloak-client-saml", "keycloak-client-saml-ejb", "keycloak-saml" ],
     "modelReference" : {
       "children" : {
@@ -12917,11 +12920,13 @@
     }
   }, {
     "mavenCoordinates" : "org.wildfly:wildfly-myfaces-feature-pack:2.0.1.Final-SNAPSHOT",
-    "description" : "Feature pack for WildFly that provides MyFaces 4.x support.",
+    "name" : "MyFaces 4 Support for WildFly - Feature Pack",
+    "description" : "MyFaces 4 Support for WildFly - Feature Pack",
     "layers" : [ "myfaces" ]
   }, {
     "mavenCoordinates" : "org.wildfly:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
-    "description" : "This feature-pack for WildFly simplifies the integration of AI in applications.",
+    "name" : "AI Feature pack for WildFly",
+    "description" : "Feature pack to provide AI integration for WildFly",
     "layers" : [ "ai", "gemini-chat-model", "github-chat-model", "mistral-ai-chat-model", "neo4j-content-retriever", "ollama-chat-model" ],
     "modelReference" : {
       "children" : {
