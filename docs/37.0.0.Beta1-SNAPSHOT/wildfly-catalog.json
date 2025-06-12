@@ -15775,7 +15775,7 @@
     "mavenCoordinates" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
     "name" : "WildFly Galleon feature-pack for the Cloud",
     "description" : "This feature-pack adjusts the WildFly layers to run on the cloud.",
-    "layers" : [ "cloud-default-config", "ejb-dist-cache", "embedded-activemq", "jpa", "jpa-distributed", "logging", "mail", "management", "messaging-activemq", "transactions", "undertow", "web-clustering", "webservices" ]
+    "layers" : [ "base-server", "cloud-default-config", "ejb-dist-cache", "embedded-activemq", "jpa", "jpa-distributed", "logging", "mail", "management", "messaging-activemq", "transactions", "undertow", "web-clustering", "webservices" ]
   } ],
   "categories" : [ {
     "name" : "AI",
@@ -16388,6 +16388,34 @@
   }, {
     "name" : "Cloud",
     "functionalities" : [ {
+      "name" : "base-server",
+      "managementModel" : {
+        "interface" : {
+          "bindall" : {
+            "inet-address" : "${jboss.bind.address.bindall:0.0.0.0}"
+          }
+        },
+        "socket-binding-group" : {
+          "standard-sockets" : {
+            "port-offset" : "0"
+          }
+        }
+      },
+      "configuration" : [ {
+        "attribute" : "/interface=bindall.inet-address",
+        "systemProperties" : [ "jboss.bind.address.bindall" ]
+      } ],
+      "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
+      "description" : "WildFly base server, adjusted for the cloud",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.configuration",
+        "value" : "https://raw.githubusercontent.com/wildfly/wildfly-cekit-modules/main/jboss/container/wildfly/launch/port-offset/module.yaml",
+        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
+        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
+      } ],
+      "glowDiscoverable" : true
+    }, {
       "name" : "cloud-default-config",
       "managementModel" : {
         "interface" : {
