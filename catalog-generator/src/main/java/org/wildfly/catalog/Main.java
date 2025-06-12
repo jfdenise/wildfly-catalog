@@ -23,7 +23,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Properties;
+import java.util.Set;
 import java.util.TreeMap;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -88,15 +90,26 @@ public class Main {
                 String groupId = coords[0].replaceAll("\\.", File.separator);
                 String artifactId = coords[1];
                 String version = coords[2];
-                String metadataFileName = artifactId + "-"+version+"-metadata.json";
+                String metadataFileName = artifactId + "-" + version + "-metadata.json";
                 Path metadataFile = home.resolve(groupId).resolve(artifactId).resolve(version).resolve(metadataFileName);
                 JsonNode subCatalog = mapper.readTree(metadataFile.toFile().toURI().toURL());
                 if (subCatalog.hasNonNull("description")) {
                     fpNode.put("description", subCatalog.get("description").asText());
                 }
-                String modelFileName = artifactId + "-"+version+"-model.json";
+                ArrayNode layersArray = (ArrayNode) subCatalog.get("layers");
+                Iterator<JsonNode> layers = layersArray.elements();
+                ArrayNode layersArrayTarget = mapper.createArrayNode();
+                fpNode.set("layers", layersArrayTarget);
+                Set<String> layersSet = new TreeSet<>();
+                while (layers.hasNext()) {
+                    layersSet.add(layers.next().get("name").asText());
+                }
+                for (String n : layersSet) {
+                    layersArrayTarget.add(n);
+                }
+                String modelFileName = artifactId + "-" + version + "-model.json";
                 Path modelFile = home.resolve(groupId).resolve(artifactId).resolve(version).resolve(modelFileName);
-                if(Files.exists(modelFile)) {
+                if (Files.exists(modelFile)) {
                     JsonNode model = mapper.readTree(modelFile.toFile().toURI().toURL());
                     fpNode.set("modelReference", model);
                 }
