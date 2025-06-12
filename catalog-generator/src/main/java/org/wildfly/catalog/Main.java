@@ -93,9 +93,8 @@ public class Main {
                 String metadataFileName = artifactId + "-" + version + "-metadata.json";
                 Path metadataFile = home.resolve(groupId).resolve(artifactId).resolve(version).resolve(metadataFileName);
                 JsonNode subCatalog = mapper.readTree(metadataFile.toFile().toURI().toURL());
-                if (subCatalog.hasNonNull("description")) {
-                    fpNode.put("description", subCatalog.get("description").asText());
-                }
+                fpNode.put("name", subCatalog.get("name").asText());
+                fpNode.put("description", subCatalog.get("description").asText());                
                 ArrayNode layersArray = (ArrayNode) subCatalog.get("layers");
                 Iterator<JsonNode> layers = layersArray.elements();
                 ArrayNode layersArrayTarget = mapper.createArrayNode();
