@@ -16,6 +16,7 @@
   "legend" : {
     "layer" : "The Galleon layer name to use to provision the feature.",
     "description" : "The textual description of the layer.",
+    "featurePackDescription" : "The textual description of the feature-pack.",
     "stability" : "One of default, community, preview and experimental. community and default stability features are available by default.",
     "note" : "To highlight a particularity that occurs when provisioning this layer.",
     "glowDiscoverable" : "WildFly Glow (CLI or support in the WildFly Maven Plugin), can discover the layer from the API used in your deployment. If false, it must be added using the WildFly Glow addOn name.",
@@ -30,6 +31,7 @@
   },
   "featurePacks" : [ {
     "mavenCoordinates" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+    "description" : "WildFly feature-pack to provision trimmed WildFly server.",
     "modelReference" : {
       "description" : "The root node of the server-level management model.",
       "min-occurs" : 1,
@@ -11680,9 +11682,11 @@
       }
     }
   }, {
-    "mavenCoordinates" : "org.wildfly:wildfly-datasources-galleon-pack:10.0.1.Final-SNAPSHOT"
+    "mavenCoordinates" : "org.wildfly:wildfly-datasources-galleon-pack:10.0.1.Final-SNAPSHOT",
+    "description" : "Feature-pack for WildFly that provides JDBC drivers and datasources for various databases."
   }, {
     "mavenCoordinates" : "org.keycloak:keycloak-saml-adapter-galleon-pack:999.0.0-SNAPSHOT",
+    "description" : "Feature-pack for WildFly that provides SAML support.",
     "modelReference" : [ {
       "address" : [ {
         "subsystem" : "keycloak-saml"
@@ -12669,9 +12673,11 @@
       }
     } ]
   }, {
-    "mavenCoordinates" : "org.wildfly:wildfly-myfaces-feature-pack:2.0.1.Final-SNAPSHOT"
+    "mavenCoordinates" : "org.wildfly:wildfly-myfaces-feature-pack:2.0.1.Final-SNAPSHOT",
+    "description" : "Feature pack for WildFly that provides MyFaces 4.x support."
   }, {
     "mavenCoordinates" : "org.wildfly:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
+    "description" : "This feature-pack for WildFly simplifies the integration of AI in applications.",
     "modelReference" : [ {
       "address" : [ {
         "subsystem" : "mcp"
@@ -15623,10 +15629,8 @@
       "managementModel" : {
         "subsystem" : {
           "elytron" : {
-            "description" : "Resource containing the association of a SecurityDomain with a HttpServerAuthenticationMechanismFactory.",
             "http-authentication-factory" : {
               "application-http-authentication" : {
-                "description" : "Resource containing the association of a SecurityDomain with a HttpServerAuthenticationMechanismFactory.",
                 "http-server-mechanism-factory" : "global",
                 "mechanism-configurations" : "[{mechanism-name=BASIC,mechanism-realm-configurations=[{realm-name=ApplicationRealm}]}]",
                 "security-domain" : "ApplicationDomain"
@@ -15634,19 +15638,15 @@
             }
           },
           "undertow" : {
-            "description" : "Undertow subsystem",
             "application-security-domain" : {
               "other" : {
-                "description" : "A Mapping from a security domain references in a deployed application.",
                 "security-domain" : "ApplicationDomain"
               }
             },
             "server" : {
               "default-server" : {
-                "description" : "A server",
                 "setting" : {
                   "http-invoker" : {
-                    "description" : "The HTTP invoker services that allows remote HTTP based invocation of services such as Jakarta Enterprise Beans and naming",
                     "http-authentication-factory" : "application-http-authentication"
                   }
                 }
@@ -15720,10 +15720,8 @@
       "managementModel" : {
         "subsystem" : {
           "elytron" : {
-            "description" : "Resource containing the association of a SecurityDomain with a HttpServerAuthenticationMechanismFactory.",
             "http-authentication-factory" : {
               "application-http-authentication" : {
-                "description" : "Resource containing the association of a SecurityDomain with a HttpServerAuthenticationMechanismFactory.",
                 "http-server-mechanism-factory" : "global",
                 "mechanism-configurations" : "[{mechanism-name=BASIC,mechanism-realm-configurations=[{realm-name=ApplicationRealm}]}]",
                 "security-domain" : "ApplicationDomain"
@@ -15731,19 +15729,15 @@
             }
           },
           "undertow" : {
-            "description" : "Undertow subsystem",
             "application-security-domain" : {
               "other" : {
-                "description" : "A Mapping from a security domain references in a deployed application.",
                 "security-domain" : "ApplicationDomain"
               }
             },
             "server" : {
               "default-server" : {
-                "description" : "A server",
                 "setting" : {
                   "http-invoker" : {
-                    "description" : "The HTTP invoker services that allows remote HTTP based invocation of services such as Jakarta Enterprise Beans and naming",
                     "http-authentication-factory" : "application-http-authentication"
                   }
                 }
@@ -15889,39 +15883,32 @@
       "managementModel" : {
         "interface" : {
           "private" : {
-            "description" : "Interface definition",
             "inet-address" : "${jboss.bind.address.private:127.0.0.1}"
           }
         },
         "socket-binding-group" : {
           "standard-sockets" : {
-            "description" : "Contains a list of socket configurations.",
             "socket-binding" : {
               "jgroups-mping" : {
-                "description" : "Configuration information for a socket.",
                 "interface" : "private",
                 "multicast-address" : "${jboss.default.multicast.address:230.0.0.4}",
                 "multicast-port" : "45700"
               },
               "jgroups-tcp" : {
-                "description" : "Configuration information for a socket.",
                 "interface" : "private",
                 "port" : "7600"
               },
               "jgroups-tcp-fd" : {
-                "description" : "Configuration information for a socket.",
                 "interface" : "private",
                 "port" : "57600"
               },
               "jgroups-udp" : {
-                "description" : "Configuration information for a socket.",
                 "interface" : "private",
                 "multicast-address" : "${jboss.default.multicast.address:230.0.0.4}",
                 "multicast-port" : "45688",
                 "port" : "55200"
               },
               "jgroups-udp-fd" : {
-                "description" : "Configuration information for a socket.",
                 "interface" : "private",
                 "port" : "54200"
               }
@@ -15930,31 +15917,26 @@
         },
         "subsystem" : {
           "distributable-ejb" : {
-            "description" : "The distributable-ejb subsystem",
             "default-bean-management" : "default",
             "client-mappings-registry" : {
               "infinispan" : {
-                "description" : "The Infinispan client mappings registry provider, used to generate non-local client mappings registries.",
                 "cache" : "client-mappings",
                 "cache-container" : "ejb"
               }
             },
             "infinispan-bean-management" : {
               "default" : {
-                "description" : "An Infinispan-based bean management provider",
                 "cache-container" : "ejb",
                 "max-active-beans" : "10000"
               }
             },
             "infinispan-timer-management" : {
               "persistent" : {
-                "description" : "An Infinispan-based timer management provider",
                 "cache" : "persistent",
                 "cache-container" : "ejb",
                 "max-active-timers" : "10000"
               },
               "transient" : {
-                "description" : "An Infinispan-based timer management provider",
                 "cache" : "transient",
                 "cache-container" : "ejb",
                 "max-active-timers" : "10000"
@@ -15962,70 +15944,56 @@
             }
           },
           "ejb3" : {
-            "description" : "The configuration of the ejb3 subsystem.",
             "default-sfsb-cache" : "distributable",
             "default-stateful-bean-access-timeout" : "5000",
             "service" : {
               "timer-service" : {
-                "description" : "The Jakarta Enterprise Beans timer service",
                 "default-persistent-timer-management" : "persistent",
                 "default-transient-timer-management" : "transient"
               }
             }
           },
           "infinispan" : {
-            "description" : "The configuration of the infinispan subsystem.",
             "cache-container" : {
               "ejb" : {
-                "description" : "The configuration of an infinispan cache container",
                 "aliases" : "[sfsb]",
                 "default-cache" : "dist",
                 "marshaller" : "PROTOSTREAM",
                 "modules" : "[org.wildfly.clustering.ejb.infinispan]",
                 "distributed-cache" : {
                   "dist" : {
-                    "description" : "A distributed cache configuration.",
                     "component" : {
                       "expiration" : {
-                        "description" : "The cache expiration configuration.",
                         "interval" : "0"
                       },
                       "locking" : {
-                        "description" : "The locking configuration of the cache.",
                         "isolation" : "REPEATABLE_READ"
                       },
                       "transaction" : {
-                        "description" : "The cache transaction configuration.",
                         "mode" : "BATCH"
                       }
                     },
                     "store" : {
                       "file" : {
-                        "description" : "The cache file store configuration.",
                         "passivation" : "true",
                         "purge" : "true"
                       }
                     }
                   },
                   "persistent" : {
-                    "description" : "A distributed cache configuration.",
                     "component" : {
                       "expiration" : {
-                        "description" : "The cache expiration configuration.",
                         "interval" : "0"
                       },
                       "locking" : {
-                        "description" : "The locking configuration of the cache.",
                         "isolation" : "REPEATABLE_READ"
                       },
                       "transaction" : {
-                        "description" : "The cache transaction configuration.",
                         "mode" : "BATCH"
                       }
                     },
                     "store" : {
                       "file" : {
-                        "description" : "The cache file store configuration.",
                         "passivation" : "true"
                       }
                     }
@@ -16033,24 +16001,19 @@
                 },
                 "local-cache" : {
                   "transient" : {
-                    "description" : "A local cache configuration",
                     "component" : {
                       "expiration" : {
-                        "description" : "The cache expiration configuration.",
                         "interval" : "0"
                       },
                       "locking" : {
-                        "description" : "The locking configuration of the cache.",
                         "isolation" : "REPEATABLE_READ"
                       },
                       "transaction" : {
-                        "description" : "The cache transaction configuration.",
                         "mode" : "BATCH"
                       }
                     },
                     "store" : {
                       "file" : {
-                        "description" : "The cache file store configuration.",
                         "passivation" : "true",
                         "purge" : "true"
                       }
@@ -16059,10 +16022,8 @@
                 },
                 "replicated-cache" : {
                   "client-mappings" : {
-                    "description" : "A replicated cache configuration",
                     "component" : {
                       "expiration" : {
-                        "description" : "The cache expiration configuration.",
                         "interval" : "0"
                       }
                     }
@@ -16070,7 +16031,6 @@
                 },
                 "transport" : {
                   "jgroups" : {
-                    "description" : "The description of the transport used by this cache container",
                     "lock-timeout" : "60000"
                   }
                 }
@@ -16078,115 +16038,60 @@
             }
           },
           "jgroups" : {
-            "description" : "The configuration of the JGroups subsystem.",
             "default-channel" : "ee",
             "channel" : {
               "ee" : {
-                "description" : "A JGroups channel.",
                 "cluster" : "ejb",
                 "stack" : "udp"
               }
             },
             "stack" : {
               "tcp" : {
-                "description" : "The configuration of a JGroups protocol stack.",
                 "protocol" : {
-                  "FD_ALL3" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
+                  "FD_ALL3" : { },
                   "FD_SOCK2" : {
-                    "description" : "The configuration of a protocol within a protocol stack.",
                     "socket-binding" : "jgroups-tcp-fd"
                   },
-                  "FRAG4" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "MERGE3" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "MFC" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
+                  "FRAG4" : { },
+                  "MERGE3" : { },
+                  "MFC" : { },
                   "MPING" : {
-                    "description" : "The configuration of a protocol within a protocol stack.",
                     "socket-binding" : "jgroups-mping"
                   },
-                  "RED" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "UFC" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "UNICAST3" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "VERIFY_SUSPECT2" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "pbcast.GMS" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "pbcast.NAKACK2" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "pbcast.STABLE" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  }
+                  "RED" : { },
+                  "UFC" : { },
+                  "UNICAST3" : { },
+                  "VERIFY_SUSPECT2" : { },
+                  "pbcast.GMS" : { },
+                  "pbcast.NAKACK2" : { },
+                  "pbcast.STABLE" : { }
                 },
                 "transport" : {
                   "TCP" : {
-                    "description" : "The configuration of a transport for a protocol stack.",
                     "socket-binding" : "jgroups-tcp"
                   }
                 }
               },
               "udp" : {
-                "description" : "The configuration of a JGroups protocol stack.",
                 "protocol" : {
-                  "FD_ALL3" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
+                  "FD_ALL3" : { },
                   "FD_SOCK2" : {
-                    "description" : "The configuration of a protocol within a protocol stack.",
                     "socket-binding" : "jgroups-udp-fd"
                   },
-                  "FRAG4" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "MERGE3" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "MFC" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "PING" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "RED" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "UFC" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "UNICAST3" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "VERIFY_SUSPECT2" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "pbcast.GMS" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "pbcast.NAKACK2" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "pbcast.STABLE" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  }
+                  "FRAG4" : { },
+                  "MERGE3" : { },
+                  "MFC" : { },
+                  "PING" : { },
+                  "RED" : { },
+                  "UFC" : { },
+                  "UNICAST3" : { },
+                  "VERIFY_SUSPECT2" : { },
+                  "pbcast.GMS" : { },
+                  "pbcast.NAKACK2" : { },
+                  "pbcast.STABLE" : { }
                 },
                 "transport" : {
                   "UDP" : {
-                    "description" : "The configuration of a transport for a protocol stack.",
                     "socket-binding" : "jgroups-udp"
                   }
                 }
@@ -16240,39 +16145,32 @@
       "managementModel" : {
         "interface" : {
           "private" : {
-            "description" : "Interface definition",
             "inet-address" : "${jboss.bind.address.private:127.0.0.1}"
           }
         },
         "socket-binding-group" : {
           "standard-sockets" : {
-            "description" : "Contains a list of socket configurations.",
             "socket-binding" : {
               "jgroups-mping" : {
-                "description" : "Configuration information for a socket.",
                 "interface" : "private",
                 "multicast-address" : "${jboss.default.multicast.address:230.0.0.4}",
                 "multicast-port" : "45700"
               },
               "jgroups-tcp" : {
-                "description" : "Configuration information for a socket.",
                 "interface" : "private",
                 "port" : "7600"
               },
               "jgroups-tcp-fd" : {
-                "description" : "Configuration information for a socket.",
                 "interface" : "private",
                 "port" : "57600"
               },
               "jgroups-udp" : {
-                "description" : "Configuration information for a socket.",
                 "interface" : "private",
                 "multicast-address" : "${jboss.default.multicast.address:230.0.0.4}",
                 "multicast-port" : "45688",
                 "port" : "55200"
               },
               "jgroups-udp-fd" : {
-                "description" : "Configuration information for a socket.",
                 "interface" : "private",
                 "port" : "54200"
               }
@@ -16281,24 +16179,19 @@
         },
         "subsystem" : {
           "infinispan" : {
-            "description" : "The configuration of the infinispan subsystem.",
             "cache-container" : {
               "hibernate" : {
-                "description" : "The configuration of an infinispan cache container",
                 "marshaller" : "JBOSS",
                 "modules" : "[org.infinispan.hibernate-cache]",
                 "invalidation-cache" : {
                   "entity" : {
-                    "description" : "An invalidation cache",
                     "component" : {
                       "expiration" : {
-                        "description" : "The cache expiration configuration.",
                         "max-idle" : "100000"
                       }
                     },
                     "memory" : {
                       "heap" : {
-                        "description" : "On-heap object-based memory configuration.",
                         "size" : "10000"
                       }
                     }
@@ -16306,25 +16199,20 @@
                 },
                 "local-cache" : {
                   "local-query" : {
-                    "description" : "A local cache configuration",
                     "component" : {
                       "expiration" : {
-                        "description" : "The cache expiration configuration.",
                         "max-idle" : "100000"
                       }
                     },
                     "memory" : {
                       "heap" : {
-                        "description" : "On-heap object-based memory configuration.",
                         "size" : "10000"
                       }
                     }
                   },
                   "pending-puts" : {
-                    "description" : "A local cache configuration",
                     "component" : {
                       "expiration" : {
-                        "description" : "The cache expiration configuration.",
                         "max-idle" : "60000"
                       }
                     }
@@ -16332,10 +16220,8 @@
                 },
                 "replicated-cache" : {
                   "timestamps" : {
-                    "description" : "A replicated cache configuration",
                     "component" : {
                       "expiration" : {
-                        "description" : "The cache expiration configuration.",
                         "interval" : "0"
                       }
                     }
@@ -16343,7 +16229,6 @@
                 },
                 "transport" : {
                   "jgroups" : {
-                    "description" : "The description of the transport used by this cache container",
                     "lock-timeout" : "60000"
                   }
                 }
@@ -16351,115 +16236,60 @@
             }
           },
           "jgroups" : {
-            "description" : "The configuration of the JGroups subsystem.",
             "default-channel" : "ee",
             "channel" : {
               "ee" : {
-                "description" : "A JGroups channel.",
                 "cluster" : "ejb",
                 "stack" : "udp"
               }
             },
             "stack" : {
               "tcp" : {
-                "description" : "The configuration of a JGroups protocol stack.",
                 "protocol" : {
-                  "FD_ALL3" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
+                  "FD_ALL3" : { },
                   "FD_SOCK2" : {
-                    "description" : "The configuration of a protocol within a protocol stack.",
                     "socket-binding" : "jgroups-tcp-fd"
                   },
-                  "FRAG4" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "MERGE3" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "MFC" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
+                  "FRAG4" : { },
+                  "MERGE3" : { },
+                  "MFC" : { },
                   "MPING" : {
-                    "description" : "The configuration of a protocol within a protocol stack.",
                     "socket-binding" : "jgroups-mping"
                   },
-                  "RED" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "UFC" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "UNICAST3" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "VERIFY_SUSPECT2" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "pbcast.GMS" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "pbcast.NAKACK2" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "pbcast.STABLE" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  }
+                  "RED" : { },
+                  "UFC" : { },
+                  "UNICAST3" : { },
+                  "VERIFY_SUSPECT2" : { },
+                  "pbcast.GMS" : { },
+                  "pbcast.NAKACK2" : { },
+                  "pbcast.STABLE" : { }
                 },
                 "transport" : {
                   "TCP" : {
-                    "description" : "The configuration of a transport for a protocol stack.",
                     "socket-binding" : "jgroups-tcp"
                   }
                 }
               },
               "udp" : {
-                "description" : "The configuration of a JGroups protocol stack.",
                 "protocol" : {
-                  "FD_ALL3" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
+                  "FD_ALL3" : { },
                   "FD_SOCK2" : {
-                    "description" : "The configuration of a protocol within a protocol stack.",
                     "socket-binding" : "jgroups-udp-fd"
                   },
-                  "FRAG4" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "MERGE3" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "MFC" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "PING" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "RED" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "UFC" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "UNICAST3" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "VERIFY_SUSPECT2" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "pbcast.GMS" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "pbcast.NAKACK2" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  },
-                  "pbcast.STABLE" : {
-                    "description" : "The configuration of a protocol within a protocol stack."
-                  }
+                  "FRAG4" : { },
+                  "MERGE3" : { },
+                  "MFC" : { },
+                  "PING" : { },
+                  "RED" : { },
+                  "UFC" : { },
+                  "UNICAST3" : { },
+                  "VERIFY_SUSPECT2" : { },
+                  "pbcast.GMS" : { },
+                  "pbcast.NAKACK2" : { },
+                  "pbcast.STABLE" : { }
                 },
                 "transport" : {
                   "UDP" : {
-                    "description" : "The configuration of a transport for a protocol stack.",
                     "socket-binding" : "jgroups-udp"
                   }
                 }
@@ -16467,7 +16297,6 @@
             }
           },
           "jpa" : {
-            "description" : "The configuration of the Jakarta Persistence subsystem.",
             "default-extended-persistence-inheritance" : "DEEP"
           }
         }
@@ -18412,18 +18241,14 @@
       "managementModel" : {
         "subsystem" : {
           "batch-jberet" : {
-            "description" : "Batch Subsystem (JSR-352)",
             "default-job-repository" : "in-memory",
             "default-thread-pool" : "batch",
             "security-domain" : "ApplicationDomain",
             "in-memory-job-repository" : {
-              "in-memory" : {
-                "description" : "A job repository that stores job information in memory."
-              }
+              "in-memory" : { }
             },
             "thread-pool" : {
               "batch" : {
-                "description" : "The thread pool used for batch jobs. Note that the max-thread attribute should always be greater than 3. Two threads are reserved to ensure partition jobs can execute.",
                 "keepalive-time" : "{ unit=SECONDS, time=30 }",
                 "max-threads" : "10"
               }
@@ -18486,9 +18311,7 @@
       "name" : "bean-validation",
       "managementModel" : {
         "subsystem" : {
-          "bean-validation" : {
-            "description" : "Jakarta Bean Validation subsystem"
-          }
+          "bean-validation" : { }
         }
       },
       "configuration" : [ {
@@ -18524,9 +18347,7 @@
       "name" : "cdi",
       "managementModel" : {
         "subsystem" : {
-          "weld" : {
-            "description" : "The configuration of the weld subsystem."
-          }
+          "weld" : { }
         }
       },
       "configuration" : [ {
@@ -18563,16 +18384,13 @@
       "managementModel" : {
         "subsystem" : {
           "ee" : {
-            "description" : "The configuration of the EE subsystem.",
             "context-service" : {
               "default" : {
-                "description" : "A context service",
                 "jndi-name" : "java:jboss/ee/concurrency/context/default"
               }
             },
             "managed-executor-service" : {
               "default" : {
-                "description" : "A managed executor service",
                 "context-service" : "default",
                 "hung-task-termination-period" : "0",
                 "hung-task-threshold" : "60000",
@@ -18582,7 +18400,6 @@
             },
             "managed-scheduled-executor-service" : {
               "default" : {
-                "description" : "A managed scheduled executor service",
                 "context-service" : "default",
                 "hung-task-termination-period" : "0",
                 "hung-task-threshold" : "60000",
@@ -18592,14 +18409,12 @@
             },
             "managed-thread-factory" : {
               "default" : {
-                "description" : "A managed thread factory",
                 "context-service" : "default",
                 "jndi-name" : "java:jboss/ee/concurrency/factory/default"
               }
             },
             "service" : {
               "default-bindings" : {
-                "description" : "The JNDI names for the default EE bindings",
                 "context-service" : "java:jboss/ee/concurrency/context/default",
                 "managed-executor-service" : "java:jboss/ee/concurrency/executor/default",
                 "managed-scheduled-executor-service" : "java:jboss/ee/concurrency/scheduler/default",
@@ -18635,17 +18450,14 @@
       "managementModel" : {
         "subsystem" : {
           "ejb3" : {
-            "description" : "The configuration of the ejb3 subsystem.",
             "default-mdb-instance-pool" : "mdb-strict-max-pool",
             "default-resource-adapter-name" : "${ejb.resource-adapter-name:activemq-ra.rar}",
             "service" : {
               "remote" : {
-                "description" : "The Enterprise Beans 3 Remote Service",
                 "connectors" : "[http-remoting-connector]",
                 "thread-pool-name" : "default",
                 "channel-creation-options" : {
                   "MAX_OUTBOUND_MESSAGES" : {
-                    "description" : "The options that will be used during the Jakarta Enterprise Beans remote channel creation",
                     "type" : "remoting",
                     "value" : "1234"
                   }
@@ -18654,7 +18466,6 @@
             },
             "strict-max-bean-instance-pool" : {
               "mdb-strict-max-pool" : {
-                "description" : "A bean instance pool with a strict upper limit",
                 "derive-size" : "from-cpu-count",
                 "timeout" : "5",
                 "timeout-unit" : "MINUTES"
@@ -18662,11 +18473,8 @@
             }
           },
           "naming" : {
-            "description" : "The configuration of the naming subsystem.",
             "service" : {
-              "remote-naming" : {
-                "description" : "The remote naming server"
-              }
+              "remote-naming" : { }
             }
           }
         }
@@ -18741,10 +18549,8 @@
       "managementModel" : {
         "subsystem" : {
           "elytron" : {
-            "description" : "Resource containing the association of a SecurityDomain with a HttpServerAuthenticationMechanismFactory.",
             "http-authentication-factory" : {
               "application-http-authentication" : {
-                "description" : "Resource containing the association of a SecurityDomain with a HttpServerAuthenticationMechanismFactory.",
                 "http-server-mechanism-factory" : "global",
                 "mechanism-configurations" : "[{mechanism-name=BASIC,mechanism-realm-configurations=[{realm-name=ApplicationRealm}]}]",
                 "security-domain" : "ApplicationDomain"
@@ -18752,13 +18558,10 @@
             }
           },
           "undertow" : {
-            "description" : "A server",
             "server" : {
               "default-server" : {
-                "description" : "A server",
                 "setting" : {
                   "http-invoker" : {
-                    "description" : "The HTTP invoker services that allows remote HTTP based invocation of services such as Jakarta Enterprise Beans and naming",
                     "http-authentication-factory" : "application-http-authentication"
                   }
                 }
@@ -18817,11 +18620,8 @@
       "name" : "ejb-lite",
       "managementModel" : {
         "subsystem" : {
-          "discovery" : {
-            "description" : "The discovery subsystem"
-          },
+          "discovery" : { },
           "ejb3" : {
-            "description" : "The configuration of the ejb3 subsystem.",
             "default-missing-method-permissions-deny-access" : "true",
             "default-security-domain" : "other",
             "default-sfsb-passivation-disabled-cache" : "simple",
@@ -18832,27 +18632,21 @@
             "statistics-enabled" : "${wildfly.ejb3.statistics-enabled:${wildfly.statistics-enabled:false}}",
             "application-security-domain" : {
               "other" : {
-                "description" : "A mapping from a security domain referenced in a deployed application",
                 "security-domain" : "ApplicationDomain"
               }
             },
             "distributable-cache" : {
-              "distributable" : {
-                "description" : "A SFSB cache which is distributable"
-              }
+              "distributable" : { }
             },
             "service" : {
               "async" : {
-                "description" : "The Enterprise Beans 3 Asynchronous Invocation Service",
                 "thread-pool-name" : "default"
               },
               "timer-service" : {
-                "description" : "The Jakarta Enterprise Beans timer service",
                 "default-data-store" : "default-file-store",
                 "thread-pool-name" : "default",
                 "file-data-store" : {
                   "default-file-store" : {
-                    "description" : "A JVM local file store that stores persistent Jakarta Enterprise Beans timers",
                     "path" : "timer-service-data",
                     "relative-to" : "jboss.server.data.dir"
                   }
@@ -18860,13 +18654,10 @@
               }
             },
             "simple-cache" : {
-              "simple" : {
-                "description" : "A SFSB cache which is non-distributable"
-              }
+              "simple" : { }
             },
             "strict-max-bean-instance-pool" : {
               "slsb-strict-max-pool" : {
-                "description" : "A bean instance pool with a strict upper limit",
                 "derive-size" : "from-worker-pools",
                 "timeout" : "5",
                 "timeout-unit" : "MINUTES"
@@ -18874,7 +18665,6 @@
             },
             "thread-pool" : {
               "default" : {
-                "description" : "A thread pool executor with an enhanced queue.  In such a thread pool, its core and max size are configured independently, idle threads are always reused when available, and threads count is kept to a minimum.",
                 "keepalive-time" : "{ unit=SECONDS, time=60 }",
                 "max-threads" : "10"
               }
@@ -18938,16 +18728,12 @@
       "managementModel" : {
         "subsystem" : {
           "distributable-ejb" : {
-            "description" : "The distributable-ejb subsystem",
             "default-bean-management" : "default",
             "client-mappings-registry" : {
-              "local" : {
-                "description" : "The local client mappings registry provider, used to generate local client mappings registries."
-              }
+              "local" : { }
             },
             "infinispan-bean-management" : {
               "default" : {
-                "description" : "An Infinispan-based bean management provider",
                 "cache" : "passivation",
                 "cache-container" : "ejb",
                 "max-active-beans" : "10000"
@@ -18955,13 +18741,11 @@
             },
             "infinispan-timer-management" : {
               "persistent" : {
-                "description" : "An Infinispan-based timer management provider",
                 "cache" : "persistent",
                 "cache-container" : "ejb",
                 "max-active-timers" : "10000"
               },
               "transient" : {
-                "description" : "An Infinispan-based timer management provider",
                 "cache" : "transient",
                 "cache-container" : "ejb",
                 "max-active-timers" : "10000"
@@ -18969,77 +18753,61 @@
             }
           },
           "ejb3" : {
-            "description" : "The configuration of the ejb3 subsystem.",
             "default-sfsb-cache" : "simple",
             "default-stateful-bean-access-timeout" : "5000"
           },
           "infinispan" : {
-            "description" : "The configuration of the infinispan subsystem.",
             "cache-container" : {
               "ejb" : {
-                "description" : "The configuration of an infinispan cache container",
                 "aliases" : "[sfsb]",
                 "default-cache" : "passivation",
                 "marshaller" : "PROTOSTREAM",
                 "modules" : "[org.wildfly.clustering.ejb.infinispan]",
                 "local-cache" : {
                   "passivation" : {
-                    "description" : "A local cache configuration",
                     "component" : {
                       "expiration" : {
-                        "description" : "The cache expiration configuration.",
                         "interval" : "0"
                       }
                     },
                     "store" : {
                       "file" : {
-                        "description" : "The cache file store configuration.",
                         "passivation" : "true"
                       }
                     }
                   },
                   "persistent" : {
-                    "description" : "A local cache configuration",
                     "component" : {
                       "expiration" : {
-                        "description" : "The cache expiration configuration.",
                         "interval" : "0"
                       },
                       "locking" : {
-                        "description" : "The locking configuration of the cache.",
                         "isolation" : "REPEATABLE_READ"
                       },
                       "transaction" : {
-                        "description" : "The cache transaction configuration.",
                         "mode" : "BATCH"
                       }
                     },
                     "store" : {
                       "file" : {
-                        "description" : "The cache file store configuration.",
                         "preload" : "true"
                       }
                     }
                   },
                   "transient" : {
-                    "description" : "A local cache configuration",
                     "component" : {
                       "expiration" : {
-                        "description" : "The cache expiration configuration.",
                         "interval" : "0"
                       },
                       "locking" : {
-                        "description" : "The locking configuration of the cache.",
                         "isolation" : "REPEATABLE_READ"
                       },
                       "transaction" : {
-                        "description" : "The cache transaction configuration.",
                         "mode" : "BATCH"
                       }
                     },
                     "store" : {
                       "file" : {
-                        "description" : "The cache file store configuration.",
                         "passivation" : "true",
                         "purge" : "true"
                       }
@@ -19135,9 +18903,7 @@
       "name" : "jaxrs-core",
       "managementModel" : {
         "subsystem" : {
-          "jaxrs" : {
-            "description" : "The configuration of the Jakarta RESTful Web Services subsystem."
-          }
+          "jaxrs" : { }
         }
       },
       "configuration" : [ {
@@ -19178,57 +18944,45 @@
       "managementModel" : {
         "subsystem" : {
           "infinispan" : {
-            "description" : "The configuration of the infinispan subsystem.",
             "cache-container" : {
               "hibernate" : {
-                "description" : "The configuration of an infinispan cache container",
                 "marshaller" : "JBOSS",
                 "modules" : "[org.infinispan.hibernate-cache]",
                 "local-cache" : {
                   "entity" : {
-                    "description" : "A local cache configuration",
                     "component" : {
                       "expiration" : {
-                        "description" : "The cache expiration configuration.",
                         "max-idle" : "100000"
                       }
                     },
                     "memory" : {
                       "heap" : {
-                        "description" : "On-heap object-based memory configuration.",
                         "size" : "10000"
                       }
                     }
                   },
                   "local-query" : {
-                    "description" : "A local cache configuration",
                     "component" : {
                       "expiration" : {
-                        "description" : "The cache expiration configuration.",
                         "max-idle" : "100000"
                       }
                     },
                     "memory" : {
                       "heap" : {
-                        "description" : "On-heap object-based memory configuration.",
                         "size" : "10000"
                       }
                     }
                   },
                   "pending-puts" : {
-                    "description" : "A local cache configuration",
                     "component" : {
                       "expiration" : {
-                        "description" : "The cache expiration configuration.",
                         "max-idle" : "60000"
                       }
                     }
                   },
                   "timestamps" : {
-                    "description" : "A local cache configuration",
                     "component" : {
                       "expiration" : {
-                        "description" : "The cache expiration configuration.",
                         "interval" : "0"
                       }
                     }
@@ -19238,7 +18992,6 @@
             }
           },
           "jpa" : {
-            "description" : "The configuration of the Jakarta Persistence subsystem.",
             "default-extended-persistence-inheritance" : "DEEP"
           }
         }
@@ -19291,9 +19044,7 @@
       "name" : "jsf",
       "managementModel" : {
         "subsystem" : {
-          "jsf" : {
-            "description" : "The Jakarta Server Faces subsystem"
-          }
+          "jsf" : { }
         }
       },
       "configuration" : [ {
@@ -19453,9 +19204,7 @@
       "name" : "naming",
       "managementModel" : {
         "subsystem" : {
-          "naming" : {
-            "description" : "The configuration of the naming subsystem."
-          }
+          "naming" : { }
         }
       },
       "configuration" : [ {
@@ -19484,10 +19233,8 @@
       "managementModel" : {
         "subsystem" : {
           "jca" : {
-            "description" : "The Jakarta Connectors Architecture subsystem providing general configuration for resource adapters",
             "archive-validation" : {
               "archive-validation" : {
-                "description" : "Archive validation for resource adapters",
                 "enabled" : "true",
                 "fail-on-error" : "true",
                 "fail-on-warn" : "false"
@@ -19495,30 +19242,25 @@
             },
             "bean-validation" : {
               "bean-validation" : {
-                "description" : "Jakarta Bean Validation for resource adapters",
                 "enabled" : "true"
               }
             },
             "bootstrap-context" : {
               "default" : {
-                "description" : "Bootstrap context for resource adapters",
                 "name" : "default",
                 "workmanager" : "default"
               }
             },
             "cached-connection-manager" : {
               "cached-connection-manager" : {
-                "description" : "Cached connection manager for resource adapters",
                 "install" : "true"
               }
             },
             "workmanager" : {
               "default" : {
-                "description" : "WorkManager for resource adapters",
                 "name" : "default",
                 "long-running-threads" : {
                   "default" : {
-                    "description" : "A thread pool executor with a bounded queue where threads submittings tasks may block. Such a thread pool has a core and maximum size and a specified queue length.  When a task is submitted, if the number of running threads is less than the core size, a new thread is created.  Otherwise, if there is room in the queue, the task is enqueued. Otherwise, if the number of running threads is less than the maximum size, a new thread is created. Otherwise, the caller blocks until room becomes available in the queue.",
                     "core-threads" : "50",
                     "keepalive-time" : "{ unit=SECONDS, time=10 }",
                     "max-threads" : "50",
@@ -19527,7 +19269,6 @@
                 },
                 "short-running-threads" : {
                   "default" : {
-                    "description" : "A thread pool executor with a bounded queue where threads submittings tasks may block. Such a thread pool has a core and maximum size and a specified queue length.  When a task is submitted, if the number of running threads is less than the core size, a new thread is created.  Otherwise, if there is room in the queue, the task is enqueued. Otherwise, if the number of running threads is less than the maximum size, a new thread is created. Otherwise, the caller blocks until room becomes available in the queue.",
                     "core-threads" : "50",
                     "keepalive-time" : "{ unit=SECONDS, time=10 }",
                     "max-threads" : "50",
@@ -19537,9 +19278,7 @@
               }
             }
           },
-          "resource-adapters" : {
-            "description" : "Configuration of the resource adapters subsystem."
-          }
+          "resource-adapters" : { }
         }
       },
       "configuration" : [ {
@@ -19640,19 +19379,15 @@
       "managementModel" : {
         "subsystem" : {
           "ee" : {
-            "description" : "The configuration of the EE subsystem.",
             "service" : {
               "default-bindings" : {
-                "description" : "The JNDI names for the default EE bindings",
                 "jms-connection-factory" : "java:jboss/DefaultJMSConnectionFactory"
               }
             }
           },
           "elytron" : {
-            "description" : "Resource containing the association of a SecurityDomain with a HttpServerAuthenticationMechanismFactory.",
             "http-authentication-factory" : {
               "application-http-authentication" : {
-                "description" : "Resource containing the association of a SecurityDomain with a HttpServerAuthenticationMechanismFactory.",
                 "http-server-mechanism-factory" : "global",
                 "mechanism-configurations" : "[{mechanism-name=BASIC,mechanism-realm-configurations=[{realm-name=ApplicationRealm}]}]",
                 "security-domain" : "ApplicationDomain"
@@ -19660,15 +19395,12 @@
             }
           },
           "messaging-activemq" : {
-            "description" : "The messaging-activemq subsystem.",
             "server" : {
               "default" : {
-                "description" : "An ActiveMQ server instance.",
                 "elytron-domain" : "ApplicationDomain",
                 "statistics-enabled" : "${wildfly.messaging-activemq.statistics-enabled:${wildfly.statistics-enabled:false}}",
                 "address-setting" : {
                   "#" : {
-                    "description" : "An address setting defines some attributes that are defined against an address wildcard rather than a specific queue.",
                     "dead-letter-address" : "jms.queue.DLQ",
                     "expiry-address" : "jms.queue.ExpiryQueue",
                     "max-size-bytes" : "10485760",
@@ -19678,35 +19410,29 @@
                 },
                 "connection-factory" : {
                   "InVmConnectionFactory" : {
-                    "description" : "Defines a connection factory.",
                     "connectors" : "[in-vm]",
                     "entries" : "[java:/ConnectionFactory]"
                   },
                   "RemoteConnectionFactory" : {
-                    "description" : "Defines a connection factory.",
                     "connectors" : "[http-connector]",
                     "entries" : "[java:jboss/exported/jms/RemoteConnectionFactory]"
                   }
                 },
                 "http-acceptor" : {
                   "http-acceptor" : {
-                    "description" : "Defines a way in which remote connections can be made to the ActiveMQ server over HTTP.",
                     "http-listener" : "default"
                   },
                   "http-acceptor-throughput" : {
-                    "description" : "Defines a way in which remote connections can be made to the ActiveMQ server over HTTP.",
                     "http-listener" : "default",
                     "params" : "{batch-delay=50,direct-deliver=false}"
                   }
                 },
                 "http-connector" : {
                   "http-connector" : {
-                    "description" : "Used by a remote client to define how it connects to a server over HTTP.",
                     "endpoint" : "http-acceptor",
                     "socket-binding" : "http"
                   },
                   "http-connector-throughput" : {
-                    "description" : "Used by a remote client to define how it connects to a server over HTTP.",
                     "endpoint" : "http-acceptor-throughput",
                     "params" : "{batch-delay=50}",
                     "socket-binding" : "http"
@@ -19714,31 +19440,26 @@
                 },
                 "in-vm-acceptor" : {
                   "in-vm" : {
-                    "description" : "Defines a way in which in-VM connections can be made to the ActiveMQ server.",
                     "params" : "{buffer-pooling=false}",
                     "server-id" : "0"
                   }
                 },
                 "in-vm-connector" : {
                   "in-vm" : {
-                    "description" : "Used by an in-VM client to define how it connects to a server.",
                     "params" : "{buffer-pooling=false}",
                     "server-id" : "0"
                   }
                 },
                 "jms-queue" : {
                   "DLQ" : {
-                    "description" : "Defines a Jakarta Messaging queue.",
                     "entries" : "[java:/jms/queue/DLQ]"
                   },
                   "ExpiryQueue" : {
-                    "description" : "Defines a Jakarta Messaging queue.",
                     "entries" : "[java:/jms/queue/ExpiryQueue]"
                   }
                 },
                 "pooled-connection-factory" : {
                   "activemq-ra" : {
-                    "description" : "Defines a managed connection factory.",
                     "connectors" : "[in-vm]",
                     "entries" : "[java:/JmsXA,java:jboss/DefaultJMSConnectionFactory]",
                     "transaction" : "xa"
@@ -19746,10 +19467,8 @@
                 },
                 "security-setting" : {
                   "#" : {
-                    "description" : "A security setting allows sets of permissions to be defined against queues based on their address.",
                     "role" : {
                       "guest" : {
-                        "description" : "A security role.",
                         "consume" : "true",
                         "create-non-durable-queue" : "true",
                         "delete-non-durable-queue" : "true",
@@ -19762,21 +19481,15 @@
             }
           },
           "naming" : {
-            "description" : "The configuration of the naming subsystem.",
             "service" : {
-              "remote-naming" : {
-                "description" : "The remote naming server"
-              }
+              "remote-naming" : { }
             }
           },
           "undertow" : {
-            "description" : "A server",
             "server" : {
               "default-server" : {
-                "description" : "A server",
                 "setting" : {
                   "http-invoker" : {
-                    "description" : "The HTTP invoker services that allows remote HTTP based invocation of services such as Jakarta Enterprise Beans and naming",
                     "http-authentication-factory" : "application-http-authentication"
                   }
                 }
@@ -19853,9 +19566,7 @@
       "name" : "messaging-activemq",
       "managementModel" : {
         "subsystem" : {
-          "messaging-activemq" : {
-            "description" : "The messaging-activemq subsystem."
-          }
+          "messaging-activemq" : { }
         }
       },
       "configuration" : [ {
@@ -19903,10 +19614,8 @@
       "managementModel" : {
         "socket-binding-group" : {
           "standard-sockets" : {
-            "description" : "Configuration information for a remote destination outbound socket binding.",
             "remote-destination-outbound-socket-binding" : {
               "messaging-activemq" : {
-                "description" : "Configuration information for a remote destination outbound socket binding.",
                 "host" : "${jboss.messaging.connector.host:localhost}",
                 "port" : "${jboss.messaging.connector.port:61616}"
               }
@@ -19915,19 +19624,15 @@
         },
         "subsystem" : {
           "ee" : {
-            "description" : "The configuration of the EE subsystem.",
             "service" : {
               "default-bindings" : {
-                "description" : "The JNDI names for the default EE bindings",
                 "jms-connection-factory" : "java:jboss/DefaultJMSConnectionFactory"
               }
             }
           },
           "messaging-activemq" : {
-            "description" : "The messaging-activemq subsystem.",
             "pooled-connection-factory" : {
               "activemq-ra" : {
-                "description" : "Defines a managed connection factory.",
                 "connectors" : "[artemis]",
                 "entries" : "[java:/JmsXA,java:jboss/DefaultJMSConnectionFactory]",
                 "password" : "guest",
@@ -19937,7 +19642,6 @@
             },
             "remote-connector" : {
               "artemis" : {
-                "description" : "Used by a remote client to define how it connects to a server.",
                 "params" : "{use-nio=true,use-nio-global-worker-pool=true}",
                 "socket-binding" : "messaging-activemq"
               }
@@ -20059,7 +19763,6 @@
       "managementModel" : {
         "subsystem" : {
           "health" : {
-            "description" : "WildFly Extension for Health",
             "security-enabled" : "false"
           }
         }
@@ -20098,7 +19801,6 @@
       "managementModel" : {
         "subsystem" : {
           "metrics" : {
-            "description" : "WildFly Extension for Base Metrics",
             "exposed-subsystems" : "[*]",
             "prefix" : "${wildfly.metrics.prefix:wildfly}",
             "security-enabled" : "false"
@@ -20329,9 +20031,7 @@
       "name" : "elytron-oidc-client",
       "managementModel" : {
         "subsystem" : {
-          "elytron-oidc-client" : {
-            "description" : "WildFly Extension for Elytron OIDC."
-          }
+          "elytron-oidc-client" : { }
         }
       },
       "configuration" : [ {
@@ -20562,13 +20262,10 @@
       "managementModel" : {
         "subsystem" : {
           "undertow" : {
-            "description" : "Undertow subsystem",
             "server" : {
               "default-server" : {
-                "description" : "A server",
                 "https-listener" : {
                   "https" : {
-                    "description" : "http listener",
                     "enable-http2" : "true",
                     "socket-binding" : "https",
                     "ssl-context" : "applicationSSC"
