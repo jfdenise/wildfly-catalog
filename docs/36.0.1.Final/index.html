@@ -1369,7 +1369,8 @@
                                 if (func.name && func.name.toLowerCase().includes(searchTerm)) termMatches = true;
                             }
                             if (!termMatches && selectedFields.includes('description')) {
-                                if (func.description && func.description.toLowerCase().includes(searchTerm)) termMatches = true;
+                                if (category.name && category.name.toLowerCase().includes(searchTerm)) termMatches = true;
+                                else if (func.description && func.description.toLowerCase().includes(searchTerm)) termMatches = true;
                                 else if (func.note && func.note.toLowerCase().includes(searchTerm)) termMatches = true;
                             }
                             if (!termMatches && selectedFields.includes('addOn')) {
