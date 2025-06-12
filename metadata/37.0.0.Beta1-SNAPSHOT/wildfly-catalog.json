@@ -30,7 +30,8 @@
         "dependencies": "The list of layers this layer depends on. Those layers are also provisioned when this layer is provisioned.",
         "configuration": "Environment variables and system properties that can be used to configure the layer.",
         "modelReference": "The model reference of the resources that this feature-pack can provision",
-        "mavenCoordinates": "The Maven GroupId, ArtifactId and Version of the feature-pack to be used with provisioning tooling"
+        "mavenCoordinates": "The Maven GroupId, ArtifactId and Version of the feature-pack",
+        "featurePackLocation": " The XML content to configure the WildFly Maven Plugin to use this feature-pack"
     },
     "cloud": [
         {
