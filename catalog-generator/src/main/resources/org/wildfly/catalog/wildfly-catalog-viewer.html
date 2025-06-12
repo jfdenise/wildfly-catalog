@@ -249,6 +249,18 @@
             font-family: Consolas, 'Courier New', monospace;
             font-size: 0.9em;
         }
+        .scrollable-maven-coords {
+            background-color: #f0f8ff; /* Similar to other code/pre blocks */
+            padding: 5px 8px;
+            border-radius: 4px;
+            overflow-x: auto; /* Enable horizontal scrolling */
+            border: 1px solid #cce;
+            white-space: pre; /* Prevent text wrapping */
+            font-family: Consolas, 'Courier New', monospace;
+            font-size: 0.9em;
+            flex-grow: 1; /* Allow it to take available horizontal space */
+            min-width: 0; /* Necessary for flex items to shrink and allow scrolling */
+        }
         .documentation-section {
             margin-bottom: 30px;
             padding: 20px;
@@ -562,23 +574,137 @@
                     }
 
                     if (fp.mavenCoordinates) {
-                        const mavenCoordsP = document.createElement('p');
-                        mavenCoordsP.style.marginTop = '10px'; 
-                        const strongLabel = document.createElement('strong');
-                        strongLabel.textContent = 'Maven Coordinates: ';
-                        mavenCoordsP.appendChild(strongLabel);
-                        mavenCoordsP.appendChild(document.createTextNode(fp.mavenCoordinates));
+                        const coordsContainer = document.createElement('div');
+                        coordsContainer.className = 'maven-coords-container'; // New class for the whole section
+                        coordsContainer.style.marginTop = '10px';
 
-                        if (legendData.mavenCoordinates) { 
-                            const coordsTooltipIcon = document.createElement('span');
-                            coordsTooltipIcon.className = 'tooltip-icon';
-                            coordsTooltipIcon.textContent = '?';
-                            coordsTooltipIcon.dataset.tooltipText = legendData.mavenCoordinates;
-                            coordsTooltipIcon.addEventListener('click', showTooltip);
-                            coordsTooltipIcon.style.marginLeft = '5px';
-                            mavenCoordsP.appendChild(coordsTooltipIcon);
+                        const coordsHeader = document.createElement('div');
+                        coordsHeader.className = 'dependencies-header'; // Reuse for similar styling
+                        // Potentially a slightly different background if needed, e.g., #f5f5f5
+
+                        const coordsLabelWrapper = document.createElement('span');
+                        coordsLabelWrapper.style.display = 'flex';
+                        coordsLabelWrapper.style.alignItems = 'center';
+
+                        const coordsHeaderText = document.createElement('span');
+                        coordsHeaderText.textContent = 'Feature Pack Location';
+                        coordsLabelWrapper.appendChild(coordsHeaderText);
+
+                        if (legendData.featurePackLocation) {
+                            const tooltipIcon = document.createElement('span');
+                            tooltipIcon.className = 'tooltip-icon';
+                            tooltipIcon.textContent = '?';
+                            tooltipIcon.dataset.tooltipText = legendData.featurePackLocation;
+                            tooltipIcon.addEventListener('click', showTooltip);
+                            // tooltipIcon.style.marginLeft = '5px'; // Already has margin-left from .tooltip-icon
+                            coordsLabelWrapper.appendChild(tooltipIcon);
                         }
-                        fpDiv.appendChild(mavenCoordsP);
+                        coordsHeader.appendChild(coordsLabelWrapper);
+
+                        const coordsArrow = document.createElement('span');
+                        coordsArrow.className = 'dependencies-arrow'; // Reuse for arrow
+                        coordsArrow.innerHTML = '&#9654;'; // Right-pointing arrow
+                        coordsHeader.appendChild(coordsArrow);
+                        
+                        coordsContainer.appendChild(coordsHeader);
+
+                        const coordsContentDiv = document.createElement('div');
+                        coordsContentDiv.className = 'dependencies-list scrollable-maven-coords'; // Combine for toggling and styling
+                        
+                        const locationString = fp.mavenCoordinates || '';
+                        const xmlFeaturePackString = 
+`<feature-pack>
+    <location>${locationString}</location>
+</feature-pack>`;
+                        coordsContentDiv.textContent = xmlFeaturePackString;
+                        
+                        // Adjust padding if needed, as .dependencies-list might add some
+                        coordsContentDiv.style.paddingLeft = '10px'; // Override default dependencies-list padding if too much
+                        coordsContentDiv.style.paddingRight = '10px';
+                        coordsContentDiv.style.paddingTop = '5px';
+                        coordsContentDiv.style.paddingBottom = '5px';
+                        coordsContentDiv.style.backgroundColor = '#f0f8ff'; // Keep the background from scrollable-maven-coords
+                        coordsContentDiv.style.border = '1px solid #cce'; // Keep border
+                        coordsContentDiv.style.borderRadius = '4px'; // Keep border-radius
+                        // white-space: pre and overflow-x: auto are from scrollable-maven-coords
+
+                        coordsContainer.appendChild(coordsContentDiv);
+                        fpDiv.appendChild(coordsContainer);
+
+                        coordsHeader.addEventListener('click', () => {
+                            coordsContentDiv.classList.toggle('visible');
+                            coordsArrow.classList.toggle('expanded');
+                        });
+
+                        // Duplicate for "Maven Coordinates"
+                        const mvnCoordsContainer = document.createElement('div');
+                        mvnCoordsContainer.className = 'maven-coords-container'; 
+                        mvnCoordsContainer.style.marginTop = '10px';
+
+                        const mvnCoordsHeader = document.createElement('div');
+                        mvnCoordsHeader.className = 'dependencies-header'; 
+
+                        const mvnCoordsLabelWrapper = document.createElement('span');
+                        mvnCoordsLabelWrapper.style.display = 'flex';
+                        mvnCoordsLabelWrapper.style.alignItems = 'center';
+
+                        const mvnCoordsHeaderText = document.createElement('span');
+                        mvnCoordsHeaderText.textContent = 'Maven Coordinates'; // New Title
+                        mvnCoordsLabelWrapper.appendChild(mvnCoordsHeaderText);
+
+                        if (legendData.mavenCoordinates) { // Reuse same legend data
+                            const tooltipIcon = document.createElement('span');
+                            tooltipIcon.className = 'tooltip-icon';
+                            tooltipIcon.textContent = '?';
+                            tooltipIcon.dataset.tooltipText = legendData.mavenCoordinates;
+                            tooltipIcon.addEventListener('click', showTooltip);
+                            mvnCoordsLabelWrapper.appendChild(tooltipIcon);
+                        }
+                        mvnCoordsHeader.appendChild(mvnCoordsLabelWrapper);
+
+                        const mvnCoordsArrow = document.createElement('span');
+                        mvnCoordsArrow.className = 'dependencies-arrow'; 
+                        mvnCoordsArrow.innerHTML = '&#9654;'; 
+                        mvnCoordsHeader.appendChild(mvnCoordsArrow);
+                        
+                        mvnCoordsContainer.appendChild(mvnCoordsHeader);
+
+                        const mvnCoordsContentDiv = document.createElement('div');
+                        mvnCoordsContentDiv.className = 'dependencies-list scrollable-maven-coords'; 
+                        
+                        const parts = fp.mavenCoordinates.split(':');
+                        const groupId = parts[0] || '';
+                        const artifactId = parts[1] || '';
+                        const version = parts[2] || '';
+
+                        if (parts.length === 3) {
+                            const xmlString = 
+`<dependency>
+  <groupId>${groupId}</groupId>
+  <artifactId>${artifactId}</artifactId>
+  <version>${version}</version>
+</dependency>`;
+                            mvnCoordsContentDiv.textContent = xmlString;
+                        } else {
+                            // Fallback if parsing fails, show original string
+                            mvnCoordsContentDiv.textContent = fp.mavenCoordinates; 
+                        }
+                        
+                        mvnCoordsContentDiv.style.paddingLeft = '10px'; 
+                        mvnCoordsContentDiv.style.paddingRight = '10px';
+                        mvnCoordsContentDiv.style.paddingTop = '5px';
+                        mvnCoordsContentDiv.style.paddingBottom = '5px';
+                        mvnCoordsContentDiv.style.backgroundColor = '#f0f8ff'; 
+                        mvnCoordsContentDiv.style.border = '1px solid #cce'; 
+                        mvnCoordsContentDiv.style.borderRadius = '4px'; 
+
+                        mvnCoordsContainer.appendChild(mvnCoordsContentDiv);
+                        fpDiv.appendChild(mvnCoordsContainer); // Add the new duplicated section
+
+                        mvnCoordsHeader.addEventListener('click', () => {
+                            mvnCoordsContentDiv.classList.toggle('visible');
+                            mvnCoordsArrow.classList.toggle('expanded');
+                        });
                     }
 
                     if (fp.layers && Array.isArray(fp.layers) && fp.layers.length > 0) {
