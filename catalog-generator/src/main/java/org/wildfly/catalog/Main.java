@@ -101,7 +101,10 @@ public class Main {
                 fpNode.set("layers", layersArrayTarget);
                 Set<String> layersSet = new TreeSet<>();
                 while (layers.hasNext()) {
-                    layersSet.add(layers.next().get("name").asText());
+                    JsonNode layer = layers.next();
+                    if(!isInternalLayer(layer)) {
+                        layersSet.add(layer.get("name").asText());
+                    }
                 }
                 for (String n : layersSet) {
                     layersArrayTarget.add(n);
@@ -192,54 +195,57 @@ public class Main {
             ObjectNode layer = (ObjectNode) layers.next();
             layer.put("feature-pack", fp);
             String layerName = layer.get("name").asText();
-            Iterator<JsonNode> properties = ((ArrayNode) layer.get("properties")).elements();
+            ArrayNode props = ((ArrayNode) layer.get("properties"));
             String category = null;
             String description = null;
             String note = null;
             String addOn = null;
             String stability = null;
             List<JsonNode> discoveryRules = new ArrayList<>();
-            while (properties.hasNext()) {
-                ObjectNode prop = (ObjectNode) properties.next();
-                String name = prop.get("name").asText();
-                if (name.equals("org.wildfly.category")) {
-                    category = prop.get("value").asText();
-                    continue;
-                }
-                if (name.equals("org.wildfly.description")) {
-                    description = prop.get("value").asText();
-                    continue;
-                }
-                if (name.equals("org.wildfly.note")) {
-                    note = prop.get("value").asText();
-                    continue;
-                }
-                if (name.equals("org.wildfly.stability")) {
-                    stability = prop.get("value").asText();
-                    continue;
-                }
-                if (name.equals("org.wildfly.rule.add-on")) {
-                    String val = prop.get("value").asText();
-                    addOn = val.split(",")[1];
-                    continue;
-                }
-                if (name.equals("org.wildfly.rule.kind")) {
-                    String val = prop.get("value").asText();
-                    if (val.equals("default-base-layer")) {
+            if (props != null) {
+                Iterator<JsonNode> properties = props.elements();
+                while (properties.hasNext()) {
+                    ObjectNode prop = (ObjectNode) properties.next();
+                    String name = prop.get("name").asText();
+                    if (name.equals("org.wildfly.category")) {
+                        category = prop.get("value").asText();
+                        continue;
+                    }
+                    if (name.equals("org.wildfly.description")) {
+                        description = prop.get("value").asText();
+                        continue;
+                    }
+                    if (name.equals("org.wildfly.note")) {
+                        note = prop.get("value").asText();
+                        continue;
+                    }
+                    if (name.equals("org.wildfly.stability")) {
+                        stability = prop.get("value").asText();
+                        continue;
+                    }
+                    if (name.equals("org.wildfly.rule.add-on")) {
+                        String val = prop.get("value").asText();
+                        addOn = val.split(",")[1];
+                        continue;
+                    }
+                    if (name.equals("org.wildfly.rule.kind")) {
+                        String val = prop.get("value").asText();
+                        if (val.equals("default-base-layer")) {
+                            discoveryRules.add(prop);
+                            setRuleDescription(name, glowRulesDescriptions, prop);
+                        }
+                        continue;
+                    }
+                    if (name.startsWith("org.wildfly.rule") && !name.startsWith("org.wildfly.rule.add-on")) {
                         discoveryRules.add(prop);
                         setRuleDescription(name, glowRulesDescriptions, prop);
+                        continue;
                     }
-                    continue;
                 }
-                if (name.startsWith("org.wildfly.rule") && !name.startsWith("org.wildfly.rule.add-on")) {
-                    discoveryRules.add(prop);
-                    setRuleDescription(name, glowRulesDescriptions, prop);
-                    continue;
-                }
+                layer.remove("properties");
             }
-            layer.remove("properties");
             if (category == null) {
-                throw new Exception("Invalid format, org.wildfly.category is missing for layer " + layer.get("name"));
+                category = "Internal";
             }
             if (description != null) {
                 layer.put("description", description);
@@ -276,6 +282,22 @@ public class Main {
             }
             nodes.put(layerName, layer);
         }
+    }
+
+    private static boolean isInternalLayer(JsonNode layer) {
+        ArrayNode props = ((ArrayNode) layer.get("properties"));
+        if (props == null) {
+            return true;
+        }
+        Iterator<JsonNode> properties = props.elements();
+        while (properties.hasNext()) {
+            ObjectNode prop = (ObjectNode) properties.next();
+            String name = prop.get("name").asText();
+            if (name.equals("org.wildfly.category")) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private static void setRuleDescription(String name, Properties props, ObjectNode node) {
