@@ -357,7 +357,18 @@
 
     <script>
         let activeTooltip = null;
-        let originalJsonData = null; 
+        let originalJsonData = null;
+
+        function getSortedCategories(categoriesArray) {
+            if (!categoriesArray || !Array.isArray(categoriesArray)) return [];
+            const categoriesCopy = [...categoriesArray]; 
+            categoriesCopy.sort((a, b) => {
+                if (a.name === 'Internal' && b.name !== 'Internal') return 1; 
+                if (b.name === 'Internal' && a.name !== 'Internal') return -1; 
+                return 0; 
+            });
+            return categoriesCopy;
+        }
 
         function sanitizeForId(text) {
             if (typeof text !== 'string') return '';
@@ -858,12 +869,18 @@
                 return;
             }
 
-            jsonData.categories.forEach(category => {
+            const orderedCategories = getSortedCategories(jsonData.categories);
+
+            orderedCategories.forEach(category => {
                 const categoryDiv = document.createElement('div');
                 categoryDiv.className = 'category';
 
                 const categoryTitle = document.createElement('h2');
-                categoryTitle.textContent = category.name;
+                if (category.name === 'Internal') {
+                    categoryTitle.textContent = 'Internal (layers that are not to be provisioned directly)';
+                } else {
+                    categoryTitle.textContent = category.name;
+                }
                 categoryDiv.appendChild(categoryTitle);
 
                 if (category.description) {
@@ -1265,7 +1282,7 @@
             });
         }
 
-        const defaultJsonUrl = 'https://raw.githubusercontent.com/jfdenise/wildfly-catalog/refs/heads/main/docs/###REPLACE_WILDFLY_VERSION###/wildfly-catalog.json?test=foo';
+        const defaultJsonUrl = 'https://raw.githubusercontent.com/jfdenise/wildfly-catalog/refs/heads/main/docs/37.0.0.Beta1-SNAPSHOT/wildfly-catalog.json?test=foo';
 
         function loadCatalogData(url) {
             const dataDisplay = document.getElementById('data-display');
