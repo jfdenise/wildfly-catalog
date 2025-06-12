@@ -33,7 +33,7 @@
     "mavenCoordinates" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
     "name" : "WildFly: Galleon Pack",
     "description" : "Parent for various Galleon feature pack modules",
-    "layers" : [ "batch-jberet", "bean-validation", "cdi", "cloud-server", "core-tools", "datasources-web-server", "ee-concurrency", "ee-core-profile-server", "ejb", "ejb-dist-cache", "ejb-http-invoker", "ejb-lite", "ejb-local-cache", "elytron-oidc-client", "embedded-activemq", "health", "jaxrs", "jaxrs-core", "jaxrs-server", "jpa", "jpa-distributed", "jsf", "jsonb", "jsonp", "messaging-activemq", "metrics", "microprofile-config", "microprofile-health", "microprofile-telemetry", "mvc-krazo", "naming", "observability", "opentelemetry", "remote-activemq", "resource-adapters", "undertow-https" ],
+    "layers" : [ "batch-jberet", "bean-validation", "cdi", "cloud-server", "core-tools", "datasources-web-server", "ee-concurrency", "ee-core-profile-server", "ejb", "ejb-dist-cache", "ejb-http-invoker", "ejb-lite", "ejb-local-cache", "elytron-oidc-client", "embedded-activemq", "health", "jaxrs", "jaxrs-core", "jaxrs-server", "jpa", "jpa-distributed", "jsf", "jsonb", "jsonp", "mail", "messaging-activemq", "metrics", "microprofile-config", "microprofile-health", "microprofile-telemetry", "mvc-krazo", "naming", "observability", "opentelemetry", "remote-activemq", "resource-adapters", "undertow-https", "web-clustering", "webservices" ],
     "modelReference" : {
       "description" : "The root node of the server-level management model.",
       "min-occurs" : 1,
@@ -15771,6 +15771,11 @@
         }
       }
     }
+  }, {
+    "mavenCoordinates" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
+    "name" : "WildFly Galleon feature-pack for the Cloud",
+    "description" : "This feature-pack adjusts the WildFly layers to run on the cloud.",
+    "layers" : [ "cloud-default-config", "ejb-dist-cache", "embedded-activemq", "jpa", "jpa-distributed", "logging", "mail", "management", "messaging-activemq", "transactions", "undertow", "web-clustering", "webservices" ]
   } ],
   "categories" : [ {
     "name" : "AI",
@@ -16381,6 +16386,1059 @@
       "glowDiscoverable" : false
     } ]
   }, {
+    "name" : "Cloud",
+    "functionalities" : [ {
+      "name" : "cloud-default-config",
+      "managementModel" : {
+        "interface" : {
+          "private" : {
+            "inet-address" : "${jboss.bind.address.private:127.0.0.1}"
+          }
+        },
+        "socket-binding-group" : {
+          "standard-sockets" : {
+            "socket-binding" : {
+              "jgroups-mping" : {
+                "interface" : "private",
+                "multicast-address" : "${jboss.default.multicast.address:230.0.0.4}",
+                "multicast-port" : "45700"
+              },
+              "jgroups-tcp" : {
+                "interface" : "private",
+                "port" : "7600"
+              },
+              "jgroups-tcp-fd" : {
+                "interface" : "private",
+                "port" : "57600"
+              },
+              "jgroups-udp" : {
+                "interface" : "private",
+                "multicast-address" : "${jboss.default.multicast.address:230.0.0.4}",
+                "multicast-port" : "45688",
+                "port" : "55200"
+              },
+              "jgroups-udp-fd" : {
+                "interface" : "private",
+                "port" : "54200"
+              },
+              "modcluster" : {
+                "multicast-address" : "${jboss.modcluster.multicast.address:224.0.1.105}",
+                "multicast-port" : "23364"
+              }
+            }
+          }
+        },
+        "subsystem" : {
+          "datasources" : {
+            "data-source" : {
+              "ExampleDS" : {
+                "connection-url" : "\"jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE\"",
+                "driver-name" : "h2",
+                "enabled" : "true",
+                "jndi-name" : "java:jboss/datasources/${env.EXAMPLE_DATASOURCE,env.OPENSHIFT_EXAMPLE_DATASOURCE:ExampleDS}",
+                "password" : "sa",
+                "statistics-enabled" : "${wildfly.datasources.statistics-enabled:${wildfly.statistics-enabled:false}}",
+                "use-java-context" : "true",
+                "user-name" : "sa"
+              }
+            }
+          },
+          "discovery" : { },
+          "distributable-ejb" : {
+            "default-bean-management" : "default",
+            "client-mappings-registry" : {
+              "infinispan" : {
+                "cache" : "client-mappings",
+                "cache-container" : "ejb"
+              }
+            },
+            "infinispan-bean-management" : {
+              "default" : {
+                "cache-container" : "ejb",
+                "max-active-beans" : "10000"
+              }
+            },
+            "infinispan-timer-management" : {
+              "persistent" : {
+                "cache" : "persistent",
+                "cache-container" : "ejb",
+                "max-active-timers" : "10000"
+              },
+              "transient" : {
+                "cache" : "transient",
+                "cache-container" : "ejb",
+                "max-active-timers" : "10000"
+              }
+            }
+          },
+          "distributable-web" : {
+            "default-session-management" : "default",
+            "default-single-sign-on-management" : "default",
+            "infinispan-session-management" : {
+              "default" : {
+                "cache-container" : "web",
+                "granularity" : "SESSION",
+                "affinity" : {
+                  "primary-owner" : { }
+                }
+              }
+            },
+            "infinispan-single-sign-on-management" : {
+              "default" : {
+                "cache" : "sso",
+                "cache-container" : "web"
+              }
+            },
+            "routing" : {
+              "infinispan" : {
+                "cache" : "routing",
+                "cache-container" : "web"
+              }
+            }
+          },
+          "ee" : {
+            "spec-descriptor-property-replacement" : "true",
+            "service" : {
+              "default-bindings" : {
+                "datasource" : "java:jboss/datasources/${env.DEFAULT_DATASOURCE,\\ env.OPENSHIFT_DEFAULT_DATASOURCE,env.EXAMPLE_DATASOURCE,env.OPENSHIFT_EXAMPLE_DATASOURCE:ExampleDS}"
+              }
+            }
+          },
+          "ejb3" : {
+            "default-mdb-instance-pool" : "mdb-strict-max-pool",
+            "default-missing-method-permissions-deny-access" : "true",
+            "default-resource-adapter-name" : "${ejb.resource-adapter-name:activemq-ra.rar}",
+            "default-security-domain" : "other",
+            "default-sfsb-cache" : "distributable",
+            "default-sfsb-passivation-disabled-cache" : "simple",
+            "default-singleton-bean-access-timeout" : "5000",
+            "default-slsb-instance-pool" : "slsb-strict-max-pool",
+            "default-stateful-bean-access-timeout" : "5000",
+            "log-system-exceptions" : "true",
+            "statistics-enabled" : "${wildfly.ejb3.statistics-enabled:${wildfly.statistics-enabled:false}}",
+            "application-security-domain" : {
+              "other" : {
+                "security-domain" : "ApplicationDomain"
+              }
+            },
+            "distributable-cache" : {
+              "distributable" : { }
+            },
+            "service" : {
+              "async" : {
+                "thread-pool-name" : "default"
+              },
+              "remote" : {
+                "connectors" : "[http-remoting-connector]",
+                "thread-pool-name" : "default",
+                "channel-creation-options" : {
+                  "MAX_OUTBOUND_MESSAGES" : {
+                    "type" : "remoting",
+                    "value" : "1234"
+                  }
+                }
+              },
+              "timer-service" : {
+                "default-data-store" : "default-file-store",
+                "thread-pool-name" : "default",
+                "file-data-store" : {
+                  "default-file-store" : {
+                    "path" : "timer-service-data",
+                    "relative-to" : "jboss.server.data.dir"
+                  }
+                }
+              }
+            },
+            "simple-cache" : {
+              "simple" : { }
+            },
+            "strict-max-bean-instance-pool" : {
+              "mdb-strict-max-pool" : {
+                "derive-size" : "from-cpu-count",
+                "timeout" : "5",
+                "timeout-unit" : "MINUTES"
+              },
+              "slsb-strict-max-pool" : {
+                "derive-size" : "from-worker-pools",
+                "timeout" : "5",
+                "timeout-unit" : "MINUTES"
+              }
+            },
+            "thread-pool" : {
+              "default" : {
+                "keepalive-time" : "{ unit=SECONDS, time=60 }",
+                "max-threads" : "10"
+              }
+            }
+          },
+          "elytron" : {
+            "http-authentication-factory" : {
+              "application-http-authentication" : {
+                "http-server-mechanism-factory" : "global",
+                "mechanism-configurations" : "[{mechanism-name=BASIC,mechanism-realm-configurations=[{realm-name=ApplicationRealm}]}]",
+                "security-domain" : "ApplicationDomain"
+              }
+            },
+            "permission-set" : {
+              "default-permissions" : {
+                "permissions" : "{ module=org.jboss.ejb-client, class-name=org.jboss.ejb.client.RemoteEJBPermission }"
+              }
+            }
+          },
+          "infinispan" : {
+            "cache-container" : {
+              "ejb" : {
+                "aliases" : "[sfsb]",
+                "default-cache" : "dist",
+                "marshaller" : "PROTOSTREAM",
+                "modules" : "[org.wildfly.clustering.ejb.infinispan]",
+                "distributed-cache" : {
+                  "dist" : {
+                    "component" : {
+                      "expiration" : {
+                        "interval" : "0"
+                      },
+                      "locking" : {
+                        "isolation" : "REPEATABLE_READ"
+                      },
+                      "transaction" : {
+                        "mode" : "BATCH"
+                      }
+                    },
+                    "store" : {
+                      "file" : {
+                        "passivation" : "true",
+                        "purge" : "true"
+                      }
+                    }
+                  },
+                  "persistent" : {
+                    "component" : {
+                      "expiration" : {
+                        "interval" : "0"
+                      },
+                      "locking" : {
+                        "isolation" : "REPEATABLE_READ"
+                      },
+                      "transaction" : {
+                        "mode" : "BATCH"
+                      }
+                    },
+                    "store" : {
+                      "file" : {
+                        "passivation" : "true"
+                      }
+                    }
+                  }
+                },
+                "local-cache" : {
+                  "transient" : {
+                    "component" : {
+                      "expiration" : {
+                        "interval" : "0"
+                      },
+                      "locking" : {
+                        "isolation" : "REPEATABLE_READ"
+                      },
+                      "transaction" : {
+                        "mode" : "BATCH"
+                      }
+                    },
+                    "store" : {
+                      "file" : {
+                        "passivation" : "true",
+                        "purge" : "true"
+                      }
+                    }
+                  }
+                },
+                "replicated-cache" : {
+                  "client-mappings" : {
+                    "component" : {
+                      "expiration" : {
+                        "interval" : "0"
+                      }
+                    }
+                  }
+                },
+                "transport" : {
+                  "jgroups" : {
+                    "lock-timeout" : "60000"
+                  }
+                }
+              },
+              "hibernate" : {
+                "default-cache" : "local-query",
+                "marshaller" : "JBOSS",
+                "modules" : "[org.infinispan.hibernate-cache]",
+                "invalidation-cache" : {
+                  "entity" : {
+                    "component" : {
+                      "expiration" : {
+                        "max-idle" : "100000"
+                      }
+                    },
+                    "memory" : {
+                      "heap" : {
+                        "size" : "10000"
+                      }
+                    }
+                  }
+                },
+                "local-cache" : {
+                  "local-query" : {
+                    "component" : {
+                      "expiration" : {
+                        "max-idle" : "100000"
+                      }
+                    },
+                    "memory" : {
+                      "heap" : {
+                        "size" : "10000"
+                      }
+                    }
+                  },
+                  "pending-puts" : {
+                    "component" : {
+                      "expiration" : {
+                        "max-idle" : "60000"
+                      }
+                    }
+                  }
+                },
+                "replicated-cache" : {
+                  "timestamps" : {
+                    "component" : {
+                      "expiration" : {
+                        "interval" : "0"
+                      }
+                    }
+                  }
+                },
+                "transport" : {
+                  "jgroups" : {
+                    "lock-timeout" : "60000"
+                  }
+                }
+              },
+              "server" : {
+                "aliases" : "[singleton, cluster]",
+                "default-cache" : "default",
+                "marshaller" : "PROTOSTREAM",
+                "modules" : "[org.wildfly.clustering.singleton.server]",
+                "replicated-cache" : {
+                  "default" : {
+                    "component" : {
+                      "expiration" : {
+                        "interval" : "0"
+                      },
+                      "transaction" : {
+                        "mode" : "BATCH"
+                      }
+                    }
+                  }
+                },
+                "transport" : {
+                  "jgroups" : {
+                    "lock-timeout" : "60000"
+                  }
+                }
+              },
+              "web" : {
+                "default-cache" : "sessions",
+                "marshaller" : "PROTOSTREAM",
+                "modules" : "[org.wildfly.clustering.session.infinispan.embedded]",
+                "distributed-cache" : {
+                  "dist" : {
+                    "component" : {
+                      "expiration" : {
+                        "interval" : "0"
+                      },
+                      "locking" : {
+                        "isolation" : "REPEATABLE_READ"
+                      },
+                      "transaction" : {
+                        "mode" : "BATCH"
+                      }
+                    },
+                    "store" : {
+                      "file" : {
+                        "passivation" : "true",
+                        "purge" : "true"
+                      }
+                    }
+                  },
+                  "sessions" : {
+                    "component" : {
+                      "expiration" : {
+                        "interval" : "0"
+                      }
+                    }
+                  }
+                },
+                "replicated-cache" : {
+                  "routing" : {
+                    "component" : {
+                      "expiration" : {
+                        "interval" : "0"
+                      }
+                    }
+                  },
+                  "sso" : {
+                    "component" : {
+                      "expiration" : {
+                        "interval" : "0"
+                      },
+                      "locking" : {
+                        "isolation" : "REPEATABLE_READ"
+                      },
+                      "transaction" : {
+                        "mode" : "BATCH"
+                      }
+                    }
+                  }
+                },
+                "transport" : {
+                  "jgroups" : {
+                    "lock-timeout" : "60000"
+                  }
+                }
+              }
+            }
+          },
+          "jgroups" : {
+            "default-channel" : "ee",
+            "channel" : {
+              "ee" : {
+                "cluster" : "ejb",
+                "stack" : "tcp"
+              }
+            },
+            "stack" : {
+              "tcp" : {
+                "protocol" : {
+                  "FD_ALL3" : { },
+                  "FD_SOCK2" : {
+                    "socket-binding" : "jgroups-tcp-fd"
+                  },
+                  "FRAG4" : { },
+                  "MERGE3" : { },
+                  "MFC" : { },
+                  "MPING" : {
+                    "socket-binding" : "jgroups-mping"
+                  },
+                  "RED" : { },
+                  "UFC" : { },
+                  "UNICAST3" : { },
+                  "VERIFY_SUSPECT2" : { },
+                  "pbcast.GMS" : { },
+                  "pbcast.NAKACK2" : { },
+                  "pbcast.STABLE" : { }
+                },
+                "transport" : {
+                  "TCP" : {
+                    "socket-binding" : "jgroups-tcp"
+                  }
+                }
+              },
+              "udp" : {
+                "protocol" : {
+                  "FD_ALL3" : { },
+                  "FD_SOCK2" : {
+                    "socket-binding" : "jgroups-udp-fd"
+                  },
+                  "FRAG4" : { },
+                  "MERGE3" : { },
+                  "MFC" : { },
+                  "PING" : { },
+                  "RED" : { },
+                  "UFC" : { },
+                  "UNICAST3" : { },
+                  "VERIFY_SUSPECT2" : { },
+                  "pbcast.GMS" : { },
+                  "pbcast.NAKACK2" : { },
+                  "pbcast.STABLE" : { }
+                },
+                "transport" : {
+                  "UDP" : {
+                    "socket-binding" : "jgroups-udp"
+                  }
+                }
+              }
+            }
+          },
+          "jpa" : {
+            "default-extended-persistence-inheritance" : "DEEP"
+          },
+          "naming" : {
+            "service" : {
+              "remote-naming" : { }
+            }
+          },
+          "singleton" : {
+            "default" : "default",
+            "singleton-policy" : {
+              "default" : {
+                "cache-container" : "server",
+                "election-policy" : {
+                  "simple" : { }
+                }
+              }
+            }
+          },
+          "undertow" : {
+            "default-security-domain" : "other",
+            "application-security-domain" : {
+              "other" : {
+                "security-domain" : "ApplicationDomain"
+              }
+            },
+            "configuration" : {
+              "handler" : {
+                "file" : {
+                  "welcome-content" : {
+                    "path" : "${jboss.home.dir}/welcome-content"
+                  }
+                }
+              }
+            },
+            "server" : {
+              "default-server" : {
+                "alias" : "[localhost]",
+                "location" : {
+                  "/" : {
+                    "handler" : "welcome-content"
+                  }
+                },
+                "setting" : {
+                  "http-invoker" : {
+                    "http-authentication-factory" : "application-http-authentication"
+                  }
+                }
+              }
+            }
+          },
+          "webservices" : {
+            "modify-wsdl-address" : "true",
+            "statistics-enabled" : "${wildfly.webservices.statistics-enabled:${wildfly.statistics-enabled:false}}",
+            "wsdl-host" : "jbossws.undefined.host",
+            "client-config" : {
+              "Standard-Client-Config" : { }
+            },
+            "endpoint-config" : {
+              "Recording-Endpoint-Config" : {
+                "pre-handler-chain" : {
+                  "recording-handlers" : {
+                    "protocol-bindings" : "##SOAP11_HTTP ##SOAP11_HTTP_MTOM ##SOAP12_HTTP ##SOAP12_HTTP_MTOM",
+                    "handler" : {
+                      "RecordingHandler" : {
+                        "class" : "org.jboss.ws.common.invocation.RecordingServerHandler"
+                      }
+                    }
+                  }
+                }
+              },
+              "Standard-Endpoint-Config" : { }
+            }
+          }
+        }
+      },
+      "configuration" : [ {
+        "attribute" : "/interface=management.inet-address",
+        "systemProperties" : [ "jboss.bind.address.management" ]
+      }, {
+        "attribute" : "/interface=private.inet-address",
+        "systemProperties" : [ "jboss.bind.address.private" ]
+      }, {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/remote-destination-outbound-socket-binding=mail-smtp.host",
+        "systemProperties" : [ "jboss.mail.server.host" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/remote-destination-outbound-socket-binding=mail-smtp.port",
+        "systemProperties" : [ "jboss.mail.server.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=ajp.port",
+        "systemProperties" : [ "jboss.ajp.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=http.port",
+        "systemProperties" : [ "jboss.http.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=https.port",
+        "systemProperties" : [ "jboss.https.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=jgroups-mping.multicast-address",
+        "systemProperties" : [ "jboss.default.multicast.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=jgroups-udp.multicast-address",
+        "systemProperties" : [ "jboss.default.multicast.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=management-http.port",
+        "systemProperties" : [ "jboss.management.http.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=management-https.port",
+        "systemProperties" : [ "jboss.management.https.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=modcluster.multicast-address",
+        "systemProperties" : [ "jboss.modcluster.multicast.address" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=ExampleDS.jndi-name",
+        "environmentVariables" : [ "EXAMPLE_DATASOURCE", "OPENSHIFT_EXAMPLE_DATASOURCE" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=ExampleDS.statistics-enabled",
+        "systemProperties" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=deployment-scanner/scanner=default.runtime-failure-causes-rollback",
+        "systemProperties" : [ "jboss.deployment.scanner.rollback.on.failure" ]
+      }, {
+        "attribute" : "/subsystem=ee/service=default-bindings.datasource",
+        "environmentVariables" : [ "DEFAULT_DATASOURCE", "EXAMPLE_DATASOURCE", "OPENSHIFT_EXAMPLE_DATASOURCE" ],
+        "systemProperties" : [ "\\env.OPENSHIFT_DEFAULT_DATASOURCE" ]
+      }, {
+        "attribute" : "/subsystem=ejb3.default-resource-adapter-name",
+        "systemProperties" : [ "ejb.resource-adapter-name" ]
+      }, {
+        "attribute" : "/subsystem=ejb3.statistics-enabled",
+        "systemProperties" : [ "wildfly.ejb3.statistics-enabled", "wildfly.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=metrics.prefix",
+        "systemProperties" : [ "wildfly.metrics.prefix" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=undertow.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.undertow.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=undertow/configuration=handler/file=welcome-content.path",
+        "systemProperties" : [ "jboss.home.dir" ]
+      }, {
+        "attribute" : "/subsystem=webservices.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.webservices.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=webservices.wsdl-host",
+        "systemProperties" : [ "jboss.bind.address" ]
+      } ],
+      "dependencies" : [ {
+        "name" : "batch-jberet",
+        "optional" : false
+      }, {
+        "name" : "web-server",
+        "optional" : false
+      }, {
+        "name" : "datasources",
+        "optional" : false
+      }, {
+        "name" : "management",
+        "optional" : false
+      }, {
+        "name" : "jmx-remoting",
+        "optional" : false
+      }, {
+        "name" : "logging",
+        "optional" : false
+      }, {
+        "name" : "request-controller",
+        "optional" : false
+      }, {
+        "name" : "security-manager",
+        "optional" : false
+      }, {
+        "name" : "jaxrs",
+        "optional" : false
+      }, {
+        "name" : "bean-validation",
+        "optional" : false
+      }, {
+        "name" : "cdi",
+        "optional" : false
+      }, {
+        "name" : "ee-security",
+        "optional" : false
+      }, {
+        "name" : "jms-activemq",
+        "optional" : false
+      }, {
+        "name" : "resource-adapters",
+        "optional" : false
+      }, {
+        "name" : "elytron-oidc-client",
+        "optional" : false
+      }, {
+        "name" : "h2-driver",
+        "optional" : false
+      }, {
+        "name" : "health",
+        "optional" : false
+      }, {
+        "name" : "jdr",
+        "optional" : false
+      }, {
+        "name" : "jsf",
+        "optional" : false
+      }, {
+        "name" : "mail",
+        "optional" : false
+      }, {
+        "name" : "metrics",
+        "optional" : false
+      }, {
+        "name" : "microprofile-jwt",
+        "optional" : false
+      }, {
+        "name" : "pojo",
+        "optional" : false
+      }, {
+        "name" : "remoting",
+        "optional" : false
+      }, {
+        "name" : "sar",
+        "optional" : false
+      }, {
+        "name" : "web-clustering",
+        "optional" : false
+      } ],
+      "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
+      "description" : "A default configuration for the cloud. Note that all JBoss Modules modules are provisioned.",
+      "stability" : "default",
+      "glowDiscoverable" : false
+    }, {
+      "name" : "ejb-dist-cache",
+      "managementModel" : {
+        "subsystem" : {
+          "jgroups" : {
+            "channel" : {
+              "ee" : {
+                "stack" : "tcp"
+              }
+            }
+          }
+        }
+      },
+      "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
+      "description" : "Infinispan-based distributed cache for stateful session beans, adjusted for the cloud",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.configuration",
+        "value" : "https://raw.githubusercontent.com/wildfly/wildfly-cekit-modules/main/jboss/container/wildfly/launch/jgroups/module.yaml",
+        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
+        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "embedded-activemq",
+      "managementModel" : {
+        "subsystem" : {
+          "messaging-activemq" : {
+            "server" : {
+              "default" : {
+                "connection-factory" : {
+                  "RemoteConnectionFactory" : {
+                    "reconnect-attempts" : "-1"
+                  }
+                },
+                "http-connector" : {
+                  "http-connector" : {
+                    "endpoint" : "http-acceptor",
+                    "socket-binding" : "http-messaging"
+                  },
+                  "http-connector-throughput" : {
+                    "endpoint" : "http-acceptor-throughput",
+                    "params" : "{batch-delay=50}",
+                    "socket-binding" : "http-messaging"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
+      "description" : "Support for an embedded Apache Activemq Artemis Jakarta Messaging broker, adjusted for the cloud",
+      "stability" : "default",
+      "glowDiscoverable" : false
+    }, {
+      "name" : "jpa",
+      "managementModel" : {
+        "subsystem" : {
+          "infinispan" : {
+            "cache-container" : {
+              "hibernate" : {
+                "default-cache" : "local-query"
+              }
+            }
+          }
+        }
+      },
+      "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
+      "description" : "Support for JPA (using the latest WildFly supported Hibernate release), adjusted for the cloud",
+      "stability" : "default",
+      "glowDiscoverable" : false
+    }, {
+      "name" : "jpa-distributed",
+      "managementModel" : {
+        "subsystem" : {
+          "infinispan" : {
+            "cache-container" : {
+              "hibernate" : {
+                "default-cache" : "local-query"
+              }
+            }
+          },
+          "jgroups" : {
+            "channel" : {
+              "ee" : {
+                "stack" : "tcp"
+              }
+            }
+          }
+        }
+      },
+      "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
+      "description" : "Support for JPA with a distributed second level cache, adjusted for the cloud",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.configuration",
+        "value" : "https://raw.githubusercontent.com/wildfly/wildfly-cekit-modules/main/jboss/container/wildfly/launch/jgroups/module.yaml",
+        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
+        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "logging",
+      "managementModel" : {
+        "subsystem" : {
+          "logging" : {
+            "console-handler" : {
+              "CONSOLE" : { }
+            },
+            "json-formatter" : {
+              "OPENSHIFT" : {
+                "exception-output-type" : "formatted",
+                "key-overrides" : "{ timestamp=@timestamp }",
+                "meta-data" : "{@version=1}"
+              }
+            },
+            "root-logger" : {
+              "ROOT" : {
+                "handlers" : "[CONSOLE]",
+                "level" : "INFO"
+              }
+            }
+          }
+        }
+      },
+      "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
+      "description" : "WildFly Logging subsystem, adjusted for the cloud",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.configuration",
+        "value" : "https://raw.githubusercontent.com/wildfly/wildfly-cekit-modules/main/jboss/container/wildfly/launch/json-logging/module.yaml,https://raw.githubusercontent.com/wildfly/wildfly-cekit-modules/main/jboss/container/wildfly/launch/logger-category/module.yaml",
+        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
+        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "mail",
+      "managementModel" : {
+        "socket-binding-group" : {
+          "standard-sockets" : {
+            "remote-destination-outbound-socket-binding" : {
+              "mail-smtp" : {
+                "host" : "${env.OPENSHIFT_SMTP_HOST,jboss.mail.server.host:localhost}"
+              }
+            }
+          }
+        }
+      },
+      "configuration" : [ {
+        "attribute" : "/socket-binding-group=standard-sockets/remote-destination-outbound-socket-binding=mail-smtp.host",
+        "environmentVariables" : [ "OPENSHIFT_SMTP_HOST" ],
+        "systemProperties" : [ "jboss.mail.server.host" ]
+      } ],
+      "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
+      "description" : "Support for Jakarta Mail, adjusted for the cloud.",
+      "stability" : "default",
+      "glowDiscoverable" : false
+    }, {
+      "name" : "management",
+      "managementModel" : {
+        "core-service" : {
+          "management" : {
+            "management-interface" : {
+              "http-interface" : {
+                "console-enabled" : "false"
+              }
+            }
+          }
+        }
+      },
+      "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
+      "description" : "WildFly Management, adjusted for the cloud",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.configuration",
+        "value" : "https://raw.githubusercontent.com/wildfly/wildfly-cekit-modules/main/jboss/container/wildfly/launch/admin/2.0/module.yaml",
+        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
+        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "messaging-activemq",
+      "managementModel" : {
+        "socket-binding-group" : {
+          "standard-sockets" : {
+            "remote-destination-outbound-socket-binding" : {
+              "http-messaging" : {
+                "host" : "${jboss.messaging.host:localhost}",
+                "port" : "${jboss.http.port:8080}"
+              }
+            }
+          }
+        }
+      },
+      "configuration" : [ {
+        "attribute" : "/socket-binding-group=standard-sockets/remote-destination-outbound-socket-binding=http-messaging.host",
+        "systemProperties" : [ "jboss.messaging.host" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/remote-destination-outbound-socket-binding=http-messaging.port",
+        "systemProperties" : [ "jboss.http.port" ]
+      } ],
+      "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
+      "description" : "Support for connections to a remote Jakarta Messaging broker, adjusted for the cloud",
+      "stability" : "default",
+      "glowDiscoverable" : false
+    }, {
+      "name" : "transactions",
+      "managementModel" : {
+        "subsystem" : {
+          "transactions" : {
+            "node-identifier" : "${jboss.tx.node.id:1}",
+            "recovery-listener" : "true"
+          }
+        }
+      },
+      "configuration" : [ {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      } ],
+      "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
+      "description" : "WildFly transactions subsystem, adjusted for the cloud",
+      "stability" : "default",
+      "glowDiscoverable" : false
+    }, {
+      "name" : "undertow",
+      "managementModel" : {
+        "socket-binding-group" : {
+          "standard-sockets" : {
+            "socket-binding" : {
+              "http" : {
+                "interface" : "bindall"
+              },
+              "https" : {
+                "interface" : "bindall"
+              }
+            }
+          }
+        },
+        "subsystem" : {
+          "undertow" : {
+            "server" : {
+              "default-server" : {
+                "http-listener" : {
+                  "default" : {
+                    "proxy-address-forwarding" : "true"
+                  }
+                }
+              }
+            },
+            "servlet-container" : {
+              "default" : {
+                "setting" : {
+                  "affinity-cookie" : {
+                    "name" : "INGRESSCOOKIE"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
+      "description" : "WildFly undertow subsystem, adjusted for the cloud",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.configuration",
+        "value" : "https://raw.githubusercontent.com/wildfly/wildfly-cekit-modules/main/jboss/container/wildfly/launch/access-log-valve/module.yaml,https://raw.githubusercontent.com/wildfly/wildfly-cekit-modules/main/jboss/container/wildfly/launch/filters/module.yaml",
+        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
+        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "web-clustering",
+      "managementModel" : {
+        "subsystem" : {
+          "infinispan" : {
+            "cache-container" : {
+              "web" : {
+                "default-cache" : "sessions",
+                "distributed-cache" : {
+                  "sessions" : {
+                    "component" : {
+                      "expiration" : {
+                        "interval" : "0"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "jgroups" : {
+            "channel" : {
+              "ee" : {
+                "stack" : "tcp"
+              }
+            }
+          }
+        }
+      },
+      "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
+      "description" : "Support for distributable web applications. Configures a non-local Infinispan-based container web cache for data session handling suitable to clustering environments, adjusted for the cloud.",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.configuration",
+        "value" : "https://raw.githubusercontent.com/wildfly/wildfly-cekit-modules/main/jboss/container/wildfly/launch/jgroups/module.yaml",
+        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
+        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "webservices",
+      "managementModel" : {
+        "subsystem" : {
+          "webservices" : {
+            "modify-wsdl-address" : "true",
+            "wsdl-host" : "jbossws.undefined.host"
+          }
+        }
+      },
+      "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
+      "description" : "Support for Jakarta XML Web Services, adjusted for the cloud",
+      "stability" : "default",
+      "glowDiscoverable" : false
+    } ]
+  }, {
     "name" : "Clustering",
     "functionalities" : [ {
       "name" : "ejb-dist-cache",
@@ -16844,6 +17902,246 @@
       "glowRules" : [ {
         "name" : "org.wildfly.rule.profile-ha",
         "value" : "jpa",
+        "ruleDescription" : "References the counter part layer for the given profile. The rule name must be suffixed with the profile name. Known profile is 'ha'.",
+        "valueDescription" : "e.g.: Inside `singleton-ha` layer, this rule references the `org.wildfly.rule.profile-ha=singleton-local`. It means that when `singleton-local` is discovered and ha profile is enabled, `singleton-ha` is included."
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "web-clustering",
+      "managementModel" : {
+        "interface" : {
+          "private" : {
+            "inet-address" : "${jboss.bind.address.private:127.0.0.1}"
+          }
+        },
+        "socket-binding-group" : {
+          "standard-sockets" : {
+            "socket-binding" : {
+              "jgroups-mping" : {
+                "interface" : "private",
+                "multicast-address" : "${jboss.default.multicast.address:230.0.0.4}",
+                "multicast-port" : "45700"
+              },
+              "jgroups-tcp" : {
+                "interface" : "private",
+                "port" : "7600"
+              },
+              "jgroups-tcp-fd" : {
+                "interface" : "private",
+                "port" : "57600"
+              },
+              "jgroups-udp" : {
+                "interface" : "private",
+                "multicast-address" : "${jboss.default.multicast.address:230.0.0.4}",
+                "multicast-port" : "45688",
+                "port" : "55200"
+              },
+              "jgroups-udp-fd" : {
+                "interface" : "private",
+                "port" : "54200"
+              }
+            }
+          }
+        },
+        "subsystem" : {
+          "distributable-web" : {
+            "default-session-management" : "default",
+            "default-single-sign-on-management" : "default",
+            "infinispan-session-management" : {
+              "default" : {
+                "cache-container" : "web",
+                "granularity" : "SESSION",
+                "affinity" : {
+                  "primary-owner" : { }
+                }
+              }
+            },
+            "infinispan-single-sign-on-management" : {
+              "default" : {
+                "cache" : "sso",
+                "cache-container" : "web"
+              }
+            },
+            "routing" : {
+              "infinispan" : {
+                "cache" : "routing",
+                "cache-container" : "web"
+              }
+            }
+          },
+          "infinispan" : {
+            "cache-container" : {
+              "web" : {
+                "default-cache" : "dist",
+                "marshaller" : "PROTOSTREAM",
+                "modules" : "[org.wildfly.clustering.session.infinispan.embedded]",
+                "distributed-cache" : {
+                  "dist" : {
+                    "component" : {
+                      "expiration" : {
+                        "interval" : "0"
+                      },
+                      "locking" : {
+                        "isolation" : "REPEATABLE_READ"
+                      },
+                      "transaction" : {
+                        "mode" : "BATCH"
+                      }
+                    },
+                    "store" : {
+                      "file" : {
+                        "passivation" : "true",
+                        "purge" : "true"
+                      }
+                    }
+                  }
+                },
+                "replicated-cache" : {
+                  "routing" : {
+                    "component" : {
+                      "expiration" : {
+                        "interval" : "0"
+                      }
+                    }
+                  },
+                  "sso" : {
+                    "component" : {
+                      "expiration" : {
+                        "interval" : "0"
+                      },
+                      "locking" : {
+                        "isolation" : "REPEATABLE_READ"
+                      },
+                      "transaction" : {
+                        "mode" : "BATCH"
+                      }
+                    }
+                  }
+                },
+                "transport" : {
+                  "jgroups" : {
+                    "lock-timeout" : "60000"
+                  }
+                }
+              }
+            }
+          },
+          "jgroups" : {
+            "default-channel" : "ee",
+            "channel" : {
+              "ee" : {
+                "cluster" : "ejb",
+                "stack" : "udp"
+              }
+            },
+            "stack" : {
+              "tcp" : {
+                "protocol" : {
+                  "FD_ALL3" : { },
+                  "FD_SOCK2" : {
+                    "socket-binding" : "jgroups-tcp-fd"
+                  },
+                  "FRAG4" : { },
+                  "MERGE3" : { },
+                  "MFC" : { },
+                  "MPING" : {
+                    "socket-binding" : "jgroups-mping"
+                  },
+                  "RED" : { },
+                  "UFC" : { },
+                  "UNICAST3" : { },
+                  "VERIFY_SUSPECT2" : { },
+                  "pbcast.GMS" : { },
+                  "pbcast.NAKACK2" : { },
+                  "pbcast.STABLE" : { }
+                },
+                "transport" : {
+                  "TCP" : {
+                    "socket-binding" : "jgroups-tcp"
+                  }
+                }
+              },
+              "udp" : {
+                "protocol" : {
+                  "FD_ALL3" : { },
+                  "FD_SOCK2" : {
+                    "socket-binding" : "jgroups-udp-fd"
+                  },
+                  "FRAG4" : { },
+                  "MERGE3" : { },
+                  "MFC" : { },
+                  "PING" : { },
+                  "RED" : { },
+                  "UFC" : { },
+                  "UNICAST3" : { },
+                  "VERIFY_SUSPECT2" : { },
+                  "pbcast.GMS" : { },
+                  "pbcast.NAKACK2" : { },
+                  "pbcast.STABLE" : { }
+                },
+                "transport" : {
+                  "UDP" : {
+                    "socket-binding" : "jgroups-udp"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "configuration" : [ {
+        "attribute" : "/interface=private.inet-address",
+        "systemProperties" : [ "jboss.bind.address.private" ]
+      }, {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=ajp.port",
+        "systemProperties" : [ "jboss.ajp.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=http.port",
+        "systemProperties" : [ "jboss.http.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=https.port",
+        "systemProperties" : [ "jboss.https.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=jgroups-mping.multicast-address",
+        "systemProperties" : [ "jboss.default.multicast.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=jgroups-udp.multicast-address",
+        "systemProperties" : [ "jboss.default.multicast.address" ]
+      }, {
+        "attribute" : "/subsystem=deployment-scanner/scanner=default.runtime-failure-causes-rollback",
+        "systemProperties" : [ "jboss.deployment.scanner.rollback.on.failure" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=undertow.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.undertow.statistics-enabled" ]
+      } ],
+      "dependencies" : [ {
+        "name" : "web-server",
+        "optional" : false
+      }, {
+        "name" : "transactions",
+        "optional" : false
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Support for distributable web applications. Configures a non-local Infinispan-based container web cache for data session handling suitable to clustering environments.",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.profile-ha",
+        "value" : "web-passivation",
         "ruleDescription" : "References the counter part layer for the given profile. The rule name must be suffixed with the profile name. Known profile is 'ha'.",
         "valueDescription" : "e.g.: Inside `singleton-ha` layer, this rule references the `org.wildfly.rule.profile-ha=singleton-local`. It means that when `singleton-local` is discovered and ha profile is enabled, `singleton-ha` is included."
       } ],
@@ -19662,6 +20960,74 @@
       } ],
       "glowDiscoverable" : true
     }, {
+      "name" : "mail",
+      "managementModel" : {
+        "socket-binding-group" : {
+          "standard-sockets" : {
+            "remote-destination-outbound-socket-binding" : {
+              "mail-smtp" : {
+                "host" : "${jboss.mail.server.host:localhost}",
+                "port" : "${jboss.mail.server.port:25}"
+              }
+            }
+          }
+        },
+        "subsystem" : {
+          "elytron" : {
+            "simple-permission-mapper" : {
+              "default-permission-mapper" : { }
+            }
+          },
+          "mail" : {
+            "mail-session" : {
+              "default" : {
+                "jndi-name" : "java:jboss/mail/Default",
+                "server" : {
+                  "smtp" : {
+                    "outbound-socket-binding-ref" : "mail-smtp"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/remote-destination-outbound-socket-binding=mail-smtp.host",
+        "systemProperties" : [ "jboss.mail.server.host" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/remote-destination-outbound-socket-binding=mail-smtp.port",
+        "systemProperties" : [ "jboss.mail.server.port" ]
+      } ],
+      "dependencies" : [ {
+        "name" : "base-server",
+        "optional" : false
+      }, {
+        "name" : "naming",
+        "optional" : false
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Support for Jakarta Mail",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.class",
+        "value" : "jakarta.mail.*",
+        "ruleDescription" : "A Java type.",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `jakarta.ws.rs,jakarta.ws.rs.core`"
+      }, {
+        "name" : "org.wildfly.rule.annotations",
+        "value" : "jakarta.mail",
+        "ruleDescription" : "Expected annotations ",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `org.eclipse.microprofile.config.inject`"
+      } ],
+      "glowDiscoverable" : true
+    }, {
       "name" : "myfaces",
       "managementModel" : {
         "subsystem" : {
@@ -19813,6 +21179,99 @@
         "value" : "[/META-INF/ra.xml,/META-INF/ironjacamar.xml]",
         "ruleDescription" : "Expect the existence of files or directories. If multiple rules exist, the rule name can be extended with a suffix `<rule name>-<suffix>`",
         "valueDescription" : "An array of file paths. e.g.: `[/META-INF/beans.xml,/WEB-INF/beans.xml]`"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "webservices",
+      "managementModel" : {
+        "subsystem" : {
+          "webservices" : {
+            "statistics-enabled" : "${wildfly.webservices.statistics-enabled:${wildfly.statistics-enabled:false}}",
+            "wsdl-host" : "${jboss.bind.address:127.0.0.1}",
+            "client-config" : {
+              "Standard-Client-Config" : { }
+            },
+            "endpoint-config" : {
+              "Recording-Endpoint-Config" : {
+                "pre-handler-chain" : {
+                  "recording-handlers" : {
+                    "protocol-bindings" : "##SOAP11_HTTP ##SOAP11_HTTP_MTOM ##SOAP12_HTTP ##SOAP12_HTTP_MTOM",
+                    "handler" : {
+                      "RecordingHandler" : {
+                        "class" : "org.jboss.ws.common.invocation.RecordingServerHandler"
+                      }
+                    }
+                  }
+                }
+              },
+              "Standard-Endpoint-Config" : { }
+            }
+          }
+        }
+      },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=ajp.port",
+        "systemProperties" : [ "jboss.ajp.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=http.port",
+        "systemProperties" : [ "jboss.http.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=https.port",
+        "systemProperties" : [ "jboss.https.port" ]
+      }, {
+        "attribute" : "/subsystem=deployment-scanner/scanner=default.runtime-failure-causes-rollback",
+        "systemProperties" : [ "jboss.deployment.scanner.rollback.on.failure" ]
+      }, {
+        "attribute" : "/subsystem=ejb3.statistics-enabled",
+        "systemProperties" : [ "wildfly.ejb3.statistics-enabled", "wildfly.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=undertow.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.undertow.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=webservices.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.webservices.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=webservices.wsdl-host",
+        "systemProperties" : [ "jboss.bind.address" ]
+      } ],
+      "dependencies" : [ {
+        "name" : "web-server",
+        "optional" : false
+      }, {
+        "name" : "ejb-lite",
+        "optional" : true
+      }, {
+        "name" : "messaging-activemq",
+        "optional" : true
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "description" : "Support for Jakarta XML Web Services",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.class",
+        "value" : "jakarta.xml.ws.*",
+        "ruleDescription" : "A Java type.",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `jakarta.ws.rs,jakarta.ws.rs.core`"
+      }, {
+        "name" : "org.wildfly.rule.annotations",
+        "value" : "jakarta.jws,jakarta.jws.soap,jakarta.xml.ws.*",
+        "ruleDescription" : "Expected annotations ",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `org.eclipse.microprofile.config.inject`"
       } ],
       "glowDiscoverable" : true
     } ]
