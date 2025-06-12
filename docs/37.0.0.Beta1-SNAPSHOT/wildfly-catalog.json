@@ -11678,516 +11678,9 @@
           }
         }
       }
-    },
-    "configuration" : [ {
-      "attribute" : "/interface=management.inet-address",
-      "systemProperties" : [ "jboss.bind.address.management" ]
-    }, {
-      "attribute" : "/interface=private.inet-address",
-      "systemProperties" : [ "jboss.bind.address.private" ]
-    }, {
-      "attribute" : "/interface=public.inet-address",
-      "systemProperties" : [ "jboss.bind.address" ]
-    }, {
-      "attribute" : "/socket-binding-group=standard-sockets.port-offset",
-      "systemProperties" : [ "jboss.socket.binding.port-offset" ]
-    }, {
-      "attribute" : "/socket-binding-group=standard-sockets/remote-destination-outbound-socket-binding=messaging-activemq.host",
-      "systemProperties" : [ "jboss.messaging.connector.host" ]
-    }, {
-      "attribute" : "/socket-binding-group=standard-sockets/remote-destination-outbound-socket-binding=messaging-activemq.port",
-      "systemProperties" : [ "jboss.messaging.connector.port" ]
-    }, {
-      "attribute" : "/socket-binding-group=standard-sockets/socket-binding=ajp.port",
-      "systemProperties" : [ "jboss.ajp.port" ]
-    }, {
-      "attribute" : "/socket-binding-group=standard-sockets/socket-binding=http.port",
-      "systemProperties" : [ "jboss.http.port" ]
-    }, {
-      "attribute" : "/socket-binding-group=standard-sockets/socket-binding=https.port",
-      "systemProperties" : [ "jboss.https.port" ]
-    }, {
-      "attribute" : "/socket-binding-group=standard-sockets/socket-binding=jgroups-mping.multicast-address",
-      "systemProperties" : [ "jboss.default.multicast.address" ]
-    }, {
-      "attribute" : "/socket-binding-group=standard-sockets/socket-binding=jgroups-udp.multicast-address",
-      "systemProperties" : [ "jboss.default.multicast.address" ]
-    }, {
-      "attribute" : "/socket-binding-group=standard-sockets/socket-binding=management-http.port",
-      "systemProperties" : [ "jboss.management.http.port" ]
-    }, {
-      "attribute" : "/socket-binding-group=standard-sockets/socket-binding=management-https.port",
-      "systemProperties" : [ "jboss.management.https.port" ]
-    }, {
-      "attribute" : "/subsystem=deployment-scanner/scanner=default.runtime-failure-causes-rollback",
-      "systemProperties" : [ "jboss.deployment.scanner.rollback.on.failure" ]
-    }, {
-      "attribute" : "/subsystem=ejb3.default-resource-adapter-name",
-      "systemProperties" : [ "ejb.resource-adapter-name" ]
-    }, {
-      "attribute" : "/subsystem=ejb3.statistics-enabled",
-      "systemProperties" : [ "wildfly.ejb3.statistics-enabled", "wildfly.statistics-enabled" ]
-    }, {
-      "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
-      "systemProperties" : [ "jboss.server.temp.dir" ]
-    }, {
-      "attribute" : "/subsystem=messaging-activemq/server=default.statistics-enabled",
-      "systemProperties" : [ "wildfly.messaging-activemq.statistics-enabled", "wildfly.statistics-enabled" ]
-    }, {
-      "attribute" : "/subsystem=metrics.prefix",
-      "systemProperties" : [ "wildfly.metrics.prefix" ]
-    }, {
-      "attribute" : "/subsystem=microprofile-health-smallrye.empty-liveness-checks-status",
-      "environmentVariables" : [ "MP_HEALTH_EMPTY_LIVENESS_CHECKS_STATUS" ]
-    }, {
-      "attribute" : "/subsystem=microprofile-health-smallrye.empty-readiness-checks-status",
-      "environmentVariables" : [ "MP_HEALTH_EMPTY_READINESS_CHECKS_STATUS" ]
-    }, {
-      "attribute" : "/subsystem=microprofile-health-smallrye.empty-startup-checks-status",
-      "environmentVariables" : [ "MP_HEALTH_EMPTY_STARTUP_CHECKS_STATUS" ]
-    }, {
-      "attribute" : "/subsystem=transactions.node-identifier",
-      "systemProperties" : [ "jboss.tx.node.id" ]
-    }, {
-      "attribute" : "/subsystem=transactions.statistics-enabled",
-      "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
-    }, {
-      "attribute" : "/subsystem=undertow.statistics-enabled",
-      "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.undertow.statistics-enabled" ]
-    } ]
+    }
   }, {
-    "mavenCoordinates" : "org.wildfly:wildfly-datasources-galleon-pack:10.0.1.Final-SNAPSHOT",
-    "configuration" : [ {
-      "attribute" : "/subsystem=datasources/data-source=DB2DS.background-validation",
-      "environmentVariables" : [ "DB2_BACKGROUND_VALIDATION" ],
-      "systemProperties" : [ "org.wildfly.datasources.db2.background-validation" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=DB2DS.background-validation-millis",
-      "environmentVariables" : [ "DB2_BACKGROUND_VALIDATION_MILLIS" ],
-      "systemProperties" : [ "org.wildfly.datasources.db2.background-validation-millis" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=DB2DS.connection-url",
-      "environmentVariables" : [ "DB2_DATABASE", "DB2_HOST", "DB2_PORT", "DB2_SERVICE_HOST", "DB2_SERVICE_PORT", "DB2_URL", "OPENSHIFT_DB2_DB_HOST", "OPENSHIFT_DB2_DB_NAME", "OPENSHIFT_DB2_DB_PORT" ],
-      "systemProperties" : [ "org.wildfly.datasources.db2.connection-url", "org.wildfly.datasources.db2.database", "org.wildfly.datasources.db2.host", "org.wildfly.datasources.db2.port" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=DB2DS.enabled",
-      "environmentVariables" : [ "DB2_ENABLED" ],
-      "systemProperties" : [ "org.wildfly.datasources.db2.enabled" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=DB2DS.exception-sorter-class-name",
-      "environmentVariables" : [ "DB2_EXCEPTION_SORTER" ],
-      "systemProperties" : [ "org.wildfly.datasources.db2.exception-sorter-class-name" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=DB2DS.flush-strategy",
-      "environmentVariables" : [ "DB2_FLUSH_STRATEGY" ],
-      "systemProperties" : [ "org.wildfly.datasources.db2.flush-strategy" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=DB2DS.idle-timeout-minutes",
-      "environmentVariables" : [ "DB2_IDLE_TIMEOUT_MINUTES" ],
-      "systemProperties" : [ "org.wildfly.datasources.db2.idle-timeout-minutes" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=DB2DS.jndi-name",
-      "environmentVariables" : [ "DB2_DATASOURCE", "DB2_JNDI", "OPENSHIFT_DB2_DATASOURCE" ],
-      "systemProperties" : [ "org.wildfly.datasources.db2.datasource", "org.wildfly.datasources.db2.jndi-name" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=DB2DS.jta",
-      "environmentVariables" : [ "DB2_JTA" ],
-      "systemProperties" : [ "org.wildfly.datasources.db2.jta" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=DB2DS.max-pool-size",
-      "environmentVariables" : [ "DB2_MAX_POOL_SIZE" ],
-      "systemProperties" : [ "org.wildfly.datasources.db2.max-pool-size" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=DB2DS.min-pool-size",
-      "environmentVariables" : [ "DB2_MIN_POOL_SIZE" ],
-      "systemProperties" : [ "org.wildfly.datasources.db2.min-pool-size" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=DB2DS.password",
-      "environmentVariables" : [ "DB2_PASSWORD", "OPENSHIFT_DB2_DB_PASSWORD" ],
-      "systemProperties" : [ "org.wildfly.datasources.db2.password" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=DB2DS.stale-connection-checker-class-name",
-      "environmentVariables" : [ "DB2_STALE_CONNECTION_CHECKER" ],
-      "systemProperties" : [ "org.wildfly.datasources.db2.stale-connection-checker-class-name" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=DB2DS.statistics-enabled",
-      "systemProperties" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=DB2DS.transaction-isolation",
-      "environmentVariables" : [ "DB2_TX_ISOLATION" ],
-      "systemProperties" : [ "org.wildfly.datasources.db2.transaction-isolation" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=DB2DS.user-name",
-      "environmentVariables" : [ "DB2_USER", "OPENSHIFT_DB2_DB_USERNAME" ],
-      "systemProperties" : [ "org.wildfly.datasources.db2.user-name" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=DB2DS.valid-connection-checker-class-name",
-      "environmentVariables" : [ "DB2_CONNECTION_CHECKER" ],
-      "systemProperties" : [ "org.wildfly.datasources.db2.valid-connection-checker-class-name" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=DB2DS.validate-on-match",
-      "environmentVariables" : [ "DB2_VALIDATE_ON_MATCH" ],
-      "systemProperties" : [ "org.wildfly.datasources.db2.validate-on-match" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.background-validation",
-      "environmentVariables" : [ "MSSQLSERVER_BACKGROUND_VALIDATION" ],
-      "systemProperties" : [ "org.wildfly.datasources.mssqlserver.background-validation" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.background-validation-millis",
-      "environmentVariables" : [ "MSSQLSERVER_BACKGROUND_VALIDATION_MILLIS" ],
-      "systemProperties" : [ "org.wildfly.datasources.mssqlserver.background-validation-millis" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.connection-url",
-      "environmentVariables" : [ "MSSQLSERVER_DATABASE", "MSSQLSERVER_HOST", "MSSQLSERVER_PORT", "MSSQLSERVER_SERVICE_HOST", "MSSQLSERVER_SERVICE_PORT", "MSSQLSERVER_URL" ],
-      "systemProperties" : [ "org.wildfly.datasources.mssqlserver.connection-url", "org.wildfly.datasources.mssqlserver.database", "org.wildfly.datasources.mssqlserver.host", "org.wildfly.datasources.mssqlserver.port" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.enabled",
-      "environmentVariables" : [ "MSSQLSERVER_ENABLED" ],
-      "systemProperties" : [ "org.wildfly.datasources.mssqlserver.enabled" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.exception-sorter-class-name",
-      "environmentVariables" : [ "MSSQLSERVER_EXCEPTION_SORTER" ],
-      "systemProperties" : [ "org.wildfly.datasources.mssqlserver.exception-sorter-class-name" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.flush-strategy",
-      "environmentVariables" : [ "MSSQLSERVER_FLUSH_STRATEGY" ],
-      "systemProperties" : [ "org.wildfly.datasources.mssqlserver.flush-strategy" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.idle-timeout-minutes",
-      "environmentVariables" : [ "MSSQLSERVER_IDLE_TIMEOUT_MINUTES" ],
-      "systemProperties" : [ "org.wildfly.datasources.mssqlserver.idle-timeout-minutes" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.jndi-name",
-      "environmentVariables" : [ "MSSQLSERVER_DATASOURCE", "MSSQLSERVER_JNDI" ],
-      "systemProperties" : [ "org.wildfly.datasources.mssqlserver.datasource", "org.wildfly.datasources.mssqlserver.jndi-name" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.jta",
-      "environmentVariables" : [ "MSSQLSERVER_JTA" ],
-      "systemProperties" : [ "org.wildfly.datasources.mssqlserver.jta" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.max-pool-size",
-      "environmentVariables" : [ "MSSQLSERVER_MAX_POOL_SIZE" ],
-      "systemProperties" : [ "org.wildfly.datasources.mssqlserver.max-pool-size" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.min-pool-size",
-      "environmentVariables" : [ "MSSQLSERVER_MIN_POOL_SIZE" ],
-      "systemProperties" : [ "org.wildfly.datasources.mssqlserver.min-pool-size" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.password",
-      "environmentVariables" : [ "MSSQLSERVER_PASSWORD" ],
-      "systemProperties" : [ "org.wildfly.datasources.mssqlserver.password" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.stale-connection-checker-class-name",
-      "environmentVariables" : [ "MSSQLSERVER_STALE_CONNECTION_CHECKER" ],
-      "systemProperties" : [ "org.wildfly.datasources.mssqlserver.stale-connection-checker-class-name" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.statistics-enabled",
-      "systemProperties" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.transaction-isolation",
-      "environmentVariables" : [ "MSSQLSERVER_TX_ISOLATION" ],
-      "systemProperties" : [ "org.wildfly.datasources.mssqlserver.transaction-isolation" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.user-name",
-      "environmentVariables" : [ "MSSQLSERVER_USER" ],
-      "systemProperties" : [ "org.wildfly.datasources.mssqlserver.user-name" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.valid-connection-checker-class-name",
-      "environmentVariables" : [ "MSSQLSERVER_CONNECTION_CHECKER" ],
-      "systemProperties" : [ "org.wildfly.datasources.mssqlserver.valid-connection-checker-class-name" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.validate-on-match",
-      "environmentVariables" : [ "MSSQLSERVER_VALIDATE_ON_MATCH" ],
-      "systemProperties" : [ "org.wildfly.datasources.mssqlserver.validate-on-match" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MariaDBDS.background-validation",
-      "environmentVariables" : [ "MARIADB_BACKGROUND_VALIDATION" ],
-      "systemProperties" : [ "org.wildfly.datasources.mariadb.background-validation" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MariaDBDS.background-validation-millis",
-      "environmentVariables" : [ "MARIADB_BACKGROUND_VALIDATION_MILLIS" ],
-      "systemProperties" : [ "org.wildfly.datasources.mariadb.background-validation-millis" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MariaDBDS.connection-url",
-      "environmentVariables" : [ "MARIADB_DATABASE", "MARIADB_HOST", "MARIADB_PORT", "MARIADB_SERVICE_HOST", "MARIADB_SERVICE_PORT", "MARIADB_URL" ],
-      "systemProperties" : [ "org.wildfly.datasources.mariadb.connection-url", "org.wildfly.datasources.mariadb.database", "org.wildfly.datasources.mariadb.host", "org.wildfly.datasources.mariadb.port" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MariaDBDS.enabled",
-      "environmentVariables" : [ "MARIADB_ENABLED" ],
-      "systemProperties" : [ "org.wildfly.datasources.mariadb.enabled" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MariaDBDS.exception-sorter-class-name",
-      "environmentVariables" : [ "MARIADB_EXCEPTION_SORTER" ],
-      "systemProperties" : [ "org.wildfly.datasources.mariadb.exception-sorter-class-name" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MariaDBDS.flush-strategy",
-      "environmentVariables" : [ "MARIADB_FLUSH_STRATEGY" ],
-      "systemProperties" : [ "org.wildfly.datasources.mariadb.flush-strategy" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MariaDBDS.idle-timeout-minutes",
-      "environmentVariables" : [ "MARIADB_IDLE_TIMEOUT_MINUTES" ],
-      "systemProperties" : [ "org.wildfly.datasources.mariadb.idle-timeout-minutes" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MariaDBDS.jndi-name",
-      "environmentVariables" : [ "MARIADB_DATASOURCE", "MARIADB_JNDI" ],
-      "systemProperties" : [ "org.wildfly.datasources.mariadb.datasource", "org.wildfly.datasources.mariadb.jndi-name" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MariaDBDS.jta",
-      "environmentVariables" : [ "MARIADB_JTA" ],
-      "systemProperties" : [ "org.wildfly.datasources.mariadb.jta" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MariaDBDS.max-pool-size",
-      "environmentVariables" : [ "MARIADB_MAX_POOL_SIZE" ],
-      "systemProperties" : [ "org.wildfly.datasources.mariadb.max-pool-size" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MariaDBDS.min-pool-size",
-      "environmentVariables" : [ "MARIADB_MIN_POOL_SIZE" ],
-      "systemProperties" : [ "org.wildfly.datasources.mariadb.min-pool-size" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MariaDBDS.password",
-      "environmentVariables" : [ "MARIADB_PASSWORD" ],
-      "systemProperties" : [ "org.wildfly.datasources.mariadb.password" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MariaDBDS.stale-connection-checker-class-name",
-      "environmentVariables" : [ "MARIADB_STALE_CONNECTION_CHECKER" ],
-      "systemProperties" : [ "org.wildfly.datasources.mariadb.stale-connection-checker-class-name" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MariaDBDS.statistics-enabled",
-      "systemProperties" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MariaDBDS.transaction-isolation",
-      "environmentVariables" : [ "MARIADB_TX_ISOLATION" ],
-      "systemProperties" : [ "org.wildfly.datasources.mariadb.transaction-isolation" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MariaDBDS.user-name",
-      "environmentVariables" : [ "MARIADB_USER" ],
-      "systemProperties" : [ "org.wildfly.datasources.mariadb.user-name" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MariaDBDS.valid-connection-checker-class-name",
-      "environmentVariables" : [ "MARIADB_CONNECTION_CHECKER" ],
-      "systemProperties" : [ "org.wildfly.datasources.mariadb.valid-connection-checker-class-name" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MariaDBDS.validate-on-match",
-      "environmentVariables" : [ "MARIADB_VALIDATE_ON_MATCH" ],
-      "systemProperties" : [ "org.wildfly.datasources.mariadb.validate-on-match" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MySQLDS.background-validation",
-      "environmentVariables" : [ "MYSQL_BACKGROUND_VALIDATION" ],
-      "systemProperties" : [ "org.wildfly.datasources.mysql.background-validation" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MySQLDS.background-validation-millis",
-      "environmentVariables" : [ "MYSQL_BACKGROUND_VALIDATION_MILLIS" ],
-      "systemProperties" : [ "org.wildfly.datasources.mysql.background-validation-millis" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MySQLDS.connection-url",
-      "environmentVariables" : [ "MYSQL_DATABASE", "MYSQL_HOST", "MYSQL_PORT", "MYSQL_SERVICE_HOST", "MYSQL_SERVICE_PORT", "MYSQL_URL", "OPENSHIFT_MYSQL_DB_HOST", "OPENSHIFT_MYSQL_DB_NAME", "OPENSHIFT_MYSQL_DB_PORT" ],
-      "systemProperties" : [ "org.wildfly.datasources.mysql.connection-url", "org.wildfly.datasources.mysql.database", "org.wildfly.datasources.mysql.host", "org.wildfly.datasources.mysql.port" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MySQLDS.enabled",
-      "environmentVariables" : [ "MYSQL_ENABLED" ],
-      "systemProperties" : [ "org.wildfly.datasources.mysql.enabled" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MySQLDS.exception-sorter-class-name",
-      "environmentVariables" : [ "MYSQL_EXCEPTION_SORTER" ],
-      "systemProperties" : [ "org.wildfly.datasources.mysql.exception-sorter-class-name" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MySQLDS.flush-strategy",
-      "environmentVariables" : [ "MYSQL_FLUSH_STRATEGY" ],
-      "systemProperties" : [ "org.wildfly.datasources.mysql.flush-strategy" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MySQLDS.idle-timeout-minutes",
-      "environmentVariables" : [ "MYSQL_IDLE_TIMEOUT_MINUTES" ],
-      "systemProperties" : [ "org.wildfly.datasources.mysql.idle-timeout-minutes" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MySQLDS.jndi-name",
-      "environmentVariables" : [ "MYSQL_DATASOURCE", "MYSQL_JNDI", "OPENSHIFT_MYSQL_DATASOURCE" ],
-      "systemProperties" : [ "org.wildfly.datasources.mysql.datasource", "org.wildfly.datasources.mysql.jndi-name" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MySQLDS.jta",
-      "environmentVariables" : [ "MYSQL_JTA" ],
-      "systemProperties" : [ "org.wildfly.datasources.mysql.jta" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MySQLDS.max-pool-size",
-      "environmentVariables" : [ "MYSQL_MAX_POOL_SIZE" ],
-      "systemProperties" : [ "org.wildfly.datasources.mysql.max-pool-size" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MySQLDS.min-pool-size",
-      "environmentVariables" : [ "MYSQL_MIN_POOL_SIZE" ],
-      "systemProperties" : [ "org.wildfly.datasources.mysql.min-pool-size" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MySQLDS.password",
-      "environmentVariables" : [ "MYSQL_PASSWORD", "OPENSHIFT_MYSQL_DB_PASSWORD" ],
-      "systemProperties" : [ "org.wildfly.datasources.mysql.password" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MySQLDS.stale-connection-checker-class-name",
-      "environmentVariables" : [ "MYSQL_STALE_CONNECTION_CHECKER" ],
-      "systemProperties" : [ "org.wildfly.datasources.mysql.stale-connection-checker-class-name" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MySQLDS.statistics-enabled",
-      "systemProperties" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MySQLDS.transaction-isolation",
-      "environmentVariables" : [ "MYSQL_TX_ISOLATION" ],
-      "systemProperties" : [ "org.wildfly.datasources.mysql.transaction-isolation" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MySQLDS.user-name",
-      "environmentVariables" : [ "MYSQL_USER", "OPENSHIFT_MYSQL_DB_USERNAME" ],
-      "systemProperties" : [ "org.wildfly.datasources.mysql.user-name" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MySQLDS.valid-connection-checker-class-name",
-      "environmentVariables" : [ "MYSQL_CONNECTION_CHECKER" ],
-      "systemProperties" : [ "org.wildfly.datasources.mysql.valid-connection-checker-class-name" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=MySQLDS.validate-on-match",
-      "environmentVariables" : [ "MYSQL_VALIDATE_ON_MATCH" ],
-      "systemProperties" : [ "org.wildfly.datasources.mysql.validate-on-match" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=OracleDS.background-validation",
-      "environmentVariables" : [ "ORACLE_BACKGROUND_VALIDATION" ],
-      "systemProperties" : [ "org.wildfly.datasources.oracle.background-validation" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=OracleDS.background-validation-millis",
-      "environmentVariables" : [ "ORACLE_BACKGROUND_VALIDATION_MILLIS" ],
-      "systemProperties" : [ "org.wildfly.datasources.oracle.background-validation-millis" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=OracleDS.connection-url",
-      "environmentVariables" : [ "OPENSHIFT_ORACLE_URL", "ORACLE_URL" ],
-      "systemProperties" : [ "org.wildfly.datasources.oracle.connection-url" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=OracleDS.enabled",
-      "environmentVariables" : [ "ORACLE_ENABLED" ],
-      "systemProperties" : [ "org.wildfly.datasources.oracle.enabled" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=OracleDS.exception-sorter-class-name",
-      "environmentVariables" : [ "ORACLE_EXCEPTION_SORTER" ],
-      "systemProperties" : [ "org.wildfly.datasources.oracle.exception-sorter-class-name" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=OracleDS.flush-strategy",
-      "environmentVariables" : [ "ORACLE_FLUSH_STRATEGY" ],
-      "systemProperties" : [ "org.wildfly.datasources.oracle.flush-strategy" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=OracleDS.idle-timeout-minutes",
-      "environmentVariables" : [ "ORACLE_IDLE_TIMEOUT_MINUTES" ],
-      "systemProperties" : [ "org.wildfly.datasources.oracle.idle-timeout-minutes" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=OracleDS.jndi-name",
-      "environmentVariables" : [ "OPENSHIFT_ORACLE_DATASOURCE", "ORACLE_DATASOURCE", "ORACLE_JNDI" ],
-      "systemProperties" : [ "org.wildfly.datasources.oracle.datasource", "org.wildfly.datasources.oracle.jndi-name" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=OracleDS.jta",
-      "environmentVariables" : [ "ORACLE_JTA" ],
-      "systemProperties" : [ "org.wildfly.datasources.oracle.jta" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=OracleDS.max-pool-size",
-      "environmentVariables" : [ "ORACLE_MAX_POOL_SIZE" ],
-      "systemProperties" : [ "org.wildfly.datasources.oracle.max-pool-size" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=OracleDS.min-pool-size",
-      "environmentVariables" : [ "ORACLE_MIN_POOL_SIZE" ],
-      "systemProperties" : [ "org.wildfly.datasources.oracle.min-pool-size" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=OracleDS.password",
-      "environmentVariables" : [ "OPENSHIFT_ORACLE_DB_PASSWORD", "ORACLE_PASSWORD" ],
-      "systemProperties" : [ "org.wildfly.datasources.oracle.password" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=OracleDS.stale-connection-checker-class-name",
-      "environmentVariables" : [ "ORACLE_STALE_CONNECTION_CHECKER" ],
-      "systemProperties" : [ "org.wildfly.datasources.oracle.stale-connection-checker-class-name" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=OracleDS.statistics-enabled",
-      "systemProperties" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=OracleDS.transaction-isolation",
-      "environmentVariables" : [ "ORACLE_TX_ISOLATION" ],
-      "systemProperties" : [ "org.wildfly.datasources.oracle.transaction-isolation" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=OracleDS.user-name",
-      "environmentVariables" : [ "OPENSHIFT_ORACLE_DB_USERNAME", "ORACLE_USER" ],
-      "systemProperties" : [ "org.wildfly.datasources.oracle.user-name" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=OracleDS.valid-connection-checker-class-name",
-      "environmentVariables" : [ "ORACLE_CONNECTION_CHECKER" ],
-      "systemProperties" : [ "org.wildfly.datasources.oracle.valid-connection-checker-class-name" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=OracleDS.validate-on-match",
-      "environmentVariables" : [ "ORACLE_VALIDATE_ON_MATCH" ],
-      "systemProperties" : [ "org.wildfly.datasources.oracle.validate-on-match" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.background-validation",
-      "environmentVariables" : [ "POSTGRESQL_BACKGROUND_VALIDATION" ],
-      "systemProperties" : [ "org.wildfly.datasources.postgresql.background-validation" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.background-validation-millis",
-      "environmentVariables" : [ "POSTGRESQL_BACKGROUND_VALIDATION_MILLIS" ],
-      "systemProperties" : [ "org.wildfly.datasources.postgresql.background-validation-millis" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.connection-url",
-      "environmentVariables" : [ "OPENSHIFT_POSTGRESQL_DB_HOST", "OPENSHIFT_POSTGRESQL_DB_NAME", "OPENSHIFT_POSTGRESQL_DB_PORT", "POSTGRESQL_DATABASE", "POSTGRESQL_HOST", "POSTGRESQL_PORT", "POSTGRESQL_SERVICE_HOST", "POSTGRESQL_SERVICE_PORT", "POSTGRESQL_URL" ],
-      "systemProperties" : [ "org.wildfly.datasources.postgresql.connection-url", "org.wildfly.datasources.postgresql.database", "org.wildfly.datasources.postgresql.host", "org.wildfly.datasources.postgresql.port" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.enabled",
-      "environmentVariables" : [ "POSTGRESQL_ENABLED" ],
-      "systemProperties" : [ "org.wildfly.datasources.postgresql.enabled" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.exception-sorter-class-name",
-      "environmentVariables" : [ "POSTGRESQL_EXCEPTION_SORTER" ],
-      "systemProperties" : [ "org.wildfly.datasources.postgresql.exception-sorter-class-name" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.flush-strategy",
-      "environmentVariables" : [ "POSTGRESQL_FLUSH_STRATEGY" ],
-      "systemProperties" : [ "org.wildfly.datasources.postgresql.flush-strategy" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.idle-timeout-minutes",
-      "environmentVariables" : [ "POSTGRESQL_IDLE_TIMEOUT_MINUTES" ],
-      "systemProperties" : [ "org.wildfly.datasources.postgresql.idle-timeout-minutes" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.jndi-name",
-      "environmentVariables" : [ "OPENSHIFT_POSTGRESQL_DATASOURCE", "POSTGRESQL_DATASOURCE", "POSTGRESQL_JNDI" ],
-      "systemProperties" : [ "org.wildfly.datasources.postgresql.datasource", "org.wildfly.datasources.postgresql.jndi-name" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.jta",
-      "environmentVariables" : [ "POSTGRESQL_JTA" ],
-      "systemProperties" : [ "org.wildfly.datasources.postgresql.jta" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.max-pool-size",
-      "environmentVariables" : [ "POSTGRESQL_MAX_POOL_SIZE" ],
-      "systemProperties" : [ "org.wildfly.datasources.postgresql.max-pool-size" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.min-pool-size",
-      "environmentVariables" : [ "POSTGRESQL_MIN_POOL_SIZE" ],
-      "systemProperties" : [ "org.wildfly.datasources.postgresql.min-pool-size" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.password",
-      "environmentVariables" : [ "OPENSHIFT_POSTGRESQL_DB_PASSWORD", "POSTGRESQL_PASSWORD" ],
-      "systemProperties" : [ "org.wildfly.datasources.postgresql.password" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.stale-connection-checker-class-name",
-      "environmentVariables" : [ "POSTGRESQL_STALE_CONNECTION_CHECKER" ],
-      "systemProperties" : [ "org.wildfly.datasources.postgresql.stale-connection-checker-class-name" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.statistics-enabled",
-      "systemProperties" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.transaction-isolation",
-      "environmentVariables" : [ "POSTGRESQL_TX_ISOLATION" ],
-      "systemProperties" : [ "org.wildfly.datasources.postgresql.transaction-isolation" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.user-name",
-      "environmentVariables" : [ "OPENSHIFT_POSTGRESQL_DB_USERNAME", "POSTGRESQL_USER" ],
-      "systemProperties" : [ "org.wildfly.datasources.postgresql.user-name" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.valid-connection-checker-class-name",
-      "environmentVariables" : [ "POSTGRESQL_CONNECTION_CHECKER" ],
-      "systemProperties" : [ "org.wildfly.datasources.postgresql.valid-connection-checker-class-name" ]
-    }, {
-      "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.validate-on-match",
-      "environmentVariables" : [ "POSTGRESQL_VALIDATE_ON_MATCH" ],
-      "systemProperties" : [ "org.wildfly.datasources.postgresql.validate-on-match" ]
-    }, {
-      "attribute" : "/subsystem=ee/service=default-bindings.datasource",
-      "environmentVariables" : [ "DB2_DATASOURCE", "DB2_JNDI", "MARIADB_DATASOURCE", "MSSQLSERVER_DATASOURCE", "MYSQL_DATASOURCE", "OPENSHIFT_DB2_DATASOURCE", "OPENSHIFT_MYSQL_DATASOURCE", "OPENSHIFT_ORACLE_DATASOURCE", "OPENSHIFT_POSTGRESQL_DATASOURCE", "ORACLE_DATASOURCE", "POSTGRESQL_DATASOURCE", "POSTGRESQL_JNDI" ],
-      "systemProperties" : [ "org.wildfly.datasources.db2.datasource", "org.wildfly.datasources.db2.jndi-name", "org.wildfly.datasources.postgresql.datasource", "org.wildfly.datasources.postgresql.jndi-name" ]
-    } ]
+    "mavenCoordinates" : "org.wildfly:wildfly-datasources-galleon-pack:10.0.1.Final-SNAPSHOT"
   }, {
     "mavenCoordinates" : "org.keycloak:keycloak-saml-adapter-galleon-pack:999.0.0-SNAPSHOT",
     "modelReference" : [ {
@@ -15767,72 +15260,6 @@
         }
       },
       "rolled-back" : null
-    } ],
-    "configuration" : [ {
-      "attribute" : "/subsystem=ai/gemini-chat-model=gemini.api-key",
-      "environmentVariables" : [ "GEMINI_API_KEY" ]
-    }, {
-      "attribute" : "/subsystem=ai/gemini-chat-model=gemini.log-requests-responses",
-      "environmentVariables" : [ "GEMINI_CHAT_LOG" ],
-      "systemProperties" : [ "org.wildfly.ai.gemini.chat.log" ]
-    }, {
-      "attribute" : "/subsystem=ai/gemini-chat-model=gemini.model-name",
-      "environmentVariables" : [ "GEMINI_CHAT_MODEL_NAME" ],
-      "systemProperties" : [ "org.wildfly.ai.gemini.chat.model.name" ]
-    }, {
-      "attribute" : "/subsystem=ai/github-chat-model=github.api-key",
-      "environmentVariables" : [ "GITHUB_API_KEY" ]
-    }, {
-      "attribute" : "/subsystem=ai/github-chat-model=github.endpoint",
-      "environmentVariables" : [ "GITHUB_CHAT_URL" ],
-      "systemProperties" : [ "org.wildfly.ai.github.chat.url" ]
-    }, {
-      "attribute" : "/subsystem=ai/github-chat-model=github.log-requests-responses",
-      "environmentVariables" : [ "GITHUB_CHAT_LOG" ],
-      "systemProperties" : [ "org.wildfly.ai.github.chat.log" ]
-    }, {
-      "attribute" : "/subsystem=ai/github-chat-model=github.model-name",
-      "environmentVariables" : [ "GITHUB_CHAT_MODEL_NAME" ],
-      "systemProperties" : [ "org.wildfly.ai.github.chat.model.name" ]
-    }, {
-      "attribute" : "/subsystem=ai/mistral-ai-chat-model=mistral.api-key",
-      "environmentVariables" : [ "MISTRAL_API_KEY" ]
-    }, {
-      "attribute" : "/subsystem=ai/mistral-ai-chat-model=mistral.base-url",
-      "environmentVariables" : [ "MISTRAL_CHAT_URL" ],
-      "systemProperties" : [ "org.wildfly.ai.mistral.chat.url" ]
-    }, {
-      "attribute" : "/subsystem=ai/mistral-ai-chat-model=mistral.log-requests",
-      "environmentVariables" : [ "MISTRAL_CHAT_LOG_REQUEST" ],
-      "systemProperties" : [ "org.wildfly.ai.mistral.chat.log.request" ]
-    }, {
-      "attribute" : "/subsystem=ai/mistral-ai-chat-model=mistral.log-responses",
-      "environmentVariables" : [ "MISTRAL_CHAT_LOG_RESPONSE" ],
-      "systemProperties" : [ "org.wildfly.ai.mistral.chat.log.response" ]
-    }, {
-      "attribute" : "/subsystem=ai/mistral-ai-chat-model=mistral.model-name",
-      "environmentVariables" : [ "MISTRAL_CHAT_MODEL_NAME" ],
-      "systemProperties" : [ "org.wildfly.ai.mistral.chat.model.name" ]
-    }, {
-      "attribute" : "/subsystem=ai/ollama-chat-model=ollama.base-url",
-      "environmentVariables" : [ "OLLAMA_CHAT_URL" ],
-      "systemProperties" : [ "org.wildfly.ai.ollama.chat.url" ]
-    }, {
-      "attribute" : "/subsystem=ai/ollama-chat-model=ollama.log-requests",
-      "environmentVariables" : [ "OLLAMA_CHAT_LOG_REQUEST" ],
-      "systemProperties" : [ "org.wildfly.ai.ollama.chat.log.request" ]
-    }, {
-      "attribute" : "/subsystem=ai/ollama-chat-model=ollama.log-responses",
-      "environmentVariables" : [ "OLLAMA_CHAT_LOG_RESPONSE" ],
-      "systemProperties" : [ "org.wildfly.ai.ollama.chat.log.response" ]
-    }, {
-      "attribute" : "/subsystem=ai/ollama-chat-model=ollama.model-name",
-      "environmentVariables" : [ "OLLAMA_CHAT_MODEL_NAME" ],
-      "systemProperties" : [ "org.wildfly.ai.ollama.chat.model.name" ]
-    }, {
-      "attribute" : "/subsystem=ai/ollama-chat-model=ollama.temperature",
-      "environmentVariables" : [ "OLLAMA_CHAT_TEMPERATURE" ],
-      "systemProperties" : [ "org.wildfly.ai.ollama.chat.temperature" ]
     } ]
   } ],
   "categories" : [ {
@@ -15874,6 +15301,18 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/subsystem=ai/gemini-chat-model=gemini.api-key",
+        "environmentVariables" : [ "GEMINI_API_KEY" ]
+      }, {
+        "attribute" : "/subsystem=ai/gemini-chat-model=gemini.log-requests-responses",
+        "environmentVariables" : [ "GEMINI_CHAT_LOG" ],
+        "systemProperties" : [ "org.wildfly.ai.gemini.chat.log" ]
+      }, {
+        "attribute" : "/subsystem=ai/gemini-chat-model=gemini.model-name",
+        "environmentVariables" : [ "GEMINI_CHAT_MODEL_NAME" ],
+        "systemProperties" : [ "org.wildfly.ai.gemini.chat.model.name" ]
+      } ],
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -15915,6 +15354,22 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/subsystem=ai/github-chat-model=github.api-key",
+        "environmentVariables" : [ "GITHUB_API_KEY" ]
+      }, {
+        "attribute" : "/subsystem=ai/github-chat-model=github.endpoint",
+        "environmentVariables" : [ "GITHUB_CHAT_URL" ],
+        "systemProperties" : [ "org.wildfly.ai.github.chat.url" ]
+      }, {
+        "attribute" : "/subsystem=ai/github-chat-model=github.log-requests-responses",
+        "environmentVariables" : [ "GITHUB_CHAT_LOG" ],
+        "systemProperties" : [ "org.wildfly.ai.github.chat.log" ]
+      }, {
+        "attribute" : "/subsystem=ai/github-chat-model=github.model-name",
+        "environmentVariables" : [ "GITHUB_CHAT_MODEL_NAME" ],
+        "systemProperties" : [ "org.wildfly.ai.github.chat.model.name" ]
+      } ],
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -15957,6 +15412,26 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/subsystem=ai/mistral-ai-chat-model=mistral.api-key",
+        "environmentVariables" : [ "MISTRAL_API_KEY" ]
+      }, {
+        "attribute" : "/subsystem=ai/mistral-ai-chat-model=mistral.base-url",
+        "environmentVariables" : [ "MISTRAL_CHAT_URL" ],
+        "systemProperties" : [ "org.wildfly.ai.mistral.chat.url" ]
+      }, {
+        "attribute" : "/subsystem=ai/mistral-ai-chat-model=mistral.log-requests",
+        "environmentVariables" : [ "MISTRAL_CHAT_LOG_REQUEST" ],
+        "systemProperties" : [ "org.wildfly.ai.mistral.chat.log.request" ]
+      }, {
+        "attribute" : "/subsystem=ai/mistral-ai-chat-model=mistral.log-responses",
+        "environmentVariables" : [ "MISTRAL_CHAT_LOG_RESPONSE" ],
+        "systemProperties" : [ "org.wildfly.ai.mistral.chat.log.response" ]
+      }, {
+        "attribute" : "/subsystem=ai/mistral-ai-chat-model=mistral.model-name",
+        "environmentVariables" : [ "MISTRAL_CHAT_MODEL_NAME" ],
+        "systemProperties" : [ "org.wildfly.ai.mistral.chat.model.name" ]
+      } ],
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -16028,6 +15503,27 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/subsystem=ai/ollama-chat-model=ollama.base-url",
+        "environmentVariables" : [ "OLLAMA_CHAT_URL" ],
+        "systemProperties" : [ "org.wildfly.ai.ollama.chat.url" ]
+      }, {
+        "attribute" : "/subsystem=ai/ollama-chat-model=ollama.log-requests",
+        "environmentVariables" : [ "OLLAMA_CHAT_LOG_REQUEST" ],
+        "systemProperties" : [ "org.wildfly.ai.ollama.chat.log.request" ]
+      }, {
+        "attribute" : "/subsystem=ai/ollama-chat-model=ollama.log-responses",
+        "environmentVariables" : [ "OLLAMA_CHAT_LOG_RESPONSE" ],
+        "systemProperties" : [ "org.wildfly.ai.ollama.chat.log.response" ]
+      }, {
+        "attribute" : "/subsystem=ai/ollama-chat-model=ollama.model-name",
+        "environmentVariables" : [ "OLLAMA_CHAT_MODEL_NAME" ],
+        "systemProperties" : [ "org.wildfly.ai.ollama.chat.model.name" ]
+      }, {
+        "attribute" : "/subsystem=ai/ollama-chat-model=ollama.temperature",
+        "environmentVariables" : [ "OLLAMA_CHAT_TEMPERATURE" ],
+        "systemProperties" : [ "org.wildfly.ai.ollama.chat.temperature" ]
+      } ],
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -16059,6 +15555,49 @@
     "functionalities" : [ {
       "name" : "cloud-server",
       "managementModel" : { },
+      "configuration" : [ {
+        "attribute" : "/interface=management.inet-address",
+        "systemProperties" : [ "jboss.bind.address.management" ]
+      }, {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=ajp.port",
+        "systemProperties" : [ "jboss.ajp.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=http.port",
+        "systemProperties" : [ "jboss.http.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=https.port",
+        "systemProperties" : [ "jboss.https.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=management-http.port",
+        "systemProperties" : [ "jboss.management.http.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=management-https.port",
+        "systemProperties" : [ "jboss.management.https.port" ]
+      }, {
+        "attribute" : "/subsystem=deployment-scanner/scanner=default.runtime-failure-causes-rollback",
+        "systemProperties" : [ "jboss.deployment.scanner.rollback.on.failure" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=metrics.prefix",
+        "systemProperties" : [ "wildfly.metrics.prefix" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=undertow.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.undertow.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "jaxrs-server",
         "optional" : false
@@ -16116,6 +15655,46 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=management.inet-address",
+        "systemProperties" : [ "jboss.bind.address.management" ]
+      }, {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=ajp.port",
+        "systemProperties" : [ "jboss.ajp.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=http.port",
+        "systemProperties" : [ "jboss.http.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=https.port",
+        "systemProperties" : [ "jboss.https.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=management-http.port",
+        "systemProperties" : [ "jboss.management.http.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=management-https.port",
+        "systemProperties" : [ "jboss.management.https.port" ]
+      }, {
+        "attribute" : "/subsystem=deployment-scanner/scanner=default.runtime-failure-causes-rollback",
+        "systemProperties" : [ "jboss.deployment.scanner.rollback.on.failure" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=undertow.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.undertow.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "web-server",
         "optional" : false
@@ -16173,6 +15752,40 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=management.inet-address",
+        "systemProperties" : [ "jboss.bind.address.management" ]
+      }, {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=ajp.port",
+        "systemProperties" : [ "jboss.ajp.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=http.port",
+        "systemProperties" : [ "jboss.http.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=https.port",
+        "systemProperties" : [ "jboss.https.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=management-http.port",
+        "systemProperties" : [ "jboss.management.http.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=management-https.port",
+        "systemProperties" : [ "jboss.management.https.port" ]
+      }, {
+        "attribute" : "/subsystem=deployment-scanner/scanner=default.runtime-failure-causes-rollback",
+        "systemProperties" : [ "jboss.deployment.scanner.rollback.on.failure" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=undertow.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.undertow.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "core-server",
         "optional" : false
@@ -16208,6 +15821,46 @@
     }, {
       "name" : "jaxrs-server",
       "managementModel" : { },
+      "configuration" : [ {
+        "attribute" : "/interface=management.inet-address",
+        "systemProperties" : [ "jboss.bind.address.management" ]
+      }, {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=ajp.port",
+        "systemProperties" : [ "jboss.ajp.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=http.port",
+        "systemProperties" : [ "jboss.http.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=https.port",
+        "systemProperties" : [ "jboss.https.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=management-http.port",
+        "systemProperties" : [ "jboss.management.http.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=management-https.port",
+        "systemProperties" : [ "jboss.management.https.port" ]
+      }, {
+        "attribute" : "/subsystem=deployment-scanner/scanner=default.runtime-failure-causes-rollback",
+        "systemProperties" : [ "jboss.deployment.scanner.rollback.on.failure" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=undertow.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.undertow.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "datasources-web-server",
         "optional" : false
@@ -16542,6 +16195,31 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=private.inet-address",
+        "systemProperties" : [ "jboss.bind.address.private" ]
+      }, {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=jgroups-mping.multicast-address",
+        "systemProperties" : [ "jboss.default.multicast.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=jgroups-udp.multicast-address",
+        "systemProperties" : [ "jboss.default.multicast.address" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "transactions",
         "optional" : false
@@ -16794,6 +16472,31 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=private.inet-address",
+        "systemProperties" : [ "jboss.bind.address.private" ]
+      }, {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=jgroups-mping.multicast-address",
+        "systemProperties" : [ "jboss.default.multicast.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=jgroups-udp.multicast-address",
+        "systemProperties" : [ "jboss.default.multicast.address" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "datasources",
         "optional" : false
@@ -16846,6 +16549,93 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.background-validation",
+        "environmentVariables" : [ "DB2_BACKGROUND_VALIDATION" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.background-validation" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.background-validation-millis",
+        "environmentVariables" : [ "DB2_BACKGROUND_VALIDATION_MILLIS" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.background-validation-millis" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.connection-url",
+        "environmentVariables" : [ "DB2_DATABASE", "DB2_HOST", "DB2_PORT", "DB2_SERVICE_HOST", "DB2_SERVICE_PORT", "DB2_URL", "OPENSHIFT_DB2_DB_HOST", "OPENSHIFT_DB2_DB_NAME", "OPENSHIFT_DB2_DB_PORT" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.connection-url", "org.wildfly.datasources.db2.database", "org.wildfly.datasources.db2.host", "org.wildfly.datasources.db2.port" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.enabled",
+        "environmentVariables" : [ "DB2_ENABLED" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.enabled" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.exception-sorter-class-name",
+        "environmentVariables" : [ "DB2_EXCEPTION_SORTER" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.exception-sorter-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.flush-strategy",
+        "environmentVariables" : [ "DB2_FLUSH_STRATEGY" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.flush-strategy" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.idle-timeout-minutes",
+        "environmentVariables" : [ "DB2_IDLE_TIMEOUT_MINUTES" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.idle-timeout-minutes" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.jndi-name",
+        "environmentVariables" : [ "DB2_DATASOURCE", "DB2_JNDI", "OPENSHIFT_DB2_DATASOURCE" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.datasource", "org.wildfly.datasources.db2.jndi-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.jta",
+        "environmentVariables" : [ "DB2_JTA" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.jta" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.max-pool-size",
+        "environmentVariables" : [ "DB2_MAX_POOL_SIZE" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.max-pool-size" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.min-pool-size",
+        "environmentVariables" : [ "DB2_MIN_POOL_SIZE" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.min-pool-size" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.password",
+        "environmentVariables" : [ "DB2_PASSWORD", "OPENSHIFT_DB2_DB_PASSWORD" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.password" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.stale-connection-checker-class-name",
+        "environmentVariables" : [ "DB2_STALE_CONNECTION_CHECKER" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.stale-connection-checker-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.statistics-enabled",
+        "systemProperties" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.transaction-isolation",
+        "environmentVariables" : [ "DB2_TX_ISOLATION" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.transaction-isolation" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.user-name",
+        "environmentVariables" : [ "DB2_USER", "OPENSHIFT_DB2_DB_USERNAME" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.user-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.valid-connection-checker-class-name",
+        "environmentVariables" : [ "DB2_CONNECTION_CHECKER" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.valid-connection-checker-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.validate-on-match",
+        "environmentVariables" : [ "DB2_VALIDATE_ON_MATCH" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.validate-on-match" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "datasources",
         "optional" : false
@@ -16876,6 +16666,97 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.background-validation",
+        "environmentVariables" : [ "DB2_BACKGROUND_VALIDATION" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.background-validation" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.background-validation-millis",
+        "environmentVariables" : [ "DB2_BACKGROUND_VALIDATION_MILLIS" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.background-validation-millis" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.connection-url",
+        "environmentVariables" : [ "DB2_DATABASE", "DB2_HOST", "DB2_PORT", "DB2_SERVICE_HOST", "DB2_SERVICE_PORT", "DB2_URL", "OPENSHIFT_DB2_DB_HOST", "OPENSHIFT_DB2_DB_NAME", "OPENSHIFT_DB2_DB_PORT" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.connection-url", "org.wildfly.datasources.db2.database", "org.wildfly.datasources.db2.host", "org.wildfly.datasources.db2.port" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.enabled",
+        "environmentVariables" : [ "DB2_ENABLED" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.enabled" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.exception-sorter-class-name",
+        "environmentVariables" : [ "DB2_EXCEPTION_SORTER" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.exception-sorter-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.flush-strategy",
+        "environmentVariables" : [ "DB2_FLUSH_STRATEGY" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.flush-strategy" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.idle-timeout-minutes",
+        "environmentVariables" : [ "DB2_IDLE_TIMEOUT_MINUTES" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.idle-timeout-minutes" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.jndi-name",
+        "environmentVariables" : [ "DB2_DATASOURCE", "DB2_JNDI", "OPENSHIFT_DB2_DATASOURCE" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.datasource", "org.wildfly.datasources.db2.jndi-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.jta",
+        "environmentVariables" : [ "DB2_JTA" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.jta" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.max-pool-size",
+        "environmentVariables" : [ "DB2_MAX_POOL_SIZE" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.max-pool-size" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.min-pool-size",
+        "environmentVariables" : [ "DB2_MIN_POOL_SIZE" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.min-pool-size" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.password",
+        "environmentVariables" : [ "DB2_PASSWORD", "OPENSHIFT_DB2_DB_PASSWORD" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.password" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.stale-connection-checker-class-name",
+        "environmentVariables" : [ "DB2_STALE_CONNECTION_CHECKER" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.stale-connection-checker-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.statistics-enabled",
+        "systemProperties" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.transaction-isolation",
+        "environmentVariables" : [ "DB2_TX_ISOLATION" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.transaction-isolation" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.user-name",
+        "environmentVariables" : [ "DB2_USER", "OPENSHIFT_DB2_DB_USERNAME" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.user-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.valid-connection-checker-class-name",
+        "environmentVariables" : [ "DB2_CONNECTION_CHECKER" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.valid-connection-checker-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=DB2DS.validate-on-match",
+        "environmentVariables" : [ "DB2_VALIDATE_ON_MATCH" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.validate-on-match" ]
+      }, {
+        "attribute" : "/subsystem=ee/service=default-bindings.datasource",
+        "environmentVariables" : [ "DB2_DATASOURCE", "DB2_JNDI", "OPENSHIFT_DB2_DATASOURCE" ],
+        "systemProperties" : [ "org.wildfly.datasources.db2.datasource", "org.wildfly.datasources.db2.jndi-name" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "datasources",
         "optional" : false
@@ -16908,6 +16789,22 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "datasources",
         "optional" : false
@@ -16967,6 +16864,93 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.background-validation",
+        "environmentVariables" : [ "MARIADB_BACKGROUND_VALIDATION" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.background-validation" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.background-validation-millis",
+        "environmentVariables" : [ "MARIADB_BACKGROUND_VALIDATION_MILLIS" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.background-validation-millis" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.connection-url",
+        "environmentVariables" : [ "MARIADB_DATABASE", "MARIADB_HOST", "MARIADB_PORT", "MARIADB_SERVICE_HOST", "MARIADB_SERVICE_PORT", "MARIADB_URL" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.connection-url", "org.wildfly.datasources.mariadb.database", "org.wildfly.datasources.mariadb.host", "org.wildfly.datasources.mariadb.port" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.enabled",
+        "environmentVariables" : [ "MARIADB_ENABLED" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.enabled" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.exception-sorter-class-name",
+        "environmentVariables" : [ "MARIADB_EXCEPTION_SORTER" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.exception-sorter-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.flush-strategy",
+        "environmentVariables" : [ "MARIADB_FLUSH_STRATEGY" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.flush-strategy" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.idle-timeout-minutes",
+        "environmentVariables" : [ "MARIADB_IDLE_TIMEOUT_MINUTES" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.idle-timeout-minutes" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.jndi-name",
+        "environmentVariables" : [ "MARIADB_DATASOURCE", "MARIADB_JNDI" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.datasource", "org.wildfly.datasources.mariadb.jndi-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.jta",
+        "environmentVariables" : [ "MARIADB_JTA" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.jta" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.max-pool-size",
+        "environmentVariables" : [ "MARIADB_MAX_POOL_SIZE" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.max-pool-size" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.min-pool-size",
+        "environmentVariables" : [ "MARIADB_MIN_POOL_SIZE" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.min-pool-size" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.password",
+        "environmentVariables" : [ "MARIADB_PASSWORD" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.password" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.stale-connection-checker-class-name",
+        "environmentVariables" : [ "MARIADB_STALE_CONNECTION_CHECKER" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.stale-connection-checker-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.statistics-enabled",
+        "systemProperties" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.transaction-isolation",
+        "environmentVariables" : [ "MARIADB_TX_ISOLATION" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.transaction-isolation" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.user-name",
+        "environmentVariables" : [ "MARIADB_USER" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.user-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.valid-connection-checker-class-name",
+        "environmentVariables" : [ "MARIADB_CONNECTION_CHECKER" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.valid-connection-checker-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.validate-on-match",
+        "environmentVariables" : [ "MARIADB_VALIDATE_ON_MATCH" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.validate-on-match" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "datasources",
         "optional" : false
@@ -16997,6 +16981,96 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.background-validation",
+        "environmentVariables" : [ "MARIADB_BACKGROUND_VALIDATION" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.background-validation" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.background-validation-millis",
+        "environmentVariables" : [ "MARIADB_BACKGROUND_VALIDATION_MILLIS" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.background-validation-millis" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.connection-url",
+        "environmentVariables" : [ "MARIADB_DATABASE", "MARIADB_HOST", "MARIADB_PORT", "MARIADB_SERVICE_HOST", "MARIADB_SERVICE_PORT", "MARIADB_URL" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.connection-url", "org.wildfly.datasources.mariadb.database", "org.wildfly.datasources.mariadb.host", "org.wildfly.datasources.mariadb.port" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.enabled",
+        "environmentVariables" : [ "MARIADB_ENABLED" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.enabled" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.exception-sorter-class-name",
+        "environmentVariables" : [ "MARIADB_EXCEPTION_SORTER" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.exception-sorter-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.flush-strategy",
+        "environmentVariables" : [ "MARIADB_FLUSH_STRATEGY" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.flush-strategy" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.idle-timeout-minutes",
+        "environmentVariables" : [ "MARIADB_IDLE_TIMEOUT_MINUTES" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.idle-timeout-minutes" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.jndi-name",
+        "environmentVariables" : [ "MARIADB_DATASOURCE", "MARIADB_JNDI" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.datasource", "org.wildfly.datasources.mariadb.jndi-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.jta",
+        "environmentVariables" : [ "MARIADB_JTA" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.jta" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.max-pool-size",
+        "environmentVariables" : [ "MARIADB_MAX_POOL_SIZE" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.max-pool-size" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.min-pool-size",
+        "environmentVariables" : [ "MARIADB_MIN_POOL_SIZE" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.min-pool-size" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.password",
+        "environmentVariables" : [ "MARIADB_PASSWORD" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.password" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.stale-connection-checker-class-name",
+        "environmentVariables" : [ "MARIADB_STALE_CONNECTION_CHECKER" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.stale-connection-checker-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.statistics-enabled",
+        "systemProperties" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.transaction-isolation",
+        "environmentVariables" : [ "MARIADB_TX_ISOLATION" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.transaction-isolation" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.user-name",
+        "environmentVariables" : [ "MARIADB_USER" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.user-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.valid-connection-checker-class-name",
+        "environmentVariables" : [ "MARIADB_CONNECTION_CHECKER" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.valid-connection-checker-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MariaDBDS.validate-on-match",
+        "environmentVariables" : [ "MARIADB_VALIDATE_ON_MATCH" ],
+        "systemProperties" : [ "org.wildfly.datasources.mariadb.validate-on-match" ]
+      }, {
+        "attribute" : "/subsystem=ee/service=default-bindings.datasource",
+        "environmentVariables" : [ "MARIADB_DATASOURCE" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "datasources",
         "optional" : false
@@ -17029,6 +17103,22 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "datasources",
         "optional" : false
@@ -17088,6 +17178,93 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.background-validation",
+        "environmentVariables" : [ "MSSQLSERVER_BACKGROUND_VALIDATION" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.background-validation" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.background-validation-millis",
+        "environmentVariables" : [ "MSSQLSERVER_BACKGROUND_VALIDATION_MILLIS" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.background-validation-millis" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.connection-url",
+        "environmentVariables" : [ "MSSQLSERVER_DATABASE", "MSSQLSERVER_HOST", "MSSQLSERVER_PORT", "MSSQLSERVER_SERVICE_HOST", "MSSQLSERVER_SERVICE_PORT", "MSSQLSERVER_URL" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.connection-url", "org.wildfly.datasources.mssqlserver.database", "org.wildfly.datasources.mssqlserver.host", "org.wildfly.datasources.mssqlserver.port" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.enabled",
+        "environmentVariables" : [ "MSSQLSERVER_ENABLED" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.enabled" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.exception-sorter-class-name",
+        "environmentVariables" : [ "MSSQLSERVER_EXCEPTION_SORTER" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.exception-sorter-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.flush-strategy",
+        "environmentVariables" : [ "MSSQLSERVER_FLUSH_STRATEGY" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.flush-strategy" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.idle-timeout-minutes",
+        "environmentVariables" : [ "MSSQLSERVER_IDLE_TIMEOUT_MINUTES" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.idle-timeout-minutes" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.jndi-name",
+        "environmentVariables" : [ "MSSQLSERVER_DATASOURCE", "MSSQLSERVER_JNDI" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.datasource", "org.wildfly.datasources.mssqlserver.jndi-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.jta",
+        "environmentVariables" : [ "MSSQLSERVER_JTA" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.jta" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.max-pool-size",
+        "environmentVariables" : [ "MSSQLSERVER_MAX_POOL_SIZE" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.max-pool-size" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.min-pool-size",
+        "environmentVariables" : [ "MSSQLSERVER_MIN_POOL_SIZE" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.min-pool-size" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.password",
+        "environmentVariables" : [ "MSSQLSERVER_PASSWORD" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.password" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.stale-connection-checker-class-name",
+        "environmentVariables" : [ "MSSQLSERVER_STALE_CONNECTION_CHECKER" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.stale-connection-checker-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.statistics-enabled",
+        "systemProperties" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.transaction-isolation",
+        "environmentVariables" : [ "MSSQLSERVER_TX_ISOLATION" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.transaction-isolation" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.user-name",
+        "environmentVariables" : [ "MSSQLSERVER_USER" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.user-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.valid-connection-checker-class-name",
+        "environmentVariables" : [ "MSSQLSERVER_CONNECTION_CHECKER" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.valid-connection-checker-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.validate-on-match",
+        "environmentVariables" : [ "MSSQLSERVER_VALIDATE_ON_MATCH" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.validate-on-match" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "datasources",
         "optional" : false
@@ -17118,6 +17295,96 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.background-validation",
+        "environmentVariables" : [ "MSSQLSERVER_BACKGROUND_VALIDATION" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.background-validation" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.background-validation-millis",
+        "environmentVariables" : [ "MSSQLSERVER_BACKGROUND_VALIDATION_MILLIS" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.background-validation-millis" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.connection-url",
+        "environmentVariables" : [ "MSSQLSERVER_DATABASE", "MSSQLSERVER_HOST", "MSSQLSERVER_PORT", "MSSQLSERVER_SERVICE_HOST", "MSSQLSERVER_SERVICE_PORT", "MSSQLSERVER_URL" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.connection-url", "org.wildfly.datasources.mssqlserver.database", "org.wildfly.datasources.mssqlserver.host", "org.wildfly.datasources.mssqlserver.port" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.enabled",
+        "environmentVariables" : [ "MSSQLSERVER_ENABLED" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.enabled" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.exception-sorter-class-name",
+        "environmentVariables" : [ "MSSQLSERVER_EXCEPTION_SORTER" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.exception-sorter-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.flush-strategy",
+        "environmentVariables" : [ "MSSQLSERVER_FLUSH_STRATEGY" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.flush-strategy" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.idle-timeout-minutes",
+        "environmentVariables" : [ "MSSQLSERVER_IDLE_TIMEOUT_MINUTES" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.idle-timeout-minutes" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.jndi-name",
+        "environmentVariables" : [ "MSSQLSERVER_DATASOURCE", "MSSQLSERVER_JNDI" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.datasource", "org.wildfly.datasources.mssqlserver.jndi-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.jta",
+        "environmentVariables" : [ "MSSQLSERVER_JTA" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.jta" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.max-pool-size",
+        "environmentVariables" : [ "MSSQLSERVER_MAX_POOL_SIZE" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.max-pool-size" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.min-pool-size",
+        "environmentVariables" : [ "MSSQLSERVER_MIN_POOL_SIZE" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.min-pool-size" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.password",
+        "environmentVariables" : [ "MSSQLSERVER_PASSWORD" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.password" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.stale-connection-checker-class-name",
+        "environmentVariables" : [ "MSSQLSERVER_STALE_CONNECTION_CHECKER" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.stale-connection-checker-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.statistics-enabled",
+        "systemProperties" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.transaction-isolation",
+        "environmentVariables" : [ "MSSQLSERVER_TX_ISOLATION" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.transaction-isolation" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.user-name",
+        "environmentVariables" : [ "MSSQLSERVER_USER" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.user-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.valid-connection-checker-class-name",
+        "environmentVariables" : [ "MSSQLSERVER_CONNECTION_CHECKER" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.valid-connection-checker-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MSSQLServerDS.validate-on-match",
+        "environmentVariables" : [ "MSSQLSERVER_VALIDATE_ON_MATCH" ],
+        "systemProperties" : [ "org.wildfly.datasources.mssqlserver.validate-on-match" ]
+      }, {
+        "attribute" : "/subsystem=ee/service=default-bindings.datasource",
+        "environmentVariables" : [ "MSSQLSERVER_DATASOURCE" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "datasources",
         "optional" : false
@@ -17150,6 +17417,22 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "datasources",
         "optional" : false
@@ -17209,6 +17492,93 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.background-validation",
+        "environmentVariables" : [ "MYSQL_BACKGROUND_VALIDATION" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.background-validation" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.background-validation-millis",
+        "environmentVariables" : [ "MYSQL_BACKGROUND_VALIDATION_MILLIS" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.background-validation-millis" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.connection-url",
+        "environmentVariables" : [ "MYSQL_DATABASE", "MYSQL_HOST", "MYSQL_PORT", "MYSQL_SERVICE_HOST", "MYSQL_SERVICE_PORT", "MYSQL_URL", "OPENSHIFT_MYSQL_DB_HOST", "OPENSHIFT_MYSQL_DB_NAME", "OPENSHIFT_MYSQL_DB_PORT" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.connection-url", "org.wildfly.datasources.mysql.database", "org.wildfly.datasources.mysql.host", "org.wildfly.datasources.mysql.port" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.enabled",
+        "environmentVariables" : [ "MYSQL_ENABLED" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.enabled" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.exception-sorter-class-name",
+        "environmentVariables" : [ "MYSQL_EXCEPTION_SORTER" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.exception-sorter-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.flush-strategy",
+        "environmentVariables" : [ "MYSQL_FLUSH_STRATEGY" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.flush-strategy" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.idle-timeout-minutes",
+        "environmentVariables" : [ "MYSQL_IDLE_TIMEOUT_MINUTES" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.idle-timeout-minutes" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.jndi-name",
+        "environmentVariables" : [ "MYSQL_DATASOURCE", "MYSQL_JNDI", "OPENSHIFT_MYSQL_DATASOURCE" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.datasource", "org.wildfly.datasources.mysql.jndi-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.jta",
+        "environmentVariables" : [ "MYSQL_JTA" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.jta" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.max-pool-size",
+        "environmentVariables" : [ "MYSQL_MAX_POOL_SIZE" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.max-pool-size" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.min-pool-size",
+        "environmentVariables" : [ "MYSQL_MIN_POOL_SIZE" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.min-pool-size" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.password",
+        "environmentVariables" : [ "MYSQL_PASSWORD", "OPENSHIFT_MYSQL_DB_PASSWORD" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.password" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.stale-connection-checker-class-name",
+        "environmentVariables" : [ "MYSQL_STALE_CONNECTION_CHECKER" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.stale-connection-checker-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.statistics-enabled",
+        "systemProperties" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.transaction-isolation",
+        "environmentVariables" : [ "MYSQL_TX_ISOLATION" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.transaction-isolation" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.user-name",
+        "environmentVariables" : [ "MYSQL_USER", "OPENSHIFT_MYSQL_DB_USERNAME" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.user-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.valid-connection-checker-class-name",
+        "environmentVariables" : [ "MYSQL_CONNECTION_CHECKER" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.valid-connection-checker-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.validate-on-match",
+        "environmentVariables" : [ "MYSQL_VALIDATE_ON_MATCH" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.validate-on-match" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "datasources",
         "optional" : false
@@ -17239,6 +17609,96 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.background-validation",
+        "environmentVariables" : [ "MYSQL_BACKGROUND_VALIDATION" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.background-validation" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.background-validation-millis",
+        "environmentVariables" : [ "MYSQL_BACKGROUND_VALIDATION_MILLIS" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.background-validation-millis" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.connection-url",
+        "environmentVariables" : [ "MYSQL_DATABASE", "MYSQL_HOST", "MYSQL_PORT", "MYSQL_SERVICE_HOST", "MYSQL_SERVICE_PORT", "MYSQL_URL", "OPENSHIFT_MYSQL_DB_HOST", "OPENSHIFT_MYSQL_DB_NAME", "OPENSHIFT_MYSQL_DB_PORT" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.connection-url", "org.wildfly.datasources.mysql.database", "org.wildfly.datasources.mysql.host", "org.wildfly.datasources.mysql.port" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.enabled",
+        "environmentVariables" : [ "MYSQL_ENABLED" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.enabled" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.exception-sorter-class-name",
+        "environmentVariables" : [ "MYSQL_EXCEPTION_SORTER" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.exception-sorter-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.flush-strategy",
+        "environmentVariables" : [ "MYSQL_FLUSH_STRATEGY" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.flush-strategy" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.idle-timeout-minutes",
+        "environmentVariables" : [ "MYSQL_IDLE_TIMEOUT_MINUTES" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.idle-timeout-minutes" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.jndi-name",
+        "environmentVariables" : [ "MYSQL_DATASOURCE", "MYSQL_JNDI", "OPENSHIFT_MYSQL_DATASOURCE" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.datasource", "org.wildfly.datasources.mysql.jndi-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.jta",
+        "environmentVariables" : [ "MYSQL_JTA" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.jta" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.max-pool-size",
+        "environmentVariables" : [ "MYSQL_MAX_POOL_SIZE" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.max-pool-size" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.min-pool-size",
+        "environmentVariables" : [ "MYSQL_MIN_POOL_SIZE" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.min-pool-size" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.password",
+        "environmentVariables" : [ "MYSQL_PASSWORD", "OPENSHIFT_MYSQL_DB_PASSWORD" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.password" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.stale-connection-checker-class-name",
+        "environmentVariables" : [ "MYSQL_STALE_CONNECTION_CHECKER" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.stale-connection-checker-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.statistics-enabled",
+        "systemProperties" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.transaction-isolation",
+        "environmentVariables" : [ "MYSQL_TX_ISOLATION" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.transaction-isolation" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.user-name",
+        "environmentVariables" : [ "MYSQL_USER", "OPENSHIFT_MYSQL_DB_USERNAME" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.user-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.valid-connection-checker-class-name",
+        "environmentVariables" : [ "MYSQL_CONNECTION_CHECKER" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.valid-connection-checker-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=MySQLDS.validate-on-match",
+        "environmentVariables" : [ "MYSQL_VALIDATE_ON_MATCH" ],
+        "systemProperties" : [ "org.wildfly.datasources.mysql.validate-on-match" ]
+      }, {
+        "attribute" : "/subsystem=ee/service=default-bindings.datasource",
+        "environmentVariables" : [ "MYSQL_DATASOURCE", "OPENSHIFT_MYSQL_DATASOURCE" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "datasources",
         "optional" : false
@@ -17271,6 +17731,22 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "datasources",
         "optional" : false
@@ -17330,6 +17806,93 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.background-validation",
+        "environmentVariables" : [ "ORACLE_BACKGROUND_VALIDATION" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.background-validation" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.background-validation-millis",
+        "environmentVariables" : [ "ORACLE_BACKGROUND_VALIDATION_MILLIS" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.background-validation-millis" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.connection-url",
+        "environmentVariables" : [ "OPENSHIFT_ORACLE_URL", "ORACLE_URL" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.connection-url" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.enabled",
+        "environmentVariables" : [ "ORACLE_ENABLED" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.enabled" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.exception-sorter-class-name",
+        "environmentVariables" : [ "ORACLE_EXCEPTION_SORTER" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.exception-sorter-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.flush-strategy",
+        "environmentVariables" : [ "ORACLE_FLUSH_STRATEGY" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.flush-strategy" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.idle-timeout-minutes",
+        "environmentVariables" : [ "ORACLE_IDLE_TIMEOUT_MINUTES" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.idle-timeout-minutes" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.jndi-name",
+        "environmentVariables" : [ "OPENSHIFT_ORACLE_DATASOURCE", "ORACLE_DATASOURCE", "ORACLE_JNDI" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.datasource", "org.wildfly.datasources.oracle.jndi-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.jta",
+        "environmentVariables" : [ "ORACLE_JTA" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.jta" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.max-pool-size",
+        "environmentVariables" : [ "ORACLE_MAX_POOL_SIZE" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.max-pool-size" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.min-pool-size",
+        "environmentVariables" : [ "ORACLE_MIN_POOL_SIZE" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.min-pool-size" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.password",
+        "environmentVariables" : [ "OPENSHIFT_ORACLE_DB_PASSWORD", "ORACLE_PASSWORD" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.password" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.stale-connection-checker-class-name",
+        "environmentVariables" : [ "ORACLE_STALE_CONNECTION_CHECKER" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.stale-connection-checker-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.statistics-enabled",
+        "systemProperties" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.transaction-isolation",
+        "environmentVariables" : [ "ORACLE_TX_ISOLATION" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.transaction-isolation" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.user-name",
+        "environmentVariables" : [ "OPENSHIFT_ORACLE_DB_USERNAME", "ORACLE_USER" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.user-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.valid-connection-checker-class-name",
+        "environmentVariables" : [ "ORACLE_CONNECTION_CHECKER" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.valid-connection-checker-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.validate-on-match",
+        "environmentVariables" : [ "ORACLE_VALIDATE_ON_MATCH" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.validate-on-match" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "datasources",
         "optional" : false
@@ -17360,6 +17923,96 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.background-validation",
+        "environmentVariables" : [ "ORACLE_BACKGROUND_VALIDATION" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.background-validation" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.background-validation-millis",
+        "environmentVariables" : [ "ORACLE_BACKGROUND_VALIDATION_MILLIS" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.background-validation-millis" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.connection-url",
+        "environmentVariables" : [ "OPENSHIFT_ORACLE_URL", "ORACLE_URL" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.connection-url" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.enabled",
+        "environmentVariables" : [ "ORACLE_ENABLED" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.enabled" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.exception-sorter-class-name",
+        "environmentVariables" : [ "ORACLE_EXCEPTION_SORTER" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.exception-sorter-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.flush-strategy",
+        "environmentVariables" : [ "ORACLE_FLUSH_STRATEGY" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.flush-strategy" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.idle-timeout-minutes",
+        "environmentVariables" : [ "ORACLE_IDLE_TIMEOUT_MINUTES" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.idle-timeout-minutes" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.jndi-name",
+        "environmentVariables" : [ "OPENSHIFT_ORACLE_DATASOURCE", "ORACLE_DATASOURCE", "ORACLE_JNDI" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.datasource", "org.wildfly.datasources.oracle.jndi-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.jta",
+        "environmentVariables" : [ "ORACLE_JTA" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.jta" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.max-pool-size",
+        "environmentVariables" : [ "ORACLE_MAX_POOL_SIZE" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.max-pool-size" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.min-pool-size",
+        "environmentVariables" : [ "ORACLE_MIN_POOL_SIZE" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.min-pool-size" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.password",
+        "environmentVariables" : [ "OPENSHIFT_ORACLE_DB_PASSWORD", "ORACLE_PASSWORD" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.password" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.stale-connection-checker-class-name",
+        "environmentVariables" : [ "ORACLE_STALE_CONNECTION_CHECKER" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.stale-connection-checker-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.statistics-enabled",
+        "systemProperties" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.transaction-isolation",
+        "environmentVariables" : [ "ORACLE_TX_ISOLATION" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.transaction-isolation" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.user-name",
+        "environmentVariables" : [ "OPENSHIFT_ORACLE_DB_USERNAME", "ORACLE_USER" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.user-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.valid-connection-checker-class-name",
+        "environmentVariables" : [ "ORACLE_CONNECTION_CHECKER" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.valid-connection-checker-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=OracleDS.validate-on-match",
+        "environmentVariables" : [ "ORACLE_VALIDATE_ON_MATCH" ],
+        "systemProperties" : [ "org.wildfly.datasources.oracle.validate-on-match" ]
+      }, {
+        "attribute" : "/subsystem=ee/service=default-bindings.datasource",
+        "environmentVariables" : [ "OPENSHIFT_ORACLE_DATASOURCE", "ORACLE_DATASOURCE" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "datasources",
         "optional" : false
@@ -17392,6 +18045,22 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "datasources",
         "optional" : false
@@ -17451,6 +18120,93 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.background-validation",
+        "environmentVariables" : [ "POSTGRESQL_BACKGROUND_VALIDATION" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.background-validation" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.background-validation-millis",
+        "environmentVariables" : [ "POSTGRESQL_BACKGROUND_VALIDATION_MILLIS" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.background-validation-millis" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.connection-url",
+        "environmentVariables" : [ "OPENSHIFT_POSTGRESQL_DB_HOST", "OPENSHIFT_POSTGRESQL_DB_NAME", "OPENSHIFT_POSTGRESQL_DB_PORT", "POSTGRESQL_DATABASE", "POSTGRESQL_HOST", "POSTGRESQL_PORT", "POSTGRESQL_SERVICE_HOST", "POSTGRESQL_SERVICE_PORT", "POSTGRESQL_URL" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.connection-url", "org.wildfly.datasources.postgresql.database", "org.wildfly.datasources.postgresql.host", "org.wildfly.datasources.postgresql.port" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.enabled",
+        "environmentVariables" : [ "POSTGRESQL_ENABLED" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.enabled" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.exception-sorter-class-name",
+        "environmentVariables" : [ "POSTGRESQL_EXCEPTION_SORTER" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.exception-sorter-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.flush-strategy",
+        "environmentVariables" : [ "POSTGRESQL_FLUSH_STRATEGY" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.flush-strategy" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.idle-timeout-minutes",
+        "environmentVariables" : [ "POSTGRESQL_IDLE_TIMEOUT_MINUTES" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.idle-timeout-minutes" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.jndi-name",
+        "environmentVariables" : [ "OPENSHIFT_POSTGRESQL_DATASOURCE", "POSTGRESQL_DATASOURCE", "POSTGRESQL_JNDI" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.datasource", "org.wildfly.datasources.postgresql.jndi-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.jta",
+        "environmentVariables" : [ "POSTGRESQL_JTA" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.jta" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.max-pool-size",
+        "environmentVariables" : [ "POSTGRESQL_MAX_POOL_SIZE" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.max-pool-size" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.min-pool-size",
+        "environmentVariables" : [ "POSTGRESQL_MIN_POOL_SIZE" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.min-pool-size" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.password",
+        "environmentVariables" : [ "OPENSHIFT_POSTGRESQL_DB_PASSWORD", "POSTGRESQL_PASSWORD" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.password" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.stale-connection-checker-class-name",
+        "environmentVariables" : [ "POSTGRESQL_STALE_CONNECTION_CHECKER" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.stale-connection-checker-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.statistics-enabled",
+        "systemProperties" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.transaction-isolation",
+        "environmentVariables" : [ "POSTGRESQL_TX_ISOLATION" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.transaction-isolation" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.user-name",
+        "environmentVariables" : [ "OPENSHIFT_POSTGRESQL_DB_USERNAME", "POSTGRESQL_USER" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.user-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.valid-connection-checker-class-name",
+        "environmentVariables" : [ "POSTGRESQL_CONNECTION_CHECKER" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.valid-connection-checker-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.validate-on-match",
+        "environmentVariables" : [ "POSTGRESQL_VALIDATE_ON_MATCH" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.validate-on-match" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "datasources",
         "optional" : false
@@ -17481,6 +18237,97 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.background-validation",
+        "environmentVariables" : [ "POSTGRESQL_BACKGROUND_VALIDATION" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.background-validation" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.background-validation-millis",
+        "environmentVariables" : [ "POSTGRESQL_BACKGROUND_VALIDATION_MILLIS" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.background-validation-millis" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.connection-url",
+        "environmentVariables" : [ "OPENSHIFT_POSTGRESQL_DB_HOST", "OPENSHIFT_POSTGRESQL_DB_NAME", "OPENSHIFT_POSTGRESQL_DB_PORT", "POSTGRESQL_DATABASE", "POSTGRESQL_HOST", "POSTGRESQL_PORT", "POSTGRESQL_SERVICE_HOST", "POSTGRESQL_SERVICE_PORT", "POSTGRESQL_URL" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.connection-url", "org.wildfly.datasources.postgresql.database", "org.wildfly.datasources.postgresql.host", "org.wildfly.datasources.postgresql.port" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.enabled",
+        "environmentVariables" : [ "POSTGRESQL_ENABLED" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.enabled" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.exception-sorter-class-name",
+        "environmentVariables" : [ "POSTGRESQL_EXCEPTION_SORTER" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.exception-sorter-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.flush-strategy",
+        "environmentVariables" : [ "POSTGRESQL_FLUSH_STRATEGY" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.flush-strategy" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.idle-timeout-minutes",
+        "environmentVariables" : [ "POSTGRESQL_IDLE_TIMEOUT_MINUTES" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.idle-timeout-minutes" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.jndi-name",
+        "environmentVariables" : [ "OPENSHIFT_POSTGRESQL_DATASOURCE", "POSTGRESQL_DATASOURCE", "POSTGRESQL_JNDI" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.datasource", "org.wildfly.datasources.postgresql.jndi-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.jta",
+        "environmentVariables" : [ "POSTGRESQL_JTA" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.jta" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.max-pool-size",
+        "environmentVariables" : [ "POSTGRESQL_MAX_POOL_SIZE" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.max-pool-size" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.min-pool-size",
+        "environmentVariables" : [ "POSTGRESQL_MIN_POOL_SIZE" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.min-pool-size" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.password",
+        "environmentVariables" : [ "OPENSHIFT_POSTGRESQL_DB_PASSWORD", "POSTGRESQL_PASSWORD" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.password" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.stale-connection-checker-class-name",
+        "environmentVariables" : [ "POSTGRESQL_STALE_CONNECTION_CHECKER" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.stale-connection-checker-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.statistics-enabled",
+        "systemProperties" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.transaction-isolation",
+        "environmentVariables" : [ "POSTGRESQL_TX_ISOLATION" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.transaction-isolation" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.user-name",
+        "environmentVariables" : [ "OPENSHIFT_POSTGRESQL_DB_USERNAME", "POSTGRESQL_USER" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.user-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.valid-connection-checker-class-name",
+        "environmentVariables" : [ "POSTGRESQL_CONNECTION_CHECKER" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.valid-connection-checker-class-name" ]
+      }, {
+        "attribute" : "/subsystem=datasources/data-source=PostgreSQLDS.validate-on-match",
+        "environmentVariables" : [ "POSTGRESQL_VALIDATE_ON_MATCH" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.validate-on-match" ]
+      }, {
+        "attribute" : "/subsystem=ee/service=default-bindings.datasource",
+        "environmentVariables" : [ "OPENSHIFT_POSTGRESQL_DATASOURCE", "POSTGRESQL_DATASOURCE", "POSTGRESQL_JNDI" ],
+        "systemProperties" : [ "org.wildfly.datasources.postgresql.datasource", "org.wildfly.datasources.postgresql.jndi-name" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "datasources",
         "optional" : false
@@ -17513,6 +18360,22 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "datasources",
         "optional" : false
@@ -17575,6 +18438,22 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "cdi",
         "optional" : false
@@ -17612,6 +18491,13 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      } ],
       "dependencies" : [ {
         "name" : "base-server",
         "optional" : false
@@ -17643,6 +18529,13 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      } ],
       "dependencies" : [ {
         "name" : "base-server",
         "optional" : false
@@ -17716,6 +18609,13 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      } ],
       "dependencies" : [ {
         "name" : "naming",
         "optional" : false
@@ -17771,6 +18671,40 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=ajp.port",
+        "systemProperties" : [ "jboss.ajp.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=http.port",
+        "systemProperties" : [ "jboss.http.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=https.port",
+        "systemProperties" : [ "jboss.https.port" ]
+      }, {
+        "attribute" : "/subsystem=ejb3.default-resource-adapter-name",
+        "systemProperties" : [ "ejb.resource-adapter-name" ]
+      }, {
+        "attribute" : "/subsystem=ejb3.statistics-enabled",
+        "systemProperties" : [ "wildfly.ejb3.statistics-enabled", "wildfly.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=undertow.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.undertow.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "ejb-lite",
         "optional" : false
@@ -17833,6 +18767,37 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=ajp.port",
+        "systemProperties" : [ "jboss.ajp.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=http.port",
+        "systemProperties" : [ "jboss.http.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=https.port",
+        "systemProperties" : [ "jboss.https.port" ]
+      }, {
+        "attribute" : "/subsystem=ejb3.statistics-enabled",
+        "systemProperties" : [ "wildfly.ejb3.statistics-enabled", "wildfly.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=undertow.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.undertow.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "ejb-lite",
         "optional" : false
@@ -17924,6 +18889,25 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/subsystem=ejb3.statistics-enabled",
+        "systemProperties" : [ "wildfly.ejb3.statistics-enabled", "wildfly.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "transactions",
         "optional" : false
@@ -18067,6 +19051,22 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "transactions",
         "optional" : false
@@ -18079,6 +19079,28 @@
     }, {
       "name" : "jaxrs",
       "managementModel" : { },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=ajp.port",
+        "systemProperties" : [ "jboss.ajp.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=http.port",
+        "systemProperties" : [ "jboss.http.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=https.port",
+        "systemProperties" : [ "jboss.https.port" ]
+      }, {
+        "attribute" : "/subsystem=deployment-scanner/scanner=default.runtime-failure-causes-rollback",
+        "systemProperties" : [ "jboss.deployment.scanner.rollback.on.failure" ]
+      }, {
+        "attribute" : "/subsystem=undertow.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.undertow.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "deployment-scanner",
         "optional" : true
@@ -18118,6 +19140,28 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=ajp.port",
+        "systemProperties" : [ "jboss.ajp.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=http.port",
+        "systemProperties" : [ "jboss.http.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=https.port",
+        "systemProperties" : [ "jboss.https.port" ]
+      }, {
+        "attribute" : "/subsystem=deployment-scanner/scanner=default.runtime-failure-causes-rollback",
+        "systemProperties" : [ "jboss.deployment.scanner.rollback.on.failure" ]
+      }, {
+        "attribute" : "/subsystem=undertow.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.undertow.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "ee-integration",
         "optional" : false
@@ -18199,6 +19243,22 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "datasources",
         "optional" : false
@@ -18236,6 +19296,28 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=ajp.port",
+        "systemProperties" : [ "jboss.ajp.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=http.port",
+        "systemProperties" : [ "jboss.http.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=https.port",
+        "systemProperties" : [ "jboss.https.port" ]
+      }, {
+        "attribute" : "/subsystem=deployment-scanner/scanner=default.runtime-failure-causes-rollback",
+        "systemProperties" : [ "jboss.deployment.scanner.rollback.on.failure" ]
+      }, {
+        "attribute" : "/subsystem=undertow.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.undertow.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "web-server",
         "optional" : false
@@ -18274,6 +19356,13 @@
     }, {
       "name" : "jsonb",
       "managementModel" : { },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      } ],
       "dependencies" : [ {
         "name" : "base-server",
         "optional" : false
@@ -18296,6 +19385,13 @@
     }, {
       "name" : "jsonp",
       "managementModel" : { },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      } ],
       "dependencies" : [ {
         "name" : "base-server",
         "optional" : false
@@ -18319,6 +19415,28 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=ajp.port",
+        "systemProperties" : [ "jboss.ajp.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=http.port",
+        "systemProperties" : [ "jboss.http.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=https.port",
+        "systemProperties" : [ "jboss.https.port" ]
+      }, {
+        "attribute" : "/subsystem=deployment-scanner/scanner=default.runtime-failure-causes-rollback",
+        "systemProperties" : [ "jboss.deployment.scanner.rollback.on.failure" ]
+      }, {
+        "attribute" : "/subsystem=undertow.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.undertow.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "cdi",
         "optional" : false
@@ -18340,6 +19458,13 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      } ],
       "dependencies" : [ {
         "name" : "base-server",
         "optional" : false
@@ -18417,6 +19542,22 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "transactions",
         "optional" : false
@@ -18441,6 +19582,28 @@
           "mvc-krazo" : { }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=ajp.port",
+        "systemProperties" : [ "jboss.ajp.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=http.port",
+        "systemProperties" : [ "jboss.http.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=https.port",
+        "systemProperties" : [ "jboss.https.port" ]
+      }, {
+        "attribute" : "/subsystem=deployment-scanner/scanner=default.runtime-failure-causes-rollback",
+        "systemProperties" : [ "jboss.deployment.scanner.rollback.on.failure" ]
+      }, {
+        "attribute" : "/subsystem=undertow.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.undertow.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "bean-validation",
         "optional" : false
@@ -18622,6 +19785,37 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=ajp.port",
+        "systemProperties" : [ "jboss.ajp.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=http.port",
+        "systemProperties" : [ "jboss.http.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=https.port",
+        "systemProperties" : [ "jboss.https.port" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=messaging-activemq/server=default.statistics-enabled",
+        "systemProperties" : [ "wildfly.messaging-activemq.statistics-enabled", "wildfly.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=undertow.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.undertow.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "messaging-activemq",
         "optional" : false
@@ -18664,6 +19858,22 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "resource-adapters",
         "optional" : false
@@ -18735,6 +19945,28 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/remote-destination-outbound-socket-binding=messaging-activemq.host",
+        "systemProperties" : [ "jboss.messaging.connector.host" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/remote-destination-outbound-socket-binding=messaging-activemq.port",
+        "systemProperties" : [ "jboss.messaging.connector.port" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "messaging-activemq",
         "optional" : false
@@ -18750,6 +19982,25 @@
     "functionalities" : [ {
       "name" : "core-tools",
       "managementModel" : { },
+      "configuration" : [ {
+        "attribute" : "/interface=management.inet-address",
+        "systemProperties" : [ "jboss.bind.address.management" ]
+      }, {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=management-http.port",
+        "systemProperties" : [ "jboss.management.http.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=management-https.port",
+        "systemProperties" : [ "jboss.management.https.port" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      } ],
       "dependencies" : [ {
         "name" : "management",
         "optional" : true
@@ -18769,6 +20020,13 @@
           "microprofile-config-smallrye" : { }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      } ],
       "dependencies" : [ {
         "name" : "cdi",
         "optional" : false
@@ -18806,6 +20064,25 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=management.inet-address",
+        "systemProperties" : [ "jboss.bind.address.management" ]
+      }, {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=management-http.port",
+        "systemProperties" : [ "jboss.management.http.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=management-https.port",
+        "systemProperties" : [ "jboss.management.https.port" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      } ],
       "dependencies" : [ {
         "name" : "management",
         "optional" : false
@@ -18828,6 +20105,28 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=management.inet-address",
+        "systemProperties" : [ "jboss.bind.address.management" ]
+      }, {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=management-http.port",
+        "systemProperties" : [ "jboss.management.http.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=management-https.port",
+        "systemProperties" : [ "jboss.management.https.port" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=metrics.prefix",
+        "systemProperties" : [ "wildfly.metrics.prefix" ]
+      } ],
       "dependencies" : [ {
         "name" : "management",
         "optional" : false
@@ -18849,6 +20148,34 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=management.inet-address",
+        "systemProperties" : [ "jboss.bind.address.management" ]
+      }, {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=management-http.port",
+        "systemProperties" : [ "jboss.management.http.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=management-https.port",
+        "systemProperties" : [ "jboss.management.https.port" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=microprofile-health-smallrye.empty-liveness-checks-status",
+        "environmentVariables" : [ "MP_HEALTH_EMPTY_LIVENESS_CHECKS_STATUS" ]
+      }, {
+        "attribute" : "/subsystem=microprofile-health-smallrye.empty-readiness-checks-status",
+        "environmentVariables" : [ "MP_HEALTH_EMPTY_READINESS_CHECKS_STATUS" ]
+      }, {
+        "attribute" : "/subsystem=microprofile-health-smallrye.empty-startup-checks-status",
+        "environmentVariables" : [ "MP_HEALTH_EMPTY_STARTUP_CHECKS_STATUS" ]
+      } ],
       "dependencies" : [ {
         "name" : "management",
         "optional" : false
@@ -18881,6 +20208,13 @@
           "microprofile-telemetry" : { }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      } ],
       "dependencies" : [ {
         "name" : "cdi",
         "optional" : false
@@ -18904,6 +20238,37 @@
     }, {
       "name" : "observability",
       "managementModel" : { },
+      "configuration" : [ {
+        "attribute" : "/interface=management.inet-address",
+        "systemProperties" : [ "jboss.bind.address.management" ]
+      }, {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=management-http.port",
+        "systemProperties" : [ "jboss.management.http.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=management-https.port",
+        "systemProperties" : [ "jboss.management.https.port" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=metrics.prefix",
+        "systemProperties" : [ "wildfly.metrics.prefix" ]
+      }, {
+        "attribute" : "/subsystem=microprofile-health-smallrye.empty-liveness-checks-status",
+        "environmentVariables" : [ "MP_HEALTH_EMPTY_LIVENESS_CHECKS_STATUS" ]
+      }, {
+        "attribute" : "/subsystem=microprofile-health-smallrye.empty-readiness-checks-status",
+        "environmentVariables" : [ "MP_HEALTH_EMPTY_READINESS_CHECKS_STATUS" ]
+      }, {
+        "attribute" : "/subsystem=microprofile-health-smallrye.empty-startup-checks-status",
+        "environmentVariables" : [ "MP_HEALTH_EMPTY_STARTUP_CHECKS_STATUS" ]
+      } ],
       "dependencies" : [ {
         "name" : "metrics",
         "optional" : true
@@ -18931,6 +20296,13 @@
           "opentelemetry" : { }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      } ],
       "dependencies" : [ {
         "name" : "cdi",
         "optional" : false
@@ -18962,6 +20334,16 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      } ],
       "dependencies" : [ {
         "name" : "elytron",
         "optional" : false
@@ -19027,6 +20409,28 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=ajp.port",
+        "systemProperties" : [ "jboss.ajp.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=http.port",
+        "systemProperties" : [ "jboss.http.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=https.port",
+        "systemProperties" : [ "jboss.https.port" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=undertow.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.undertow.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "keycloak-saml",
         "optional" : false
@@ -19055,6 +20459,37 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=ajp.port",
+        "systemProperties" : [ "jboss.ajp.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=http.port",
+        "systemProperties" : [ "jboss.http.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=https.port",
+        "systemProperties" : [ "jboss.https.port" ]
+      }, {
+        "attribute" : "/subsystem=ejb3.statistics-enabled",
+        "systemProperties" : [ "wildfly.ejb3.statistics-enabled", "wildfly.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=transactions.node-identifier",
+        "systemProperties" : [ "jboss.tx.node.id" ]
+      }, {
+        "attribute" : "/subsystem=transactions.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
+      }, {
+        "attribute" : "/subsystem=undertow.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.undertow.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "keycloak-client-saml",
         "optional" : false
@@ -19080,6 +20515,28 @@
           "keycloak-saml" : { }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=ajp.port",
+        "systemProperties" : [ "jboss.ajp.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=http.port",
+        "systemProperties" : [ "jboss.http.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=https.port",
+        "systemProperties" : [ "jboss.https.port" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=undertow.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.undertow.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "ee",
         "optional" : false
@@ -19122,6 +20579,28 @@
           }
         }
       },
+      "configuration" : [ {
+        "attribute" : "/interface=public.inet-address",
+        "systemProperties" : [ "jboss.bind.address" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets.port-offset",
+        "systemProperties" : [ "jboss.socket.binding.port-offset" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=ajp.port",
+        "systemProperties" : [ "jboss.ajp.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=http.port",
+        "systemProperties" : [ "jboss.http.port" ]
+      }, {
+        "attribute" : "/socket-binding-group=standard-sockets/socket-binding=https.port",
+        "systemProperties" : [ "jboss.https.port" ]
+      }, {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
+      }, {
+        "attribute" : "/subsystem=undertow.statistics-enabled",
+        "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.undertow.statistics-enabled" ]
+      } ],
       "dependencies" : [ {
         "name" : "elytron",
         "optional" : false
