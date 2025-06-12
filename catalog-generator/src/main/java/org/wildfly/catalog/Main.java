@@ -91,6 +91,9 @@ public class Main {
                 String metadataFileName = artifactId + "-"+version+"-metadata.json";
                 Path metadataFile = home.resolve(groupId).resolve(artifactId).resolve(version).resolve(metadataFileName);
                 JsonNode subCatalog = mapper.readTree(metadataFile.toFile().toURI().toURL());
+                if (subCatalog.hasNonNull("description")) {
+                    fpNode.put("description", subCatalog.get("description").asText());
+                }
                 String modelFileName = artifactId + "-"+version+"-model.json";
                 Path modelFile = home.resolve(groupId).resolve(artifactId).resolve(version).resolve(modelFileName);
                 if(Files.exists(modelFile)) {

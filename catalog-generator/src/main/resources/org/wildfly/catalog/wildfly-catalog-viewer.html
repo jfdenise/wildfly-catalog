@@ -549,6 +549,16 @@
                     }
                     fpDiv.appendChild(fpCoordsContainer);
 
+                    if (fp.description && typeof fp.description === 'string' && fp.description.trim() !== '') {
+                        const descriptionP = document.createElement('p');
+                        descriptionP.className = 'category-description'; // Reuse existing style
+                        
+                        // Create a text node for the description to allow appending the icon next to it
+                        const descriptionTextNode = document.createTextNode(fp.description);
+                        descriptionP.appendChild(descriptionTextNode);
+                        fpDiv.appendChild(descriptionP);
+                    }
+
                     if (fp.modelReference && Object.keys(fp.modelReference).length > 0) {
                         const mgmtModelContainer = document.createElement('div');
                         mgmtModelContainer.className = 'management-model-container';
