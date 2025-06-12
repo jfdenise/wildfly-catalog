@@ -603,71 +603,7 @@
                             mgmtArrow.classList.toggle('expanded');
                         });
                     }
-
-                    // Display Feature Pack Configuration if the property exists
-                    if (fp.hasOwnProperty('configuration')) {
-                        const configContainer = document.createElement('div');
-                        configContainer.className = 'configuration-container'; 
-
-                        const configHeader = document.createElement('div');
-                        configHeader.className = 'dependencies-header'; 
-                        configHeader.style.backgroundColor = '#e0ffe0'; 
-
-                        const configLabelWrapper = document.createElement('span');
-                        configLabelWrapper.style.display = 'flex';
-                        configLabelWrapper.style.alignItems = 'center';
-
-                        const configHeaderText = document.createElement('span');
-                        configHeaderText.textContent = 'Configuration';
-                        configLabelWrapper.appendChild(configHeaderText);
-
-                        if (legendData.configuration) { 
-                            const tooltipIcon = document.createElement('span');
-                            tooltipIcon.className = 'tooltip-icon';
-                            tooltipIcon.textContent = '?';
-                            tooltipIcon.dataset.tooltipText = legendData.configuration;
-                            tooltipIcon.addEventListener('click', showTooltip);
-                            configLabelWrapper.appendChild(tooltipIcon);
-                        }
-                        configHeader.appendChild(configLabelWrapper);
-
-                        const configArrow = document.createElement('span');
-                        configArrow.className = 'dependencies-arrow';
-                        configArrow.innerHTML = '&#9654;';
-                        configHeader.appendChild(configArrow);
-                        
-                        configContainer.appendChild(configHeader);
-
-                        const configContentDiv = document.createElement('div');
-                        configContentDiv.className = 'dependencies-list'; 
-                        configContentDiv.style.paddingLeft = '0px';
-                        
-                        // Populate content based on configuration data
-                        if (fp.configuration && typeof fp.configuration === 'object' && Object.keys(fp.configuration).length > 0) {
-                            configContentDiv.innerHTML = renderJsonRecursive(fp.configuration);
-                        } else if (fp.configuration && typeof fp.configuration === 'object' && Object.keys(fp.configuration).length === 0) {
-                            configContentDiv.innerHTML = '<span style="color: #777; font-style: italic;">(Configuration is empty)</span>';
-                        } else {
-                            configContentDiv.innerHTML = '<span style="color: #777; font-style: italic;">(No configuration data or invalid format)</span>';
-                        }
-                        
-                        // Apply common styling for the content div
-                        configContentDiv.style.fontFamily = 'Consolas, "Courier New", monospace';
-                        configContentDiv.style.backgroundColor = '#f0fff0'; 
-                        configContentDiv.style.padding = '10px';
-                        configContentDiv.style.borderRadius = '4px';
-                        configContentDiv.style.border = '1px solid #d0e0d0';
-                        configContentDiv.style.whiteSpace = 'pre-wrap';
-                        configContentDiv.style.wordBreak = 'break-all';
-                        
-                        configContainer.appendChild(configContentDiv);
-                        fpDiv.appendChild(configContainer);
-
-                        configHeader.addEventListener('click', () => {
-                            configContentDiv.classList.toggle('visible');
-                            configArrow.classList.toggle('expanded');
-                        });
-                    }
+                    // Configuration rendering moved to layer/functionality section
                     featurePacksSection.appendChild(fpDiv);
                 });
             } else {
@@ -1035,6 +971,69 @@
                         glowHeader.addEventListener('click', () => {
                             glowContentDiv.classList.toggle('visible');
                             glowArrow.classList.toggle('expanded');
+                        });
+                    }
+
+                    // Display Layer Configuration if the property exists
+                    if (func.hasOwnProperty('configuration')) {
+                        const layerConfigContainer = document.createElement('div');
+                        layerConfigContainer.className = 'layer-configuration-container';
+
+                        const layerConfigHeader = document.createElement('div');
+                        layerConfigHeader.className = 'dependencies-header'; // Reuse style
+                        layerConfigHeader.style.backgroundColor = '#fffacd'; // LemonChiffon to differentiate
+
+                        const layerConfigLabelWrapper = document.createElement('span');
+                        layerConfigLabelWrapper.style.display = 'flex';
+                        layerConfigLabelWrapper.style.alignItems = 'center';
+
+                        const layerConfigHeaderText = document.createElement('span');
+                        layerConfigHeaderText.textContent = 'Configuration';
+                        layerConfigLabelWrapper.appendChild(layerConfigHeaderText);
+
+                        if (legendData.configuration) { // Changed legend key to 'configuration'
+                            const tooltipIcon = document.createElement('span');
+                            tooltipIcon.className = 'tooltip-icon';
+                            tooltipIcon.textContent = '?';
+                            tooltipIcon.dataset.tooltipText = legendData.configuration;
+                            tooltipIcon.addEventListener('click', showTooltip);
+                            layerConfigLabelWrapper.appendChild(tooltipIcon);
+                        }
+                        layerConfigHeader.appendChild(layerConfigLabelWrapper);
+
+                        const layerConfigArrow = document.createElement('span');
+                        layerConfigArrow.className = 'dependencies-arrow';
+                        layerConfigArrow.innerHTML = '&#9654;';
+                        layerConfigHeader.appendChild(layerConfigArrow);
+                        
+                        layerConfigContainer.appendChild(layerConfigHeader);
+
+                        const layerConfigContentDiv = document.createElement('div');
+                        layerConfigContentDiv.className = 'dependencies-list'; // Reuse style; initially hidden
+                        layerConfigContentDiv.style.paddingLeft = '0px';
+                        
+                        if (func.configuration && typeof func.configuration === 'object' && Object.keys(func.configuration).length > 0) {
+                            layerConfigContentDiv.innerHTML = renderJsonRecursive(func.configuration);
+                        } else if (func.configuration && typeof func.configuration === 'object' && Object.keys(func.configuration).length === 0) {
+                            layerConfigContentDiv.innerHTML = '<span style="color: #777; font-style: italic;">(Configuration is empty)</span>';
+                        } else {
+                            layerConfigContentDiv.innerHTML = '<span style="color: #777; font-style: italic;">(No configuration data or invalid format)</span>';
+                        }
+                        
+                        layerConfigContentDiv.style.fontFamily = 'Consolas, "Courier New", monospace';
+                        layerConfigContentDiv.style.backgroundColor = '#f5f5dc'; // Beige, distinct background
+                        layerConfigContentDiv.style.padding = '10px';
+                        layerConfigContentDiv.style.borderRadius = '4px';
+                        layerConfigContentDiv.style.border = '1px solid #d2b48c'; // Tan border
+                        layerConfigContentDiv.style.whiteSpace = 'pre-wrap';
+                        layerConfigContentDiv.style.wordBreak = 'break-all';
+                        
+                        layerConfigContainer.appendChild(layerConfigContentDiv);
+                        detailsDiv.appendChild(layerConfigContainer);
+
+                        layerConfigHeader.addEventListener('click', () => {
+                            layerConfigContentDiv.classList.toggle('visible');
+                            layerConfigArrow.classList.toggle('expanded');
                         });
                     }
 

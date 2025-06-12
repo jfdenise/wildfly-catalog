@@ -97,9 +97,6 @@ public class Main {
                     JsonNode model = mapper.readTree(modelFile.toFile().toURI().toURL());
                     fpNode.set("modelReference", model);
                 }
-                if(subCatalog.has("configuration")) {
-                    fpNode.set("configuration", subCatalog.get("configuration"));
-                }
                 generateCatalog(subCatalog, glowRulesDescriptions, categories, mapper);
             }
         }
