@@ -165,10 +165,10 @@
         .dependencies-list li a {
             /* Uses general 'a' styles or can be specific */
         }
-        .xmlconfig-header { /* Renamed from .lowlevel-header */
+        .xmlconfig-header { 
             cursor: pointer;
             padding: 8px;
-            background-color: #f8f9fa; /* Style for XML Configuration header */
+            background-color: #f8f9fa; 
             border-radius: 3px;
             margin-top: 10px;
             display: flex;
@@ -179,7 +179,7 @@
         .xmlconfig-header:hover {
             background-color: #e9ecef;
         }
-        .xmlconfig-arrow { /* Renamed from .lowlevel-arrow */
+        .xmlconfig-arrow { 
             font-size: 0.9em;
             transition: transform 0.3s ease;
             margin-left: 5px;
@@ -187,31 +187,30 @@
         .xmlconfig-arrow.expanded {
             transform: rotate(90deg);
         }
-        .xmlconfig-list { /* Renamed from .lowlevel-list */
-            list-style-type: none; /* XML content will be in a <pre> block */
+        .xmlconfig-list { 
+            list-style-type: none; 
             padding-left: 0;
             margin-top: 5px;
-            display: none; /* Hidden by default */
+            display: none; 
         }
         .xmlconfig-list.visible {
             display: block;
         }
         .xmlconfig-list pre {
-            background-color: #eef; /* Light background for XML block */
+            background-color: #eef; 
             padding: 10px;
             border-radius: 4px;
-            overflow-x: auto; /* Allow horizontal scrolling for long XML lines */
+            overflow-x: auto; 
             border: 1px solid #ddd;
         }
         .xmlconfig-list code {
             font-family: Consolas, 'Courier New', monospace;
             font-size: 0.9em;
         }
-        /* Styles for Cloud XML Configuration */
         .cloudxml-header {
             cursor: pointer;
             padding: 8px;
-            background-color: #fafafa; /* Slightly different background */
+            background-color: #fafafa; 
             border-radius: 3px;
             margin-top: 10px;
             display: flex;
@@ -234,13 +233,13 @@
             list-style-type: none;
             padding-left: 0;
             margin-top: 5px;
-            display: none; /* Hidden by default */
+            display: none; 
         }
         .cloudxml-list.visible {
             display: block;
         }
         .cloudxml-list pre {
-            background-color: #f0f8ff; /* AliceBlue, distinct from other XML */
+            background-color: #f0f8ff; 
             padding: 10px;
             border-radius: 4px;
             overflow-x: auto;
@@ -259,14 +258,14 @@
         }
         .documentation-section h2 {
             margin-top: 0;
-            color: #1a73e8; /* Changed to blue like main title */
+            color: #1a73e8; 
             font-size: 1.6em;
             border-bottom: 1px solid #e0e0e0;
             padding-bottom: 10px;
             margin-bottom: 15px;
         }
         .documentation-section ul {
-            list-style-type: disc; /* Changed to disc for better visibility */
+            list-style-type: disc; 
             padding-left: 25px;
             margin: 0;
         }
@@ -274,7 +273,7 @@
             margin-bottom: 8px;
         }
         .documentation-section li a {
-            color: #007bff; /* Standard link blue */
+            color: #007bff; 
         }
         .tooltip-icon {
             display: inline-block;
@@ -287,7 +286,7 @@
             font-size: 12px;
             line-height: 16px;
             cursor: help;
-            margin-left: 5px; /* Changed back to margin-left for positioning on the right */
+            margin-left: 5px; 
             font-weight: bold;
         }
         .tooltip-box {
@@ -307,21 +306,19 @@
             font-size: 1.6em;
             border-bottom: 1px solid #e0e0e0;
             padding-bottom: 10px;
-            margin-bottom: 20px; /* Increased slightly for better separation to controls */
-            margin-top: 30px;    /* Spacing from potential section above */
+            margin-bottom: 20px; 
+            margin-top: 30px;    
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1 id="mainPageTitle">WildFly Catalog</h1>
-        <!-- Moved JSON URL input and Load button here -->
         <div style="margin-bottom: 10px; text-align: center;" hidden>
             <label for="jsonUrlInput" style="margin-right: 5px; font-size: 0.9em;">WildFly metadata json file:</label>
             <input type="text" id="jsonUrlInput" style="padding: 8px; width: 50%; border-radius: 4px; border: 1px solid #ccc; font-size: 0.9em;">
             <button id="loadJsonButton" style="padding: 8px 12px; margin-left: 5px; border-radius: 4px; border: 1px solid #ccc; background-color: #e9ecef; cursor: pointer;">Load</button>
         </div>
-        <!-- Removed catalog-description div as its content is now in H1 -->
         <div id="documentation-section" class="documentation-section" style="display: none;"></div>
         <div id="feature-packs-section" class="documentation-section" style="display: none;"></div>
         <h2 class="content-title-style">WildFly Layers (grouped per category)</h2>
@@ -348,7 +345,7 @@
 
     <script>
         let activeTooltip = null;
-        let originalJsonData = null; // To store the full dataset for filtering
+        let originalJsonData = null; 
 
         function sanitizeForId(text) {
             if (typeof text !== 'string') return '';
@@ -356,42 +353,38 @@
         }
 
         function showTooltip(event) {
-            event.stopPropagation(); // Prevent click from immediately closing due to document listener
+            event.stopPropagation(); 
             
-            const icon = event.target; // The icon that was clicked
+            const icon = event.target; 
 
-            // If clicking the same icon that's already showing a tooltip, hide it.
             if (activeTooltip && activeTooltip.triggerIcon === icon) {
                 activeTooltip.remove();
                 activeTooltip = null;
-                return; // Stop further processing
+                return; 
             }
 
-            // If a tooltip is active (from a different icon), remove it before showing the new one.
             if (activeTooltip) {
                 activeTooltip.remove();
                 activeTooltip = null;
             }
 
             const tooltipText = icon.dataset.tooltipText;
-            // If tooltipText is null, undefined, or an empty/whitespace-only string, do not proceed.
             if (tooltipText == null || (typeof tooltipText === 'string' && tooltipText.trim() === '')) {
                 return;
             }
 
             const tooltip = document.createElement('div');
             tooltip.className = 'tooltip-box';
-            tooltip.innerHTML = tooltipText; // Use innerHTML to allow simple HTML in tooltips if needed
+            tooltip.innerHTML = tooltipText; 
             document.body.appendChild(tooltip);
             
-            activeTooltip = tooltip; // activeTooltip is the tooltip div
-            activeTooltip.triggerIcon = icon; // Associate the triggering icon with the active tooltip
+            activeTooltip = tooltip; 
+            activeTooltip.triggerIcon = icon; 
 
             const iconRect = icon.getBoundingClientRect();
             tooltip.style.left = `${iconRect.right + 5 + window.scrollX}px`;
             tooltip.style.top = `${iconRect.top + window.scrollY}px`;
             
-            // Adjust if tooltip goes off-screen
             const tooltipRect = tooltip.getBoundingClientRect();
             if (tooltipRect.right > window.innerWidth) {
                 tooltip.style.left = `${iconRect.left - tooltipRect.width - 5 + window.scrollX}px`;
@@ -400,7 +393,7 @@
                  tooltip.style.top = `${iconRect.bottom - tooltipRect.height + window.scrollY}px`;
             }
 
-            setTimeout(() => { // Add listener to remove tooltip on next click slightly delayed
+            setTimeout(() => { 
                 document.addEventListener('click', hideTooltipOnClickOutside, { once: true });
             }, 0);
         }
@@ -410,18 +403,14 @@
                 activeTooltip.remove();
                 activeTooltip = null;
             } else if (activeTooltip && event.target.className === 'tooltip-icon' && event.target !== activeTooltip.triggerIcon) {
-                // Clicked on another icon, showTooltip will handle removing current and showing new
+                // Clicked on another icon
             } else if (activeTooltip && event.target === activeTooltip.triggerIcon) {
-                 // Clicked on the same icon that triggered the current tooltip, effectively toggling it off
                 activeTooltip.remove();
                 activeTooltip = null;
             }
-             // If event.target is inside activeTooltip, do nothing (allow interaction with tooltip content if any)
         }
 
-
-        // jsonData will be fetched from the remote URL
-        function displayData(jsonData) { // jsonData is now a parameter
+        function displayData(jsonData) { 
             const legendData = jsonData.legend || {};
 
             const createFieldElement = (labelText, fieldValue, fieldKey) => {
@@ -435,21 +424,19 @@
                     tooltipIcon.className = 'tooltip-icon';
                     tooltipIcon.textContent = '?';
                     tooltipIcon.dataset.tooltipText = legendData[fieldKey];
-                    tooltipIcon.addEventListener('click', showTooltip); // MODIFIED
+                    tooltipIcon.addEventListener('click', showTooltip); 
                     fieldDiv.appendChild(tooltipIcon);
                 }
 
                 if (typeof fieldValue === 'string' || typeof fieldValue === 'number') {
                     fieldDiv.appendChild(document.createTextNode(` ${fieldValue}`));
                 } else if (fieldValue instanceof HTMLElement) {
-                     // Add space if it's an element like checkbox/link, assuming label is already there
-                    fieldDiv.appendChild(document.createTextNode(' ')); // Add space before element
+                    fieldDiv.appendChild(document.createTextNode(' ')); 
                     fieldDiv.appendChild(fieldValue);
                 }
                 return fieldDiv;
             };
             
-            // const catalogDescriptionDiv = document.getElementById('catalog-description'); // No longer needed
             const mainPageTitleH1 = document.getElementById('mainPageTitle');
 
             if (jsonData.description && jsonData.description.trim() !== '') { 
@@ -460,7 +447,7 @@
             } else {
                 document.title = "WildFly Catalog Viewer"; 
                 if (mainPageTitleH1) { 
-                     mainPageTitleH1.textContent = "WildFly Catalog Viewer"; // Consistent default
+                     mainPageTitleH1.textContent = "WildFly Catalog Viewer"; 
                 }
             }
 
@@ -500,11 +487,10 @@
                 return html;
             }
 
-            // Populate Documentation Section
             const docSection = document.getElementById('documentation-section');
-            docSection.innerHTML = ''; // Clear previous
+            docSection.innerHTML = ''; 
             if (jsonData.documentation && Array.isArray(jsonData.documentation) && jsonData.documentation.length > 0) {
-                docSection.style.display = 'block'; // Show the section
+                docSection.style.display = 'block'; 
                 const docTitle = document.createElement('h2');
                 docTitle.textContent = 'Documentation';
                 docSection.appendChild(docTitle);
@@ -524,58 +510,84 @@
                 });
                 docSection.appendChild(docList);
             } else {
-                docSection.style.display = 'none'; // Hide if no documentation
+                docSection.style.display = 'none'; 
             }
 
-            // Populate Feature Packs Section
             const featurePacksSection = document.getElementById('feature-packs-section');
-            featurePacksSection.innerHTML = ''; // Clear previous
+            featurePacksSection.innerHTML = ''; 
             if (jsonData.featurePacks && Array.isArray(jsonData.featurePacks) && jsonData.featurePacks.length > 0) {
                 featurePacksSection.style.display = 'block';
                 const fpSectionTitle = document.createElement('h2');
-                fpSectionTitle.textContent = 'WildFly Feature Packs';
+                fpSectionTitle.textContent = 'WildFly Feature Packs'; 
                 featurePacksSection.appendChild(fpSectionTitle);
 
                 jsonData.featurePacks.forEach(fp => {
                     const fpDiv = document.createElement('div');
-                    fpDiv.className = 'category'; // Reuse category styling
-                    fpDiv.id = `fp-${sanitizeForId(fp.mavenCoordinates)}`; // Add ID for linking
+                    fpDiv.className = 'category'; 
+                    fpDiv.id = `fp-${sanitizeForId(fp.mavenCoordinates)}`; 
 
-                    const fpCoordsContainer = document.createElement('div');
-                    const fpCoordsElement = document.createElement('h3'); // Using h3 for mavenCoordinates
-                    fpCoordsElement.style.display = 'inline';
-                    fpCoordsElement.textContent = fp.mavenCoordinates;
-                    fpCoordsContainer.appendChild(fpCoordsElement);
+                    const fpTitleContainer = document.createElement('div');
+                    const fpNameElement = document.createElement('h3');
+                    fpNameElement.style.display = 'inline';
+                    fpNameElement.textContent = fp.name || 'Unnamed Feature Pack'; 
+                    fpTitleContainer.appendChild(fpNameElement);
 
-                    if (legendData.mavenCoordinates) { // Assuming 'mavenCoordinates' is the key in legend
-                        const tooltipIcon = document.createElement('span');
-                        tooltipIcon.className = 'tooltip-icon';
-                        tooltipIcon.textContent = '?';
-                        tooltipIcon.dataset.tooltipText = legendData.mavenCoordinates;
-                        tooltipIcon.addEventListener('click', showTooltip);
-                        tooltipIcon.style.marginLeft = '5px';
-                        fpCoordsContainer.appendChild(tooltipIcon);
+                    if (fp.name && legendData.featurePackName) { 
+                        const nameTooltipIcon = document.createElement('span');
+                        nameTooltipIcon.className = 'tooltip-icon';
+                        nameTooltipIcon.textContent = '?';
+                        nameTooltipIcon.dataset.tooltipText = legendData.featurePackName;
+                        nameTooltipIcon.addEventListener('click', showTooltip);
+                        nameTooltipIcon.style.marginLeft = '5px';
+                        fpTitleContainer.appendChild(nameTooltipIcon);
                     }
-                    fpDiv.appendChild(fpCoordsContainer);
+                    fpDiv.appendChild(fpTitleContainer);
 
                     if (fp.description && typeof fp.description === 'string' && fp.description.trim() !== '') {
                         const descriptionP = document.createElement('p');
-                        descriptionP.className = 'category-description'; // Reuse existing style
-                        
-                        // Create a text node for the description to allow appending the icon next to it
+                        descriptionP.className = 'category-description';
                         const descriptionTextNode = document.createTextNode(fp.description);
                         descriptionP.appendChild(descriptionTextNode);
+                        
+                        if (legendData.featurePackDescription) { 
+                             const descTooltipIcon = document.createElement('span');
+                             descTooltipIcon.className = 'tooltip-icon';
+                             descTooltipIcon.textContent = '?';
+                             descTooltipIcon.dataset.tooltipText = legendData.featurePackDescription;
+                             descTooltipIcon.addEventListener('click', showTooltip);
+                             descTooltipIcon.style.marginLeft = '5px';
+                             descriptionP.appendChild(descTooltipIcon);
+                        }
                         fpDiv.appendChild(descriptionP);
                     }
 
-                    // Display Provided Layers if they exist
+                    if (fp.mavenCoordinates) {
+                        const mavenCoordsP = document.createElement('p');
+                        mavenCoordsP.style.marginTop = '10px'; 
+                        const strongLabel = document.createElement('strong');
+                        strongLabel.textContent = 'Maven Coordinates: ';
+                        mavenCoordsP.appendChild(strongLabel);
+                        mavenCoordsP.appendChild(document.createTextNode(fp.mavenCoordinates));
+
+                        if (legendData.mavenCoordinates) { 
+                            const coordsTooltipIcon = document.createElement('span');
+                            coordsTooltipIcon.className = 'tooltip-icon';
+                            coordsTooltipIcon.textContent = '?';
+                            coordsTooltipIcon.dataset.tooltipText = legendData.mavenCoordinates;
+                            coordsTooltipIcon.addEventListener('click', showTooltip);
+                            coordsTooltipIcon.style.marginLeft = '5px';
+                            mavenCoordsP.appendChild(coordsTooltipIcon);
+                        }
+                        fpDiv.appendChild(mavenCoordsP);
+                    }
+
                     if (fp.layers && Array.isArray(fp.layers) && fp.layers.length > 0) {
                         const fpLayersContainer = document.createElement('div');
                         fpLayersContainer.className = 'fp-layers-container';
 
                         const fpLayersHeader = document.createElement('div');
-                        fpLayersHeader.className = 'dependencies-header'; // Reuse style
-                        fpLayersHeader.style.backgroundColor = '#fafad2'; // LightGoldenrodYellow to differentiate
+                        fpLayersHeader.className = 'dependencies-header'; 
+                        fpLayersHeader.style.backgroundColor = '#fafad2'; 
 
                         const fpLayersLabelWrapper = document.createElement('span');
                         fpLayersLabelWrapper.style.display = 'flex';
@@ -585,7 +597,7 @@
                         fpLayersHeaderText.textContent = 'Provided Layers';
                         fpLayersLabelWrapper.appendChild(fpLayersHeaderText);
 
-                        if (legendData.featurePackLayers) { // Assuming legend key
+                        if (legendData.featurePackLayers) { 
                             const tooltipIcon = document.createElement('span');
                             tooltipIcon.className = 'tooltip-icon';
                             tooltipIcon.textContent = '?';
@@ -603,12 +615,12 @@
                         fpLayersContainer.appendChild(fpLayersHeader);
 
                         const fpLayersList = document.createElement('ul');
-                        fpLayersList.className = 'dependencies-list'; // Reuse style; initially hidden
+                        fpLayersList.className = 'dependencies-list'; 
 
                         fp.layers.forEach(layerName => {
                             const layerLi = document.createElement('li');
                             const layerLink = document.createElement('a');
-                            const targetId = `func-${sanitizeForId(layerName)}`; // Layers use func.name for ID
+                            const targetId = `func-${sanitizeForId(layerName)}`; 
                             layerLink.href = `#${targetId}`;
                             layerLink.textContent = layerName;
 
@@ -652,8 +664,8 @@
                         mgmtModelContainer.className = 'management-model-container';
 
                         const mgmtHeader = document.createElement('div');
-                        mgmtHeader.className = 'dependencies-header'; // Reuse style
-                        mgmtHeader.style.backgroundColor = '#e0f0ff'; // Light blue to differentiate
+                        mgmtHeader.className = 'dependencies-header'; 
+                        mgmtHeader.style.backgroundColor = '#e0f0ff'; 
 
                         const mgmtLabelWrapper = document.createElement('span');
                         mgmtLabelWrapper.style.display = 'flex';
@@ -663,7 +675,7 @@
                         mgmtHeaderText.textContent = 'Model Reference';
                         mgmtLabelWrapper.appendChild(mgmtHeaderText);
 
-                        if (legendData.modelReference) { // Assuming specific legend key
+                        if (legendData.modelReference) { 
                             const tooltipIcon = document.createElement('span');
                             tooltipIcon.className = 'tooltip-icon';
                             tooltipIcon.textContent = '?';
@@ -681,12 +693,12 @@
                         mgmtModelContainer.appendChild(mgmtHeader);
 
                         const mgmtContentDiv = document.createElement('div');
-                        mgmtContentDiv.className = 'dependencies-list'; // Reuse style; initially hidden
+                        mgmtContentDiv.className = 'dependencies-list'; 
                         mgmtContentDiv.style.paddingLeft = '0px';
                         
                         mgmtContentDiv.innerHTML = renderJsonRecursive(fp.modelReference);
                         mgmtContentDiv.style.fontFamily = 'Consolas, "Courier New", monospace';
-                        mgmtContentDiv.style.backgroundColor = '#f0f5f0'; // Distinct background
+                        mgmtContentDiv.style.backgroundColor = '#f0f5f0'; 
                         mgmtContentDiv.style.padding = '10px';
                         mgmtContentDiv.style.borderRadius = '4px';
                         mgmtContentDiv.style.border = '1px solid #d0d0d0';
@@ -701,7 +713,6 @@
                             mgmtArrow.classList.toggle('expanded');
                         });
                     }
-                    // Configuration rendering moved to layer/functionality section
                     featurePacksSection.appendChild(fpDiv);
                 });
             } else {
@@ -709,7 +720,7 @@
             }
 
             const dataDisplay = document.getElementById('data-display');
-            dataDisplay.innerHTML = ''; // Clear previous content
+            dataDisplay.innerHTML = ''; 
 
             if (!jsonData.categories || !Array.isArray(jsonData.categories)) {
                 dataDisplay.innerHTML = '<p style="color: red;">Error: Categories data is missing or not in expected format.</p>';
@@ -737,41 +748,33 @@
 
                 category.functionalities.forEach(func => {
                     const funcLi = document.createElement('li');
-                    // No padding/margin on li itself, will be handled by header/details
                     funcLi.style.padding = "0";
                     funcLi.style.margin = "10px 0";
 
-
-                    // Clickable Header
                     const headerDiv = document.createElement('div');
                     headerDiv.className = 'functionality-header';
-                    headerDiv.id = `func-${func.name}`; // Add ID for linking, use func.name
+                    headerDiv.id = `func-${func.name}`; 
 
-                    const labelWrapper = document.createElement('span'); // Wrapper for icon and text
-                    labelWrapper.style.display = 'flex'; // Align icon and text inline
+                    const labelWrapper = document.createElement('span'); 
+                    labelWrapper.style.display = 'flex'; 
                     labelWrapper.style.alignItems = 'center';
 
-                    const funcNameElement = document.createElement('span'); // Use span for inline behavior with arrow
+                    const funcNameElement = document.createElement('span'); 
                     funcNameElement.className = 'name';
-                    funcNameElement.textContent = func.name; // Use func.name for the header
-                    labelWrapper.appendChild(funcNameElement); // Text first
-
-                    // Tooltip for layer header (after the name) has been REMOVED as per request.
-                    // if (legendData.layer) { ... } // Legend key for 'name' is 'layer'
-                    headerDiv.appendChild(labelWrapper); // Add the wrapper to the header
+                    funcNameElement.textContent = func.name; 
+                    labelWrapper.appendChild(funcNameElement); 
+                    headerDiv.appendChild(labelWrapper); 
 
                     const arrowSpan = document.createElement('span');
                     arrowSpan.className = 'arrow';
-                    arrowSpan.innerHTML = '&#9654;'; // Right-pointing triangle
+                    arrowSpan.innerHTML = '&#9654;'; 
                     headerDiv.appendChild(arrowSpan);
 
                     funcLi.appendChild(headerDiv);
 
-                    // Details container (initially hidden)
                     const detailsDiv = document.createElement('div');
                     detailsDiv.className = 'functionality-details';
 
-                    // func.name is in the header, display it as 'Name' in details, using 'layer' for legend key.
                     if (func.name) { 
                         detailsDiv.appendChild(createFieldElement('Name', func.name, 'layer'));
                     }
@@ -781,7 +784,6 @@
                     if (func.stability) {
                         detailsDiv.appendChild(createFieldElement('Stability', func.stability, 'stability'));
                     }
-                    // Removed cloudSpecific field rendering
                     if (func.hasOwnProperty('glowDiscoverable')) {
                         const checkbox = document.createElement('input');
                         checkbox.type = 'checkbox';
@@ -789,10 +791,7 @@
                         checkbox.disabled = true;
                         detailsDiv.appendChild(createFieldElement('Glow Discoverable', checkbox, 'glowDiscoverable'));
                     }
-                    // Display Glow Add-On if it exists
-                    if (func.hasOwnProperty('glowAddOn')) { // Check for property existence
-                        // Assuming glowAddOn is a string or boolean. If boolean, might need checkbox like others.
-                        // For now, treating as string as per typical new field.
+                    if (func.hasOwnProperty('glowAddOn')) { 
                         detailsDiv.appendChild(createFieldElement('Glow Add-On', func.glowAddOn, 'glowAddOn'));
                     }
                     if (func['feature-pack']) {
@@ -806,13 +805,12 @@
                             const targetElement = document.getElementById(targetId);
                             if (targetElement) {
                                 targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                                // Highlight briefly
                                 targetElement.style.transition = 'background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out';
-                                targetElement.style.backgroundColor = '#e6f7ff'; // Light blue highlight
-                                targetElement.style.boxShadow = '0 0 12px rgba(26, 115, 232, 0.6)'; // Enhanced blue glow
+                                targetElement.style.backgroundColor = '#e6f7ff'; 
+                                targetElement.style.boxShadow = '0 0 12px rgba(26, 115, 232, 0.6)'; 
                                 setTimeout(() => {
-                                    targetElement.style.backgroundColor = ''; // Reset
-                                    targetElement.style.boxShadow = ''; // Reset
+                                    targetElement.style.backgroundColor = ''; 
+                                    targetElement.style.boxShadow = ''; 
                                 }, 1500);
                             } else {
                                 console.warn(`Feature pack target #${targetId} not found.`);
@@ -820,15 +818,13 @@
                         });
                         detailsDiv.appendChild(createFieldElement('Feature Pack', linkElement, 'feature-pack'));
                     }
-                    // Display Note if it exists
                     if (func.note) {
                         detailsDiv.appendChild(createFieldElement('Note', func.note, 'note'));
                     }
 
-                    // Layer Dependencies
                     if (func.dependencies && func.dependencies.length > 0) {
                         const dependenciesContainer = document.createElement('div');
-                        dependenciesContainer.className = 'dependencies-container'; // For potential styling
+                        dependenciesContainer.className = 'dependencies-container'; 
 
                         const depHeader = document.createElement('div');
                         depHeader.className = 'dependencies-header';
@@ -839,36 +835,35 @@
 
                         const depHeaderText = document.createElement('span');
                         depHeaderText.textContent = 'Layer Dependencies';
-                        depLabelWrapper.appendChild(depHeaderText); // Text first
+                        depLabelWrapper.appendChild(depHeaderText); 
 
-                        // Add tooltip for Layer Dependencies header (after the text)
                         if (legendData.dependencies) {
                             const tooltipIcon = document.createElement('span');
                             tooltipIcon.className = 'tooltip-icon';
                             tooltipIcon.textContent = '?';
                             tooltipIcon.dataset.tooltipText = legendData.dependencies;
-                            tooltipIcon.addEventListener('click', showTooltip); // MODIFIED
+                            tooltipIcon.addEventListener('click', showTooltip); 
                             depLabelWrapper.appendChild(tooltipIcon);
                         }
                         depHeader.appendChild(depLabelWrapper);
 
                         const depArrow = document.createElement('span');
                         depArrow.className = 'dependencies-arrow';
-                        depArrow.innerHTML = '&#9654;'; // Right-pointing triangle
+                        depArrow.innerHTML = '&#9654;'; 
                         depHeader.appendChild(depArrow);
                         
                         dependenciesContainer.appendChild(depHeader);
 
                         const depList = document.createElement('ul');
-                        depList.className = 'dependencies-list'; // Initially hidden by CSS
+                        depList.className = 'dependencies-list'; 
 
                         func.dependencies.forEach(depObj => {
-                            const depLayerName = depObj.name; // Extract name from dependency object
+                            const depLayerName = depObj.name; 
                             const depLi = document.createElement('li');
                             const depLink = document.createElement('a');
-                            depLink.href = `#func-${depLayerName}`; // Link to func.name
+                            depLink.href = `#func-${depLayerName}`; 
                             depLink.textContent = depLayerName;
-                            depLi.appendChild(depLink); // Add link first
+                            depLi.appendChild(depLink); 
                             
                             if (depObj.optional) {
                                 const optionalSpan = document.createElement('span');
@@ -876,27 +871,24 @@
                                 optionalSpan.style.fontStyle = 'italic';
                                 optionalSpan.style.color = '#5f6368';
                                 optionalSpan.style.marginLeft = '4px';
-                                depLi.appendChild(optionalSpan); // Append the styled span after the link
+                                depLi.appendChild(optionalSpan); 
                             }
 
-                            // Optional: Add click handler to scroll smoothly or highlight
                             depLink.addEventListener('click', (e) => {
-                                e.preventDefault(); // Prevent default jump
+                                e.preventDefault(); 
                                 const targetElement = document.getElementById(`func-${depLayerName}`);
                                 if (targetElement) {
                                     targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                                    // Optionally expand the target if it's collapsed
                                     const targetDetails = targetElement.nextElementSibling;
                                     const targetArrow = targetElement.querySelector('.arrow');
                                     if (targetDetails && targetDetails.classList.contains('functionality-details') && !targetDetails.classList.contains('visible')) {
                                         targetDetails.classList.add('visible');
                                         if(targetArrow) targetArrow.classList.add('expanded');
                                     }
-                                    // Highlight briefly
                                     targetElement.style.transition = 'background-color 0.1s ease-in-out';
-                                    targetElement.style.backgroundColor = '#e6f7ff'; // Light blue highlight
+                                    targetElement.style.backgroundColor = '#e6f7ff'; 
                                     setTimeout(() => {
-                                        targetElement.style.backgroundColor = ''; // Reset
+                                        targetElement.style.backgroundColor = ''; 
                                     }, 1000);
                                 } else {
                                     console.warn(`Dependency target #func-${depLayerName} not found.`);
@@ -913,14 +905,13 @@
                         });
                     }
 
-                    // Display Management Model if it exists
                     if (func.managementModel && Object.keys(func.managementModel).length > 0) {
                         const mgmtModelContainer = document.createElement('div');
-                        mgmtModelContainer.className = 'management-model-container'; // Add a class for styling if needed
+                        mgmtModelContainer.className = 'management-model-container'; 
 
                         const mgmtHeader = document.createElement('div');
-                        mgmtHeader.className = 'dependencies-header'; // Reuse style or create new
-                        mgmtHeader.style.backgroundColor = '#f0f8ff'; // Light blue to differentiate
+                        mgmtHeader.className = 'dependencies-header'; 
+                        mgmtHeader.style.backgroundColor = '#f0f8ff'; 
 
                         const mgmtLabelWrapper = document.createElement('span');
                         mgmtLabelWrapper.style.display = 'flex';
@@ -935,24 +926,23 @@
                             tooltipIcon.className = 'tooltip-icon';
                             tooltipIcon.textContent = '?';
                             tooltipIcon.dataset.tooltipText = legendData.managementModel;
-                            tooltipIcon.addEventListener('click', showTooltip); // MODIFIED
+                            tooltipIcon.addEventListener('click', showTooltip); 
                             mgmtLabelWrapper.appendChild(tooltipIcon);
                         }
                         mgmtHeader.appendChild(mgmtLabelWrapper);
 
                         const mgmtArrow = document.createElement('span');
-                        mgmtArrow.className = 'dependencies-arrow'; // Reuse style or create new
+                        mgmtArrow.className = 'dependencies-arrow'; 
                         mgmtArrow.innerHTML = '&#9654;';
                         mgmtHeader.appendChild(mgmtArrow);
                         
                         mgmtModelContainer.appendChild(mgmtHeader);
 
                         const mgmtContentDiv = document.createElement('div');
-                        mgmtContentDiv.className = 'dependencies-list'; // Reuse style or create new; initially hidden
-                        mgmtContentDiv.style.paddingLeft = '0px'; // Reset padding if reused from list
+                        mgmtContentDiv.className = 'dependencies-list'; 
+                        mgmtContentDiv.style.paddingLeft = '0px'; 
 
-                        // Render JSON with bold keys
-                        mgmtContentDiv.innerHTML = ''; // Clear previous content
+                        mgmtContentDiv.innerHTML = ''; 
                         mgmtContentDiv.style.fontFamily = 'Consolas, "Courier New", monospace';
                         mgmtContentDiv.style.backgroundColor = '#f5f5f5';
                         mgmtContentDiv.style.padding = '10px';
@@ -972,14 +962,13 @@
                         });
                     }
                     
-                    // Display Glow Rules if they exist
                     if (func.glowRules && func.glowRules.length > 0) {
                         const glowRulesContainer = document.createElement('div');
                         glowRulesContainer.className = 'glow-rules-container';
 
                         const glowHeader = document.createElement('div');
-                        glowHeader.className = 'dependencies-header'; // Reuse style
-                        glowHeader.style.backgroundColor = '#fff0f5'; // Lavender blush to differentiate
+                        glowHeader.className = 'dependencies-header'; 
+                        glowHeader.style.backgroundColor = '#fff0f5'; 
 
                         const glowLabelWrapper = document.createElement('span');
                         glowLabelWrapper.style.display = 'flex';
@@ -994,30 +983,28 @@
                             tooltipIcon.className = 'tooltip-icon';
                             tooltipIcon.textContent = '?';
                             tooltipIcon.dataset.tooltipText = legendData.glowRules;
-                            tooltipIcon.addEventListener('click', showTooltip); // MODIFIED
+                            tooltipIcon.addEventListener('click', showTooltip); 
                             glowLabelWrapper.appendChild(tooltipIcon);
                         }
                         glowHeader.appendChild(glowLabelWrapper);
 
                         const glowArrow = document.createElement('span');
-                        glowArrow.className = 'dependencies-arrow'; // Reuse style
+                        glowArrow.className = 'dependencies-arrow'; 
                         glowArrow.innerHTML = '&#9654;';
                         glowHeader.appendChild(glowArrow);
 
                         glowRulesContainer.appendChild(glowHeader);
 
                         const glowContentDiv = document.createElement('div');
-                        glowContentDiv.className = 'dependencies-list'; // Reuse style; initially hidden
+                        glowContentDiv.className = 'dependencies-list'; 
                         glowContentDiv.style.paddingLeft = '0px';
 
-                        // MODIFIED SECTION for glowRules rendering
                         func.glowRules.forEach(rule => {
                             const ruleDiv = document.createElement('div');
                             ruleDiv.style.padding = '2px 0';
                             ruleDiv.style.fontFamily = 'Consolas, "Courier New", monospace';
                             ruleDiv.style.fontSize = '0.9em';
 
-                            // Rule Name part
                             const nameStrong = document.createElement('strong');
                             nameStrong.textContent = `"${rule.name}": `;
                             nameStrong.style.color = '#990055';
@@ -1028,13 +1015,12 @@
                                 tooltipIcon.className = 'tooltip-icon';
                                 tooltipIcon.textContent = '?';
                                 tooltipIcon.dataset.tooltipText = rule.ruleDescription;
-                                tooltipIcon.addEventListener('click', showTooltip); // Use improved showTooltip
+                                tooltipIcon.addEventListener('click', showTooltip); 
                                 ruleDiv.appendChild(tooltipIcon);
                             }
 
-                            ruleDiv.appendChild(document.createTextNode(' ')); // Space between name and value
+                            ruleDiv.appendChild(document.createTextNode(' ')); 
 
-                            // Rule Value part
                             const valueSpan = document.createElement('span');
                             valueSpan.textContent = `"${String(rule.value).replace(/</g, '<').replace(/>/g, '>')}"`;
                             valueSpan.style.color = '#008000';
@@ -1045,23 +1031,20 @@
                                 tooltipIcon.className = 'tooltip-icon';
                                 tooltipIcon.textContent = '?';
                                 tooltipIcon.dataset.tooltipText = rule.valueDescription;
-                                tooltipIcon.addEventListener('click', showTooltip); // Use improved showTooltip
+                                tooltipIcon.addEventListener('click', showTooltip); 
                                 ruleDiv.appendChild(tooltipIcon);
                             }
                             
                             glowContentDiv.appendChild(ruleDiv);
                         });
-                        // END OF MODIFIED SECTION
 
-                        // Apply consistent styling to the container
                         glowContentDiv.style.fontFamily = 'Consolas, "Courier New", monospace';
                         glowContentDiv.style.backgroundColor = '#f5f5f5';
                         glowContentDiv.style.padding = '10px';
                         glowContentDiv.style.borderRadius = '4px';
                         glowContentDiv.style.border = '1px solid #ddd';
-                        glowContentDiv.style.whiteSpace = 'pre-wrap'; // Ensure wrapping if a value is very long
+                        glowContentDiv.style.whiteSpace = 'pre-wrap'; 
                         glowContentDiv.style.wordBreak = 'break-all';
-
 
                         glowRulesContainer.appendChild(glowContentDiv);
                         detailsDiv.appendChild(glowRulesContainer);
@@ -1072,14 +1055,13 @@
                         });
                     }
 
-                    // Display Layer Configuration if the property exists
                     if (func.hasOwnProperty('configuration')) {
                         const layerConfigContainer = document.createElement('div');
                         layerConfigContainer.className = 'layer-configuration-container';
 
                         const layerConfigHeader = document.createElement('div');
-                        layerConfigHeader.className = 'dependencies-header'; // Reuse style
-                        layerConfigHeader.style.backgroundColor = '#fffacd'; // LemonChiffon to differentiate
+                        layerConfigHeader.className = 'dependencies-header'; 
+                        layerConfigHeader.style.backgroundColor = '#fffacd'; 
 
                         const layerConfigLabelWrapper = document.createElement('span');
                         layerConfigLabelWrapper.style.display = 'flex';
@@ -1089,7 +1071,7 @@
                         layerConfigHeaderText.textContent = 'Configuration';
                         layerConfigLabelWrapper.appendChild(layerConfigHeaderText);
 
-                        if (legendData.configuration) { // Changed legend key to 'configuration'
+                        if (legendData.configuration) { 
                             const tooltipIcon = document.createElement('span');
                             tooltipIcon.className = 'tooltip-icon';
                             tooltipIcon.textContent = '?';
@@ -1107,7 +1089,7 @@
                         layerConfigContainer.appendChild(layerConfigHeader);
 
                         const layerConfigContentDiv = document.createElement('div');
-                        layerConfigContentDiv.className = 'dependencies-list'; // Reuse style; initially hidden
+                        layerConfigContentDiv.className = 'dependencies-list'; 
                         layerConfigContentDiv.style.paddingLeft = '0px';
                         
                         if (func.configuration && typeof func.configuration === 'object' && Object.keys(func.configuration).length > 0) {
@@ -1119,10 +1101,10 @@
                         }
                         
                         layerConfigContentDiv.style.fontFamily = 'Consolas, "Courier New", monospace';
-                        layerConfigContentDiv.style.backgroundColor = '#f5f5dc'; // Beige, distinct background
+                        layerConfigContentDiv.style.backgroundColor = '#f5f5dc'; 
                         layerConfigContentDiv.style.padding = '10px';
                         layerConfigContentDiv.style.borderRadius = '4px';
-                        layerConfigContentDiv.style.border = '1px solid #d2b48c'; // Tan border
+                        layerConfigContentDiv.style.border = '1px solid #d2b48c'; 
                         layerConfigContentDiv.style.whiteSpace = 'pre-wrap';
                         layerConfigContentDiv.style.wordBreak = 'break-all';
                         
@@ -1137,7 +1119,6 @@
 
                     funcLi.appendChild(detailsDiv);
 
-                    // Event listener for expanding/collapsing
                     headerDiv.addEventListener('click', () => {
                         detailsDiv.classList.toggle('visible');
                         arrowSpan.classList.toggle('expanded');
@@ -1151,11 +1132,11 @@
             });
         }
 
-        const defaultJsonUrl = 'https://raw.githubusercontent.com/jfdenise/wildfly-catalog/refs/heads/main/docs/37.0.0.Beta1-SNAPSHOT/wildfly-catalog.json?test=foo';
+        const defaultJsonUrl = 'https://raw.githubusercontent.com/jfdenise/wildfly-catalog/refs/heads/main/docs/36.0.1.Final/wildfly-catalog.json?test=foo';
 
         function loadCatalogData(url) {
             const dataDisplay = document.getElementById('data-display');
-            dataDisplay.innerHTML = '<p>Loading catalog data...</p>'; // Show loading message
+            dataDisplay.innerHTML = '<p>Loading catalog data...</p>'; 
             fetch(url)
                 .then(response => {
                     if (!response.ok) {
@@ -1164,28 +1145,25 @@
                     return response.json();
                 })
                 .then(data => {
-                    originalJsonData = data; // Store the original full data
-                    displayData(originalJsonData); // Display all data immediately on load
+                    originalJsonData = data; 
+                    displayData(originalJsonData); 
 
-                    // Set up listeners AFTER initial data display
                     if (!document.getElementById('searchInput').listenerAttached) {
                          setupSearchListener();
                     }
-                    // performSearch will now only be called on user interaction
                 })
                 .catch(error => {
                     console.error('Error fetching or parsing JSON:', error);
                     dataDisplay.innerHTML = `<p style="color: red;">Error loading catalog data from ${url}: ${error.message}. Check console for details.</p>`;
-                    originalJsonData = null; // Clear data on error
-                    displayData({ categories: [], legend: {}, documentation: [], featurePacks: [] }); // Display empty structure
+                    originalJsonData = null; 
+                    displayData({ categories: [], legend: {}, documentation: [], featurePacks: [] }); 
                 });
         }
 
-        // Fetch and display the data when the page loads
         window.onload = () => {
             const jsonUrlInput = document.getElementById('jsonUrlInput');
-            jsonUrlInput.value = defaultJsonUrl; // Set default URL in the input field
-            loadCatalogData(defaultJsonUrl); // Load data from default URL
+            jsonUrlInput.value = defaultJsonUrl; 
+            loadCatalogData(defaultJsonUrl); 
 
             const loadJsonButton = document.getElementById('loadJsonButton');
             loadJsonButton.addEventListener('click', () => {
@@ -1200,26 +1178,22 @@
 
         function setupSearchListener() {
             const searchInput = document.getElementById('searchInput');
-            // Prevent adding multiple listeners if called again
             if (searchInput.listenerAttached) return;
 
-            searchInput.listenerAttached = true; // Mark that listener is attached
-            // const searchInput = document.getElementById('searchInput'); // Duplicate declaration removed
+            searchInput.listenerAttached = true; 
             if (!searchInput || !originalJsonData) return;
 
             const stabilitySelect = document.getElementById('stabilitySelect');
 
             const performSearch = () => {
-                if (!originalJsonData) { // Guard against data not being loaded yet
-                    displayData({ categories: [], legend: {}, documentation: [], featurePacks: [] }); // Show empty/error state
+                if (!originalJsonData) { 
+                    displayData({ categories: [], legend: {}, documentation: [], featurePacks: [] }); 
                     return;
                 }
 
                 const searchTerm = searchInput.value.toLowerCase().trim();
-                // Ensure stabilitySelect.value is read reliably, fallback to 'experimental' if needed initially
                 const selectedStabilityValue = (stabilitySelect && stabilitySelect.value) ? stabilitySelect.value : "experimental";
 
-                // Display original data if search is empty AND 'experimental' (show all) stability is selected
                 if (searchTerm === '' && selectedStabilityValue.toLowerCase() === 'experimental') {
                     displayData(originalJsonData);
                     return;
@@ -1229,7 +1203,7 @@
                     let functionalitiesToShow;
 
                     functionalitiesToShow = category.functionalities.filter(func => {
-                        let termMatches = searchTerm === ''; // If no search term, all functionalities initially pass this check
+                        let termMatches = searchTerm === ''; 
 
                         if (searchTerm !== '') {
                             const searchFieldsCheckboxes = document.querySelectorAll('.search-field-checkbox');
@@ -1240,7 +1214,7 @@
                                 }
                             });
 
-                            termMatches = false; // Reset for actual search term matching
+                            termMatches = false; 
                             if (selectedFields.includes('layerName')) {
                                 if (func.name && func.name.toLowerCase().includes(searchTerm)) termMatches = true;
                             }
@@ -1261,13 +1235,12 @@
                             }
                         }
 
-                        // Now, check stability filter with hierarchical logic
                         let stabilityMatches = false;
-                        const funcStability = func.stability ? func.stability.toLowerCase() : 'default'; // Treat undefined/empty as 'default'
+                        const funcStability = func.stability ? func.stability.toLowerCase() : 'default'; 
 
-                        switch (selectedStabilityValue.toLowerCase()) { // Use selectedStabilityValue
+                        switch (selectedStabilityValue.toLowerCase()) { 
                             case 'experimental':
-                                stabilityMatches = true; // Experimental shows all
+                                stabilityMatches = true; 
                                 break;
                             case 'preview':
                                 stabilityMatches = ['preview', 'community', 'default'].includes(funcStability);
@@ -1278,15 +1251,13 @@
                             case 'default':
                                 stabilityMatches = (funcStability === 'default');
                                 break;
-                            default: // Should not happen with the select, but good practice
+                            default: 
                                 stabilityMatches = true; 
                         }
                         
-                        // A functionality is shown if it matches the search term (or no term) AND the stability filter
                         return termMatches && stabilityMatches;
                     });
 
-                    // Include the category if it has functionalities to show after all filters
                     if (functionalitiesToShow && functionalitiesToShow.length > 0) {
                         return { ...category, functionalities: functionalitiesToShow };
                     }
