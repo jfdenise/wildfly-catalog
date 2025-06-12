@@ -524,7 +524,7 @@
             if (jsonData.featurePacks && Array.isArray(jsonData.featurePacks) && jsonData.featurePacks.length > 0) {
                 featurePacksSection.style.display = 'block';
                 const fpSectionTitle = document.createElement('h2');
-                fpSectionTitle.textContent = 'Feature Packs';
+                fpSectionTitle.textContent = 'WildFly Feature Packs';
                 featurePacksSection.appendChild(fpSectionTitle);
 
                 jsonData.featurePacks.forEach(fp => {
@@ -559,6 +559,85 @@
                         fpDiv.appendChild(descriptionP);
                     }
 
+                    // Display Provided Layers if they exist
+                    if (fp.layers && Array.isArray(fp.layers) && fp.layers.length > 0) {
+                        const fpLayersContainer = document.createElement('div');
+                        fpLayersContainer.className = 'fp-layers-container';
+
+                        const fpLayersHeader = document.createElement('div');
+                        fpLayersHeader.className = 'dependencies-header'; // Reuse style
+                        fpLayersHeader.style.backgroundColor = '#fafad2'; // LightGoldenrodYellow to differentiate
+
+                        const fpLayersLabelWrapper = document.createElement('span');
+                        fpLayersLabelWrapper.style.display = 'flex';
+                        fpLayersLabelWrapper.style.alignItems = 'center';
+
+                        const fpLayersHeaderText = document.createElement('span');
+                        fpLayersHeaderText.textContent = 'Provided Layers';
+                        fpLayersLabelWrapper.appendChild(fpLayersHeaderText);
+
+                        if (legendData.featurePackLayers) { // Assuming legend key
+                            const tooltipIcon = document.createElement('span');
+                            tooltipIcon.className = 'tooltip-icon';
+                            tooltipIcon.textContent = '?';
+                            tooltipIcon.dataset.tooltipText = legendData.featurePackLayers;
+                            tooltipIcon.addEventListener('click', showTooltip);
+                            fpLayersLabelWrapper.appendChild(tooltipIcon);
+                        }
+                        fpLayersHeader.appendChild(fpLayersLabelWrapper);
+
+                        const fpLayersArrow = document.createElement('span');
+                        fpLayersArrow.className = 'dependencies-arrow';
+                        fpLayersArrow.innerHTML = '&#9654;';
+                        fpLayersHeader.appendChild(fpLayersArrow);
+                        
+                        fpLayersContainer.appendChild(fpLayersHeader);
+
+                        const fpLayersList = document.createElement('ul');
+                        fpLayersList.className = 'dependencies-list'; // Reuse style; initially hidden
+
+                        fp.layers.forEach(layerName => {
+                            const layerLi = document.createElement('li');
+                            const layerLink = document.createElement('a');
+                            const targetId = `func-${sanitizeForId(layerName)}`; // Layers use func.name for ID
+                            layerLink.href = `#${targetId}`;
+                            layerLink.textContent = layerName;
+
+                            layerLink.addEventListener('click', (e) => {
+                                e.preventDefault();
+                                const targetElement = document.getElementById(targetId);
+                                if (targetElement) {
+                                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                                    const targetDetails = targetElement.nextElementSibling;
+                                    const targetArrow = targetElement.querySelector('.arrow');
+                                    if (targetDetails && targetDetails.classList.contains('functionality-details') && !targetDetails.classList.contains('visible')) {
+                                        targetDetails.classList.add('visible');
+                                        if(targetArrow) targetArrow.classList.add('expanded');
+                                    }
+                                    targetElement.style.transition = 'background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out';
+                                    targetElement.style.backgroundColor = '#e6f7ff';
+                                    targetElement.style.boxShadow = '0 0 10px rgba(26, 115, 232, 0.5)';
+                                    setTimeout(() => {
+                                        targetElement.style.backgroundColor = '';
+                                        targetElement.style.boxShadow = '';
+                                    }, 1500);
+                                } else {
+                                    console.warn(`Layer target #${targetId} not found.`);
+                                }
+                            });
+                            layerLi.appendChild(layerLink);
+                            fpLayersList.appendChild(layerLi);
+                        });
+                        
+                        fpLayersContainer.appendChild(fpLayersList);
+                        fpDiv.appendChild(fpLayersContainer);
+
+                        fpLayersHeader.addEventListener('click', () => {
+                            fpLayersList.classList.toggle('visible');
+                            fpLayersArrow.classList.toggle('expanded');
+                        });
+                    }
+                    
                     if (fp.modelReference && Object.keys(fp.modelReference).length > 0) {
                         const mgmtModelContainer = document.createElement('div');
                         mgmtModelContainer.className = 'management-model-container';
@@ -1063,7 +1142,7 @@
             });
         }
 
-        const defaultJsonUrl = 'https://raw.githubusercontent.com/jfdenise/wildfly-catalog/refs/heads/main/docs/36.0.1.Final/wildfly-catalog.json?test=foo';
+        const defaultJsonUrl = 'https://raw.githubusercontent.com/jfdenise/wildfly-catalog/refs/heads/main/docs/37.0.0.Beta1-SNAPSHOT/wildfly-catalog.json?test=foo';
 
         function loadCatalogData(url) {
             const dataDisplay = document.getElementById('data-display');
