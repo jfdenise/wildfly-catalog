@@ -583,7 +583,118 @@
                         }
                         fpDiv.appendChild(descriptionP);
                     }
+// Add URL section
+                    if (fp.projectURL && typeof fp.projectURL === 'string' && fp.projectURL.trim() !== '') {
+                        const urlContainer = document.createElement('div');
+                        urlContainer.style.marginTop = '10px';
 
+                        const urlHeader = document.createElement('div');
+                        urlHeader.className = 'dependencies-header';
+                        urlHeader.style.backgroundColor = '#90ee90'; // LightGreen
+
+                        const urlLabelWrapper = document.createElement('span');
+                        urlLabelWrapper.style.display = 'flex';
+                        urlLabelWrapper.style.alignItems = 'center';
+                        const urlHeaderText = document.createElement('span');
+                        urlHeaderText.textContent = 'Project URL';
+                        urlLabelWrapper.appendChild(urlHeaderText);
+                        if (legendData.url) {
+                            const tooltipIcon = document.createElement('span');
+                            tooltipIcon.className = 'tooltip-icon';
+                            tooltipIcon.textContent = '?';
+                            tooltipIcon.dataset.tooltipText = legendData.projectURL;
+                            tooltipIcon.addEventListener('click', showTooltip);
+                            urlLabelWrapper.appendChild(tooltipIcon);
+                        }
+                        urlHeader.appendChild(urlLabelWrapper);
+                        const urlArrow = document.createElement('span');
+                        urlArrow.className = 'dependencies-arrow';
+                        urlArrow.innerHTML = '&#9654;';
+                        urlHeader.appendChild(urlArrow);
+                        urlContainer.appendChild(urlHeader);
+
+                        const urlContentDiv = document.createElement('div');
+                        urlContentDiv.className = 'dependencies-list'; // For toggling visibility
+                        urlContentDiv.style.padding = '10px'; // Add some padding
+                        urlContentDiv.style.backgroundColor = '#f0fff0'; // Honeydew (lighter than lightgreen)
+                        urlContentDiv.style.border = '1px solid #cce';
+                        urlContentDiv.style.borderRadius = '4px';
+                        urlContentDiv.style.marginTop = '0px';
+
+
+                        const urlLink = document.createElement('a');
+                        urlLink.href = fp.projectURL;
+                        urlLink.textContent = fp.projectURL;
+                        urlLink.target = '_blank';
+                        urlLink.rel = 'noopener noreferrer';
+                        urlContentDiv.appendChild(urlLink);
+                        
+                        urlContainer.appendChild(urlContentDiv);
+                        fpDiv.appendChild(urlContainer);
+
+                        urlHeader.addEventListener('click', () => {
+                            urlContentDiv.classList.toggle('visible');
+                            urlArrow.classList.toggle('expanded');
+                        });
+                    }
+
+                    // Add License section
+                    if (fp.license && Array.isArray(fp.license) && fp.license.length > 0) {
+                        const licenseContainer = document.createElement('div');
+                        licenseContainer.style.marginTop = '10px';
+
+                        const licenseHeader = document.createElement('div');
+                        licenseHeader.className = 'dependencies-header';
+                        licenseHeader.style.backgroundColor = '#add8e6'; // LightBlue
+
+                        const licenseLabelWrapper = document.createElement('span');
+                        licenseLabelWrapper.style.display = 'flex';
+                        licenseLabelWrapper.style.alignItems = 'center';
+                        const licenseHeaderText = document.createElement('span');
+                        licenseHeaderText.textContent = 'License';
+                        licenseLabelWrapper.appendChild(licenseHeaderText);
+                        if (legendData.license) {
+                            const tooltipIcon = document.createElement('span');
+                            tooltipIcon.className = 'tooltip-icon';
+                            tooltipIcon.textContent = '?';
+                            tooltipIcon.dataset.tooltipText = legendData.license;
+                            tooltipIcon.addEventListener('click', showTooltip);
+                            licenseLabelWrapper.appendChild(tooltipIcon);
+                        }
+                        licenseHeader.appendChild(licenseLabelWrapper);
+                        const licenseArrow = document.createElement('span');
+                        licenseArrow.className = 'dependencies-arrow';
+                        licenseArrow.innerHTML = '&#9654;';
+                        licenseHeader.appendChild(licenseArrow);
+                        licenseContainer.appendChild(licenseHeader);
+
+                        const licenseList = document.createElement('ul');
+                        licenseList.className = 'dependencies-list'; // Standard list styling
+                        licenseList.style.listStyleType = 'none'; // No bullets for licenses
+                        licenseList.style.paddingLeft = '10px'; // Indent content slightly
+                         licenseList.style.backgroundColor = '#f0f8ff'; // AliceBlue (lighter than lightblue)
+                        licenseList.style.border = '1px solid #cce';
+                        licenseList.style.borderRadius = '4px';
+                        licenseList.style.marginTop = '0px'; // dependencies-list has margin-top: 5px, remove for direct content
+                        licenseList.style.paddingTop = '5px';
+                        licenseList.style.paddingBottom = '5px';
+
+
+                        fp.license.forEach(lic => {
+                            const licenseLi = document.createElement('li');
+                            licenseLi.textContent = lic;
+                            licenseLi.style.fontFamily = 'Consolas, "Courier New", monospace';
+                            licenseLi.style.fontSize = '0.9em';
+                            licenseList.appendChild(licenseLi);
+                        });
+                        licenseContainer.appendChild(licenseList);
+                        fpDiv.appendChild(licenseContainer);
+
+                        licenseHeader.addEventListener('click', () => {
+                            licenseList.classList.toggle('visible');
+                            licenseArrow.classList.toggle('expanded');
+                        });
+                    }
                     if (fp.mavenCoordinates) {
                         const coordsContainer = document.createElement('div');
                         coordsContainer.className = 'maven-coords-container'; // New class for the whole section
@@ -800,6 +911,49 @@
                         });
                     }
                     
+                    // Add SCM section
+                    if (fp.scm && typeof fp.scm === 'string' && fp.scm.trim() !== '') {
+                        const scmContainer = document.createElement('div');
+                        scmContainer.style.marginTop = '10px';
+
+                        const scmHeader = document.createElement('div');
+                        scmHeader.className = 'dependencies-header';
+                        scmHeader.style.backgroundColor = '#f0e68c'; // Khaki
+
+                        const scmLabelWrapper = document.createElement('span');
+                        scmLabelWrapper.style.display = 'flex';
+                        scmLabelWrapper.style.alignItems = 'center';
+                        const scmHeaderText = document.createElement('span');
+                        scmHeaderText.textContent = 'Source Code Management';
+                        scmLabelWrapper.appendChild(scmHeaderText);
+                        if (legendData.scm) {
+                            const tooltipIcon = document.createElement('span');
+                            tooltipIcon.className = 'tooltip-icon';
+                            tooltipIcon.textContent = '?';
+                            tooltipIcon.dataset.tooltipText = legendData.scm;
+                            tooltipIcon.addEventListener('click', showTooltip);
+                            scmLabelWrapper.appendChild(tooltipIcon);
+                        }
+                        scmHeader.appendChild(scmLabelWrapper);
+                        const scmArrow = document.createElement('span');
+                        scmArrow.className = 'dependencies-arrow';
+                        scmArrow.innerHTML = '&#9654;';
+                        scmHeader.appendChild(scmArrow);
+                        scmContainer.appendChild(scmHeader);
+
+                        const scmContentDiv = document.createElement('div');
+                        scmContentDiv.className = 'dependencies-list scrollable-maven-coords'; // For pre-formatted, scrollable text
+                        scmContentDiv.textContent = fp.scm;
+                        scmContentDiv.style.padding = '5px 8px'; // Match scrollable-maven-coords
+                        scmContentDiv.style.backgroundColor = '#fffacd'; // LemonChiffon (lighter than khaki)
+                        scmContainer.appendChild(scmContentDiv);
+                        fpDiv.appendChild(scmContainer);
+
+                        scmHeader.addEventListener('click', () => {
+                            scmContentDiv.classList.toggle('visible');
+                            scmArrow.classList.toggle('expanded');
+                        });
+                    }
                     if (fp.modelReference && Object.keys(fp.modelReference).length > 0) {
                         const mgmtModelContainer = document.createElement('div');
                         mgmtModelContainer.className = 'management-model-container';
@@ -852,161 +1006,6 @@
                         mgmtHeader.addEventListener('click', () => {
                             mgmtContentDiv.classList.toggle('visible');
                             mgmtArrow.classList.toggle('expanded');
-                        });
-                    }
-                    // Add URL section
-                    if (fp.projectURL && typeof fp.projectURL === 'string' && fp.projectURL.trim() !== '') {
-                        const urlContainer = document.createElement('div');
-                        urlContainer.style.marginTop = '10px';
-
-                        const urlHeader = document.createElement('div');
-                        urlHeader.className = 'dependencies-header';
-                        urlHeader.style.backgroundColor = '#90ee90'; // LightGreen
-
-                        const urlLabelWrapper = document.createElement('span');
-                        urlLabelWrapper.style.display = 'flex';
-                        urlLabelWrapper.style.alignItems = 'center';
-                        const urlHeaderText = document.createElement('span');
-                        urlHeaderText.textContent = 'Project URL';
-                        urlLabelWrapper.appendChild(urlHeaderText);
-                        if (legendData.url) {
-                            const tooltipIcon = document.createElement('span');
-                            tooltipIcon.className = 'tooltip-icon';
-                            tooltipIcon.textContent = '?';
-                            tooltipIcon.dataset.tooltipText = legendData.projectURL;
-                            tooltipIcon.addEventListener('click', showTooltip);
-                            urlLabelWrapper.appendChild(tooltipIcon);
-                        }
-                        urlHeader.appendChild(urlLabelWrapper);
-                        const urlArrow = document.createElement('span');
-                        urlArrow.className = 'dependencies-arrow';
-                        urlArrow.innerHTML = '&#9654;';
-                        urlHeader.appendChild(urlArrow);
-                        urlContainer.appendChild(urlHeader);
-
-                        const urlContentDiv = document.createElement('div');
-                        urlContentDiv.className = 'dependencies-list'; // For toggling visibility
-                        urlContentDiv.style.padding = '10px'; // Add some padding
-                        urlContentDiv.style.backgroundColor = '#f0fff0'; // Honeydew (lighter than lightgreen)
-                        urlContentDiv.style.border = '1px solid #cce';
-                        urlContentDiv.style.borderRadius = '4px';
-                        urlContentDiv.style.marginTop = '0px';
-
-
-                        const urlLink = document.createElement('a');
-                        urlLink.href = fp.projectURL;
-                        urlLink.textContent = fp.projectURL;
-                        urlLink.target = '_blank';
-                        urlLink.rel = 'noopener noreferrer';
-                        urlContentDiv.appendChild(urlLink);
-                        
-                        urlContainer.appendChild(urlContentDiv);
-                        fpDiv.appendChild(urlContainer);
-
-                        urlHeader.addEventListener('click', () => {
-                            urlContentDiv.classList.toggle('visible');
-                            urlArrow.classList.toggle('expanded');
-                        });
-                    }
-
-                    // Add License section
-                    if (fp.license && Array.isArray(fp.license) && fp.license.length > 0) {
-                        const licenseContainer = document.createElement('div');
-                        licenseContainer.style.marginTop = '10px';
-
-                        const licenseHeader = document.createElement('div');
-                        licenseHeader.className = 'dependencies-header';
-                        licenseHeader.style.backgroundColor = '#add8e6'; // LightBlue
-
-                        const licenseLabelWrapper = document.createElement('span');
-                        licenseLabelWrapper.style.display = 'flex';
-                        licenseLabelWrapper.style.alignItems = 'center';
-                        const licenseHeaderText = document.createElement('span');
-                        licenseHeaderText.textContent = 'License';
-                        licenseLabelWrapper.appendChild(licenseHeaderText);
-                        if (legendData.license) {
-                            const tooltipIcon = document.createElement('span');
-                            tooltipIcon.className = 'tooltip-icon';
-                            tooltipIcon.textContent = '?';
-                            tooltipIcon.dataset.tooltipText = legendData.license;
-                            tooltipIcon.addEventListener('click', showTooltip);
-                            licenseLabelWrapper.appendChild(tooltipIcon);
-                        }
-                        licenseHeader.appendChild(licenseLabelWrapper);
-                        const licenseArrow = document.createElement('span');
-                        licenseArrow.className = 'dependencies-arrow';
-                        licenseArrow.innerHTML = '&#9654;';
-                        licenseHeader.appendChild(licenseArrow);
-                        licenseContainer.appendChild(licenseHeader);
-
-                        const licenseList = document.createElement('ul');
-                        licenseList.className = 'dependencies-list'; // Standard list styling
-                        licenseList.style.listStyleType = 'none'; // No bullets for licenses
-                        licenseList.style.paddingLeft = '10px'; // Indent content slightly
-                         licenseList.style.backgroundColor = '#f0f8ff'; // AliceBlue (lighter than lightblue)
-                        licenseList.style.border = '1px solid #cce';
-                        licenseList.style.borderRadius = '4px';
-                        licenseList.style.marginTop = '0px'; // dependencies-list has margin-top: 5px, remove for direct content
-                        licenseList.style.paddingTop = '5px';
-                        licenseList.style.paddingBottom = '5px';
-
-
-                        fp.license.forEach(lic => {
-                            const licenseLi = document.createElement('li');
-                            licenseLi.textContent = lic;
-                            licenseLi.style.fontFamily = 'Consolas, "Courier New", monospace';
-                            licenseLi.style.fontSize = '0.9em';
-                            licenseList.appendChild(licenseLi);
-                        });
-                        licenseContainer.appendChild(licenseList);
-                        fpDiv.appendChild(licenseContainer);
-
-                        licenseHeader.addEventListener('click', () => {
-                            licenseList.classList.toggle('visible');
-                            licenseArrow.classList.toggle('expanded');
-                        });
-                    }
-                    // Add SCM section
-                    if (fp.scm && typeof fp.scm === 'string' && fp.scm.trim() !== '') {
-                        const scmContainer = document.createElement('div');
-                        scmContainer.style.marginTop = '10px';
-
-                        const scmHeader = document.createElement('div');
-                        scmHeader.className = 'dependencies-header';
-                        scmHeader.style.backgroundColor = '#f0e68c'; // Khaki
-
-                        const scmLabelWrapper = document.createElement('span');
-                        scmLabelWrapper.style.display = 'flex';
-                        scmLabelWrapper.style.alignItems = 'center';
-                        const scmHeaderText = document.createElement('span');
-                        scmHeaderText.textContent = 'Source Code Management';
-                        scmLabelWrapper.appendChild(scmHeaderText);
-                        if (legendData.scm) {
-                            const tooltipIcon = document.createElement('span');
-                            tooltipIcon.className = 'tooltip-icon';
-                            tooltipIcon.textContent = '?';
-                            tooltipIcon.dataset.tooltipText = legendData.scm;
-                            tooltipIcon.addEventListener('click', showTooltip);
-                            scmLabelWrapper.appendChild(tooltipIcon);
-                        }
-                        scmHeader.appendChild(scmLabelWrapper);
-                        const scmArrow = document.createElement('span');
-                        scmArrow.className = 'dependencies-arrow';
-                        scmArrow.innerHTML = '&#9654;';
-                        scmHeader.appendChild(scmArrow);
-                        scmContainer.appendChild(scmHeader);
-
-                        const scmContentDiv = document.createElement('div');
-                        scmContentDiv.className = 'dependencies-list scrollable-maven-coords'; // For pre-formatted, scrollable text
-                        scmContentDiv.textContent = fp.scm;
-                        scmContentDiv.style.padding = '5px 8px'; // Match scrollable-maven-coords
-                        scmContentDiv.style.backgroundColor = '#fffacd'; // LemonChiffon (lighter than khaki)
-                        scmContainer.appendChild(scmContentDiv);
-                        fpDiv.appendChild(scmContainer);
-
-                        scmHeader.addEventListener('click', () => {
-                            scmContentDiv.classList.toggle('visible');
-                            scmArrow.classList.toggle('expanded');
                         });
                     }
                     featurePacksSection.appendChild(fpDiv);
