@@ -1205,6 +1205,60 @@
                         });
                     }
 
+                    // Add Packages section
+                    if (func.packages && Array.isArray(func.packages) && func.packages.length > 0) {
+                        const packagesContainer = document.createElement('div');
+                        packagesContainer.className = 'packages-container'; // Optional: for specific styling if needed
+
+                        const pkgHeader = document.createElement('div');
+                        pkgHeader.className = 'dependencies-header'; // Reuse styling
+                        pkgHeader.style.backgroundColor = '#e6e6fa'; // Lavender - new color for distinction
+
+                        const pkgLabelWrapper = document.createElement('span');
+                        pkgLabelWrapper.style.display = 'flex';
+                        pkgLabelWrapper.style.alignItems = 'center';
+
+                        const pkgHeaderText = document.createElement('span');
+                        pkgHeaderText.textContent = 'Exported Packages';
+                        pkgLabelWrapper.appendChild(pkgHeaderText);
+
+                        if (legendData.packages) { // Assuming 'packages' might be in legend
+                            const tooltipIcon = document.createElement('span');
+                            tooltipIcon.className = 'tooltip-icon';
+                            tooltipIcon.textContent = '?';
+                            tooltipIcon.dataset.tooltipText = legendData.packages;
+                            tooltipIcon.addEventListener('click', showTooltip);
+                            pkgLabelWrapper.appendChild(tooltipIcon);
+                        }
+                        pkgHeader.appendChild(pkgLabelWrapper);
+
+                        const pkgArrow = document.createElement('span');
+                        pkgArrow.className = 'dependencies-arrow';
+                        pkgArrow.innerHTML = '&#9654;';
+                        pkgHeader.appendChild(pkgArrow);
+                        
+                        packagesContainer.appendChild(pkgHeader);
+
+                        const pkgList = document.createElement('ul');
+                        pkgList.className = 'dependencies-list'; // Reuse styling for list
+                        pkgList.style.listStyleType = 'none'; // Typically packages are not bulleted like dependencies
+
+                        func.packages.forEach(pkgName => {
+                            const pkgLi = document.createElement('li');
+                            pkgLi.textContent = pkgName;
+                            pkgLi.style.fontFamily = 'Consolas, "Courier New", monospace'; // Monospace for package names
+                            pkgLi.style.fontSize = '0.9em';
+                            pkgList.appendChild(pkgLi);
+                        });
+                        packagesContainer.appendChild(pkgList);
+                        detailsDiv.appendChild(packagesContainer);
+
+                        pkgHeader.addEventListener('click', () => {
+                            pkgList.classList.toggle('visible');
+                            pkgArrow.classList.toggle('expanded');
+                        });
+                    }
+
                     if (func.hasOwnProperty('configuration')) {
                         const layerConfigContainer = document.createElement('div');
                         layerConfigContainer.className = 'layer-configuration-container';
@@ -1282,7 +1336,7 @@
             });
         }
 
-        const defaultJsonUrl = 'https://raw.githubusercontent.com/jfdenise/wildfly-catalog/refs/heads/37.0.0.Beta1-SNAPSHOT/docs/37.0.0.Beta1-SNAPSHOT/wildfly-catalog.json?test=foo';
+        const defaultJsonUrl = 'https://raw.githubusercontent.com/jfdenise/wildfly-catalog/refs/heads/main/docs/37.0.0.Beta1-SNAPSHOT/wildfly-catalog.json?test=foo';
 
         function loadCatalogData(url) {
             const dataDisplay = document.getElementById('data-display');
