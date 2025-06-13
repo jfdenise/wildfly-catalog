@@ -192,7 +192,7 @@ public class Main {
         ArrayNode layersArray = (ArrayNode) subCatalog.get("layers");
         Iterator<JsonNode> layers = layersArray.elements();
         while (layers.hasNext()) {
-            ObjectNode layer = (ObjectNode) layers.next();
+            ObjectNode layer = (ObjectNode) layers.next(); 
             layer.put("feature-pack", fp);
             String layerName = layer.get("name").asText();
             ArrayNode props = ((ArrayNode) layer.get("properties"));
@@ -246,6 +246,11 @@ public class Main {
             }
             if (category == null) {
                 category = "Internal";
+                // Internal without any content are not taken into account
+                if(layer.get("managementModel").isEmpty() && 
+                        !layer.has("dependencies") && !layer.has("packages")) {
+                    System.out.println("Internal with metadata only, ignoring " + layer.get("name").asText() + " of " + fp);
+                }
             }
             if (description != null) {
                 layer.put("description", description);
@@ -277,8 +282,10 @@ public class Main {
                 System.out.println("OVERRIDEN !!!!! " + layerName);
                 JsonNode overriden = nodes.get(layerName);
                 ArrayNode deps = (ArrayNode) layer.get("dependencies");
-                ArrayNode overridenDeps = (ArrayNode) overriden.get("dependencies");
-                deps.addAll(overridenDeps);
+                if (deps != null) {
+                    ArrayNode overridenDeps = (ArrayNode) overriden.get("dependencies");
+                    deps.addAll(overridenDeps);
+                }
             }
             nodes.put(layerName, layer);
         }

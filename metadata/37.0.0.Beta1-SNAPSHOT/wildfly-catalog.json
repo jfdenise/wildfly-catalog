@@ -31,7 +31,8 @@
         "configuration": "Environment variables and system properties that can be used to configure the layer.",
         "modelReference": "The model reference of the resources that this feature-pack can provision",
         "mavenCoordinates": "The Maven GroupId, ArtifactId and Version of the feature-pack",
-        "featurePackLocation": " The XML content to configure the WildFly Maven Plugin to use this feature-pack"
+        "featurePackLocation": " The XML content to configure the WildFly Maven Plugin to use this feature-pack",
+        "packages": "The packages (generally JBoss Modules modules) that this layer provision in addition of implict extension module."
     },
     "glowRulesDescriptions": "https://raw.githubusercontent.com/wildfly/wildfly-galleon-feature-packs/refs/heads/release/maven/docs/rules.properties",
     "knownFeaturePacks": "https://raw.githubusercontent.com/jfdenise/wildfly-galleon-feature-packs/refs/heads/catalog-v2/37.0.0.Beta1-SNAPSHOT/known-feature-packs.json" 
