@@ -95,6 +95,10 @@ public class Main {
                 JsonNode subCatalog = mapper.readTree(metadataFile.toFile().toURI().toURL());
                 fpNode.put("name", subCatalog.get("name").asText());
                 fpNode.put("description", subCatalog.get("description").asText());                
+                fpNode.putIfAbsent("licence", subCatalog.get("licence"));
+                fpNode.put("projectURL", subCatalog.get("url").asText());
+                fpNode.put("scm", subCatalog.get("scm").asText());
+                
                 ArrayNode layersArray = (ArrayNode) subCatalog.get("layers");
                 Iterator<JsonNode> layers = layersArray.elements();
                 ArrayNode layersArrayTarget = mapper.createArrayNode();
