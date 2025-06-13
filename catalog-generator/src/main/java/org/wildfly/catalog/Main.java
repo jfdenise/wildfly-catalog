@@ -95,7 +95,7 @@ public class Main {
                 JsonNode subCatalog = mapper.readTree(metadataFile.toFile().toURI().toURL());
                 fpNode.put("name", subCatalog.get("name").asText());
                 fpNode.put("description", subCatalog.get("description").asText());                
-                fpNode.putIfAbsent("licence", subCatalog.get("licence"));
+                fpNode.putIfAbsent("license", subCatalog.get("license"));
                 fpNode.put("projectURL", subCatalog.get("url").asText());
                 fpNode.put("scm", subCatalog.get("scm").asText());
                 
