@@ -250,6 +250,7 @@ public class Main {
                 if(layer.get("managementModel").isEmpty() && 
                         !layer.has("dependencies") && !layer.has("packages")) {
                     System.out.println("Internal with metadata only, ignoring " + layer.get("name").asText() + " of " + fp);
+                    continue;
                 }
             }
             if (description != null) {

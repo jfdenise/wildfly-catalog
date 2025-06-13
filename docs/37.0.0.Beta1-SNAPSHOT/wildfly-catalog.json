@@ -21174,19 +21174,6 @@
       "stability" : "default",
       "glowDiscoverable" : false
     }, {
-      "name" : "cloud-remote-activemq",
-      "managementModel" : { },
-      "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
-      "glowAddOn" : "cloud-remote-activemq",
-      "stability" : "default",
-      "glowRules" : [ {
-        "name" : "org.wildfly.rule.configuration",
-        "value" : "https://raw.githubusercontent.com/wildfly/wildfly-cekit-modules/main/jboss/container/wildfly/launch/messaging/2.0/module.yaml",
-        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
-        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
-      } ],
-      "glowDiscoverable" : true
-    }, {
       "name" : "core-management",
       "managementModel" : {
         "subsystem" : {
@@ -21227,28 +21214,97 @@
       "glowDiscoverable" : false
     }, {
       "name" : "datasources",
-      "managementModel" : { },
-      "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
+      "managementModel" : {
+        "subsystem" : {
+          "datasources" : { },
+          "jca" : {
+            "archive-validation" : {
+              "archive-validation" : {
+                "enabled" : "true",
+                "fail-on-error" : "true",
+                "fail-on-warn" : "false"
+              }
+            },
+            "bean-validation" : {
+              "bean-validation" : {
+                "enabled" : "true"
+              }
+            },
+            "bootstrap-context" : {
+              "default" : {
+                "name" : "default",
+                "workmanager" : "default"
+              }
+            },
+            "cached-connection-manager" : {
+              "cached-connection-manager" : {
+                "install" : "true"
+              }
+            },
+            "workmanager" : {
+              "default" : {
+                "name" : "default",
+                "long-running-threads" : {
+                  "default" : {
+                    "core-threads" : "50",
+                    "keepalive-time" : "{ unit=SECONDS, time=10 }",
+                    "max-threads" : "50",
+                    "queue-length" : "50"
+                  }
+                },
+                "short-running-threads" : {
+                  "default" : {
+                    "core-threads" : "50",
+                    "keepalive-time" : "{ unit=SECONDS, time=10 }",
+                    "max-threads" : "50",
+                    "queue-length" : "50"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "dependencies" : [ {
+        "name" : "transactions",
+        "optional" : false
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
       "stability" : "default",
       "glowRules" : [ {
-        "name" : "org.wildfly.rule.configuration",
-        "value" : "https://raw.githubusercontent.com/wildfly/wildfly-cekit-modules/main/jboss/container/wildfly/launch/datasources/module.yaml",
-        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
-        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
+        "name" : "org.wildfly.rule.class",
+        "value" : "java.sql,javax.sql",
+        "ruleDescription" : "A Java type.",
+        "valueDescription" : "Comma separated list. Annotations are java package, full class or pattern ending with .*. e.g.: `jakarta.ws.rs,jakarta.ws.rs.core`"
       } ],
       "glowDiscoverable" : true
     }, {
       "name" : "deployment-scanner",
-      "managementModel" : { },
-      "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
-      "stability" : "default",
-      "glowRules" : [ {
-        "name" : "org.wildfly.rule.configuration",
-        "value" : "https://raw.githubusercontent.com/wildfly/wildfly-cekit-modules/main/jboss/container/wildfly/launch/deployment-scanner/module.yaml",
-        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
-        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
+      "managementModel" : {
+        "subsystem" : {
+          "deployment-scanner" : {
+            "scanner" : {
+              "default" : {
+                "path" : "deployments",
+                "relative-to" : "jboss.server.base.dir",
+                "runtime-failure-causes-rollback" : "${jboss.deployment.scanner.rollback.on.failure:false}",
+                "scan-interval" : "5000"
+              }
+            }
+          }
+        }
+      },
+      "configuration" : [ {
+        "attribute" : "/subsystem=deployment-scanner/scanner=default.runtime-failure-causes-rollback",
+        "systemProperties" : [ "jboss.deployment.scanner.rollback.on.failure" ]
       } ],
-      "glowDiscoverable" : true
+      "dependencies" : [ {
+        "name" : "base-server",
+        "optional" : false
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "stability" : "default",
+      "glowDiscoverable" : false
     }, {
       "name" : "discovery",
       "managementModel" : {
@@ -21309,16 +21365,159 @@
       "glowDiscoverable" : true
     }, {
       "name" : "elytron",
-      "managementModel" : { },
-      "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
-      "stability" : "default",
-      "glowRules" : [ {
-        "name" : "org.wildfly.rule.configuration",
-        "value" : "https://raw.githubusercontent.com/wildfly/wildfly-cekit-modules/main/jboss/container/wildfly/launch/elytron/module.yaml",
-        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
-        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
+      "managementModel" : {
+        "subsystem" : {
+          "elytron" : {
+            "disallowed-providers" : "[OracleUcrypto]",
+            "final-providers" : "combined-providers",
+            "aggregate-providers" : {
+              "combined-providers" : {
+                "providers" : "[elytron,openssl]"
+              }
+            },
+            "configurable-sasl-server-factory" : {
+              "configured" : {
+                "properties" : "{wildfly.sasl.local-user.default-user=\"\\$local\",wildfly.sasl.local-user.challenge-path=\"${jboss.server.temp.dir}/auth\"}",
+                "sasl-server-factory" : "elytron"
+              }
+            },
+            "constant-realm-mapper" : {
+              "local" : {
+                "realm-name" : "local"
+              }
+            },
+            "constant-role-mapper" : {
+              "super-user-mapper" : {
+                "roles" : "[SuperUser]"
+              }
+            },
+            "file-audit-log" : {
+              "local-audit" : {
+                "format" : "JSON",
+                "path" : "audit.log",
+                "relative-to" : "jboss.server.log.dir"
+              }
+            },
+            "http-authentication-factory" : {
+              "management-http-authentication" : {
+                "http-server-mechanism-factory" : "global",
+                "mechanism-configurations" : "[{mechanism-name=DIGEST,mechanism-realm-configurations=[{realm-name=ManagementRealm}]}]",
+                "security-domain" : "ManagementDomain"
+              }
+            },
+            "identity-realm" : {
+              "local" : {
+                "identity" : "$local"
+              }
+            },
+            "key-manager" : {
+              "applicationKM" : {
+                "credential-reference" : "{clear-text=password}",
+                "generate-self-signed-certificate-host" : "localhost",
+                "key-store" : "applicationKS"
+              }
+            },
+            "key-store" : {
+              "applicationKS" : {
+                "credential-reference" : "{clear-text=password}",
+                "path" : "application.keystore",
+                "relative-to" : "jboss.server.config.dir",
+                "type" : "JKS"
+              }
+            },
+            "mechanism-provider-filtering-sasl-server-factory" : {
+              "elytron" : {
+                "filters" : "[{provider-name=WildFlyElytron}]",
+                "sasl-server-factory" : "global"
+              }
+            },
+            "permission-set" : {
+              "default-permissions" : {
+                "permissions" : "[]"
+              },
+              "login-permission" : {
+                "permissions" : "[class-name=org.wildfly.security.auth.permission.LoginPermission]"
+              }
+            },
+            "properties-realm" : {
+              "ApplicationRealm" : {
+                "groups-properties" : "{ path=application-roles.properties, relative-to=jboss.server.config.dir }",
+                "users-properties" : "{path=application-users.properties,relative-to=jboss.server.config.dir,digest-realm-name=ApplicationRealm}"
+              },
+              "ManagementRealm" : {
+                "groups-properties" : "{ path=mgmt-groups.properties, relative-to=jboss.server.config.dir }",
+                "users-properties" : "{path=mgmt-users.properties,relative-to=jboss.server.config.dir,digest-realm-name=ManagementRealm}"
+              }
+            },
+            "provider-http-server-mechanism-factory" : {
+              "global" : { }
+            },
+            "provider-loader" : {
+              "elytron" : {
+                "module" : "org.wildfly.security.elytron"
+              },
+              "openssl" : {
+                "module" : "org.wildfly.openssl"
+              }
+            },
+            "provider-sasl-server-factory" : {
+              "global" : { }
+            },
+            "sasl-authentication-factory" : {
+              "application-sasl-authentication" : {
+                "mechanism-configurations" : "[{mechanism-name=JBOSS-LOCAL-USER,realm-mapper=local},{mechanism-name=DIGEST-MD5,mechanism-realm-configurations=[{realm-name=ApplicationRealm}]}]",
+                "sasl-server-factory" : "configured",
+                "security-domain" : "ApplicationDomain"
+              },
+              "management-sasl-authentication" : {
+                "mechanism-configurations" : "[{mechanism-name=JBOSS-LOCAL-USER,realm-mapper=local},{mechanism-name=DIGEST-MD5,mechanism-realm-configurations=[{realm-name=ManagementRealm}]}]",
+                "sasl-server-factory" : "configured",
+                "security-domain" : "ManagementDomain"
+              }
+            },
+            "security-domain" : {
+              "ApplicationDomain" : {
+                "default-realm" : "ApplicationRealm",
+                "permission-mapper" : "default-permission-mapper",
+                "realms" : "[{realm=ApplicationRealm,role-decoder=groups-to-roles}]"
+              },
+              "ManagementDomain" : {
+                "default-realm" : "ManagementRealm",
+                "permission-mapper" : "default-permission-mapper",
+                "realms" : "[{realm=ManagementRealm,role-decoder=groups-to-roles},{realm=local,role-mapper=super-user-mapper}]"
+              }
+            },
+            "server-ssl-context" : {
+              "applicationSSC" : {
+                "key-manager" : "applicationKM"
+              }
+            },
+            "simple-permission-mapper" : {
+              "default-permission-mapper" : {
+                "mapping-mode" : "first",
+                "permission-mappings" : "[{principals=[anonymous],permission-sets=[permission-set=default-permissions]},{match-all=true,permission-sets=[permission-set=login-permission,permission-set=default-permissions]}]"
+              }
+            },
+            "simple-role-decoder" : {
+              "groups-to-roles" : {
+                "attribute" : "groups"
+              }
+            }
+          }
+        }
+      },
+      "configuration" : [ {
+        "attribute" : "/subsystem=elytron/configurable-sasl-server-factory=configured.properties",
+        "systemProperties" : [ "jboss.server.temp.dir" ]
       } ],
-      "glowDiscoverable" : true
+      "packages" : [ "org.wildfly.extension.elytron.jaas-realm", "org.wildfly.openssl", "org.wildfly.security.elytron-dynamic-ssl" ],
+      "dependencies" : [ {
+        "name" : "base-server",
+        "optional" : false
+      } ],
+      "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
+      "stability" : "default",
+      "glowDiscoverable" : false
     }, {
       "name" : "elytron-oidc-client",
       "managementModel" : {
@@ -21709,35 +21908,6 @@
       "stability" : "default",
       "glowDiscoverable" : false
     }, {
-      "name" : "keycloak-client-saml",
-      "managementModel" : { },
-      "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
-      "stability" : "default",
-      "glowRules" : [ {
-        "name" : "org.wildfly.rule.hidden-if-org.wildfly.rule.not-expected-file-keycloak",
-        "value" : "/WEB-INF/keycloak.json",
-        "ruleDescription" : "A conditional rule to hide a layer if the condition is `true`. This rule name is followed by the conditioned rule: `org.wildfly.rule.hidden-if-<conditioned rule>`",
-        "valueDescription" : "e.g.: rule `org.wildfly.rule.hidden-if-org.wildfly.rule.not-expected-file=/WEB-INF/keycloak.json`, `keycloak-client-saml` layer is hidden if `/WEB-INF/keycloak.json` is not present."
-      } ],
-      "glowDiscoverable" : true
-    }, {
-      "name" : "keycloak-saml",
-      "managementModel" : { },
-      "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
-      "stability" : "default",
-      "glowRules" : [ {
-        "name" : "org.wildfly.rule.configuration",
-        "value" : "https://raw.githubusercontent.com/wildfly/wildfly-cekit-modules/main/jboss/container/wildfly/launch/keycloak/2.0/module.yaml",
-        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
-        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
-      }, {
-        "name" : "org.wildfly.rule.no-configuration-if-org.wildfly.rule.expected-file-keycloak",
-        "value" : "/WEB-INF/keycloak.json",
-        "ruleDescription" : "A conditional rule. Do not propose configuration if the condition is `true`. This rule name is followed by the conditioned rule: `org.wildfly.rule.no-configuration-if-<conditioned rule>`",
-        "valueDescription" : "e.g.: `org.wildfly.rule.no-configuration-if-org.wildfly.rule.expected-file-oidc=/WEB-INF/oidc.json`, if `/WEB-INF/oidc.json` is found, do not propose Cloud specific OIDC environment variables."
-      } ],
-      "glowDiscoverable" : true
-    }, {
       "name" : "logging",
       "managementModel" : {
         "subsystem" : {
@@ -21887,18 +22057,6 @@
       "stability" : "default",
       "glowDiscoverable" : false
     }, {
-      "name" : "microprofile-config",
-      "managementModel" : { },
-      "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
-      "stability" : "default",
-      "glowRules" : [ {
-        "name" : "org.wildfly.rule.configuration",
-        "value" : "https://raw.githubusercontent.com/wildfly/wildfly-cekit-modules/main/jboss/container/wildfly/launch/mp-config/module.yaml",
-        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
-        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
-      } ],
-      "glowDiscoverable" : true
-    }, {
       "name" : "pojo",
       "managementModel" : {
         "subsystem" : {
@@ -21957,18 +22115,6 @@
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
       "stability" : "default",
       "glowDiscoverable" : false
-    }, {
-      "name" : "resource-adapters",
-      "managementModel" : { },
-      "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
-      "stability" : "default",
-      "glowRules" : [ {
-        "name" : "org.wildfly.rule.configuration",
-        "value" : "https://raw.githubusercontent.com/wildfly/wildfly-cekit-modules/main/jboss/container/wildfly/launch/resource-adapters/module.yaml",
-        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
-        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
-      } ],
-      "glowDiscoverable" : true
     }, {
       "name" : "security-manager",
       "managementModel" : {
