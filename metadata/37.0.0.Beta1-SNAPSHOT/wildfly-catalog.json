@@ -5,10 +5,6 @@
             "url": "https://docs.wildfly.org/"
         },
         {
-            "name": "WildFly Management Model documentation",
-            "url": "https://docs.wildfly.org/36/wildscribe/index.html"
-        },
-        {
             "name": "WildFly Glow documentation",
             "url": "https://docs.wildfly.org/wildfly-glow/"
         },
