@@ -360,12 +360,10 @@ public class Main {
                //System.out.println("URL " + url);
                 String foundURL = findURL(rootDir, url);
                 if (foundURL == null) {
-                    //((ObjectNode)model).remove("_address");
-                    System.out.println("URL NOT FOUND!!!! " + url);
+                    System.out.println("Url not found for " + url);
                     ((ObjectNode) model).remove("_address");
                 } else {
                     ((ObjectNode) model).put("_address", foundURL);
-                    //System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!! FOUND URL " + foundURL);
                 }
             }
             Iterator<String> fields = model.fieldNames();

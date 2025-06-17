@@ -489,32 +489,53 @@
                     html += (obj.length > 0 ? indent : '') + ']';
                 } else if (typeof obj === 'object' && obj !== null) {
                     html += '{' + (Object.keys(obj).length > 0 ? '\n' : '');
-                    Object.keys(obj).forEach((key, index, arr) => {
-                        const currentValue = obj[key];
-                        // Corrected: Check for "_address" key holding the URL
-                        const actualUrl = (typeof currentValue === 'object' && currentValue !== null && typeof currentValue["_address"] === 'string' && currentValue["_address"].trim() !== '') ? currentValue["_address"] : null;
+                    
+                    const originalKeys = Object.keys(obj);
+                    const parentAddressForAttribute = (obj.hasOwnProperty('_address') && typeof obj['_address'] === 'string' && obj['_address'].trim() !== '') ? obj['_address'] : null;
 
-                        if (actualUrl) {
-                            // Key becomes a link, pointing to the "_address" URL, styled more explicitly as a link
-                            html += indent + '&nbsp;&nbsp;<a href="' + actualUrl + '" target="_blank" rel="noopener noreferrer" style="color: #1a73e8; text-decoration: underline;">"' + key + '"</a>' +
+                    const keysToRender = originalKeys.filter(k => {
+                        // Skip _address if it's paired with an 'attribute' that will use it for a link
+                        if (k === '_address' && parentAddressForAttribute && obj.hasOwnProperty('attribute') && typeof obj['attribute'] === 'string') {
+                            return false;
+                        }
+                        return true;
+                    });
+
+                    keysToRender.forEach((key, index) => {
+                        const currentValue = obj[key];
+                        
+                        // Case 1: Parent Key Link (e.g., for managementModel style linking where currentValue is an object with _address)
+                        const urlForParentKeyLink = (typeof currentValue === 'object' && currentValue !== null && typeof currentValue["_address"] === 'string' && currentValue["_address"].trim() !== '') ? currentValue["_address"] : null;
+
+                        if (urlForParentKeyLink) {
+                            html += indent + '&nbsp;&nbsp;<a href="' + urlForParentKeyLink + '" target="_blank" rel="noopener noreferrer" style="color: #1a73e8; text-decoration: underline;">"' + key + '"</a>' +
                                     '<span class="tooltip-icon" data-tooltip-text="Navigate to the Model reference" style="cursor: help; display: inline-block; margin-left: 5px;">?</span>: ';
-                            
-                            // Render the object, but exclude the "_address" property
                             const tempValue = { ...currentValue };
-                            delete tempValue["_address"]; // Corrected: delete "_address"
+                            delete tempValue["_address"];
                             html += renderJsonRecursive(tempValue, indentLevel + 1);
-                        } else {
-                            // Default rendering for other keys
+                        } 
+                        // Case 2: Attribute Value Link (e.g., for configuration style linking where key is 'attribute' and its parent 'obj' has _address)
+                        else if (key === 'attribute' && typeof currentValue === 'string' && parentAddressForAttribute) {
+                            let finalUrl = parentAddressForAttribute;
+                            if (parentAddressForAttribute.endsWith('index.html')) {
+                                finalUrl += '#attr-' + sanitizeForId(currentValue);
+                            }
+                            html += indent + '&nbsp;&nbsp;<strong style="color: #990055;">"' + key + '"</strong>: ';
+                            html += '<a href="' + finalUrl + '" target="_blank" rel="noopener noreferrer" style="color: #1a73e8; text-decoration: underline;">' + currentValue.replace(/</g, '<').replace(/>/g, '>') + '</a>' +
+                                    '<span class="tooltip-icon" data-tooltip-text="Navigate to the Model reference" style="cursor: help; display: inline-block; margin-left: 5px;">?</span>';
+                        }
+                        // Default rendering
+                        else {
                             html += indent + '&nbsp;&nbsp;<strong style="color: #990055;">"' + key + '"</strong>: ';
                             html += renderJsonRecursive(currentValue, indentLevel + 1);
                         }
 
-                        if (index < arr.length - 1) {
+                        if (index < keysToRender.length - 1) {
                             html += ',';
                         }
                         html += '\n';
                     });
-                    html += (Object.keys(obj).length > 0 ? indent : '') + '}';
+                    html += (keysToRender.length > 0 ? indent : '') + '}';
                 } else if (typeof obj === 'string') {
                     html += '<span style="color: #008000;">"' + obj.replace(/</g, '<').replace(/>/g, '>') + '"</span>';
                 } else if (typeof obj === 'number') {

@@ -1591,9 +1591,15 @@
             "server" : {
               "default-server" : {
                 "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/index.html",
-                "setting" : {
-                  "http-invoker" : {
-                    "http-authentication-factory" : "application-http-authentication"
+                "host" : {
+                  "default-host" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/host/index.html",
+                    "setting" : {
+                      "http-invoker" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/host/setting/http-invoker/index.html",
+                        "http-authentication-factory" : "application-http-authentication"
+                      }
+                    }
                   }
                 }
               }
@@ -1648,9 +1654,15 @@
             "server" : {
               "default-server" : {
                 "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/index.html",
-                "setting" : {
-                  "http-invoker" : {
-                    "http-authentication-factory" : "application-http-authentication"
+                "host" : {
+                  "default-host" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/host/index.html",
+                    "setting" : {
+                      "http-invoker" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/host/setting/http-invoker/index.html",
+                        "http-authentication-factory" : "application-http-authentication"
+                      }
+                    }
                   }
                 }
               }
@@ -1971,8 +1983,10 @@
             }
           },
           "elytron" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/index.html",
             "http-authentication-factory" : {
               "application-http-authentication" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/http-authentication-factory/index.html",
                 "http-server-mechanism-factory" : "global",
                 "mechanism-configurations" : "[{mechanism-name=BASIC,mechanism-realm-configurations=[{realm-name=ApplicationRealm}]}]",
                 "security-domain" : "ApplicationDomain"
@@ -1980,6 +1994,7 @@
             },
             "permission-set" : {
               "default-permissions" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/permission-set/index.html",
                 "permissions" : "{ module=org.jboss.ejb-client, class-name=org.jboss.ejb.client.RemoteEJBPermission }"
               }
             }
@@ -2375,15 +2390,22 @@
             "server" : {
               "default-server" : {
                 "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/index.html",
-                "alias" : "[localhost]",
-                "location" : {
-                  "/" : {
-                    "handler" : "welcome-content"
-                  }
-                },
-                "setting" : {
-                  "http-invoker" : {
-                    "http-authentication-factory" : "application-http-authentication"
+                "host" : {
+                  "default-host" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/host/index.html",
+                    "alias" : "[localhost]",
+                    "location" : {
+                      "/" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/host/location/index.html",
+                        "handler" : "welcome-content"
+                      }
+                    },
+                    "setting" : {
+                      "http-invoker" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/host/setting/http-invoker/index.html",
+                        "http-authentication-factory" : "application-http-authentication"
+                      }
+                    }
                   }
                 }
               }
@@ -3795,9 +3817,16 @@
             "server" : {
               "default-server" : {
                 "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/index.html",
-                "alias" : "[localhost]",
-                "filter-ref" : {
-                  "load-balancer" : { }
+                "host" : {
+                  "default-host" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/host/index.html",
+                    "alias" : "[localhost]",
+                    "filter-ref" : {
+                      "load-balancer" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/host/filter-ref/index.html"
+                      }
+                    }
+                  }
                 },
                 "http-listener" : {
                   "default" : {
@@ -6247,9 +6276,16 @@
             "server" : {
               "default-server" : {
                 "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/index.html",
-                "alias" : "[localhost]",
-                "setting" : {
-                  "http-invoker" : { }
+                "host" : {
+                  "default-host" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/host/index.html",
+                    "alias" : "[localhost]",
+                    "setting" : {
+                      "http-invoker" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/host/setting/http-invoker/index.html"
+                      }
+                    }
+                  }
                 }
               }
             },
@@ -6321,8 +6357,10 @@
         },
         "subsystem" : {
           "elytron" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/index.html",
             "permission-set" : {
               "default-permissions" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/permission-set/index.html",
                 "permissions" : "{ module=org.wildfly.transaction.client, class-name=org.wildfly.transaction.client.RemoteTransactionPermission }"
               }
             }
@@ -6417,7 +6455,12 @@
             "server" : {
               "default-server" : {
                 "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/index.html",
-                "alias" : "[localhost]",
+                "host" : {
+                  "default-host" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/host/index.html",
+                    "alias" : "[localhost]"
+                  }
+                },
                 "http-listener" : {
                   "default" : {
                     "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/http-listener/index.html",
@@ -6497,8 +6540,10 @@
             }
           },
           "elytron" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/index.html",
             "permission-set" : {
               "default-permissions" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/permission-set/index.html",
                 "permissions" : "{ target-name=*, module=org.wildfly.extension.batch.jberet, class-name=org.wildfly.extension.batch.jberet.deployment.BatchPermission }"
               }
             }
@@ -6757,9 +6802,15 @@
             "server" : {
               "default-server" : {
                 "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/index.html",
-                "setting" : {
-                  "http-invoker" : {
-                    "http-authentication-factory" : "application-http-authentication"
+                "host" : {
+                  "default-host" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/host/index.html",
+                    "setting" : {
+                      "http-invoker" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/host/setting/http-invoker/index.html",
+                        "http-authentication-factory" : "application-http-authentication"
+                      }
+                    }
                   }
                 }
               }
@@ -6850,8 +6901,10 @@
             }
           },
           "elytron" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/index.html",
             "permission-set" : {
               "default-permissions" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/permission-set/index.html",
                 "permissions" : "{ module=org.jboss.ejb-client, class-name=org.jboss.ejb.client.RemoteEJBPermission }"
               }
             }
@@ -7720,9 +7773,15 @@
             "server" : {
               "default-server" : {
                 "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/index.html",
-                "setting" : {
-                  "http-invoker" : {
-                    "http-authentication-factory" : "application-http-authentication"
+                "host" : {
+                  "default-host" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/host/index.html",
+                    "setting" : {
+                      "http-invoker" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/host/setting/http-invoker/index.html",
+                        "http-authentication-factory" : "application-http-authentication"
+                      }
+                    }
                   }
                 }
               }
