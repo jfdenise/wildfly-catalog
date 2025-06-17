@@ -490,8 +490,25 @@
                 } else if (typeof obj === 'object' && obj !== null) {
                     html += '{' + (Object.keys(obj).length > 0 ? '\n' : '');
                     Object.keys(obj).forEach((key, index, arr) => {
-                        html += indent + '&nbsp;&nbsp;<strong style="color: #990055;">"' + key + '"</strong>: ';
-                        html += renderJsonRecursive(obj[key], indentLevel + 1);
+                        const currentValue = obj[key];
+                        // Corrected: Check for "_address" key holding the URL
+                        const actualUrl = (typeof currentValue === 'object' && currentValue !== null && typeof currentValue["_address"] === 'string' && currentValue["_address"].trim() !== '') ? currentValue["_address"] : null;
+
+                        if (actualUrl) {
+                            // Key becomes a link, pointing to the "_address" URL, styled more explicitly as a link
+                            html += indent + '&nbsp;&nbsp;<a href="' + actualUrl + '" target="_blank" rel="noopener noreferrer" style="color: #1a73e8; text-decoration: underline;">"' + key + '"</a>' +
+                                    '<span class="tooltip-icon" data-tooltip-text="Navigate to the Model reference" style="cursor: help; display: inline-block; margin-left: 5px;">?</span>: ';
+                            
+                            // Render the object, but exclude the "_address" property
+                            const tempValue = { ...currentValue };
+                            delete tempValue["_address"]; // Corrected: delete "_address"
+                            html += renderJsonRecursive(tempValue, indentLevel + 1);
+                        } else {
+                            // Default rendering for other keys
+                            html += indent + '&nbsp;&nbsp;<strong style="color: #990055;">"' + key + '"</strong>: ';
+                            html += renderJsonRecursive(currentValue, indentLevel + 1);
+                        }
+
                         if (index < arr.length - 1) {
                             html += ',';
                         }
@@ -1260,6 +1277,13 @@
                         mgmtContentDiv.style.wordBreak = 'break-all';
                         
                         mgmtContentDiv.innerHTML = renderJsonRecursive(func.managementModel);
+                        // Attach listeners to newly created tooltip icons within this section
+                        mgmtContentDiv.querySelectorAll('.tooltip-icon').forEach(icon => {
+                            if (!icon.listenerAttached) {
+                                icon.addEventListener('click', showTooltip);
+                                icon.listenerAttached = true;
+                            }
+                        });
                         
                         mgmtModelContainer.appendChild(mgmtContentDiv);
                         detailsDiv.appendChild(mgmtModelContainer);
@@ -1469,6 +1493,14 @@
                         layerConfigContentDiv.style.border = '1px solid #d2b48c'; 
                         layerConfigContentDiv.style.whiteSpace = 'pre-wrap';
                         layerConfigContentDiv.style.wordBreak = 'break-all';
+                        
+                        // Attach listeners to newly created tooltip icons within this section
+                        layerConfigContentDiv.querySelectorAll('.tooltip-icon').forEach(icon => {
+                            if (!icon.listenerAttached) {
+                                icon.addEventListener('click', showTooltip);
+                                icon.listenerAttached = true;
+                            }
+                        });
                         
                         layerConfigContainer.appendChild(layerConfigContentDiv);
                         detailsDiv.appendChild(layerConfigContainer);
