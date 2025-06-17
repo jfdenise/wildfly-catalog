@@ -375,8 +375,10 @@
             }
           },
           "logging" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/logging/index.html",
             "logger" : {
               "com.azure" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/logging/logger/index.html",
                 "level" : "OFF"
               }
             }
@@ -1568,8 +1570,10 @@
       "managementModel" : {
         "subsystem" : {
           "elytron" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/index.html",
             "http-authentication-factory" : {
               "application-http-authentication" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/http-authentication-factory/index.html",
                 "http-server-mechanism-factory" : "global",
                 "mechanism-configurations" : "[{mechanism-name=BASIC,mechanism-realm-configurations=[{realm-name=ApplicationRealm}]}]",
                 "security-domain" : "ApplicationDomain"
@@ -1577,13 +1581,16 @@
             }
           },
           "undertow" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/index.html",
             "application-security-domain" : {
               "other" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/application-security-domain/index.html",
                 "security-domain" : "ApplicationDomain"
               }
             },
             "server" : {
               "default-server" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/index.html",
                 "setting" : {
                   "http-invoker" : {
                     "http-authentication-factory" : "application-http-authentication"
@@ -1620,8 +1627,10 @@
       "managementModel" : {
         "subsystem" : {
           "elytron" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/index.html",
             "http-authentication-factory" : {
               "application-http-authentication" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/http-authentication-factory/index.html",
                 "http-server-mechanism-factory" : "global",
                 "mechanism-configurations" : "[{mechanism-name=BASIC,mechanism-realm-configurations=[{realm-name=ApplicationRealm}]}]",
                 "security-domain" : "ApplicationDomain"
@@ -1629,13 +1638,16 @@
             }
           },
           "undertow" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/index.html",
             "application-security-domain" : {
               "other" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/application-security-domain/index.html",
                 "security-domain" : "ApplicationDomain"
               }
             },
             "server" : {
               "default-server" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/index.html",
                 "setting" : {
                   "http-invoker" : {
                     "http-authentication-factory" : "application-http-authentication"
@@ -1786,8 +1798,10 @@
         },
         "subsystem" : {
           "datasources" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/index.html",
             "data-source" : {
               "ExampleDS" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/data-source/index.html",
                 "connection-url" : "\"jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE\"",
                 "driver-name" : "h2",
                 "enabled" : "true",
@@ -1799,28 +1813,35 @@
               }
             }
           },
-          "discovery" : { },
+          "discovery" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/discovery/index.html"
+          },
           "distributable-ejb" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/distributable-ejb/index.html",
             "default-bean-management" : "default",
             "client-mappings-registry" : {
               "infinispan" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/distributable-ejb/client-mappings-registry/infinispan/index.html",
                 "cache" : "client-mappings",
                 "cache-container" : "ejb"
               }
             },
             "infinispan-bean-management" : {
               "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/distributable-ejb/infinispan-bean-management/index.html",
                 "cache-container" : "ejb",
                 "max-active-beans" : "10000"
               }
             },
             "infinispan-timer-management" : {
               "persistent" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/distributable-ejb/infinispan-timer-management/index.html",
                 "cache" : "persistent",
                 "cache-container" : "ejb",
                 "max-active-timers" : "10000"
               },
               "transient" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/distributable-ejb/infinispan-timer-management/index.html",
                 "cache" : "transient",
                 "cache-container" : "ejb",
                 "max-active-timers" : "10000"
@@ -1828,39 +1849,48 @@
             }
           },
           "distributable-web" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/distributable-web/index.html",
             "default-session-management" : "default",
             "default-single-sign-on-management" : "default",
             "infinispan-session-management" : {
               "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/distributable-web/infinispan-session-management/index.html",
                 "cache-container" : "web",
                 "granularity" : "SESSION",
                 "affinity" : {
-                  "primary-owner" : { }
+                  "primary-owner" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/distributable-web/infinispan-session-management/affinity/primary-owner/index.html"
+                  }
                 }
               }
             },
             "infinispan-single-sign-on-management" : {
               "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/distributable-web/infinispan-single-sign-on-management/index.html",
                 "cache" : "sso",
                 "cache-container" : "web"
               }
             },
             "routing" : {
               "infinispan" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/distributable-web/routing/infinispan/index.html",
                 "cache" : "routing",
                 "cache-container" : "web"
               }
             }
           },
           "ee" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/index.html",
             "spec-descriptor-property-replacement" : "true",
             "service" : {
               "default-bindings" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/service/default-bindings/index.html",
                 "datasource" : "java:jboss/datasources/${env.DEFAULT_DATASOURCE,\\ env.OPENSHIFT_DEFAULT_DATASOURCE,env.EXAMPLE_DATASOURCE,env.OPENSHIFT_EXAMPLE_DATASOURCE:ExampleDS}"
               }
             }
           },
           "ejb3" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/index.html",
             "default-mdb-instance-pool" : "mdb-strict-max-pool",
             "default-missing-method-permissions-deny-access" : "true",
             "default-resource-adapter-name" : "${ejb.resource-adapter-name:activemq-ra.rar}",
@@ -1874,31 +1904,39 @@
             "statistics-enabled" : "${wildfly.ejb3.statistics-enabled:${wildfly.statistics-enabled:false}}",
             "application-security-domain" : {
               "other" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/application-security-domain/index.html",
                 "security-domain" : "ApplicationDomain"
               }
             },
             "distributable-cache" : {
-              "distributable" : { }
+              "distributable" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/distributable-cache/index.html"
+              }
             },
             "service" : {
               "async" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/service/async/index.html",
                 "thread-pool-name" : "default"
               },
               "remote" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/service/remote/index.html",
                 "connectors" : "[http-remoting-connector]",
                 "thread-pool-name" : "default",
                 "channel-creation-options" : {
                   "MAX_OUTBOUND_MESSAGES" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/service/remote/channel-creation-options/index.html",
                     "type" : "remoting",
                     "value" : "1234"
                   }
                 }
               },
               "timer-service" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/service/timer-service/index.html",
                 "default-data-store" : "default-file-store",
                 "thread-pool-name" : "default",
                 "file-data-store" : {
                   "default-file-store" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/service/timer-service/file-data-store/index.html",
                     "path" : "timer-service-data",
                     "relative-to" : "jboss.server.data.dir"
                   }
@@ -1906,15 +1944,19 @@
               }
             },
             "simple-cache" : {
-              "simple" : { }
+              "simple" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/simple-cache/index.html"
+              }
             },
             "strict-max-bean-instance-pool" : {
               "mdb-strict-max-pool" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/strict-max-bean-instance-pool/index.html",
                 "derive-size" : "from-cpu-count",
                 "timeout" : "5",
                 "timeout-unit" : "MINUTES"
               },
               "slsb-strict-max-pool" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/strict-max-bean-instance-pool/index.html",
                 "derive-size" : "from-worker-pools",
                 "timeout" : "5",
                 "timeout-unit" : "MINUTES"
@@ -1922,6 +1964,7 @@
             },
             "thread-pool" : {
               "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/thread-pool/index.html",
                 "keepalive-time" : "{ unit=SECONDS, time=60 }",
                 "max-threads" : "10"
               }
@@ -1942,46 +1985,58 @@
             }
           },
           "infinispan" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/index.html",
             "cache-container" : {
               "ejb" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/index.html",
                 "aliases" : "[sfsb]",
                 "default-cache" : "dist",
                 "marshaller" : "PROTOSTREAM",
                 "modules" : "[org.wildfly.clustering.ejb.infinispan]",
                 "distributed-cache" : {
                   "dist" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/component/expiration/index.html",
                         "interval" : "0"
                       },
                       "locking" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/component/locking/index.html",
                         "isolation" : "REPEATABLE_READ"
                       },
                       "transaction" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/component/transaction/index.html",
                         "mode" : "BATCH"
                       }
                     },
                     "store" : {
                       "file" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/store/file/index.html",
                         "passivation" : "true",
                         "purge" : "true"
                       }
                     }
                   },
                   "persistent" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/component/expiration/index.html",
                         "interval" : "0"
                       },
                       "locking" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/component/locking/index.html",
                         "isolation" : "REPEATABLE_READ"
                       },
                       "transaction" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/component/transaction/index.html",
                         "mode" : "BATCH"
                       }
                     },
                     "store" : {
                       "file" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/store/file/index.html",
                         "passivation" : "true"
                       }
                     }
@@ -1989,19 +2044,24 @@
                 },
                 "local-cache" : {
                   "transient" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/component/expiration/index.html",
                         "interval" : "0"
                       },
                       "locking" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/component/locking/index.html",
                         "isolation" : "REPEATABLE_READ"
                       },
                       "transaction" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/component/transaction/index.html",
                         "mode" : "BATCH"
                       }
                     },
                     "store" : {
                       "file" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/store/file/index.html",
                         "passivation" : "true",
                         "purge" : "true"
                       }
@@ -2010,8 +2070,10 @@
                 },
                 "replicated-cache" : {
                   "client-mappings" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/replicated-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/replicated-cache/component/expiration/index.html",
                         "interval" : "0"
                       }
                     }
@@ -2019,23 +2081,28 @@
                 },
                 "transport" : {
                   "jgroups" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/transport/jgroups/index.html",
                     "lock-timeout" : "60000"
                   }
                 }
               },
               "hibernate" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/index.html",
                 "default-cache" : "local-query",
                 "marshaller" : "JBOSS",
                 "modules" : "[org.infinispan.hibernate-cache]",
                 "invalidation-cache" : {
                   "entity" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/invalidation-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/invalidation-cache/component/expiration/index.html",
                         "max-idle" : "100000"
                       }
                     },
                     "memory" : {
                       "heap" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/invalidation-cache/memory/heap/index.html",
                         "size" : "10000"
                       }
                     }
@@ -2043,20 +2110,25 @@
                 },
                 "local-cache" : {
                   "local-query" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/component/expiration/index.html",
                         "max-idle" : "100000"
                       }
                     },
                     "memory" : {
                       "heap" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/memory/heap/index.html",
                         "size" : "10000"
                       }
                     }
                   },
                   "pending-puts" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/component/expiration/index.html",
                         "max-idle" : "60000"
                       }
                     }
@@ -2064,8 +2136,10 @@
                 },
                 "replicated-cache" : {
                   "timestamps" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/replicated-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/replicated-cache/component/expiration/index.html",
                         "interval" : "0"
                       }
                     }
@@ -2073,22 +2147,27 @@
                 },
                 "transport" : {
                   "jgroups" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/transport/jgroups/index.html",
                     "lock-timeout" : "60000"
                   }
                 }
               },
               "server" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/index.html",
                 "aliases" : "[singleton, cluster]",
                 "default-cache" : "default",
                 "marshaller" : "PROTOSTREAM",
                 "modules" : "[org.wildfly.clustering.singleton.server]",
                 "replicated-cache" : {
                   "default" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/replicated-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/replicated-cache/component/expiration/index.html",
                         "interval" : "0"
                       },
                       "transaction" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/replicated-cache/component/transaction/index.html",
                         "mode" : "BATCH"
                       }
                     }
@@ -2096,37 +2175,46 @@
                 },
                 "transport" : {
                   "jgroups" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/transport/jgroups/index.html",
                     "lock-timeout" : "60000"
                   }
                 }
               },
               "web" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/index.html",
                 "default-cache" : "sessions",
                 "marshaller" : "PROTOSTREAM",
                 "modules" : "[org.wildfly.clustering.session.infinispan.embedded]",
                 "distributed-cache" : {
                   "dist" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/component/expiration/index.html",
                         "interval" : "0"
                       },
                       "locking" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/component/locking/index.html",
                         "isolation" : "REPEATABLE_READ"
                       },
                       "transaction" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/component/transaction/index.html",
                         "mode" : "BATCH"
                       }
                     },
                     "store" : {
                       "file" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/store/file/index.html",
                         "passivation" : "true",
                         "purge" : "true"
                       }
                     }
                   },
                   "sessions" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/component/expiration/index.html",
                         "interval" : "0"
                       }
                     }
@@ -2134,21 +2222,27 @@
                 },
                 "replicated-cache" : {
                   "routing" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/replicated-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/replicated-cache/component/expiration/index.html",
                         "interval" : "0"
                       }
                     }
                   },
                   "sso" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/replicated-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/replicated-cache/component/expiration/index.html",
                         "interval" : "0"
                       },
                       "locking" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/replicated-cache/component/locking/index.html",
                         "isolation" : "REPEATABLE_READ"
                       },
                       "transaction" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/replicated-cache/component/transaction/index.html",
                         "mode" : "BATCH"
                       }
                     }
@@ -2156,6 +2250,7 @@
                 },
                 "transport" : {
                   "jgroups" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/transport/jgroups/index.html",
                     "lock-timeout" : "60000"
                   }
                 }
@@ -2163,24 +2258,29 @@
             }
           },
           "jgroups" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/index.html",
             "default-channel" : "ee",
             "channel" : {
               "ee" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/channel/index.html",
                 "cluster" : "ejb",
                 "stack" : "tcp"
               }
             },
             "stack" : {
               "tcp" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html",
                 "protocol" : {
                   "FD_ALL3" : { },
                   "FD_SOCK2" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/protocol/FD_SOCK2/index.html",
                     "socket-binding" : "jgroups-tcp-fd"
                   },
                   "FRAG4" : { },
                   "MERGE3" : { },
                   "MFC" : { },
                   "MPING" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/protocol/MPING/index.html",
                     "socket-binding" : "jgroups-mping"
                   },
                   "RED" : { },
@@ -2198,9 +2298,11 @@
                 }
               },
               "udp" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html",
                 "protocol" : {
                   "FD_ALL3" : { },
                   "FD_SOCK2" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/protocol/FD_SOCK2/index.html",
                     "socket-binding" : "jgroups-udp-fd"
                   },
                   "FRAG4" : { },
@@ -2224,35 +2326,47 @@
             }
           },
           "jpa" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jpa/index.html",
             "default-extended-persistence-inheritance" : "DEEP"
           },
           "naming" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/naming/index.html",
             "service" : {
-              "remote-naming" : { }
+              "remote-naming" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/naming/service/remote-naming/index.html"
+              }
             }
           },
           "singleton" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/singleton/index.html",
             "default" : "default",
             "singleton-policy" : {
               "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/singleton/singleton-policy/index.html",
                 "cache-container" : "server",
                 "election-policy" : {
-                  "simple" : { }
+                  "simple" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/singleton/singleton-policy/election-policy/simple/index.html"
+                  }
                 }
               }
             }
           },
           "undertow" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/index.html",
             "default-security-domain" : "other",
             "application-security-domain" : {
               "other" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/application-security-domain/index.html",
                 "security-domain" : "ApplicationDomain"
               }
             },
             "configuration" : {
               "handler" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/configuration/handler/index.html",
                 "file" : {
                   "welcome-content" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/configuration/handler/file/index.html",
                     "path" : "${jboss.home.dir}/welcome-content"
                   }
                 }
@@ -2260,6 +2374,7 @@
             },
             "server" : {
               "default-server" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/index.html",
                 "alias" : "[localhost]",
                 "location" : {
                   "/" : {
@@ -2275,26 +2390,34 @@
             }
           },
           "webservices" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/webservices/index.html",
             "modify-wsdl-address" : "true",
             "statistics-enabled" : "${wildfly.webservices.statistics-enabled:${wildfly.statistics-enabled:false}}",
             "wsdl-host" : "jbossws.undefined.host",
             "client-config" : {
-              "Standard-Client-Config" : { }
+              "Standard-Client-Config" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/webservices/client-config/index.html"
+              }
             },
             "endpoint-config" : {
               "Recording-Endpoint-Config" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/webservices/endpoint-config/index.html",
                 "pre-handler-chain" : {
                   "recording-handlers" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/webservices/endpoint-config/pre-handler-chain/index.html",
                     "protocol-bindings" : "##SOAP11_HTTP ##SOAP11_HTTP_MTOM ##SOAP12_HTTP ##SOAP12_HTTP_MTOM",
                     "handler" : {
                       "RecordingHandler" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/webservices/endpoint-config/pre-handler-chain/handler/index.html",
                         "class" : "org.jboss.ws.common.invocation.RecordingServerHandler"
                       }
                     }
                   }
                 }
               },
-              "Standard-Endpoint-Config" : { }
+              "Standard-Endpoint-Config" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/webservices/endpoint-config/index.html"
+              }
             }
           }
         }
@@ -2308,20 +2431,25 @@
         "attribute" : "multicast-address",
         "systemProperties" : [ "jboss.default.multicast.address", "jboss.modcluster.multicast.address" ]
       }, {
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/data-source/index.html",
         "attribute" : "statistics-enabled",
         "environmentVariables" : [ "EXAMPLE_DATASOURCE", "OPENSHIFT_EXAMPLE_DATASOURCE" ],
         "systemProperties" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
       }, {
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/service/default-bindings/index.html",
         "attribute" : "datasource",
         "environmentVariables" : [ "DEFAULT_DATASOURCE", "EXAMPLE_DATASOURCE", "OPENSHIFT_EXAMPLE_DATASOURCE" ],
         "systemProperties" : [ "\\env.OPENSHIFT_DEFAULT_DATASOURCE" ]
       }, {
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/index.html",
         "attribute" : "statistics-enabled",
         "systemProperties" : [ "ejb.resource-adapter-name", "wildfly.ejb3.statistics-enabled", "wildfly.statistics-enabled" ]
       }, {
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/configuration/handler/file/index.html",
         "attribute" : "path",
         "systemProperties" : [ "jboss.home.dir" ]
       }, {
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/webservices/index.html",
         "attribute" : "statistics-enabled",
         "systemProperties" : [ "jboss.bind.address", "wildfly.statistics-enabled", "wildfly.webservices.statistics-enabled" ]
       } ],
@@ -2414,8 +2542,10 @@
       "managementModel" : {
         "subsystem" : {
           "jgroups" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/index.html",
             "channel" : {
               "ee" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/channel/index.html",
                 "stack" : "tcp"
               }
             }
@@ -2437,19 +2567,24 @@
       "managementModel" : {
         "subsystem" : {
           "messaging-activemq" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/messaging-activemq/index.html",
             "server" : {
               "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/messaging-activemq/server/index.html",
                 "connection-factory" : {
                   "RemoteConnectionFactory" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/messaging-activemq/server/connection-factory/index.html",
                     "reconnect-attempts" : "-1"
                   }
                 },
                 "http-connector" : {
                   "http-connector" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/messaging-activemq/server/http-connector/index.html",
                     "endpoint" : "http-acceptor",
                     "socket-binding" : "http-messaging"
                   },
                   "http-connector-throughput" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/messaging-activemq/server/http-connector/index.html",
                     "endpoint" : "http-acceptor-throughput",
                     "params" : "{batch-delay=50}",
                     "socket-binding" : "http-messaging"
@@ -2469,8 +2604,10 @@
       "managementModel" : {
         "subsystem" : {
           "infinispan" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/index.html",
             "cache-container" : {
               "hibernate" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/index.html",
                 "default-cache" : "local-query"
               }
             }
@@ -2486,15 +2623,19 @@
       "managementModel" : {
         "subsystem" : {
           "infinispan" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/index.html",
             "cache-container" : {
               "hibernate" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/index.html",
                 "default-cache" : "local-query"
               }
             }
           },
           "jgroups" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/index.html",
             "channel" : {
               "ee" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/channel/index.html",
                 "stack" : "tcp"
               }
             }
@@ -2516,11 +2657,15 @@
       "managementModel" : {
         "subsystem" : {
           "logging" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/logging/index.html",
             "console-handler" : {
-              "CONSOLE" : { }
+              "CONSOLE" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/logging/console-handler/index.html"
+              }
             },
             "json-formatter" : {
               "OPENSHIFT" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/logging/json-formatter/index.html",
                 "exception-output-type" : "formatted",
                 "key-overrides" : "{ timestamp=@timestamp }",
                 "meta-data" : "{@version=1}"
@@ -2528,6 +2673,7 @@
             },
             "root-logger" : {
               "ROOT" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/logging/root-logger/ROOT/index.html",
                 "handlers" : "[CONSOLE]",
                 "level" : "INFO"
               }
@@ -2625,12 +2771,14 @@
       "managementModel" : {
         "subsystem" : {
           "transactions" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/transactions/index.html",
             "node-identifier" : "${jboss.tx.node.id:1}",
             "recovery-listener" : "true"
           }
         }
       },
       "configuration" : [ {
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/transactions/index.html",
         "attribute" : "node-identifier",
         "systemProperties" : [ "jboss.tx.node.id" ]
       } ],
@@ -2658,10 +2806,13 @@
         },
         "subsystem" : {
           "undertow" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/index.html",
             "server" : {
               "default-server" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/index.html",
                 "http-listener" : {
                   "default" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/http-listener/index.html",
                     "proxy-address-forwarding" : "true"
                   }
                 }
@@ -2669,8 +2820,10 @@
             },
             "servlet-container" : {
               "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/servlet-container/index.html",
                 "setting" : {
                   "affinity-cookie" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/servlet-container/setting/affinity-cookie/index.html",
                     "name" : "INGRESSCOOKIE"
                   }
                 }
@@ -2694,13 +2847,17 @@
       "managementModel" : {
         "subsystem" : {
           "infinispan" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/index.html",
             "cache-container" : {
               "web" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/index.html",
                 "default-cache" : "sessions",
                 "distributed-cache" : {
                   "sessions" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/component/expiration/index.html",
                         "interval" : "0"
                       }
                     }
@@ -2710,8 +2867,10 @@
             }
           },
           "jgroups" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/index.html",
             "channel" : {
               "ee" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/channel/index.html",
                 "stack" : "tcp"
               }
             }
@@ -2733,6 +2892,7 @@
       "managementModel" : {
         "subsystem" : {
           "webservices" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/webservices/index.html",
             "modify-wsdl-address" : "true",
             "wsdl-host" : "jbossws.undefined.host"
           }
@@ -2791,26 +2951,31 @@
         },
         "subsystem" : {
           "distributable-ejb" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/distributable-ejb/index.html",
             "default-bean-management" : "default",
             "client-mappings-registry" : {
               "infinispan" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/distributable-ejb/client-mappings-registry/infinispan/index.html",
                 "cache" : "client-mappings",
                 "cache-container" : "ejb"
               }
             },
             "infinispan-bean-management" : {
               "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/distributable-ejb/infinispan-bean-management/index.html",
                 "cache-container" : "ejb",
                 "max-active-beans" : "10000"
               }
             },
             "infinispan-timer-management" : {
               "persistent" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/distributable-ejb/infinispan-timer-management/index.html",
                 "cache" : "persistent",
                 "cache-container" : "ejb",
                 "max-active-timers" : "10000"
               },
               "transient" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/distributable-ejb/infinispan-timer-management/index.html",
                 "cache" : "transient",
                 "cache-container" : "ejb",
                 "max-active-timers" : "10000"
@@ -2818,56 +2983,70 @@
             }
           },
           "ejb3" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/index.html",
             "default-sfsb-cache" : "distributable",
             "default-stateful-bean-access-timeout" : "5000",
             "service" : {
               "timer-service" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/service/timer-service/index.html",
                 "default-persistent-timer-management" : "persistent",
                 "default-transient-timer-management" : "transient"
               }
             }
           },
           "infinispan" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/index.html",
             "cache-container" : {
               "ejb" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/index.html",
                 "aliases" : "[sfsb]",
                 "default-cache" : "dist",
                 "marshaller" : "PROTOSTREAM",
                 "modules" : "[org.wildfly.clustering.ejb.infinispan]",
                 "distributed-cache" : {
                   "dist" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/component/expiration/index.html",
                         "interval" : "0"
                       },
                       "locking" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/component/locking/index.html",
                         "isolation" : "REPEATABLE_READ"
                       },
                       "transaction" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/component/transaction/index.html",
                         "mode" : "BATCH"
                       }
                     },
                     "store" : {
                       "file" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/store/file/index.html",
                         "passivation" : "true",
                         "purge" : "true"
                       }
                     }
                   },
                   "persistent" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/component/expiration/index.html",
                         "interval" : "0"
                       },
                       "locking" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/component/locking/index.html",
                         "isolation" : "REPEATABLE_READ"
                       },
                       "transaction" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/component/transaction/index.html",
                         "mode" : "BATCH"
                       }
                     },
                     "store" : {
                       "file" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/store/file/index.html",
                         "passivation" : "true"
                       }
                     }
@@ -2875,19 +3054,24 @@
                 },
                 "local-cache" : {
                   "transient" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/component/expiration/index.html",
                         "interval" : "0"
                       },
                       "locking" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/component/locking/index.html",
                         "isolation" : "REPEATABLE_READ"
                       },
                       "transaction" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/component/transaction/index.html",
                         "mode" : "BATCH"
                       }
                     },
                     "store" : {
                       "file" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/store/file/index.html",
                         "passivation" : "true",
                         "purge" : "true"
                       }
@@ -2896,8 +3080,10 @@
                 },
                 "replicated-cache" : {
                   "client-mappings" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/replicated-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/replicated-cache/component/expiration/index.html",
                         "interval" : "0"
                       }
                     }
@@ -2905,6 +3091,7 @@
                 },
                 "transport" : {
                   "jgroups" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/transport/jgroups/index.html",
                     "lock-timeout" : "60000"
                   }
                 }
@@ -2912,24 +3099,29 @@
             }
           },
           "jgroups" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/index.html",
             "default-channel" : "ee",
             "channel" : {
               "ee" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/channel/index.html",
                 "cluster" : "ejb",
                 "stack" : "udp"
               }
             },
             "stack" : {
               "tcp" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html",
                 "protocol" : {
                   "FD_ALL3" : { },
                   "FD_SOCK2" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/protocol/FD_SOCK2/index.html",
                     "socket-binding" : "jgroups-tcp-fd"
                   },
                   "FRAG4" : { },
                   "MERGE3" : { },
                   "MFC" : { },
                   "MPING" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/protocol/MPING/index.html",
                     "socket-binding" : "jgroups-mping"
                   },
                   "RED" : { },
@@ -2947,9 +3139,11 @@
                 }
               },
               "udp" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html",
                 "protocol" : {
                   "FD_ALL3" : { },
                   "FD_SOCK2" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/protocol/FD_SOCK2/index.html",
                     "socket-binding" : "jgroups-udp-fd"
                   },
                   "FRAG4" : { },
@@ -3044,19 +3238,24 @@
         },
         "subsystem" : {
           "infinispan" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/index.html",
             "cache-container" : {
               "hibernate" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/index.html",
                 "marshaller" : "JBOSS",
                 "modules" : "[org.infinispan.hibernate-cache]",
                 "invalidation-cache" : {
                   "entity" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/invalidation-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/invalidation-cache/component/expiration/index.html",
                         "max-idle" : "100000"
                       }
                     },
                     "memory" : {
                       "heap" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/invalidation-cache/memory/heap/index.html",
                         "size" : "10000"
                       }
                     }
@@ -3064,20 +3263,25 @@
                 },
                 "local-cache" : {
                   "local-query" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/component/expiration/index.html",
                         "max-idle" : "100000"
                       }
                     },
                     "memory" : {
                       "heap" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/memory/heap/index.html",
                         "size" : "10000"
                       }
                     }
                   },
                   "pending-puts" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/component/expiration/index.html",
                         "max-idle" : "60000"
                       }
                     }
@@ -3085,8 +3289,10 @@
                 },
                 "replicated-cache" : {
                   "timestamps" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/replicated-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/replicated-cache/component/expiration/index.html",
                         "interval" : "0"
                       }
                     }
@@ -3094,6 +3300,7 @@
                 },
                 "transport" : {
                   "jgroups" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/transport/jgroups/index.html",
                     "lock-timeout" : "60000"
                   }
                 }
@@ -3101,24 +3308,29 @@
             }
           },
           "jgroups" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/index.html",
             "default-channel" : "ee",
             "channel" : {
               "ee" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/channel/index.html",
                 "cluster" : "ejb",
                 "stack" : "udp"
               }
             },
             "stack" : {
               "tcp" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html",
                 "protocol" : {
                   "FD_ALL3" : { },
                   "FD_SOCK2" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/protocol/FD_SOCK2/index.html",
                     "socket-binding" : "jgroups-tcp-fd"
                   },
                   "FRAG4" : { },
                   "MERGE3" : { },
                   "MFC" : { },
                   "MPING" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/protocol/MPING/index.html",
                     "socket-binding" : "jgroups-mping"
                   },
                   "RED" : { },
@@ -3136,9 +3348,11 @@
                 }
               },
               "udp" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html",
                 "protocol" : {
                   "FD_ALL3" : { },
                   "FD_SOCK2" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/protocol/FD_SOCK2/index.html",
                     "socket-binding" : "jgroups-udp-fd"
                   },
                   "FRAG4" : { },
@@ -3162,6 +3376,7 @@
             }
           },
           "jpa" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jpa/index.html",
             "default-extended-persistence-inheritance" : "DEEP"
           }
         }
@@ -3210,14 +3425,18 @@
         },
         "subsystem" : {
           "modcluster" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/modcluster/index.html",
             "proxy" : {
               "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/modcluster/proxy/index.html",
                 "advertise-socket" : "modcluster",
                 "listener" : "ajp",
                 "load-provider" : {
                   "dynamic" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/modcluster/proxy/load-provider/dynamic/index.html",
                     "load-metric" : {
                       "cpu" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/modcluster/proxy/load-provider/dynamic/load-metric/index.html",
                         "type" : "cpu"
                       }
                     }
@@ -3227,10 +3446,13 @@
             }
           },
           "undertow" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/index.html",
             "server" : {
               "default-server" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/index.html",
                 "ajp-listener" : {
                   "ajp" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/ajp-listener/index.html",
                     "socket-binding" : "ajp"
                   }
                 }
@@ -3299,19 +3521,24 @@
         },
         "subsystem" : {
           "infinispan" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/index.html",
             "cache-container" : {
               "server" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/index.html",
                 "aliases" : "[singleton, cluster]",
                 "default-cache" : "default",
                 "marshaller" : "PROTOSTREAM",
                 "modules" : "[org.wildfly.clustering.singleton.server]",
                 "replicated-cache" : {
                   "default" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/replicated-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/replicated-cache/component/expiration/index.html",
                         "interval" : "0"
                       },
                       "transaction" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/replicated-cache/component/transaction/index.html",
                         "mode" : "BATCH"
                       }
                     }
@@ -3319,6 +3546,7 @@
                 },
                 "transport" : {
                   "jgroups" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/transport/jgroups/index.html",
                     "lock-timeout" : "60000"
                   }
                 }
@@ -3326,24 +3554,29 @@
             }
           },
           "jgroups" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/index.html",
             "default-channel" : "ee",
             "channel" : {
               "ee" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/channel/index.html",
                 "cluster" : "ejb",
                 "stack" : "udp"
               }
             },
             "stack" : {
               "tcp" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html",
                 "protocol" : {
                   "FD_ALL3" : { },
                   "FD_SOCK2" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/protocol/FD_SOCK2/index.html",
                     "socket-binding" : "jgroups-tcp-fd"
                   },
                   "FRAG4" : { },
                   "MERGE3" : { },
                   "MFC" : { },
                   "MPING" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/protocol/MPING/index.html",
                     "socket-binding" : "jgroups-mping"
                   },
                   "RED" : { },
@@ -3361,9 +3594,11 @@
                 }
               },
               "udp" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html",
                 "protocol" : {
                   "FD_ALL3" : { },
                   "FD_SOCK2" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/protocol/FD_SOCK2/index.html",
                     "socket-binding" : "jgroups-udp-fd"
                   },
                   "FRAG4" : { },
@@ -3387,12 +3622,16 @@
             }
           },
           "singleton" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/singleton/index.html",
             "default" : "default",
             "singleton-policy" : {
               "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/singleton/singleton-policy/index.html",
                 "cache-container" : "server",
                 "election-policy" : {
-                  "simple" : { }
+                  "simple" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/singleton/singleton-policy/election-policy/simple/index.html"
+                  }
                 }
               }
             }
@@ -3430,15 +3669,19 @@
       "managementModel" : {
         "subsystem" : {
           "infinispan" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/index.html",
             "cache-container" : {
               "server" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/index.html",
                 "default-cache" : "default",
                 "marshaller" : "PROTOSTREAM",
                 "modules" : "[org.wildfly.clustering.singleton.server]",
                 "local-cache" : {
                   "default" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/component/expiration/index.html",
                         "interval" : "0"
                       }
                     }
@@ -3448,12 +3691,16 @@
             }
           },
           "singleton" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/singleton/index.html",
             "default" : "default",
             "singleton-policy" : {
               "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/singleton/singleton-policy/index.html",
                 "cache-container" : "server",
                 "election-policy" : {
-                  "simple" : { }
+                  "simple" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/singleton/singleton-policy/election-policy/simple/index.html"
+                  }
                 }
               }
             }
@@ -3516,17 +3763,24 @@
         },
         "subsystem" : {
           "undertow" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/index.html",
             "statistics-enabled" : "${wildfly.undertow.statistics-enabled:${wildfly.statistics-enabled:false}}",
             "buffer-cache" : {
-              "default" : { }
+              "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/buffer-cache/index.html"
+              }
             },
             "byte-buffer-pool" : {
-              "default" : { }
+              "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/byte-buffer-pool/index.html"
+              }
             },
             "configuration" : {
               "filter" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/configuration/filter/index.html",
                 "mod-cluster" : {
                   "load-balancer" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/configuration/filter/mod-cluster/index.html",
                     "advertise-socket-binding" : "modcluster",
                     "enable-http2" : "true",
                     "management-socket-binding" : "mcmp-management",
@@ -3534,21 +3788,26 @@
                   }
                 }
               },
-              "handler" : { }
+              "handler" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/configuration/handler/index.html"
+              }
             },
             "server" : {
               "default-server" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/index.html",
                 "alias" : "[localhost]",
                 "filter-ref" : {
                   "load-balancer" : { }
                 },
                 "http-listener" : {
                   "default" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/http-listener/index.html",
                     "enable-http2" : "true",
                     "redirect-socket" : "https",
                     "socket-binding" : "http"
                   },
                   "management" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/http-listener/index.html",
                     "enable-http2" : "true",
                     "socket-binding" : "mcmp-management"
                   }
@@ -3556,7 +3815,9 @@
               }
             },
             "servlet-container" : {
-              "default" : { }
+              "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/servlet-container/index.html"
+              }
             }
           }
         }
@@ -3570,6 +3831,7 @@
         "attribute" : "port",
         "systemProperties" : [ "jboss.http.port", "jboss.https.port", "jboss.mcmp.port", "jboss.modcluster.multicast.address" ]
       }, {
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/index.html",
         "attribute" : "statistics-enabled",
         "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.undertow.statistics-enabled" ]
       } ],
@@ -3631,51 +3893,64 @@
         },
         "subsystem" : {
           "distributable-web" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/distributable-web/index.html",
             "default-session-management" : "default",
             "default-single-sign-on-management" : "default",
             "infinispan-session-management" : {
               "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/distributable-web/infinispan-session-management/index.html",
                 "cache-container" : "web",
                 "granularity" : "SESSION",
                 "affinity" : {
-                  "primary-owner" : { }
+                  "primary-owner" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/distributable-web/infinispan-session-management/affinity/primary-owner/index.html"
+                  }
                 }
               }
             },
             "infinispan-single-sign-on-management" : {
               "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/distributable-web/infinispan-single-sign-on-management/index.html",
                 "cache" : "sso",
                 "cache-container" : "web"
               }
             },
             "routing" : {
               "infinispan" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/distributable-web/routing/infinispan/index.html",
                 "cache" : "routing",
                 "cache-container" : "web"
               }
             }
           },
           "infinispan" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/index.html",
             "cache-container" : {
               "web" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/index.html",
                 "default-cache" : "dist",
                 "marshaller" : "PROTOSTREAM",
                 "modules" : "[org.wildfly.clustering.session.infinispan.embedded]",
                 "distributed-cache" : {
                   "dist" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/component/expiration/index.html",
                         "interval" : "0"
                       },
                       "locking" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/component/locking/index.html",
                         "isolation" : "REPEATABLE_READ"
                       },
                       "transaction" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/component/transaction/index.html",
                         "mode" : "BATCH"
                       }
                     },
                     "store" : {
                       "file" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/distributed-cache/store/file/index.html",
                         "passivation" : "true",
                         "purge" : "true"
                       }
@@ -3684,21 +3959,27 @@
                 },
                 "replicated-cache" : {
                   "routing" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/replicated-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/replicated-cache/component/expiration/index.html",
                         "interval" : "0"
                       }
                     }
                   },
                   "sso" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/replicated-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/replicated-cache/component/expiration/index.html",
                         "interval" : "0"
                       },
                       "locking" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/replicated-cache/component/locking/index.html",
                         "isolation" : "REPEATABLE_READ"
                       },
                       "transaction" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/replicated-cache/component/transaction/index.html",
                         "mode" : "BATCH"
                       }
                     }
@@ -3706,6 +3987,7 @@
                 },
                 "transport" : {
                   "jgroups" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/transport/jgroups/index.html",
                     "lock-timeout" : "60000"
                   }
                 }
@@ -3713,24 +3995,29 @@
             }
           },
           "jgroups" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/index.html",
             "default-channel" : "ee",
             "channel" : {
               "ee" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/channel/index.html",
                 "cluster" : "ejb",
                 "stack" : "udp"
               }
             },
             "stack" : {
               "tcp" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html",
                 "protocol" : {
                   "FD_ALL3" : { },
                   "FD_SOCK2" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/protocol/FD_SOCK2/index.html",
                     "socket-binding" : "jgroups-tcp-fd"
                   },
                   "FRAG4" : { },
                   "MERGE3" : { },
                   "MFC" : { },
                   "MPING" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/protocol/MPING/index.html",
                     "socket-binding" : "jgroups-mping"
                   },
                   "RED" : { },
@@ -3748,9 +4035,11 @@
                 }
               },
               "udp" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html",
                 "protocol" : {
                   "FD_ALL3" : { },
                   "FD_SOCK2" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/protocol/FD_SOCK2/index.html",
                     "socket-binding" : "jgroups-udp-fd"
                   },
                   "FRAG4" : { },
@@ -3807,49 +4096,63 @@
       "managementModel" : {
         "subsystem" : {
           "distributable-web" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/distributable-web/index.html",
             "default-session-management" : "default",
             "default-single-sign-on-management" : "default",
             "infinispan-session-management" : {
               "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/distributable-web/infinispan-session-management/index.html",
                 "cache-container" : "web",
                 "granularity" : "SESSION",
                 "affinity" : {
-                  "local" : { }
+                  "local" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/distributable-web/infinispan-session-management/affinity/local/index.html"
+                  }
                 }
               }
             },
             "infinispan-single-sign-on-management" : {
               "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/distributable-web/infinispan-single-sign-on-management/index.html",
                 "cache" : "sso",
                 "cache-container" : "web"
               }
             },
             "routing" : {
-              "local" : { }
+              "local" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/distributable-web/routing/local/index.html"
+              }
             }
           },
           "infinispan" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/index.html",
             "cache-container" : {
               "web" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/index.html",
                 "default-cache" : "passivation",
                 "marshaller" : "PROTOSTREAM",
                 "modules" : "[org.wildfly.clustering.web.infinispan]",
                 "local-cache" : {
                   "passivation" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/component/expiration/index.html",
                         "interval" : "0"
                       }
                     },
                     "store" : {
                       "file" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/store/file/index.html",
                         "passivation" : "true"
                       }
                     }
                   },
                   "sso" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/component/expiration/index.html",
                         "interval" : "0"
                       }
                     }
@@ -3886,8 +4189,10 @@
       "managementModel" : {
         "subsystem" : {
           "datasources" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/index.html",
             "data-source" : {
               "DB2DS" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/data-source/index.html",
                 "background-validation" : "${org.wildfly.datasources.db2.background-validation,env.DB2_BACKGROUND_VALIDATION:false}",
                 "background-validation-millis" : "${org.wildfly.datasources.db2.background-validation-millis,env.DB2_BACKGROUND_VALIDATION_MILLIS:10000}",
                 "connection-url" : "${org.wildfly.datasources.db2.connection-url,env.DB2_URL:jdbc:db2://${org.wildfly.datasources.db2.host,env.DB2_SERVICE_HOST,env.OPENSHIFT_DB2_DB_HOST,env.DB2_HOST:localhost}:${org.wildfly.datasources.db2.port,env.DB2_SERVICE_PORT,env.OPENSHIFT_DB2_DB_PORT,env.DB2_PORT:50000}/${org.wildfly.datasources.db2.database,env.DB2_DATABASE,env.OPENSHIFT_DB2_DB_NAME}}",
@@ -3913,6 +4218,7 @@
         }
       },
       "configuration" : [ {
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/data-source/index.html",
         "attribute" : "min-pool-size",
         "environmentVariables" : [ "DB2_BACKGROUND_VALIDATION", "DB2_BACKGROUND_VALIDATION_MILLIS", "DB2_CONNECTION_CHECKER", "DB2_DATABASE", "DB2_DATASOURCE", "DB2_ENABLED", "DB2_EXCEPTION_SORTER", "DB2_FLUSH_STRATEGY", "DB2_HOST", "DB2_IDLE_TIMEOUT_MINUTES", "DB2_JNDI", "DB2_JTA", "DB2_MAX_POOL_SIZE", "DB2_MIN_POOL_SIZE", "DB2_PASSWORD", "DB2_PORT", "DB2_SERVICE_HOST", "DB2_SERVICE_PORT", "DB2_STALE_CONNECTION_CHECKER", "DB2_TX_ISOLATION", "DB2_URL", "DB2_USER", "DB2_VALIDATE_ON_MATCH", "OPENSHIFT_DB2_DATASOURCE", "OPENSHIFT_DB2_DB_HOST", "OPENSHIFT_DB2_DB_NAME", "OPENSHIFT_DB2_DB_PASSWORD", "OPENSHIFT_DB2_DB_PORT", "OPENSHIFT_DB2_DB_USERNAME" ],
         "systemProperties" : [ "org.wildfly.datasources.db2.background-validation", "org.wildfly.datasources.db2.background-validation-millis", "org.wildfly.datasources.db2.connection-url", "org.wildfly.datasources.db2.database", "org.wildfly.datasources.db2.datasource", "org.wildfly.datasources.db2.enabled", "org.wildfly.datasources.db2.exception-sorter-class-name", "org.wildfly.datasources.db2.flush-strategy", "org.wildfly.datasources.db2.host", "org.wildfly.datasources.db2.idle-timeout-minutes", "org.wildfly.datasources.db2.jndi-name", "org.wildfly.datasources.db2.jta", "org.wildfly.datasources.db2.max-pool-size", "org.wildfly.datasources.db2.min-pool-size", "org.wildfly.datasources.db2.password", "org.wildfly.datasources.db2.port", "org.wildfly.datasources.db2.stale-connection-checker-class-name", "org.wildfly.datasources.db2.transaction-isolation", "org.wildfly.datasources.db2.user-name", "org.wildfly.datasources.db2.valid-connection-checker-class-name", "org.wildfly.datasources.db2.validate-on-match", "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
@@ -3939,8 +4245,10 @@
       "managementModel" : {
         "subsystem" : {
           "ee" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/index.html",
             "service" : {
               "default-bindings" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/service/default-bindings/index.html",
                 "datasource" : "${org.wildfly.datasources.db2.jndi-name,env.DB2_JNDI:java:jboss/datasources/${org.wildfly.datasources.db2.datasource, env.DB2_DATASOURCE,env.OPENSHIFT_DB2_DATASOURCE:DB2DS}}"
               }
             }
@@ -3948,6 +4256,7 @@
         }
       },
       "configuration" : [ {
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/service/default-bindings/index.html",
         "attribute" : "datasource",
         "environmentVariables" : [ "DB2_DATASOURCE", "DB2_JNDI", "OPENSHIFT_DB2_DATASOURCE" ],
         "systemProperties" : [ "org.wildfly.datasources.db2.datasource", "org.wildfly.datasources.db2.jndi-name" ]
@@ -3974,8 +4283,10 @@
       "managementModel" : {
         "subsystem" : {
           "datasources" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/index.html",
             "jdbc-driver" : {
               "db2" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/jdbc-driver/index.html",
                 "driver-module-name" : "com.ibm.db2",
                 "driver-name" : "db2",
                 "driver-xa-datasource-class-name" : "com.ibm.db2.jcc.DB2XADataSource"
@@ -4018,8 +4329,10 @@
       "managementModel" : {
         "subsystem" : {
           "datasources" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/index.html",
             "data-source" : {
               "ExampleDS" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/data-source/index.html",
                 "connection-url" : "\"jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=${wildfly.h2.compatibility.mode:REGULAR}\"",
                 "driver-name" : "h2",
                 "enabled" : "true",
@@ -4034,6 +4347,7 @@
         }
       },
       "configuration" : [ {
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/data-source/index.html",
         "attribute" : "connection-url",
         "systemProperties" : [ "wildfly.datasources.statistics-enabled", "wildfly.h2.compatibility.mode", "wildfly.statistics-enabled" ]
       } ],
@@ -4065,8 +4379,10 @@
       "managementModel" : {
         "subsystem" : {
           "ee" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/index.html",
             "service" : {
               "default-bindings" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/service/default-bindings/index.html",
                 "datasource" : "java:jboss/datasources/ExampleDS"
               }
             }
@@ -4090,8 +4406,10 @@
       "managementModel" : {
         "subsystem" : {
           "datasources" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/index.html",
             "jdbc-driver" : {
               "h2" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/jdbc-driver/index.html",
                 "driver-module-name" : "com.h2database.h2",
                 "driver-name" : "h2",
                 "driver-xa-datasource-class-name" : "org.h2.jdbcx.JdbcDataSource"
@@ -4157,8 +4475,10 @@
       "managementModel" : {
         "subsystem" : {
           "datasources" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/index.html",
             "data-source" : {
               "MariaDBDS" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/data-source/index.html",
                 "background-validation" : "${org.wildfly.datasources.mariadb.background-validation,env.MARIADB_BACKGROUND_VALIDATION:false}",
                 "background-validation-millis" : "${org.wildfly.datasources.mariadb.background-validation-millis,env.MARIADB_BACKGROUND_VALIDATION_MILLIS:10000}",
                 "connection-url" : "${org.wildfly.datasources.mariadb.connection-url,env.MARIADB_URL:jdbc:mariadb://${org.wildfly.datasources.mariadb.host,env.MARIADB_SERVICE_HOST,env.MARIADB_HOST:localhost}:${org.wildfly.datasources.mariadb.port,env.MARIADB_SERVICE_PORT,env.MARIADB_PORT:3306}/${org.wildfly.datasources.mariadb.database,env.MARIADB_DATABASE}}",
@@ -4184,6 +4504,7 @@
         }
       },
       "configuration" : [ {
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/data-source/index.html",
         "attribute" : "min-pool-size",
         "environmentVariables" : [ "MARIADB_BACKGROUND_VALIDATION", "MARIADB_BACKGROUND_VALIDATION_MILLIS", "MARIADB_CONNECTION_CHECKER", "MARIADB_DATABASE", "MARIADB_DATASOURCE", "MARIADB_ENABLED", "MARIADB_EXCEPTION_SORTER", "MARIADB_FLUSH_STRATEGY", "MARIADB_HOST", "MARIADB_IDLE_TIMEOUT_MINUTES", "MARIADB_JNDI", "MARIADB_JTA", "MARIADB_MAX_POOL_SIZE", "MARIADB_MIN_POOL_SIZE", "MARIADB_PASSWORD", "MARIADB_PORT", "MARIADB_SERVICE_HOST", "MARIADB_SERVICE_PORT", "MARIADB_STALE_CONNECTION_CHECKER", "MARIADB_TX_ISOLATION", "MARIADB_URL", "MARIADB_USER", "MARIADB_VALIDATE_ON_MATCH" ],
         "systemProperties" : [ "org.wildfly.datasources.mariadb.background-validation", "org.wildfly.datasources.mariadb.background-validation-millis", "org.wildfly.datasources.mariadb.connection-url", "org.wildfly.datasources.mariadb.database", "org.wildfly.datasources.mariadb.datasource", "org.wildfly.datasources.mariadb.enabled", "org.wildfly.datasources.mariadb.exception-sorter-class-name", "org.wildfly.datasources.mariadb.flush-strategy", "org.wildfly.datasources.mariadb.host", "org.wildfly.datasources.mariadb.idle-timeout-minutes", "org.wildfly.datasources.mariadb.jndi-name", "org.wildfly.datasources.mariadb.jta", "org.wildfly.datasources.mariadb.max-pool-size", "org.wildfly.datasources.mariadb.min-pool-size", "org.wildfly.datasources.mariadb.password", "org.wildfly.datasources.mariadb.port", "org.wildfly.datasources.mariadb.stale-connection-checker-class-name", "org.wildfly.datasources.mariadb.transaction-isolation", "org.wildfly.datasources.mariadb.user-name", "org.wildfly.datasources.mariadb.valid-connection-checker-class-name", "org.wildfly.datasources.mariadb.validate-on-match", "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
@@ -4210,8 +4531,10 @@
       "managementModel" : {
         "subsystem" : {
           "ee" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/index.html",
             "service" : {
               "default-bindings" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/service/default-bindings/index.html",
                 "datasource" : "java:jboss/datasources/${env.MARIADB_DATASOURCE:MariaDBDS}"
               }
             }
@@ -4219,6 +4542,7 @@
         }
       },
       "configuration" : [ {
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/service/default-bindings/index.html",
         "attribute" : "datasource",
         "environmentVariables" : [ "MARIADB_DATASOURCE" ]
       } ],
@@ -4244,8 +4568,10 @@
       "managementModel" : {
         "subsystem" : {
           "datasources" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/index.html",
             "jdbc-driver" : {
               "mariadb" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/jdbc-driver/index.html",
                 "driver-module-name" : "org.mariadb.jdbc",
                 "driver-name" : "mariadb",
                 "driver-xa-datasource-class-name" : "org.mariadb.jdbc.MariaDbDataSource"
@@ -4288,8 +4614,10 @@
       "managementModel" : {
         "subsystem" : {
           "datasources" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/index.html",
             "data-source" : {
               "MSSQLServerDS" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/data-source/index.html",
                 "background-validation" : "${org.wildfly.datasources.mssqlserver.background-validation,env.MSSQLSERVER_BACKGROUND_VALIDATION:false}",
                 "background-validation-millis" : "${org.wildfly.datasources.mssqlserver.background-validation-millis,env.MSSQLSERVER_BACKGROUND_VALIDATION_MILLIS:10000}",
                 "connection-url" : "${org.wildfly.datasources.mssqlserver.connection-url,env.MSSQLSERVER_URL:jdbc:sqlserver://${org.wildfly.datasources.mssqlserver.host,env.MSSQLSERVER_SERVICE_HOST,env.MSSQLSERVER_HOST:localhost}:${org.wildfly.datasources.mssqlserver.port,env.MSSQLSERVER_SERVICE_PORT,env.MSSQLSERVER_PORT:1433};DatabaseName\\=${org.wildfly.datasources.mssqlserver.database,env.MSSQLSERVER_DATABASE}}",
@@ -4315,6 +4643,7 @@
         }
       },
       "configuration" : [ {
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/data-source/index.html",
         "attribute" : "min-pool-size",
         "environmentVariables" : [ "MSSQLSERVER_BACKGROUND_VALIDATION", "MSSQLSERVER_BACKGROUND_VALIDATION_MILLIS", "MSSQLSERVER_CONNECTION_CHECKER", "MSSQLSERVER_DATABASE", "MSSQLSERVER_DATASOURCE", "MSSQLSERVER_ENABLED", "MSSQLSERVER_EXCEPTION_SORTER", "MSSQLSERVER_FLUSH_STRATEGY", "MSSQLSERVER_HOST", "MSSQLSERVER_IDLE_TIMEOUT_MINUTES", "MSSQLSERVER_JNDI", "MSSQLSERVER_JTA", "MSSQLSERVER_MAX_POOL_SIZE", "MSSQLSERVER_MIN_POOL_SIZE", "MSSQLSERVER_PASSWORD", "MSSQLSERVER_PORT", "MSSQLSERVER_SERVICE_HOST", "MSSQLSERVER_SERVICE_PORT", "MSSQLSERVER_STALE_CONNECTION_CHECKER", "MSSQLSERVER_TX_ISOLATION", "MSSQLSERVER_URL", "MSSQLSERVER_USER", "MSSQLSERVER_VALIDATE_ON_MATCH" ],
         "systemProperties" : [ "org.wildfly.datasources.mssqlserver.background-validation", "org.wildfly.datasources.mssqlserver.background-validation-millis", "org.wildfly.datasources.mssqlserver.connection-url", "org.wildfly.datasources.mssqlserver.database", "org.wildfly.datasources.mssqlserver.datasource", "org.wildfly.datasources.mssqlserver.enabled", "org.wildfly.datasources.mssqlserver.exception-sorter-class-name", "org.wildfly.datasources.mssqlserver.flush-strategy", "org.wildfly.datasources.mssqlserver.host", "org.wildfly.datasources.mssqlserver.idle-timeout-minutes", "org.wildfly.datasources.mssqlserver.jndi-name", "org.wildfly.datasources.mssqlserver.jta", "org.wildfly.datasources.mssqlserver.max-pool-size", "org.wildfly.datasources.mssqlserver.min-pool-size", "org.wildfly.datasources.mssqlserver.password", "org.wildfly.datasources.mssqlserver.port", "org.wildfly.datasources.mssqlserver.stale-connection-checker-class-name", "org.wildfly.datasources.mssqlserver.transaction-isolation", "org.wildfly.datasources.mssqlserver.user-name", "org.wildfly.datasources.mssqlserver.valid-connection-checker-class-name", "org.wildfly.datasources.mssqlserver.validate-on-match", "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
@@ -4341,8 +4670,10 @@
       "managementModel" : {
         "subsystem" : {
           "ee" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/index.html",
             "service" : {
               "default-bindings" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/service/default-bindings/index.html",
                 "datasource" : "java:jboss/datasources/${env.MSSQLSERVER_DATASOURCE:MSSQLServerDS}"
               }
             }
@@ -4350,6 +4681,7 @@
         }
       },
       "configuration" : [ {
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/service/default-bindings/index.html",
         "attribute" : "datasource",
         "environmentVariables" : [ "MSSQLSERVER_DATASOURCE" ]
       } ],
@@ -4375,8 +4707,10 @@
       "managementModel" : {
         "subsystem" : {
           "datasources" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/index.html",
             "jdbc-driver" : {
               "mssqlserver" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/jdbc-driver/index.html",
                 "driver-module-name" : "com.microsoft.sqlserver",
                 "driver-name" : "mssqlserver",
                 "driver-xa-datasource-class-name" : "com.microsoft.sqlserver.jdbc.SQLServerXADataSource"
@@ -4419,8 +4753,10 @@
       "managementModel" : {
         "subsystem" : {
           "datasources" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/index.html",
             "data-source" : {
               "MySQLDS" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/data-source/index.html",
                 "background-validation" : "${org.wildfly.datasources.mysql.background-validation,env.MYSQL_BACKGROUND_VALIDATION:false}",
                 "background-validation-millis" : "${org.wildfly.datasources.mysql.background-validation-millis,env.MYSQL_BACKGROUND_VALIDATION_MILLIS:10000}",
                 "connection-url" : "${org.wildfly.datasources.mysql.connection-url,env.MYSQL_URL:jdbc:mysql://${org.wildfly.datasources.mysql.host,env.MYSQL_SERVICE_HOST,env.OPENSHIFT_MYSQL_DB_HOST,env.MYSQL_HOST:localhost}:${org.wildfly.datasources.mysql.port,env.MYSQL_SERVICE_PORT,env.OPENSHIFT_MYSQL_DB_PORT,env.MYSQL_PORT:3306}/${org.wildfly.datasources.mysql.database,env.MYSQL_DATABASE,env.OPENSHIFT_MYSQL_DB_NAME}}",
@@ -4446,6 +4782,7 @@
         }
       },
       "configuration" : [ {
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/data-source/index.html",
         "attribute" : "min-pool-size",
         "environmentVariables" : [ "MYSQL_BACKGROUND_VALIDATION", "MYSQL_BACKGROUND_VALIDATION_MILLIS", "MYSQL_CONNECTION_CHECKER", "MYSQL_DATABASE", "MYSQL_DATASOURCE", "MYSQL_ENABLED", "MYSQL_EXCEPTION_SORTER", "MYSQL_FLUSH_STRATEGY", "MYSQL_HOST", "MYSQL_IDLE_TIMEOUT_MINUTES", "MYSQL_JNDI", "MYSQL_JTA", "MYSQL_MAX_POOL_SIZE", "MYSQL_MIN_POOL_SIZE", "MYSQL_PASSWORD", "MYSQL_PORT", "MYSQL_SERVICE_HOST", "MYSQL_SERVICE_PORT", "MYSQL_STALE_CONNECTION_CHECKER", "MYSQL_TX_ISOLATION", "MYSQL_URL", "MYSQL_USER", "MYSQL_VALIDATE_ON_MATCH", "OPENSHIFT_MYSQL_DATASOURCE", "OPENSHIFT_MYSQL_DB_HOST", "OPENSHIFT_MYSQL_DB_NAME", "OPENSHIFT_MYSQL_DB_PASSWORD", "OPENSHIFT_MYSQL_DB_PORT", "OPENSHIFT_MYSQL_DB_USERNAME" ],
         "systemProperties" : [ "org.wildfly.datasources.mysql.background-validation", "org.wildfly.datasources.mysql.background-validation-millis", "org.wildfly.datasources.mysql.connection-url", "org.wildfly.datasources.mysql.database", "org.wildfly.datasources.mysql.datasource", "org.wildfly.datasources.mysql.enabled", "org.wildfly.datasources.mysql.exception-sorter-class-name", "org.wildfly.datasources.mysql.flush-strategy", "org.wildfly.datasources.mysql.host", "org.wildfly.datasources.mysql.idle-timeout-minutes", "org.wildfly.datasources.mysql.jndi-name", "org.wildfly.datasources.mysql.jta", "org.wildfly.datasources.mysql.max-pool-size", "org.wildfly.datasources.mysql.min-pool-size", "org.wildfly.datasources.mysql.password", "org.wildfly.datasources.mysql.port", "org.wildfly.datasources.mysql.stale-connection-checker-class-name", "org.wildfly.datasources.mysql.transaction-isolation", "org.wildfly.datasources.mysql.user-name", "org.wildfly.datasources.mysql.valid-connection-checker-class-name", "org.wildfly.datasources.mysql.validate-on-match", "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
@@ -4472,8 +4809,10 @@
       "managementModel" : {
         "subsystem" : {
           "ee" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/index.html",
             "service" : {
               "default-bindings" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/service/default-bindings/index.html",
                 "datasource" : "java:jboss/datasources/${env.OPENSHIFT_MYSQL_DATASOURCE,env.MYSQL_DATASOURCE:MySQLDS}"
               }
             }
@@ -4481,6 +4820,7 @@
         }
       },
       "configuration" : [ {
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/service/default-bindings/index.html",
         "attribute" : "datasource",
         "environmentVariables" : [ "MYSQL_DATASOURCE", "OPENSHIFT_MYSQL_DATASOURCE" ]
       } ],
@@ -4506,8 +4846,10 @@
       "managementModel" : {
         "subsystem" : {
           "datasources" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/index.html",
             "jdbc-driver" : {
               "mysql" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/jdbc-driver/index.html",
                 "driver-module-name" : "com.mysql.jdbc",
                 "driver-name" : "mysql",
                 "driver-xa-datasource-class-name" : "com.mysql.cj.jdbc.MysqlXADataSource"
@@ -4550,8 +4892,10 @@
       "managementModel" : {
         "subsystem" : {
           "datasources" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/index.html",
             "data-source" : {
               "OracleDS" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/data-source/index.html",
                 "background-validation" : "${org.wildfly.datasources.oracle.background-validation,env.ORACLE_BACKGROUND_VALIDATION:false}",
                 "background-validation-millis" : "${org.wildfly.datasources.oracle.background-validation-millis,env.ORACLE_BACKGROUND_VALIDATION_MILLIS:10000}",
                 "connection-url" : "${org.wildfly.datasources.oracle.connection-url,env.ORACLE_URL,env.OPENSHIFT_ORACLE_URL}",
@@ -4577,6 +4921,7 @@
         }
       },
       "configuration" : [ {
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/data-source/index.html",
         "attribute" : "min-pool-size",
         "environmentVariables" : [ "OPENSHIFT_ORACLE_DATASOURCE", "OPENSHIFT_ORACLE_DB_PASSWORD", "OPENSHIFT_ORACLE_DB_USERNAME", "OPENSHIFT_ORACLE_URL", "ORACLE_BACKGROUND_VALIDATION", "ORACLE_BACKGROUND_VALIDATION_MILLIS", "ORACLE_CONNECTION_CHECKER", "ORACLE_DATASOURCE", "ORACLE_ENABLED", "ORACLE_EXCEPTION_SORTER", "ORACLE_FLUSH_STRATEGY", "ORACLE_IDLE_TIMEOUT_MINUTES", "ORACLE_JNDI", "ORACLE_JTA", "ORACLE_MAX_POOL_SIZE", "ORACLE_MIN_POOL_SIZE", "ORACLE_PASSWORD", "ORACLE_STALE_CONNECTION_CHECKER", "ORACLE_TX_ISOLATION", "ORACLE_URL", "ORACLE_USER", "ORACLE_VALIDATE_ON_MATCH" ],
         "systemProperties" : [ "org.wildfly.datasources.oracle.background-validation", "org.wildfly.datasources.oracle.background-validation-millis", "org.wildfly.datasources.oracle.connection-url", "org.wildfly.datasources.oracle.datasource", "org.wildfly.datasources.oracle.enabled", "org.wildfly.datasources.oracle.exception-sorter-class-name", "org.wildfly.datasources.oracle.flush-strategy", "org.wildfly.datasources.oracle.idle-timeout-minutes", "org.wildfly.datasources.oracle.jndi-name", "org.wildfly.datasources.oracle.jta", "org.wildfly.datasources.oracle.max-pool-size", "org.wildfly.datasources.oracle.min-pool-size", "org.wildfly.datasources.oracle.password", "org.wildfly.datasources.oracle.stale-connection-checker-class-name", "org.wildfly.datasources.oracle.transaction-isolation", "org.wildfly.datasources.oracle.user-name", "org.wildfly.datasources.oracle.valid-connection-checker-class-name", "org.wildfly.datasources.oracle.validate-on-match", "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
@@ -4603,8 +4948,10 @@
       "managementModel" : {
         "subsystem" : {
           "ee" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/index.html",
             "service" : {
               "default-bindings" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/service/default-bindings/index.html",
                 "datasource" : "java:jboss/datasources/${env.ORACLE_DATASOURCE,env.OPENSHIFT_ORACLE_DATASOURCE:OracleDS}"
               }
             }
@@ -4612,6 +4959,7 @@
         }
       },
       "configuration" : [ {
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/service/default-bindings/index.html",
         "attribute" : "datasource",
         "environmentVariables" : [ "OPENSHIFT_ORACLE_DATASOURCE", "ORACLE_DATASOURCE" ]
       } ],
@@ -4637,8 +4985,10 @@
       "managementModel" : {
         "subsystem" : {
           "datasources" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/index.html",
             "jdbc-driver" : {
               "oracle" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/jdbc-driver/index.html",
                 "driver-module-name" : "com.oracle.database.jdbc",
                 "driver-name" : "oracle",
                 "driver-xa-datasource-class-name" : "oracle.jdbc.xa.client.OracleXADataSource"
@@ -4681,8 +5031,10 @@
       "managementModel" : {
         "subsystem" : {
           "datasources" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/index.html",
             "data-source" : {
               "PostgreSQLDS" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/data-source/index.html",
                 "background-validation" : "${org.wildfly.datasources.postgresql.background-validation,env.POSTGRESQL_BACKGROUND_VALIDATION:false}",
                 "background-validation-millis" : "${org.wildfly.datasources.postgresql.background-validation-millis,env.POSTGRESQL_BACKGROUND_VALIDATION_MILLIS:10000}",
                 "connection-url" : "${org.wildfly.datasources.postgresql.connection-url,env.POSTGRESQL_URL:jdbc:postgresql://${org.wildfly.datasources.postgresql.host,env.POSTGRESQL_SERVICE_HOST,env.OPENSHIFT_POSTGRESQL_DB_HOST,env.POSTGRESQL_HOST:localhost}:${org.wildfly.datasources.postgresql.port,env.POSTGRESQL_SERVICE_PORT,env.OPENSHIFT_POSTGRESQL_DB_PORT,env.POSTGRESQL_PORT:5432}/${org.wildfly.datasources.postgresql.database,env.POSTGRESQL_DATABASE,env.OPENSHIFT_POSTGRESQL_DB_NAME}}",
@@ -4708,6 +5060,7 @@
         }
       },
       "configuration" : [ {
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/data-source/index.html",
         "attribute" : "min-pool-size",
         "environmentVariables" : [ "OPENSHIFT_POSTGRESQL_DATASOURCE", "OPENSHIFT_POSTGRESQL_DB_HOST", "OPENSHIFT_POSTGRESQL_DB_NAME", "OPENSHIFT_POSTGRESQL_DB_PASSWORD", "OPENSHIFT_POSTGRESQL_DB_PORT", "OPENSHIFT_POSTGRESQL_DB_USERNAME", "POSTGRESQL_BACKGROUND_VALIDATION", "POSTGRESQL_BACKGROUND_VALIDATION_MILLIS", "POSTGRESQL_CONNECTION_CHECKER", "POSTGRESQL_DATABASE", "POSTGRESQL_DATASOURCE", "POSTGRESQL_ENABLED", "POSTGRESQL_EXCEPTION_SORTER", "POSTGRESQL_FLUSH_STRATEGY", "POSTGRESQL_HOST", "POSTGRESQL_IDLE_TIMEOUT_MINUTES", "POSTGRESQL_JNDI", "POSTGRESQL_JTA", "POSTGRESQL_MAX_POOL_SIZE", "POSTGRESQL_MIN_POOL_SIZE", "POSTGRESQL_PASSWORD", "POSTGRESQL_PORT", "POSTGRESQL_SERVICE_HOST", "POSTGRESQL_SERVICE_PORT", "POSTGRESQL_STALE_CONNECTION_CHECKER", "POSTGRESQL_TX_ISOLATION", "POSTGRESQL_URL", "POSTGRESQL_USER", "POSTGRESQL_VALIDATE_ON_MATCH" ],
         "systemProperties" : [ "org.wildfly.datasources.postgresql.background-validation", "org.wildfly.datasources.postgresql.background-validation-millis", "org.wildfly.datasources.postgresql.connection-url", "org.wildfly.datasources.postgresql.database", "org.wildfly.datasources.postgresql.datasource", "org.wildfly.datasources.postgresql.enabled", "org.wildfly.datasources.postgresql.exception-sorter-class-name", "org.wildfly.datasources.postgresql.flush-strategy", "org.wildfly.datasources.postgresql.host", "org.wildfly.datasources.postgresql.idle-timeout-minutes", "org.wildfly.datasources.postgresql.jndi-name", "org.wildfly.datasources.postgresql.jta", "org.wildfly.datasources.postgresql.max-pool-size", "org.wildfly.datasources.postgresql.min-pool-size", "org.wildfly.datasources.postgresql.password", "org.wildfly.datasources.postgresql.port", "org.wildfly.datasources.postgresql.stale-connection-checker-class-name", "org.wildfly.datasources.postgresql.transaction-isolation", "org.wildfly.datasources.postgresql.user-name", "org.wildfly.datasources.postgresql.valid-connection-checker-class-name", "org.wildfly.datasources.postgresql.validate-on-match", "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
@@ -4734,8 +5087,10 @@
       "managementModel" : {
         "subsystem" : {
           "ee" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/index.html",
             "service" : {
               "default-bindings" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/service/default-bindings/index.html",
                 "datasource" : "${org.wildfly.datasources.postgresql.jndi-name,env.POSTGRESQL_JNDI:java:jboss/datasources/${org.wildfly.datasources.postgresql.datasource, env.POSTGRESQL_DATASOURCE,env.OPENSHIFT_POSTGRESQL_DATASOURCE:PostgreSQLDS}}"
               }
             }
@@ -4743,6 +5098,7 @@
         }
       },
       "configuration" : [ {
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/service/default-bindings/index.html",
         "attribute" : "datasource",
         "environmentVariables" : [ "OPENSHIFT_POSTGRESQL_DATASOURCE", "POSTGRESQL_DATASOURCE", "POSTGRESQL_JNDI" ],
         "systemProperties" : [ "org.wildfly.datasources.postgresql.datasource", "org.wildfly.datasources.postgresql.jndi-name" ]
@@ -4769,8 +5125,10 @@
       "managementModel" : {
         "subsystem" : {
           "datasources" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/index.html",
             "jdbc-driver" : {
               "postgresql" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/jdbc-driver/index.html",
                 "driver-module-name" : "org.postgresql.jdbc",
                 "driver-name" : "postgresql",
                 "driver-xa-datasource-class-name" : "org.postgresql.xa.PGXADataSource"
@@ -4885,7 +5243,9 @@
       "name" : "core-management",
       "managementModel" : {
         "subsystem" : {
-          "core-management" : { }
+          "core-management" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/core-management/index.html"
+          }
         }
       },
       "dependencies" : [ {
@@ -4924,10 +5284,14 @@
       "name" : "datasources",
       "managementModel" : {
         "subsystem" : {
-          "datasources" : { },
+          "datasources" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/index.html"
+          },
           "jca" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jca/index.html",
             "archive-validation" : {
               "archive-validation" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jca/archive-validation/archive-validation/index.html",
                 "enabled" : "true",
                 "fail-on-error" : "true",
                 "fail-on-warn" : "false"
@@ -4935,25 +5299,30 @@
             },
             "bean-validation" : {
               "bean-validation" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jca/bean-validation/bean-validation/index.html",
                 "enabled" : "true"
               }
             },
             "bootstrap-context" : {
               "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jca/bootstrap-context/index.html",
                 "name" : "default",
                 "workmanager" : "default"
               }
             },
             "cached-connection-manager" : {
               "cached-connection-manager" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jca/cached-connection-manager/cached-connection-manager/index.html",
                 "install" : "true"
               }
             },
             "workmanager" : {
               "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jca/workmanager/index.html",
                 "name" : "default",
                 "long-running-threads" : {
                   "default" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jca/workmanager/long-running-threads/index.html",
                     "core-threads" : "50",
                     "keepalive-time" : "{ unit=SECONDS, time=10 }",
                     "max-threads" : "50",
@@ -4962,6 +5331,7 @@
                 },
                 "short-running-threads" : {
                   "default" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jca/workmanager/short-running-threads/index.html",
                     "core-threads" : "50",
                     "keepalive-time" : "{ unit=SECONDS, time=10 }",
                     "max-threads" : "50",
@@ -4991,8 +5361,10 @@
       "managementModel" : {
         "subsystem" : {
           "deployment-scanner" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/deployment-scanner/index.html",
             "scanner" : {
               "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/deployment-scanner/scanner/index.html",
                 "path" : "deployments",
                 "relative-to" : "jboss.server.base.dir",
                 "runtime-failure-causes-rollback" : "${jboss.deployment.scanner.rollback.on.failure:false}",
@@ -5003,6 +5375,7 @@
         }
       },
       "configuration" : [ {
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/deployment-scanner/scanner/index.html",
         "attribute" : "runtime-failure-causes-rollback",
         "systemProperties" : [ "jboss.deployment.scanner.rollback.on.failure" ]
       } ],
@@ -5017,7 +5390,9 @@
       "name" : "discovery",
       "managementModel" : {
         "subsystem" : {
-          "discovery" : { }
+          "discovery" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/discovery/index.html"
+          }
         }
       },
       "dependencies" : [ {
@@ -5046,6 +5421,7 @@
       "managementModel" : {
         "subsystem" : {
           "ee" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/index.html",
             "spec-descriptor-property-replacement" : "false"
           }
         }
@@ -5076,31 +5452,37 @@
       "managementModel" : {
         "subsystem" : {
           "elytron" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/index.html",
             "disallowed-providers" : "[OracleUcrypto]",
             "final-providers" : "combined-providers",
             "aggregate-providers" : {
               "combined-providers" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/aggregate-providers/index.html",
                 "providers" : "[elytron,openssl]"
               }
             },
             "configurable-sasl-server-factory" : {
               "configured" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/configurable-sasl-server-factory/index.html",
                 "properties" : "{wildfly.sasl.local-user.default-user=\"\\$local\",wildfly.sasl.local-user.challenge-path=\"${jboss.server.temp.dir}/auth\"}",
                 "sasl-server-factory" : "elytron"
               }
             },
             "constant-realm-mapper" : {
               "local" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/constant-realm-mapper/index.html",
                 "realm-name" : "local"
               }
             },
             "constant-role-mapper" : {
               "super-user-mapper" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/constant-role-mapper/index.html",
                 "roles" : "[SuperUser]"
               }
             },
             "file-audit-log" : {
               "local-audit" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/file-audit-log/index.html",
                 "format" : "JSON",
                 "path" : "audit.log",
                 "relative-to" : "jboss.server.log.dir"
@@ -5108,6 +5490,7 @@
             },
             "http-authentication-factory" : {
               "management-http-authentication" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/http-authentication-factory/index.html",
                 "http-server-mechanism-factory" : "global",
                 "mechanism-configurations" : "[{mechanism-name=DIGEST,mechanism-realm-configurations=[{realm-name=ManagementRealm}]}]",
                 "security-domain" : "ManagementDomain"
@@ -5115,11 +5498,13 @@
             },
             "identity-realm" : {
               "local" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/identity-realm/index.html",
                 "identity" : "$local"
               }
             },
             "key-manager" : {
               "applicationKM" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/key-manager/index.html",
                 "credential-reference" : "{clear-text=password}",
                 "generate-self-signed-certificate-host" : "localhost",
                 "key-store" : "applicationKS"
@@ -5127,6 +5512,7 @@
             },
             "key-store" : {
               "applicationKS" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/key-store/index.html",
                 "credential-reference" : "{clear-text=password}",
                 "path" : "application.keystore",
                 "relative-to" : "jboss.server.config.dir",
@@ -5135,49 +5521,62 @@
             },
             "mechanism-provider-filtering-sasl-server-factory" : {
               "elytron" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/mechanism-provider-filtering-sasl-server-factory/index.html",
                 "filters" : "[{provider-name=WildFlyElytron}]",
                 "sasl-server-factory" : "global"
               }
             },
             "permission-set" : {
               "default-permissions" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/permission-set/index.html",
                 "permissions" : "[]"
               },
               "login-permission" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/permission-set/index.html",
                 "permissions" : "[class-name=org.wildfly.security.auth.permission.LoginPermission]"
               }
             },
             "properties-realm" : {
               "ApplicationRealm" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/properties-realm/index.html",
                 "groups-properties" : "{ path=application-roles.properties, relative-to=jboss.server.config.dir }",
                 "users-properties" : "{path=application-users.properties,relative-to=jboss.server.config.dir,digest-realm-name=ApplicationRealm}"
               },
               "ManagementRealm" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/properties-realm/index.html",
                 "groups-properties" : "{ path=mgmt-groups.properties, relative-to=jboss.server.config.dir }",
                 "users-properties" : "{path=mgmt-users.properties,relative-to=jboss.server.config.dir,digest-realm-name=ManagementRealm}"
               }
             },
             "provider-http-server-mechanism-factory" : {
-              "global" : { }
+              "global" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/provider-http-server-mechanism-factory/index.html"
+              }
             },
             "provider-loader" : {
               "elytron" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/provider-loader/index.html",
                 "module" : "org.wildfly.security.elytron"
               },
               "openssl" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/provider-loader/index.html",
                 "module" : "org.wildfly.openssl"
               }
             },
             "provider-sasl-server-factory" : {
-              "global" : { }
+              "global" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/provider-sasl-server-factory/index.html"
+              }
             },
             "sasl-authentication-factory" : {
               "application-sasl-authentication" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/sasl-authentication-factory/index.html",
                 "mechanism-configurations" : "[{mechanism-name=JBOSS-LOCAL-USER,realm-mapper=local},{mechanism-name=DIGEST-MD5,mechanism-realm-configurations=[{realm-name=ApplicationRealm}]}]",
                 "sasl-server-factory" : "configured",
                 "security-domain" : "ApplicationDomain"
               },
               "management-sasl-authentication" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/sasl-authentication-factory/index.html",
                 "mechanism-configurations" : "[{mechanism-name=JBOSS-LOCAL-USER,realm-mapper=local},{mechanism-name=DIGEST-MD5,mechanism-realm-configurations=[{realm-name=ManagementRealm}]}]",
                 "sasl-server-factory" : "configured",
                 "security-domain" : "ManagementDomain"
@@ -5185,11 +5584,13 @@
             },
             "security-domain" : {
               "ApplicationDomain" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/security-domain/index.html",
                 "default-realm" : "ApplicationRealm",
                 "permission-mapper" : "default-permission-mapper",
                 "realms" : "[{realm=ApplicationRealm,role-decoder=groups-to-roles}]"
               },
               "ManagementDomain" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/security-domain/index.html",
                 "default-realm" : "ManagementRealm",
                 "permission-mapper" : "default-permission-mapper",
                 "realms" : "[{realm=ManagementRealm,role-decoder=groups-to-roles},{realm=local,role-mapper=super-user-mapper}]"
@@ -5197,17 +5598,20 @@
             },
             "server-ssl-context" : {
               "applicationSSC" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/server-ssl-context/index.html",
                 "key-manager" : "applicationKM"
               }
             },
             "simple-permission-mapper" : {
               "default-permission-mapper" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/simple-permission-mapper/index.html",
                 "mapping-mode" : "first",
                 "permission-mappings" : "[{principals=[anonymous],permission-sets=[permission-set=default-permissions]},{match-all=true,permission-sets=[permission-set=login-permission,permission-set=default-permissions]}]"
               }
             },
             "simple-role-decoder" : {
               "groups-to-roles" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/simple-role-decoder/index.html",
                 "attribute" : "groups"
               }
             }
@@ -5215,6 +5619,7 @@
         }
       },
       "configuration" : [ {
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/configurable-sasl-server-factory/index.html",
         "attribute" : "properties",
         "systemProperties" : [ "jboss.server.temp.dir" ]
       } ],
@@ -5267,8 +5672,10 @@
       "managementModel" : {
         "subsystem" : {
           "datasources" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/index.html",
             "data-source" : {
               "H2DatabaseDS" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/data-source/index.html",
                 "background-validation" : "${org.wildfly.datasources.h2database.background-validation,env.H2DATABASE_BACKGROUND_VALIDATION:false}",
                 "background-validation-millis" : "${org.wildfly.datasources.h2database.background-validation-millis,env.H2DATABASE_BACKGROUND_VALIDATION_MILLIS:10000}",
                 "connection-url" : "${org.wildfly.datasources.h2database.connection-url,env.H2DATABASE_URL,env.OPENSHIFT_H2DATABASE_URL:jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE}",
@@ -5294,6 +5701,7 @@
         }
       },
       "configuration" : [ {
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/data-source/index.html",
         "attribute" : "min-pool-size",
         "environmentVariables" : [ "H2DATABASE_BACKGROUND_VALIDATION", "H2DATABASE_BACKGROUND_VALIDATION_MILLIS", "H2DATABASE_CONNECTION_CHECKER", "H2DATABASE_DATASOURCE", "H2DATABASE_ENABLED", "H2DATABASE_EXCEPTION_SORTER", "H2DATABASE_FLUSH_STRATEGY", "H2DATABASE_IDLE_TIMEOUT_MINUTES", "H2DATABASE_JNDI", "H2DATABASE_JTA", "H2DATABASE_MAX_POOL_SIZE", "H2DATABASE_MIN_POOL_SIZE", "H2DATABASE_PASSWORD", "H2DATABASE_STALE_CONNECTION_CHECKER", "H2DATABASE_TX_ISOLATION", "H2DATABASE_URL", "H2DATABASE_USER", "H2DATABASE_VALIDATE_ON_MATCH", "OPENSHIFT_H2DATABASE_DATASOURCE", "OPENSHIFT_H2DATABASE_DB_PASSWORD", "OPENSHIFT_H2DATABASE_DB_USERNAME", "OPENSHIFT_H2DATABASE_URL" ],
         "systemProperties" : [ "org.wildfly.datasources.h2database.background-validation", "org.wildfly.datasources.h2database.background-validation-millis", "org.wildfly.datasources.h2database.connection-url", "org.wildfly.datasources.h2database.datasource", "org.wildfly.datasources.h2database.enabled", "org.wildfly.datasources.h2database.exception-sorter-class-name", "org.wildfly.datasources.h2database.flush-strategy", "org.wildfly.datasources.h2database.idle-timeout-minutes", "org.wildfly.datasources.h2database.jndi-name", "org.wildfly.datasources.h2database.jta", "org.wildfly.datasources.h2database.max-pool-size", "org.wildfly.datasources.h2database.min-pool-size", "org.wildfly.datasources.h2database.password", "org.wildfly.datasources.h2database.stale-connection-checker-class-name", "org.wildfly.datasources.h2database.transaction-isolation", "org.wildfly.datasources.h2database.user-name", "org.wildfly.datasources.h2database.valid-connection-checker-class-name", "org.wildfly.datasources.h2database.validate-on-match", "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
@@ -5310,8 +5718,10 @@
       "managementModel" : {
         "subsystem" : {
           "ee" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/index.html",
             "service" : {
               "default-bindings" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/service/default-bindings/index.html",
                 "datasource" : "java:jboss/datasources/${env.H2DATABASE_DATASOURCE:H2DatabaseDS}"
               }
             }
@@ -5319,6 +5729,7 @@
         }
       },
       "configuration" : [ {
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/service/default-bindings/index.html",
         "attribute" : "datasource",
         "environmentVariables" : [ "H2DATABASE_DATASOURCE" ]
       } ],
@@ -5334,8 +5745,10 @@
       "managementModel" : {
         "subsystem" : {
           "datasources" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/index.html",
             "jdbc-driver" : {
               "h2database" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/datasources/jdbc-driver/index.html",
                 "driver-module-name" : "com.h2database.h2database",
                 "driver-name" : "h2database",
                 "driver-xa-datasource-class-name" : "org.h2.jdbcx.JdbcDataSource"
@@ -5352,7 +5765,9 @@
       "name" : "infinispan",
       "managementModel" : {
         "subsystem" : {
-          "infinispan" : { }
+          "infinispan" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/index.html"
+          }
         }
       },
       "dependencies" : [ {
@@ -5460,10 +5875,13 @@
       "managementModel" : {
         "subsystem" : {
           "io" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/io/index.html",
             "default-worker" : "default",
             "extension" : "org.wildfly.extension.io",
             "worker" : {
-              "default" : { }
+              "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/io/worker/index.html"
+              }
             }
           }
         }
@@ -5512,9 +5930,14 @@
       "managementModel" : {
         "subsystem" : {
           "jmx" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jmx/index.html",
             "expose-model" : {
-              "expression" : { },
-              "resolved" : { }
+              "expression" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jmx/expose-model/expression/index.html"
+              },
+              "resolved" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jmx/expose-model/resolved/index.html"
+              }
             }
           }
         }
@@ -5531,8 +5954,11 @@
       "managementModel" : {
         "subsystem" : {
           "jmx" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jmx/index.html",
             "remoting-connector" : {
-              "jmx" : { }
+              "jmx" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jmx/remoting-connector/jmx/index.html"
+              }
             }
           }
         }
@@ -5555,39 +5981,49 @@
       "managementModel" : {
         "subsystem" : {
           "logging" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/logging/index.html",
             "console-handler" : {
               "CONSOLE" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/logging/console-handler/index.html",
                 "level" : "INFO",
                 "named-formatter" : "COLOR-PATTERN"
               }
             },
             "logger" : {
               "com.arjuna" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/logging/logger/index.html",
                 "level" : "WARN"
               },
               "com.networknt.schema" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/logging/logger/index.html",
                 "level" : "WARN"
               },
               "io.jaegertracing.Configuration" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/logging/logger/index.html",
                 "level" : "WARN"
               },
               "org.jboss.as.config" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/logging/logger/index.html",
                 "level" : "DEBUG"
               },
               "sun.rmi" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/logging/logger/index.html",
                 "level" : "WARN"
               }
             },
             "pattern-formatter" : {
               "COLOR-PATTERN" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/logging/pattern-formatter/index.html",
                 "pattern" : "\"%K{level}%d{HH:mm:ss,SSS} %-5p [%c] (%t) %s%e%n\""
               },
               "PATTERN" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/logging/pattern-formatter/index.html",
                 "pattern" : "\"%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p [%c] (%t) %s%e%n\""
               }
             },
             "periodic-rotating-file-handler" : {
               "FILE" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/logging/periodic-rotating-file-handler/index.html",
                 "append" : "true",
                 "autoflush" : "true",
                 "file" : "{relative-to=jboss.server.log.dir,path=server.log}",
@@ -5597,6 +6033,7 @@
             },
             "root-logger" : {
               "ROOT" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/logging/root-logger/ROOT/index.html",
                 "handlers" : "[CONSOLE,FILE]",
                 "level" : "INFO"
               }
@@ -5718,7 +6155,9 @@
       "name" : "pojo",
       "managementModel" : {
         "subsystem" : {
-          "pojo" : { }
+          "pojo" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/pojo/index.html"
+          }
         }
       },
       "dependencies" : [ {
@@ -5739,9 +6178,11 @@
       "managementModel" : {
         "subsystem" : {
           "remoting" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/remoting/index.html",
             "worker" : "default",
             "http-connector" : {
               "http-remoting-connector" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/remoting/http-connector/index.html",
                 "connector-ref" : "default",
                 "sasl-authentication-factory" : "application-sasl-authentication"
               }
@@ -5763,7 +6204,9 @@
       "name" : "request-controller",
       "managementModel" : {
         "subsystem" : {
-          "request-controller" : { }
+          "request-controller" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/request-controller/index.html"
+          }
         }
       },
       "dependencies" : [ {
@@ -5778,8 +6221,10 @@
       "managementModel" : {
         "subsystem" : {
           "security-manager" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/security-manager/index.html",
             "deployment-permissions" : {
               "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/security-manager/deployment-permissions/default/index.html",
                 "maximum-permissions" : "[{class=java.security.AllPermission}]"
               }
             }
@@ -5798,8 +6243,10 @@
       "managementModel" : {
         "subsystem" : {
           "undertow" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/index.html",
             "server" : {
               "default-server" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/index.html",
                 "alias" : "[localhost]",
                 "setting" : {
                   "http-invoker" : { }
@@ -5808,9 +6255,14 @@
             },
             "servlet-container" : {
               "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/servlet-container/index.html",
                 "setting" : {
-                  "jsp" : { },
-                  "websockets" : { }
+                  "jsp" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/servlet-container/setting/jsp/index.html"
+                  },
+                  "websockets" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/servlet-container/setting/websockets/index.html"
+                  }
                 }
               }
             }
@@ -5876,6 +6328,7 @@
             }
           },
           "transactions" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/transactions/index.html",
             "node-identifier" : "${jboss.tx.node.id:1}",
             "object-store-path" : "tx-object-store",
             "object-store-relative-to" : "jboss.server.data.dir",
@@ -5884,12 +6337,15 @@
             "statistics-enabled" : "${wildfly.transactions.statistics-enabled:${wildfly.statistics-enabled:false}}",
             "status-socket-binding" : "txn-status-manager",
             "log-store" : {
-              "log-store" : { }
+              "log-store" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/transactions/log-store/log-store/index.html"
+              }
             }
           }
         }
       },
       "configuration" : [ {
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/transactions/index.html",
         "attribute" : "node-identifier",
         "systemProperties" : [ "jboss.tx.node.id", "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ]
       } ],
@@ -5938,22 +6394,33 @@
         },
         "subsystem" : {
           "undertow" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/index.html",
             "statistics-enabled" : "${wildfly.undertow.statistics-enabled:${wildfly.statistics-enabled:false}}",
             "buffer-cache" : {
-              "default" : { }
+              "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/buffer-cache/index.html"
+              }
             },
             "byte-buffer-pool" : {
-              "default" : { }
+              "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/byte-buffer-pool/index.html"
+              }
             },
             "configuration" : {
-              "filter" : { },
-              "handler" : { }
+              "filter" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/configuration/filter/index.html"
+              },
+              "handler" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/configuration/handler/index.html"
+              }
             },
             "server" : {
               "default-server" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/index.html",
                 "alias" : "[localhost]",
                 "http-listener" : {
                   "default" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/http-listener/index.html",
                     "enable-http2" : "true",
                     "redirect-socket" : "https",
                     "socket-binding" : "http"
@@ -5962,7 +6429,9 @@
               }
             },
             "servlet-container" : {
-              "default" : { }
+              "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/servlet-container/index.html"
+              }
             }
           }
         }
@@ -5972,6 +6441,7 @@
         "attribute" : "port",
         "systemProperties" : [ "jboss.ajp.port", "jboss.http.port", "jboss.https.port" ]
       }, {
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/index.html",
         "attribute" : "statistics-enabled",
         "systemProperties" : [ "wildfly.statistics-enabled", "wildfly.undertow.statistics-enabled" ]
       } ],
@@ -6009,14 +6479,18 @@
       "managementModel" : {
         "subsystem" : {
           "batch-jberet" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/batch-jberet/index.html",
             "default-job-repository" : "in-memory",
             "default-thread-pool" : "batch",
             "security-domain" : "ApplicationDomain",
             "in-memory-job-repository" : {
-              "in-memory" : { }
+              "in-memory" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/batch-jberet/in-memory-job-repository/index.html"
+              }
             },
             "thread-pool" : {
               "batch" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/batch-jberet/thread-pool/index.html",
                 "keepalive-time" : "{ unit=SECONDS, time=30 }",
                 "max-threads" : "10"
               }
@@ -6063,7 +6537,9 @@
       "name" : "bean-validation",
       "managementModel" : {
         "subsystem" : {
-          "bean-validation" : { }
+          "bean-validation" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/bean-validation/index.html"
+          }
         }
       },
       "dependencies" : [ {
@@ -6092,7 +6568,9 @@
       "name" : "cdi",
       "managementModel" : {
         "subsystem" : {
-          "weld" : { }
+          "weld" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/weld/index.html"
+          }
         }
       },
       "dependencies" : [ {
@@ -6122,13 +6600,16 @@
       "managementModel" : {
         "subsystem" : {
           "ee" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/index.html",
             "context-service" : {
               "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/context-service/index.html",
                 "jndi-name" : "java:jboss/ee/concurrency/context/default"
               }
             },
             "managed-executor-service" : {
               "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/managed-executor-service/index.html",
                 "context-service" : "default",
                 "hung-task-termination-period" : "0",
                 "hung-task-threshold" : "60000",
@@ -6138,6 +6619,7 @@
             },
             "managed-scheduled-executor-service" : {
               "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/managed-scheduled-executor-service/index.html",
                 "context-service" : "default",
                 "hung-task-termination-period" : "0",
                 "hung-task-threshold" : "60000",
@@ -6147,12 +6629,14 @@
             },
             "managed-thread-factory" : {
               "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/managed-thread-factory/index.html",
                 "context-service" : "default",
                 "jndi-name" : "java:jboss/ee/concurrency/factory/default"
               }
             },
             "service" : {
               "default-bindings" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/service/default-bindings/index.html",
                 "context-service" : "java:jboss/ee/concurrency/context/default",
                 "managed-executor-service" : "java:jboss/ee/concurrency/executor/default",
                 "managed-scheduled-executor-service" : "java:jboss/ee/concurrency/scheduler/default",
@@ -6181,14 +6665,17 @@
       "managementModel" : {
         "subsystem" : {
           "ejb3" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/index.html",
             "default-mdb-instance-pool" : "mdb-strict-max-pool",
             "default-resource-adapter-name" : "${ejb.resource-adapter-name:activemq-ra.rar}",
             "service" : {
               "remote" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/service/remote/index.html",
                 "connectors" : "[http-remoting-connector]",
                 "thread-pool-name" : "default",
                 "channel-creation-options" : {
                   "MAX_OUTBOUND_MESSAGES" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/service/remote/channel-creation-options/index.html",
                     "type" : "remoting",
                     "value" : "1234"
                   }
@@ -6197,6 +6684,7 @@
             },
             "strict-max-bean-instance-pool" : {
               "mdb-strict-max-pool" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/strict-max-bean-instance-pool/index.html",
                 "derive-size" : "from-cpu-count",
                 "timeout" : "5",
                 "timeout-unit" : "MINUTES"
@@ -6204,13 +6692,17 @@
             }
           },
           "naming" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/naming/index.html",
             "service" : {
-              "remote-naming" : { }
+              "remote-naming" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/naming/service/remote-naming/index.html"
+              }
             }
           }
         }
       },
       "configuration" : [ {
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/index.html",
         "attribute" : "default-resource-adapter-name",
         "systemProperties" : [ "ejb.resource-adapter-name" ]
       } ],
@@ -6250,8 +6742,10 @@
       "managementModel" : {
         "subsystem" : {
           "elytron" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/index.html",
             "http-authentication-factory" : {
               "application-http-authentication" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/http-authentication-factory/index.html",
                 "http-server-mechanism-factory" : "global",
                 "mechanism-configurations" : "[{mechanism-name=BASIC,mechanism-realm-configurations=[{realm-name=ApplicationRealm}]}]",
                 "security-domain" : "ApplicationDomain"
@@ -6259,8 +6753,10 @@
             }
           },
           "undertow" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/index.html",
             "server" : {
               "default-server" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/index.html",
                 "setting" : {
                   "http-invoker" : {
                     "http-authentication-factory" : "application-http-authentication"
@@ -6290,8 +6786,11 @@
       "name" : "ejb-lite",
       "managementModel" : {
         "subsystem" : {
-          "discovery" : { },
+          "discovery" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/discovery/index.html"
+          },
           "ejb3" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/index.html",
             "default-missing-method-permissions-deny-access" : "true",
             "default-security-domain" : "other",
             "default-sfsb-passivation-disabled-cache" : "simple",
@@ -6302,21 +6801,27 @@
             "statistics-enabled" : "${wildfly.ejb3.statistics-enabled:${wildfly.statistics-enabled:false}}",
             "application-security-domain" : {
               "other" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/application-security-domain/index.html",
                 "security-domain" : "ApplicationDomain"
               }
             },
             "distributable-cache" : {
-              "distributable" : { }
+              "distributable" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/distributable-cache/index.html"
+              }
             },
             "service" : {
               "async" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/service/async/index.html",
                 "thread-pool-name" : "default"
               },
               "timer-service" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/service/timer-service/index.html",
                 "default-data-store" : "default-file-store",
                 "thread-pool-name" : "default",
                 "file-data-store" : {
                   "default-file-store" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/service/timer-service/file-data-store/index.html",
                     "path" : "timer-service-data",
                     "relative-to" : "jboss.server.data.dir"
                   }
@@ -6324,10 +6829,13 @@
               }
             },
             "simple-cache" : {
-              "simple" : { }
+              "simple" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/simple-cache/index.html"
+              }
             },
             "strict-max-bean-instance-pool" : {
               "slsb-strict-max-pool" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/strict-max-bean-instance-pool/index.html",
                 "derive-size" : "from-worker-pools",
                 "timeout" : "5",
                 "timeout-unit" : "MINUTES"
@@ -6335,6 +6843,7 @@
             },
             "thread-pool" : {
               "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/thread-pool/index.html",
                 "keepalive-time" : "{ unit=SECONDS, time=60 }",
                 "max-threads" : "10"
               }
@@ -6350,6 +6859,7 @@
         }
       },
       "configuration" : [ {
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/index.html",
         "attribute" : "statistics-enabled",
         "systemProperties" : [ "wildfly.ejb3.statistics-enabled", "wildfly.statistics-enabled" ]
       } ],
@@ -6383,12 +6893,16 @@
       "managementModel" : {
         "subsystem" : {
           "distributable-ejb" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/distributable-ejb/index.html",
             "default-bean-management" : "default",
             "client-mappings-registry" : {
-              "local" : { }
+              "local" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/distributable-ejb/client-mappings-registry/local/index.html"
+              }
             },
             "infinispan-bean-management" : {
               "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/distributable-ejb/infinispan-bean-management/index.html",
                 "cache" : "passivation",
                 "cache-container" : "ejb",
                 "max-active-beans" : "10000"
@@ -6396,11 +6910,13 @@
             },
             "infinispan-timer-management" : {
               "persistent" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/distributable-ejb/infinispan-timer-management/index.html",
                 "cache" : "persistent",
                 "cache-container" : "ejb",
                 "max-active-timers" : "10000"
               },
               "transient" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/distributable-ejb/infinispan-timer-management/index.html",
                 "cache" : "transient",
                 "cache-container" : "ejb",
                 "max-active-timers" : "10000"
@@ -6408,61 +6924,77 @@
             }
           },
           "ejb3" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/index.html",
             "default-sfsb-cache" : "simple",
             "default-stateful-bean-access-timeout" : "5000"
           },
           "infinispan" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/index.html",
             "cache-container" : {
               "ejb" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/index.html",
                 "aliases" : "[sfsb]",
                 "default-cache" : "passivation",
                 "marshaller" : "PROTOSTREAM",
                 "modules" : "[org.wildfly.clustering.ejb.infinispan]",
                 "local-cache" : {
                   "passivation" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/component/expiration/index.html",
                         "interval" : "0"
                       }
                     },
                     "store" : {
                       "file" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/store/file/index.html",
                         "passivation" : "true"
                       }
                     }
                   },
                   "persistent" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/component/expiration/index.html",
                         "interval" : "0"
                       },
                       "locking" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/component/locking/index.html",
                         "isolation" : "REPEATABLE_READ"
                       },
                       "transaction" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/component/transaction/index.html",
                         "mode" : "BATCH"
                       }
                     },
                     "store" : {
                       "file" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/store/file/index.html",
                         "preload" : "true"
                       }
                     }
                   },
                   "transient" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/component/expiration/index.html",
                         "interval" : "0"
                       },
                       "locking" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/component/locking/index.html",
                         "isolation" : "REPEATABLE_READ"
                       },
                       "transaction" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/component/transaction/index.html",
                         "mode" : "BATCH"
                       }
                     },
                     "store" : {
                       "file" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/store/file/index.html",
                         "passivation" : "true",
                         "purge" : "true"
                       }
@@ -6487,7 +7019,9 @@
       "name" : "jakarta-data",
       "managementModel" : {
         "subsystem" : {
-          "jakarta-data" : { }
+          "jakarta-data" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jakarta-data/index.html"
+          }
         }
       },
       "dependencies" : [ {
@@ -6546,7 +7080,9 @@
       "name" : "jaxrs-core",
       "managementModel" : {
         "subsystem" : {
-          "jaxrs" : { }
+          "jaxrs" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jaxrs/index.html"
+          }
         }
       },
       "dependencies" : [ {
@@ -6565,45 +7101,57 @@
       "managementModel" : {
         "subsystem" : {
           "infinispan" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/index.html",
             "cache-container" : {
               "hibernate" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/index.html",
                 "marshaller" : "JBOSS",
                 "modules" : "[org.infinispan.hibernate-cache]",
                 "local-cache" : {
                   "entity" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/component/expiration/index.html",
                         "max-idle" : "100000"
                       }
                     },
                     "memory" : {
                       "heap" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/memory/heap/index.html",
                         "size" : "10000"
                       }
                     }
                   },
                   "local-query" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/component/expiration/index.html",
                         "max-idle" : "100000"
                       }
                     },
                     "memory" : {
                       "heap" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/memory/heap/index.html",
                         "size" : "10000"
                       }
                     }
                   },
                   "pending-puts" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/component/expiration/index.html",
                         "max-idle" : "60000"
                       }
                     }
                   },
                   "timestamps" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/index.html",
                     "component" : {
                       "expiration" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/infinispan/cache-container/local-cache/component/expiration/index.html",
                         "interval" : "0"
                       }
                     }
@@ -6613,6 +7161,7 @@
             }
           },
           "jpa" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jpa/index.html",
             "default-extended-persistence-inheritance" : "DEEP"
           }
         }
@@ -6649,7 +7198,9 @@
       "name" : "jsf",
       "managementModel" : {
         "subsystem" : {
-          "jsf" : { }
+          "jsf" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jsf/index.html"
+          }
         }
       },
       "packages" : [ "org.jboss.as.jsf-injection" ],
@@ -6746,16 +7297,22 @@
         },
         "subsystem" : {
           "elytron" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/index.html",
             "simple-permission-mapper" : {
-              "default-permission-mapper" : { }
+              "default-permission-mapper" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/simple-permission-mapper/index.html"
+              }
             }
           },
           "mail" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/mail/index.html",
             "mail-session" : {
               "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/mail/mail-session/index.html",
                 "jndi-name" : "java:jboss/mail/Default",
                 "server" : {
                   "smtp" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/mail/mail-session/server/smtp/index.html",
                     "outbound-socket-binding-ref" : "mail-smtp"
                   }
                 }
@@ -6796,6 +7353,7 @@
       "managementModel" : {
         "subsystem" : {
           "jsf" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jsf/index.html",
             "default-jsf-impl-slot" : "myfaces"
           }
         }
@@ -6817,7 +7375,9 @@
       "name" : "naming",
       "managementModel" : {
         "subsystem" : {
-          "naming" : { }
+          "naming" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/naming/index.html"
+          }
         }
       },
       "dependencies" : [ {
@@ -6839,8 +7399,10 @@
       "managementModel" : {
         "subsystem" : {
           "jca" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jca/index.html",
             "archive-validation" : {
               "archive-validation" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jca/archive-validation/archive-validation/index.html",
                 "enabled" : "true",
                 "fail-on-error" : "true",
                 "fail-on-warn" : "false"
@@ -6848,25 +7410,30 @@
             },
             "bean-validation" : {
               "bean-validation" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jca/bean-validation/bean-validation/index.html",
                 "enabled" : "true"
               }
             },
             "bootstrap-context" : {
               "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jca/bootstrap-context/index.html",
                 "name" : "default",
                 "workmanager" : "default"
               }
             },
             "cached-connection-manager" : {
               "cached-connection-manager" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jca/cached-connection-manager/cached-connection-manager/index.html",
                 "install" : "true"
               }
             },
             "workmanager" : {
               "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jca/workmanager/index.html",
                 "name" : "default",
                 "long-running-threads" : {
                   "default" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jca/workmanager/long-running-threads/index.html",
                     "core-threads" : "50",
                     "keepalive-time" : "{ unit=SECONDS, time=10 }",
                     "max-threads" : "50",
@@ -6875,6 +7442,7 @@
                 },
                 "short-running-threads" : {
                   "default" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jca/workmanager/short-running-threads/index.html",
                     "core-threads" : "50",
                     "keepalive-time" : "{ unit=SECONDS, time=10 }",
                     "max-threads" : "50",
@@ -6884,7 +7452,9 @@
               }
             }
           },
-          "resource-adapters" : { }
+          "resource-adapters" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/resource-adapters/index.html"
+          }
         }
       },
       "dependencies" : [ {
@@ -6906,30 +7476,39 @@
       "managementModel" : {
         "subsystem" : {
           "webservices" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/webservices/index.html",
             "statistics-enabled" : "${wildfly.webservices.statistics-enabled:${wildfly.statistics-enabled:false}}",
             "wsdl-host" : "${jboss.bind.address:127.0.0.1}",
             "client-config" : {
-              "Standard-Client-Config" : { }
+              "Standard-Client-Config" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/webservices/client-config/index.html"
+              }
             },
             "endpoint-config" : {
               "Recording-Endpoint-Config" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/webservices/endpoint-config/index.html",
                 "pre-handler-chain" : {
                   "recording-handlers" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/webservices/endpoint-config/pre-handler-chain/index.html",
                     "protocol-bindings" : "##SOAP11_HTTP ##SOAP11_HTTP_MTOM ##SOAP12_HTTP ##SOAP12_HTTP_MTOM",
                     "handler" : {
                       "RecordingHandler" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/webservices/endpoint-config/pre-handler-chain/handler/index.html",
                         "class" : "org.jboss.ws.common.invocation.RecordingServerHandler"
                       }
                     }
                   }
                 }
               },
-              "Standard-Endpoint-Config" : { }
+              "Standard-Endpoint-Config" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/webservices/endpoint-config/index.html"
+              }
             }
           }
         }
       },
       "configuration" : [ {
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/webservices/index.html",
         "attribute" : "statistics-enabled",
         "systemProperties" : [ "jboss.bind.address", "wildfly.statistics-enabled", "wildfly.webservices.statistics-enabled" ]
       } ],
@@ -7007,15 +7586,19 @@
       "managementModel" : {
         "subsystem" : {
           "ee" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/index.html",
             "service" : {
               "default-bindings" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/service/default-bindings/index.html",
                 "jms-connection-factory" : "java:jboss/DefaultJMSConnectionFactory"
               }
             }
           },
           "elytron" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/index.html",
             "http-authentication-factory" : {
               "application-http-authentication" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/http-authentication-factory/index.html",
                 "http-server-mechanism-factory" : "global",
                 "mechanism-configurations" : "[{mechanism-name=BASIC,mechanism-realm-configurations=[{realm-name=ApplicationRealm}]}]",
                 "security-domain" : "ApplicationDomain"
@@ -7023,12 +7606,15 @@
             }
           },
           "messaging-activemq" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/messaging-activemq/index.html",
             "server" : {
               "default" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/messaging-activemq/server/index.html",
                 "elytron-domain" : "ApplicationDomain",
                 "statistics-enabled" : "${wildfly.messaging-activemq.statistics-enabled:${wildfly.statistics-enabled:false}}",
                 "address-setting" : {
                   "#" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/messaging-activemq/server/address-setting/index.html",
                     "dead-letter-address" : "jms.queue.DLQ",
                     "expiry-address" : "jms.queue.ExpiryQueue",
                     "max-size-bytes" : "10485760",
@@ -7038,29 +7624,35 @@
                 },
                 "connection-factory" : {
                   "InVmConnectionFactory" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/messaging-activemq/server/connection-factory/index.html",
                     "connectors" : "[in-vm]",
                     "entries" : "[java:/ConnectionFactory]"
                   },
                   "RemoteConnectionFactory" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/messaging-activemq/server/connection-factory/index.html",
                     "connectors" : "[http-connector]",
                     "entries" : "[java:jboss/exported/jms/RemoteConnectionFactory]"
                   }
                 },
                 "http-acceptor" : {
                   "http-acceptor" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/messaging-activemq/server/http-acceptor/index.html",
                     "http-listener" : "default"
                   },
                   "http-acceptor-throughput" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/messaging-activemq/server/http-acceptor/index.html",
                     "http-listener" : "default",
                     "params" : "{batch-delay=50,direct-deliver=false}"
                   }
                 },
                 "http-connector" : {
                   "http-connector" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/messaging-activemq/server/http-connector/index.html",
                     "endpoint" : "http-acceptor",
                     "socket-binding" : "http"
                   },
                   "http-connector-throughput" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/messaging-activemq/server/http-connector/index.html",
                     "endpoint" : "http-acceptor-throughput",
                     "params" : "{batch-delay=50}",
                     "socket-binding" : "http"
@@ -7068,26 +7660,31 @@
                 },
                 "in-vm-acceptor" : {
                   "in-vm" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/messaging-activemq/server/in-vm-acceptor/index.html",
                     "params" : "{buffer-pooling=false}",
                     "server-id" : "0"
                   }
                 },
                 "in-vm-connector" : {
                   "in-vm" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/messaging-activemq/server/in-vm-connector/index.html",
                     "params" : "{buffer-pooling=false}",
                     "server-id" : "0"
                   }
                 },
                 "jms-queue" : {
                   "DLQ" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/messaging-activemq/server/jms-queue/index.html",
                     "entries" : "[java:/jms/queue/DLQ]"
                   },
                   "ExpiryQueue" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/messaging-activemq/server/jms-queue/index.html",
                     "entries" : "[java:/jms/queue/ExpiryQueue]"
                   }
                 },
                 "pooled-connection-factory" : {
                   "activemq-ra" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/messaging-activemq/server/pooled-connection-factory/index.html",
                     "connectors" : "[in-vm]",
                     "entries" : "[java:/JmsXA,java:jboss/DefaultJMSConnectionFactory]",
                     "transaction" : "xa"
@@ -7095,8 +7692,10 @@
                 },
                 "security-setting" : {
                   "#" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/messaging-activemq/server/security-setting/index.html",
                     "role" : {
                       "guest" : {
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/messaging-activemq/server/security-setting/role/index.html",
                         "consume" : "true",
                         "create-non-durable-queue" : "true",
                         "delete-non-durable-queue" : "true",
@@ -7109,13 +7708,18 @@
             }
           },
           "naming" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/naming/index.html",
             "service" : {
-              "remote-naming" : { }
+              "remote-naming" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/naming/service/remote-naming/index.html"
+              }
             }
           },
           "undertow" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/index.html",
             "server" : {
               "default-server" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/index.html",
                 "setting" : {
                   "http-invoker" : {
                     "http-authentication-factory" : "application-http-authentication"
@@ -7127,6 +7731,7 @@
         }
       },
       "configuration" : [ {
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/messaging-activemq/server/index.html",
         "attribute" : "statistics-enabled",
         "systemProperties" : [ "wildfly.messaging-activemq.statistics-enabled", "wildfly.statistics-enabled" ]
       } ],
@@ -7167,7 +7772,9 @@
       "name" : "messaging-activemq",
       "managementModel" : {
         "subsystem" : {
-          "messaging-activemq" : { }
+          "messaging-activemq" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/messaging-activemq/index.html"
+          }
         }
       },
       "dependencies" : [ {
@@ -7211,15 +7818,19 @@
         },
         "subsystem" : {
           "ee" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/index.html",
             "service" : {
               "default-bindings" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee/service/default-bindings/index.html",
                 "jms-connection-factory" : "java:jboss/DefaultJMSConnectionFactory"
               }
             }
           },
           "messaging-activemq" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/messaging-activemq/index.html",
             "pooled-connection-factory" : {
               "activemq-ra" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/messaging-activemq/pooled-connection-factory/index.html",
                 "connectors" : "[artemis]",
                 "entries" : "[java:/JmsXA,java:jboss/DefaultJMSConnectionFactory]",
                 "password" : "guest",
@@ -7229,6 +7840,7 @@
             },
             "remote-connector" : {
               "artemis" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/messaging-activemq/remote-connector/index.html",
                 "params" : "{use-nio=true,use-nio-global-worker-pool=true}",
                 "socket-binding" : "messaging-activemq"
               }
@@ -7336,7 +7948,9 @@
       "name" : "sar",
       "managementModel" : {
         "subsystem" : {
-          "sar" : { }
+          "sar" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/sar/index.html"
+          }
         }
       },
       "packages" : [ "org.jboss.as.system-jmx" ],
@@ -7751,6 +8365,7 @@
       "managementModel" : {
         "subsystem" : {
           "health" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/health/index.html",
             "security-enabled" : "false"
           }
         }
@@ -7769,7 +8384,9 @@
       "name" : "jdr",
       "managementModel" : {
         "subsystem" : {
-          "jdr" : { }
+          "jdr" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jdr/index.html"
+          }
         }
       },
       "packages" : [ "bin.jdrtools" ],
@@ -7790,6 +8407,7 @@
       "managementModel" : {
         "subsystem" : {
           "metrics" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/metrics/index.html",
             "exposed-subsystems" : "[*]",
             "prefix" : "${wildfly.metrics.prefix:wildfly}",
             "security-enabled" : "false"
@@ -7797,6 +8415,7 @@
         }
       },
       "configuration" : [ {
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/metrics/index.html",
         "attribute" : "prefix",
         "systemProperties" : [ "wildfly.metrics.prefix" ]
       } ],
@@ -7996,6 +8615,7 @@
         },
         "subsystem" : {
           "iiop-openjdk" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/iiop-openjdk/index.html",
             "client-requires-ssl" : "false",
             "security" : "elytron",
             "server-requires-ssl" : "false",
@@ -8032,10 +8652,14 @@
       "name" : "ee-security",
       "managementModel" : {
         "subsystem" : {
-          "ee-security" : { },
+          "ee-security" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ee-security/index.html"
+          },
           "elytron" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/index.html",
             "policy" : {
               "jacc" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/policy/index.html",
                 "jacc-policy" : "{}"
               }
             }
@@ -8092,24 +8716,29 @@
       "managementModel" : {
         "subsystem" : {
           "elytron" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/index.html",
             "aggregate-http-server-mechanism-factory" : {
               "keycloak-http-server-mechanism-factory" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/aggregate-http-server-mechanism-factory/index.html",
                 "http-server-mechanism-factories" : "[keycloak-saml-http-server-mechanism-factory, global]"
               }
             },
             "constant-realm-mapper" : {
               "keycloak-saml-realm-mapper" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/constant-realm-mapper/index.html",
                 "realm-name" : "KeycloakSAMLRealm"
               }
             },
             "custom-realm" : {
               "KeycloakSAMLRealm" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/custom-realm/index.html",
                 "class-name" : "org.keycloak.adapters.saml.elytron.KeycloakSecurityRealm",
                 "module" : "org.keycloak.keycloak-saml-wildfly-elytron-adapter"
               }
             },
             "http-authentication-factory" : {
               "keycloak-http-authentication" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/http-authentication-factory/index.html",
                 "http-server-mechanism-factory" : "keycloak-http-server-mechanism-factory",
                 "mechanism-configurations" : "[{mechanism-name=KEYCLOAK-SAML,mechanism-realm-configurations=[{realm-name=KeycloakSAMLRealm,realm-mapper=keycloak-saml-realm-mapper}]}]",
                 "security-domain" : "KeycloakDomain"
@@ -8117,6 +8746,7 @@
             },
             "security-domain" : {
               "KeycloakDomain" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/security-domain/index.html",
                 "default-realm" : "KeycloakSAMLRealm",
                 "permission-mapper" : "default-permission-mapper",
                 "realms" : "[{realm=KeycloakSAMLRealm}]",
@@ -8125,13 +8755,16 @@
             },
             "service-loader-http-server-mechanism-factory" : {
               "keycloak-saml-http-server-mechanism-factory" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron/service-loader-http-server-mechanism-factory/index.html",
                 "module" : "org.keycloak.keycloak-saml-wildfly-elytron-adapter"
               }
             }
           },
           "undertow" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/index.html",
             "application-security-domain" : {
               "other" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/application-security-domain/index.html",
                 "http-authentication-factory" : "keycloak-http-authentication"
               }
             }
@@ -8158,8 +8791,10 @@
       "managementModel" : {
         "subsystem" : {
           "ejb3" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/index.html",
             "application-security-domain" : {
               "other" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/application-security-domain/index.html",
                 "security-domain" : "KeycloakDomain"
               }
             }
@@ -8219,10 +8854,13 @@
       "managementModel" : {
         "subsystem" : {
           "undertow" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/index.html",
             "server" : {
               "default-server" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/index.html",
                 "https-listener" : {
                   "https" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/undertow/server/https-listener/index.html",
                     "enable-http2" : "true",
                     "socket-binding" : "https",
                     "ssl-context" : "applicationSSC"
