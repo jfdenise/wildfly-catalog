@@ -41,11 +41,13 @@ public class Main {
         boolean validateOnly = Boolean.getBoolean("validateOnly");
         Path rootDirectory = Paths.get("../docs");
         Path targetDirectory = rootDirectory.resolve(wildflyVersion).toAbsolutePath();
+        Path wildscribeTargetDirectory = targetDirectory.resolve("wildscribe");
         if (!validateOnly) {
-            Files.createDirectories(targetDirectory);
+            Files.createDirectories(wildscribeTargetDirectory);
         } else {
             System.out.println("Validate only that we can build a catalog");
-        }
+        }        
+        
         Path inputMetadata = Paths.get("../metadata/" + wildflyVersion + "/wildfly-catalog.json").toAbsolutePath();
         if (!Files.exists(inputMetadata)) {
             throw new Exception("File doesn't exist " + inputMetadata + ". Can't enerate catalog");
@@ -72,7 +74,7 @@ public class Main {
                 JsonNode remoteMetadata = it.next();
                 String metadataUrl = remoteMetadata.get("url").asText();
                 JsonNode subCatalog = mapper.readTree(new URL(metadataUrl));
-                generateCatalog(subCatalog, glowRulesDescriptions, categories, mapper);
+                generateCatalog(subCatalog, glowRulesDescriptions, categories, mapper, wildscribeTargetDirectory);
             }
         } else {
             String url = node.get("knownFeaturePacks").asText();
@@ -121,11 +123,11 @@ public class Main {
                 if (Files.exists(modelFile)) {
                     JsonNode model = mapper.readTree(modelFile.toFile().toURI().toURL());
                     fpNode.set("modelReference", model);
+                    List<Version> versions = Collections.singletonList(new Version(name, version, modelFile.toFile()));
+                    String directoryName = (coords[0] + '_' + artifactId);
+                    Generator.generate(versions, wildscribeTargetDirectory.resolve(directoryName));
                 }
-                generateCatalog(subCatalog, glowRulesDescriptions, categories, mapper);
-                List<Version> versions = Collections.singletonList(new Version(name, version, modelFile.toFile()));
-                String directoryName = (coords[0] + '_' + artifactId);
-                Generator.generate(versions, targetDirectory.resolve(directoryName));
+                generateCatalog(subCatalog, glowRulesDescriptions, categories, mapper, wildscribeTargetDirectory);
             }
         }
         ArrayNode categoriesArray = mapper.createArrayNode();
@@ -196,7 +198,7 @@ public class Main {
     }
 
     private static void generateCatalog(JsonNode subCatalog, Properties glowRulesDescriptions,
-            Map<String, Map<String, JsonNode>> categories, ObjectMapper mapper) throws Exception {
+            Map<String, Map<String, JsonNode>> categories, ObjectMapper mapper, Path wildscribeTargetDirectory) throws Exception {
         String fp = subCatalog.get("feature-pack-location").asText();
 
         ArrayNode layersArray = (ArrayNode) subCatalog.get("layers");
@@ -298,6 +300,12 @@ public class Main {
                     deps.addAll(overridenDeps);
                 }
             }
+            if(layer.has("managementModel")) {
+                navigate(wildscribeTargetDirectory, layer.get("managementModel"));
+            }
+            if(layer.has("configuration")) {
+                navigate(wildscribeTargetDirectory, layer.get("configuration"));
+            }
             nodes.put(layerName, layer);
         }
     }
@@ -326,5 +334,64 @@ public class Main {
                 break;
             }
         }
+    }
+
+    private static String formatURL(String url) {
+        //System.out.println("ORIGINAL URL " + url);
+        url = url.replaceAll("=\\*", "");
+        url = url.replaceAll("=", "/");
+        if (!url.endsWith("/")) {
+            url += "/";
+        }
+        url += "index.html";
+        return url;
+    }
+    private static void navigate(Path rootDir, JsonNode model) {
+        if (model instanceof ArrayNode) {
+            ArrayNode array = (ArrayNode) model;
+            Iterator<JsonNode> it = array.elements();
+            while (it.hasNext()) {
+                navigate(rootDir, it.next());
+            }
+        } else {
+            JsonNode n = model.get("_address");
+            if (n != null) {
+                String url = formatURL(n.asText());
+               //System.out.println("URL " + url);
+                String foundURL = findURL(rootDir, url);
+                if (foundURL == null) {
+                    //((ObjectNode)model).remove("_address");
+                    System.out.println("URL NOT FOUND!!!! " + url);
+                    ((ObjectNode) model).remove("_address");
+                } else {
+                    ((ObjectNode) model).put("_address", foundURL);
+                    //System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!! FOUND URL " + foundURL);
+                }
+            }
+            Iterator<String> fields = model.fieldNames();
+            while (fields.hasNext()) {
+                String field = fields.next();
+                JsonNode node = model.get(field);
+                navigate(rootDir, node);
+            }
+        }
+    }
+    
+    
+    private static String findURL(Path rootDir, String path) {
+        if(path.startsWith("/")) {
+            path = path.substring(1);
+        }
+        for(File fpDir : rootDir.toFile().listFiles()) {
+            Path pathFile = fpDir.toPath().resolve(path);
+            if(Files.exists(pathFile)) {
+                // No need for the fp root index.
+                if(pathFile.getParent().equals(fpDir.toPath())) {
+                    return null;
+                }
+                return fpDir.getName() + "/"+path;
+            }
+        }
+        return null;
     }
 }
