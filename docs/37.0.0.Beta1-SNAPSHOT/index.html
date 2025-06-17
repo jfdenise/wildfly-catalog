@@ -516,10 +516,7 @@
                         } 
                         // Case 2: Attribute Value Link (e.g., for configuration style linking where key is 'attribute' and its parent 'obj' has _address)
                         else if (key === 'attribute' && typeof currentValue === 'string' && parentAddressForAttribute) {
-                            let finalUrl = parentAddressForAttribute;
-                            if (parentAddressForAttribute.endsWith('index.html')) {
-                                finalUrl += '#attr-' + sanitizeForId(currentValue);
-                            }
+                            const finalUrl = parentAddressForAttribute; // Use the _address directly as it already contains the fragment
                             html += indent + '&nbsp;&nbsp;<strong style="color: #990055;">"' + key + '"</strong>: ';
                             html += '<a href="' + finalUrl + '" target="_blank" rel="noopener noreferrer" style="color: #1a73e8; text-decoration: underline;">' + currentValue.replace(/</g, '<').replace(/>/g, '>') + '</a>' +
                                     '<span class="tooltip-icon" data-tooltip-text="Navigate to the Model reference" style="cursor: help; display: inline-block; margin-left: 5px;">?</span>';
