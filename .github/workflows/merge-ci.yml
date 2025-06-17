@@ -28,8 +28,8 @@ jobs:
         run: |
           version=$(cat version.txt)
           cd catalog-generator
-          mvn clean install
-          mvn exec:java -Dwildfly-version=$version
+          #mvn clean install
+          #mvn exec:java -Dwildfly-version=$version
           cd ..
           changes="$(git status --porcelain)"
           if [ -n "$changes" ]; then
