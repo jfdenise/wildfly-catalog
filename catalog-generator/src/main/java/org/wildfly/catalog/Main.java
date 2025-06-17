@@ -389,7 +389,7 @@ public class Main {
                 if(pathFile.getParent().equals(fpDir.toPath())) {
                     return null;
                 }
-                return fpDir.getName() + "/"+path;
+                return "wildscribe/" + fpDir.getName() + "/"+path;
             }
         }
         return null;

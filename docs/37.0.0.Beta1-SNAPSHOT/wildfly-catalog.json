@@ -89,7 +89,7 @@
       "managementModel" : {
         "subsystem" : {
           "ai" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html"
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html"
           }
         }
       },
@@ -113,10 +113,10 @@
       "managementModel" : {
         "subsystem" : {
           "ai" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
             "chat-memory" : {
               "chat-memory" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/chat-memory/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/chat-memory/index.html",
                 "size" : "${org.wildfly.ai.chat-memory.size,env.CHAT_MEMORY_SIZE:5}",
                 "type" : "${org.wildfly.ai.chat-memory.type,env.CHAT_MEMORY_TYPE:MESSAGE}",
                 "use-http-session" : "${org.wildfly.ai.chat-memory.session,env.CHAT_MEMORY_SESSION:true}"
@@ -126,7 +126,7 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/chat-memory/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/chat-memory/index.html",
         "attribute" : "use-http-session",
         "environmentVariables" : [ "CHAT_MEMORY_SESSION", "CHAT_MEMORY_SIZE", "CHAT_MEMORY_TYPE" ],
         "systemProperties" : [ "org.wildfly.ai.chat-memory.session", "org.wildfly.ai.chat-memory.size", "org.wildfly.ai.chat-memory.type" ]
@@ -161,10 +161,10 @@
       "managementModel" : {
         "subsystem" : {
           "ai" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
             "embedding-store-content-retriever" : {
               "embedding-store-retriever" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/embedding-store-content-retriever/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/embedding-store-content-retriever/index.html",
                 "embedding-model" : "all-minilm-l6-v2",
                 "embedding-store" : "in-memory",
                 "max-results" : "${org.wildfly.ai.embedding.retriever.max.results,env.EMBEDDING_RETRIEVER_MAX_RESULTS:2}",
@@ -175,7 +175,7 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/embedding-store-content-retriever/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/embedding-store-content-retriever/index.html",
         "attribute" : "max-results",
         "environmentVariables" : [ "EMBEDDING_RETRIEVER_MAX_RESULTS", "EMBEDDING_RETRIEVER_MIN_SCORE" ],
         "systemProperties" : [ "org.wildfly.ai.embedding.retriever.max.results", "org.wildfly.ai.embedding.retriever.min.score" ]
@@ -216,10 +216,10 @@
       "managementModel" : {
         "subsystem" : {
           "ai" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
             "gemini-chat-model" : {
               "gemini" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/gemini-chat-model/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/gemini-chat-model/index.html",
                 "api-key" : "${env.GEMINI_API_KEY:YOUR_KEY_VALUE}",
                 "log-requests-responses" : "${org.wildfly.ai.gemini.chat.log,env.GEMINI_CHAT_LOG:true}",
                 "model-name" : "${org.wildfly.ai.gemini.chat.model.name,env.GEMINI_CHAT_MODEL_NAME:gemini-1.5-flash}"
@@ -229,7 +229,7 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/gemini-chat-model/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/gemini-chat-model/index.html",
         "attribute" : "model-name",
         "environmentVariables" : [ "GEMINI_API_KEY", "GEMINI_CHAT_LOG", "GEMINI_CHAT_MODEL_NAME" ],
         "systemProperties" : [ "org.wildfly.ai.gemini.chat.log", "org.wildfly.ai.gemini.chat.model.name" ]
@@ -265,10 +265,10 @@
       "managementModel" : {
         "subsystem" : {
           "ai" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
             "gemini-chat-model" : {
               "streaming-gemini" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/gemini-chat-model/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/gemini-chat-model/index.html",
                 "api-key" : "${env.GEMINI_API_KEY:YOUR_KEY_VALUE}",
                 "log-requests-responses" : "${org.wildfly.ai.gemini.chat.log,env.GEMINI_CHAT_LOG:true}",
                 "model-name" : "${org.wildfly.ai.gemini.chat.model.name,env.GEMINI_CHAT_MODEL_NAME:gemini-1.5-flash}",
@@ -279,7 +279,7 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/gemini-chat-model/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/gemini-chat-model/index.html",
         "attribute" : "model-name",
         "environmentVariables" : [ "GEMINI_API_KEY", "GEMINI_CHAT_LOG", "GEMINI_CHAT_MODEL_NAME" ],
         "systemProperties" : [ "org.wildfly.ai.gemini.chat.log", "org.wildfly.ai.gemini.chat.model.name" ]
@@ -315,10 +315,10 @@
       "managementModel" : {
         "subsystem" : {
           "ai" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
             "github-chat-model" : {
               "github" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/github-chat-model/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/github-chat-model/index.html",
                 "api-key" : "${env.GITHUB_API_KEY:YOUR_KEY_VALUE}",
                 "endpoint" : "${org.wildfly.ai.github.chat.url,env.GITHUB_CHAT_URL:https://models.inference.ai.azure.com}",
                 "log-requests-responses" : "${org.wildfly.ai.github.chat.log,env.GITHUB_CHAT_LOG:true}",
@@ -329,7 +329,7 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/github-chat-model/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/github-chat-model/index.html",
         "attribute" : "endpoint",
         "environmentVariables" : [ "GITHUB_API_KEY", "GITHUB_CHAT_LOG", "GITHUB_CHAT_MODEL_NAME", "GITHUB_CHAT_URL" ],
         "systemProperties" : [ "org.wildfly.ai.github.chat.log", "org.wildfly.ai.github.chat.model.name", "org.wildfly.ai.github.chat.url" ]
@@ -365,10 +365,10 @@
       "managementModel" : {
         "subsystem" : {
           "ai" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
             "github-chat-model" : {
               "streaming-github" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/github-chat-model/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/github-chat-model/index.html",
                 "api-key" : "${env.GITHUB_API_KEY:YOUR_KEY_VALUE}",
                 "endpoint" : "${org.wildfly.ai.github.chat.url,env.GITHUB_CHAT_URL:https://models.inference.ai.azure.com}",
                 "log-requests-responses" : "${org.wildfly.ai.github.chat.log,env.GITHUB_CHAT_LOG:true}",
@@ -387,7 +387,7 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/github-chat-model/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/github-chat-model/index.html",
         "attribute" : "endpoint",
         "environmentVariables" : [ "GITHUB_API_KEY", "GITHUB_CHAT_LOG", "GITHUB_CHAT_MODEL_NAME", "GITHUB_CHAT_URL" ],
         "systemProperties" : [ "org.wildfly.ai.github.chat.log", "org.wildfly.ai.github.chat.model.name", "org.wildfly.ai.github.chat.url" ]
@@ -423,10 +423,10 @@
       "managementModel" : {
         "subsystem" : {
           "ai" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
             "openai-chat-model" : {
               "groq" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/openai-chat-model/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/openai-chat-model/index.html",
                 "api-key" : "${env.GROQ_API_KEY:YOUR_KEY_VALUE}",
                 "base-url" : "${org.wildfly.ai.openai.chat.url,env.GROQ_CHAT_URL:https://api.groq.com/openai/v1}",
                 "log-requests" : "${org.wildfly.ai.groq.chat.log.request,env.GROQ_CHAT_LOG_REQUEST:true}",
@@ -438,7 +438,7 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/openai-chat-model/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/openai-chat-model/index.html",
         "attribute" : "base-url",
         "environmentVariables" : [ "GROQ_API_KEY", "GROQ_CHAT_LOG_REQUEST", "GROQ_CHAT_LOG_RESPONSE", "GROQ_CHAT_MODEL_NAME", "GROQ_CHAT_URL" ],
         "systemProperties" : [ "org.wildfly.ai.groq.chat.log.request", "org.wildfly.ai.groq.chat.log.response", "org.wildfly.ai.groq.chat.model.name", "org.wildfly.ai.openai.chat.url" ]
@@ -474,10 +474,10 @@
       "managementModel" : {
         "subsystem" : {
           "ai" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
             "openai-chat-model" : {
               "streaming-groq" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/openai-chat-model/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/openai-chat-model/index.html",
                 "api-key" : "${env.GROQ_API_KEY:YOUR_KEY_VALUE}",
                 "base-url" : "${org.wildfly.ai.groq.chat.url,env.GROQ_CHAT_URL:https://api.groq.com/openai/v1}",
                 "log-requests" : "${org.wildfly.ai.groq.chat.log.request,env.GROQ_CHAT_LOG_REQUEST:true}",
@@ -490,7 +490,7 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/openai-chat-model/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/openai-chat-model/index.html",
         "attribute" : "base-url",
         "environmentVariables" : [ "GROQ_API_KEY", "GROQ_CHAT_LOG_REQUEST", "GROQ_CHAT_LOG_RESPONSE", "GROQ_CHAT_MODEL_NAME", "GROQ_CHAT_URL" ],
         "systemProperties" : [ "org.wildfly.ai.groq.chat.log.request", "org.wildfly.ai.groq.chat.log.response", "org.wildfly.ai.groq.chat.model.name", "org.wildfly.ai.groq.chat.url" ]
@@ -526,10 +526,10 @@
       "managementModel" : {
         "subsystem" : {
           "ai" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
             "in-memory-embedding-model" : {
               "all-minilm-l6-v2" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/in-memory-embedding-model/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/in-memory-embedding-model/index.html",
                 "embedding-class" : "dev.langchain4j.model.embedding.onnx.allminilml6v2.AllMiniLmL6V2EmbeddingModel",
                 "module" : "dev.langchain4j.embeddings.all-minilm-l6-v2"
               }
@@ -552,10 +552,10 @@
       "managementModel" : {
         "subsystem" : {
           "ai" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
             "in-memory-embedding-model" : {
               "all-minilm-l6-v2-q" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/in-memory-embedding-model/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/in-memory-embedding-model/index.html",
                 "embedding-class" : "dev.langchain4j.model.embedding.onnx.allminilml6v2q.AllMiniLmL6V2QuantizedEmbeddingModel",
                 "module" : "dev.langchain4j.embeddings.all-minilm-l6-v2-q"
               }
@@ -578,10 +578,10 @@
       "managementModel" : {
         "subsystem" : {
           "ai" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
             "in-memory-embedding-model" : {
               "bge-small-en" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/in-memory-embedding-model/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/in-memory-embedding-model/index.html",
                 "embedding-class" : "dev.langchain4j.model.embedding.onnx.bgesmallen.BgeSmallEnEmbeddingModel",
                 "module" : "dev.langchain4j.embeddings.bge-small-en"
               }
@@ -604,10 +604,10 @@
       "managementModel" : {
         "subsystem" : {
           "ai" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
             "in-memory-embedding-model" : {
               "bge-small-en" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/in-memory-embedding-model/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/in-memory-embedding-model/index.html",
                 "embedding-class" : "dev.langchain4j.model.embedding.onnx.bgesmallenq.BgeSmallEnQuantizedEmbeddingModel",
                 "module" : "dev.langchain4j.embeddings.bge-small-en-q"
               }
@@ -630,10 +630,10 @@
       "managementModel" : {
         "subsystem" : {
           "ai" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
             "in-memory-embedding-model" : {
               "bge-small-en-v15" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/in-memory-embedding-model/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/in-memory-embedding-model/index.html",
                 "embedding-class" : "dev.langchain4j.model.embedding.onnx.bgesmallenv15.BgeSmallEnV15EmbeddingModel",
                 "module" : "dev.langchain4j.embeddings.bge-small-en-v15"
               }
@@ -656,10 +656,10 @@
       "managementModel" : {
         "subsystem" : {
           "ai" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
             "in-memory-embedding-model" : {
               "bge-small-en-v15-q" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/in-memory-embedding-model/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/in-memory-embedding-model/index.html",
                 "embedding-class" : "dev.langchain4j.model.embedding.onnx.bgesmallenv15q.BgeSmallEnV15QuantizedEmbeddingModel",
                 "module" : "dev.langchain4j.embeddings.bge-small-en-v15-q"
               }
@@ -682,10 +682,10 @@
       "managementModel" : {
         "subsystem" : {
           "ai" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
             "in-memory-embedding-model" : {
               "e5-small-v2" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/in-memory-embedding-model/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/in-memory-embedding-model/index.html",
                 "embedding-class" : "dev.langchain4j.model.embedding.onnx.e5smallv2.E5SmallV2EmbeddingModel",
                 "module" : "dev.langchain4j.embeddings.e5-small-v2"
               }
@@ -708,10 +708,10 @@
       "managementModel" : {
         "subsystem" : {
           "ai" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
             "in-memory-embedding-model" : {
               "e5-small-v2-q" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/in-memory-embedding-model/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/in-memory-embedding-model/index.html",
                 "embedding-class" : "dev.langchain4j.model.embedding.onnx.e5smallv2q.E5SmallV2QuantizedEmbeddingModel",
                 "module" : "dev.langchain4j.embeddings.e5-small-v2-q"
               }
@@ -734,10 +734,10 @@
       "managementModel" : {
         "subsystem" : {
           "ai" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
             "in-memory-embedding-store" : {
               "in-memory" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/in-memory-embedding-store/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/in-memory-embedding-store/index.html",
                 "path" : "${org.wildfly.ai.in-memory.embedding.file,env.IN_MEMORY_EMBEDDING_FILE:embeddings.json}",
                 "relative-to" : "jboss.server.config.dir"
               }
@@ -746,7 +746,7 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/in-memory-embedding-store/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/in-memory-embedding-store/index.html",
         "attribute" : "path",
         "environmentVariables" : [ "IN_MEMORY_EMBEDDING_FILE" ],
         "systemProperties" : [ "org.wildfly.ai.in-memory.embedding.file" ]
@@ -776,10 +776,10 @@
       "managementModel" : {
         "socket-binding-group" : {
           "standard-sockets" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
             "remote-destination-outbound-socket-binding" : {
               "mcp-sse" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/remote-destination-outbound-socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/remote-destination-outbound-socket-binding/index.html",
                 "host" : "${org.wildfly.ai.mcp.client.host,env.MCP_CLIENT_HOST:localhost}",
                 "port" : "${org.wildfly.ai.mcp.client.port,env.MCP_CLIENT_PORT:8090}"
               }
@@ -788,10 +788,10 @@
         },
         "subsystem" : {
           "ai" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
             "mcp-client-sse" : {
               "mcp-sse" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/mcp-client-sse/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/mcp-client-sse/index.html",
                 "connect-timeout" : "6000000",
                 "log-requests" : "${org.wildfly.ai.mcp.client.log.request,env.MCP_CLIENT_LOG_REQUEST:true}",
                 "log-responses" : "${org.wildfly.ai.mcp.client.log.response,env.MCP_CLIENT_LOG_RESPONSE:true}",
@@ -801,7 +801,7 @@
             },
             "mcp-tool-provider" : {
               "mcp" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/mcp-tool-provider/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/mcp-tool-provider/index.html",
                 "mcp-clients" : "[mcp-sse]"
               }
             }
@@ -809,12 +809,12 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/remote-destination-outbound-socket-binding/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/remote-destination-outbound-socket-binding/index.html",
         "attribute" : "host",
         "environmentVariables" : [ "MCP_CLIENT_HOST", "MCP_CLIENT_PORT" ],
         "systemProperties" : [ "org.wildfly.ai.mcp.client.host", "org.wildfly.ai.mcp.client.port" ]
       }, {
-        "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/mcp-client-sse/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/mcp-client-sse/index.html",
         "attribute" : "log-requests",
         "environmentVariables" : [ "MCP_CLIENT_LOG_REQUEST", "MCP_CLIENT_LOG_RESPONSE", "MCP_CLIENT_SSE_PATH" ],
         "systemProperties" : [ "org.wildfly.ai.mcp.client.log.request", "org.wildfly.ai.mcp.client.log.response", "org.wildfly.ai.mcp.client.sse.path" ]
@@ -845,15 +845,15 @@
       "managementModel" : {
         "subsystem" : {
           "ai" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
             "mcp-client-stdio" : {
               "mcp-stdio" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/mcp-client-stdio/index.html"
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/mcp-client-stdio/index.html"
               }
             },
             "mcp-tool-provider" : {
               "mcp-stdio" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/mcp-tool-provider/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/mcp-tool-provider/index.html",
                 "mcp-clients" : "[mcp-stdio]"
               }
             }
@@ -881,10 +881,10 @@
       "managementModel" : {
         "subsystem" : {
           "ai" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
             "mistral-ai-chat-model" : {
               "mistral" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/mistral-ai-chat-model/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/mistral-ai-chat-model/index.html",
                 "api-key" : "${env.MISTRAL_API_KEY:YOUR_KEY_VALUE}",
                 "base-url" : "${org.wildfly.ai.mistral.chat.url,env.MISTRAL_CHAT_URL:https://api.mistral.ai/v1}",
                 "log-requests" : "${org.wildfly.ai.mistral.chat.log.request,env.MISTRAL_CHAT_LOG_REQUEST:true}",
@@ -896,7 +896,7 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/mistral-ai-chat-model/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/mistral-ai-chat-model/index.html",
         "attribute" : "base-url",
         "environmentVariables" : [ "MISTRAL_API_KEY", "MISTRAL_CHAT_LOG_REQUEST", "MISTRAL_CHAT_LOG_RESPONSE", "MISTRAL_CHAT_MODEL_NAME", "MISTRAL_CHAT_URL" ],
         "systemProperties" : [ "org.wildfly.ai.mistral.chat.log.request", "org.wildfly.ai.mistral.chat.log.response", "org.wildfly.ai.mistral.chat.model.name", "org.wildfly.ai.mistral.chat.url" ]
@@ -932,10 +932,10 @@
       "managementModel" : {
         "subsystem" : {
           "ai" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
             "mistral-ai-chat-model" : {
               "streaming-mistral" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/mistral-ai-chat-model/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/mistral-ai-chat-model/index.html",
                 "api-key" : "${env.MISTRAL_API_KEY:YOUR_KEY_VALUE}",
                 "base-url" : "${org.wildfly.ai.mistral.chat.url,env.MISTRAL_CHAT_URL:https://api.mistral.ai/v1}",
                 "log-requests" : "${org.wildfly.ai.mistral.chat.log.request,env.MISTRAL_CHAT_LOG_REQUEST:true}",
@@ -948,7 +948,7 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/mistral-ai-chat-model/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/mistral-ai-chat-model/index.html",
         "attribute" : "base-url",
         "environmentVariables" : [ "MISTRAL_API_KEY", "MISTRAL_CHAT_LOG_REQUEST", "MISTRAL_CHAT_LOG_RESPONSE", "MISTRAL_CHAT_MODEL_NAME", "MISTRAL_CHAT_URL" ],
         "systemProperties" : [ "org.wildfly.ai.mistral.chat.log.request", "org.wildfly.ai.mistral.chat.log.response", "org.wildfly.ai.mistral.chat.model.name", "org.wildfly.ai.mistral.chat.url" ]
@@ -1013,10 +1013,10 @@
       "managementModel" : {
         "subsystem" : {
           "ai" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
             "neo4j-embedding-store" : {
               "neo4j" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/neo4j-embedding-store/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/neo4j-embedding-store/index.html",
                 "bolt-url" : "${org.wildfly.ai.neo4j.url,env.NEO4J_URL:neo4j://localhost:7687}",
                 "credential-reference" : "{clear-text=${org.wildfly.ai.neo4j.password,env.NEO4J_PASSWORD:neo4jpassword}}",
                 "dimension" : "${org.wildfly.ai.neo4j.dimension,env.NEO4J_DIMENSION:384}",
@@ -1027,7 +1027,7 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/neo4j-embedding-store/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/neo4j-embedding-store/index.html",
         "attribute" : "credential-reference",
         "environmentVariables" : [ "NEO4J_DIMENSION", "NEO4J_PASSWORD", "NEO4J_URL", "NEO4J_USER" ],
         "systemProperties" : [ "org.wildfly.ai.neo4j.dimension", "org.wildfly.ai.neo4j.password", "org.wildfly.ai.neo4j.url", "org.wildfly.ai.neo4j.username" ]
@@ -1058,10 +1058,10 @@
       "managementModel" : {
         "subsystem" : {
           "ai" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
             "ollama-chat-model" : {
               "ollama" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/ollama-chat-model/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/ollama-chat-model/index.html",
                 "base-url" : "${org.wildfly.ai.ollama.chat.url,env.OLLAMA_CHAT_URL:http://127.0.0.1:11434}",
                 "connect-timeout" : "600000",
                 "log-requests" : "${org.wildfly.ai.ollama.chat.log.request,env.OLLAMA_CHAT_LOG_REQUEST:true}",
@@ -1074,7 +1074,7 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/ollama-chat-model/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/ollama-chat-model/index.html",
         "attribute" : "base-url",
         "environmentVariables" : [ "OLLAMA_CHAT_LOG_REQUEST", "OLLAMA_CHAT_LOG_RESPONSE", "OLLAMA_CHAT_MODEL_NAME", "OLLAMA_CHAT_TEMPERATURE", "OLLAMA_CHAT_URL" ],
         "systemProperties" : [ "org.wildfly.ai.ollama.chat.log.request", "org.wildfly.ai.ollama.chat.log.response", "org.wildfly.ai.ollama.chat.model.name", "org.wildfly.ai.ollama.chat.temperature", "org.wildfly.ai.ollama.chat.url" ]
@@ -1110,10 +1110,10 @@
       "managementModel" : {
         "subsystem" : {
           "ai" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
             "ollama-embedding-model" : {
               "ollama" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/ollama-embedding-model/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/ollama-embedding-model/index.html",
                 "base-url" : "${org.wildfly.ai.ollama.embedding.url,env.OLLAMA_EMBEDDING_URL:http://127.0.0.1:11434}",
                 "log-requests" : "${org.wildfly.ai.ollama.embedding.log.request,env.OLLAMA_EMBEDDING_LOG_REQUEST:true}",
                 "log-responses" : "${org.wildfly.ai.ollama.embedding.log.response,env.OLLAMA_EMBEDDING_LOG_RESPONSE:true}",
@@ -1124,7 +1124,7 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/ollama-embedding-model/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/ollama-embedding-model/index.html",
         "attribute" : "base-url",
         "environmentVariables" : [ "OLLAMA_EMBEDDING_LOG_REQUEST", "OLLAMA_EMBEDDING_LOG_RESPONSE", "OLLAMA_EMBEDDING_MODEL_NAME", "OLLAMA_EMBEDDING_URL" ],
         "systemProperties" : [ "org.wildfly.ai.ollama.embedding.log.request", "org.wildfly.ai.ollama.embedding.log.response", "org.wildfly.ai.ollama.embedding.model.name", "org.wildfly.ai.ollama.embedding.url" ]
@@ -1150,10 +1150,10 @@
       "managementModel" : {
         "subsystem" : {
           "ai" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
             "neo4j-content-retriever" : {
               "ollama-neo4j-retriever" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/neo4j-content-retriever/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/neo4j-content-retriever/index.html",
                 "bolt-url" : "${org.wildfly.ai.neo4j.url,env.NEO4J_URL:neo4j://localhost:7687}",
                 "chat-language-model" : "cypher_model",
                 "credential-reference" : "{clear-text=${org.wildfly.ai.neo4j.password,env.NEO4J_PASSWORD:neo4jpassword}}",
@@ -1162,7 +1162,7 @@
             },
             "ollama-chat-model" : {
               "cypher_model" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/ollama-chat-model/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/ollama-chat-model/index.html",
                 "base-url" : "${org.wildfly.ai.ollama.chat.url,env.OLLAMA_NEO4J_CHAT_URL:http://127.0.0.1:11434}",
                 "connect-timeout" : "600000",
                 "log-requests" : "${org.wildfly.ai.ollama.chat.log.request,env.OLLAMA_NEO4J_CHAT_LOG_REQUEST:true}",
@@ -1174,12 +1174,12 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/neo4j-content-retriever/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/neo4j-content-retriever/index.html",
         "attribute" : "credential-reference",
         "environmentVariables" : [ "NEO4J_PASSWORD", "NEO4J_URL", "NEO4J_USER" ],
         "systemProperties" : [ "org.wildfly.ai.neo4j.password", "org.wildfly.ai.neo4j.url", "org.wildfly.ai.neo4j.username" ]
       }, {
-        "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/ollama-chat-model/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/ollama-chat-model/index.html",
         "attribute" : "base-url",
         "environmentVariables" : [ "OLLAMA_NEO4J_CHAT_LOG_REQUEST", "OLLAMA_NEO4J_CHAT_LOG_RESPONSE", "OLLAMA_NEO4J_CHAT_MODEL_NAME", "OLLAMA_NEO4J_CHAT_URL" ],
         "systemProperties" : [ "org.wildfly.ai.ollama.chat.log.request", "org.wildfly.ai.ollama.chat.log.response", "org.wildfly.ai.ollama.chat.model.name", "org.wildfly.ai.ollama.chat.url" ]
@@ -1218,10 +1218,10 @@
       "managementModel" : {
         "subsystem" : {
           "ai" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
             "ollama-chat-model" : {
               "streaming-ollama" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/ollama-chat-model/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/ollama-chat-model/index.html",
                 "base-url" : "${org.wildfly.ai.ollama.chat.url,env.OLLAMA_CHAT_URL:http://127.0.0.1:11434}",
                 "connect-timeout" : "600000",
                 "log-requests" : "${org.wildfly.ai.ollama.chat.log.request,env.OLLAMA_CHAT_LOG_REQUEST:true}",
@@ -1235,7 +1235,7 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/ollama-chat-model/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/ollama-chat-model/index.html",
         "attribute" : "base-url",
         "environmentVariables" : [ "OLLAMA_CHAT_LOG_REQUEST", "OLLAMA_CHAT_LOG_RESPONSE", "OLLAMA_CHAT_MODEL_NAME", "OLLAMA_CHAT_TEMPERATURE", "OLLAMA_CHAT_URL" ],
         "systemProperties" : [ "org.wildfly.ai.ollama.chat.log.request", "org.wildfly.ai.ollama.chat.log.response", "org.wildfly.ai.ollama.chat.model.name", "org.wildfly.ai.ollama.chat.temperature", "org.wildfly.ai.ollama.chat.url" ]
@@ -1271,10 +1271,10 @@
       "managementModel" : {
         "subsystem" : {
           "ai" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
             "openai-chat-model" : {
               "openai" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/openai-chat-model/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/openai-chat-model/index.html",
                 "api-key" : "${env.OPENAI_API_KEY:YOUR_KEY_VALUE}",
                 "base-url" : "${org.wildfly.ai.openai.chat.url,env.OPENAI_CHAT_URL:https://api.openai.com/v1}",
                 "log-requests" : "${org.wildfly.ai.openai.chat.log.request,env.OPENAI_CHAT_LOG_REQUEST:true}",
@@ -1286,7 +1286,7 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/openai-chat-model/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/openai-chat-model/index.html",
         "attribute" : "base-url",
         "environmentVariables" : [ "OPENAI_API_KEY", "OPENAI_CHAT_LOG_REQUEST", "OPENAI_CHAT_LOG_RESPONSE", "OPENAI_CHAT_MODEL_NAME", "OPENAI_CHAT_URL" ],
         "systemProperties" : [ "org.wildfly.ai.openai.chat.log.request", "org.wildfly.ai.openai.chat.log.response", "org.wildfly.ai.openai.chat.model.name", "org.wildfly.ai.openai.chat.url" ]
@@ -1322,10 +1322,10 @@
       "managementModel" : {
         "subsystem" : {
           "ai" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
             "neo4j-content-retriever" : {
               "openai-neo4j-retriever" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/neo4j-content-retriever/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/neo4j-content-retriever/index.html",
                 "bolt-url" : "${org.wildfly.ai.neo4j.url,env.NEO4J_URL:neo4j://localhost:7687}",
                 "chat-language-model" : "cypher_model",
                 "credential-reference" : "{clear-text=${org.wildfly.ai.neo4j.password,env.NEO4J_PASSWORD:neo4jpassword}}",
@@ -1334,7 +1334,7 @@
             },
             "openai-chat-model" : {
               "cypher_model" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/openai-chat-model/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/openai-chat-model/index.html",
                 "api-key" : "${env.OPENAI_NEO4J_API_KEY:YOUR_KEY_VALUE}",
                 "base-url" : "${org.wildfly.ai.openai.chat.url,env.OPENAI_NEO4J_CHAT_URL:https://api.openai.com/v1}",
                 "log-requests" : "${org.wildfly.ai.openai.chat.log.request,env.OPENAI_NEO4J_CHAT_LOG_REQUEST:true}",
@@ -1346,12 +1346,12 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/neo4j-content-retriever/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/neo4j-content-retriever/index.html",
         "attribute" : "credential-reference",
         "environmentVariables" : [ "NEO4J_PASSWORD", "NEO4J_URL", "NEO4J_USER" ],
         "systemProperties" : [ "org.wildfly.ai.neo4j.password", "org.wildfly.ai.neo4j.url", "org.wildfly.ai.neo4j.username" ]
       }, {
-        "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/openai-chat-model/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/openai-chat-model/index.html",
         "attribute" : "base-url",
         "environmentVariables" : [ "OPENAI_NEO4J_API_KEY", "OPENAI_NEO4J_CHAT_LOG_REQUEST", "OPENAI_NEO4J_CHAT_LOG_RESPONSE", "OPENAI_NEO4J_CHAT_MODEL_NAME", "OPENAI_NEO4J_CHAT_URL" ],
         "systemProperties" : [ "org.wildfly.ai.openai.chat.log.request", "org.wildfly.ai.openai.chat.log.response", "org.wildfly.ai.openai.chat.model.name", "org.wildfly.ai.openai.chat.url" ]
@@ -1390,10 +1390,10 @@
       "managementModel" : {
         "subsystem" : {
           "ai" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
             "openai-chat-model" : {
               "streaming-openai" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/openai-chat-model/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/openai-chat-model/index.html",
                 "api-key" : "${env.OPENAI_API_KEY:YOUR_KEY_VALUE}",
                 "base-url" : "${org.wildfly.ai.openai.chat.url,env.OPENAI_CHAT_URL:https://api.openai.com/v1}",
                 "log-requests" : "${org.wildfly.ai.openai.chat.log.request,env.OPENAI_CHAT_LOG_REQUEST:true}",
@@ -1406,7 +1406,7 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/openai-chat-model/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/openai-chat-model/index.html",
         "attribute" : "base-url",
         "environmentVariables" : [ "OPENAI_API_KEY", "OPENAI_CHAT_LOG_REQUEST", "OPENAI_CHAT_LOG_RESPONSE", "OPENAI_CHAT_MODEL_NAME", "OPENAI_CHAT_URL" ],
         "systemProperties" : [ "org.wildfly.ai.openai.chat.log.request", "org.wildfly.ai.openai.chat.log.response", "org.wildfly.ai.openai.chat.model.name", "org.wildfly.ai.openai.chat.url" ]
@@ -1442,10 +1442,10 @@
       "managementModel" : {
         "socket-binding-group" : {
           "standard-sockets" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
             "remote-destination-outbound-socket-binding" : {
               "${org.wildfly.ai.weaviate.socket-binding,env.WEAVIATE_SOCKET_BINDING:weaviate}" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/remote-destination-outbound-socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/remote-destination-outbound-socket-binding/index.html",
                 "host" : "${org.wildfly.ai.weaviate.host,env.WEAVIATE_HOST:localhost}",
                 "port" : "${org.wildfly.ai.weaviate.port,env.WEAVIATE_PORT:8090}"
               }
@@ -1454,10 +1454,10 @@
         },
         "subsystem" : {
           "ai" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
             "weaviate-embedding-store" : {
               "weaviate" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/weaviate-embedding-store/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/weaviate-embedding-store/index.html",
                 "metadata" : "[url,language,parent_url,file_name,file_path,title,subtitle]",
                 "object-class" : "${org.wildfly.ai.weaviate.object-class,env.WEAVIATE_OBJECT_CLASS:Simple}",
                 "socket-binding" : "${org.wildfly.ai.weaviate.socket-binding,env.WEAVIATE_SOCKET_BINDING:weaviate}",
@@ -1468,12 +1468,12 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/remote-destination-outbound-socket-binding/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/remote-destination-outbound-socket-binding/index.html",
         "attribute" : "host",
         "environmentVariables" : [ "WEAVIATE_HOST", "WEAVIATE_PORT" ],
         "systemProperties" : [ "org.wildfly.ai.weaviate.host", "org.wildfly.ai.weaviate.port" ]
       }, {
-        "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/weaviate-embedding-store/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/weaviate-embedding-store/index.html",
         "attribute" : "object-class",
         "environmentVariables" : [ "WEAVIATE_OBJECT_CLASS", "WEAVIATE_SOCKET_BINDING", "WEAVIATE_SSL_ENABLED" ],
         "systemProperties" : [ "org.wildfly.ai.weaviate.object-class", "org.wildfly.ai.weaviate.socket-binding", "org.wildfly.ai.weaviate.ssl-enabled" ]
@@ -1504,10 +1504,10 @@
       "managementModel" : {
         "subsystem" : {
           "ai" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/index.html",
             "web-search-content-retriever" : {
               "web-search-retriever" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/web-search-content-retriever/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/web-search-content-retriever/index.html",
                 "tavily" : "{api-key=${env.TAVILY_API_KEY}, base-url=https://api.tavily.com, connect-timeout=20000, exclude-domains=[example.org], include-domains=[example.com], include-answer=true}"
               }
             }
@@ -1515,7 +1515,7 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/ai/web-search-content-retriever/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/ai/web-search-content-retriever/index.html",
         "attribute" : "tavily",
         "environmentVariables" : [ "TAVILY_API_KEY" ]
       } ],
@@ -1712,19 +1712,19 @@
       "managementModel" : {
         "interface" : {
           "bindall" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/interface/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/interface/index.html",
             "inet-address" : "${jboss.bind.address.bindall:0.0.0.0}"
           }
         },
         "socket-binding-group" : {
           "standard-sockets" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
             "port-offset" : "0"
           }
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-galleon-pack/interface/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/interface/index.html",
         "attribute" : "inet-address",
         "systemProperties" : [ "jboss.bind.address.bindall" ]
       } ],
@@ -1743,44 +1743,44 @@
       "managementModel" : {
         "interface" : {
           "private" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/interface/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/interface/index.html",
             "inet-address" : "${jboss.bind.address.private:127.0.0.1}"
           }
         },
         "socket-binding-group" : {
           "standard-sockets" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
             "socket-binding" : {
               "jgroups-mping" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "private",
                 "multicast-address" : "${jboss.default.multicast.address:230.0.0.4}",
                 "multicast-port" : "45700"
               },
               "jgroups-tcp" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "private",
                 "port" : "7600"
               },
               "jgroups-tcp-fd" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "private",
                 "port" : "57600"
               },
               "jgroups-udp" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "private",
                 "multicast-address" : "${jboss.default.multicast.address:230.0.0.4}",
                 "multicast-port" : "45688",
                 "port" : "55200"
               },
               "jgroups-udp-fd" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "private",
                 "port" : "54200"
               },
               "modcluster" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "multicast-address" : "${jboss.modcluster.multicast.address:224.0.1.105}",
                 "multicast-port" : "23364"
               }
@@ -2303,11 +2303,11 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-galleon-pack/interface/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/interface/index.html",
         "attribute" : "inet-address",
         "systemProperties" : [ "jboss.bind.address.private" ]
       }, {
-        "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
         "attribute" : "multicast-address",
         "systemProperties" : [ "jboss.default.multicast.address", "jboss.modcluster.multicast.address" ]
       }, {
@@ -2553,10 +2553,10 @@
       "managementModel" : {
         "socket-binding-group" : {
           "standard-sockets" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
             "remote-destination-outbound-socket-binding" : {
               "mail-smtp" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/remote-destination-outbound-socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/remote-destination-outbound-socket-binding/index.html",
                 "host" : "${env.OPENSHIFT_SMTP_HOST,jboss.mail.server.host:localhost}"
               }
             }
@@ -2564,7 +2564,7 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/remote-destination-outbound-socket-binding/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/remote-destination-outbound-socket-binding/index.html",
         "attribute" : "host",
         "environmentVariables" : [ "OPENSHIFT_SMTP_HOST" ],
         "systemProperties" : [ "jboss.mail.server.host" ]
@@ -2578,10 +2578,10 @@
       "managementModel" : {
         "core-service" : {
           "management" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/core-service/management/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/core-service/management/index.html",
             "management-interface" : {
               "http-interface" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/core-service/management/management-interface/http-interface/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/core-service/management/management-interface/http-interface/index.html",
                 "console-enabled" : "false"
               }
             }
@@ -2603,10 +2603,10 @@
       "managementModel" : {
         "socket-binding-group" : {
           "standard-sockets" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
             "remote-destination-outbound-socket-binding" : {
               "http-messaging" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/remote-destination-outbound-socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/remote-destination-outbound-socket-binding/index.html",
                 "host" : "${jboss.messaging.host:localhost}",
                 "port" : "${jboss.http.port:8080}"
               }
@@ -2615,7 +2615,7 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/remote-destination-outbound-socket-binding/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/remote-destination-outbound-socket-binding/index.html",
         "attribute" : "host",
         "systemProperties" : [ "jboss.http.port", "jboss.messaging.host" ]
       } ],
@@ -2646,14 +2646,14 @@
       "managementModel" : {
         "socket-binding-group" : {
           "standard-sockets" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
             "socket-binding" : {
               "http" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "bindall"
               },
               "https" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "bindall"
               }
             }
@@ -2753,39 +2753,39 @@
       "managementModel" : {
         "interface" : {
           "private" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/interface/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/interface/index.html",
             "inet-address" : "${jboss.bind.address.private:127.0.0.1}"
           }
         },
         "socket-binding-group" : {
           "standard-sockets" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
             "socket-binding" : {
               "jgroups-mping" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "private",
                 "multicast-address" : "${jboss.default.multicast.address:230.0.0.4}",
                 "multicast-port" : "45700"
               },
               "jgroups-tcp" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "private",
                 "port" : "7600"
               },
               "jgroups-tcp-fd" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "private",
                 "port" : "57600"
               },
               "jgroups-udp" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "private",
                 "multicast-address" : "${jboss.default.multicast.address:230.0.0.4}",
                 "multicast-port" : "45688",
                 "port" : "55200"
               },
               "jgroups-udp-fd" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "private",
                 "port" : "54200"
               }
@@ -2978,11 +2978,11 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-galleon-pack/interface/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/interface/index.html",
         "attribute" : "inet-address",
         "systemProperties" : [ "jboss.bind.address.private" ]
       }, {
-        "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
         "attribute" : "multicast-address",
         "systemProperties" : [ "jboss.default.multicast.address" ]
       } ],
@@ -3006,39 +3006,39 @@
       "managementModel" : {
         "interface" : {
           "private" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/interface/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/interface/index.html",
             "inet-address" : "${jboss.bind.address.private:127.0.0.1}"
           }
         },
         "socket-binding-group" : {
           "standard-sockets" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
             "socket-binding" : {
               "jgroups-mping" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "private",
                 "multicast-address" : "${jboss.default.multicast.address:230.0.0.4}",
                 "multicast-port" : "45700"
               },
               "jgroups-tcp" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "private",
                 "port" : "7600"
               },
               "jgroups-tcp-fd" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "private",
                 "port" : "57600"
               },
               "jgroups-udp" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "private",
                 "multicast-address" : "${jboss.default.multicast.address:230.0.0.4}",
                 "multicast-port" : "45688",
                 "port" : "55200"
               },
               "jgroups-udp-fd" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "private",
                 "port" : "54200"
               }
@@ -3170,11 +3170,11 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-galleon-pack/interface/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/interface/index.html",
         "attribute" : "inet-address",
         "systemProperties" : [ "jboss.bind.address.private" ]
       }, {
-        "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
         "attribute" : "multicast-address",
         "systemProperties" : [ "jboss.default.multicast.address" ]
       } ],
@@ -3201,10 +3201,10 @@
       "managementModel" : {
         "socket-binding-group" : {
           "standard-sockets" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
             "socket-binding" : {
               "modcluster" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "multicast-address" : "${jboss.modcluster.multicast.address:224.0.1.105}",
                 "multicast-port" : "23364"
               }
@@ -3243,7 +3243,7 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
         "attribute" : "multicast-address",
         "systemProperties" : [ "jboss.modcluster.multicast.address" ]
       } ],
@@ -3261,39 +3261,39 @@
       "managementModel" : {
         "interface" : {
           "private" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/interface/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/interface/index.html",
             "inet-address" : "${jboss.bind.address.private:127.0.0.1}"
           }
         },
         "socket-binding-group" : {
           "standard-sockets" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
             "socket-binding" : {
               "jgroups-mping" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "private",
                 "multicast-address" : "${jboss.default.multicast.address:230.0.0.4}",
                 "multicast-port" : "45700"
               },
               "jgroups-tcp" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "private",
                 "port" : "7600"
               },
               "jgroups-tcp-fd" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "private",
                 "port" : "57600"
               },
               "jgroups-udp" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "private",
                 "multicast-address" : "${jboss.default.multicast.address:230.0.0.4}",
                 "multicast-port" : "45688",
                 "port" : "55200"
               },
               "jgroups-udp-fd" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "private",
                 "port" : "54200"
               }
@@ -3403,11 +3403,11 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-galleon-pack/interface/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/interface/index.html",
         "attribute" : "inet-address",
         "systemProperties" : [ "jboss.bind.address.private" ]
       }, {
-        "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
         "attribute" : "multicast-address",
         "systemProperties" : [ "jboss.default.multicast.address" ]
       } ],
@@ -3487,29 +3487,29 @@
       "managementModel" : {
         "interface" : {
           "private" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/interface/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/interface/index.html",
             "inet-address" : "${jboss.bind.address.private:127.0.0.1}"
           }
         },
         "socket-binding-group" : {
           "standard-sockets" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
             "socket-binding" : {
               "http" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "port" : "${jboss.http.port:8080}"
               },
               "https" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "port" : "${jboss.https.port:8443}"
               },
               "mcmp-management" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "private",
                 "port" : "${jboss.mcmp.port:8090}"
               },
               "modcluster" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "private",
                 "multicast-address" : "${jboss.modcluster.multicast.address:224.0.1.105}",
                 "multicast-port" : "23364"
@@ -3565,11 +3565,11 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-galleon-pack/interface/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/interface/index.html",
         "attribute" : "inet-address",
         "systemProperties" : [ "jboss.bind.address.private" ]
       }, {
-        "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
         "attribute" : "port",
         "systemProperties" : [ "jboss.http.port", "jboss.https.port", "jboss.mcmp.port", "jboss.modcluster.multicast.address" ]
       }, {
@@ -3593,39 +3593,39 @@
       "managementModel" : {
         "interface" : {
           "private" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/interface/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/interface/index.html",
             "inet-address" : "${jboss.bind.address.private:127.0.0.1}"
           }
         },
         "socket-binding-group" : {
           "standard-sockets" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
             "socket-binding" : {
               "jgroups-mping" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "private",
                 "multicast-address" : "${jboss.default.multicast.address:230.0.0.4}",
                 "multicast-port" : "45700"
               },
               "jgroups-tcp" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "private",
                 "port" : "7600"
               },
               "jgroups-tcp-fd" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "private",
                 "port" : "57600"
               },
               "jgroups-udp" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "private",
                 "multicast-address" : "${jboss.default.multicast.address:230.0.0.4}",
                 "multicast-port" : "45688",
                 "port" : "55200"
               },
               "jgroups-udp-fd" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "private",
                 "port" : "54200"
               }
@@ -3779,11 +3779,11 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-galleon-pack/interface/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/interface/index.html",
         "attribute" : "inet-address",
         "systemProperties" : [ "jboss.bind.address.private" ]
       }, {
-        "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
         "attribute" : "multicast-address",
         "systemProperties" : [ "jboss.default.multicast.address" ]
       } ],
@@ -4819,7 +4819,7 @@
       "managementModel" : {
         "interface" : {
           "public" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/interface/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/interface/index.html",
             "inet-address" : "${jboss.bind.address:127.0.0.1}"
           }
         },
@@ -4828,18 +4828,18 @@
         },
         "socket-binding-group" : {
           "standard-sockets" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
             "default-interface" : "public",
             "port-offset" : "${jboss.socket.binding.port-offset:0}"
           }
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-galleon-pack/interface/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/interface/index.html",
         "attribute" : "inet-address",
         "systemProperties" : [ "jboss.bind.address" ]
       }, {
-        "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
         "attribute" : "port-offset",
         "systemProperties" : [ "jboss.socket.binding.port-offset" ]
       } ],
@@ -5234,10 +5234,10 @@
       "managementModel" : {
         "core-service" : {
           "management" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/core-service/management/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/core-service/management/index.html",
             "management-interface" : {
               "http-interface" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/core-service/management/management-interface/http-interface/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/core-service/management/management-interface/http-interface/index.html",
                 "console-enabled" : "false"
               }
             }
@@ -5491,10 +5491,10 @@
       "managementModel" : {
         "socket-binding-group" : {
           "standard-sockets" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
             "remote-destination-outbound-socket-binding" : {
               "http-messaging" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/remote-destination-outbound-socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/remote-destination-outbound-socket-binding/index.html",
                 "host" : "${jboss.messaging.host:localhost}",
                 "port" : "${jboss.http.port:8080}"
               }
@@ -5503,7 +5503,7 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/remote-destination-outbound-socket-binding/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/remote-destination-outbound-socket-binding/index.html",
         "attribute" : "host",
         "systemProperties" : [ "jboss.http.port", "jboss.messaging.host" ]
       } ],
@@ -5619,13 +5619,13 @@
       "managementModel" : {
         "core-service" : {
           "management" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/core-service/management/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/core-service/management/index.html",
             "access" : {
               "audit" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/core-service/management/access/audit/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/core-service/management/access/audit/index.html",
                 "file-handler" : {
                   "file" : {
-                    "_address" : "org.wildfly_wildfly-galleon-pack/core-service/management/access/audit/file-handler/index.html",
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/core-service/management/access/audit/file-handler/index.html",
                     "formatter" : "json-formatter",
                     "path" : "audit-log.log",
                     "relative-to" : "jboss.server.data.dir"
@@ -5633,32 +5633,32 @@
                 },
                 "json-formatter" : {
                   "json-formatter" : {
-                    "_address" : "org.wildfly_wildfly-galleon-pack/core-service/management/access/audit/json-formatter/index.html"
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/core-service/management/access/audit/json-formatter/index.html"
                   }
                 },
                 "logger" : {
                   "audit-log" : {
-                    "_address" : "org.wildfly_wildfly-galleon-pack/core-service/management/access/audit/logger/audit-log/index.html",
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/core-service/management/access/audit/logger/audit-log/index.html",
                     "enabled" : "false",
                     "log-boot" : "true",
                     "log-read-only" : "false",
                     "handler" : {
                       "file" : {
-                        "_address" : "org.wildfly_wildfly-galleon-pack/core-service/management/access/audit/logger/audit-log/handler/index.html"
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/core-service/management/access/audit/logger/audit-log/handler/index.html"
                       }
                     }
                   }
                 }
               },
               "authorization" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/core-service/management/access/authorization/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/core-service/management/access/authorization/index.html",
                 "provider" : "simple",
                 "role-mapping" : {
                   "SuperUser" : {
-                    "_address" : "org.wildfly_wildfly-galleon-pack/core-service/management/access/authorization/role-mapping/index.html",
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/core-service/management/access/authorization/role-mapping/index.html",
                     "include" : {
                       "user-$local" : {
-                        "_address" : "org.wildfly_wildfly-galleon-pack/core-service/management/access/authorization/role-mapping/include/index.html",
+                        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/core-service/management/access/authorization/role-mapping/include/index.html",
                         "name" : "$local",
                         "type" : "USER"
                       }
@@ -5669,7 +5669,7 @@
             },
             "management-interface" : {
               "http-interface" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/core-service/management/management-interface/http-interface/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/core-service/management/management-interface/http-interface/index.html",
                 "http-authentication-factory" : "management-http-authentication",
                 "http-upgrade" : "{ sasl-authentication-factory=management-sasl-authentication }",
                 "socket-binding" : "management-http"
@@ -5679,21 +5679,21 @@
         },
         "interface" : {
           "management" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/interface/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/interface/index.html",
             "inet-address" : "${jboss.bind.address.management:127.0.0.1}"
           }
         },
         "socket-binding-group" : {
           "standard-sockets" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
             "socket-binding" : {
               "management-http" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "management",
                 "port" : "${jboss.management.http.port:9990}"
               },
               "management-https" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "management",
                 "port" : "${jboss.management.https.port:9993}"
               }
@@ -5702,11 +5702,11 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-galleon-pack/interface/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/interface/index.html",
         "attribute" : "inet-address",
         "systemProperties" : [ "jboss.bind.address.management" ]
       }, {
-        "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
         "attribute" : "port",
         "systemProperties" : [ "jboss.management.http.port", "jboss.management.https.port" ]
       } ],
@@ -5857,14 +5857,14 @@
       "managementModel" : {
         "socket-binding-group" : {
           "standard-sockets" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
             "socket-binding" : {
               "txn-recovery-environment" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "port" : "4712"
               },
               "txn-status-manager" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "port" : "4713"
               }
             }
@@ -5922,18 +5922,18 @@
       "managementModel" : {
         "socket-binding-group" : {
           "standard-sockets" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
             "socket-binding" : {
               "ajp" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "port" : "${jboss.ajp.port:8009}"
               },
               "http" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "port" : "${jboss.http.port:8080}"
               },
               "https" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "port" : "${jboss.https.port:8443}"
               }
             }
@@ -5971,7 +5971,7 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
         "attribute" : "port",
         "systemProperties" : [ "jboss.ajp.port", "jboss.http.port", "jboss.https.port" ]
       }, {
@@ -6737,10 +6737,10 @@
       "managementModel" : {
         "socket-binding-group" : {
           "standard-sockets" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
             "remote-destination-outbound-socket-binding" : {
               "mail-smtp" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/remote-destination-outbound-socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/remote-destination-outbound-socket-binding/index.html",
                 "host" : "${jboss.mail.server.host:localhost}",
                 "port" : "${jboss.mail.server.port:25}"
               }
@@ -6768,7 +6768,7 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/remote-destination-outbound-socket-binding/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/remote-destination-outbound-socket-binding/index.html",
         "attribute" : "host",
         "systemProperties" : [ "jboss.mail.server.host", "jboss.mail.server.port" ]
       } ],
@@ -6970,7 +6970,7 @@
       "managementModel" : {
         "subsystem" : {
           "mvc-krazo" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/subsystem/mvc-krazo/index.html"
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/mvc-krazo/index.html"
           }
         }
       },
@@ -7202,10 +7202,10 @@
       "managementModel" : {
         "socket-binding-group" : {
           "standard-sockets" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
             "remote-destination-outbound-socket-binding" : {
               "messaging-activemq" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/remote-destination-outbound-socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/remote-destination-outbound-socket-binding/index.html",
                 "host" : "${jboss.messaging.connector.host:localhost}",
                 "port" : "${jboss.messaging.connector.port:61616}"
               }
@@ -7240,7 +7240,7 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/remote-destination-outbound-socket-binding/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/remote-destination-outbound-socket-binding/index.html",
         "attribute" : "host",
         "systemProperties" : [ "jboss.messaging.connector.host", "jboss.messaging.connector.port" ]
       } ],
@@ -7261,7 +7261,7 @@
       "managementModel" : {
         "subsystem" : {
           "mcp" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/mcp/index.html"
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/mcp/index.html"
           }
         }
       },
@@ -7289,10 +7289,10 @@
       "managementModel" : {
         "subsystem" : {
           "mcp" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/mcp/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/mcp/index.html",
             "mcp-server" : {
               "server" : {
-                "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/mcp/mcp-server/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/mcp/mcp-server/index.html",
                 "messages-path" : "messages",
                 "sse-path" : "sse"
               }
@@ -7381,7 +7381,7 @@
       "managementModel" : {
         "subsystem" : {
           "microprofile-config-smallrye" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/subsystem/microprofile-config-smallrye/index.html"
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/microprofile-config-smallrye/index.html"
           }
         }
       },
@@ -7414,7 +7414,7 @@
       "managementModel" : {
         "subsystem" : {
           "microprofile-fault-tolerance-smallrye" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/subsystem/microprofile-fault-tolerance-smallrye/index.html"
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/microprofile-fault-tolerance-smallrye/index.html"
           }
         }
       },
@@ -7445,7 +7445,7 @@
       "managementModel" : {
         "subsystem" : {
           "microprofile-jwt-smallrye" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/subsystem/microprofile-jwt-smallrye/index.html"
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/microprofile-jwt-smallrye/index.html"
           }
         }
       },
@@ -7476,7 +7476,7 @@
       "managementModel" : {
         "subsystem" : {
           "microprofile-lra-coordinator" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/subsystem/microprofile-lra-coordinator/index.html"
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/microprofile-lra-coordinator/index.html"
           }
         }
       },
@@ -7503,7 +7503,7 @@
       "managementModel" : {
         "subsystem" : {
           "microprofile-lra-participant" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/subsystem/microprofile-lra-participant/index.html"
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/microprofile-lra-participant/index.html"
           }
         }
       },
@@ -7537,7 +7537,7 @@
       "managementModel" : {
         "subsystem" : {
           "microprofile-openapi-smallrye" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/subsystem/microprofile-openapi-smallrye/index.html"
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/microprofile-openapi-smallrye/index.html"
           }
         }
       },
@@ -7666,7 +7666,7 @@
       "managementModel" : {
         "subsystem" : {
           "microprofile-reactive-streams-operators-smallrye" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/subsystem/microprofile-reactive-streams-operators-smallrye/index.html"
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/microprofile-reactive-streams-operators-smallrye/index.html"
           }
         }
       },
@@ -7713,7 +7713,7 @@
       "managementModel" : {
         "subsystem" : {
           "microprofile-reactive-messaging-smallrye" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/subsystem/microprofile-reactive-messaging-smallrye/index.html"
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/microprofile-reactive-messaging-smallrye/index.html"
           }
         }
       },
@@ -7817,7 +7817,7 @@
       "managementModel" : {
         "subsystem" : {
           "micrometer" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/subsystem/micrometer/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/micrometer/index.html",
             "exposed-subsystems" : "[*]"
           }
         }
@@ -7848,7 +7848,7 @@
       "managementModel" : {
         "subsystem" : {
           "microprofile-health-smallrye" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/subsystem/microprofile-health-smallrye/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/microprofile-health-smallrye/index.html",
             "empty-liveness-checks-status" : "${env.MP_HEALTH_EMPTY_LIVENESS_CHECKS_STATUS:UP}",
             "empty-readiness-checks-status" : "${env.MP_HEALTH_EMPTY_READINESS_CHECKS_STATUS:UP}",
             "empty-startup-checks-status" : "${env.MP_HEALTH_EMPTY_STARTUP_CHECKS_STATUS:UP}",
@@ -7857,7 +7857,7 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-galleon-pack/subsystem/microprofile-health-smallrye/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/microprofile-health-smallrye/index.html",
         "attribute" : "empty-startup-checks-status",
         "environmentVariables" : [ "MP_HEALTH_EMPTY_LIVENESS_CHECKS_STATUS", "MP_HEALTH_EMPTY_READINESS_CHECKS_STATUS", "MP_HEALTH_EMPTY_STARTUP_CHECKS_STATUS" ]
       } ],
@@ -7891,7 +7891,7 @@
       "managementModel" : {
         "subsystem" : {
           "microprofile-telemetry" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/subsystem/microprofile-telemetry/index.html"
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/microprofile-telemetry/index.html"
           }
         }
       },
@@ -7943,7 +7943,7 @@
       "managementModel" : {
         "subsystem" : {
           "opentelemetry" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/subsystem/opentelemetry/index.html"
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/opentelemetry/index.html"
           }
         }
       },
@@ -7974,23 +7974,23 @@
       "managementModel" : {
         "interface" : {
           "unsecure" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/interface/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/interface/index.html",
             "inet-address" : "${jboss.bind.address.unsecure:127.0.0.1}"
           }
         },
         "socket-binding-group" : {
           "standard-sockets" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
             "default-interface" : "public",
             "port-offset" : "${jboss.socket.binding.port-offset:0}",
             "socket-binding" : {
               "iiop" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "unsecure",
                 "port" : "3528"
               },
               "iiop-ssl" : {
-                "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
                 "interface" : "unsecure",
                 "port" : "3529"
               }
@@ -8008,11 +8008,11 @@
         }
       },
       "configuration" : [ {
-        "_address" : "org.wildfly_wildfly-galleon-pack/interface/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/interface/index.html",
         "attribute" : "inet-address",
         "systemProperties" : [ "jboss.bind.address.unsecure" ]
       }, {
-        "_address" : "org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
         "attribute" : "port-offset",
         "systemProperties" : [ "jboss.socket.binding.port-offset" ]
       } ],
@@ -8072,7 +8072,7 @@
       "managementModel" : {
         "subsystem" : {
           "elytron-oidc-client" : {
-            "_address" : "org.wildfly_wildfly-galleon-pack/subsystem/elytron-oidc-client/index.html"
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/elytron-oidc-client/index.html"
           }
         }
       },
@@ -8192,7 +8192,7 @@
       "managementModel" : {
         "subsystem" : {
           "keycloak-saml" : {
-            "_address" : "org.keycloak_keycloak-saml-adapter-galleon-pack/subsystem/keycloak-saml/index.html"
+            "_address" : "wildscribe/org.keycloak_keycloak-saml-adapter-galleon-pack/subsystem/keycloak-saml/index.html"
           }
         }
       },
@@ -8256,7 +8256,7 @@
       "managementModel" : {
         "subsystem" : {
           "wasm" : {
-            "_address" : "org.wildfly_wildfly-ai-feature-pack/subsystem/wasm/index.html"
+            "_address" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/subsystem/wasm/index.html"
           }
         }
       },
