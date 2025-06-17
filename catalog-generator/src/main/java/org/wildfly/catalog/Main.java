@@ -46,8 +46,8 @@ public class Main {
             Files.createDirectories(wildscribeTargetDirectory);
         } else {
             System.out.println("Validate only that we can build a catalog");
-        }        
-        
+        }
+
         Path inputMetadata = Paths.get("../metadata/" + wildflyVersion + "/wildfly-catalog.json").toAbsolutePath();
         if (!Files.exists(inputMetadata)) {
             throw new Exception("File doesn't exist " + inputMetadata + ". Can't enerate catalog");
@@ -100,7 +100,7 @@ public class Main {
                 JsonNode subCatalog = mapper.readTree(metadataFile.toFile().toURI().toURL());
                 String name = subCatalog.get("name").asText();
                 fpNode.put("name", name);
-                fpNode.put("description", subCatalog.get("description").asText());                
+                fpNode.put("description", subCatalog.get("description").asText());
                 fpNode.putIfAbsent("license", subCatalog.get("license"));
                 fpNode.put("projectURL", subCatalog.get("url").asText());
                 fpNode.put("scm", subCatalog.get("scm").asText());
@@ -111,7 +111,7 @@ public class Main {
                 Set<String> layersSet = new TreeSet<>();
                 while (layers.hasNext()) {
                     JsonNode layer = layers.next();
-                    if(!isInternalLayer(layer)) {
+                    if (!isInternalLayer(layer)) {
                         layersSet.add(layer.get("name").asText());
                     }
                 }
@@ -124,7 +124,7 @@ public class Main {
                     //JsonNode model = mapper.readTree(modelFile.toFile().toURI().toURL());
                     List<Version> versions = Collections.singletonList(new Version(name, version, modelFile.toFile()));
                     String directoryName = (coords[0] + '_' + artifactId);
-                    fpNode.put("modelReference", "wildscribe/"+directoryName+"/index.html");
+                    fpNode.put("modelReference", "wildscribe/" + directoryName + "/index.html");
                     Generator.generate(versions, wildscribeTargetDirectory.resolve(directoryName));
                 }
                 generateCatalog(subCatalog, glowRulesDescriptions, categories, mapper, wildscribeTargetDirectory);
@@ -204,7 +204,7 @@ public class Main {
         ArrayNode layersArray = (ArrayNode) subCatalog.get("layers");
         Iterator<JsonNode> layers = layersArray.elements();
         while (layers.hasNext()) {
-            ObjectNode layer = (ObjectNode) layers.next(); 
+            ObjectNode layer = (ObjectNode) layers.next();
             layer.put("feature-pack", fp);
             String layerName = layer.get("name").asText();
             ArrayNode props = ((ArrayNode) layer.get("properties"));
@@ -259,8 +259,8 @@ public class Main {
             if (category == null) {
                 category = "Internal";
                 // Internal without any content are not taken into account
-                if(layer.get("managementModel").isEmpty() && 
-                        !layer.has("dependencies") && !layer.has("packages")) {
+                if (layer.get("managementModel").isEmpty()
+                        && !layer.has("dependencies") && !layer.has("packages")) {
                     System.out.println("Internal with metadata only, ignoring " + layer.get("name").asText() + " of " + fp);
                     continue;
                 }
@@ -300,10 +300,10 @@ public class Main {
                     deps.addAll(overridenDeps);
                 }
             }
-            if(layer.has("managementModel")) {
+            if (layer.has("managementModel")) {
                 navigate(wildscribeTargetDirectory, layer.get("managementModel"));
             }
-            if(layer.has("configuration")) {
+            if (layer.has("configuration")) {
                 navigate(wildscribeTargetDirectory, layer.get("configuration"));
             }
             nodes.put(layerName, layer);
@@ -340,12 +340,22 @@ public class Main {
         //System.out.println("ORIGINAL URL " + url);
         url = url.replaceAll("=\\*", "");
         url = url.replaceAll("=", "/");
+        int i = url.lastIndexOf("@@@");
+        String attributeName = null;
+        if (i > 0) {
+            attributeName = url.substring(i + 3, url.length());
+            url = url.substring(0, i);
+        }
         if (!url.endsWith("/")) {
             url += "/";
         }
         url += "index.html";
+        if (attributeName != null) {
+            url += "#attr-" + attributeName;
+        }
         return url;
     }
+
     private static void navigate(Path rootDir, JsonNode model) {
         if (model instanceof ArrayNode) {
             ArrayNode array = (ArrayNode) model;
@@ -357,7 +367,7 @@ public class Main {
             JsonNode n = model.get("_address");
             if (n != null) {
                 String url = formatURL(n.asText());
-               //System.out.println("URL " + url);
+                //System.out.println("URL " + url);
                 String foundURL = findURL(rootDir, url);
                 if (foundURL == null) {
                     System.out.println("Url not found for " + url);
@@ -374,20 +384,24 @@ public class Main {
             }
         }
     }
-    
-    
+
     private static String findURL(Path rootDir, String path) {
-        if(path.startsWith("/")) {
+        if (path.startsWith("/")) {
             path = path.substring(1);
         }
-        for(File fpDir : rootDir.toFile().listFiles()) {
-            Path pathFile = fpDir.toPath().resolve(path);
-            if(Files.exists(pathFile)) {
+        String formattedPath = path;
+        if(path.contains("#attr-")) {
+            int i = formattedPath.indexOf("#attr-");
+            formattedPath = formattedPath.substring(0, i);
+        }
+        for (File fpDir : rootDir.toFile().listFiles()) {
+            Path pathFile = fpDir.toPath().resolve(formattedPath);
+            if (Files.exists(pathFile)) {
                 // No need for the fp root index.
-                if(pathFile.getParent().equals(fpDir.toPath())) {
+                if (pathFile.getParent().equals(fpDir.toPath())) {
                     return null;
                 }
-                return "wildscribe/" + fpDir.getName() + "/"+path;
+                return "wildscribe/" + fpDir.getName() + "/" + path;
             }
         }
         return null;
