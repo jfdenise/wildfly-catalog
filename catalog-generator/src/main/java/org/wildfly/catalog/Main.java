@@ -18,6 +18,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -27,6 +28,8 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
+import org.jboss.wildscribe.site.Generator;
+import org.jboss.wildscribe.site.Version;
 
 public class Main {
 
@@ -93,12 +96,12 @@ public class Main {
                 String metadataFileName = artifactId + "-" + version + "-metadata.json";
                 Path metadataFile = home.resolve(groupId).resolve(artifactId).resolve(version).resolve(metadataFileName);
                 JsonNode subCatalog = mapper.readTree(metadataFile.toFile().toURI().toURL());
-                fpNode.put("name", subCatalog.get("name").asText());
+                String name = subCatalog.get("name").asText();
+                fpNode.put("name", name);
                 fpNode.put("description", subCatalog.get("description").asText());                
                 fpNode.putIfAbsent("license", subCatalog.get("license"));
                 fpNode.put("projectURL", subCatalog.get("url").asText());
                 fpNode.put("scm", subCatalog.get("scm").asText());
-                
                 ArrayNode layersArray = (ArrayNode) subCatalog.get("layers");
                 Iterator<JsonNode> layers = layersArray.elements();
                 ArrayNode layersArrayTarget = mapper.createArrayNode();
@@ -120,6 +123,9 @@ public class Main {
                     fpNode.set("modelReference", model);
                 }
                 generateCatalog(subCatalog, glowRulesDescriptions, categories, mapper);
+                List<Version> versions = Collections.singletonList(new Version(name, version, modelFile.toFile()));
+                String directoryName = (coords[0] + '_' + artifactId);
+                Generator.generate(versions, targetDirectory.resolve(directoryName));
             }
         }
         ArrayNode categoriesArray = mapper.createArrayNode();
