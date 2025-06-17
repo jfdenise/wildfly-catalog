@@ -35,5 +35,5 @@
         "packages": "The packages (generally JBoss Modules modules) that this layer provision in addition of implict extension module."
     },
     "glowRulesDescriptions": "https://raw.githubusercontent.com/wildfly/wildfly-galleon-feature-packs/refs/heads/release/maven/docs/rules.properties",
-    "knownFeaturePacks": "https://raw.githubusercontent.com/jfdenise/wildfly-galleon-feature-packs/refs/heads/catalog-v2/37.0.0.Beta1-SNAPSHOT/known-feature-packs.json" 
+    "knownFeaturePacks": "file:///home/ehugonne/dev/Galleon/wildfly-catalog/metadata/37.0.0.Beta1-SNAPSHOT/known-feature-packs.json"
 }
