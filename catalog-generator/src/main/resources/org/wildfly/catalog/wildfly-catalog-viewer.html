@@ -911,6 +911,64 @@
                         });
                     }
                     
+                    // Updated Model Reference section to handle URL
+                    if (fp.modelReference && typeof fp.modelReference === 'string' && fp.modelReference.trim() !== '') {
+                        const mgmtModelContainer = document.createElement('div');
+                        mgmtModelContainer.className = 'management-model-container';
+
+                        const mgmtHeader = document.createElement('div');
+                        mgmtHeader.className = 'dependencies-header'; 
+                        mgmtHeader.style.backgroundColor = '#e0f0ff'; // Keep header style
+
+                        const mgmtLabelWrapper = document.createElement('span');
+                        mgmtLabelWrapper.style.display = 'flex';
+                        mgmtLabelWrapper.style.alignItems = 'center';
+
+                        const mgmtHeaderText = document.createElement('span');
+                        mgmtHeaderText.textContent = 'Model Reference';
+                        mgmtLabelWrapper.appendChild(mgmtHeaderText);
+
+                        if (legendData.modelReference) { 
+                            const tooltipIcon = document.createElement('span');
+                            tooltipIcon.className = 'tooltip-icon';
+                            tooltipIcon.textContent = '?';
+                            tooltipIcon.dataset.tooltipText = legendData.modelReference;
+                            tooltipIcon.addEventListener('click', showTooltip);
+                            mgmtLabelWrapper.appendChild(tooltipIcon);
+                        }
+                        mgmtHeader.appendChild(mgmtLabelWrapper);
+
+                        const mgmtArrow = document.createElement('span');
+                        mgmtArrow.className = 'dependencies-arrow';
+                        mgmtArrow.innerHTML = '&#9654;';
+                        mgmtHeader.appendChild(mgmtArrow);
+                        
+                        mgmtModelContainer.appendChild(mgmtHeader);
+
+                        const mgmtContentDiv = document.createElement('div');
+                        mgmtContentDiv.className = 'dependencies-list'; // For toggling
+                        mgmtContentDiv.style.padding = '10px'; 
+                        mgmtContentDiv.style.backgroundColor = '#f0f5f0'; 
+                        mgmtContentDiv.style.border = '1px solid #d0d0d0'; 
+                        mgmtContentDiv.style.borderRadius = '4px'; 
+                        mgmtContentDiv.style.marginTop = '0px';
+
+                        const modelRefLink = document.createElement('a');
+                        modelRefLink.href = fp.modelReference;
+                        modelRefLink.textContent = fp.modelReference;
+                        modelRefLink.target = '_blank';
+                        modelRefLink.rel = 'noopener noreferrer';
+                        mgmtContentDiv.appendChild(modelRefLink);
+                        
+                        mgmtModelContainer.appendChild(mgmtContentDiv);
+                        fpDiv.appendChild(mgmtModelContainer);
+
+                        mgmtHeader.addEventListener('click', () => {
+                            mgmtContentDiv.classList.toggle('visible');
+                            mgmtArrow.classList.toggle('expanded');
+                        });
+                    }
+
                     // Add SCM section
                     if (fp.scm && typeof fp.scm === 'string' && fp.scm.trim() !== '') {
                         const scmContainer = document.createElement('div');
@@ -952,60 +1010,6 @@
                         scmHeader.addEventListener('click', () => {
                             scmContentDiv.classList.toggle('visible');
                             scmArrow.classList.toggle('expanded');
-                        });
-                    }
-                    if (fp.modelReference && Object.keys(fp.modelReference).length > 0) {
-                        const mgmtModelContainer = document.createElement('div');
-                        mgmtModelContainer.className = 'management-model-container';
-
-                        const mgmtHeader = document.createElement('div');
-                        mgmtHeader.className = 'dependencies-header'; 
-                        mgmtHeader.style.backgroundColor = '#e0f0ff'; 
-
-                        const mgmtLabelWrapper = document.createElement('span');
-                        mgmtLabelWrapper.style.display = 'flex';
-                        mgmtLabelWrapper.style.alignItems = 'center';
-
-                        const mgmtHeaderText = document.createElement('span');
-                        mgmtHeaderText.textContent = 'Model Reference';
-                        mgmtLabelWrapper.appendChild(mgmtHeaderText);
-
-                        if (legendData.modelReference) { 
-                            const tooltipIcon = document.createElement('span');
-                            tooltipIcon.className = 'tooltip-icon';
-                            tooltipIcon.textContent = '?';
-                            tooltipIcon.dataset.tooltipText = legendData.modelReference;
-                            tooltipIcon.addEventListener('click', showTooltip);
-                            mgmtLabelWrapper.appendChild(tooltipIcon);
-                        }
-                        mgmtHeader.appendChild(mgmtLabelWrapper);
-
-                        const mgmtArrow = document.createElement('span');
-                        mgmtArrow.className = 'dependencies-arrow';
-                        mgmtArrow.innerHTML = '&#9654;';
-                        mgmtHeader.appendChild(mgmtArrow);
-                        
-                        mgmtModelContainer.appendChild(mgmtHeader);
-
-                        const mgmtContentDiv = document.createElement('div');
-                        mgmtContentDiv.className = 'dependencies-list'; 
-                        mgmtContentDiv.style.paddingLeft = '0px';
-                        
-                        mgmtContentDiv.innerHTML = renderJsonRecursive(fp.modelReference);
-                        mgmtContentDiv.style.fontFamily = 'Consolas, "Courier New", monospace';
-                        mgmtContentDiv.style.backgroundColor = '#f0f5f0'; 
-                        mgmtContentDiv.style.padding = '10px';
-                        mgmtContentDiv.style.borderRadius = '4px';
-                        mgmtContentDiv.style.border = '1px solid #d0d0d0';
-                        mgmtContentDiv.style.whiteSpace = 'pre-wrap';
-                        mgmtContentDiv.style.wordBreak = 'break-all';
-                        
-                        mgmtModelContainer.appendChild(mgmtContentDiv);
-                        fpDiv.appendChild(mgmtModelContainer);
-
-                        mgmtHeader.addEventListener('click', () => {
-                            mgmtContentDiv.classList.toggle('visible');
-                            mgmtArrow.classList.toggle('expanded');
                         });
                     }
                     featurePacksSection.appendChild(fpDiv);
