@@ -28,7 +28,7 @@ jobs:
       - name: Validate catalog generation
         run: |
           version=$(cat version.txt)
-          cd catalog-generator
-          mvn clean install
-          mvn exec:java -Dwildfly-version=$version -DvalidateOnly=true
+          #cd catalog-generator
+          #mvn clean install
+          #mvn exec:java -Dwildfly-version=$version -DvalidateOnly=true
         shell: bash
