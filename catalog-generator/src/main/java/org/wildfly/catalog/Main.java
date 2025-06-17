@@ -121,10 +121,10 @@ public class Main {
                 String modelFileName = artifactId + "-" + version + "-model.json";
                 Path modelFile = home.resolve(groupId).resolve(artifactId).resolve(version).resolve(modelFileName);
                 if (Files.exists(modelFile)) {
-                    JsonNode model = mapper.readTree(modelFile.toFile().toURI().toURL());
-                    fpNode.set("modelReference", model);
+                    //JsonNode model = mapper.readTree(modelFile.toFile().toURI().toURL());
                     List<Version> versions = Collections.singletonList(new Version(name, version, modelFile.toFile()));
                     String directoryName = (coords[0] + '_' + artifactId);
+                    fpNode.put("modelReference", "wildscribe/"+directoryName+"/index.html");
                     Generator.generate(versions, wildscribeTargetDirectory.resolve(directoryName));
                 }
                 generateCatalog(subCatalog, glowRulesDescriptions, categories, mapper, wildscribeTargetDirectory);
