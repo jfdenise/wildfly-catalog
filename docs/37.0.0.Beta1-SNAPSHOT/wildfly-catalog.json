@@ -2969,32 +2969,6 @@
                     } ]
                   }
                 }
-              },
-              "timer-service" : {
-                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/service/timer-service/index.html",
-                "attributes" : [ {
-                  "name" : "default-data-store",
-                  "value" : "default-file-store",
-                  "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/service/timer-service/index.html#attr-default-data-store"
-                }, {
-                  "name" : "thread-pool-name",
-                  "value" : "default",
-                  "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/service/timer-service/index.html#attr-thread-pool-name"
-                } ],
-                "file-data-store" : {
-                  "default-file-store" : {
-                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/service/timer-service/file-data-store/index.html",
-                    "attributes" : [ {
-                      "name" : "path",
-                      "value" : "timer-service-data",
-                      "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/service/timer-service/file-data-store/index.html#attr-path"
-                    }, {
-                      "name" : "relative-to",
-                      "value" : "jboss.server.data.dir",
-                      "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/ejb3/service/timer-service/file-data-store/index.html#attr-relative-to"
-                    } ]
-                  }
-                }
               }
             },
             "simple-cache" : {
@@ -3553,20 +3527,6 @@
               "value" : "ee",
               "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/index.html#attr-default-channel"
             } ],
-            "channel" : {
-              "ee" : {
-                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/channel/index.html",
-                "attributes" : [ {
-                  "name" : "cluster",
-                  "value" : "ejb",
-                  "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/channel/index.html#attr-cluster"
-                }, {
-                  "name" : "stack",
-                  "value" : "tcp",
-                  "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/channel/index.html#attr-stack"
-                } ]
-              }
-            },
             "stack" : {
               "tcp" : {
                 "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html",
@@ -3590,14 +3550,6 @@
                   },
                   "MFC" : {
                     "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
-                  },
-                  "MPING" : {
-                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/protocol/MPING/index.html",
-                    "attributes" : [ {
-                      "name" : "socket-binding",
-                      "value" : "jgroups-mping",
-                      "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/protocol/MPING/index.html#attr-socket-binding"
-                    } ]
                   },
                   "RED" : {
                     "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
@@ -3653,9 +3605,6 @@
                     "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
                   },
                   "MFC" : {
-                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
-                  },
-                  "PING" : {
                     "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
                   },
                   "RED" : {
