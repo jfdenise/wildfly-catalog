@@ -488,40 +488,62 @@
                     });
                     html += (obj.length > 0 ? indent : '') + ']';
                 } else if (typeof obj === 'object' && obj !== null) {
-                    html += '{' + (Object.keys(obj).length > 0 ? '\n' : '');
-                    
-                    const originalKeys = Object.keys(obj);
-                    const parentAddressForAttribute = (obj.hasOwnProperty('_address') && typeof obj['_address'] === 'string' && obj['_address'].trim() !== '') ? obj['_address'] : null;
+                    let effectiveObj = obj;
+                    let isProcessedForAttributesArray = false;
 
-                    const keysToRender = originalKeys.filter(k => {
-                        // Skip _address if it's paired with an 'attribute' that will use it for a link
-                        if (k === '_address' && parentAddressForAttribute && obj.hasOwnProperty('attribute') && typeof obj['attribute'] === 'string') {
-                            return false;
+                    // Pre-process for 'attributes' array: inline its items as properties
+                    if (obj.hasOwnProperty('attributes') && Array.isArray(obj.attributes)) {
+                        const newPropsFromAttributes = {};
+                        let successfullyProcessedAllAttributes = true;
+                        obj.attributes.forEach(attrItem => {
+                            if (attrItem && typeof attrItem.name === 'string' && attrItem.hasOwnProperty('value') && typeof attrItem._address === 'string' && attrItem._address.trim() !== '') {
+                                newPropsFromAttributes[attrItem.name] = { 
+                                    _linkText: String(attrItem.value),
+                                    _linkHref: attrItem._address,
+                                    _isSpecialAttributeLink: true 
+                                };
+                            } else {
+                                // If any attribute item is malformed, we might not want to transform.
+                                // For now, we'll proceed but this item won't be inlined.
+                                successfullyProcessedAllAttributes = false; 
+                            }
+                        });
+
+                        // Only modify effectiveObj if there's something to inline from attributes
+                        if (Object.keys(newPropsFromAttributes).length > 0 || (obj.attributes.length === 0 && successfullyProcessedAllAttributes) ) {
+                             effectiveObj = { ...obj }; // Start with a copy of original obj
+                             delete effectiveObj.attributes; // Remove the original attributes array
+                             for (const attrName in newPropsFromAttributes) {
+                                 effectiveObj[attrName] = newPropsFromAttributes[attrName];
+                             }
+                             isProcessedForAttributesArray = true; // Mark that we've processed it
                         }
-                        return true;
-                    });
+                    }
+                    
+                    html += '{' + (Object.keys(effectiveObj).length > 0 ? '\n' : '');
+                    const keysToRender = Object.keys(effectiveObj);
 
                     keysToRender.forEach((key, index) => {
-                        const currentValue = obj[key];
-                        
-                        // Case 1: Parent Key Link (e.g., for managementModel style linking where currentValue is an object with _address)
-                        const urlForParentKeyLink = (typeof currentValue === 'object' && currentValue !== null && typeof currentValue["_address"] === 'string' && currentValue["_address"].trim() !== '') ? currentValue["_address"] : null;
+                        const currentValue = effectiveObj[key];
 
-                        if (urlForParentKeyLink) {
+                        // Case 1: Property derived from 'attributes' array (name is link, value is text)
+                        if (typeof currentValue === 'object' && currentValue !== null && currentValue._isSpecialAttributeLink === true) {
+                            html += indent + '&nbsp;&nbsp;<a href="' + currentValue._linkHref + '" target="_blank" rel="noopener noreferrer" style="color: #1a73e8; text-decoration: underline;">"' + key + '"</a>' +
+                                    '<span class="tooltip-icon" data-tooltip-text="Navigate to the Model reference" style="cursor: help; display: inline-block; margin-left: 5px;">?</span>: ';
+                            html += '<span style="color: #008000;">"' + String(currentValue._linkText).replace(/</g, '<').replace(/>/g, '>') + '"</span>';
+                        }
+                        // Case 2: Parent Key Link (currentValue is an object containing an _address for its own documentation, and not a special attribute)
+                        else if (typeof currentValue === 'object' && currentValue !== null && 
+                                 !(currentValue._isSpecialAttributeLink === true) && /* Ensure it's not already handled by Case 1 */
+                                 typeof currentValue["_address"] === 'string' && currentValue["_address"].trim() !== '') {
+                            const urlForParentKeyLink = currentValue["_address"];
                             html += indent + '&nbsp;&nbsp;<a href="' + urlForParentKeyLink + '" target="_blank" rel="noopener noreferrer" style="color: #1a73e8; text-decoration: underline;">"' + key + '"</a>' +
                                     '<span class="tooltip-icon" data-tooltip-text="Navigate to the Model reference" style="cursor: help; display: inline-block; margin-left: 5px;">?</span>: ';
                             const tempValue = { ...currentValue };
-                            delete tempValue["_address"];
+                            delete tempValue["_address"]; 
                             html += renderJsonRecursive(tempValue, indentLevel + 1);
-                        } 
-                        // Case 2: Attribute Value Link (e.g., for configuration style linking where key is 'attribute' and its parent 'obj' has _address)
-                        else if (key === 'attribute' && typeof currentValue === 'string' && parentAddressForAttribute) {
-                            const finalUrl = parentAddressForAttribute; // Use the _address directly as it already contains the fragment
-                            html += indent + '&nbsp;&nbsp;<strong style="color: #990055;">"' + key + '"</strong>: ';
-                            html += '<a href="' + finalUrl + '" target="_blank" rel="noopener noreferrer" style="color: #1a73e8; text-decoration: underline;">' + currentValue.replace(/</g, '<').replace(/>/g, '>') + '</a>' +
-                                    '<span class="tooltip-icon" data-tooltip-text="Navigate to the Model reference" style="cursor: help; display: inline-block; margin-left: 5px;">?</span>';
                         }
-                        // Default rendering
+                        // Default rendering (handles primitives, arrays, and other objects not matching above cases)
                         else {
                             html += indent + '&nbsp;&nbsp;<strong style="color: #990055;">"' + key + '"</strong>: ';
                             html += renderJsonRecursive(currentValue, indentLevel + 1);
