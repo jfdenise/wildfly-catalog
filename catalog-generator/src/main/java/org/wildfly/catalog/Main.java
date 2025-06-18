@@ -349,9 +349,16 @@ public class Main {
         if (!url.endsWith("/")) {
             url += "/";
         }
+        // We have an issue with jgroups, protcol and transport, no URL for them.
+        if(url.equals("/subsystem/jgroups/stack/transport/") || url.equals("/subsystem/jgroups/stack/protocol/")) {
+            url = "/subsystem/jgroups/stack/";
+        }
         url += "index.html";
         if (attributeName != null) {
             url += "#attr-" + attributeName;
+        }
+        if(url.equals("/index.html")) {
+            url = null;
         }
         return url;
     }
@@ -368,12 +375,16 @@ public class Main {
             if (n != null) {
                 String url = formatURL(n.asText());
                 //System.out.println("URL " + url);
-                String foundURL = findURL(rootDir, url);
-                if (foundURL == null) {
-                    System.out.println("Url not found for " + url);
+                if (url == null) {
                     ((ObjectNode) model).remove("_address");
                 } else {
-                    ((ObjectNode) model).put("_address", foundURL);
+                    String foundURL = findURL(rootDir, url);
+                    if (foundURL == null) {
+                        System.out.println("Url not found for " + url);
+                        ((ObjectNode) model).remove("_address");
+                    } else {
+                        ((ObjectNode) model).put("_address", foundURL);
+                    }
                 }
             }
             Iterator<String> fields = model.fieldNames();

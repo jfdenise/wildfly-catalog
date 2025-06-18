@@ -71,6 +71,15 @@
     "layers" : [ "ai", "chat-memory-provider", "default-embedding-content-retriever", "gemini-chat-model", "gemini-streaming-chat-model", "github-chat-model", "github-streaming-chat-model", "groq-chat-model", "groq-streaming-chat-model", "in-memory-embedding-model-all-minilm-l6-v2", "in-memory-embedding-model-all-minilm-l6-v2-q", "in-memory-embedding-model-bge-small-en", "in-memory-embedding-model-bge-small-en-q", "in-memory-embedding-model-bge-small-en-v15", "in-memory-embedding-model-bge-small-en-v15-q", "in-memory-embedding-model-e5-small-v2", "in-memory-embedding-model-e5-small-v2-q", "in-memory-embedding-store", "mcp", "mcp-client-sse", "mcp-client-stdio", "mcp-server", "mistral-ai-chat-model", "mistral-ai-streaming-chat-model", "neo4j-content-retriever", "neo4j-embedding-store", "ollama-chat-model", "ollama-embedding-model", "ollama-neo4j-content-retriever", "ollama-streaming-chat-model", "openai-chat-model", "openai-neo4j-content-retriever", "openai-streaming-chat-model", "wasm", "weaviate-embedding-store", "web-search-engines" ],
     "modelReference" : "wildscribe/org.wildfly_wildfly-ai-feature-pack/index.html"
   }, {
+    "mavenCoordinates" : "org.wildfly.extras.grpc:wildfly-grpc-feature-pack:0.1.12-SNAPSHOT",
+    "name" : "WildFly gRPC :: Feature Pack",
+    "description" : "Parent for modules with code. Contains dependencies and plugin management",
+    "license" : [ "Apache License, Version 2.0" ],
+    "projectURL" : "https://github.com/wildfly-extras/wildfly-grpc-feature-pack",
+    "scm" : "https://github.com/wildfly-extras/wildfly-grpc-feature-pack",
+    "layers" : [ "grpc" ],
+    "modelReference" : "wildscribe/org.wildfly.extras.grpc_wildfly-grpc-feature-pack/index.html"
+  }, {
     "mavenCoordinates" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
     "name" : "WildFly Galleon feature-pack for the Cloud",
     "description" : "This feature-pack adjusts the WildFly layers to run on the cloud.",
@@ -2615,28 +2624,51 @@
               "tcp" : {
                 "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html",
                 "protocol" : {
-                  "FD_ALL3" : { },
+                  "FD_ALL3" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
                   "FD_SOCK2" : {
                     "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/protocol/FD_SOCK2/index.html",
                     "socket-binding" : "jgroups-tcp-fd"
                   },
-                  "FRAG4" : { },
-                  "MERGE3" : { },
-                  "MFC" : { },
+                  "FRAG4" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "MERGE3" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "MFC" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
                   "MPING" : {
                     "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/protocol/MPING/index.html",
                     "socket-binding" : "jgroups-mping"
                   },
-                  "RED" : { },
-                  "UFC" : { },
-                  "UNICAST3" : { },
-                  "VERIFY_SUSPECT2" : { },
-                  "pbcast.GMS" : { },
-                  "pbcast.NAKACK2" : { },
-                  "pbcast.STABLE" : { }
+                  "RED" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "UFC" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "UNICAST3" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "VERIFY_SUSPECT2" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "pbcast.GMS" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "pbcast.NAKACK2" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "pbcast.STABLE" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  }
                 },
                 "transport" : {
                   "TCP" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html",
                     "socket-binding" : "jgroups-tcp"
                   }
                 }
@@ -2644,25 +2676,50 @@
               "udp" : {
                 "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html",
                 "protocol" : {
-                  "FD_ALL3" : { },
+                  "FD_ALL3" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
                   "FD_SOCK2" : {
                     "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/protocol/FD_SOCK2/index.html",
                     "socket-binding" : "jgroups-udp-fd"
                   },
-                  "FRAG4" : { },
-                  "MERGE3" : { },
-                  "MFC" : { },
-                  "PING" : { },
-                  "RED" : { },
-                  "UFC" : { },
-                  "UNICAST3" : { },
-                  "VERIFY_SUSPECT2" : { },
-                  "pbcast.GMS" : { },
-                  "pbcast.NAKACK2" : { },
-                  "pbcast.STABLE" : { }
+                  "FRAG4" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "MERGE3" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "MFC" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "PING" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "RED" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "UFC" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "UNICAST3" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "VERIFY_SUSPECT2" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "pbcast.GMS" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "pbcast.NAKACK2" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "pbcast.STABLE" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  }
                 },
                 "transport" : {
                   "UDP" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html",
                     "socket-binding" : "jgroups-udp"
                   }
                 }
@@ -3478,28 +3535,51 @@
               "tcp" : {
                 "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html",
                 "protocol" : {
-                  "FD_ALL3" : { },
+                  "FD_ALL3" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
                   "FD_SOCK2" : {
                     "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/protocol/FD_SOCK2/index.html",
                     "socket-binding" : "jgroups-tcp-fd"
                   },
-                  "FRAG4" : { },
-                  "MERGE3" : { },
-                  "MFC" : { },
+                  "FRAG4" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "MERGE3" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "MFC" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
                   "MPING" : {
                     "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/protocol/MPING/index.html",
                     "socket-binding" : "jgroups-mping"
                   },
-                  "RED" : { },
-                  "UFC" : { },
-                  "UNICAST3" : { },
-                  "VERIFY_SUSPECT2" : { },
-                  "pbcast.GMS" : { },
-                  "pbcast.NAKACK2" : { },
-                  "pbcast.STABLE" : { }
+                  "RED" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "UFC" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "UNICAST3" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "VERIFY_SUSPECT2" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "pbcast.GMS" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "pbcast.NAKACK2" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "pbcast.STABLE" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  }
                 },
                 "transport" : {
                   "TCP" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html",
                     "socket-binding" : "jgroups-tcp"
                   }
                 }
@@ -3507,25 +3587,50 @@
               "udp" : {
                 "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html",
                 "protocol" : {
-                  "FD_ALL3" : { },
+                  "FD_ALL3" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
                   "FD_SOCK2" : {
                     "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/protocol/FD_SOCK2/index.html",
                     "socket-binding" : "jgroups-udp-fd"
                   },
-                  "FRAG4" : { },
-                  "MERGE3" : { },
-                  "MFC" : { },
-                  "PING" : { },
-                  "RED" : { },
-                  "UFC" : { },
-                  "UNICAST3" : { },
-                  "VERIFY_SUSPECT2" : { },
-                  "pbcast.GMS" : { },
-                  "pbcast.NAKACK2" : { },
-                  "pbcast.STABLE" : { }
+                  "FRAG4" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "MERGE3" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "MFC" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "PING" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "RED" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "UFC" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "UNICAST3" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "VERIFY_SUSPECT2" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "pbcast.GMS" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "pbcast.NAKACK2" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "pbcast.STABLE" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  }
                 },
                 "transport" : {
                   "UDP" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html",
                     "socket-binding" : "jgroups-udp"
                   }
                 }
@@ -3687,28 +3792,51 @@
               "tcp" : {
                 "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html",
                 "protocol" : {
-                  "FD_ALL3" : { },
+                  "FD_ALL3" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
                   "FD_SOCK2" : {
                     "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/protocol/FD_SOCK2/index.html",
                     "socket-binding" : "jgroups-tcp-fd"
                   },
-                  "FRAG4" : { },
-                  "MERGE3" : { },
-                  "MFC" : { },
+                  "FRAG4" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "MERGE3" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "MFC" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
                   "MPING" : {
                     "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/protocol/MPING/index.html",
                     "socket-binding" : "jgroups-mping"
                   },
-                  "RED" : { },
-                  "UFC" : { },
-                  "UNICAST3" : { },
-                  "VERIFY_SUSPECT2" : { },
-                  "pbcast.GMS" : { },
-                  "pbcast.NAKACK2" : { },
-                  "pbcast.STABLE" : { }
+                  "RED" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "UFC" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "UNICAST3" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "VERIFY_SUSPECT2" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "pbcast.GMS" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "pbcast.NAKACK2" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "pbcast.STABLE" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  }
                 },
                 "transport" : {
                   "TCP" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html",
                     "socket-binding" : "jgroups-tcp"
                   }
                 }
@@ -3716,25 +3844,50 @@
               "udp" : {
                 "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html",
                 "protocol" : {
-                  "FD_ALL3" : { },
+                  "FD_ALL3" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
                   "FD_SOCK2" : {
                     "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/protocol/FD_SOCK2/index.html",
                     "socket-binding" : "jgroups-udp-fd"
                   },
-                  "FRAG4" : { },
-                  "MERGE3" : { },
-                  "MFC" : { },
-                  "PING" : { },
-                  "RED" : { },
-                  "UFC" : { },
-                  "UNICAST3" : { },
-                  "VERIFY_SUSPECT2" : { },
-                  "pbcast.GMS" : { },
-                  "pbcast.NAKACK2" : { },
-                  "pbcast.STABLE" : { }
+                  "FRAG4" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "MERGE3" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "MFC" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "PING" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "RED" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "UFC" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "UNICAST3" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "VERIFY_SUSPECT2" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "pbcast.GMS" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "pbcast.NAKACK2" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "pbcast.STABLE" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  }
                 },
                 "transport" : {
                   "UDP" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html",
                     "socket-binding" : "jgroups-udp"
                   }
                 }
@@ -3933,28 +4086,51 @@
               "tcp" : {
                 "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html",
                 "protocol" : {
-                  "FD_ALL3" : { },
+                  "FD_ALL3" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
                   "FD_SOCK2" : {
                     "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/protocol/FD_SOCK2/index.html",
                     "socket-binding" : "jgroups-tcp-fd"
                   },
-                  "FRAG4" : { },
-                  "MERGE3" : { },
-                  "MFC" : { },
+                  "FRAG4" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "MERGE3" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "MFC" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
                   "MPING" : {
                     "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/protocol/MPING/index.html",
                     "socket-binding" : "jgroups-mping"
                   },
-                  "RED" : { },
-                  "UFC" : { },
-                  "UNICAST3" : { },
-                  "VERIFY_SUSPECT2" : { },
-                  "pbcast.GMS" : { },
-                  "pbcast.NAKACK2" : { },
-                  "pbcast.STABLE" : { }
+                  "RED" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "UFC" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "UNICAST3" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "VERIFY_SUSPECT2" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "pbcast.GMS" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "pbcast.NAKACK2" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "pbcast.STABLE" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  }
                 },
                 "transport" : {
                   "TCP" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html",
                     "socket-binding" : "jgroups-tcp"
                   }
                 }
@@ -3962,25 +4138,50 @@
               "udp" : {
                 "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html",
                 "protocol" : {
-                  "FD_ALL3" : { },
+                  "FD_ALL3" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
                   "FD_SOCK2" : {
                     "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/protocol/FD_SOCK2/index.html",
                     "socket-binding" : "jgroups-udp-fd"
                   },
-                  "FRAG4" : { },
-                  "MERGE3" : { },
-                  "MFC" : { },
-                  "PING" : { },
-                  "RED" : { },
-                  "UFC" : { },
-                  "UNICAST3" : { },
-                  "VERIFY_SUSPECT2" : { },
-                  "pbcast.GMS" : { },
-                  "pbcast.NAKACK2" : { },
-                  "pbcast.STABLE" : { }
+                  "FRAG4" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "MERGE3" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "MFC" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "PING" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "RED" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "UFC" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "UNICAST3" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "VERIFY_SUSPECT2" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "pbcast.GMS" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "pbcast.NAKACK2" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "pbcast.STABLE" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  }
                 },
                 "transport" : {
                   "UDP" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html",
                     "socket-binding" : "jgroups-udp"
                   }
                 }
@@ -4385,28 +4586,51 @@
               "tcp" : {
                 "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html",
                 "protocol" : {
-                  "FD_ALL3" : { },
+                  "FD_ALL3" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
                   "FD_SOCK2" : {
                     "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/protocol/FD_SOCK2/index.html",
                     "socket-binding" : "jgroups-tcp-fd"
                   },
-                  "FRAG4" : { },
-                  "MERGE3" : { },
-                  "MFC" : { },
+                  "FRAG4" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "MERGE3" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "MFC" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
                   "MPING" : {
                     "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/protocol/MPING/index.html",
                     "socket-binding" : "jgroups-mping"
                   },
-                  "RED" : { },
-                  "UFC" : { },
-                  "UNICAST3" : { },
-                  "VERIFY_SUSPECT2" : { },
-                  "pbcast.GMS" : { },
-                  "pbcast.NAKACK2" : { },
-                  "pbcast.STABLE" : { }
+                  "RED" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "UFC" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "UNICAST3" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "VERIFY_SUSPECT2" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "pbcast.GMS" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "pbcast.NAKACK2" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "pbcast.STABLE" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  }
                 },
                 "transport" : {
                   "TCP" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html",
                     "socket-binding" : "jgroups-tcp"
                   }
                 }
@@ -4414,25 +4638,50 @@
               "udp" : {
                 "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html",
                 "protocol" : {
-                  "FD_ALL3" : { },
+                  "FD_ALL3" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
                   "FD_SOCK2" : {
                     "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/protocol/FD_SOCK2/index.html",
                     "socket-binding" : "jgroups-udp-fd"
                   },
-                  "FRAG4" : { },
-                  "MERGE3" : { },
-                  "MFC" : { },
-                  "PING" : { },
-                  "RED" : { },
-                  "UFC" : { },
-                  "UNICAST3" : { },
-                  "VERIFY_SUSPECT2" : { },
-                  "pbcast.GMS" : { },
-                  "pbcast.NAKACK2" : { },
-                  "pbcast.STABLE" : { }
+                  "FRAG4" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "MERGE3" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "MFC" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "PING" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "RED" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "UFC" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "UNICAST3" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "VERIFY_SUSPECT2" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "pbcast.GMS" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "pbcast.NAKACK2" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  },
+                  "pbcast.STABLE" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html"
+                  }
                 },
                 "transport" : {
                   "UDP" : {
+                    "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/subsystem/jgroups/stack/index.html",
                     "socket-binding" : "jgroups-udp"
                   }
                 }
@@ -9613,6 +9862,41 @@
   }, {
     "name" : "RPC (Remote Procedure Call)",
     "functionalities" : [ {
+      "name" : "grpc",
+      "managementModel" : {
+        "socket-binding-group" : {
+          "standard-sockets" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/index.html",
+            "socket-binding" : {
+              "grpc" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html",
+                "port" : "${jboss.grpc.port:9555}"
+              }
+            }
+          }
+        },
+        "subsystem" : {
+          "grpc" : {
+            "_address" : "wildscribe/org.wildfly.extras.grpc_wildfly-grpc-feature-pack/subsystem/grpc/index.html",
+            "socket-binding" : "grpc"
+          }
+        }
+      },
+      "configuration" : [ {
+        "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/socket-binding-group/socket-binding/index.html#attr-port",
+        "attribute" : "port",
+        "systemProperties" : [ "jboss.grpc.port" ]
+      } ],
+      "dependencies" : [ {
+        "name" : "cdi",
+        "optional" : false
+      } ],
+      "feature-pack" : "org.wildfly.extras.grpc:wildfly-grpc-feature-pack:0.1.12-SNAPSHOT",
+      "description" : "Support for gRPC.",
+      "glowAddOn" : "grpc",
+      "stability" : "preview",
+      "glowDiscoverable" : false
+    }, {
       "name" : "iiop-openjdk",
       "managementModel" : {
         "interface" : {
