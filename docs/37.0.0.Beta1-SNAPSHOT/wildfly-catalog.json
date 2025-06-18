@@ -95,7 +95,7 @@
     "license" : [ "Apache License, Version 2.0" ],
     "projectURL" : "http://www.jboss.org/wildfly-cloud-galleon-pack-parent/wildfly-cloud-galleon-pack",
     "scm" : "http://github.com/jboss/jboss-parent-pom/wildfly-cloud-galleon-pack-parent/wildfly-cloud-galleon-pack",
-    "layers" : [ "base-server", "cloud-default-config", "ejb-dist-cache", "embedded-activemq", "jpa", "jpa-distributed", "logging", "mail", "management", "messaging-activemq", "transactions", "undertow", "web-clustering", "webservices" ]
+    "layers" : [ "base-server", "cloud-default-config", "ejb-dist-cache", "elytron-oidc-client", "embedded-activemq", "jpa", "jpa-distributed", "logging", "mail", "management", "messaging-activemq", "transactions", "undertow", "web-clustering", "webservices" ]
   } ],
   "categories" : [ {
     "name" : "AI",
@@ -4004,6 +4004,40 @@
         "value" : "https://raw.githubusercontent.com/wildfly/wildfly-cekit-modules/main/jboss/container/wildfly/launch/jgroups/module.yaml",
         "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
         "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
+      } ],
+      "glowDiscoverable" : true
+    }, {
+      "name" : "elytron-oidc-client",
+      "managementModel" : {
+        "core-service" : {
+          "management" : {
+            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/core-service/management/index.html",
+            "management-interface" : {
+              "http-interface" : {
+                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/core-service/management/management-interface/http-interface/index.html",
+                "attributes" : [ {
+                  "name" : "console-enabled",
+                  "value" : "false",
+                  "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/core-service/management/management-interface/http-interface/index.html#attr-console-enabled"
+                } ]
+              }
+            }
+          }
+        }
+      },
+      "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
+      "description" : "Support for securing deployment with OIDC, adjusted for the cloud",
+      "stability" : "default",
+      "glowRules" : [ {
+        "name" : "org.wildfly.rule.configuration",
+        "value" : "https://raw.githubusercontent.com/wildfly/wildfly-cekit-modules/main/jboss/container/wildfly/launch/oidc/module.yaml",
+        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
+        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
+      }, {
+        "name" : "org.wildfly.rule.no-configuration-if-org.wildfly.rule.expected-file-oidc",
+        "value" : "/WEB-INF/oidc.json",
+        "ruleDescription" : "A conditional rule. Do not propose configuration if the condition is `true`. This rule name is followed by the conditioned rule: `org.wildfly.rule.no-configuration-if-<conditioned rule>`",
+        "valueDescription" : "e.g.: `org.wildfly.rule.no-configuration-if-org.wildfly.rule.expected-file-oidc=/WEB-INF/oidc.json`, if `/WEB-INF/oidc.json` is found, do not propose Cloud specific OIDC environment variables."
       } ],
       "glowDiscoverable" : true
     }, {
@@ -9362,39 +9396,6 @@
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
       "stability" : "default",
       "glowDiscoverable" : false
-    }, {
-      "name" : "elytron-oidc-client",
-      "managementModel" : {
-        "core-service" : {
-          "management" : {
-            "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/core-service/management/index.html",
-            "management-interface" : {
-              "http-interface" : {
-                "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/core-service/management/management-interface/http-interface/index.html",
-                "attributes" : [ {
-                  "name" : "console-enabled",
-                  "value" : "false",
-                  "_address" : "wildscribe/org.wildfly_wildfly-galleon-pack/core-service/management/management-interface/http-interface/index.html#attr-console-enabled"
-                } ]
-              }
-            }
-          }
-        }
-      },
-      "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
-      "stability" : "default",
-      "glowRules" : [ {
-        "name" : "org.wildfly.rule.configuration",
-        "value" : "https://raw.githubusercontent.com/wildfly/wildfly-cekit-modules/main/jboss/container/wildfly/launch/oidc/module.yaml",
-        "ruleDescription" : "The URL where to find yaml file containing the configuration (env variables to configure the layer).",
-        "valueDescription" : "e.g.: `https://raw.githubusercontent.com/jfdenise/wildfly-datasources-galleon-pack/layers_metadata/doc/mariadb/env.yaml`"
-      }, {
-        "name" : "org.wildfly.rule.no-configuration-if-org.wildfly.rule.expected-file-oidc",
-        "value" : "/WEB-INF/oidc.json",
-        "ruleDescription" : "A conditional rule. Do not propose configuration if the condition is `true`. This rule name is followed by the conditioned rule: `org.wildfly.rule.no-configuration-if-<conditioned rule>`",
-        "valueDescription" : "e.g.: `org.wildfly.rule.no-configuration-if-org.wildfly.rule.expected-file-oidc=/WEB-INF/oidc.json`, if `/WEB-INF/oidc.json` is found, do not propose Cloud specific OIDC environment variables."
-      } ],
-      "glowDiscoverable" : true
     }, {
       "name" : "git-history",
       "managementModel" : { },
