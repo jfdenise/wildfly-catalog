@@ -582,14 +582,34 @@
             }
 
             const docSection = document.getElementById('documentation-section');
-            docSection.innerHTML = ''; 
+            docSection.innerHTML = '';
             if (jsonData.documentation && Array.isArray(jsonData.documentation) && jsonData.documentation.length > 0) {
-                docSection.style.display = 'block'; 
-                const docTitle = document.createElement('h2');
-                docTitle.textContent = 'Documentation';
-                docSection.appendChild(docTitle);
+                docSection.style.display = 'block';
+
+                const docHeader = document.createElement('div');
+                docHeader.className = 'dependencies-header';
+                docHeader.style.cursor = 'pointer';
+
+                const docLabelWrapper = document.createElement('span');
+                docLabelWrapper.style.display = 'flex';
+                docLabelWrapper.style.alignItems = 'center';
+
+                const docHeaderText = document.createElement('h2');
+                docHeaderText.textContent = 'Documentation';
+                docHeaderText.style.margin = '0';
+                docHeaderText.style.fontSize = '1.2em';
+                docLabelWrapper.appendChild(docHeaderText);
+
+                docHeader.appendChild(docLabelWrapper);
+
+                const docArrow = document.createElement('span');
+                docArrow.className = 'dependencies-arrow';
+                docArrow.innerHTML = '&#9654;';
+                docHeader.appendChild(docArrow);
+                docSection.appendChild(docHeader);
 
                 const docList = document.createElement('ul');
+                docList.className = 'dependencies-list';
                 jsonData.documentation.forEach(docItem => {
                     if (docItem.name && docItem.url) {
                         const listItem = document.createElement('li');
@@ -603,39 +623,88 @@
                     }
                 });
                 docSection.appendChild(docList);
+
+                docHeader.addEventListener('click', () => {
+                    docList.classList.toggle('visible');
+                    docArrow.classList.toggle('expanded');
+                });
+
             } else {
-                docSection.style.display = 'none'; 
+                docSection.style.display = 'none';
             }
 
             const featurePacksSection = document.getElementById('feature-packs-section');
-            featurePacksSection.innerHTML = ''; 
+            featurePacksSection.innerHTML = '';
             if (jsonData.featurePacks && Array.isArray(jsonData.featurePacks) && jsonData.featurePacks.length > 0) {
                 featurePacksSection.style.display = 'block';
-                const fpSectionTitle = document.createElement('h2');
-                fpSectionTitle.textContent = 'WildFly Feature Packs'; 
-                featurePacksSection.appendChild(fpSectionTitle);
+
+                const fpHeader = document.createElement('div');
+                fpHeader.className = 'dependencies-header';
+                fpHeader.style.cursor = 'pointer';
+
+                const fpLabelWrapper = document.createElement('span');
+                fpLabelWrapper.style.display = 'flex';
+                fpLabelWrapper.style.alignItems = 'center';
+
+                const fpHeaderText = document.createElement('h2');
+                fpHeaderText.textContent = 'WildFly Feature Packs';
+                fpHeaderText.style.margin = '0';
+                fpHeaderText.style.fontSize = '1.2em';
+                fpLabelWrapper.appendChild(fpHeaderText);
+
+                fpHeader.appendChild(fpLabelWrapper);
+
+                const fpArrow = document.createElement('span');
+                fpArrow.className = 'dependencies-arrow';
+                fpArrow.innerHTML = '&#9654;';
+                fpHeader.appendChild(fpArrow);
+                featurePacksSection.appendChild(fpHeader);
+
+                const fpContainer = document.createElement('div');
+                fpContainer.className = 'dependencies-list';
+                featurePacksSection.appendChild(fpContainer);
+
+                fpHeader.addEventListener('click', () => {
+                    fpContainer.classList.toggle('visible');
+                    fpArrow.classList.toggle('expanded');
+                });
 
                 jsonData.featurePacks.forEach(fp => {
                     const fpDiv = document.createElement('div');
-                    fpDiv.className = 'category'; 
-                    fpDiv.id = `fp-${sanitizeForId(fp.mavenCoordinates)}`; 
+                    fpDiv.className = 'category';
+                    fpDiv.id = `fp-${sanitizeForId(fp.mavenCoordinates)}`;
+                    fpDiv.style.padding = "0";
+                    fpDiv.style.margin = "10px 0";
 
-                    const fpTitleContainer = document.createElement('div');
-                    const fpNameElement = document.createElement('h3');
-                    fpNameElement.style.display = 'inline';
-                    fpNameElement.textContent = fp.name || 'Unnamed Feature Pack'; 
-                    fpTitleContainer.appendChild(fpNameElement);
+                    const headerDiv = document.createElement('div');
+                    headerDiv.className = 'functionality-header';
+                    headerDiv.id = `func-${sanitizeForId(fp.name)}`;
 
-                    if (fp.name && legendData.featurePackName) { 
-                        const nameTooltipIcon = document.createElement('span');
-                        nameTooltipIcon.className = 'tooltip-icon';
-                        nameTooltipIcon.textContent = '?';
-                        nameTooltipIcon.dataset.tooltipText = legendData.featurePackName;
-                        nameTooltipIcon.addEventListener('click', showTooltip);
-                        nameTooltipIcon.style.marginLeft = '5px';
-                        fpTitleContainer.appendChild(nameTooltipIcon);
-                    }
-                    fpDiv.appendChild(fpTitleContainer);
+                    const labelWrapper = document.createElement('span');
+                    labelWrapper.style.display = 'flex';
+                    labelWrapper.style.alignItems = 'center';
+
+                    const funcNameElement = document.createElement('span');
+                    funcNameElement.className = 'name';
+                    funcNameElement.textContent = fp.name;
+                    labelWrapper.appendChild(funcNameElement);
+                    headerDiv.appendChild(labelWrapper);
+
+                    const arrowSpan = document.createElement('span');
+                    arrowSpan.className = 'arrow';
+                    arrowSpan.innerHTML = '&#9654;';
+                    headerDiv.appendChild(arrowSpan);
+
+                    fpDiv.appendChild(headerDiv);
+
+                    const detailsDiv = document.createElement('div');
+                    detailsDiv.className = 'functionality-details';
+                    fpDiv.appendChild(detailsDiv);
+
+                    headerDiv.addEventListener('click', () => {
+                        detailsDiv.classList.toggle('visible');
+                        arrowSpan.classList.toggle('expanded');
+                    });
 
                     if (fp.description && typeof fp.description === 'string' && fp.description.trim() !== '') {
                         const descriptionP = document.createElement('p');
@@ -652,7 +721,7 @@
                              descTooltipIcon.style.marginLeft = '5px';
                              descriptionP.appendChild(descTooltipIcon);
                         }
-                        fpDiv.appendChild(descriptionP);
+                        detailsDiv.appendChild(descriptionP);
                     }
 // Add URL section
                     if (fp.projectURL && typeof fp.projectURL === 'string' && fp.projectURL.trim() !== '') {
@@ -701,7 +770,7 @@
                         urlContentDiv.appendChild(urlLink);
                         
                         urlContainer.appendChild(urlContentDiv);
-                        fpDiv.appendChild(urlContainer);
+                        detailsDiv.appendChild(urlContainer);
 
                         urlHeader.addEventListener('click', () => {
                             urlContentDiv.classList.toggle('visible');
@@ -759,7 +828,7 @@
                             licenseList.appendChild(licenseLi);
                         });
                         licenseContainer.appendChild(licenseList);
-                        fpDiv.appendChild(licenseContainer);
+                        detailsDiv.appendChild(licenseContainer);
 
                         licenseHeader.addEventListener('click', () => {
                             licenseList.classList.toggle('visible');
@@ -822,7 +891,7 @@
                         // white-space: pre and overflow-x: auto are from scrollable-maven-coords
 
                         coordsContainer.appendChild(coordsContentDiv);
-                        fpDiv.appendChild(coordsContainer);
+                        detailsDiv.appendChild(coordsContainer);
 
                         coordsHeader.addEventListener('click', () => {
                             coordsContentDiv.classList.toggle('visible');
@@ -892,7 +961,7 @@
                         mvnCoordsContentDiv.style.borderRadius = '4px'; 
 
                         mvnCoordsContainer.appendChild(mvnCoordsContentDiv);
-                        fpDiv.appendChild(mvnCoordsContainer); // Add the new duplicated section
+                        detailsDiv.appendChild(mvnCoordsContainer); // Add the new duplicated section
 
                         mvnCoordsHeader.addEventListener('click', () => {
                             mvnCoordsContentDiv.classList.toggle('visible');
@@ -974,7 +1043,7 @@
                         });
                         
                         fpLayersContainer.appendChild(fpLayersList);
-                        fpDiv.appendChild(fpLayersContainer);
+                        detailsDiv.appendChild(fpLayersContainer);
 
                         fpLayersHeader.addEventListener('click', () => {
                             fpLayersList.classList.toggle('visible');
@@ -1032,7 +1101,7 @@
                         mgmtContentDiv.appendChild(modelRefLink);
                         
                         mgmtModelContainer.appendChild(mgmtContentDiv);
-                        fpDiv.appendChild(mgmtModelContainer);
+                        detailsDiv.appendChild(mgmtModelContainer);
 
                         mgmtHeader.addEventListener('click', () => {
                             mgmtContentDiv.classList.toggle('visible');
@@ -1076,14 +1145,14 @@
                         scmContentDiv.style.padding = '5px 8px'; // Match scrollable-maven-coords
                         scmContentDiv.style.backgroundColor = '#fffacd'; // LemonChiffon (lighter than khaki)
                         scmContainer.appendChild(scmContentDiv);
-                        fpDiv.appendChild(scmContainer);
+                        detailsDiv.appendChild(scmContainer);
 
                         scmHeader.addEventListener('click', () => {
                             scmContentDiv.classList.toggle('visible');
                             scmArrow.classList.toggle('expanded');
                         });
                     }
-                    featurePacksSection.appendChild(fpDiv);
+                    fpContainer.appendChild(fpDiv);
                 });
             } else {
                 featurePacksSection.style.display = 'none';
@@ -1181,15 +1250,30 @@
                         linkElement.textContent = fpValue;
                         linkElement.addEventListener('click', (e) => {
                             e.preventDefault();
+                            const featurePacksSection = document.getElementById('feature-packs-section');
+                            const fpContainer = featurePacksSection.querySelector('.dependencies-list');
+                            const fpArrow = featurePacksSection.querySelector('.dependencies-arrow');
+                            if (fpContainer && !fpContainer.classList.contains('visible')) {
+                                fpContainer.classList.add('visible');
+                                fpArrow.classList.add('expanded');
+                            }
+
                             const targetElement = document.getElementById(targetId);
                             if (targetElement) {
+                                const headerDiv = targetElement.querySelector('.functionality-header');
+                                const detailsDiv = targetElement.querySelector('.functionality-details');
+                                const arrowSpan = targetElement.querySelector('.arrow');
+                                if (headerDiv && detailsDiv && !detailsDiv.classList.contains('visible')) {
+                                    detailsDiv.classList.add('visible');
+                                    arrowSpan.classList.add('expanded');
+                                }
                                 targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
                                 targetElement.style.transition = 'background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out';
-                                targetElement.style.backgroundColor = '#e6f7ff'; 
-                                targetElement.style.boxShadow = '0 0 12px rgba(26, 115, 232, 0.6)'; 
+                                targetElement.style.backgroundColor = '#e6f7ff';
+                                targetElement.style.boxShadow = '0 0 12px rgba(26, 115, 232, 0.6)';
                                 setTimeout(() => {
-                                    targetElement.style.backgroundColor = ''; 
-                                    targetElement.style.boxShadow = ''; 
+                                    targetElement.style.backgroundColor = '';
+                                    targetElement.style.boxShadow = '';
                                 }, 1500);
                             } else {
                                 console.warn(`Feature pack target #${targetId} not found.`);
