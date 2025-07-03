@@ -595,7 +595,7 @@
                 docLabelWrapper.style.alignItems = 'center';
 
                 const docHeaderText = document.createElement('h2');
-                docHeaderText.textContent = 'Documentation';
+                docHeaderText.textContent = 'WildFly Documentation';
                 docHeaderText.style.margin = '0';
                 docHeaderText.style.fontSize = '1.2em';
                 docLabelWrapper.appendChild(docHeaderText);
@@ -723,217 +723,96 @@
                         }
                         detailsDiv.appendChild(descriptionP);
                     }
-// Add URL section
+                    
                     if (fp.projectURL && typeof fp.projectURL === 'string' && fp.projectURL.trim() !== '') {
                         const urlContainer = document.createElement('div');
                         urlContainer.style.marginTop = '10px';
-
-                        const urlHeader = document.createElement('div');
-                        urlHeader.className = 'dependencies-header';
-                        urlHeader.style.backgroundColor = '#90ee90'; // LightGreen
-
-                        const urlLabelWrapper = document.createElement('span');
-                        urlLabelWrapper.style.display = 'flex';
-                        urlLabelWrapper.style.alignItems = 'center';
-                        const urlHeaderText = document.createElement('span');
-                        urlHeaderText.textContent = 'Project URL';
-                        urlLabelWrapper.appendChild(urlHeaderText);
-                        if (legendData.url) {
-                            const tooltipIcon = document.createElement('span');
-                            tooltipIcon.className = 'tooltip-icon';
-                            tooltipIcon.textContent = '?';
-                            tooltipIcon.dataset.tooltipText = legendData.projectURL;
-                            tooltipIcon.addEventListener('click', showTooltip);
-                            urlLabelWrapper.appendChild(tooltipIcon);
-                        }
-                        urlHeader.appendChild(urlLabelWrapper);
-                        const urlArrow = document.createElement('span');
-                        urlArrow.className = 'dependencies-arrow';
-                        urlArrow.innerHTML = '&#9654;';
-                        urlHeader.appendChild(urlArrow);
-                        urlContainer.appendChild(urlHeader);
-
-                        const urlContentDiv = document.createElement('div');
-                        urlContentDiv.className = 'dependencies-list'; // For toggling visibility
-                        urlContentDiv.style.padding = '10px'; // Add some padding
-                        urlContentDiv.style.backgroundColor = '#f0fff0'; // Honeydew (lighter than lightgreen)
-                        urlContentDiv.style.border = '1px solid #cce';
-                        urlContentDiv.style.borderRadius = '4px';
-                        urlContentDiv.style.marginTop = '0px';
-
-
                         const urlLink = document.createElement('a');
                         urlLink.href = fp.projectURL;
                         urlLink.textContent = fp.projectURL;
                         urlLink.target = '_blank';
                         urlLink.rel = 'noopener noreferrer';
-                        urlContentDiv.appendChild(urlLink);
                         
-                        urlContainer.appendChild(urlContentDiv);
+                        urlContainer.appendChild(createFieldElement('Project URL', urlLink, 'projectURL'));
                         detailsDiv.appendChild(urlContainer);
-
-                        urlHeader.addEventListener('click', () => {
-                            urlContentDiv.classList.toggle('visible');
-                            urlArrow.classList.toggle('expanded');
-                        });
                     }
 
-                    // Add License section
                     if (fp.license && Array.isArray(fp.license) && fp.license.length > 0) {
                         const licenseContainer = document.createElement('div');
                         licenseContainer.style.marginTop = '10px';
-
-                        const licenseHeader = document.createElement('div');
-                        licenseHeader.className = 'dependencies-header';
-                        licenseHeader.style.backgroundColor = '#add8e6'; // LightBlue
-
-                        const licenseLabelWrapper = document.createElement('span');
-                        licenseLabelWrapper.style.display = 'flex';
-                        licenseLabelWrapper.style.alignItems = 'center';
-                        const licenseHeaderText = document.createElement('span');
-                        licenseHeaderText.textContent = 'License';
-                        licenseLabelWrapper.appendChild(licenseHeaderText);
-                        if (legendData.license) {
-                            const tooltipIcon = document.createElement('span');
-                            tooltipIcon.className = 'tooltip-icon';
-                            tooltipIcon.textContent = '?';
-                            tooltipIcon.dataset.tooltipText = legendData.license;
-                            tooltipIcon.addEventListener('click', showTooltip);
-                            licenseLabelWrapper.appendChild(tooltipIcon);
-                        }
-                        licenseHeader.appendChild(licenseLabelWrapper);
-                        const licenseArrow = document.createElement('span');
-                        licenseArrow.className = 'dependencies-arrow';
-                        licenseArrow.innerHTML = '&#9654;';
-                        licenseHeader.appendChild(licenseArrow);
-                        licenseContainer.appendChild(licenseHeader);
-
-                        const licenseList = document.createElement('ul');
-                        licenseList.className = 'dependencies-list'; // Standard list styling
-                        licenseList.style.listStyleType = 'none'; // No bullets for licenses
-                        licenseList.style.paddingLeft = '10px'; // Indent content slightly
-                         licenseList.style.backgroundColor = '#f0f8ff'; // AliceBlue (lighter than lightblue)
-                        licenseList.style.border = '1px solid #cce';
-                        licenseList.style.borderRadius = '4px';
-                        licenseList.style.marginTop = '0px'; // dependencies-list has margin-top: 5px, remove for direct content
-                        licenseList.style.paddingTop = '5px';
-                        licenseList.style.paddingBottom = '5px';
-
-
-                        fp.license.forEach(lic => {
-                            const licenseLi = document.createElement('li');
-                            licenseLi.textContent = lic;
-                            licenseLi.style.fontFamily = 'Consolas, "Courier New", monospace';
-                            licenseLi.style.fontSize = '0.9em';
-                            licenseList.appendChild(licenseLi);
-                        });
-                        licenseContainer.appendChild(licenseList);
+                        licenseContainer.appendChild(createFieldElement('License', fp.license[0], 'license'));
                         detailsDiv.appendChild(licenseContainer);
-
-                        licenseHeader.addEventListener('click', () => {
-                            licenseList.classList.toggle('visible');
-                            licenseArrow.classList.toggle('expanded');
-                        });
                     }
+
+                    if (fp.scm && typeof fp.scm === 'string' && fp.scm.trim() !== '') {
+                        const scmContainer = document.createElement('div');
+                        scmContainer.style.marginTop = '10px';
+                        const scmLink = document.createElement('a');
+                        scmLink.href = fp.scm;
+                        scmLink.textContent = fp.scm;
+                        scmLink.target = '_blank';
+                        scmLink.rel = 'noopener noreferrer';
+                        scmContainer.appendChild(createFieldElement('Source Code Management', scmLink, 'scm'));
+                        detailsDiv.appendChild(scmContainer);
+                    }
+
+                    if (fp.modelReference && typeof fp.modelReference === 'string' && fp.modelReference.trim() !== '') {
+                        const modelRefContainer = document.createElement('div');
+                        modelRefContainer.style.marginTop = '10px';
+                        const modelRefLink = document.createElement('a');
+                        modelRefLink.href = fp.modelReference;
+                        modelRefLink.textContent = fp.modelReference;
+                        modelRefLink.target = '_blank';
+                        modelRefLink.rel = 'noopener noreferrer';
+                        modelRefContainer.appendChild(createFieldElement('Model Reference', modelRefLink, 'modelReference'));
+                        detailsDiv.appendChild(modelRefContainer);
+                    }
+
                     if (fp.mavenCoordinates) {
                         const coordsContainer = document.createElement('div');
-                        coordsContainer.className = 'maven-coords-container'; // New class for the whole section
                         coordsContainer.style.marginTop = '10px';
-
-                        const coordsHeader = document.createElement('div');
-                        coordsHeader.className = 'dependencies-header'; // Reuse for similar styling
-                        // Potentially a slightly different background if needed, e.g., #f5f5f5
-
-                        const coordsLabelWrapper = document.createElement('span');
-                        coordsLabelWrapper.style.display = 'flex';
-                        coordsLabelWrapper.style.alignItems = 'center';
-
-                        const coordsHeaderText = document.createElement('span');
-                        coordsHeaderText.textContent = 'Feature Pack Location';
-                        coordsLabelWrapper.appendChild(coordsHeaderText);
-
+                        const strongLabel = document.createElement('strong');
+                        strongLabel.textContent = 'Feature Pack Location:';
+                        coordsContainer.appendChild(strongLabel);
                         if (legendData.featurePackLocation) {
                             const tooltipIcon = document.createElement('span');
                             tooltipIcon.className = 'tooltip-icon';
                             tooltipIcon.textContent = '?';
                             tooltipIcon.dataset.tooltipText = legendData.featurePackLocation;
                             tooltipIcon.addEventListener('click', showTooltip);
-                            // tooltipIcon.style.marginLeft = '5px'; // Already has margin-left from .tooltip-icon
-                            coordsLabelWrapper.appendChild(tooltipIcon);
+                            coordsContainer.appendChild(tooltipIcon);
                         }
-                        coordsHeader.appendChild(coordsLabelWrapper);
-
-                        const coordsArrow = document.createElement('span');
-                        coordsArrow.className = 'dependencies-arrow'; // Reuse for arrow
-                        coordsArrow.innerHTML = '&#9654;'; // Right-pointing arrow
-                        coordsHeader.appendChild(coordsArrow);
-                        
-                        coordsContainer.appendChild(coordsHeader);
-
-                        const coordsContentDiv = document.createElement('div');
-                        coordsContentDiv.className = 'dependencies-list scrollable-maven-coords'; // Combine for toggling and styling
-                        
+                        const pre = document.createElement('pre');
+                        pre.style.backgroundColor = '#f0f8ff';
+                        pre.style.border = '1px solid #cce';
+                        pre.style.borderRadius = '4px';
+                        pre.style.padding = '10px';
+                        const code = document.createElement('code');
                         const locationString = fp.mavenCoordinates || '';
-                        const xmlFeaturePackString = 
-`<feature-pack>
-    <location>${locationString}</location>
-</feature-pack>`;
-                        coordsContentDiv.textContent = xmlFeaturePackString;
-                        
-                        // Adjust padding if needed, as .dependencies-list might add some
-                        coordsContentDiv.style.paddingLeft = '10px'; // Override default dependencies-list padding if too much
-                        coordsContentDiv.style.paddingRight = '10px';
-                        coordsContentDiv.style.paddingTop = '5px';
-                        coordsContentDiv.style.paddingBottom = '5px';
-                        coordsContentDiv.style.backgroundColor = '#f0f8ff'; // Keep the background from scrollable-maven-coords
-                        coordsContentDiv.style.border = '1px solid #cce'; // Keep border
-                        coordsContentDiv.style.borderRadius = '4px'; // Keep border-radius
-                        // white-space: pre and overflow-x: auto are from scrollable-maven-coords
-
-                        coordsContainer.appendChild(coordsContentDiv);
+                        code.textContent = `<feature-pack>\n    <location>${locationString}</location>\n</feature-pack>`;
+                        pre.appendChild(code);
+                        coordsContainer.appendChild(pre);
                         detailsDiv.appendChild(coordsContainer);
 
-                        coordsHeader.addEventListener('click', () => {
-                            coordsContentDiv.classList.toggle('visible');
-                            coordsArrow.classList.toggle('expanded');
-                        });
-
-                        // Duplicate for "Maven Coordinates"
                         const mvnCoordsContainer = document.createElement('div');
-                        mvnCoordsContainer.className = 'maven-coords-container'; 
                         mvnCoordsContainer.style.marginTop = '10px';
-
-                        const mvnCoordsHeader = document.createElement('div');
-                        mvnCoordsHeader.className = 'dependencies-header'; 
-
-                        const mvnCoordsLabelWrapper = document.createElement('span');
-                        mvnCoordsLabelWrapper.style.display = 'flex';
-                        mvnCoordsLabelWrapper.style.alignItems = 'center';
-
-                        const mvnCoordsHeaderText = document.createElement('span');
-                        mvnCoordsHeaderText.textContent = 'Maven Coordinates'; // New Title
-                        mvnCoordsLabelWrapper.appendChild(mvnCoordsHeaderText);
-
-                        if (legendData.mavenCoordinates) { // Reuse same legend data
+                        const strongLabel2 = document.createElement('strong');
+                        strongLabel2.textContent = 'Maven Coordinates:';
+                        mvnCoordsContainer.appendChild(strongLabel2);
+                        if (legendData.mavenCoordinates) {
                             const tooltipIcon = document.createElement('span');
                             tooltipIcon.className = 'tooltip-icon';
                             tooltipIcon.textContent = '?';
                             tooltipIcon.dataset.tooltipText = legendData.mavenCoordinates;
                             tooltipIcon.addEventListener('click', showTooltip);
-                            mvnCoordsLabelWrapper.appendChild(tooltipIcon);
+                            mvnCoordsContainer.appendChild(tooltipIcon);
                         }
-                        mvnCoordsHeader.appendChild(mvnCoordsLabelWrapper);
-
-                        const mvnCoordsArrow = document.createElement('span');
-                        mvnCoordsArrow.className = 'dependencies-arrow'; 
-                        mvnCoordsArrow.innerHTML = '&#9654;'; 
-                        mvnCoordsHeader.appendChild(mvnCoordsArrow);
-                        
-                        mvnCoordsContainer.appendChild(mvnCoordsHeader);
-
-                        const mvnCoordsContentDiv = document.createElement('div');
-                        mvnCoordsContentDiv.className = 'dependencies-list scrollable-maven-coords'; 
-                        
+                        const pre2 = document.createElement('pre');
+                        pre2.style.backgroundColor = '#f0f8ff';
+                        pre2.style.border = '1px solid #cce';
+                        pre2.style.borderRadius = '4px';
+                        pre2.style.padding = '10px';
+                        const code2 = document.createElement('code');
                         const parts = fp.mavenCoordinates.split(':');
                         const groupId = parts[0] || '';
                         const artifactId = parts[1] || '';
@@ -942,31 +821,17 @@
                         if (parts.length === 3) {
                             const xmlString = 
 `<dependency>
-  <groupId>${groupId}</groupId>
-  <artifactId>${artifactId}</artifactId>
-  <version>${version}</version>
+    <groupId>${groupId}</groupId>
+    <artifactId>${artifactId}</artifactId>
+    <version>${version}</version>
 </dependency>`;
-                            mvnCoordsContentDiv.textContent = xmlString;
+                            code2.textContent = xmlString;
                         } else {
-                            // Fallback if parsing fails, show original string
-                            mvnCoordsContentDiv.textContent = fp.mavenCoordinates; 
+                            code2.textContent = fp.mavenCoordinates; 
                         }
-                        
-                        mvnCoordsContentDiv.style.paddingLeft = '10px'; 
-                        mvnCoordsContentDiv.style.paddingRight = '10px';
-                        mvnCoordsContentDiv.style.paddingTop = '5px';
-                        mvnCoordsContentDiv.style.paddingBottom = '5px';
-                        mvnCoordsContentDiv.style.backgroundColor = '#f0f8ff'; 
-                        mvnCoordsContentDiv.style.border = '1px solid #cce'; 
-                        mvnCoordsContentDiv.style.borderRadius = '4px'; 
-
-                        mvnCoordsContainer.appendChild(mvnCoordsContentDiv);
-                        detailsDiv.appendChild(mvnCoordsContainer); // Add the new duplicated section
-
-                        mvnCoordsHeader.addEventListener('click', () => {
-                            mvnCoordsContentDiv.classList.toggle('visible');
-                            mvnCoordsArrow.classList.toggle('expanded');
-                        });
+                        pre2.appendChild(code2);
+                        mvnCoordsContainer.appendChild(pre2);
+                        detailsDiv.appendChild(mvnCoordsContainer);
                     }
 
                     if (fp.layers && Array.isArray(fp.layers) && fp.layers.length > 0) {
@@ -974,8 +839,7 @@
                         fpLayersContainer.className = 'fp-layers-container';
 
                         const fpLayersHeader = document.createElement('div');
-                        fpLayersHeader.className = 'dependencies-header'; 
-                        fpLayersHeader.style.backgroundColor = '#fafad2'; 
+                        fpLayersHeader.className = 'dependencies-header';
 
                         const fpLayersLabelWrapper = document.createElement('span');
                         fpLayersLabelWrapper.style.display = 'flex';
@@ -1051,107 +915,6 @@
                         });
                     }
                     
-                    // Updated Model Reference section to handle URL
-                    if (fp.modelReference && typeof fp.modelReference === 'string' && fp.modelReference.trim() !== '') {
-                        const mgmtModelContainer = document.createElement('div');
-                        mgmtModelContainer.className = 'management-model-container';
-
-                        const mgmtHeader = document.createElement('div');
-                        mgmtHeader.className = 'dependencies-header'; 
-                        mgmtHeader.style.backgroundColor = '#e0f0ff'; // Keep header style
-
-                        const mgmtLabelWrapper = document.createElement('span');
-                        mgmtLabelWrapper.style.display = 'flex';
-                        mgmtLabelWrapper.style.alignItems = 'center';
-
-                        const mgmtHeaderText = document.createElement('span');
-                        mgmtHeaderText.textContent = 'Model Reference';
-                        mgmtLabelWrapper.appendChild(mgmtHeaderText);
-
-                        if (legendData.modelReference) { 
-                            const tooltipIcon = document.createElement('span');
-                            tooltipIcon.className = 'tooltip-icon';
-                            tooltipIcon.textContent = '?';
-                            tooltipIcon.dataset.tooltipText = legendData.modelReference;
-                            tooltipIcon.addEventListener('click', showTooltip);
-                            mgmtLabelWrapper.appendChild(tooltipIcon);
-                        }
-                        mgmtHeader.appendChild(mgmtLabelWrapper);
-
-                        const mgmtArrow = document.createElement('span');
-                        mgmtArrow.className = 'dependencies-arrow';
-                        mgmtArrow.innerHTML = '&#9654;';
-                        mgmtHeader.appendChild(mgmtArrow);
-                        
-                        mgmtModelContainer.appendChild(mgmtHeader);
-
-                        const mgmtContentDiv = document.createElement('div');
-                        mgmtContentDiv.className = 'dependencies-list'; // For toggling
-                        mgmtContentDiv.style.padding = '10px'; 
-                        mgmtContentDiv.style.backgroundColor = '#f0f5f0'; 
-                        mgmtContentDiv.style.border = '1px solid #d0d0d0'; 
-                        mgmtContentDiv.style.borderRadius = '4px'; 
-                        mgmtContentDiv.style.marginTop = '0px';
-
-                        const modelRefLink = document.createElement('a');
-                        modelRefLink.href = fp.modelReference;
-                        modelRefLink.textContent = fp.modelReference;
-                        modelRefLink.target = '_blank';
-                        modelRefLink.rel = 'noopener noreferrer';
-                        mgmtContentDiv.appendChild(modelRefLink);
-                        
-                        mgmtModelContainer.appendChild(mgmtContentDiv);
-                        detailsDiv.appendChild(mgmtModelContainer);
-
-                        mgmtHeader.addEventListener('click', () => {
-                            mgmtContentDiv.classList.toggle('visible');
-                            mgmtArrow.classList.toggle('expanded');
-                        });
-                    }
-
-                    // Add SCM section
-                    if (fp.scm && typeof fp.scm === 'string' && fp.scm.trim() !== '') {
-                        const scmContainer = document.createElement('div');
-                        scmContainer.style.marginTop = '10px';
-
-                        const scmHeader = document.createElement('div');
-                        scmHeader.className = 'dependencies-header';
-                        scmHeader.style.backgroundColor = '#f0e68c'; // Khaki
-
-                        const scmLabelWrapper = document.createElement('span');
-                        scmLabelWrapper.style.display = 'flex';
-                        scmLabelWrapper.style.alignItems = 'center';
-                        const scmHeaderText = document.createElement('span');
-                        scmHeaderText.textContent = 'Source Code Management';
-                        scmLabelWrapper.appendChild(scmHeaderText);
-                        if (legendData.scm) {
-                            const tooltipIcon = document.createElement('span');
-                            tooltipIcon.className = 'tooltip-icon';
-                            tooltipIcon.textContent = '?';
-                            tooltipIcon.dataset.tooltipText = legendData.scm;
-                            tooltipIcon.addEventListener('click', showTooltip);
-                            scmLabelWrapper.appendChild(tooltipIcon);
-                        }
-                        scmHeader.appendChild(scmLabelWrapper);
-                        const scmArrow = document.createElement('span');
-                        scmArrow.className = 'dependencies-arrow';
-                        scmArrow.innerHTML = '&#9654;';
-                        scmHeader.appendChild(scmArrow);
-                        scmContainer.appendChild(scmHeader);
-
-                        const scmContentDiv = document.createElement('div');
-                        scmContentDiv.className = 'dependencies-list scrollable-maven-coords'; // For pre-formatted, scrollable text
-                        scmContentDiv.textContent = fp.scm;
-                        scmContentDiv.style.padding = '5px 8px'; // Match scrollable-maven-coords
-                        scmContentDiv.style.backgroundColor = '#fffacd'; // LemonChiffon (lighter than khaki)
-                        scmContainer.appendChild(scmContentDiv);
-                        detailsDiv.appendChild(scmContainer);
-
-                        scmHeader.addEventListener('click', () => {
-                            scmContentDiv.classList.toggle('visible');
-                            scmArrow.classList.toggle('expanded');
-                        });
-                    }
                     fpContainer.appendChild(fpDiv);
                 });
             } else {
@@ -1847,3 +1610,23 @@
     </script>
 </body>
 </html>
+</final_file_content>
+
+IMPORTANT: For any future changes to this file, use the final_file_content shown above as your reference. This content reflects the current state of the file, including any auto-formatting (e.g., if you used single quotes but the formatter converted them to double quotes). Always base your SEARCH/REPLACE operations on this final version to ensure accuracy.
+
+<environment_details>
+# VSCode Visible Files
+wildfly-catalog-viewer.html
+
+# VSCode Open Tabs
+wildfly-catalog-viewer.html
+
+# Current Time
+7/3/2025, 6:32:11 PM (Europe/Paris, UTC+2:00)
+
+# Context Window Usage
+707,571 / 1,048.576K tokens used (67%)
+
+# Current Mode
+ACT MODE
+</environment_details>

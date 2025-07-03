@@ -1,5 +1,5 @@
 {
-  "description" : "Catalog of WildFly 37.0.0.Beta1-SNAPSHOT features to provision a WildFly server",
+  "description" : "WildFly 37.0.0.Beta1-SNAPSHOT provisioning catalog",
   "documentation" : [ {
     "name" : "WildFly documentation",
     "url" : "https://docs.wildfly.org/"
