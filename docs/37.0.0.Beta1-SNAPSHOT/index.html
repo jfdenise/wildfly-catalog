@@ -884,10 +884,19 @@
                                 e.preventDefault();
                                 const targetElement = document.getElementById(targetId);
                                 if (targetElement) {
+                                    const categoryDiv = targetElement.closest('.category');
+                                    if (categoryDiv) {
+                                        const categoryContent = categoryDiv.querySelector('.dependencies-list');
+                                        const categoryArrow = categoryDiv.querySelector('.dependencies-arrow');
+                                        if (categoryContent && !categoryContent.classList.contains('visible')) {
+                                            categoryContent.classList.add('visible');
+                                            if(categoryArrow) categoryArrow.classList.add('expanded');
+                                        }
+                                    }
                                     targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                                    const targetDetails = targetElement.nextElementSibling;
-                                    const targetArrow = targetElement.querySelector('.arrow');
-                                    if (targetDetails && targetDetails.classList.contains('functionality-details') && !targetDetails.classList.contains('visible')) {
+                                    const targetDetails = targetElement.closest('li').querySelector('.functionality-details');
+                                    const targetArrow = targetElement.closest('li').querySelector('.arrow');
+                                    if (targetDetails && !targetDetails.classList.contains('visible')) {
                                         targetDetails.classList.add('visible');
                                         if(targetArrow) targetArrow.classList.add('expanded');
                                     }
@@ -1137,7 +1146,7 @@
                                         const categoryArrow = categoryDiv.querySelector('.dependencies-arrow');
                                         if (categoryContent && !categoryContent.classList.contains('visible')) {
                                             categoryContent.classList.add('visible');
-                                            categoryArrow.classList.add('expanded');
+                                            if(categoryArrow) categoryArrow.classList.add('expanded');
                                         }
                                     }
                                     
@@ -1622,10 +1631,10 @@ wildfly-catalog-viewer.html
 wildfly-catalog-viewer.html
 
 # Current Time
-7/3/2025, 6:32:11 PM (Europe/Paris, UTC+2:00)
+7/3/2025, 6:48:36 PM (Europe/Paris, UTC+2:00)
 
 # Context Window Usage
-707,571 / 1,048.576K tokens used (67%)
+902,652 / 1,048.576K tokens used (86%)
 
 # Current Mode
 ACT MODE
