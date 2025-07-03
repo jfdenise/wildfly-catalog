@@ -1172,20 +1172,47 @@
             orderedCategories.forEach(category => {
                 const categoryDiv = document.createElement('div');
                 categoryDiv.className = 'category';
+                categoryDiv.id = `category-${sanitizeForId(category.name)}`;
 
-                const categoryTitle = document.createElement('h2');
+                const categoryHeader = document.createElement('div');
+                categoryHeader.className = 'dependencies-header';
+                categoryHeader.style.cursor = 'pointer';
+
+                const categoryLabelWrapper = document.createElement('span');
+                categoryLabelWrapper.style.display = 'flex';
+                categoryLabelWrapper.style.alignItems = 'center';
+
+                const categoryHeaderText = document.createElement('h2');
                 if (category.name === 'Internal') {
-                    categoryTitle.textContent = 'Internal (layers that are not to be provisioned directly)';
+                    categoryHeaderText.textContent = 'Internal (layers that are not to be provisioned directly)';
                 } else {
-                    categoryTitle.textContent = category.name;
+                    categoryHeaderText.textContent = category.name;
                 }
-                categoryDiv.appendChild(categoryTitle);
+                categoryHeaderText.style.margin = '0';
+                categoryHeaderText.style.fontSize = '1.2em';
+                categoryLabelWrapper.appendChild(categoryHeaderText);
+                categoryHeader.appendChild(categoryLabelWrapper);
+
+                const categoryArrow = document.createElement('span');
+                categoryArrow.className = 'dependencies-arrow';
+                categoryArrow.innerHTML = '&#9654;';
+                categoryHeader.appendChild(categoryArrow);
+                categoryDiv.appendChild(categoryHeader);
+
+                const categoryContent = document.createElement('div');
+                categoryContent.className = 'dependencies-list';
+                categoryDiv.appendChild(categoryContent);
+
+                categoryHeader.addEventListener('click', () => {
+                    categoryContent.classList.toggle('visible');
+                    categoryArrow.classList.toggle('expanded');
+                });
 
                 if (category.description) {
                     const categoryDesc = document.createElement('p');
                     categoryDesc.className = 'category-description';
                     categoryDesc.textContent = category.description;
-                    categoryDiv.appendChild(categoryDesc);
+                    categoryContent.appendChild(categoryDesc);
                 }
 
                 const functionalitiesUl = document.createElement('ul');
@@ -1341,6 +1368,16 @@
                                 e.preventDefault(); 
                                 const targetElement = document.getElementById(`func-${depLayerName}`);
                                 if (targetElement) {
+                                    const categoryDiv = targetElement.closest('.category');
+                                    if (categoryDiv) {
+                                        const categoryContent = categoryDiv.querySelector('.dependencies-list');
+                                        const categoryArrow = categoryDiv.querySelector('.dependencies-arrow');
+                                        if (categoryContent && !categoryContent.classList.contains('visible')) {
+                                            categoryContent.classList.add('visible');
+                                            categoryArrow.classList.add('expanded');
+                                        }
+                                    }
+                                    
                                     targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
                                     const targetDetails = targetElement.nextElementSibling;
                                     const targetArrow = targetElement.querySelector('.arrow');
@@ -1659,7 +1696,7 @@
                     functionalitiesUl.appendChild(funcLi);
                 });
 
-                categoryDiv.appendChild(functionalitiesUl);
+                categoryContent.appendChild(functionalitiesUl);
                 dataDisplay.appendChild(categoryDiv);
             });
         }
