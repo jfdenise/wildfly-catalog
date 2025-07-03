@@ -491,8 +491,17 @@
                     let effectiveObj = obj;
                     let isProcessedForAttributesArray = false;
 
+                    if (obj.hasOwnProperty('attribute') && typeof obj.attribute === 'string' && obj.hasOwnProperty('_address') && typeof obj._address === 'string' && obj._address.trim() !== '') {
+                        effectiveObj = { ...obj };
+                        effectiveObj.attribute = {
+                            _linkText: obj.attribute,
+                            _linkHref: obj._address,
+                            _isConfigurationLink: true
+                        };
+                        delete effectiveObj._address;
+                    }
                     // Pre-process for 'attributes' array: inline its items as properties
-                    if (obj.hasOwnProperty('attributes') && Array.isArray(obj.attributes)) {
+                    else if (obj.hasOwnProperty('attributes') && Array.isArray(obj.attributes)) {
                         const newPropsFromAttributes = {};
                         let successfullyProcessedAllAttributes = true;
                         obj.attributes.forEach(attrItem => {
@@ -527,7 +536,12 @@
                         const currentValue = effectiveObj[key];
 
                         // Case 1: Property derived from 'attributes' array (name is link, value is text)
-                        if (typeof currentValue === 'object' && currentValue !== null && currentValue._isSpecialAttributeLink === true) {
+                        if (key === 'attribute' && typeof currentValue === 'object' && currentValue !== null && currentValue._isConfigurationLink === true) {
+                             html += indent + '&nbsp;&nbsp;<strong style="color: #990055;">"' + key + '"</strong>: ';
+                             html += '<a href="' + currentValue._linkHref + '" target="_blank" rel="noopener noreferrer" style="color: #1a73e8; text-decoration: underline;">"' + String(currentValue._linkText).replace(/</g, '<').replace(/>/g, '>') + '"</a>' +
+                                    '<span class="tooltip-icon" data-tooltip-text="Navigate to the Model reference" style="cursor: help; display: inline-block; margin-left: 5px;">?</span>';
+                        }
+                        else if (typeof currentValue === 'object' && currentValue !== null && currentValue._isSpecialAttributeLink === true) {
                             html += indent + '&nbsp;&nbsp;<a href="' + currentValue._linkHref + '" target="_blank" rel="noopener noreferrer" style="color: #1a73e8; text-decoration: underline;">"' + key + '"</a>' +
                                     '<span class="tooltip-icon" data-tooltip-text="Navigate to the Model reference" style="cursor: help; display: inline-block; margin-left: 5px;">?</span>: ';
                             html += '<span style="color: #008000;">"' + String(currentValue._linkText).replace(/</g, '<').replace(/>/g, '>') + '"</span>';
