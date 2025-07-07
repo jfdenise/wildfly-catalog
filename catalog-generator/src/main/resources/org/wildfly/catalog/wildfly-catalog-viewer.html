@@ -1502,10 +1502,8 @@
                 }
 
                 const filteredCategories = originalJsonData.categories.map(category => {
-                    let functionalitiesToShow;
-
-                    functionalitiesToShow = category.functionalities.filter(func => {
-                        let termMatches = searchTerm === ''; 
+                    const functionalities = category.functionalities.filter(func => {
+                        let termMatches = searchTerm === '';
 
                         if (searchTerm !== '') {
                             const searchFieldsCheckboxes = document.querySelectorAll('.search-field-checkbox');
@@ -1516,7 +1514,7 @@
                                 }
                             });
 
-                            termMatches = false; 
+                            termMatches = false;
                             if (selectedFields.includes('layerName')) {
                                 if (func.name && func.name.toLowerCase().includes(searchTerm)) termMatches = true;
                             }
@@ -1539,11 +1537,11 @@
                         }
 
                         let stabilityMatches = false;
-                        const funcStability = func.stability ? func.stability.toLowerCase() : 'default'; 
+                        const funcStability = func.stability ? func.stability.toLowerCase() : 'default';
 
-                        switch (selectedStabilityValue.toLowerCase()) { 
+                        switch (selectedStabilityValue.toLowerCase()) {
                             case 'experimental':
-                                stabilityMatches = true; 
+                                stabilityMatches = true;
                                 break;
                             case 'preview':
                                 stabilityMatches = ['preview', 'community', 'default'].includes(funcStability);
@@ -1554,15 +1552,15 @@
                             case 'default':
                                 stabilityMatches = (funcStability === 'default');
                                 break;
-                            default: 
-                                stabilityMatches = true; 
+                            default:
+                                stabilityMatches = true;
                         }
                         
                         return termMatches && stabilityMatches;
                     });
 
-                    if (functionalitiesToShow && functionalitiesToShow.length > 0) {
-                        return { ...category, functionalities: functionalitiesToShow };
+                    if (functionalities.length > 0) {
+                        return { ...category, functionalities };
                     }
                     return null;
                 }).filter(category => category !== null);
@@ -1580,23 +1578,3 @@
     </script>
 </body>
 </html>
-</final_file_content>
-
-IMPORTANT: For any future changes to this file, use the final_file_content shown above as your reference. This content reflects the current state of the file, including any auto-formatting (e.g., if you used single quotes but the formatter converted them to double quotes). Always base your SEARCH/REPLACE operations on this final version to ensure accuracy.
-
-<environment_details>
-# VSCode Visible Files
-wildfly-catalog-viewer.html
-
-# VSCode Open Tabs
-wildfly-catalog-viewer.html
-
-# Current Time
-7/3/2025, 6:48:36 PM (Europe/Paris, UTC+2:00)
-
-# Context Window Usage
-902,652 / 1,048.576K tokens used (86%)
-
-# Current Mode
-ACT MODE
-</environment_details>
