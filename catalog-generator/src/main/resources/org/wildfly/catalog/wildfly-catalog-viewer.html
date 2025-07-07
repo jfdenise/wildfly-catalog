@@ -27,13 +27,6 @@
             padding-bottom: 10px;
             margin-bottom: 20px;
         }
-        .catalog-description {
-            text-align: center;
-            font-style: italic;
-            color: #5f6368;
-            margin-bottom: 30px;
-            font-size: 1.1em;
-        }
         .category {
             margin-bottom: 25px;
             padding: 20px;
@@ -72,15 +65,6 @@
             color: #202124;
             display: inline-block;
             min-width: 150px; /* Align values */
-        }
-        .functionalities li .name {
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #0056b3; /* Darker blue for functionality name */
-            margin-bottom: 8px;
-        }
-        .functionalities li .description {
-            margin-bottom: 5px;
         }
         .functionality-header {
             cursor: pointer;
@@ -123,14 +107,6 @@
         .functionalities li a:hover {
             text-decoration: underline;
         }
-        .boolean-true {
-            color: #34a853; /* Google Green */
-            font-weight: bold;
-        }
-        .boolean-false {
-            color: #ea4335; /* Google Red */
-            font-weight: bold;
-        }
         .dependencies-header {
             cursor: pointer;
             padding: 8px;
@@ -162,130 +138,12 @@
         .dependencies-list.visible {
             display: block;
         }
-        .dependencies-list li a {
-            /* Uses general 'a' styles or can be specific */
-        }
-        .xmlconfig-header { 
-            cursor: pointer;
-            padding: 8px;
-            background-color: #f8f9fa; 
-            border-radius: 3px;
-            margin-top: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: bold;
-        }
-        .xmlconfig-header:hover {
-            background-color: #e9ecef;
-        }
-        .xmlconfig-arrow { 
-            font-size: 0.9em;
-            transition: transform 0.3s ease;
-            margin-left: 5px;
-        }
-        .xmlconfig-arrow.expanded {
-            transform: rotate(90deg);
-        }
-        .xmlconfig-list { 
-            list-style-type: none; 
-            padding-left: 0;
-            margin-top: 5px;
-            display: none; 
-        }
-        .xmlconfig-list.visible {
-            display: block;
-        }
-        .xmlconfig-list pre {
-            background-color: #eef; 
-            padding: 10px;
-            border-radius: 4px;
-            overflow-x: auto; 
-            border: 1px solid #ddd;
-        }
-        .xmlconfig-list code {
-            font-family: Consolas, 'Courier New', monospace;
-            font-size: 0.9em;
-        }
-        .cloudxml-header {
-            cursor: pointer;
-            padding: 8px;
-            background-color: #fafafa; 
-            border-radius: 3px;
-            margin-top: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: bold;
-        }
-        .cloudxml-header:hover {
-            background-color: #f0f0f0;
-        }
-        .cloudxml-arrow {
-            font-size: 0.9em;
-            transition: transform 0.3s ease;
-            margin-left: 5px;
-        }
-        .cloudxml-arrow.expanded {
-            transform: rotate(90deg);
-        }
-        .cloudxml-list {
-            list-style-type: none;
-            padding-left: 0;
-            margin-top: 5px;
-            display: none; 
-        }
-        .cloudxml-list.visible {
-            display: block;
-        }
-        .cloudxml-list pre {
-            background-color: #f0f8ff; 
-            padding: 10px;
-            border-radius: 4px;
-            overflow-x: auto;
-            border: 1px solid #cce;
-        }
-        .cloudxml-list code {
-            font-family: Consolas, 'Courier New', monospace;
-            font-size: 0.9em;
-        }
-        .scrollable-maven-coords {
-            background-color: #f0f8ff; /* Similar to other code/pre blocks */
-            padding: 5px 8px;
-            border-radius: 4px;
-            overflow-x: auto; /* Enable horizontal scrolling */
-            border: 1px solid #cce;
-            white-space: pre; /* Prevent text wrapping */
-            font-family: Consolas, 'Courier New', monospace;
-            font-size: 0.9em;
-            flex-grow: 1; /* Allow it to take available horizontal space */
-            min-width: 0; /* Necessary for flex items to shrink and allow scrolling */
-        }
         .documentation-section {
             margin-bottom: 30px;
             padding: 20px;
             background-color: #fdfdfd;
             border: 1px solid #eaeaea;
             border-radius: 8px;
-        }
-        .documentation-section h2 {
-            margin-top: 0;
-            color: #1a73e8; 
-            font-size: 1.6em;
-            border-bottom: 1px solid #e0e0e0;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-        }
-        .documentation-section ul {
-            list-style-type: disc; 
-            padding-left: 25px;
-            margin: 0;
-        }
-        .documentation-section li {
-            margin-bottom: 8px;
-        }
-        .documentation-section li a {
-            color: #007bff; 
         }
         .tooltip-icon {
             display: inline-block;
@@ -416,61 +274,29 @@
                  tooltip.style.top = `${iconRect.bottom - tooltipRect.height + window.scrollY}px`;
             }
 
-            setTimeout(() => { 
-                document.addEventListener('click', hideTooltipOnClickOutside, { once: true });
+            setTimeout(() => {
+                document.addEventListener('click', () => {
+                    if (activeTooltip) {
+                        activeTooltip.remove();
+                        activeTooltip = null;
+                    }
+                }, { once: true });
             }, 0);
         }
 
-        function hideTooltipOnClickOutside(event) {
-            if (activeTooltip && !activeTooltip.contains(event.target) && event.target.className !== 'tooltip-icon') {
-                activeTooltip.remove();
-                activeTooltip = null;
-            } else if (activeTooltip && event.target.className === 'tooltip-icon' && event.target !== activeTooltip.triggerIcon) {
-                // Clicked on another icon
-            } else if (activeTooltip && event.target === activeTooltip.triggerIcon) {
-                activeTooltip.remove();
-                activeTooltip = null;
-            }
-        }
-
-        function displayData(jsonData) { 
+        function displayData(jsonData) {
             const legendData = jsonData.legend || {};
 
-            const createFieldElement = (labelText, fieldValue, fieldKey) => {
-                const fieldDiv = document.createElement('div');
-                const strongLabel = document.createElement('strong');
-                strongLabel.textContent = `${labelText}:`;
-                fieldDiv.appendChild(strongLabel);
-
-                if (legendData[fieldKey]) {
-                    const tooltipIcon = document.createElement('span');
-                    tooltipIcon.className = 'tooltip-icon';
-                    tooltipIcon.textContent = '?';
-                    tooltipIcon.dataset.tooltipText = legendData[fieldKey];
-                    tooltipIcon.addEventListener('click', showTooltip); 
-                    fieldDiv.appendChild(tooltipIcon);
-                }
-
-                if (typeof fieldValue === 'string' || typeof fieldValue === 'number') {
-                    fieldDiv.appendChild(document.createTextNode(` ${fieldValue}`));
-                } else if (fieldValue instanceof HTMLElement) {
-                    fieldDiv.appendChild(document.createTextNode(' ')); 
-                    fieldDiv.appendChild(fieldValue);
-                }
-                return fieldDiv;
-            };
-            
             const mainPageTitleH1 = document.getElementById('mainPageTitle');
-
-            if (jsonData.description && jsonData.description.trim() !== '') { 
-                document.title = jsonData.description; 
+            if (jsonData.description && jsonData.description.trim() !== '') {
+                document.title = jsonData.description;
                 if (mainPageTitleH1) {
                     mainPageTitleH1.textContent = jsonData.description;
                 }
             } else {
-                document.title = "WildFly Catalog Viewer"; 
-                if (mainPageTitleH1) { 
-                     mainPageTitleH1.textContent = "WildFly Catalog Viewer"; 
+                document.title = "WildFly Catalog Viewer";
+                if (mainPageTitleH1) {
+                     mainPageTitleH1.textContent = "WildFly Catalog Viewer";
                 }
             }
 
@@ -489,7 +315,6 @@
                     html += (obj.length > 0 ? indent : '') + ']';
                 } else if (typeof obj === 'object' && obj !== null) {
                     let effectiveObj = obj;
-                    let isProcessedForAttributesArray = false;
 
                     if (obj.hasOwnProperty('attribute') && typeof obj.attribute === 'string' && obj.hasOwnProperty('_address') && typeof obj._address === 'string' && obj._address.trim() !== '') {
                         effectiveObj = { ...obj };
@@ -503,29 +328,22 @@
                     // Pre-process for 'attributes' array: inline its items as properties
                     else if (obj.hasOwnProperty('attributes') && Array.isArray(obj.attributes)) {
                         const newPropsFromAttributes = {};
-                        let successfullyProcessedAllAttributes = true;
                         obj.attributes.forEach(attrItem => {
                             if (attrItem && typeof attrItem.name === 'string' && attrItem.hasOwnProperty('value') && typeof attrItem._address === 'string' && attrItem._address.trim() !== '') {
-                                newPropsFromAttributes[attrItem.name] = { 
+                                newPropsFromAttributes[attrItem.name] = {
                                     _linkText: String(attrItem.value),
                                     _linkHref: attrItem._address,
-                                    _isSpecialAttributeLink: true 
+                                    _isSpecialAttributeLink: true
                                 };
-                            } else {
-                                // If any attribute item is malformed, we might not want to transform.
-                                // For now, we'll proceed but this item won't be inlined.
-                                successfullyProcessedAllAttributes = false; 
                             }
                         });
 
-                        // Only modify effectiveObj if there's something to inline from attributes
-                        if (Object.keys(newPropsFromAttributes).length > 0 || (obj.attributes.length === 0 && successfullyProcessedAllAttributes) ) {
+                        if (Object.keys(newPropsFromAttributes).length > 0 || obj.attributes.length === 0) {
                              effectiveObj = { ...obj }; // Start with a copy of original obj
                              delete effectiveObj.attributes; // Remove the original attributes array
                              for (const attrName in newPropsFromAttributes) {
                                  effectiveObj[attrName] = newPropsFromAttributes[attrName];
                              }
-                             isProcessedForAttributesArray = true; // Mark that we've processed it
                         }
                     }
                     
@@ -733,14 +551,41 @@
                         urlLink.target = '_blank';
                         urlLink.rel = 'noopener noreferrer';
                         
-                        urlContainer.appendChild(createFieldElement('Project URL', urlLink, 'projectURL'));
+                        const fieldDiv = document.createElement('div');
+                        const strongLabel = document.createElement('strong');
+                        strongLabel.textContent = `Project URL:`;
+                        fieldDiv.appendChild(strongLabel);
+                        if (legendData['projectURL']) {
+                            const tooltipIcon = document.createElement('span');
+                            tooltipIcon.className = 'tooltip-icon';
+                            tooltipIcon.textContent = '?';
+                            tooltipIcon.dataset.tooltipText = legendData['projectURL'];
+                            tooltipIcon.addEventListener('click', showTooltip);
+                            fieldDiv.appendChild(tooltipIcon);
+                        }
+                        fieldDiv.appendChild(document.createTextNode(' '));
+                        fieldDiv.appendChild(urlLink);
+                        urlContainer.appendChild(fieldDiv);
                         detailsDiv.appendChild(urlContainer);
                     }
 
                     if (fp.license && Array.isArray(fp.license) && fp.license.length > 0) {
                         const licenseContainer = document.createElement('div');
                         licenseContainer.style.marginTop = '10px';
-                        licenseContainer.appendChild(createFieldElement('License', fp.license[0], 'license'));
+                        const fieldDiv = document.createElement('div');
+                        const strongLabel = document.createElement('strong');
+                        strongLabel.textContent = `License:`;
+                        fieldDiv.appendChild(strongLabel);
+                        if (legendData['license']) {
+                            const tooltipIcon = document.createElement('span');
+                            tooltipIcon.className = 'tooltip-icon';
+                            tooltipIcon.textContent = '?';
+                            tooltipIcon.dataset.tooltipText = legendData['license'];
+                            tooltipIcon.addEventListener('click', showTooltip);
+                            fieldDiv.appendChild(tooltipIcon);
+                        }
+                        fieldDiv.appendChild(document.createTextNode(` ${fp.license[0]}`));
+                        licenseContainer.appendChild(fieldDiv);
                         detailsDiv.appendChild(licenseContainer);
                     }
 
@@ -752,7 +597,21 @@
                         scmLink.textContent = fp.scm;
                         scmLink.target = '_blank';
                         scmLink.rel = 'noopener noreferrer';
-                        scmContainer.appendChild(createFieldElement('Source Code Management', scmLink, 'scm'));
+                        const fieldDiv = document.createElement('div');
+                        const strongLabel = document.createElement('strong');
+                        strongLabel.textContent = `Source Code Management:`;
+                        fieldDiv.appendChild(strongLabel);
+                        if (legendData['scm']) {
+                            const tooltipIcon = document.createElement('span');
+                            tooltipIcon.className = 'tooltip-icon';
+                            tooltipIcon.textContent = '?';
+                            tooltipIcon.dataset.tooltipText = legendData['scm'];
+                            tooltipIcon.addEventListener('click', showTooltip);
+                            fieldDiv.appendChild(tooltipIcon);
+                        }
+                        fieldDiv.appendChild(document.createTextNode(' '));
+                        fieldDiv.appendChild(scmLink);
+                        scmContainer.appendChild(fieldDiv);
                         detailsDiv.appendChild(scmContainer);
                     }
 
@@ -764,7 +623,21 @@
                         modelRefLink.textContent = fp.modelReference;
                         modelRefLink.target = '_blank';
                         modelRefLink.rel = 'noopener noreferrer';
-                        modelRefContainer.appendChild(createFieldElement('Model Reference', modelRefLink, 'modelReference'));
+                        const fieldDiv = document.createElement('div');
+                        const strongLabel = document.createElement('strong');
+                        strongLabel.textContent = `Model Reference:`;
+                        fieldDiv.appendChild(strongLabel);
+                        if (legendData['modelReference']) {
+                            const tooltipIcon = document.createElement('span');
+                            tooltipIcon.className = 'tooltip-icon';
+                            tooltipIcon.textContent = '?';
+                            tooltipIcon.dataset.tooltipText = legendData['modelReference'];
+                            tooltipIcon.addEventListener('click', showTooltip);
+                            fieldDiv.appendChild(tooltipIcon);
+                        }
+                        fieldDiv.appendChild(document.createTextNode(' '));
+                        fieldDiv.appendChild(modelRefLink);
+                        modelRefContainer.appendChild(fieldDiv);
                         detailsDiv.appendChild(modelRefContainer);
                     }
 
@@ -1022,24 +895,85 @@
                     const detailsDiv = document.createElement('div');
                     detailsDiv.className = 'functionality-details';
 
-                    if (func.name) { 
-                        detailsDiv.appendChild(createFieldElement('Name', func.name, 'layer'));
+                    if (func.name) {
+                        const fieldDiv = document.createElement('div');
+                        const strongLabel = document.createElement('strong');
+                        strongLabel.textContent = `Name:`;
+                        fieldDiv.appendChild(strongLabel);
+                        if (legendData['layer']) {
+                            const tooltipIcon = document.createElement('span');
+                            tooltipIcon.className = 'tooltip-icon';
+                            tooltipIcon.textContent = '?';
+                            tooltipIcon.dataset.tooltipText = legendData['layer'];
+                            tooltipIcon.addEventListener('click', showTooltip);
+                            fieldDiv.appendChild(tooltipIcon);
+                        }
+                        fieldDiv.appendChild(document.createTextNode(` ${func.name}`));
+                        detailsDiv.appendChild(fieldDiv);
                     }
 
-                    detailsDiv.appendChild(createFieldElement('Description', func.description, 'description'));
+                    const descFieldDiv = document.createElement('div');
+                    const descStrongLabel = document.createElement('strong');
+                    descStrongLabel.textContent = `Description:`;
+                    descFieldDiv.appendChild(descStrongLabel);
+                    if (legendData['description']) {
+                        const tooltipIcon = document.createElement('span');
+                        tooltipIcon.className = 'tooltip-icon';
+                        tooltipIcon.textContent = '?';
+                        tooltipIcon.dataset.tooltipText = legendData['description'];
+                        tooltipIcon.addEventListener('click', showTooltip);
+                        descFieldDiv.appendChild(tooltipIcon);
+                    }
+                    descFieldDiv.appendChild(document.createTextNode(` ${func.description}`));
+                    detailsDiv.appendChild(descFieldDiv);
                     
                     if (func.stability) {
-                        detailsDiv.appendChild(createFieldElement('Stability', func.stability, 'stability'));
+                        const fieldDiv = document.createElement('div');
+                        const strongLabel = document.createElement('strong');
+                        strongLabel.textContent = `Stability:`;
+                        fieldDiv.appendChild(strongLabel);
+                        if (legendData['stability']) {
+                            const tooltipIcon = document.createElement('span');
+                            tooltipIcon.className = 'tooltip-icon';
+                            tooltipIcon.textContent = '?';
+                            tooltipIcon.dataset.tooltipText = legendData['stability'];
+                            tooltipIcon.addEventListener('click', showTooltip);
+                            fieldDiv.appendChild(tooltipIcon);
+                        }
+                        fieldDiv.appendChild(document.createTextNode(` ${func.stability}`));
+                        detailsDiv.appendChild(fieldDiv);
                     }
                     if (func.hasOwnProperty('glowDiscoverable')) {
-                        const checkbox = document.createElement('input');
-                        checkbox.type = 'checkbox';
-                        checkbox.checked = func.glowDiscoverable;
-                        checkbox.disabled = true;
-                        detailsDiv.appendChild(createFieldElement('Glow Discoverable', checkbox, 'glowDiscoverable'));
+                        const fieldDiv = document.createElement('div');
+                        const strongLabel = document.createElement('strong');
+                        strongLabel.textContent = `Glow Discoverable:`;
+                        fieldDiv.appendChild(strongLabel);
+                        if (legendData['glowDiscoverable']) {
+                            const tooltipIcon = document.createElement('span');
+                            tooltipIcon.className = 'tooltip-icon';
+                            tooltipIcon.textContent = '?';
+                            tooltipIcon.dataset.tooltipText = legendData['glowDiscoverable'];
+                            tooltipIcon.addEventListener('click', showTooltip);
+                            fieldDiv.appendChild(tooltipIcon);
+                        }
+                        fieldDiv.appendChild(document.createTextNode(` ${String(func.glowDiscoverable)}`));
+                        detailsDiv.appendChild(fieldDiv);
                     }
-                    if (func.hasOwnProperty('glowAddOn')) { 
-                        detailsDiv.appendChild(createFieldElement('Glow Add-On', func.glowAddOn, 'glowAddOn'));
+                    if (func.hasOwnProperty('glowAddOn')) {
+                        const fieldDiv = document.createElement('div');
+                        const strongLabel = document.createElement('strong');
+                        strongLabel.textContent = `Glow Add-On:`;
+                        fieldDiv.appendChild(strongLabel);
+                        if (legendData['glowAddOn']) {
+                            const tooltipIcon = document.createElement('span');
+                            tooltipIcon.className = 'tooltip-icon';
+                            tooltipIcon.textContent = '?';
+                            tooltipIcon.dataset.tooltipText = legendData['glowAddOn'];
+                            tooltipIcon.addEventListener('click', showTooltip);
+                            fieldDiv.appendChild(tooltipIcon);
+                        }
+                        fieldDiv.appendChild(document.createTextNode(` ${func.glowAddOn}`));
+                        detailsDiv.appendChild(fieldDiv);
                     }
                     if (func['feature-pack']) {
                         const fpValue = func['feature-pack'];
@@ -1078,10 +1012,37 @@
                                 console.warn(`Feature pack target #${targetId} not found.`);
                             }
                         });
-                        detailsDiv.appendChild(createFieldElement('Feature Pack', linkElement, 'feature-pack'));
+                        const fieldDiv = document.createElement('div');
+                        const strongLabel = document.createElement('strong');
+                        strongLabel.textContent = `Feature Pack:`;
+                        fieldDiv.appendChild(strongLabel);
+                        if (legendData['feature-pack']) {
+                            const tooltipIcon = document.createElement('span');
+                            tooltipIcon.className = 'tooltip-icon';
+                            tooltipIcon.textContent = '?';
+                            tooltipIcon.dataset.tooltipText = legendData['feature-pack'];
+                            tooltipIcon.addEventListener('click', showTooltip);
+                            fieldDiv.appendChild(tooltipIcon);
+                        }
+                        fieldDiv.appendChild(document.createTextNode(' '));
+                        fieldDiv.appendChild(linkElement);
+                        detailsDiv.appendChild(fieldDiv);
                     }
                     if (func.note) {
-                        detailsDiv.appendChild(createFieldElement('Note', func.note, 'note'));
+                        const fieldDiv = document.createElement('div');
+                        const strongLabel = document.createElement('strong');
+                        strongLabel.textContent = `Note:`;
+                        fieldDiv.appendChild(strongLabel);
+                        if (legendData['note']) {
+                            const tooltipIcon = document.createElement('span');
+                            tooltipIcon.className = 'tooltip-icon';
+                            tooltipIcon.textContent = '?';
+                            tooltipIcon.dataset.tooltipText = legendData['note'];
+                            tooltipIcon.addEventListener('click', showTooltip);
+                            fieldDiv.appendChild(tooltipIcon);
+                        }
+                        fieldDiv.appendChild(document.createTextNode(` ${func.note}`));
+                        detailsDiv.appendChild(fieldDiv);
                     }
 
                     if (func.dependencies && func.dependencies.length > 0) {
