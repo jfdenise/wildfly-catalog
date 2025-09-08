@@ -25,7 +25,9 @@
     "modelReference" : "The model reference of the resources that this feature-pack can provision",
     "mavenCoordinates" : "The Maven GroupId, ArtifactId and Version of the feature-pack",
     "featurePackLocation" : " The XML content to configure the WildFly Maven Plugin to use this feature-pack",
-    "packages" : "The packages (generally JBoss Modules modules) that this layer provision in addition of implict extension module."
+    "packages" : "The packages (generally JBoss Modules modules) that this layer provision in addition of implict extension module.",
+    "scmURL" : "The URL to the feature-pack sources",
+    "licenses" : "The licenses that cover the feature-pack"
   },
   "featurePacks" : [ {
     "mavenCoordinates" : "org.wildfly:wildfly-galleon-pack:37.0.0.Beta1-SNAPSHOT",
