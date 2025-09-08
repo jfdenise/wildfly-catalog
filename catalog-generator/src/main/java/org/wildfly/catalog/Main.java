@@ -101,9 +101,9 @@ public class Main {
                 String name = subCatalog.get("name").asText();
                 fpNode.put("name", name);
                 fpNode.put("description", subCatalog.get("description").asText());
-                fpNode.putIfAbsent("license", subCatalog.get("license"));
+                fpNode.putIfAbsent("licenses", subCatalog.get("licenses"));
                 fpNode.put("projectURL", subCatalog.get("url").asText());
-                fpNode.put("scm", subCatalog.get("scm").asText());
+                fpNode.put("scmURL", subCatalog.get("scm-url").asText());
                 ArrayNode layersArray = (ArrayNode) subCatalog.get("layers");
                 Iterator<JsonNode> layers = layersArray.elements();
                 ArrayNode layersArrayTarget = mapper.createArrayNode();
@@ -199,7 +199,10 @@ public class Main {
 
     private static void generateCatalog(JsonNode subCatalog, Properties glowRulesDescriptions,
             Map<String, Map<String, JsonNode>> categories, ObjectMapper mapper, Path wildscribeTargetDirectory) throws Exception {
-        String fp = subCatalog.get("feature-pack-location").asText();
+        String groupId = subCatalog.get("groupId").asText();
+        String artifactId = subCatalog.get("artifactId").asText();
+        String version = subCatalog.get("version").asText();
+        String fp = groupId+":"+artifactId+":"+version;
 
         ArrayNode layersArray = (ArrayNode) subCatalog.get("layers");
         Iterator<JsonNode> layers = layersArray.elements();
