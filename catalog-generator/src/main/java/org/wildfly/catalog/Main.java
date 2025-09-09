@@ -10,15 +10,25 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.FileAlreadyExistsException;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
+import java.nio.file.FileVisitOption;
+import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.SimpleFileVisitor;
+import java.nio.file.StandardCopyOption;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.EnumSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -95,39 +105,45 @@ public class Main {
                 String groupId = coords[0].replaceAll("\\.", File.separator);
                 String artifactId = coords[1];
                 String version = coords[2];
-                String metadataFileName = artifactId + "-" + version + "-metadata.json";
-                Path metadataFile = home.resolve(groupId).resolve(artifactId).resolve(version).resolve(metadataFileName);
-                JsonNode subCatalog = mapper.readTree(metadataFile.toFile().toURI().toURL());
-                String name = subCatalog.get("name").asText();
-                fpNode.put("name", name);
-                fpNode.put("description", subCatalog.get("description").asText());
-                fpNode.putIfAbsent("licenses", subCatalog.get("licenses"));
-                fpNode.put("projectURL", subCatalog.get("url").asText());
-                fpNode.put("scmURL", subCatalog.get("scm-url").asText());
-                ArrayNode layersArray = (ArrayNode) subCatalog.get("layers");
-                Iterator<JsonNode> layers = layersArray.elements();
-                ArrayNode layersArrayTarget = mapper.createArrayNode();
-                fpNode.set("layers", layersArrayTarget);
-                Set<String> layersSet = new TreeSet<>();
-                while (layers.hasNext()) {
-                    JsonNode layer = layers.next();
-                    if (!isInternalLayer(layer)) {
-                        layersSet.add(layer.get("name").asText());
+                String metadataFileName = artifactId + "-" + version + "-doc.zip";
+                Path docFile = home.resolve(groupId).resolve(artifactId).resolve(version).resolve(metadataFileName);
+                Path tmp = Files.createTempDirectory("wildfly-catalog-tmp");
+                try {
+                    unzip(docFile, tmp);
+                    Path metadataFile = tmp.resolve("doc/META-INF/metadata.json");
+                    Path modelFile = tmp.resolve("doc/META-INF/model.json");
+                    JsonNode subCatalog = mapper.readTree(metadataFile.toFile().toURI().toURL());
+                    String name = subCatalog.get("name").asText();
+                    fpNode.put("name", name);
+                    fpNode.put("description", subCatalog.get("description").asText());
+                    fpNode.putIfAbsent("licenses", subCatalog.get("licenses"));
+                    fpNode.put("projectURL", subCatalog.get("url").asText());
+                    fpNode.put("scmURL", subCatalog.get("scm-url").asText());
+                    ArrayNode layersArray = (ArrayNode) subCatalog.get("layers");
+                    Iterator<JsonNode> layers = layersArray.elements();
+                    ArrayNode layersArrayTarget = mapper.createArrayNode();
+                    fpNode.set("layers", layersArrayTarget);
+                    Set<String> layersSet = new TreeSet<>();
+                    while (layers.hasNext()) {
+                        JsonNode layer = layers.next();
+                        if (!isInternalLayer(layer)) {
+                            layersSet.add(layer.get("name").asText());
+                        }
                     }
+                    for (String n : layersSet) {
+                        layersArrayTarget.add(n);
+                    }
+                    if (Files.exists(modelFile)) {
+                        //JsonNode model = mapper.readTree(modelFile.toFile().toURI().toURL());
+                        List<Version> versions = Collections.singletonList(new Version(name, version, modelFile.toFile()));
+                        String directoryName = (coords[0] + '_' + artifactId);
+                        fpNode.put("modelReference", "wildscribe/" + directoryName + "/index.html");
+                        Generator.generate(versions, wildscribeTargetDirectory.resolve(directoryName));
+                    }
+                    generateCatalog(subCatalog, glowRulesDescriptions, categories, mapper, wildscribeTargetDirectory);
+                } finally {
+                    recursiveDelete(tmp);
                 }
-                for (String n : layersSet) {
-                    layersArrayTarget.add(n);
-                }
-                String modelFileName = artifactId + "-" + version + "-model.json";
-                Path modelFile = home.resolve(groupId).resolve(artifactId).resolve(version).resolve(modelFileName);
-                if (Files.exists(modelFile)) {
-                    //JsonNode model = mapper.readTree(modelFile.toFile().toURI().toURL());
-                    List<Version> versions = Collections.singletonList(new Version(name, version, modelFile.toFile()));
-                    String directoryName = (coords[0] + '_' + artifactId);
-                    fpNode.put("modelReference", "wildscribe/" + directoryName + "/index.html");
-                    Generator.generate(versions, wildscribeTargetDirectory.resolve(directoryName));
-                }
-                generateCatalog(subCatalog, glowRulesDescriptions, categories, mapper, wildscribeTargetDirectory);
             }
         }
         ArrayNode categoriesArray = mapper.createArrayNode();
@@ -202,7 +218,7 @@ public class Main {
         String groupId = subCatalog.get("groupId").asText();
         String artifactId = subCatalog.get("artifactId").asText();
         String version = subCatalog.get("version").asText();
-        String fp = groupId+":"+artifactId+":"+version;
+        String fp = groupId + ":" + artifactId + ":" + version;
 
         ArrayNode layersArray = (ArrayNode) subCatalog.get("layers");
         Iterator<JsonNode> layers = layersArray.elements();
@@ -353,14 +369,14 @@ public class Main {
             url += "/";
         }
         // We have an issue with jgroups, protcol and transport, no URL for them.
-        if(url.equals("/subsystem/jgroups/stack/transport/") || url.equals("/subsystem/jgroups/stack/protocol/")) {
+        if (url.equals("/subsystem/jgroups/stack/transport/") || url.equals("/subsystem/jgroups/stack/protocol/")) {
             url = "/subsystem/jgroups/stack/";
         }
         url += "index.html";
         if (attributeName != null) {
             url += "#attr-" + attributeName;
         }
-        if(url.equals("/index.html")) {
+        if (url.equals("/index.html")) {
             url = null;
         }
         return url;
@@ -404,7 +420,7 @@ public class Main {
             path = path.substring(1);
         }
         String formattedPath = path;
-        if(path.contains("#attr-")) {
+        if (path.contains("#attr-")) {
             int i = formattedPath.indexOf("#attr-");
             formattedPath = formattedPath.substring(0, i);
         }
@@ -419,5 +435,88 @@ public class Main {
             }
         }
         return null;
+    }
+
+    /**
+     * This call is thread safe, a new FS is created for each invocation.
+     *
+     * @param path The zip file.
+     * @return A new FileSystem instance
+     * @throws IOException in case of a failure
+     */
+    public static FileSystem newFileSystem(Path path) throws IOException {
+        // The case here is explicitly done for Java 13+ where there is a newFileSystem(Path, Map) method as well.
+        return FileSystems.newFileSystem(path, (ClassLoader) null);
+    }
+
+    public static void unzip(Path zipFile, Path targetDir) throws IOException {
+        if (!Files.exists(targetDir)) {
+            Files.createDirectories(targetDir);
+        }
+        try (FileSystem zipfs = newFileSystem(zipFile)) {
+            for (Path zipRoot : zipfs.getRootDirectories()) {
+                copyFromZip(zipRoot, targetDir);
+            }
+        }
+    }
+
+    public static void copyFromZip(Path source, Path target) throws IOException {
+        Files.walkFileTree(source, EnumSet.of(FileVisitOption.FOLLOW_LINKS), Integer.MAX_VALUE,
+                new SimpleFileVisitor<Path>() {
+            @Override
+            public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs)
+                    throws IOException {
+                final Path targetDir = target.resolve(source.relativize(dir).toString());
+                try {
+                    Files.copy(dir, targetDir);
+                } catch (FileAlreadyExistsException e) {
+                    if (!Files.isDirectory(targetDir)) {
+                        throw e;
+                    }
+                }
+                return FileVisitResult.CONTINUE;
+            }
+
+            @Override
+            public FileVisitResult visitFile(Path file, BasicFileAttributes attrs)
+                    throws IOException {
+                Files.copy(file, target.resolve(source.relativize(file).toString()), StandardCopyOption.REPLACE_EXISTING);
+                return FileVisitResult.CONTINUE;
+            }
+        });
+    }
+
+    public static void recursiveDelete(Path root) {
+        if (root == null || !Files.exists(root)) {
+            return;
+        }
+        try {
+            Files.walkFileTree(root, new SimpleFileVisitor<Path>() {
+                @Override
+                public FileVisitResult visitFile(Path file, BasicFileAttributes attrs)
+                        throws IOException {
+                    try {
+                        Files.delete(file);
+                    } catch (IOException ex) {
+                    }
+                    return FileVisitResult.CONTINUE;
+                }
+
+                @Override
+                public FileVisitResult postVisitDirectory(Path dir, IOException e)
+                        throws IOException {
+                    if (e != null) {
+                        // directory iteration failed
+                        throw e;
+                    }
+                    try {
+                        Files.delete(dir);
+                    } catch (IOException ex) {
+                    }
+                    return FileVisitResult.CONTINUE;
+                }
+            });
+        } catch (IOException e) {
+        }
     }
 }
