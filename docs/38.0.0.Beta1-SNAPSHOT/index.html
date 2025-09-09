@@ -1387,7 +1387,7 @@
                         layerConfigContentDiv.style.paddingLeft = '0px';
                         
                         if (func.configurations && typeof func.configurations === 'object' && Object.keys(func.configurations).length > 0) {
-                            layerConfigContentDiv.innerHTML = renderJsonRecursive(func.configuration);
+                            layerConfigContentDiv.innerHTML = renderJsonRecursive(func.configurations);
                         } else if (func.configurations && typeof func.configurations === 'object' && Object.keys(func.configurations).length === 0) {
                             layerConfigContentDiv.innerHTML = '<span style="color: #777; font-style: italic;">(Configuration is empty)</span>';
                         } else {
