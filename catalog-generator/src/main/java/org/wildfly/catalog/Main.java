@@ -322,8 +322,8 @@ public class Main {
             if (layer.has("managementModel")) {
                 navigate(wildscribeTargetDirectory, layer.get("managementModel"));
             }
-            if (layer.has("configuration")) {
-                navigate(wildscribeTargetDirectory, layer.get("configuration"));
+            if (layer.has("configurations")) {
+                navigate(wildscribeTargetDirectory, layer.get("configurations"));
             }
             nodes.put(layerName, layer);
         }
