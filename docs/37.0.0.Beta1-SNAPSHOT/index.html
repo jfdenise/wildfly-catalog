@@ -569,43 +569,43 @@
                         detailsDiv.appendChild(urlContainer);
                     }
 
-                    if (fp.license && Array.isArray(fp.license) && fp.license.length > 0) {
+                    if (fp.licenses && Array.isArray(fp.licenses) && fp.licenses.length > 0) {
                         const licenseContainer = document.createElement('div');
                         licenseContainer.style.marginTop = '10px';
                         const fieldDiv = document.createElement('div');
                         const strongLabel = document.createElement('strong');
-                        strongLabel.textContent = `License:`;
+                        strongLabel.textContent = `Licenses:`;
                         fieldDiv.appendChild(strongLabel);
-                        if (legendData['license']) {
+                        if (legendData['licenses']) {
                             const tooltipIcon = document.createElement('span');
                             tooltipIcon.className = 'tooltip-icon';
                             tooltipIcon.textContent = '?';
-                            tooltipIcon.dataset.tooltipText = legendData['license'];
+                            tooltipIcon.dataset.tooltipText = legendData['licenses'];
                             tooltipIcon.addEventListener('click', showTooltip);
                             fieldDiv.appendChild(tooltipIcon);
                         }
-                        fieldDiv.appendChild(document.createTextNode(` ${fp.license[0]}`));
+                        fieldDiv.appendChild(document.createTextNode(` ${fp.licenses[0]}`));
                         licenseContainer.appendChild(fieldDiv);
                         detailsDiv.appendChild(licenseContainer);
                     }
 
-                    if (fp.scm && typeof fp.scm === 'string' && fp.scm.trim() !== '') {
+                    if (fp.scmURL && typeof fp.scmURL === 'string' && fp.scmURL.trim() !== '') {
                         const scmContainer = document.createElement('div');
                         scmContainer.style.marginTop = '10px';
                         const scmLink = document.createElement('a');
-                        scmLink.href = fp.scm;
-                        scmLink.textContent = fp.scm;
+                        scmLink.href = fp.scmURL;
+                        scmLink.textContent = fp.scmURL;
                         scmLink.target = '_blank';
                         scmLink.rel = 'noopener noreferrer';
                         const fieldDiv = document.createElement('div');
                         const strongLabel = document.createElement('strong');
                         strongLabel.textContent = `Source Code Management:`;
                         fieldDiv.appendChild(strongLabel);
-                        if (legendData['scm']) {
+                        if (legendData['scmURL']) {
                             const tooltipIcon = document.createElement('span');
                             tooltipIcon.className = 'tooltip-icon';
                             tooltipIcon.textContent = '?';
-                            tooltipIcon.dataset.tooltipText = legendData['scm'];
+                            tooltipIcon.dataset.tooltipText = legendData['scmURL'];
                             tooltipIcon.addEventListener('click', showTooltip);
                             fieldDiv.appendChild(tooltipIcon);
                         }
@@ -1434,7 +1434,7 @@
             });
         }
 
-        const defaultJsonUrl = 'https://raw.githubusercontent.com/jfdenise/wildfly-catalog/refs/heads/main/docs/37.0.0.Beta1-SNAPSHOT/wildfly-catalog.json?test=foo';
+        const defaultJsonUrl = 'https://raw.githubusercontent.com/jfdenise/wildfly-catalog/refs/heads/refresh/docs/37.0.0.Beta1-SNAPSHOT/wildfly-catalog.json?test=foo';
 
         function loadCatalogData(url) {
             const dataDisplay = document.getElementById('data-display');
