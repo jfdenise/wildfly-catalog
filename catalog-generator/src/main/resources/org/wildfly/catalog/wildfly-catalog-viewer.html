@@ -1349,7 +1349,7 @@
                         });
                     }
 
-                    if (func.hasOwnProperty('configuration')) {
+                    if (func.hasOwnProperty('configurations')) {
                         const layerConfigContainer = document.createElement('div');
                         layerConfigContainer.className = 'layer-configuration-container';
 
@@ -1365,11 +1365,11 @@
                         layerConfigHeaderText.textContent = 'Configuration';
                         layerConfigLabelWrapper.appendChild(layerConfigHeaderText);
 
-                        if (legendData.configuration) { 
+                        if (legendData.configurations) { 
                             const tooltipIcon = document.createElement('span');
                             tooltipIcon.className = 'tooltip-icon';
                             tooltipIcon.textContent = '?';
-                            tooltipIcon.dataset.tooltipText = legendData.configuration;
+                            tooltipIcon.dataset.tooltipText = legendData.configurations;
                             tooltipIcon.addEventListener('click', showTooltip);
                             layerConfigLabelWrapper.appendChild(tooltipIcon);
                         }
@@ -1386,9 +1386,9 @@
                         layerConfigContentDiv.className = 'dependencies-list'; 
                         layerConfigContentDiv.style.paddingLeft = '0px';
                         
-                        if (func.configuration && typeof func.configuration === 'object' && Object.keys(func.configuration).length > 0) {
+                        if (func.configurations && typeof func.configurations === 'object' && Object.keys(func.configurations).length > 0) {
                             layerConfigContentDiv.innerHTML = renderJsonRecursive(func.configuration);
-                        } else if (func.configuration && typeof func.configuration === 'object' && Object.keys(func.configuration).length === 0) {
+                        } else if (func.configurations && typeof func.configurations === 'object' && Object.keys(func.configurations).length === 0) {
                             layerConfigContentDiv.innerHTML = '<span style="color: #777; font-style: italic;">(Configuration is empty)</span>';
                         } else {
                             layerConfigContentDiv.innerHTML = '<span style="color: #777; font-style: italic;">(No configuration data or invalid format)</span>';

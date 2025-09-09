@@ -21,7 +21,7 @@
     "feature-pack" : "The Galleon feature-pack that defines the layer.",
     "managementModel" : "The part of the management model this layer brings to the server configuration. Can be empty if this layer only aggregates some layers.",
     "dependencies" : "The list of layers this layer depends on. Those layers are also provisioned when this layer is provisioned.",
-    "configuration" : "Environment variables and system properties that can be used to configure the layer.",
+    "configurations" : "Environment variables and system properties that can be used to configure the layer.",
     "modelReference" : "The model reference of the resources that this feature-pack can provision",
     "mavenCoordinates" : "The Maven GroupId, ArtifactId and Version of the feature-pack",
     "featurePackLocation" : " The XML content to configure the WildFly Maven Plugin to use this feature-pack",
@@ -162,18 +162,18 @@
       "configurations" : [ {
         "_address" : "/subsystem=ai/chat-memory=*@@@size",
         "attribute" : "size",
-        "system-properties" : [ "CHAT_MEMORY_SIZE" ],
-        "environment-variables" : [ "org.wildfly.ai.chat-memory.size" ]
+        "system-properties" : [ "org.wildfly.ai.chat-memory.size" ],
+        "environment-variables" : [ "CHAT_MEMORY_SIZE" ]
       }, {
         "_address" : "/subsystem=ai/chat-memory=*@@@type",
         "attribute" : "type",
-        "system-properties" : [ "CHAT_MEMORY_TYPE" ],
-        "environment-variables" : [ "org.wildfly.ai.chat-memory.type" ]
+        "system-properties" : [ "org.wildfly.ai.chat-memory.type" ],
+        "environment-variables" : [ "CHAT_MEMORY_TYPE" ]
       }, {
         "_address" : "/subsystem=ai/chat-memory=*@@@use-http-session",
         "attribute" : "use-http-session",
-        "system-properties" : [ "CHAT_MEMORY_SESSION" ],
-        "environment-variables" : [ "org.wildfly.ai.chat-memory.session" ]
+        "system-properties" : [ "org.wildfly.ai.chat-memory.session" ],
+        "environment-variables" : [ "CHAT_MEMORY_SESSION" ]
       } ],
       "packages" : [ ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
@@ -241,13 +241,13 @@
       "configurations" : [ {
         "_address" : "/subsystem=ai/embedding-store-content-retriever=*@@@max-results",
         "attribute" : "max-results",
-        "system-properties" : [ "EMBEDDING_RETRIEVER_MAX_RESULTS" ],
-        "environment-variables" : [ "org.wildfly.ai.embedding.retriever.max.results" ]
+        "system-properties" : [ "org.wildfly.ai.embedding.retriever.max.results" ],
+        "environment-variables" : [ "EMBEDDING_RETRIEVER_MAX_RESULTS" ]
       }, {
         "_address" : "/subsystem=ai/embedding-store-content-retriever=*@@@min-score",
         "attribute" : "min-score",
-        "system-properties" : [ "EMBEDDING_RETRIEVER_MIN_SCORE" ],
-        "environment-variables" : [ "org.wildfly.ai.embedding.retriever.min.score" ]
+        "system-properties" : [ "org.wildfly.ai.embedding.retriever.min.score" ],
+        "environment-variables" : [ "EMBEDDING_RETRIEVER_MIN_SCORE" ]
       } ],
       "packages" : [ ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
@@ -309,23 +309,23 @@
       "configurations" : [ {
         "_address" : "/subsystem=ai/gemini-chat-model=*@@@api-key",
         "attribute" : "api-key",
-        "system-properties" : [ "GEMINI_API_KEY" ],
-        "environment-variables" : [ ]
+        "system-properties" : [ ],
+        "environment-variables" : [ "GEMINI_API_KEY" ]
       }, {
         "_address" : "/subsystem=ai/gemini-chat-model=*@@@log-requests",
         "attribute" : "log-requests",
-        "system-properties" : [ "GEMINI_CHAT_LOG" ],
-        "environment-variables" : [ "org.wildfly.ai.gemini.chat.log" ]
+        "system-properties" : [ "org.wildfly.ai.gemini.chat.log" ],
+        "environment-variables" : [ "GEMINI_CHAT_LOG" ]
       }, {
         "_address" : "/subsystem=ai/gemini-chat-model=*@@@log-responses",
         "attribute" : "log-responses",
-        "system-properties" : [ "GEMINI_CHAT_LOG" ],
-        "environment-variables" : [ "org.wildfly.ai.gemini.chat.log" ]
+        "system-properties" : [ "org.wildfly.ai.gemini.chat.log" ],
+        "environment-variables" : [ "GEMINI_CHAT_LOG" ]
       }, {
         "_address" : "/subsystem=ai/gemini-chat-model=*@@@model-name",
         "attribute" : "model-name",
-        "system-properties" : [ "GEMINI_CHAT_MODEL_NAME" ],
-        "environment-variables" : [ "org.wildfly.ai.gemini.chat.model.name" ]
+        "system-properties" : [ "org.wildfly.ai.gemini.chat.model.name" ],
+        "environment-variables" : [ "GEMINI_CHAT_MODEL_NAME" ]
       } ],
       "packages" : [ "dev.langchain4j.gemini" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
@@ -391,23 +391,23 @@
       "configurations" : [ {
         "_address" : "/subsystem=ai/gemini-chat-model=*@@@api-key",
         "attribute" : "api-key",
-        "system-properties" : [ "GEMINI_API_KEY" ],
-        "environment-variables" : [ ]
+        "system-properties" : [ ],
+        "environment-variables" : [ "GEMINI_API_KEY" ]
       }, {
         "_address" : "/subsystem=ai/gemini-chat-model=*@@@log-requests",
         "attribute" : "log-requests",
-        "system-properties" : [ "GEMINI_CHAT_LOG" ],
-        "environment-variables" : [ "org.wildfly.ai.gemini.chat.log" ]
+        "system-properties" : [ "org.wildfly.ai.gemini.chat.log" ],
+        "environment-variables" : [ "GEMINI_CHAT_LOG" ]
       }, {
         "_address" : "/subsystem=ai/gemini-chat-model=*@@@log-responses",
         "attribute" : "log-responses",
-        "system-properties" : [ "GEMINI_CHAT_LOG" ],
-        "environment-variables" : [ "org.wildfly.ai.gemini.chat.log" ]
+        "system-properties" : [ "org.wildfly.ai.gemini.chat.log" ],
+        "environment-variables" : [ "GEMINI_CHAT_LOG" ]
       }, {
         "_address" : "/subsystem=ai/gemini-chat-model=*@@@model-name",
         "attribute" : "model-name",
-        "system-properties" : [ "GEMINI_CHAT_MODEL_NAME" ],
-        "environment-variables" : [ "org.wildfly.ai.gemini.chat.model.name" ]
+        "system-properties" : [ "org.wildfly.ai.gemini.chat.model.name" ],
+        "environment-variables" : [ "GEMINI_CHAT_MODEL_NAME" ]
       } ],
       "packages" : [ "dev.langchain4j.gemini" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
@@ -469,23 +469,23 @@
       "configurations" : [ {
         "_address" : "/subsystem=ai/github-chat-model=*@@@api-key",
         "attribute" : "api-key",
-        "system-properties" : [ "GITHUB_API_KEY" ],
-        "environment-variables" : [ ]
+        "system-properties" : [ ],
+        "environment-variables" : [ "GITHUB_API_KEY" ]
       }, {
         "_address" : "/subsystem=ai/github-chat-model=*@@@endpoint",
         "attribute" : "endpoint",
-        "system-properties" : [ "GITHUB_CHAT_URL" ],
-        "environment-variables" : [ "org.wildfly.ai.github.chat.url" ]
+        "system-properties" : [ "org.wildfly.ai.github.chat.url" ],
+        "environment-variables" : [ "GITHUB_CHAT_URL" ]
       }, {
         "_address" : "/subsystem=ai/github-chat-model=*@@@log-requests-responses",
         "attribute" : "log-requests-responses",
-        "system-properties" : [ "GITHUB_CHAT_LOG" ],
-        "environment-variables" : [ "org.wildfly.ai.github.chat.log" ]
+        "system-properties" : [ "org.wildfly.ai.github.chat.log" ],
+        "environment-variables" : [ "GITHUB_CHAT_LOG" ]
       }, {
         "_address" : "/subsystem=ai/github-chat-model=*@@@model-name",
         "attribute" : "model-name",
-        "system-properties" : [ "GITHUB_CHAT_MODEL_NAME" ],
-        "environment-variables" : [ "org.wildfly.ai.github.chat.model.name" ]
+        "system-properties" : [ "org.wildfly.ai.github.chat.model.name" ],
+        "environment-variables" : [ "GITHUB_CHAT_MODEL_NAME" ]
       } ],
       "packages" : [ "dev.langchain4j.github" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
@@ -564,23 +564,23 @@
       "configurations" : [ {
         "_address" : "/subsystem=ai/github-chat-model=*@@@api-key",
         "attribute" : "api-key",
-        "system-properties" : [ "GITHUB_API_KEY" ],
-        "environment-variables" : [ ]
+        "system-properties" : [ ],
+        "environment-variables" : [ "GITHUB_API_KEY" ]
       }, {
         "_address" : "/subsystem=ai/github-chat-model=*@@@endpoint",
         "attribute" : "endpoint",
-        "system-properties" : [ "GITHUB_CHAT_URL" ],
-        "environment-variables" : [ "org.wildfly.ai.github.chat.url" ]
+        "system-properties" : [ "org.wildfly.ai.github.chat.url" ],
+        "environment-variables" : [ "GITHUB_CHAT_URL" ]
       }, {
         "_address" : "/subsystem=ai/github-chat-model=*@@@log-requests-responses",
         "attribute" : "log-requests-responses",
-        "system-properties" : [ "GITHUB_CHAT_LOG" ],
-        "environment-variables" : [ "org.wildfly.ai.github.chat.log" ]
+        "system-properties" : [ "org.wildfly.ai.github.chat.log" ],
+        "environment-variables" : [ "GITHUB_CHAT_LOG" ]
       }, {
         "_address" : "/subsystem=ai/github-chat-model=*@@@model-name",
         "attribute" : "model-name",
-        "system-properties" : [ "GITHUB_CHAT_MODEL_NAME" ],
-        "environment-variables" : [ "org.wildfly.ai.github.chat.model.name" ]
+        "system-properties" : [ "org.wildfly.ai.github.chat.model.name" ],
+        "environment-variables" : [ "GITHUB_CHAT_MODEL_NAME" ]
       } ],
       "packages" : [ "dev.langchain4j.github" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
@@ -646,28 +646,28 @@
       "configurations" : [ {
         "_address" : "/subsystem=ai/openai-chat-model=*@@@api-key",
         "attribute" : "api-key",
-        "system-properties" : [ "GROQ_API_KEY" ],
-        "environment-variables" : [ ]
+        "system-properties" : [ ],
+        "environment-variables" : [ "GROQ_API_KEY" ]
       }, {
         "_address" : "/subsystem=ai/openai-chat-model=*@@@base-url",
         "attribute" : "base-url",
-        "system-properties" : [ "GROQ_CHAT_URL" ],
-        "environment-variables" : [ "org.wildfly.ai.openai.chat.url" ]
+        "system-properties" : [ "org.wildfly.ai.openai.chat.url" ],
+        "environment-variables" : [ "GROQ_CHAT_URL" ]
       }, {
         "_address" : "/subsystem=ai/openai-chat-model=*@@@log-requests",
         "attribute" : "log-requests",
-        "system-properties" : [ "GROQ_CHAT_LOG_REQUEST" ],
-        "environment-variables" : [ "org.wildfly.ai.groq.chat.log.request" ]
+        "system-properties" : [ "org.wildfly.ai.groq.chat.log.request" ],
+        "environment-variables" : [ "GROQ_CHAT_LOG_REQUEST" ]
       }, {
         "_address" : "/subsystem=ai/openai-chat-model=*@@@log-responses",
         "attribute" : "log-responses",
-        "system-properties" : [ "GROQ_CHAT_LOG_RESPONSE" ],
-        "environment-variables" : [ "org.wildfly.ai.groq.chat.log.response" ]
+        "system-properties" : [ "org.wildfly.ai.groq.chat.log.response" ],
+        "environment-variables" : [ "GROQ_CHAT_LOG_RESPONSE" ]
       }, {
         "_address" : "/subsystem=ai/openai-chat-model=*@@@model-name",
         "attribute" : "model-name",
-        "system-properties" : [ "GROQ_CHAT_MODEL_NAME" ],
-        "environment-variables" : [ "org.wildfly.ai.groq.chat.model.name" ]
+        "system-properties" : [ "org.wildfly.ai.groq.chat.model.name" ],
+        "environment-variables" : [ "GROQ_CHAT_MODEL_NAME" ]
       } ],
       "packages" : [ "dev.langchain4j.openai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
@@ -737,28 +737,28 @@
       "configurations" : [ {
         "_address" : "/subsystem=ai/openai-chat-model=*@@@api-key",
         "attribute" : "api-key",
-        "system-properties" : [ "GROQ_API_KEY" ],
-        "environment-variables" : [ ]
+        "system-properties" : [ ],
+        "environment-variables" : [ "GROQ_API_KEY" ]
       }, {
         "_address" : "/subsystem=ai/openai-chat-model=*@@@base-url",
         "attribute" : "base-url",
-        "system-properties" : [ "GROQ_CHAT_URL" ],
-        "environment-variables" : [ "org.wildfly.ai.groq.chat.url" ]
+        "system-properties" : [ "org.wildfly.ai.groq.chat.url" ],
+        "environment-variables" : [ "GROQ_CHAT_URL" ]
       }, {
         "_address" : "/subsystem=ai/openai-chat-model=*@@@log-requests",
         "attribute" : "log-requests",
-        "system-properties" : [ "GROQ_CHAT_LOG_REQUEST" ],
-        "environment-variables" : [ "org.wildfly.ai.groq.chat.log.request" ]
+        "system-properties" : [ "org.wildfly.ai.groq.chat.log.request" ],
+        "environment-variables" : [ "GROQ_CHAT_LOG_REQUEST" ]
       }, {
         "_address" : "/subsystem=ai/openai-chat-model=*@@@log-responses",
         "attribute" : "log-responses",
-        "system-properties" : [ "GROQ_CHAT_LOG_RESPONSE" ],
-        "environment-variables" : [ "org.wildfly.ai.groq.chat.log.response" ]
+        "system-properties" : [ "org.wildfly.ai.groq.chat.log.response" ],
+        "environment-variables" : [ "GROQ_CHAT_LOG_RESPONSE" ]
       }, {
         "_address" : "/subsystem=ai/openai-chat-model=*@@@model-name",
         "attribute" : "model-name",
-        "system-properties" : [ "GROQ_CHAT_MODEL_NAME" ],
-        "environment-variables" : [ "org.wildfly.ai.groq.chat.model.name" ]
+        "system-properties" : [ "org.wildfly.ai.groq.chat.model.name" ],
+        "environment-variables" : [ "GROQ_CHAT_MODEL_NAME" ]
       } ],
       "packages" : [ "dev.langchain4j.openai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
@@ -1084,8 +1084,8 @@
       "configurations" : [ {
         "_address" : "/subsystem=ai/in-memory-embedding-store=*@@@path",
         "attribute" : "path",
-        "system-properties" : [ "IN_MEMORY_EMBEDDING_FILE" ],
-        "environment-variables" : [ "org.wildfly.ai.in-memory.embedding.file" ]
+        "system-properties" : [ "org.wildfly.ai.in-memory.embedding.file" ],
+        "environment-variables" : [ "IN_MEMORY_EMBEDDING_FILE" ]
       } ],
       "packages" : [ ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
@@ -1175,28 +1175,28 @@
       "configurations" : [ {
         "_address" : "/socket-binding-group=*/remote-destination-outbound-socket-binding=*@@@host",
         "attribute" : "host",
-        "system-properties" : [ "MCP_CLIENT_HOST" ],
-        "environment-variables" : [ "org.wildfly.ai.mcp.client.host" ]
+        "system-properties" : [ "org.wildfly.ai.mcp.client.host" ],
+        "environment-variables" : [ "MCP_CLIENT_HOST" ]
       }, {
         "_address" : "/socket-binding-group=*/remote-destination-outbound-socket-binding=*@@@port",
         "attribute" : "port",
-        "system-properties" : [ "MCP_CLIENT_PORT" ],
-        "environment-variables" : [ "org.wildfly.ai.mcp.client.port" ]
+        "system-properties" : [ "org.wildfly.ai.mcp.client.port" ],
+        "environment-variables" : [ "MCP_CLIENT_PORT" ]
       }, {
         "_address" : "/subsystem=ai/mcp-client-sse=*@@@log-requests",
         "attribute" : "log-requests",
-        "system-properties" : [ "MCP_CLIENT_LOG_REQUEST" ],
-        "environment-variables" : [ "org.wildfly.ai.mcp.client.log.request" ]
+        "system-properties" : [ "org.wildfly.ai.mcp.client.log.request" ],
+        "environment-variables" : [ "MCP_CLIENT_LOG_REQUEST" ]
       }, {
         "_address" : "/subsystem=ai/mcp-client-sse=*@@@log-responses",
         "attribute" : "log-responses",
-        "system-properties" : [ "MCP_CLIENT_LOG_RESPONSE" ],
-        "environment-variables" : [ "org.wildfly.ai.mcp.client.log.response" ]
+        "system-properties" : [ "org.wildfly.ai.mcp.client.log.response" ],
+        "environment-variables" : [ "MCP_CLIENT_LOG_RESPONSE" ]
       }, {
         "_address" : "/subsystem=ai/mcp-client-sse=*@@@sse-path",
         "attribute" : "sse-path",
-        "system-properties" : [ "MCP_CLIENT_SSE_PATH" ],
-        "environment-variables" : [ "org.wildfly.ai.mcp.client.sse.path" ]
+        "system-properties" : [ "org.wildfly.ai.mcp.client.sse.path" ],
+        "environment-variables" : [ "MCP_CLIENT_SSE_PATH" ]
       } ],
       "packages" : [ "dev.langchain4j.mcp-client" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
@@ -1307,28 +1307,28 @@
       "configurations" : [ {
         "_address" : "/subsystem=ai/mistral-ai-chat-model=*@@@api-key",
         "attribute" : "api-key",
-        "system-properties" : [ "MISTRAL_API_KEY" ],
-        "environment-variables" : [ ]
+        "system-properties" : [ ],
+        "environment-variables" : [ "MISTRAL_API_KEY" ]
       }, {
         "_address" : "/subsystem=ai/mistral-ai-chat-model=*@@@base-url",
         "attribute" : "base-url",
-        "system-properties" : [ "MISTRAL_CHAT_URL" ],
-        "environment-variables" : [ "org.wildfly.ai.mistral.chat.url" ]
+        "system-properties" : [ "org.wildfly.ai.mistral.chat.url" ],
+        "environment-variables" : [ "MISTRAL_CHAT_URL" ]
       }, {
         "_address" : "/subsystem=ai/mistral-ai-chat-model=*@@@log-requests",
         "attribute" : "log-requests",
-        "system-properties" : [ "MISTRAL_CHAT_LOG_REQUEST" ],
-        "environment-variables" : [ "org.wildfly.ai.mistral.chat.log.request" ]
+        "system-properties" : [ "org.wildfly.ai.mistral.chat.log.request" ],
+        "environment-variables" : [ "MISTRAL_CHAT_LOG_REQUEST" ]
       }, {
         "_address" : "/subsystem=ai/mistral-ai-chat-model=*@@@log-responses",
         "attribute" : "log-responses",
-        "system-properties" : [ "MISTRAL_CHAT_LOG_RESPONSE" ],
-        "environment-variables" : [ "org.wildfly.ai.mistral.chat.log.response" ]
+        "system-properties" : [ "org.wildfly.ai.mistral.chat.log.response" ],
+        "environment-variables" : [ "MISTRAL_CHAT_LOG_RESPONSE" ]
       }, {
         "_address" : "/subsystem=ai/mistral-ai-chat-model=*@@@model-name",
         "attribute" : "model-name",
-        "system-properties" : [ "MISTRAL_CHAT_MODEL_NAME" ],
-        "environment-variables" : [ "org.wildfly.ai.mistral.chat.model.name" ]
+        "system-properties" : [ "org.wildfly.ai.mistral.chat.model.name" ],
+        "environment-variables" : [ "MISTRAL_CHAT_MODEL_NAME" ]
       } ],
       "packages" : [ "dev.langchain4j.openai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
@@ -1398,28 +1398,28 @@
       "configurations" : [ {
         "_address" : "/subsystem=ai/mistral-ai-chat-model=*@@@api-key",
         "attribute" : "api-key",
-        "system-properties" : [ "MISTRAL_API_KEY" ],
-        "environment-variables" : [ ]
+        "system-properties" : [ ],
+        "environment-variables" : [ "MISTRAL_API_KEY" ]
       }, {
         "_address" : "/subsystem=ai/mistral-ai-chat-model=*@@@base-url",
         "attribute" : "base-url",
-        "system-properties" : [ "MISTRAL_CHAT_URL" ],
-        "environment-variables" : [ "org.wildfly.ai.mistral.chat.url" ]
+        "system-properties" : [ "org.wildfly.ai.mistral.chat.url" ],
+        "environment-variables" : [ "MISTRAL_CHAT_URL" ]
       }, {
         "_address" : "/subsystem=ai/mistral-ai-chat-model=*@@@log-requests",
         "attribute" : "log-requests",
-        "system-properties" : [ "MISTRAL_CHAT_LOG_REQUEST" ],
-        "environment-variables" : [ "org.wildfly.ai.mistral.chat.log.request" ]
+        "system-properties" : [ "org.wildfly.ai.mistral.chat.log.request" ],
+        "environment-variables" : [ "MISTRAL_CHAT_LOG_REQUEST" ]
       }, {
         "_address" : "/subsystem=ai/mistral-ai-chat-model=*@@@log-responses",
         "attribute" : "log-responses",
-        "system-properties" : [ "MISTRAL_CHAT_LOG_RESPONSE" ],
-        "environment-variables" : [ "org.wildfly.ai.mistral.chat.log.response" ]
+        "system-properties" : [ "org.wildfly.ai.mistral.chat.log.response" ],
+        "environment-variables" : [ "MISTRAL_CHAT_LOG_RESPONSE" ]
       }, {
         "_address" : "/subsystem=ai/mistral-ai-chat-model=*@@@model-name",
         "attribute" : "model-name",
-        "system-properties" : [ "MISTRAL_CHAT_MODEL_NAME" ],
-        "environment-variables" : [ "org.wildfly.ai.mistral.chat.model.name" ]
+        "system-properties" : [ "org.wildfly.ai.mistral.chat.model.name" ],
+        "environment-variables" : [ "MISTRAL_CHAT_MODEL_NAME" ]
       } ],
       "packages" : [ "dev.langchain4j.openai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
@@ -1511,23 +1511,23 @@
       "configurations" : [ {
         "_address" : "/subsystem=ai/neo4j-embedding-store=*@@@bolt-url",
         "attribute" : "bolt-url",
-        "system-properties" : [ "NEO4J_URL" ],
-        "environment-variables" : [ "org.wildfly.ai.neo4j.url" ]
+        "system-properties" : [ "org.wildfly.ai.neo4j.url" ],
+        "environment-variables" : [ "NEO4J_URL" ]
       }, {
         "_address" : "/subsystem=ai/neo4j-embedding-store=*@@@credential-reference",
         "attribute" : "credential-reference",
-        "system-properties" : [ "NEO4J_PASSWORD" ],
-        "environment-variables" : [ "org.wildfly.ai.neo4j.password" ]
+        "system-properties" : [ "org.wildfly.ai.neo4j.password" ],
+        "environment-variables" : [ "NEO4J_PASSWORD" ]
       }, {
         "_address" : "/subsystem=ai/neo4j-embedding-store=*@@@dimension",
         "attribute" : "dimension",
-        "system-properties" : [ "NEO4J_DIMENSION" ],
-        "environment-variables" : [ "org.wildfly.ai.neo4j.dimension" ]
+        "system-properties" : [ "org.wildfly.ai.neo4j.dimension" ],
+        "environment-variables" : [ "NEO4J_DIMENSION" ]
       }, {
         "_address" : "/subsystem=ai/neo4j-embedding-store=*@@@username",
         "attribute" : "username",
-        "system-properties" : [ "NEO4J_USER" ],
-        "environment-variables" : [ "org.wildfly.ai.neo4j.username" ]
+        "system-properties" : [ "org.wildfly.ai.neo4j.username" ],
+        "environment-variables" : [ "NEO4J_USER" ]
       } ],
       "packages" : [ "dev.langchain4j.neo4j" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
@@ -1592,28 +1592,28 @@
       "configurations" : [ {
         "_address" : "/subsystem=ai/ollama-chat-model=*@@@base-url",
         "attribute" : "base-url",
-        "system-properties" : [ "OLLAMA_CHAT_URL" ],
-        "environment-variables" : [ "org.wildfly.ai.ollama.chat.url" ]
+        "system-properties" : [ "org.wildfly.ai.ollama.chat.url" ],
+        "environment-variables" : [ "OLLAMA_CHAT_URL" ]
       }, {
         "_address" : "/subsystem=ai/ollama-chat-model=*@@@log-requests",
         "attribute" : "log-requests",
-        "system-properties" : [ "OLLAMA_CHAT_LOG_REQUEST" ],
-        "environment-variables" : [ "org.wildfly.ai.ollama.chat.log.request" ]
+        "system-properties" : [ "org.wildfly.ai.ollama.chat.log.request" ],
+        "environment-variables" : [ "OLLAMA_CHAT_LOG_REQUEST" ]
       }, {
         "_address" : "/subsystem=ai/ollama-chat-model=*@@@log-responses",
         "attribute" : "log-responses",
-        "system-properties" : [ "OLLAMA_CHAT_LOG_RESPONSE" ],
-        "environment-variables" : [ "org.wildfly.ai.ollama.chat.log.response" ]
+        "system-properties" : [ "org.wildfly.ai.ollama.chat.log.response" ],
+        "environment-variables" : [ "OLLAMA_CHAT_LOG_RESPONSE" ]
       }, {
         "_address" : "/subsystem=ai/ollama-chat-model=*@@@model-name",
         "attribute" : "model-name",
-        "system-properties" : [ "OLLAMA_CHAT_MODEL_NAME" ],
-        "environment-variables" : [ "org.wildfly.ai.ollama.chat.model.name" ]
+        "system-properties" : [ "org.wildfly.ai.ollama.chat.model.name" ],
+        "environment-variables" : [ "OLLAMA_CHAT_MODEL_NAME" ]
       }, {
         "_address" : "/subsystem=ai/ollama-chat-model=*@@@temperature",
         "attribute" : "temperature",
-        "system-properties" : [ "OLLAMA_CHAT_TEMPERATURE" ],
-        "environment-variables" : [ "org.wildfly.ai.ollama.chat.temperature" ]
+        "system-properties" : [ "org.wildfly.ai.ollama.chat.temperature" ],
+        "environment-variables" : [ "OLLAMA_CHAT_TEMPERATURE" ]
       } ],
       "packages" : [ "dev.langchain4j.ollama" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
@@ -1675,23 +1675,23 @@
       "configurations" : [ {
         "_address" : "/subsystem=ai/ollama-embedding-model=*@@@base-url",
         "attribute" : "base-url",
-        "system-properties" : [ "OLLAMA_EMBEDDING_URL" ],
-        "environment-variables" : [ "org.wildfly.ai.ollama.embedding.url" ]
+        "system-properties" : [ "org.wildfly.ai.ollama.embedding.url" ],
+        "environment-variables" : [ "OLLAMA_EMBEDDING_URL" ]
       }, {
         "_address" : "/subsystem=ai/ollama-embedding-model=*@@@log-requests",
         "attribute" : "log-requests",
-        "system-properties" : [ "OLLAMA_EMBEDDING_LOG_REQUEST" ],
-        "environment-variables" : [ "org.wildfly.ai.ollama.embedding.log.request" ]
+        "system-properties" : [ "org.wildfly.ai.ollama.embedding.log.request" ],
+        "environment-variables" : [ "OLLAMA_EMBEDDING_LOG_REQUEST" ]
       }, {
         "_address" : "/subsystem=ai/ollama-embedding-model=*@@@log-responses",
         "attribute" : "log-responses",
-        "system-properties" : [ "OLLAMA_EMBEDDING_LOG_RESPONSE" ],
-        "environment-variables" : [ "org.wildfly.ai.ollama.embedding.log.response" ]
+        "system-properties" : [ "org.wildfly.ai.ollama.embedding.log.response" ],
+        "environment-variables" : [ "OLLAMA_EMBEDDING_LOG_RESPONSE" ]
       }, {
         "_address" : "/subsystem=ai/ollama-embedding-model=*@@@model-name",
         "attribute" : "model-name",
-        "system-properties" : [ "OLLAMA_EMBEDDING_MODEL_NAME" ],
-        "environment-variables" : [ "org.wildfly.ai.ollama.embedding.model.name" ]
+        "system-properties" : [ "org.wildfly.ai.ollama.embedding.model.name" ],
+        "environment-variables" : [ "OLLAMA_EMBEDDING_MODEL_NAME" ]
       } ],
       "packages" : [ "dev.langchain4j.ollama" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
@@ -1772,38 +1772,38 @@
       "configurations" : [ {
         "_address" : "/subsystem=ai/neo4j-content-retriever=*@@@bolt-url",
         "attribute" : "bolt-url",
-        "system-properties" : [ "NEO4J_URL" ],
-        "environment-variables" : [ "org.wildfly.ai.neo4j.url" ]
+        "system-properties" : [ "org.wildfly.ai.neo4j.url" ],
+        "environment-variables" : [ "NEO4J_URL" ]
       }, {
         "_address" : "/subsystem=ai/neo4j-content-retriever=*@@@credential-reference",
         "attribute" : "credential-reference",
-        "system-properties" : [ "NEO4J_PASSWORD" ],
-        "environment-variables" : [ "org.wildfly.ai.neo4j.password" ]
+        "system-properties" : [ "org.wildfly.ai.neo4j.password" ],
+        "environment-variables" : [ "NEO4J_PASSWORD" ]
       }, {
         "_address" : "/subsystem=ai/neo4j-content-retriever=*@@@username",
         "attribute" : "username",
-        "system-properties" : [ "NEO4J_USER" ],
-        "environment-variables" : [ "org.wildfly.ai.neo4j.username" ]
+        "system-properties" : [ "org.wildfly.ai.neo4j.username" ],
+        "environment-variables" : [ "NEO4J_USER" ]
       }, {
         "_address" : "/subsystem=ai/ollama-chat-model=*@@@base-url",
         "attribute" : "base-url",
-        "system-properties" : [ "OLLAMA_NEO4J_CHAT_URL" ],
-        "environment-variables" : [ "org.wildfly.ai.ollama.chat.url" ]
+        "system-properties" : [ "org.wildfly.ai.ollama.chat.url" ],
+        "environment-variables" : [ "OLLAMA_NEO4J_CHAT_URL" ]
       }, {
         "_address" : "/subsystem=ai/ollama-chat-model=*@@@log-requests",
         "attribute" : "log-requests",
-        "system-properties" : [ "OLLAMA_NEO4J_CHAT_LOG_REQUEST" ],
-        "environment-variables" : [ "org.wildfly.ai.ollama.chat.log.request" ]
+        "system-properties" : [ "org.wildfly.ai.ollama.chat.log.request" ],
+        "environment-variables" : [ "OLLAMA_NEO4J_CHAT_LOG_REQUEST" ]
       }, {
         "_address" : "/subsystem=ai/ollama-chat-model=*@@@log-responses",
         "attribute" : "log-responses",
-        "system-properties" : [ "OLLAMA_NEO4J_CHAT_LOG_RESPONSE" ],
-        "environment-variables" : [ "org.wildfly.ai.ollama.chat.log.response" ]
+        "system-properties" : [ "org.wildfly.ai.ollama.chat.log.response" ],
+        "environment-variables" : [ "OLLAMA_NEO4J_CHAT_LOG_RESPONSE" ]
       }, {
         "_address" : "/subsystem=ai/ollama-chat-model=*@@@model-name",
         "attribute" : "model-name",
-        "system-properties" : [ "OLLAMA_NEO4J_CHAT_MODEL_NAME" ],
-        "environment-variables" : [ "org.wildfly.ai.ollama.chat.model.name" ]
+        "system-properties" : [ "org.wildfly.ai.ollama.chat.model.name" ],
+        "environment-variables" : [ "OLLAMA_NEO4J_CHAT_MODEL_NAME" ]
       } ],
       "packages" : [ "dev.langchain4j.ollama" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
@@ -1877,28 +1877,28 @@
       "configurations" : [ {
         "_address" : "/subsystem=ai/ollama-chat-model=*@@@base-url",
         "attribute" : "base-url",
-        "system-properties" : [ "OLLAMA_CHAT_URL" ],
-        "environment-variables" : [ "org.wildfly.ai.ollama.chat.url" ]
+        "system-properties" : [ "org.wildfly.ai.ollama.chat.url" ],
+        "environment-variables" : [ "OLLAMA_CHAT_URL" ]
       }, {
         "_address" : "/subsystem=ai/ollama-chat-model=*@@@log-requests",
         "attribute" : "log-requests",
-        "system-properties" : [ "OLLAMA_CHAT_LOG_REQUEST" ],
-        "environment-variables" : [ "org.wildfly.ai.ollama.chat.log.request" ]
+        "system-properties" : [ "org.wildfly.ai.ollama.chat.log.request" ],
+        "environment-variables" : [ "OLLAMA_CHAT_LOG_REQUEST" ]
       }, {
         "_address" : "/subsystem=ai/ollama-chat-model=*@@@log-responses",
         "attribute" : "log-responses",
-        "system-properties" : [ "OLLAMA_CHAT_LOG_RESPONSE" ],
-        "environment-variables" : [ "org.wildfly.ai.ollama.chat.log.response" ]
+        "system-properties" : [ "org.wildfly.ai.ollama.chat.log.response" ],
+        "environment-variables" : [ "OLLAMA_CHAT_LOG_RESPONSE" ]
       }, {
         "_address" : "/subsystem=ai/ollama-chat-model=*@@@model-name",
         "attribute" : "model-name",
-        "system-properties" : [ "OLLAMA_CHAT_MODEL_NAME" ],
-        "environment-variables" : [ "org.wildfly.ai.ollama.chat.model.name" ]
+        "system-properties" : [ "org.wildfly.ai.ollama.chat.model.name" ],
+        "environment-variables" : [ "OLLAMA_CHAT_MODEL_NAME" ]
       }, {
         "_address" : "/subsystem=ai/ollama-chat-model=*@@@temperature",
         "attribute" : "temperature",
-        "system-properties" : [ "OLLAMA_CHAT_TEMPERATURE" ],
-        "environment-variables" : [ "org.wildfly.ai.ollama.chat.temperature" ]
+        "system-properties" : [ "org.wildfly.ai.ollama.chat.temperature" ],
+        "environment-variables" : [ "OLLAMA_CHAT_TEMPERATURE" ]
       } ],
       "packages" : [ "dev.langchain4j.ollama" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
@@ -1964,28 +1964,28 @@
       "configurations" : [ {
         "_address" : "/subsystem=ai/openai-chat-model=*@@@api-key",
         "attribute" : "api-key",
-        "system-properties" : [ "OPENAI_API_KEY" ],
-        "environment-variables" : [ ]
+        "system-properties" : [ ],
+        "environment-variables" : [ "OPENAI_API_KEY" ]
       }, {
         "_address" : "/subsystem=ai/openai-chat-model=*@@@base-url",
         "attribute" : "base-url",
-        "system-properties" : [ "OPENAI_CHAT_URL" ],
-        "environment-variables" : [ "org.wildfly.ai.openai.chat.url" ]
+        "system-properties" : [ "org.wildfly.ai.openai.chat.url" ],
+        "environment-variables" : [ "OPENAI_CHAT_URL" ]
       }, {
         "_address" : "/subsystem=ai/openai-chat-model=*@@@log-requests",
         "attribute" : "log-requests",
-        "system-properties" : [ "OPENAI_CHAT_LOG_REQUEST" ],
-        "environment-variables" : [ "org.wildfly.ai.openai.chat.log.request" ]
+        "system-properties" : [ "org.wildfly.ai.openai.chat.log.request" ],
+        "environment-variables" : [ "OPENAI_CHAT_LOG_REQUEST" ]
       }, {
         "_address" : "/subsystem=ai/openai-chat-model=*@@@log-responses",
         "attribute" : "log-responses",
-        "system-properties" : [ "OPENAI_CHAT_LOG_RESPONSE" ],
-        "environment-variables" : [ "org.wildfly.ai.openai.chat.log.response" ]
+        "system-properties" : [ "org.wildfly.ai.openai.chat.log.response" ],
+        "environment-variables" : [ "OPENAI_CHAT_LOG_RESPONSE" ]
       }, {
         "_address" : "/subsystem=ai/openai-chat-model=*@@@model-name",
         "attribute" : "model-name",
-        "system-properties" : [ "OPENAI_CHAT_MODEL_NAME" ],
-        "environment-variables" : [ "org.wildfly.ai.openai.chat.model.name" ]
+        "system-properties" : [ "org.wildfly.ai.openai.chat.model.name" ],
+        "environment-variables" : [ "OPENAI_CHAT_MODEL_NAME" ]
       } ],
       "packages" : [ "dev.langchain4j.openai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
@@ -2076,43 +2076,43 @@
       "configurations" : [ {
         "_address" : "/subsystem=ai/neo4j-content-retriever=*@@@bolt-url",
         "attribute" : "bolt-url",
-        "system-properties" : [ "NEO4J_URL" ],
-        "environment-variables" : [ "org.wildfly.ai.neo4j.url" ]
+        "system-properties" : [ "org.wildfly.ai.neo4j.url" ],
+        "environment-variables" : [ "NEO4J_URL" ]
       }, {
         "_address" : "/subsystem=ai/neo4j-content-retriever=*@@@credential-reference",
         "attribute" : "credential-reference",
-        "system-properties" : [ "NEO4J_PASSWORD" ],
-        "environment-variables" : [ "org.wildfly.ai.neo4j.password" ]
+        "system-properties" : [ "org.wildfly.ai.neo4j.password" ],
+        "environment-variables" : [ "NEO4J_PASSWORD" ]
       }, {
         "_address" : "/subsystem=ai/neo4j-content-retriever=*@@@username",
         "attribute" : "username",
-        "system-properties" : [ "NEO4J_USER" ],
-        "environment-variables" : [ "org.wildfly.ai.neo4j.username" ]
+        "system-properties" : [ "org.wildfly.ai.neo4j.username" ],
+        "environment-variables" : [ "NEO4J_USER" ]
       }, {
         "_address" : "/subsystem=ai/openai-chat-model=*@@@api-key",
         "attribute" : "api-key",
-        "system-properties" : [ "OPENAI_NEO4J_API_KEY" ],
-        "environment-variables" : [ ]
+        "system-properties" : [ ],
+        "environment-variables" : [ "OPENAI_NEO4J_API_KEY" ]
       }, {
         "_address" : "/subsystem=ai/openai-chat-model=*@@@base-url",
         "attribute" : "base-url",
-        "system-properties" : [ "OPENAI_NEO4J_CHAT_URL" ],
-        "environment-variables" : [ "org.wildfly.ai.openai.chat.url" ]
+        "system-properties" : [ "org.wildfly.ai.openai.chat.url" ],
+        "environment-variables" : [ "OPENAI_NEO4J_CHAT_URL" ]
       }, {
         "_address" : "/subsystem=ai/openai-chat-model=*@@@log-requests",
         "attribute" : "log-requests",
-        "system-properties" : [ "OPENAI_NEO4J_CHAT_LOG_REQUEST" ],
-        "environment-variables" : [ "org.wildfly.ai.openai.chat.log.request" ]
+        "system-properties" : [ "org.wildfly.ai.openai.chat.log.request" ],
+        "environment-variables" : [ "OPENAI_NEO4J_CHAT_LOG_REQUEST" ]
       }, {
         "_address" : "/subsystem=ai/openai-chat-model=*@@@log-responses",
         "attribute" : "log-responses",
-        "system-properties" : [ "OPENAI_NEO4J_CHAT_LOG_RESPONSE" ],
-        "environment-variables" : [ "org.wildfly.ai.openai.chat.log.response" ]
+        "system-properties" : [ "org.wildfly.ai.openai.chat.log.response" ],
+        "environment-variables" : [ "OPENAI_NEO4J_CHAT_LOG_RESPONSE" ]
       }, {
         "_address" : "/subsystem=ai/openai-chat-model=*@@@model-name",
         "attribute" : "model-name",
-        "system-properties" : [ "OPENAI_NEO4J_CHAT_MODEL_NAME" ],
-        "environment-variables" : [ "org.wildfly.ai.openai.chat.model.name" ]
+        "system-properties" : [ "org.wildfly.ai.openai.chat.model.name" ],
+        "environment-variables" : [ "OPENAI_NEO4J_CHAT_MODEL_NAME" ]
       } ],
       "packages" : [ "dev.langchain4j.openai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
@@ -2182,28 +2182,28 @@
       "configurations" : [ {
         "_address" : "/subsystem=ai/openai-chat-model=*@@@api-key",
         "attribute" : "api-key",
-        "system-properties" : [ "OPENAI_API_KEY" ],
-        "environment-variables" : [ ]
+        "system-properties" : [ ],
+        "environment-variables" : [ "OPENAI_API_KEY" ]
       }, {
         "_address" : "/subsystem=ai/openai-chat-model=*@@@base-url",
         "attribute" : "base-url",
-        "system-properties" : [ "OPENAI_CHAT_URL" ],
-        "environment-variables" : [ "org.wildfly.ai.openai.chat.url" ]
+        "system-properties" : [ "org.wildfly.ai.openai.chat.url" ],
+        "environment-variables" : [ "OPENAI_CHAT_URL" ]
       }, {
         "_address" : "/subsystem=ai/openai-chat-model=*@@@log-requests",
         "attribute" : "log-requests",
-        "system-properties" : [ "OPENAI_CHAT_LOG_REQUEST" ],
-        "environment-variables" : [ "org.wildfly.ai.openai.chat.log.request" ]
+        "system-properties" : [ "org.wildfly.ai.openai.chat.log.request" ],
+        "environment-variables" : [ "OPENAI_CHAT_LOG_REQUEST" ]
       }, {
         "_address" : "/subsystem=ai/openai-chat-model=*@@@log-responses",
         "attribute" : "log-responses",
-        "system-properties" : [ "OPENAI_CHAT_LOG_RESPONSE" ],
-        "environment-variables" : [ "org.wildfly.ai.openai.chat.log.response" ]
+        "system-properties" : [ "org.wildfly.ai.openai.chat.log.response" ],
+        "environment-variables" : [ "OPENAI_CHAT_LOG_RESPONSE" ]
       }, {
         "_address" : "/subsystem=ai/openai-chat-model=*@@@model-name",
         "attribute" : "model-name",
-        "system-properties" : [ "OPENAI_CHAT_MODEL_NAME" ],
-        "environment-variables" : [ "org.wildfly.ai.openai.chat.model.name" ]
+        "system-properties" : [ "org.wildfly.ai.openai.chat.model.name" ],
+        "environment-variables" : [ "OPENAI_CHAT_MODEL_NAME" ]
       } ],
       "packages" : [ "dev.langchain4j.openai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
@@ -2284,28 +2284,28 @@
       "configurations" : [ {
         "_address" : "/socket-binding-group=*/remote-destination-outbound-socket-binding=*@@@host",
         "attribute" : "host",
-        "system-properties" : [ "WEAVIATE_HOST" ],
-        "environment-variables" : [ "org.wildfly.ai.weaviate.host" ]
+        "system-properties" : [ "org.wildfly.ai.weaviate.host" ],
+        "environment-variables" : [ "WEAVIATE_HOST" ]
       }, {
         "_address" : "/socket-binding-group=*/remote-destination-outbound-socket-binding=*@@@port",
         "attribute" : "port",
-        "system-properties" : [ "WEAVIATE_PORT" ],
-        "environment-variables" : [ "org.wildfly.ai.weaviate.port" ]
+        "system-properties" : [ "org.wildfly.ai.weaviate.port" ],
+        "environment-variables" : [ "WEAVIATE_PORT" ]
       }, {
         "_address" : "/subsystem=ai/weaviate-embedding-store=*@@@object-class",
         "attribute" : "object-class",
-        "system-properties" : [ "WEAVIATE_OBJECT_CLASS" ],
-        "environment-variables" : [ "org.wildfly.ai.weaviate.object-class" ]
+        "system-properties" : [ "org.wildfly.ai.weaviate.object-class" ],
+        "environment-variables" : [ "WEAVIATE_OBJECT_CLASS" ]
       }, {
         "_address" : "/subsystem=ai/weaviate-embedding-store=*@@@socket-binding",
         "attribute" : "socket-binding",
-        "system-properties" : [ "WEAVIATE_SOCKET_BINDING" ],
-        "environment-variables" : [ "org.wildfly.ai.weaviate.socket-binding" ]
+        "system-properties" : [ "org.wildfly.ai.weaviate.socket-binding" ],
+        "environment-variables" : [ "WEAVIATE_SOCKET_BINDING" ]
       }, {
         "_address" : "/subsystem=ai/weaviate-embedding-store=*@@@ssl-enabled",
         "attribute" : "ssl-enabled",
-        "system-properties" : [ "WEAVIATE_SSL_ENABLED" ],
-        "environment-variables" : [ "org.wildfly.ai.weaviate.ssl-enabled" ]
+        "system-properties" : [ "org.wildfly.ai.weaviate.ssl-enabled" ],
+        "environment-variables" : [ "WEAVIATE_SSL_ENABLED" ]
       } ],
       "packages" : [ "dev.langchain4j.weaviate" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
@@ -2350,8 +2350,8 @@
       "configurations" : [ {
         "_address" : "/subsystem=ai/web-search-content-retriever=*@@@tavily",
         "attribute" : "tavily",
-        "system-properties" : [ "TAVILY_API_KEY" ],
-        "environment-variables" : [ ]
+        "system-properties" : [ ],
+        "environment-variables" : [ "TAVILY_API_KEY" ]
       } ],
       "packages" : [ "dev.langchain4j.web-search-engines" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
@@ -2630,8 +2630,8 @@
       "configurations" : [ {
         "_address" : "/interface=*@@@inet-address",
         "attribute" : "inet-address",
-        "system-properties" : [ ],
-        "environment-variables" : [ "jboss.bind.address.bindall" ]
+        "system-properties" : [ "jboss.bind.address.bindall" ],
+        "environment-variables" : [ ]
       } ],
       "packages" : [ ],
       "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
@@ -3949,53 +3949,53 @@
       "configurations" : [ {
         "_address" : "/interface=*@@@inet-address",
         "attribute" : "inet-address",
-        "system-properties" : [ ],
-        "environment-variables" : [ "jboss.bind.address.private" ]
+        "system-properties" : [ "jboss.bind.address.private" ],
+        "environment-variables" : [ ]
       }, {
         "_address" : "/socket-binding-group=*/socket-binding=*@@@multicast-address",
         "attribute" : "multicast-address",
-        "system-properties" : [ ],
-        "environment-variables" : [ "jboss.default.multicast.address", "jboss.modcluster.multicast.address" ]
+        "system-properties" : [ "jboss.default.multicast.address", "jboss.modcluster.multicast.address" ],
+        "environment-variables" : [ ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@jndi-name",
         "attribute" : "jndi-name",
-        "system-properties" : [ "EXAMPLE_DATASOURCE", "OPENSHIFT_EXAMPLE_DATASOURCE" ],
-        "environment-variables" : [ ]
+        "system-properties" : [ ],
+        "environment-variables" : [ "EXAMPLE_DATASOURCE", "OPENSHIFT_EXAMPLE_DATASOURCE" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@statistics-enabled",
         "attribute" : "statistics-enabled",
-        "system-properties" : [ ],
-        "environment-variables" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
+        "system-properties" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ],
+        "environment-variables" : [ ]
       }, {
         "_address" : "/subsystem=ee/service=default-bindings@@@datasource",
         "attribute" : "datasource",
-        "system-properties" : [ "DEFAULT_DATASOURCE", "EXAMPLE_DATASOURCE", "OPENSHIFT_EXAMPLE_DATASOURCE" ],
-        "environment-variables" : [ "\\env.OPENSHIFT_DEFAULT_DATASOURCE" ]
+        "system-properties" : [ "\\env.OPENSHIFT_DEFAULT_DATASOURCE" ],
+        "environment-variables" : [ "DEFAULT_DATASOURCE", "EXAMPLE_DATASOURCE", "OPENSHIFT_EXAMPLE_DATASOURCE" ]
       }, {
         "_address" : "/subsystem=ejb3@@@default-resource-adapter-name",
         "attribute" : "default-resource-adapter-name",
-        "system-properties" : [ ],
-        "environment-variables" : [ "ejb.resource-adapter-name" ]
+        "system-properties" : [ "ejb.resource-adapter-name" ],
+        "environment-variables" : [ ]
       }, {
         "_address" : "/subsystem=ejb3@@@statistics-enabled",
         "attribute" : "statistics-enabled",
-        "system-properties" : [ ],
-        "environment-variables" : [ "wildfly.ejb3.statistics-enabled", "wildfly.statistics-enabled" ]
+        "system-properties" : [ "wildfly.ejb3.statistics-enabled", "wildfly.statistics-enabled" ],
+        "environment-variables" : [ ]
       }, {
         "_address" : "/subsystem=undertow/configuration=handler/file=*@@@path",
         "attribute" : "path",
-        "system-properties" : [ ],
-        "environment-variables" : [ "jboss.home.dir" ]
+        "system-properties" : [ "jboss.home.dir" ],
+        "environment-variables" : [ ]
       }, {
         "_address" : "/subsystem=webservices@@@statistics-enabled",
         "attribute" : "statistics-enabled",
-        "system-properties" : [ ],
-        "environment-variables" : [ "wildfly.statistics-enabled", "wildfly.webservices.statistics-enabled" ]
+        "system-properties" : [ "wildfly.statistics-enabled", "wildfly.webservices.statistics-enabled" ],
+        "environment-variables" : [ ]
       }, {
         "_address" : "/subsystem=webservices@@@wsdl-host",
         "attribute" : "wsdl-host",
-        "system-properties" : [ ],
-        "environment-variables" : [ "jboss.bind.address" ]
+        "system-properties" : [ "jboss.bind.address" ],
+        "environment-variables" : [ ]
       } ],
       "packages" : [ "modules.all" ],
       "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
@@ -4285,8 +4285,8 @@
       "configurations" : [ {
         "_address" : "/socket-binding-group=*/remote-destination-outbound-socket-binding=*@@@host",
         "attribute" : "host",
-        "system-properties" : [ "OPENSHIFT_SMTP_HOST" ],
-        "environment-variables" : [ "jboss.mail.server.host" ]
+        "system-properties" : [ "jboss.mail.server.host" ],
+        "environment-variables" : [ "OPENSHIFT_SMTP_HOST" ]
       } ],
       "packages" : [ ],
       "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
@@ -4352,13 +4352,13 @@
       "configurations" : [ {
         "_address" : "/socket-binding-group=*/remote-destination-outbound-socket-binding=*@@@host",
         "attribute" : "host",
-        "system-properties" : [ ],
-        "environment-variables" : [ "jboss.messaging.host" ]
+        "system-properties" : [ "jboss.messaging.host" ],
+        "environment-variables" : [ ]
       }, {
         "_address" : "/socket-binding-group=*/remote-destination-outbound-socket-binding=*@@@port",
         "attribute" : "port",
-        "system-properties" : [ ],
-        "environment-variables" : [ "jboss.http.port" ]
+        "system-properties" : [ "jboss.http.port" ],
+        "environment-variables" : [ ]
       } ],
       "packages" : [ ],
       "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
@@ -4387,8 +4387,8 @@
       "configurations" : [ {
         "_address" : "/subsystem=transactions@@@node-identifier",
         "attribute" : "node-identifier",
-        "system-properties" : [ ],
-        "environment-variables" : [ "jboss.tx.node.id" ]
+        "system-properties" : [ "jboss.tx.node.id" ],
+        "environment-variables" : [ ]
       } ],
       "packages" : [ ],
       "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
@@ -6828,93 +6828,93 @@
       "configurations" : [ {
         "_address" : "/subsystem=datasources/data-source=*@@@background-validation",
         "attribute" : "background-validation",
-        "system-properties" : [ "DB2_BACKGROUND_VALIDATION" ],
-        "environment-variables" : [ "org.wildfly.datasources.db2.background-validation" ]
+        "system-properties" : [ "org.wildfly.datasources.db2.background-validation" ],
+        "environment-variables" : [ "DB2_BACKGROUND_VALIDATION" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@background-validation-millis",
         "attribute" : "background-validation-millis",
-        "system-properties" : [ "DB2_BACKGROUND_VALIDATION_MILLIS" ],
-        "environment-variables" : [ "org.wildfly.datasources.db2.background-validation-millis" ]
+        "system-properties" : [ "org.wildfly.datasources.db2.background-validation-millis" ],
+        "environment-variables" : [ "DB2_BACKGROUND_VALIDATION_MILLIS" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@connection-url",
         "attribute" : "connection-url",
-        "system-properties" : [ "DB2_DATABASE", "DB2_HOST", "DB2_PORT", "DB2_SERVICE_HOST", "DB2_SERVICE_PORT", "DB2_URL", "OPENSHIFT_DB2_DB_HOST", "OPENSHIFT_DB2_DB_NAME", "OPENSHIFT_DB2_DB_PORT" ],
-        "environment-variables" : [ "org.wildfly.datasources.db2.connection-url", "org.wildfly.datasources.db2.database", "org.wildfly.datasources.db2.host", "org.wildfly.datasources.db2.port" ]
+        "system-properties" : [ "org.wildfly.datasources.db2.connection-url", "org.wildfly.datasources.db2.database", "org.wildfly.datasources.db2.host", "org.wildfly.datasources.db2.port" ],
+        "environment-variables" : [ "DB2_DATABASE", "DB2_HOST", "DB2_PORT", "DB2_SERVICE_HOST", "DB2_SERVICE_PORT", "DB2_URL", "OPENSHIFT_DB2_DB_HOST", "OPENSHIFT_DB2_DB_NAME", "OPENSHIFT_DB2_DB_PORT" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@enabled",
         "attribute" : "enabled",
-        "system-properties" : [ "DB2_ENABLED" ],
-        "environment-variables" : [ "org.wildfly.datasources.db2.enabled" ]
+        "system-properties" : [ "org.wildfly.datasources.db2.enabled" ],
+        "environment-variables" : [ "DB2_ENABLED" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@exception-sorter-class-name",
         "attribute" : "exception-sorter-class-name",
-        "system-properties" : [ "DB2_EXCEPTION_SORTER" ],
-        "environment-variables" : [ "org.wildfly.datasources.db2.exception-sorter-class-name" ]
+        "system-properties" : [ "org.wildfly.datasources.db2.exception-sorter-class-name" ],
+        "environment-variables" : [ "DB2_EXCEPTION_SORTER" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@flush-strategy",
         "attribute" : "flush-strategy",
-        "system-properties" : [ "DB2_FLUSH_STRATEGY" ],
-        "environment-variables" : [ "org.wildfly.datasources.db2.flush-strategy" ]
+        "system-properties" : [ "org.wildfly.datasources.db2.flush-strategy" ],
+        "environment-variables" : [ "DB2_FLUSH_STRATEGY" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@idle-timeout-minutes",
         "attribute" : "idle-timeout-minutes",
-        "system-properties" : [ "DB2_IDLE_TIMEOUT_MINUTES" ],
-        "environment-variables" : [ "org.wildfly.datasources.db2.idle-timeout-minutes" ]
+        "system-properties" : [ "org.wildfly.datasources.db2.idle-timeout-minutes" ],
+        "environment-variables" : [ "DB2_IDLE_TIMEOUT_MINUTES" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@jndi-name",
         "attribute" : "jndi-name",
-        "system-properties" : [ "DB2_DATASOURCE", "DB2_JNDI", "OPENSHIFT_DB2_DATASOURCE" ],
-        "environment-variables" : [ "org.wildfly.datasources.db2.datasource", "org.wildfly.datasources.db2.jndi-name" ]
+        "system-properties" : [ "org.wildfly.datasources.db2.datasource", "org.wildfly.datasources.db2.jndi-name" ],
+        "environment-variables" : [ "DB2_DATASOURCE", "DB2_JNDI", "OPENSHIFT_DB2_DATASOURCE" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@jta",
         "attribute" : "jta",
-        "system-properties" : [ "DB2_JTA" ],
-        "environment-variables" : [ "org.wildfly.datasources.db2.jta" ]
+        "system-properties" : [ "org.wildfly.datasources.db2.jta" ],
+        "environment-variables" : [ "DB2_JTA" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@max-pool-size",
         "attribute" : "max-pool-size",
-        "system-properties" : [ "DB2_MAX_POOL_SIZE" ],
-        "environment-variables" : [ "org.wildfly.datasources.db2.max-pool-size" ]
+        "system-properties" : [ "org.wildfly.datasources.db2.max-pool-size" ],
+        "environment-variables" : [ "DB2_MAX_POOL_SIZE" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@min-pool-size",
         "attribute" : "min-pool-size",
-        "system-properties" : [ "DB2_MIN_POOL_SIZE" ],
-        "environment-variables" : [ "org.wildfly.datasources.db2.min-pool-size" ]
+        "system-properties" : [ "org.wildfly.datasources.db2.min-pool-size" ],
+        "environment-variables" : [ "DB2_MIN_POOL_SIZE" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@password",
         "attribute" : "password",
-        "system-properties" : [ "DB2_PASSWORD", "OPENSHIFT_DB2_DB_PASSWORD" ],
-        "environment-variables" : [ "org.wildfly.datasources.db2.password" ]
+        "system-properties" : [ "org.wildfly.datasources.db2.password" ],
+        "environment-variables" : [ "DB2_PASSWORD", "OPENSHIFT_DB2_DB_PASSWORD" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@stale-connection-checker-class-name",
         "attribute" : "stale-connection-checker-class-name",
-        "system-properties" : [ "DB2_STALE_CONNECTION_CHECKER" ],
-        "environment-variables" : [ "org.wildfly.datasources.db2.stale-connection-checker-class-name" ]
+        "system-properties" : [ "org.wildfly.datasources.db2.stale-connection-checker-class-name" ],
+        "environment-variables" : [ "DB2_STALE_CONNECTION_CHECKER" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@statistics-enabled",
         "attribute" : "statistics-enabled",
-        "system-properties" : [ ],
-        "environment-variables" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
+        "system-properties" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ],
+        "environment-variables" : [ ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@transaction-isolation",
         "attribute" : "transaction-isolation",
-        "system-properties" : [ "DB2_TX_ISOLATION" ],
-        "environment-variables" : [ "org.wildfly.datasources.db2.transaction-isolation" ]
+        "system-properties" : [ "org.wildfly.datasources.db2.transaction-isolation" ],
+        "environment-variables" : [ "DB2_TX_ISOLATION" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@user-name",
         "attribute" : "user-name",
-        "system-properties" : [ "DB2_USER", "OPENSHIFT_DB2_DB_USERNAME" ],
-        "environment-variables" : [ "org.wildfly.datasources.db2.user-name" ]
+        "system-properties" : [ "org.wildfly.datasources.db2.user-name" ],
+        "environment-variables" : [ "DB2_USER", "OPENSHIFT_DB2_DB_USERNAME" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@valid-connection-checker-class-name",
         "attribute" : "valid-connection-checker-class-name",
-        "system-properties" : [ "DB2_CONNECTION_CHECKER" ],
-        "environment-variables" : [ "org.wildfly.datasources.db2.valid-connection-checker-class-name" ]
+        "system-properties" : [ "org.wildfly.datasources.db2.valid-connection-checker-class-name" ],
+        "environment-variables" : [ "DB2_CONNECTION_CHECKER" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@validate-on-match",
         "attribute" : "validate-on-match",
-        "system-properties" : [ "DB2_VALIDATE_ON_MATCH" ],
-        "environment-variables" : [ "org.wildfly.datasources.db2.validate-on-match" ]
+        "system-properties" : [ "org.wildfly.datasources.db2.validate-on-match" ],
+        "environment-variables" : [ "DB2_VALIDATE_ON_MATCH" ]
       } ],
       "packages" : [ ],
       "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:11.0.1.Final-SNAPSHOT",
@@ -6956,8 +6956,8 @@
       "configurations" : [ {
         "_address" : "/subsystem=ee/service=default-bindings@@@datasource",
         "attribute" : "datasource",
-        "system-properties" : [ "DB2_DATASOURCE", "DB2_JNDI", "OPENSHIFT_DB2_DATASOURCE" ],
-        "environment-variables" : [ "org.wildfly.datasources.db2.datasource", "org.wildfly.datasources.db2.jndi-name" ]
+        "system-properties" : [ "org.wildfly.datasources.db2.datasource", "org.wildfly.datasources.db2.jndi-name" ],
+        "environment-variables" : [ "DB2_DATASOURCE", "DB2_JNDI", "OPENSHIFT_DB2_DATASOURCE" ]
       } ],
       "packages" : [ ],
       "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:11.0.1.Final-SNAPSHOT",
@@ -7316,93 +7316,93 @@
       "configurations" : [ {
         "_address" : "/subsystem=datasources/data-source=*@@@background-validation",
         "attribute" : "background-validation",
-        "system-properties" : [ "MARIADB_BACKGROUND_VALIDATION" ],
-        "environment-variables" : [ "org.wildfly.datasources.mariadb.background-validation" ]
+        "system-properties" : [ "org.wildfly.datasources.mariadb.background-validation" ],
+        "environment-variables" : [ "MARIADB_BACKGROUND_VALIDATION" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@background-validation-millis",
         "attribute" : "background-validation-millis",
-        "system-properties" : [ "MARIADB_BACKGROUND_VALIDATION_MILLIS" ],
-        "environment-variables" : [ "org.wildfly.datasources.mariadb.background-validation-millis" ]
+        "system-properties" : [ "org.wildfly.datasources.mariadb.background-validation-millis" ],
+        "environment-variables" : [ "MARIADB_BACKGROUND_VALIDATION_MILLIS" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@connection-url",
         "attribute" : "connection-url",
-        "system-properties" : [ "MARIADB_DATABASE", "MARIADB_HOST", "MARIADB_PORT", "MARIADB_SERVICE_HOST", "MARIADB_SERVICE_PORT", "MARIADB_URL" ],
-        "environment-variables" : [ "org.wildfly.datasources.mariadb.connection-url", "org.wildfly.datasources.mariadb.database", "org.wildfly.datasources.mariadb.host", "org.wildfly.datasources.mariadb.port" ]
+        "system-properties" : [ "org.wildfly.datasources.mariadb.connection-url", "org.wildfly.datasources.mariadb.database", "org.wildfly.datasources.mariadb.host", "org.wildfly.datasources.mariadb.port" ],
+        "environment-variables" : [ "MARIADB_DATABASE", "MARIADB_HOST", "MARIADB_PORT", "MARIADB_SERVICE_HOST", "MARIADB_SERVICE_PORT", "MARIADB_URL" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@enabled",
         "attribute" : "enabled",
-        "system-properties" : [ "MARIADB_ENABLED" ],
-        "environment-variables" : [ "org.wildfly.datasources.mariadb.enabled" ]
+        "system-properties" : [ "org.wildfly.datasources.mariadb.enabled" ],
+        "environment-variables" : [ "MARIADB_ENABLED" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@exception-sorter-class-name",
         "attribute" : "exception-sorter-class-name",
-        "system-properties" : [ "MARIADB_EXCEPTION_SORTER" ],
-        "environment-variables" : [ "org.wildfly.datasources.mariadb.exception-sorter-class-name" ]
+        "system-properties" : [ "org.wildfly.datasources.mariadb.exception-sorter-class-name" ],
+        "environment-variables" : [ "MARIADB_EXCEPTION_SORTER" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@flush-strategy",
         "attribute" : "flush-strategy",
-        "system-properties" : [ "MARIADB_FLUSH_STRATEGY" ],
-        "environment-variables" : [ "org.wildfly.datasources.mariadb.flush-strategy" ]
+        "system-properties" : [ "org.wildfly.datasources.mariadb.flush-strategy" ],
+        "environment-variables" : [ "MARIADB_FLUSH_STRATEGY" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@idle-timeout-minutes",
         "attribute" : "idle-timeout-minutes",
-        "system-properties" : [ "MARIADB_IDLE_TIMEOUT_MINUTES" ],
-        "environment-variables" : [ "org.wildfly.datasources.mariadb.idle-timeout-minutes" ]
+        "system-properties" : [ "org.wildfly.datasources.mariadb.idle-timeout-minutes" ],
+        "environment-variables" : [ "MARIADB_IDLE_TIMEOUT_MINUTES" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@jndi-name",
         "attribute" : "jndi-name",
-        "system-properties" : [ "MARIADB_DATASOURCE", "MARIADB_JNDI" ],
-        "environment-variables" : [ "org.wildfly.datasources.mariadb.datasource", "org.wildfly.datasources.mariadb.jndi-name" ]
+        "system-properties" : [ "org.wildfly.datasources.mariadb.datasource", "org.wildfly.datasources.mariadb.jndi-name" ],
+        "environment-variables" : [ "MARIADB_DATASOURCE", "MARIADB_JNDI" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@jta",
         "attribute" : "jta",
-        "system-properties" : [ "MARIADB_JTA" ],
-        "environment-variables" : [ "org.wildfly.datasources.mariadb.jta" ]
+        "system-properties" : [ "org.wildfly.datasources.mariadb.jta" ],
+        "environment-variables" : [ "MARIADB_JTA" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@max-pool-size",
         "attribute" : "max-pool-size",
-        "system-properties" : [ "MARIADB_MAX_POOL_SIZE" ],
-        "environment-variables" : [ "org.wildfly.datasources.mariadb.max-pool-size" ]
+        "system-properties" : [ "org.wildfly.datasources.mariadb.max-pool-size" ],
+        "environment-variables" : [ "MARIADB_MAX_POOL_SIZE" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@min-pool-size",
         "attribute" : "min-pool-size",
-        "system-properties" : [ "MARIADB_MIN_POOL_SIZE" ],
-        "environment-variables" : [ "org.wildfly.datasources.mariadb.min-pool-size" ]
+        "system-properties" : [ "org.wildfly.datasources.mariadb.min-pool-size" ],
+        "environment-variables" : [ "MARIADB_MIN_POOL_SIZE" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@password",
         "attribute" : "password",
-        "system-properties" : [ "MARIADB_PASSWORD" ],
-        "environment-variables" : [ "org.wildfly.datasources.mariadb.password" ]
+        "system-properties" : [ "org.wildfly.datasources.mariadb.password" ],
+        "environment-variables" : [ "MARIADB_PASSWORD" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@stale-connection-checker-class-name",
         "attribute" : "stale-connection-checker-class-name",
-        "system-properties" : [ "MARIADB_STALE_CONNECTION_CHECKER" ],
-        "environment-variables" : [ "org.wildfly.datasources.mariadb.stale-connection-checker-class-name" ]
+        "system-properties" : [ "org.wildfly.datasources.mariadb.stale-connection-checker-class-name" ],
+        "environment-variables" : [ "MARIADB_STALE_CONNECTION_CHECKER" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@statistics-enabled",
         "attribute" : "statistics-enabled",
-        "system-properties" : [ ],
-        "environment-variables" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
+        "system-properties" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ],
+        "environment-variables" : [ ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@transaction-isolation",
         "attribute" : "transaction-isolation",
-        "system-properties" : [ "MARIADB_TX_ISOLATION" ],
-        "environment-variables" : [ "org.wildfly.datasources.mariadb.transaction-isolation" ]
+        "system-properties" : [ "org.wildfly.datasources.mariadb.transaction-isolation" ],
+        "environment-variables" : [ "MARIADB_TX_ISOLATION" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@user-name",
         "attribute" : "user-name",
-        "system-properties" : [ "MARIADB_USER" ],
-        "environment-variables" : [ "org.wildfly.datasources.mariadb.user-name" ]
+        "system-properties" : [ "org.wildfly.datasources.mariadb.user-name" ],
+        "environment-variables" : [ "MARIADB_USER" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@valid-connection-checker-class-name",
         "attribute" : "valid-connection-checker-class-name",
-        "system-properties" : [ "MARIADB_CONNECTION_CHECKER" ],
-        "environment-variables" : [ "org.wildfly.datasources.mariadb.valid-connection-checker-class-name" ]
+        "system-properties" : [ "org.wildfly.datasources.mariadb.valid-connection-checker-class-name" ],
+        "environment-variables" : [ "MARIADB_CONNECTION_CHECKER" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@validate-on-match",
         "attribute" : "validate-on-match",
-        "system-properties" : [ "MARIADB_VALIDATE_ON_MATCH" ],
-        "environment-variables" : [ "org.wildfly.datasources.mariadb.validate-on-match" ]
+        "system-properties" : [ "org.wildfly.datasources.mariadb.validate-on-match" ],
+        "environment-variables" : [ "MARIADB_VALIDATE_ON_MATCH" ]
       } ],
       "packages" : [ ],
       "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:11.0.1.Final-SNAPSHOT",
@@ -7444,8 +7444,8 @@
       "configurations" : [ {
         "_address" : "/subsystem=ee/service=default-bindings@@@datasource",
         "attribute" : "datasource",
-        "system-properties" : [ "MARIADB_DATASOURCE" ],
-        "environment-variables" : [ ]
+        "system-properties" : [ ],
+        "environment-variables" : [ "MARIADB_DATASOURCE" ]
       } ],
       "packages" : [ ],
       "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:11.0.1.Final-SNAPSHOT",
@@ -7612,93 +7612,93 @@
       "configurations" : [ {
         "_address" : "/subsystem=datasources/data-source=*@@@background-validation",
         "attribute" : "background-validation",
-        "system-properties" : [ "MSSQLSERVER_BACKGROUND_VALIDATION" ],
-        "environment-variables" : [ "org.wildfly.datasources.mssqlserver.background-validation" ]
+        "system-properties" : [ "org.wildfly.datasources.mssqlserver.background-validation" ],
+        "environment-variables" : [ "MSSQLSERVER_BACKGROUND_VALIDATION" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@background-validation-millis",
         "attribute" : "background-validation-millis",
-        "system-properties" : [ "MSSQLSERVER_BACKGROUND_VALIDATION_MILLIS" ],
-        "environment-variables" : [ "org.wildfly.datasources.mssqlserver.background-validation-millis" ]
+        "system-properties" : [ "org.wildfly.datasources.mssqlserver.background-validation-millis" ],
+        "environment-variables" : [ "MSSQLSERVER_BACKGROUND_VALIDATION_MILLIS" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@connection-url",
         "attribute" : "connection-url",
-        "system-properties" : [ "MSSQLSERVER_DATABASE", "MSSQLSERVER_HOST", "MSSQLSERVER_PORT", "MSSQLSERVER_SERVICE_HOST", "MSSQLSERVER_SERVICE_PORT", "MSSQLSERVER_URL" ],
-        "environment-variables" : [ "org.wildfly.datasources.mssqlserver.connection-url", "org.wildfly.datasources.mssqlserver.database", "org.wildfly.datasources.mssqlserver.host", "org.wildfly.datasources.mssqlserver.port" ]
+        "system-properties" : [ "org.wildfly.datasources.mssqlserver.connection-url", "org.wildfly.datasources.mssqlserver.database", "org.wildfly.datasources.mssqlserver.host", "org.wildfly.datasources.mssqlserver.port" ],
+        "environment-variables" : [ "MSSQLSERVER_DATABASE", "MSSQLSERVER_HOST", "MSSQLSERVER_PORT", "MSSQLSERVER_SERVICE_HOST", "MSSQLSERVER_SERVICE_PORT", "MSSQLSERVER_URL" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@enabled",
         "attribute" : "enabled",
-        "system-properties" : [ "MSSQLSERVER_ENABLED" ],
-        "environment-variables" : [ "org.wildfly.datasources.mssqlserver.enabled" ]
+        "system-properties" : [ "org.wildfly.datasources.mssqlserver.enabled" ],
+        "environment-variables" : [ "MSSQLSERVER_ENABLED" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@exception-sorter-class-name",
         "attribute" : "exception-sorter-class-name",
-        "system-properties" : [ "MSSQLSERVER_EXCEPTION_SORTER" ],
-        "environment-variables" : [ "org.wildfly.datasources.mssqlserver.exception-sorter-class-name" ]
+        "system-properties" : [ "org.wildfly.datasources.mssqlserver.exception-sorter-class-name" ],
+        "environment-variables" : [ "MSSQLSERVER_EXCEPTION_SORTER" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@flush-strategy",
         "attribute" : "flush-strategy",
-        "system-properties" : [ "MSSQLSERVER_FLUSH_STRATEGY" ],
-        "environment-variables" : [ "org.wildfly.datasources.mssqlserver.flush-strategy" ]
+        "system-properties" : [ "org.wildfly.datasources.mssqlserver.flush-strategy" ],
+        "environment-variables" : [ "MSSQLSERVER_FLUSH_STRATEGY" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@idle-timeout-minutes",
         "attribute" : "idle-timeout-minutes",
-        "system-properties" : [ "MSSQLSERVER_IDLE_TIMEOUT_MINUTES" ],
-        "environment-variables" : [ "org.wildfly.datasources.mssqlserver.idle-timeout-minutes" ]
+        "system-properties" : [ "org.wildfly.datasources.mssqlserver.idle-timeout-minutes" ],
+        "environment-variables" : [ "MSSQLSERVER_IDLE_TIMEOUT_MINUTES" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@jndi-name",
         "attribute" : "jndi-name",
-        "system-properties" : [ "MSSQLSERVER_DATASOURCE", "MSSQLSERVER_JNDI" ],
-        "environment-variables" : [ "org.wildfly.datasources.mssqlserver.datasource", "org.wildfly.datasources.mssqlserver.jndi-name" ]
+        "system-properties" : [ "org.wildfly.datasources.mssqlserver.datasource", "org.wildfly.datasources.mssqlserver.jndi-name" ],
+        "environment-variables" : [ "MSSQLSERVER_DATASOURCE", "MSSQLSERVER_JNDI" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@jta",
         "attribute" : "jta",
-        "system-properties" : [ "MSSQLSERVER_JTA" ],
-        "environment-variables" : [ "org.wildfly.datasources.mssqlserver.jta" ]
+        "system-properties" : [ "org.wildfly.datasources.mssqlserver.jta" ],
+        "environment-variables" : [ "MSSQLSERVER_JTA" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@max-pool-size",
         "attribute" : "max-pool-size",
-        "system-properties" : [ "MSSQLSERVER_MAX_POOL_SIZE" ],
-        "environment-variables" : [ "org.wildfly.datasources.mssqlserver.max-pool-size" ]
+        "system-properties" : [ "org.wildfly.datasources.mssqlserver.max-pool-size" ],
+        "environment-variables" : [ "MSSQLSERVER_MAX_POOL_SIZE" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@min-pool-size",
         "attribute" : "min-pool-size",
-        "system-properties" : [ "MSSQLSERVER_MIN_POOL_SIZE" ],
-        "environment-variables" : [ "org.wildfly.datasources.mssqlserver.min-pool-size" ]
+        "system-properties" : [ "org.wildfly.datasources.mssqlserver.min-pool-size" ],
+        "environment-variables" : [ "MSSQLSERVER_MIN_POOL_SIZE" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@password",
         "attribute" : "password",
-        "system-properties" : [ "MSSQLSERVER_PASSWORD" ],
-        "environment-variables" : [ "org.wildfly.datasources.mssqlserver.password" ]
+        "system-properties" : [ "org.wildfly.datasources.mssqlserver.password" ],
+        "environment-variables" : [ "MSSQLSERVER_PASSWORD" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@stale-connection-checker-class-name",
         "attribute" : "stale-connection-checker-class-name",
-        "system-properties" : [ "MSSQLSERVER_STALE_CONNECTION_CHECKER" ],
-        "environment-variables" : [ "org.wildfly.datasources.mssqlserver.stale-connection-checker-class-name" ]
+        "system-properties" : [ "org.wildfly.datasources.mssqlserver.stale-connection-checker-class-name" ],
+        "environment-variables" : [ "MSSQLSERVER_STALE_CONNECTION_CHECKER" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@statistics-enabled",
         "attribute" : "statistics-enabled",
-        "system-properties" : [ ],
-        "environment-variables" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
+        "system-properties" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ],
+        "environment-variables" : [ ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@transaction-isolation",
         "attribute" : "transaction-isolation",
-        "system-properties" : [ "MSSQLSERVER_TX_ISOLATION" ],
-        "environment-variables" : [ "org.wildfly.datasources.mssqlserver.transaction-isolation" ]
+        "system-properties" : [ "org.wildfly.datasources.mssqlserver.transaction-isolation" ],
+        "environment-variables" : [ "MSSQLSERVER_TX_ISOLATION" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@user-name",
         "attribute" : "user-name",
-        "system-properties" : [ "MSSQLSERVER_USER" ],
-        "environment-variables" : [ "org.wildfly.datasources.mssqlserver.user-name" ]
+        "system-properties" : [ "org.wildfly.datasources.mssqlserver.user-name" ],
+        "environment-variables" : [ "MSSQLSERVER_USER" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@valid-connection-checker-class-name",
         "attribute" : "valid-connection-checker-class-name",
-        "system-properties" : [ "MSSQLSERVER_CONNECTION_CHECKER" ],
-        "environment-variables" : [ "org.wildfly.datasources.mssqlserver.valid-connection-checker-class-name" ]
+        "system-properties" : [ "org.wildfly.datasources.mssqlserver.valid-connection-checker-class-name" ],
+        "environment-variables" : [ "MSSQLSERVER_CONNECTION_CHECKER" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@validate-on-match",
         "attribute" : "validate-on-match",
-        "system-properties" : [ "MSSQLSERVER_VALIDATE_ON_MATCH" ],
-        "environment-variables" : [ "org.wildfly.datasources.mssqlserver.validate-on-match" ]
+        "system-properties" : [ "org.wildfly.datasources.mssqlserver.validate-on-match" ],
+        "environment-variables" : [ "MSSQLSERVER_VALIDATE_ON_MATCH" ]
       } ],
       "packages" : [ ],
       "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:11.0.1.Final-SNAPSHOT",
@@ -7740,8 +7740,8 @@
       "configurations" : [ {
         "_address" : "/subsystem=ee/service=default-bindings@@@datasource",
         "attribute" : "datasource",
-        "system-properties" : [ "MSSQLSERVER_DATASOURCE" ],
-        "environment-variables" : [ ]
+        "system-properties" : [ ],
+        "environment-variables" : [ "MSSQLSERVER_DATASOURCE" ]
       } ],
       "packages" : [ ],
       "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:11.0.1.Final-SNAPSHOT",
@@ -7908,93 +7908,93 @@
       "configurations" : [ {
         "_address" : "/subsystem=datasources/data-source=*@@@background-validation",
         "attribute" : "background-validation",
-        "system-properties" : [ "MYSQL_BACKGROUND_VALIDATION" ],
-        "environment-variables" : [ "org.wildfly.datasources.mysql.background-validation" ]
+        "system-properties" : [ "org.wildfly.datasources.mysql.background-validation" ],
+        "environment-variables" : [ "MYSQL_BACKGROUND_VALIDATION" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@background-validation-millis",
         "attribute" : "background-validation-millis",
-        "system-properties" : [ "MYSQL_BACKGROUND_VALIDATION_MILLIS" ],
-        "environment-variables" : [ "org.wildfly.datasources.mysql.background-validation-millis" ]
+        "system-properties" : [ "org.wildfly.datasources.mysql.background-validation-millis" ],
+        "environment-variables" : [ "MYSQL_BACKGROUND_VALIDATION_MILLIS" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@connection-url",
         "attribute" : "connection-url",
-        "system-properties" : [ "MYSQL_DATABASE", "MYSQL_HOST", "MYSQL_PORT", "MYSQL_SERVICE_HOST", "MYSQL_SERVICE_PORT", "MYSQL_URL", "OPENSHIFT_MYSQL_DB_HOST", "OPENSHIFT_MYSQL_DB_NAME", "OPENSHIFT_MYSQL_DB_PORT" ],
-        "environment-variables" : [ "org.wildfly.datasources.mysql.connection-url", "org.wildfly.datasources.mysql.database", "org.wildfly.datasources.mysql.host", "org.wildfly.datasources.mysql.port" ]
+        "system-properties" : [ "org.wildfly.datasources.mysql.connection-url", "org.wildfly.datasources.mysql.database", "org.wildfly.datasources.mysql.host", "org.wildfly.datasources.mysql.port" ],
+        "environment-variables" : [ "MYSQL_DATABASE", "MYSQL_HOST", "MYSQL_PORT", "MYSQL_SERVICE_HOST", "MYSQL_SERVICE_PORT", "MYSQL_URL", "OPENSHIFT_MYSQL_DB_HOST", "OPENSHIFT_MYSQL_DB_NAME", "OPENSHIFT_MYSQL_DB_PORT" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@enabled",
         "attribute" : "enabled",
-        "system-properties" : [ "MYSQL_ENABLED" ],
-        "environment-variables" : [ "org.wildfly.datasources.mysql.enabled" ]
+        "system-properties" : [ "org.wildfly.datasources.mysql.enabled" ],
+        "environment-variables" : [ "MYSQL_ENABLED" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@exception-sorter-class-name",
         "attribute" : "exception-sorter-class-name",
-        "system-properties" : [ "MYSQL_EXCEPTION_SORTER" ],
-        "environment-variables" : [ "org.wildfly.datasources.mysql.exception-sorter-class-name" ]
+        "system-properties" : [ "org.wildfly.datasources.mysql.exception-sorter-class-name" ],
+        "environment-variables" : [ "MYSQL_EXCEPTION_SORTER" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@flush-strategy",
         "attribute" : "flush-strategy",
-        "system-properties" : [ "MYSQL_FLUSH_STRATEGY" ],
-        "environment-variables" : [ "org.wildfly.datasources.mysql.flush-strategy" ]
+        "system-properties" : [ "org.wildfly.datasources.mysql.flush-strategy" ],
+        "environment-variables" : [ "MYSQL_FLUSH_STRATEGY" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@idle-timeout-minutes",
         "attribute" : "idle-timeout-minutes",
-        "system-properties" : [ "MYSQL_IDLE_TIMEOUT_MINUTES" ],
-        "environment-variables" : [ "org.wildfly.datasources.mysql.idle-timeout-minutes" ]
+        "system-properties" : [ "org.wildfly.datasources.mysql.idle-timeout-minutes" ],
+        "environment-variables" : [ "MYSQL_IDLE_TIMEOUT_MINUTES" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@jndi-name",
         "attribute" : "jndi-name",
-        "system-properties" : [ "MYSQL_DATASOURCE", "MYSQL_JNDI", "OPENSHIFT_MYSQL_DATASOURCE" ],
-        "environment-variables" : [ "org.wildfly.datasources.mysql.datasource", "org.wildfly.datasources.mysql.jndi-name" ]
+        "system-properties" : [ "org.wildfly.datasources.mysql.datasource", "org.wildfly.datasources.mysql.jndi-name" ],
+        "environment-variables" : [ "MYSQL_DATASOURCE", "MYSQL_JNDI", "OPENSHIFT_MYSQL_DATASOURCE" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@jta",
         "attribute" : "jta",
-        "system-properties" : [ "MYSQL_JTA" ],
-        "environment-variables" : [ "org.wildfly.datasources.mysql.jta" ]
+        "system-properties" : [ "org.wildfly.datasources.mysql.jta" ],
+        "environment-variables" : [ "MYSQL_JTA" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@max-pool-size",
         "attribute" : "max-pool-size",
-        "system-properties" : [ "MYSQL_MAX_POOL_SIZE" ],
-        "environment-variables" : [ "org.wildfly.datasources.mysql.max-pool-size" ]
+        "system-properties" : [ "org.wildfly.datasources.mysql.max-pool-size" ],
+        "environment-variables" : [ "MYSQL_MAX_POOL_SIZE" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@min-pool-size",
         "attribute" : "min-pool-size",
-        "system-properties" : [ "MYSQL_MIN_POOL_SIZE" ],
-        "environment-variables" : [ "org.wildfly.datasources.mysql.min-pool-size" ]
+        "system-properties" : [ "org.wildfly.datasources.mysql.min-pool-size" ],
+        "environment-variables" : [ "MYSQL_MIN_POOL_SIZE" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@password",
         "attribute" : "password",
-        "system-properties" : [ "MYSQL_PASSWORD", "OPENSHIFT_MYSQL_DB_PASSWORD" ],
-        "environment-variables" : [ "org.wildfly.datasources.mysql.password" ]
+        "system-properties" : [ "org.wildfly.datasources.mysql.password" ],
+        "environment-variables" : [ "MYSQL_PASSWORD", "OPENSHIFT_MYSQL_DB_PASSWORD" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@stale-connection-checker-class-name",
         "attribute" : "stale-connection-checker-class-name",
-        "system-properties" : [ "MYSQL_STALE_CONNECTION_CHECKER" ],
-        "environment-variables" : [ "org.wildfly.datasources.mysql.stale-connection-checker-class-name" ]
+        "system-properties" : [ "org.wildfly.datasources.mysql.stale-connection-checker-class-name" ],
+        "environment-variables" : [ "MYSQL_STALE_CONNECTION_CHECKER" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@statistics-enabled",
         "attribute" : "statistics-enabled",
-        "system-properties" : [ ],
-        "environment-variables" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
+        "system-properties" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ],
+        "environment-variables" : [ ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@transaction-isolation",
         "attribute" : "transaction-isolation",
-        "system-properties" : [ "MYSQL_TX_ISOLATION" ],
-        "environment-variables" : [ "org.wildfly.datasources.mysql.transaction-isolation" ]
+        "system-properties" : [ "org.wildfly.datasources.mysql.transaction-isolation" ],
+        "environment-variables" : [ "MYSQL_TX_ISOLATION" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@user-name",
         "attribute" : "user-name",
-        "system-properties" : [ "MYSQL_USER", "OPENSHIFT_MYSQL_DB_USERNAME" ],
-        "environment-variables" : [ "org.wildfly.datasources.mysql.user-name" ]
+        "system-properties" : [ "org.wildfly.datasources.mysql.user-name" ],
+        "environment-variables" : [ "MYSQL_USER", "OPENSHIFT_MYSQL_DB_USERNAME" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@valid-connection-checker-class-name",
         "attribute" : "valid-connection-checker-class-name",
-        "system-properties" : [ "MYSQL_CONNECTION_CHECKER" ],
-        "environment-variables" : [ "org.wildfly.datasources.mysql.valid-connection-checker-class-name" ]
+        "system-properties" : [ "org.wildfly.datasources.mysql.valid-connection-checker-class-name" ],
+        "environment-variables" : [ "MYSQL_CONNECTION_CHECKER" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@validate-on-match",
         "attribute" : "validate-on-match",
-        "system-properties" : [ "MYSQL_VALIDATE_ON_MATCH" ],
-        "environment-variables" : [ "org.wildfly.datasources.mysql.validate-on-match" ]
+        "system-properties" : [ "org.wildfly.datasources.mysql.validate-on-match" ],
+        "environment-variables" : [ "MYSQL_VALIDATE_ON_MATCH" ]
       } ],
       "packages" : [ ],
       "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:11.0.1.Final-SNAPSHOT",
@@ -8036,8 +8036,8 @@
       "configurations" : [ {
         "_address" : "/subsystem=ee/service=default-bindings@@@datasource",
         "attribute" : "datasource",
-        "system-properties" : [ "MYSQL_DATASOURCE", "OPENSHIFT_MYSQL_DATASOURCE" ],
-        "environment-variables" : [ ]
+        "system-properties" : [ ],
+        "environment-variables" : [ "MYSQL_DATASOURCE", "OPENSHIFT_MYSQL_DATASOURCE" ]
       } ],
       "packages" : [ ],
       "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:11.0.1.Final-SNAPSHOT",
@@ -8204,93 +8204,93 @@
       "configurations" : [ {
         "_address" : "/subsystem=datasources/data-source=*@@@background-validation",
         "attribute" : "background-validation",
-        "system-properties" : [ "ORACLE_BACKGROUND_VALIDATION" ],
-        "environment-variables" : [ "org.wildfly.datasources.oracle.background-validation" ]
+        "system-properties" : [ "org.wildfly.datasources.oracle.background-validation" ],
+        "environment-variables" : [ "ORACLE_BACKGROUND_VALIDATION" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@background-validation-millis",
         "attribute" : "background-validation-millis",
-        "system-properties" : [ "ORACLE_BACKGROUND_VALIDATION_MILLIS" ],
-        "environment-variables" : [ "org.wildfly.datasources.oracle.background-validation-millis" ]
+        "system-properties" : [ "org.wildfly.datasources.oracle.background-validation-millis" ],
+        "environment-variables" : [ "ORACLE_BACKGROUND_VALIDATION_MILLIS" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@connection-url",
         "attribute" : "connection-url",
-        "system-properties" : [ "OPENSHIFT_ORACLE_URL", "ORACLE_URL" ],
-        "environment-variables" : [ "org.wildfly.datasources.oracle.connection-url" ]
+        "system-properties" : [ "org.wildfly.datasources.oracle.connection-url" ],
+        "environment-variables" : [ "OPENSHIFT_ORACLE_URL", "ORACLE_URL" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@enabled",
         "attribute" : "enabled",
-        "system-properties" : [ "ORACLE_ENABLED" ],
-        "environment-variables" : [ "org.wildfly.datasources.oracle.enabled" ]
+        "system-properties" : [ "org.wildfly.datasources.oracle.enabled" ],
+        "environment-variables" : [ "ORACLE_ENABLED" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@exception-sorter-class-name",
         "attribute" : "exception-sorter-class-name",
-        "system-properties" : [ "ORACLE_EXCEPTION_SORTER" ],
-        "environment-variables" : [ "org.wildfly.datasources.oracle.exception-sorter-class-name" ]
+        "system-properties" : [ "org.wildfly.datasources.oracle.exception-sorter-class-name" ],
+        "environment-variables" : [ "ORACLE_EXCEPTION_SORTER" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@flush-strategy",
         "attribute" : "flush-strategy",
-        "system-properties" : [ "ORACLE_FLUSH_STRATEGY" ],
-        "environment-variables" : [ "org.wildfly.datasources.oracle.flush-strategy" ]
+        "system-properties" : [ "org.wildfly.datasources.oracle.flush-strategy" ],
+        "environment-variables" : [ "ORACLE_FLUSH_STRATEGY" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@idle-timeout-minutes",
         "attribute" : "idle-timeout-minutes",
-        "system-properties" : [ "ORACLE_IDLE_TIMEOUT_MINUTES" ],
-        "environment-variables" : [ "org.wildfly.datasources.oracle.idle-timeout-minutes" ]
+        "system-properties" : [ "org.wildfly.datasources.oracle.idle-timeout-minutes" ],
+        "environment-variables" : [ "ORACLE_IDLE_TIMEOUT_MINUTES" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@jndi-name",
         "attribute" : "jndi-name",
-        "system-properties" : [ "OPENSHIFT_ORACLE_DATASOURCE", "ORACLE_DATASOURCE", "ORACLE_JNDI" ],
-        "environment-variables" : [ "org.wildfly.datasources.oracle.datasource", "org.wildfly.datasources.oracle.jndi-name" ]
+        "system-properties" : [ "org.wildfly.datasources.oracle.datasource", "org.wildfly.datasources.oracle.jndi-name" ],
+        "environment-variables" : [ "OPENSHIFT_ORACLE_DATASOURCE", "ORACLE_DATASOURCE", "ORACLE_JNDI" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@jta",
         "attribute" : "jta",
-        "system-properties" : [ "ORACLE_JTA" ],
-        "environment-variables" : [ "org.wildfly.datasources.oracle.jta" ]
+        "system-properties" : [ "org.wildfly.datasources.oracle.jta" ],
+        "environment-variables" : [ "ORACLE_JTA" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@max-pool-size",
         "attribute" : "max-pool-size",
-        "system-properties" : [ "ORACLE_MAX_POOL_SIZE" ],
-        "environment-variables" : [ "org.wildfly.datasources.oracle.max-pool-size" ]
+        "system-properties" : [ "org.wildfly.datasources.oracle.max-pool-size" ],
+        "environment-variables" : [ "ORACLE_MAX_POOL_SIZE" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@min-pool-size",
         "attribute" : "min-pool-size",
-        "system-properties" : [ "ORACLE_MIN_POOL_SIZE" ],
-        "environment-variables" : [ "org.wildfly.datasources.oracle.min-pool-size" ]
+        "system-properties" : [ "org.wildfly.datasources.oracle.min-pool-size" ],
+        "environment-variables" : [ "ORACLE_MIN_POOL_SIZE" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@password",
         "attribute" : "password",
-        "system-properties" : [ "OPENSHIFT_ORACLE_DB_PASSWORD", "ORACLE_PASSWORD" ],
-        "environment-variables" : [ "org.wildfly.datasources.oracle.password" ]
+        "system-properties" : [ "org.wildfly.datasources.oracle.password" ],
+        "environment-variables" : [ "OPENSHIFT_ORACLE_DB_PASSWORD", "ORACLE_PASSWORD" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@stale-connection-checker-class-name",
         "attribute" : "stale-connection-checker-class-name",
-        "system-properties" : [ "ORACLE_STALE_CONNECTION_CHECKER" ],
-        "environment-variables" : [ "org.wildfly.datasources.oracle.stale-connection-checker-class-name" ]
+        "system-properties" : [ "org.wildfly.datasources.oracle.stale-connection-checker-class-name" ],
+        "environment-variables" : [ "ORACLE_STALE_CONNECTION_CHECKER" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@statistics-enabled",
         "attribute" : "statistics-enabled",
-        "system-properties" : [ ],
-        "environment-variables" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
+        "system-properties" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ],
+        "environment-variables" : [ ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@transaction-isolation",
         "attribute" : "transaction-isolation",
-        "system-properties" : [ "ORACLE_TX_ISOLATION" ],
-        "environment-variables" : [ "org.wildfly.datasources.oracle.transaction-isolation" ]
+        "system-properties" : [ "org.wildfly.datasources.oracle.transaction-isolation" ],
+        "environment-variables" : [ "ORACLE_TX_ISOLATION" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@user-name",
         "attribute" : "user-name",
-        "system-properties" : [ "OPENSHIFT_ORACLE_DB_USERNAME", "ORACLE_USER" ],
-        "environment-variables" : [ "org.wildfly.datasources.oracle.user-name" ]
+        "system-properties" : [ "org.wildfly.datasources.oracle.user-name" ],
+        "environment-variables" : [ "OPENSHIFT_ORACLE_DB_USERNAME", "ORACLE_USER" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@valid-connection-checker-class-name",
         "attribute" : "valid-connection-checker-class-name",
-        "system-properties" : [ "ORACLE_CONNECTION_CHECKER" ],
-        "environment-variables" : [ "org.wildfly.datasources.oracle.valid-connection-checker-class-name" ]
+        "system-properties" : [ "org.wildfly.datasources.oracle.valid-connection-checker-class-name" ],
+        "environment-variables" : [ "ORACLE_CONNECTION_CHECKER" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@validate-on-match",
         "attribute" : "validate-on-match",
-        "system-properties" : [ "ORACLE_VALIDATE_ON_MATCH" ],
-        "environment-variables" : [ "org.wildfly.datasources.oracle.validate-on-match" ]
+        "system-properties" : [ "org.wildfly.datasources.oracle.validate-on-match" ],
+        "environment-variables" : [ "ORACLE_VALIDATE_ON_MATCH" ]
       } ],
       "packages" : [ ],
       "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:11.0.1.Final-SNAPSHOT",
@@ -8332,8 +8332,8 @@
       "configurations" : [ {
         "_address" : "/subsystem=ee/service=default-bindings@@@datasource",
         "attribute" : "datasource",
-        "system-properties" : [ "OPENSHIFT_ORACLE_DATASOURCE", "ORACLE_DATASOURCE" ],
-        "environment-variables" : [ ]
+        "system-properties" : [ ],
+        "environment-variables" : [ "OPENSHIFT_ORACLE_DATASOURCE", "ORACLE_DATASOURCE" ]
       } ],
       "packages" : [ ],
       "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:11.0.1.Final-SNAPSHOT",
@@ -8500,93 +8500,93 @@
       "configurations" : [ {
         "_address" : "/subsystem=datasources/data-source=*@@@background-validation",
         "attribute" : "background-validation",
-        "system-properties" : [ "POSTGRESQL_BACKGROUND_VALIDATION" ],
-        "environment-variables" : [ "org.wildfly.datasources.postgresql.background-validation" ]
+        "system-properties" : [ "org.wildfly.datasources.postgresql.background-validation" ],
+        "environment-variables" : [ "POSTGRESQL_BACKGROUND_VALIDATION" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@background-validation-millis",
         "attribute" : "background-validation-millis",
-        "system-properties" : [ "POSTGRESQL_BACKGROUND_VALIDATION_MILLIS" ],
-        "environment-variables" : [ "org.wildfly.datasources.postgresql.background-validation-millis" ]
+        "system-properties" : [ "org.wildfly.datasources.postgresql.background-validation-millis" ],
+        "environment-variables" : [ "POSTGRESQL_BACKGROUND_VALIDATION_MILLIS" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@connection-url",
         "attribute" : "connection-url",
-        "system-properties" : [ "OPENSHIFT_POSTGRESQL_DB_HOST", "OPENSHIFT_POSTGRESQL_DB_NAME", "OPENSHIFT_POSTGRESQL_DB_PORT", "POSTGRESQL_DATABASE", "POSTGRESQL_HOST", "POSTGRESQL_PORT", "POSTGRESQL_SERVICE_HOST", "POSTGRESQL_SERVICE_PORT", "POSTGRESQL_URL" ],
-        "environment-variables" : [ "org.wildfly.datasources.postgresql.connection-url", "org.wildfly.datasources.postgresql.database", "org.wildfly.datasources.postgresql.host", "org.wildfly.datasources.postgresql.port" ]
+        "system-properties" : [ "org.wildfly.datasources.postgresql.connection-url", "org.wildfly.datasources.postgresql.database", "org.wildfly.datasources.postgresql.host", "org.wildfly.datasources.postgresql.port" ],
+        "environment-variables" : [ "OPENSHIFT_POSTGRESQL_DB_HOST", "OPENSHIFT_POSTGRESQL_DB_NAME", "OPENSHIFT_POSTGRESQL_DB_PORT", "POSTGRESQL_DATABASE", "POSTGRESQL_HOST", "POSTGRESQL_PORT", "POSTGRESQL_SERVICE_HOST", "POSTGRESQL_SERVICE_PORT", "POSTGRESQL_URL" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@enabled",
         "attribute" : "enabled",
-        "system-properties" : [ "POSTGRESQL_ENABLED" ],
-        "environment-variables" : [ "org.wildfly.datasources.postgresql.enabled" ]
+        "system-properties" : [ "org.wildfly.datasources.postgresql.enabled" ],
+        "environment-variables" : [ "POSTGRESQL_ENABLED" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@exception-sorter-class-name",
         "attribute" : "exception-sorter-class-name",
-        "system-properties" : [ "POSTGRESQL_EXCEPTION_SORTER" ],
-        "environment-variables" : [ "org.wildfly.datasources.postgresql.exception-sorter-class-name" ]
+        "system-properties" : [ "org.wildfly.datasources.postgresql.exception-sorter-class-name" ],
+        "environment-variables" : [ "POSTGRESQL_EXCEPTION_SORTER" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@flush-strategy",
         "attribute" : "flush-strategy",
-        "system-properties" : [ "POSTGRESQL_FLUSH_STRATEGY" ],
-        "environment-variables" : [ "org.wildfly.datasources.postgresql.flush-strategy" ]
+        "system-properties" : [ "org.wildfly.datasources.postgresql.flush-strategy" ],
+        "environment-variables" : [ "POSTGRESQL_FLUSH_STRATEGY" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@idle-timeout-minutes",
         "attribute" : "idle-timeout-minutes",
-        "system-properties" : [ "POSTGRESQL_IDLE_TIMEOUT_MINUTES" ],
-        "environment-variables" : [ "org.wildfly.datasources.postgresql.idle-timeout-minutes" ]
+        "system-properties" : [ "org.wildfly.datasources.postgresql.idle-timeout-minutes" ],
+        "environment-variables" : [ "POSTGRESQL_IDLE_TIMEOUT_MINUTES" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@jndi-name",
         "attribute" : "jndi-name",
-        "system-properties" : [ "OPENSHIFT_POSTGRESQL_DATASOURCE", "POSTGRESQL_DATASOURCE", "POSTGRESQL_JNDI" ],
-        "environment-variables" : [ "org.wildfly.datasources.postgresql.datasource", "org.wildfly.datasources.postgresql.jndi-name" ]
+        "system-properties" : [ "org.wildfly.datasources.postgresql.datasource", "org.wildfly.datasources.postgresql.jndi-name" ],
+        "environment-variables" : [ "OPENSHIFT_POSTGRESQL_DATASOURCE", "POSTGRESQL_DATASOURCE", "POSTGRESQL_JNDI" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@jta",
         "attribute" : "jta",
-        "system-properties" : [ "POSTGRESQL_JTA" ],
-        "environment-variables" : [ "org.wildfly.datasources.postgresql.jta" ]
+        "system-properties" : [ "org.wildfly.datasources.postgresql.jta" ],
+        "environment-variables" : [ "POSTGRESQL_JTA" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@max-pool-size",
         "attribute" : "max-pool-size",
-        "system-properties" : [ "POSTGRESQL_MAX_POOL_SIZE" ],
-        "environment-variables" : [ "org.wildfly.datasources.postgresql.max-pool-size" ]
+        "system-properties" : [ "org.wildfly.datasources.postgresql.max-pool-size" ],
+        "environment-variables" : [ "POSTGRESQL_MAX_POOL_SIZE" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@min-pool-size",
         "attribute" : "min-pool-size",
-        "system-properties" : [ "POSTGRESQL_MIN_POOL_SIZE" ],
-        "environment-variables" : [ "org.wildfly.datasources.postgresql.min-pool-size" ]
+        "system-properties" : [ "org.wildfly.datasources.postgresql.min-pool-size" ],
+        "environment-variables" : [ "POSTGRESQL_MIN_POOL_SIZE" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@password",
         "attribute" : "password",
-        "system-properties" : [ "OPENSHIFT_POSTGRESQL_DB_PASSWORD", "POSTGRESQL_PASSWORD" ],
-        "environment-variables" : [ "org.wildfly.datasources.postgresql.password" ]
+        "system-properties" : [ "org.wildfly.datasources.postgresql.password" ],
+        "environment-variables" : [ "OPENSHIFT_POSTGRESQL_DB_PASSWORD", "POSTGRESQL_PASSWORD" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@stale-connection-checker-class-name",
         "attribute" : "stale-connection-checker-class-name",
-        "system-properties" : [ "POSTGRESQL_STALE_CONNECTION_CHECKER" ],
-        "environment-variables" : [ "org.wildfly.datasources.postgresql.stale-connection-checker-class-name" ]
+        "system-properties" : [ "org.wildfly.datasources.postgresql.stale-connection-checker-class-name" ],
+        "environment-variables" : [ "POSTGRESQL_STALE_CONNECTION_CHECKER" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@statistics-enabled",
         "attribute" : "statistics-enabled",
-        "system-properties" : [ ],
-        "environment-variables" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
+        "system-properties" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ],
+        "environment-variables" : [ ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@transaction-isolation",
         "attribute" : "transaction-isolation",
-        "system-properties" : [ "POSTGRESQL_TX_ISOLATION" ],
-        "environment-variables" : [ "org.wildfly.datasources.postgresql.transaction-isolation" ]
+        "system-properties" : [ "org.wildfly.datasources.postgresql.transaction-isolation" ],
+        "environment-variables" : [ "POSTGRESQL_TX_ISOLATION" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@user-name",
         "attribute" : "user-name",
-        "system-properties" : [ "OPENSHIFT_POSTGRESQL_DB_USERNAME", "POSTGRESQL_USER" ],
-        "environment-variables" : [ "org.wildfly.datasources.postgresql.user-name" ]
+        "system-properties" : [ "org.wildfly.datasources.postgresql.user-name" ],
+        "environment-variables" : [ "OPENSHIFT_POSTGRESQL_DB_USERNAME", "POSTGRESQL_USER" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@valid-connection-checker-class-name",
         "attribute" : "valid-connection-checker-class-name",
-        "system-properties" : [ "POSTGRESQL_CONNECTION_CHECKER" ],
-        "environment-variables" : [ "org.wildfly.datasources.postgresql.valid-connection-checker-class-name" ]
+        "system-properties" : [ "org.wildfly.datasources.postgresql.valid-connection-checker-class-name" ],
+        "environment-variables" : [ "POSTGRESQL_CONNECTION_CHECKER" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@validate-on-match",
         "attribute" : "validate-on-match",
-        "system-properties" : [ "POSTGRESQL_VALIDATE_ON_MATCH" ],
-        "environment-variables" : [ "org.wildfly.datasources.postgresql.validate-on-match" ]
+        "system-properties" : [ "org.wildfly.datasources.postgresql.validate-on-match" ],
+        "environment-variables" : [ "POSTGRESQL_VALIDATE_ON_MATCH" ]
       } ],
       "packages" : [ ],
       "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:11.0.1.Final-SNAPSHOT",
@@ -8628,8 +8628,8 @@
       "configurations" : [ {
         "_address" : "/subsystem=ee/service=default-bindings@@@datasource",
         "attribute" : "datasource",
-        "system-properties" : [ "OPENSHIFT_POSTGRESQL_DATASOURCE", "POSTGRESQL_DATASOURCE", "POSTGRESQL_JNDI" ],
-        "environment-variables" : [ "org.wildfly.datasources.postgresql.datasource", "org.wildfly.datasources.postgresql.jndi-name" ]
+        "system-properties" : [ "org.wildfly.datasources.postgresql.datasource", "org.wildfly.datasources.postgresql.jndi-name" ],
+        "environment-variables" : [ "OPENSHIFT_POSTGRESQL_DATASOURCE", "POSTGRESQL_DATASOURCE", "POSTGRESQL_JNDI" ]
       } ],
       "packages" : [ ],
       "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:11.0.1.Final-SNAPSHOT",
@@ -9076,93 +9076,93 @@
       "configurations" : [ {
         "_address" : "/subsystem=datasources/data-source=*@@@background-validation",
         "attribute" : "background-validation",
-        "system-properties" : [ "H2DATABASE_BACKGROUND_VALIDATION" ],
-        "environment-variables" : [ "org.wildfly.datasources.h2database.background-validation" ]
+        "system-properties" : [ "org.wildfly.datasources.h2database.background-validation" ],
+        "environment-variables" : [ "H2DATABASE_BACKGROUND_VALIDATION" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@background-validation-millis",
         "attribute" : "background-validation-millis",
-        "system-properties" : [ "H2DATABASE_BACKGROUND_VALIDATION_MILLIS" ],
-        "environment-variables" : [ "org.wildfly.datasources.h2database.background-validation-millis" ]
+        "system-properties" : [ "org.wildfly.datasources.h2database.background-validation-millis" ],
+        "environment-variables" : [ "H2DATABASE_BACKGROUND_VALIDATION_MILLIS" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@connection-url",
         "attribute" : "connection-url",
-        "system-properties" : [ "H2DATABASE_URL", "OPENSHIFT_H2DATABASE_URL" ],
-        "environment-variables" : [ "org.wildfly.datasources.h2database.connection-url" ]
+        "system-properties" : [ "org.wildfly.datasources.h2database.connection-url" ],
+        "environment-variables" : [ "H2DATABASE_URL", "OPENSHIFT_H2DATABASE_URL" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@enabled",
         "attribute" : "enabled",
-        "system-properties" : [ "H2DATABASE_ENABLED" ],
-        "environment-variables" : [ "org.wildfly.datasources.h2database.enabled" ]
+        "system-properties" : [ "org.wildfly.datasources.h2database.enabled" ],
+        "environment-variables" : [ "H2DATABASE_ENABLED" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@exception-sorter-class-name",
         "attribute" : "exception-sorter-class-name",
-        "system-properties" : [ "H2DATABASE_EXCEPTION_SORTER" ],
-        "environment-variables" : [ "org.wildfly.datasources.h2database.exception-sorter-class-name" ]
+        "system-properties" : [ "org.wildfly.datasources.h2database.exception-sorter-class-name" ],
+        "environment-variables" : [ "H2DATABASE_EXCEPTION_SORTER" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@flush-strategy",
         "attribute" : "flush-strategy",
-        "system-properties" : [ "H2DATABASE_FLUSH_STRATEGY" ],
-        "environment-variables" : [ "org.wildfly.datasources.h2database.flush-strategy" ]
+        "system-properties" : [ "org.wildfly.datasources.h2database.flush-strategy" ],
+        "environment-variables" : [ "H2DATABASE_FLUSH_STRATEGY" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@idle-timeout-minutes",
         "attribute" : "idle-timeout-minutes",
-        "system-properties" : [ "H2DATABASE_IDLE_TIMEOUT_MINUTES" ],
-        "environment-variables" : [ "org.wildfly.datasources.h2database.idle-timeout-minutes" ]
+        "system-properties" : [ "org.wildfly.datasources.h2database.idle-timeout-minutes" ],
+        "environment-variables" : [ "H2DATABASE_IDLE_TIMEOUT_MINUTES" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@jndi-name",
         "attribute" : "jndi-name",
-        "system-properties" : [ "H2DATABASE_DATASOURCE", "H2DATABASE_JNDI", "OPENSHIFT_H2DATABASE_DATASOURCE" ],
-        "environment-variables" : [ "org.wildfly.datasources.h2database.datasource", "org.wildfly.datasources.h2database.jndi-name" ]
+        "system-properties" : [ "org.wildfly.datasources.h2database.datasource", "org.wildfly.datasources.h2database.jndi-name" ],
+        "environment-variables" : [ "H2DATABASE_DATASOURCE", "H2DATABASE_JNDI", "OPENSHIFT_H2DATABASE_DATASOURCE" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@jta",
         "attribute" : "jta",
-        "system-properties" : [ "H2DATABASE_JTA" ],
-        "environment-variables" : [ "org.wildfly.datasources.h2database.jta" ]
+        "system-properties" : [ "org.wildfly.datasources.h2database.jta" ],
+        "environment-variables" : [ "H2DATABASE_JTA" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@max-pool-size",
         "attribute" : "max-pool-size",
-        "system-properties" : [ "H2DATABASE_MAX_POOL_SIZE" ],
-        "environment-variables" : [ "org.wildfly.datasources.h2database.max-pool-size" ]
+        "system-properties" : [ "org.wildfly.datasources.h2database.max-pool-size" ],
+        "environment-variables" : [ "H2DATABASE_MAX_POOL_SIZE" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@min-pool-size",
         "attribute" : "min-pool-size",
-        "system-properties" : [ "H2DATABASE_MIN_POOL_SIZE" ],
-        "environment-variables" : [ "org.wildfly.datasources.h2database.min-pool-size" ]
+        "system-properties" : [ "org.wildfly.datasources.h2database.min-pool-size" ],
+        "environment-variables" : [ "H2DATABASE_MIN_POOL_SIZE" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@password",
         "attribute" : "password",
-        "system-properties" : [ "H2DATABASE_PASSWORD", "OPENSHIFT_H2DATABASE_DB_PASSWORD" ],
-        "environment-variables" : [ "org.wildfly.datasources.h2database.password" ]
+        "system-properties" : [ "org.wildfly.datasources.h2database.password" ],
+        "environment-variables" : [ "H2DATABASE_PASSWORD", "OPENSHIFT_H2DATABASE_DB_PASSWORD" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@stale-connection-checker-class-name",
         "attribute" : "stale-connection-checker-class-name",
-        "system-properties" : [ "H2DATABASE_STALE_CONNECTION_CHECKER" ],
-        "environment-variables" : [ "org.wildfly.datasources.h2database.stale-connection-checker-class-name" ]
+        "system-properties" : [ "org.wildfly.datasources.h2database.stale-connection-checker-class-name" ],
+        "environment-variables" : [ "H2DATABASE_STALE_CONNECTION_CHECKER" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@statistics-enabled",
         "attribute" : "statistics-enabled",
-        "system-properties" : [ ],
-        "environment-variables" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ]
+        "system-properties" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ],
+        "environment-variables" : [ ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@transaction-isolation",
         "attribute" : "transaction-isolation",
-        "system-properties" : [ "H2DATABASE_TX_ISOLATION" ],
-        "environment-variables" : [ "org.wildfly.datasources.h2database.transaction-isolation" ]
+        "system-properties" : [ "org.wildfly.datasources.h2database.transaction-isolation" ],
+        "environment-variables" : [ "H2DATABASE_TX_ISOLATION" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@user-name",
         "attribute" : "user-name",
-        "system-properties" : [ "H2DATABASE_USER", "OPENSHIFT_H2DATABASE_DB_USERNAME" ],
-        "environment-variables" : [ "org.wildfly.datasources.h2database.user-name" ]
+        "system-properties" : [ "org.wildfly.datasources.h2database.user-name" ],
+        "environment-variables" : [ "H2DATABASE_USER", "OPENSHIFT_H2DATABASE_DB_USERNAME" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@valid-connection-checker-class-name",
         "attribute" : "valid-connection-checker-class-name",
-        "system-properties" : [ "H2DATABASE_CONNECTION_CHECKER" ],
-        "environment-variables" : [ "org.wildfly.datasources.h2database.valid-connection-checker-class-name" ]
+        "system-properties" : [ "org.wildfly.datasources.h2database.valid-connection-checker-class-name" ],
+        "environment-variables" : [ "H2DATABASE_CONNECTION_CHECKER" ]
       }, {
         "_address" : "/subsystem=datasources/data-source=*@@@validate-on-match",
         "attribute" : "validate-on-match",
-        "system-properties" : [ "H2DATABASE_VALIDATE_ON_MATCH" ],
-        "environment-variables" : [ "org.wildfly.datasources.h2database.validate-on-match" ]
+        "system-properties" : [ "org.wildfly.datasources.h2database.validate-on-match" ],
+        "environment-variables" : [ "H2DATABASE_VALIDATE_ON_MATCH" ]
       } ],
       "packages" : [ ],
       "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:11.0.1.Final-SNAPSHOT",
@@ -9194,8 +9194,8 @@
       "configurations" : [ {
         "_address" : "/subsystem=ee/service=default-bindings@@@datasource",
         "attribute" : "datasource",
-        "system-properties" : [ "H2DATABASE_DATASOURCE" ],
-        "environment-variables" : [ ]
+        "system-properties" : [ ],
+        "environment-variables" : [ "H2DATABASE_DATASOURCE" ]
       } ],
       "packages" : [ ],
       "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:11.0.1.Final-SNAPSHOT",
@@ -9417,13 +9417,13 @@
       "configurations" : [ {
         "_address" : "/socket-binding-group=*/remote-destination-outbound-socket-binding=*@@@host",
         "attribute" : "host",
-        "system-properties" : [ ],
-        "environment-variables" : [ "jboss.messaging.host" ]
+        "system-properties" : [ "jboss.messaging.host" ],
+        "environment-variables" : [ ]
       }, {
         "_address" : "/socket-binding-group=*/remote-destination-outbound-socket-binding=*@@@port",
         "attribute" : "port",
-        "system-properties" : [ ],
-        "environment-variables" : [ "jboss.http.port" ]
+        "system-properties" : [ "jboss.http.port" ],
+        "environment-variables" : [ ]
       } ],
       "packages" : [ ],
       "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
