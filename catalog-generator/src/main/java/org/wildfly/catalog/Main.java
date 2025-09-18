@@ -38,8 +38,8 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
-import org.jboss.wildscribe.site.Generator;
-import org.jboss.wildscribe.site.Version;
+import org.wildfly.galleon.plugin.doc.generator.DocGenerator;
+import org.wildfly.galleon.plugin.doc.generator.SimpleLog;
 
 public class Main {
 
@@ -51,9 +51,9 @@ public class Main {
         boolean validateOnly = Boolean.getBoolean("validateOnly");
         Path rootDirectory = Paths.get("../docs");
         Path targetDirectory = rootDirectory.resolve(wildflyVersion).toAbsolutePath();
-        Path wildscribeTargetDirectory = targetDirectory.resolve("wildscribe");
+        Path modelReferenceTargetDirectory = targetDirectory.resolve("modelReference");
         if (!validateOnly) {
-            Files.createDirectories(wildscribeTargetDirectory);
+            Files.createDirectories(modelReferenceTargetDirectory);
         } else {
             System.out.println("Validate only that we can build a catalog");
         }
@@ -84,7 +84,7 @@ public class Main {
                 JsonNode remoteMetadata = it.next();
                 String metadataUrl = remoteMetadata.get("url").asText();
                 JsonNode subCatalog = mapper.readTree(new URL(metadataUrl));
-                generateCatalog(subCatalog, glowRulesDescriptions, categories, mapper, wildscribeTargetDirectory);
+                generateCatalog(subCatalog, glowRulesDescriptions, categories, mapper, modelReferenceTargetDirectory);
             }
         } else {
             String url = node.get("knownFeaturePacks").asText();
@@ -135,12 +135,11 @@ public class Main {
                     }
                     if (Files.exists(modelFile)) {
                         //JsonNode model = mapper.readTree(modelFile.toFile().toURI().toURL());
-                        List<Version> versions = Collections.singletonList(new Version(name, version, modelFile.toFile()));
                         String directoryName = (coords[0] + '_' + artifactId);
-                        fpNode.put("modelReference", "wildscribe/" + directoryName + "/index.html");
-                        Generator.generate(versions, wildscribeTargetDirectory.resolve(directoryName));
+                        fpNode.put("modelReference", "modelReference/" + directoryName + "/reference/index.html");
+                        DocGenerator.generateModel(modelReferenceTargetDirectory.resolve(directoryName), modelFile);
                     }
-                    generateCatalog(subCatalog, glowRulesDescriptions, categories, mapper, wildscribeTargetDirectory);
+                    generateCatalog(subCatalog, glowRulesDescriptions, categories, mapper, modelReferenceTargetDirectory);
                 } finally {
                     recursiveDelete(tmp);
                 }
@@ -374,7 +373,7 @@ public class Main {
         }
         url += "index.html";
         if (attributeName != null) {
-            url += "#attr-" + attributeName;
+            url += "#"+attributeName;
         }
         if (url.equals("/index.html")) {
             url = null;
@@ -420,18 +419,18 @@ public class Main {
             path = path.substring(1);
         }
         String formattedPath = path;
-        if (path.contains("#attr-")) {
-            int i = formattedPath.indexOf("#attr-");
+        if (path.contains("#")) {
+            int i = formattedPath.indexOf("#");
             formattedPath = formattedPath.substring(0, i);
         }
         for (File fpDir : rootDir.toFile().listFiles()) {
-            Path pathFile = fpDir.toPath().resolve(formattedPath);
+            Path pathFile = fpDir.toPath().resolve("reference").resolve(formattedPath);
             if (Files.exists(pathFile)) {
                 // No need for the fp root index.
                 if (pathFile.getParent().equals(fpDir.toPath())) {
                     return null;
                 }
-                return "wildscribe/" + fpDir.getName() + "/" + path;
+                return "modelReference/" + fpDir.getName() + "/reference/" + path;
             }
         }
         return null;
