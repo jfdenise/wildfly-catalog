@@ -27,7 +27,6 @@ import java.nio.file.SimpleFileVisitor;
 import java.nio.file.StandardCopyOption;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.EnumSet;
 import java.util.Iterator;
 import java.util.List;
@@ -39,7 +38,6 @@ import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 import org.wildfly.galleon.plugin.doc.generator.DocGenerator;
-import org.wildfly.galleon.plugin.doc.generator.SimpleLog;
 
 public class Main {
 
@@ -230,7 +228,9 @@ public class Main {
             String description = null;
             String note = null;
             String addOn = null;
-            String stability = null;
+            // For now we have feature-packs that have not been regenerated with the support for stability.
+            JsonNode stab = layer.get("stability");
+            String stability = stab == null ? null : stab.asText();
             List<JsonNode> discoveryRules = new ArrayList<>();
             if (props != null) {
                 Iterator<JsonNode> properties = props.elements();
