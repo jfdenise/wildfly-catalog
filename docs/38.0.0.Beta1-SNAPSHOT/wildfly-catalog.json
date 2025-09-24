@@ -2476,7 +2476,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ "org.jboss.as.patching.cli" ],
+      "packages" : [ "org.jboss.as.patching.cli", "org.wildfly.extension.undertow" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "A servlet container with support for datasources",
       "glowDiscoverable" : false
@@ -2564,7 +2564,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.undertow" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "A Jakarta EE Core Profile server",
       "glowRules" : [ {
@@ -5051,7 +5051,7 @@
         "system-properties" : [ "jboss.default.multicast.address" ],
         "environment-variables" : [ ]
       } ],
-      "packages" : [ ],
+      "packages" : [ "org.jboss.as.clustering.infinispan", "org.jboss.as.clustering.jgroups", "org.jboss.as.ejb3", "org.wildfly.extension.clustering.ejb", "org.wildfly.extension.clustering.server" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Infinispan-based distributed cache for stateful session beans.",
       "note" : "ejb-local-cache layer must be explicitly excluded if ejb-dist-cache is in use.",
@@ -5416,7 +5416,7 @@
         "system-properties" : [ "jboss.default.multicast.address" ],
         "environment-variables" : [ ]
       } ],
-      "packages" : [ ],
+      "packages" : [ "org.hibernate", "org.hibernate.envers", "org.hibernate.search.mapper.orm", "org.jboss.as.clustering.infinispan", "org.jboss.as.clustering.jgroups", "org.jboss.as.jpa", "org.wildfly.extension.clustering.server" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for JPA with a distributed second level cache.",
       "note" : "jpa layer must be explicitly excluded if jpa-distributed is in use.",
@@ -5513,7 +5513,7 @@
         "system-properties" : [ "jboss.modcluster.multicast.address" ],
         "environment-variables" : [ ]
       } ],
-      "packages" : [ ],
+      "packages" : [ "org.jboss.as.modcluster" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for mod_cluster subsystem.",
       "glowAddOn" : "mod_cluster",
@@ -5840,7 +5840,7 @@
         "system-properties" : [ "jboss.default.multicast.address" ],
         "environment-variables" : [ ]
       } ],
-      "packages" : [ ],
+      "packages" : [ "org.jboss.as.clustering.infinispan", "org.jboss.as.clustering.jgroups", "org.wildfly.extension.clustering.server", "org.wildfly.extension.clustering.singleton" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for WildFly singleton HA.",
       "glowRules" : [ {
@@ -5921,7 +5921,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.jboss.as.clustering.infinispan", "org.wildfly.extension.clustering.server", "org.wildfly.extension.clustering.singleton" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for WildFly singleton.",
       "glowRules" : [ {
@@ -6135,7 +6135,7 @@
         "system-properties" : [ "wildfly.statistics-enabled", "wildfly.undertow.statistics-enabled" ],
         "environment-variables" : [ ]
       } ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.undertow" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for Undertow configured as a load balancer.",
       "glowAddOn" : "load-balancer",
@@ -6560,7 +6560,7 @@
         "system-properties" : [ "jboss.default.multicast.address" ],
         "environment-variables" : [ ]
       } ],
-      "packages" : [ "org.wildfly.clustering.web.undertow" ],
+      "packages" : [ "org.jboss.as.clustering.infinispan", "org.jboss.as.clustering.jgroups", "org.wildfly.clustering.web.undertow", "org.wildfly.extension.clustering.server", "org.wildfly.extension.clustering.web" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for distributable web applications. Configures a non-local Infinispan-based container web cache for data session handling suitable to clustering environments.",
       "glowRules" : [ {
@@ -6694,7 +6694,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ "org.wildfly.clustering.web.undertow" ],
+      "packages" : [ "org.jboss.as.clustering.infinispan", "org.wildfly.clustering.web.undertow", "org.wildfly.extension.clustering.server", "org.wildfly.extension.clustering.web" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for distributable web applications. Configures a local Infinispan-based container web cache for data session handling suitable to single node environments.",
       "glowRules" : [ {
@@ -7069,7 +7069,7 @@
         "system-properties" : [ "wildfly.datasources.statistics-enabled", "wildfly.statistics-enabled" ],
         "environment-variables" : [ ]
       } ],
-      "packages" : [ ],
+      "packages" : [ "org.jboss.as.connector" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for an H2 datasource",
       "glowAddOn" : "h2-database",
@@ -7150,7 +7150,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ "com.h2database.h2" ],
+      "packages" : [ "com.h2database.h2", "org.jboss.as.connector" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for the H2 JDBC driver",
       "glowRules" : [ {
@@ -7184,7 +7184,7 @@
       } ],
       "managementModel" : { },
       "configurations" : [ ],
-      "packages" : [ "org.hibernate.search.mapper.orm", "org.hibernate.search.backend.lucene", "org.hibernate.search.backend.elasticsearch" ],
+      "packages" : [ "org.hibernate.search.backend.elasticsearch", "org.hibernate.search.backend.lucene", "org.hibernate.search.mapper.orm" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for Hibernate Search.",
       "note" : "The jpa dependency can be excluded and jpa-distributed used instead.",
@@ -8725,7 +8725,7 @@
         "system-properties" : [ "jboss.socket.binding.port-offset" ],
         "environment-variables" : [ ]
       } ],
-      "packages" : [ ],
+      "packages" : [ "wildflyee.api" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "glowDiscoverable" : false
     }, {
@@ -8795,7 +8795,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.core-management" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "glowDiscoverable" : false
     }, {
@@ -8876,7 +8876,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.discovery" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "glowDiscoverable" : false
     }, {
@@ -8917,7 +8917,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "jakarta.json.api", "org.glassfish.javax.el", "org.jboss.as.ee", "org.jboss.invocation", "org.wildfly.naming" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.annotations",
@@ -9225,7 +9225,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.jboss.as.clustering.infinispan", "org.wildfly.extension.clustering.server" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "glowAddOn" : "infinispan",
       "glowDiscoverable" : false
@@ -9291,7 +9291,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.io" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "glowDiscoverable" : false
     }, {
@@ -9369,7 +9369,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.jboss.as.jmx" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "glowDiscoverable" : false
     }, {
@@ -9398,7 +9398,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.jboss.as.jmx", "org.jboss.remoting-jmx" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "glowDiscoverable" : false
     }, {
@@ -9565,7 +9565,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.apache.commons.logging", "org.apache.logging.log4j.api", "org.jboss.as.logging", "org.jboss.logging.jul-to-slf4j-stub", "org.slf4j", "org.slf4j.impl" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "glowDiscoverable" : false
     }, {
@@ -9734,7 +9734,7 @@
         "system-properties" : [ "jboss.management.http.port", "jboss.management.https.port" ],
         "environment-variables" : [ ]
       } ],
-      "packages" : [ ],
+      "packages" : [ "org.jboss.as.domain-http-error-context" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "glowDiscoverable" : false
     }, {
@@ -9767,7 +9767,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.jboss.as.pojo" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.expected-file",
@@ -9813,7 +9813,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "io.undertow.core", "org.jboss.as.remoting" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "glowDiscoverable" : false
     }, {
@@ -9831,7 +9831,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.request-controller" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "glowDiscoverable" : false
     }, {
@@ -9874,7 +9874,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.security.manager" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "glowDiscoverable" : false
     }, {
@@ -9934,7 +9934,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.undertow" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.annotations",
@@ -10051,7 +10051,7 @@
         "system-properties" : [ "wildfly.statistics-enabled", "wildfly.transactions.statistics-enabled" ],
         "environment-variables" : [ ]
       } ],
-      "packages" : [ ],
+      "packages" : [ "org.jboss.as.transactions" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.annotations",
@@ -10182,7 +10182,7 @@
         "system-properties" : [ "wildfly.statistics-enabled", "wildfly.undertow.statistics-enabled" ],
         "environment-variables" : [ ]
       } ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.undertow" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "glowDiscoverable" : false
     }, {
@@ -10278,7 +10278,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.batch.jberet" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for Jakarta Batch",
       "glowRules" : [ {
@@ -10311,7 +10311,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.hibernate.validator", "org.wildfly.extension.bean-validation" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for Jakarta Bean Validation",
       "glowRules" : [ {
@@ -10344,7 +10344,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "jakarta.inject.api", "jakarta.persistence.api", "org.hibernate.validator.cdi", "org.jboss.as.weld", "org.jboss.as.weld.beanvalidation", "org.jboss.as.weld.ejb", "org.jboss.as.weld.jpa", "org.jboss.as.weld.transactions", "org.jboss.as.weld.webservices" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for Jakarta Contexts and Dependency Injection",
       "glowRules" : [ {
@@ -10472,7 +10472,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "jakarta.json.api", "org.glassfish.javax.el", "org.jboss.as.ee", "org.jboss.invocation", "org.wildfly.naming" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for Jakarta EE Concurrency",
       "glowRules" : [ {
@@ -10577,7 +10577,7 @@
         "system-properties" : [ "ejb.resource-adapter-name" ],
         "environment-variables" : [ ]
       } ],
-      "packages" : [ ],
+      "packages" : [ "org.jboss.as.ejb3", "org.jboss.as.naming", "org.jboss.remoting" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for Jakarta Enterprise Beans, excluding the IIOP protocol",
       "glowRules" : [ {
@@ -10822,7 +10822,7 @@
         "system-properties" : [ "wildfly.ejb3.statistics-enabled", "wildfly.statistics-enabled" ],
         "environment-variables" : [ ]
       } ],
-      "packages" : [ ],
+      "packages" : [ "org.jboss.as.ejb3", "org.wildfly.extension.discovery" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for Jakarta Enterprise Beans Lite",
       "glowRules" : [ {
@@ -11058,7 +11058,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.jboss.as.clustering.infinispan", "org.jboss.as.ejb3", "org.wildfly.extension.clustering.ejb", "org.wildfly.extension.clustering.server" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Infinispan-based local cache for stateful session beans.",
       "note" : "This layer must be explicitly excluded if ejb-dist-cache is in use.",
@@ -11078,7 +11078,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "jakarta.data.api", "org.wildfly.extension.jakarta.data" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for Jakarta Data",
       "glowRules" : [ {
@@ -11146,7 +11146,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "com.fasterxml.jackson.datatype.jackson-datatype-jdk8", "com.fasterxml.jackson.datatype.jackson-datatype-jsr310", "jakarta.json.api", "jakarta.ws.rs.api", "jakarta.xml.bind.api", "org.jboss.as.jaxrs", "org.jboss.resteasy.resteasy-atom-provider", "org.jboss.resteasy.resteasy-cdi", "org.jboss.resteasy.resteasy-core", "org.jboss.resteasy.resteasy-core-spi", "org.jboss.resteasy.resteasy-crypto", "org.jboss.resteasy.resteasy-jackson2-provider", "org.jboss.resteasy.resteasy-jaxb-provider", "org.jboss.resteasy.resteasy-jaxrs", "org.jboss.resteasy.resteasy-jsapi", "org.jboss.resteasy.resteasy-json-binding-provider", "org.jboss.resteasy.resteasy-json-p-provider", "org.jboss.resteasy.resteasy-multipart-provider", "org.jboss.resteasy.resteasy-spring", "org.jboss.resteasy.resteasy-tracing-api", "org.jboss.resteasy.resteasy-validator-provider" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for Jakarta RESTful Web Services.",
       "glowDiscoverable" : false
@@ -11264,7 +11264,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.hibernate", "org.hibernate.envers", "org.hibernate.search.mapper.orm", "org.jboss.as.clustering.infinispan", "org.jboss.as.jpa", "org.wildfly.extension.clustering.server" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for JPA (using the latest WildFly supported Hibernate release).",
       "note" : "This layer must be explicitly excluded if jpa-distributed is in use.",
@@ -11306,7 +11306,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ "org.jboss.as.jsf-injection" ],
+      "packages" : [ "org.jboss.as.jsf", "org.jboss.as.jsf-injection" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for Jakarta Faces.",
       "glowRules" : [ {
@@ -11340,7 +11340,7 @@
       } ],
       "managementModel" : { },
       "configurations" : [ ],
-      "packages" : [ "org.eclipse.yasson", "jakarta.json.bind.api" ],
+      "packages" : [ "jakarta.json.bind.api", "org.eclipse.yasson" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for JSON Binding (Jakarta JSON Binding) provisioning the Jakarta JSON Binding API and Implementation modules.",
       "glowRules" : [ {
@@ -11449,7 +11449,7 @@
         "system-properties" : [ "jboss.mail.server.port" ],
         "environment-variables" : [ ]
       } ],
-      "packages" : [ ],
+      "packages" : [ "org.jboss.as.mail", "org.wildfly.extension.elytron", "org.wildfly.security.elytron" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for Jakarta Mail",
       "glowRules" : [ {
@@ -11507,7 +11507,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.jboss.as.naming" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for JNDI",
       "glowRules" : [ {
@@ -11641,7 +11641,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "jakarta.jms.api", "org.jboss.as.connector" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for deployment of Jakarta Connectors resource adapters.",
       "glowRules" : [ {
@@ -11724,7 +11724,7 @@
         "system-properties" : [ "jboss.bind.address" ],
         "environment-variables" : [ ]
       } ],
-      "packages" : [ "org.jboss.as.webservices.server.integration", "org.jboss.ws.saaj-impl", "org.jboss.ws.cxf.sts", "bin.wstools", "org.jboss.ws.tools.common", "org.jboss.ws.tools.wsconsume", "org.jboss.ws.tools.wsprovide" ],
+      "packages" : [ "bin.wstools", "org.jboss.as.webservices", "org.jboss.as.webservices.server.integration", "org.jboss.ws.cxf.sts", "org.jboss.ws.saaj-impl", "org.jboss.ws.tools.common", "org.jboss.ws.tools.wsconsume", "org.jboss.ws.tools.wsprovide" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for Jakarta XML Web Services",
       "glowRules" : [ {
@@ -11766,7 +11766,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "jakarta.mvc.api", "org.eclipse.krazo.core", "org.eclipse.krazo.resteasy", "org.wildfly.extension.mvc-krazo" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for Jakarta MVC",
       "glowRules" : [ {
@@ -12096,7 +12096,7 @@
         "system-properties" : [ "wildfly.messaging-activemq.statistics-enabled", "wildfly.statistics-enabled" ],
         "environment-variables" : [ ]
       } ],
-      "packages" : [ ],
+      "packages" : [ "io.undertow.core", "jakarta.json.api", "org.apache.activemq.artemis", "org.apache.activemq.artemis.journal", "org.glassfish.javax.el", "org.jboss.as.ee", "org.jboss.as.naming", "org.jboss.invocation", "org.jboss.remoting", "org.jboss.xnio", "org.jboss.xnio.netty.netty-xnio-transport", "org.wildfly.extension.messaging-activemq", "org.wildfly.naming" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for an embedded Apache Activemq Artemis Jakarta Messaging broker.",
       "glowAddOn" : "embedded-activemq",
@@ -12122,7 +12122,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.messaging-activemq" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for connections to a remote Jakarta Messaging broker",
       "glowRules" : [ {
@@ -12239,7 +12239,7 @@
         "system-properties" : [ "jboss.messaging.connector.port" ],
         "environment-variables" : [ ]
       } ],
-      "packages" : [ ],
+      "packages" : [ "jakarta.json.api", "org.glassfish.javax.el", "org.jboss.as.ee", "org.jboss.invocation", "org.wildfly.extension.messaging-activemq", "org.wildfly.naming" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for connections to a remote Apache Activemq Artemis Jakarta Messaging broker",
       "glowAddOn" : "remote-activemq",
@@ -12337,7 +12337,7 @@
       } ],
       "managementModel" : { },
       "configurations" : [ ],
-      "packages" : [ "org.jboss.as.cli", "org.jboss.as.domain-add-user", "org.wildfly.security.elytron-tool", "core-tools" ],
+      "packages" : [ "core-tools", "org.jboss.as.cli", "org.jboss.as.domain-add-user", "org.wildfly.security.elytron-tool" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for 'jboss-cli', 'add-user' and 'elytron-tool' launch scripts and configuration files",
       "glowAddOn" : "wildfly-cli",
@@ -12360,7 +12360,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ "org.jboss.as.system-jmx" ],
+      "packages" : [ "org.jboss.as.sar", "org.jboss.as.system-jmx" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for SAR archives to deploy MBeans.",
       "glowRules" : [ {
@@ -12395,7 +12395,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ "org.jboss.as.console" ],
+      "packages" : [ "org.jboss.as.console", "org.jboss.as.domain-http-error-context" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for loading the HAL web console from the /console context on the HTTP  management interface.",
       "glowAddOn" : "hal-web-console",
@@ -12418,7 +12418,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.microprofile.config-smallrye" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for MicroProfile Config",
       "glowRules" : [ {
@@ -12456,7 +12456,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.microprofile.fault-tolerance-smallrye" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for MicroProfile Fault Tolerance.",
       "glowRules" : [ {
@@ -12520,7 +12520,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.microprofile.jwt-smallrye", "org.wildfly.security.jakarta.security" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for MicroProfile JWT.",
       "glowRules" : [ {
@@ -12559,7 +12559,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.microprofile.lra-coordinator" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for acting as coordinator of MicroProfile LRA long-running actions.",
       "glowAddOn" : "lra-coordinator",
@@ -12585,7 +12585,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.microprofile.lra-participant" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for acting as a participant in MicroProfile LRA long-running actions.",
       "glowRules" : [ {
@@ -12618,7 +12618,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.microprofile.openapi-smallrye" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for MicroProfile OpenAPI.",
       "glowAddOn" : "openapi",
@@ -12699,7 +12699,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ "org.wildfly.extension.microprofile.reactive-messaging-smallrye" ],
+      "packages" : [ "io.reactivex.rxjava2.rxjava", "io.smallrye.reactive.messaging", "io.smallrye.reactive.messaging.connector", "io.vertx.client", "org.apache.commons.lang3", "org.eclipse.microprofile.reactive-messaging.api", "org.slf4j", "org.wildfly.extension.microprofile.reactive-messaging-smallrye", "org.wildfly.reactive.messaging.config" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for MicroProfile Reactive Messaging.",
       "glowRules" : [ {
@@ -12789,7 +12789,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ "org.wildfly.extension.microprofile.reactive-streams-operators-smallrye" ],
+      "packages" : [ "io.smallrye.reactive.mutiny.reactive-streams-operators", "org.wildfly.extension.microprofile.reactive-streams-operators-smallrye", "org.wildfly.reactive.mutiny.reactive-streams-operators.cdi-provider", "org.wildfly.security.manager" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for MicroProfile Reactive Streams Operators.",
       "glowRules" : [ {
@@ -12808,7 +12808,7 @@
       } ],
       "managementModel" : { },
       "configurations" : [ ],
-      "packages" : [ "org.jboss.resteasy.resteasy-client-microprofile", "org.jboss.resteasy.microprofile.config" ],
+      "packages" : [ "org.jboss.resteasy.microprofile.config", "org.jboss.resteasy.resteasy-client-microprofile" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for MicroProfile REST client.",
       "glowRules" : [ {
@@ -12846,7 +12846,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.health" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for runtime health checks.",
       "note" : "When using the WildFly cloud feature-pack for cloud deployment, this layer will be automatically provisioned. It is required for POD health check.",
@@ -12870,7 +12870,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ "bin.jdrtools" ],
+      "packages" : [ "bin.jdrtools", "org.jboss.as.jdr" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for the JBoss Diagnostic Reporting (JDR) subsystem.",
       "glowAddOn" : "jdr",
@@ -12908,7 +12908,7 @@
         "system-properties" : [ "wildfly.metrics.prefix" ],
         "environment-variables" : [ ]
       } ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.metrics" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for base server metrics in Prometheus format.",
       "glowAddOn" : "metrics",
@@ -12933,7 +12933,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ "io.prometheus" ],
+      "packages" : [ "io.prometheus", "org.wildfly.extension.micrometer" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for Micrometer",
       "glowAddOn" : "micrometer",
@@ -13002,7 +13002,7 @@
         "system-properties" : [ ],
         "environment-variables" : [ "MP_HEALTH_EMPTY_STARTUP_CHECKS_STATUS" ]
       } ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.microprofile.health-smallrye" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for MicroProfile Health",
       "glowRules" : [ {
@@ -13038,7 +13038,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.microprofile.telemetry" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for MicroProfile Telemetry",
       "glowRules" : [ {
@@ -13082,7 +13082,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.opentelemetry" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for OpenTelemetry",
       "glowRules" : [ {
@@ -13244,7 +13244,7 @@
         "system-properties" : [ "jboss.socket.binding.port-offset" ],
         "environment-variables" : [ ]
       } ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.iiop-openjdk" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for IIOP",
       "glowAddOn" : "iiop",
@@ -13283,7 +13283,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.ee-security", "org.wildfly.extension.elytron", "org.wildfly.security.elytron", "org.wildfly.security.jakarta.security" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for EE Security",
       "glowRules" : [ {
@@ -13313,7 +13313,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.elytron-oidc-client" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for securing deployment with OIDC",
       "glowRules" : [ {
@@ -13557,7 +13557,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.undertow" ],
       "feature-pack" : "org.wildfly:wildfly-galleon-pack:38.0.0.Beta1-SNAPSHOT",
       "description" : "Support for securing web access with HTTPS",
       "glowAddOn" : "ssl",
