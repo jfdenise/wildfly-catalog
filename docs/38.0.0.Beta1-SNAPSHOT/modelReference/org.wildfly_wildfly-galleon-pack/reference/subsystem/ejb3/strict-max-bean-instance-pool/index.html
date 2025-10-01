@@ -1,79 +1,103 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Model Reference for strict-max-bean-instance-pool</title>
-    <link rel="stylesheet" href="../../../../styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
-    <script src="../../../../scripts.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Management API  Reference for strict-max-bean-instance-pool</title>
+  <link rel="stylesheet" href="../../../../styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+  <script src="../../../../scripts.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
 </head>
 <body>
 <div class="container">
-<header class="card-header">
+  <header class="card-header">
 <div>
-    <nav aria-label="Breadcrumb" class="breadcrumb">
-        <ol>
-            <li>
-                <a href="../../../index.html">home</a>
-            </li>
-            <li>
-                <a href="../../../subsystem/ejb3/index.html">subsystem=ejb3</a>
-            </li>
-            <li>strict-max-bean-instance-pool</li>
-        </ol>
-    </nav>
-</div>    <h1>Model Reference for strict-max-bean-instance-pool</h1>
+  <nav aria-label="Breadcrumb" class="breadcrumb">
+    <ol>
+      <li>
+        <a href="../../../index.html">root</a>
+      </li>
+      <li>
+        <a href="../../../subsystem/ejb3/index.html">subsystem=ejb3</a>
+      </li>
+      <li>strict-max-bean-instance-pool</li>
+    </ol>
+  </nav>
+</div>    <h1>Management API Reference for strict-max-bean-instance-pool</h1>
     <p>A bean instance pool with a strict upper limit</p>
-</header>
+
+  </header>
+<h2>Provided Capabilities (1)</h2>
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Dynamic</th>
+    <th>Other provider points</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><a href="https://github.com/wildfly/wildfly-capabilities/tree/main/org/wildfly/ejb3/pool-config/capability.adoc">org.wildfly.ejb3.pool-config</a></td>
+    <td>true</td>
+    <td>
+      <p>none</p>
+    </td>
+  </tr>
+  </tbody>
+</table>
 <h2>Attributes (5)</h2>
 <ul class="attributes">
-    <li>
-        <span class="toggle-link"><a id="derive-size" href="#derive-size" class="">derive-size</a> - Specifies if and what the max pool size should be derived from. An undefined value (or the deprecated value 'none' which is converted to undefined) indicates that the explicit value of max-pool-size should be used. A value of 'from-worker-pools' indicates that the max pool size should be derived from the size of the total threads for all worker pools configured on the system. A value of 'from-cpu-count' indicates that the max pool size should be derived from the total number of processors available on the system. Note that the computation isn't a 1:1 mapping, the values may or may not be augmented by other factors.</span>
-        <div class="collapsible">
+  <li>
+    <span class="toggle-link">
+      <a id="derive-size" href="#derive-size" class="">
+         derive-size</a> - Specifies if and what the max pool size should be derived from. An undefined value (or the deprecated value 'none' which is converted to undefined) indicates that the explicit value of max-pool-size should be used. A value of 'from-worker-pools' indicates that the max pool size should be derived from the size of the total threads for all worker pools configured on the system. A value of 'from-cpu-count' indicates that the max pool size should be derived from the total number of processors available on the system. Note that the computation isn't a 1:1 mapping, the values may or may not be augmented by other factors.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>STRING</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>no-services</td>
-                </tr>
-                <tr>
-                    <td>Allowed Values</td>
-                    <td>
-                        from-worker-pools<br />
-                        from-cpu-count<br />
-                    </td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>STRING</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>no-services</td>
+        </tr>
+        <tr>
+          <td>Allowed Values</td>
+          <td>
+            from-worker-pools<br />
+            from-cpu-count<br />
+          </td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -94,42 +118,45 @@
     "restart-required" : "no-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="derived-size" href="#derived-size" class="">derived-size</a> - Derived maximum number of bean instances that the pool can hold at a given point in time</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="derived-size" href="#derived-size" class="">
+         derived-size</a> - Derived maximum number of bean instances that the pool can hold at a given point in time
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>INT</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>runtime</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-only</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>INT</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>runtime</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-only</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -145,62 +172,65 @@
     "restart-required" : null,
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="max-pool-size" href="#max-pool-size" class="">max-pool-size</a> - Configured maximum number of bean instances that the pool can hold at a given point in time</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="max-pool-size" href="#max-pool-size" class="">
+         max-pool-size</a> - Configured maximum number of bean instances that the pool can hold at a given point in time
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>INT</td>
-                </tr>
-                <tr>
-                    <td>Default Value</td>
-                    <td>20</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>no-services</td>
-                </tr>
-                <tr>
-                    <td>Min</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>Max</td>
-                    <td>2147483647</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>INT</td>
+        </tr>
+        <tr>
+          <td>Default Value</td>
+          <td>20</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>no-services</td>
+        </tr>
+        <tr>
+          <td>Min</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>Max</td>
+          <td>2147483647</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -220,62 +250,65 @@
     "restart-required" : "no-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="timeout" href="#timeout" class="">timeout</a> - The maximum amount of time to wait for a bean instance to be available from the pool</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="timeout" href="#timeout" class="">
+         timeout</a> - The maximum amount of time to wait for a bean instance to be available from the pool
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>LONG</td>
-                </tr>
-                <tr>
-                    <td>Default Value</td>
-                    <td>5</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>no-services</td>
-                </tr>
-                <tr>
-                    <td>Min</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>Max</td>
-                    <td>2147483647</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>LONG</td>
+        </tr>
+        <tr>
+          <td>Default Value</td>
+          <td>5</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>no-services</td>
+        </tr>
+        <tr>
+          <td>Min</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>Max</td>
+          <td>2147483647</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -294,66 +327,69 @@
     "restart-required" : "no-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="timeout-unit" href="#timeout-unit" class="">timeout-unit</a> - The instance acquisition timeout unit</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="timeout-unit" href="#timeout-unit" class="">
+         timeout-unit</a> - The instance acquisition timeout unit
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>STRING</td>
-                </tr>
-                <tr>
-                    <td>Default Value</td>
-                    <td>MINUTES</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>no-services</td>
-                </tr>
-                <tr>
-                    <td>Allowed Values</td>
-                    <td>
-                        MILLISECONDS<br />
-                        MICROSECONDS<br />
-                        HOURS<br />
-                        SECONDS<br />
-                        NANOSECONDS<br />
-                        DAYS<br />
-                        MINUTES<br />
-                    </td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>STRING</td>
+        </tr>
+        <tr>
+          <td>Default Value</td>
+          <td>MINUTES</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>no-services</td>
+        </tr>
+        <tr>
+          <td>Allowed Values</td>
+          <td>
+            MILLISECONDS<br />
+            MICROSECONDS<br />
+            HOURS<br />
+            SECONDS<br />
+            NANOSECONDS<br />
+            DAYS<br />
+            MINUTES<br />
+          </td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -379,17 +415,20 @@
     "restart-required" : "no-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
 </ul>
 <h2>Operations (2)</h2>
 <ul class="operations">
   <li>
-    <span class="toggle-link"><a id="add" href="#add" class="">add</a> - Adds a bean instance pool which has a strict upper limit for bean instances</span>
+    <span class="toggle-link">
+      <a id="add" href="#add" class="">
+      add</a> - Adds a bean instance pool which has a strict upper limit for bean instances
+    </span>
     <div class="collapsible">
 
 
@@ -446,7 +485,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "add",
     "description" : "Adds a bean instance pool which has a strict upper limit for bean instances",
@@ -526,7 +565,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="remove" href="#remove" class="">remove</a> - Removes a specific bean instance pool which has a strict upper limit for bean instances</span>
+    <span class="toggle-link">
+      <a id="remove" href="#remove" class="">
+      remove</a> - Removes a specific bean instance pool which has a strict upper limit for bean instances
+    </span>
     <div class="collapsible">
 
 
@@ -537,7 +579,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "remove",
     "description" : "Removes a specific bean instance pool which has a strict upper limit for bean instances",
@@ -553,6 +595,29 @@
         </tr>
       </table>
     </div>
+  </li>
+</ul>
+<h2>Galleon Features</h2>
+<p>Galleon features are to be used when creating Galleon feature-packs.</p>
+<ul class="attributes">
+  <li>
+  <span class="toggle-link">subsystem.ejb3.strict-max-bean-instance-pool</span>
+  <div class="collapsible">
+    <div class="code-block-container">
+      <pre>
+        <code id="feature" class="language-xml">
+&lt;feature spec="subsystem.ejb3.strict-max-bean-instance-pool"&gt;
+  &lt;param name="strict-max-bean-instance-pool" value="{resource name}"/&gt;
+  &lt;param name="derive-size" value="{value}"/&gt;
+  &lt;param name="max-pool-size" value="{value}"/&gt;
+  &lt;param name="timeout" value="{value}"/&gt;
+  &lt;param name="timeout-unit" value="{value}"/&gt;
+&lt;feature/&gt;
+        </code>
+      </pre>
+      <button class="copy-btn" onclick="copyToClipboard('feature')" title="Copy to clipboard">📋</button>
+    </div>
+  </div>
   </li>
 </ul>
 </div>

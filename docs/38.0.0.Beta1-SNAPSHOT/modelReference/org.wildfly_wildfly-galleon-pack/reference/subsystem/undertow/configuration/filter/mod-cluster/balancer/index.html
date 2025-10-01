@@ -1,77 +1,83 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Model Reference for balancer</title>
-    <link rel="stylesheet" href="../../../../../../../styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
-    <script src="../../../../../../../scripts.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Management API  Reference for balancer</title>
+  <link rel="stylesheet" href="../../../../../../../styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+  <script src="../../../../../../../scripts.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
 </head>
 <body>
 <div class="container">
-<header class="card-header">
+  <header class="card-header">
 <div>
-    <nav aria-label="Breadcrumb" class="breadcrumb">
-        <ol>
-            <li>
-                <a href="../../../../../../index.html">home</a>
-            </li>
-            <li>
-                <a href="../../../../../../subsystem/undertow/index.html">subsystem=undertow</a>
-            </li>
-            <li>
-                <a href="../../../../../../subsystem/undertow/configuration/filter/index.html">configuration=filter</a>
-            </li>
-            <li>
-                <a href="../../../../../../subsystem/undertow/configuration/filter/mod-cluster/index.html">mod-cluster</a>
-            </li>
-            <li>balancer</li>
-        </ol>
-    </nav>
-</div>    <h1>Model Reference for balancer</h1>
+  <nav aria-label="Breadcrumb" class="breadcrumb">
+    <ol>
+      <li>
+        <a href="../../../../../../index.html">root</a>
+      </li>
+      <li>
+        <a href="../../../../../../subsystem/undertow/index.html">subsystem=undertow</a>
+      </li>
+      <li>
+        <a href="../../../../../../subsystem/undertow/configuration/filter/index.html">configuration=filter</a>
+      </li>
+      <li>
+        <a href="../../../../../../subsystem/undertow/configuration/filter/mod-cluster/index.html">mod-cluster</a>
+      </li>
+      <li>balancer</li>
+    </ol>
+  </nav>
+</div>    <h1>Management API Reference for balancer</h1>
     <p>Runtime representation of a mod_cluster balancer</p>
-</header>
+
+  </header>
 <h2>Children (2)</h2>
 <ul class="children">
-    <li>
-        <a href="load-balancing-group/index.html">load-balancing-group</a>
-    <li>
-        <a href="node/index.html">node</a>
+  <li>
+    <a href="load-balancing-group/index.html" class="">load-balancing-group</a>
+  </li>
+  <li>
+    <a href="node/index.html" class="">node</a>
+  </li>
 </ul>
 <h2>Attributes (7)</h2>
 <ul class="attributes">
-    <li>
-        <span class="toggle-link"><a id="max-attempts" href="#max-attempts" class="">max-attempts</a> - Maximum number of failover attempts by reverse proxy when sending the request to the backend server.</span>
-        <div class="collapsible">
+  <li>
+    <span class="toggle-link">
+      <a id="max-attempts" href="#max-attempts" class="">
+         max-attempts</a> - Maximum number of failover attempts by reverse proxy when sending the request to the backend server.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>INT</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>runtime</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-only</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>INT</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>runtime</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-only</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -87,42 +93,45 @@
     "restart-required" : null,
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="sticky-session" href="#sticky-session" class="">sticky-session</a> - If sticky sessions are enabled</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="sticky-session" href="#sticky-session" class="">
+         sticky-session</a> - If sticky sessions are enabled
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>BOOLEAN</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>runtime</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-only</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>BOOLEAN</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>runtime</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-only</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -138,42 +147,45 @@
     "restart-required" : null,
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="sticky-session-cookie" href="#sticky-session-cookie" class="">sticky-session-cookie</a> - The session cookie name</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="sticky-session-cookie" href="#sticky-session-cookie" class="">
+         sticky-session-cookie</a> - The session cookie name
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>STRING</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>runtime</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-only</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>STRING</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>runtime</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-only</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -191,42 +203,45 @@
     "restart-required" : null,
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="sticky-session-force" href="#sticky-session-force" class="">sticky-session-force</a> - If this is true then an error will be returned if the request cannot be routed to the sticky node, otherwise it will be routed to another node</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="sticky-session-force" href="#sticky-session-force" class="">
+         sticky-session-force</a> - If this is true then an error will be returned if the request cannot be routed to the sticky node, otherwise it will be routed to another node
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>BOOLEAN</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>runtime</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-only</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>BOOLEAN</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>runtime</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-only</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -242,42 +257,45 @@
     "restart-required" : null,
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="sticky-session-path" href="#sticky-session-path" class="">sticky-session-path</a> - The path of the sticky session cookie</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="sticky-session-path" href="#sticky-session-path" class="">
+         sticky-session-path</a> - The path of the sticky session cookie
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>STRING</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>runtime</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-only</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>STRING</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>runtime</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-only</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -295,42 +313,45 @@
     "restart-required" : null,
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="sticky-session-remove" href="#sticky-session-remove" class="">sticky-session-remove</a> - Remove the session cookie if the request cannot be routed to the correct host</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="sticky-session-remove" href="#sticky-session-remove" class="">
+         sticky-session-remove</a> - Remove the session cookie if the request cannot be routed to the correct host
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>BOOLEAN</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>runtime</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-only</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>BOOLEAN</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>runtime</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-only</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -346,42 +367,45 @@
     "restart-required" : null,
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="wait-worker" href="#wait-worker" class="">wait-worker</a> - The number of seconds to wait for an available worker</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="wait-worker" href="#wait-worker" class="">
+         wait-worker</a> - The number of seconds to wait for an available worker
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>INT</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>runtime</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-only</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>INT</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>runtime</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-only</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -397,12 +421,12 @@
     "restart-required" : null,
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
 </ul>
 </div>
 </body>

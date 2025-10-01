@@ -1,68 +1,95 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Model Reference for github-chat-model</title>
-    <link rel="stylesheet" href="../../../../styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
-    <script src="../../../../scripts.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Management API  Reference for github-chat-model</title>
+  <link rel="stylesheet" href="../../../../styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+  <script src="../../../../scripts.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
 </head>
 <body>
 <div class="container">
-<header class="card-header">
+  <header class="card-header">
 <div>
-    <nav aria-label="Breadcrumb" class="breadcrumb">
-        <ol>
-            <li>
-                <a href="../../../index.html">home</a>
-            </li>
-            <li>
-                <a href="../../../subsystem/ai/index.html">subsystem=ai</a>
-            </li>
-            <li>github-chat-model</li>
-        </ol>
-    </nav>
-</div>    <h1>Model Reference for github-chat-model</h1>
+  <nav aria-label="Breadcrumb" class="breadcrumb">
+    <ol>
+      <li>
+        <a href="../../../index.html">root</a>
+      </li>
+      <li>
+        <a href="../../../subsystem/ai/index.html">subsystem=ai</a>
+      </li>
+      <li>github-chat-model</li>
+    </ol>
+  </nav>
+</div>    <h1>Management API Reference for github-chat-model</h1>
     <p>Chat model for GitHub Models</p>
-</header>
+
+  </header>
+<h2>Provided Capabilities (1)</h2>
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Dynamic</th>
+    <th>Other provider points</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><a href="https://github.com/wildfly/wildfly-capabilities/tree/main/org/wildfly/ai/chatmodel/capability.adoc">org.wildfly.ai.chatmodel</a></td>
+    <td>true</td>
+    <td>
+      <a href="../../../subsystem/ai/openai-chat-model/index.html">/subsystem=ai/openai-chat-model=*</a> <br/>
+      <a href="../../../subsystem/ai/gemini-chat-model/index.html">/subsystem=ai/gemini-chat-model=*</a> <br/>
+      <a href="../../../subsystem/ai/ollama-chat-model/index.html">/subsystem=ai/ollama-chat-model=*</a> <br/>
+      <a href="../../../subsystem/ai/mistral-ai-chat-model/index.html">/subsystem=ai/mistral-ai-chat-model=*</a> <br/>
+    </td>
+  </tr>
+  </tbody>
+</table>
 <h2>Attributes (17)</h2>
 <ul class="attributes">
-    <li>
-        <span class="toggle-link"><a id="api-key" href="#api-key" class="">api-key</a> - API key to authenticate to a GitHub Models chat model.</span>
-        <div class="collapsible">
+  <li>
+    <span class="toggle-link">
+      <a id="api-key" href="#api-key" class="">
+         api-key</a> - API key to authenticate to a GitHub Models chat model.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>STRING</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>no-services</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>STRING</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>no-services</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -81,58 +108,61 @@
     "restart-required" : "no-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="connect-timeout" href="#connect-timeout" class="">connect-timeout</a> - Timeout for the GitHub Models chat model.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="connect-timeout" href="#connect-timeout" class="">
+         connect-timeout</a> - Timeout for the GitHub Models chat model.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>LONG</td>
-                </tr>
-                <tr>
-                    <td>Default Value</td>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <td>Unit</td>
-                    <td>MILLISECONDS</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>no-services</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>LONG</td>
+        </tr>
+        <tr>
+          <td>Default Value</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>Unit</td>
+          <td>MILLISECONDS</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>no-services</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -150,50 +180,53 @@
     "restart-required" : "no-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="custom-headers" href="#custom-headers" class="">custom-headers</a> - Headers added to the requests to GitHub Models.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="custom-headers" href="#custom-headers" class="">
+         custom-headers</a> - Headers added to the requests to GitHub Models.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>OBJECT</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>no-services</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>OBJECT</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>no-services</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -212,46 +245,49 @@
     "restart-required" : "no-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="endpoint" href="#endpoint" class="">endpoint</a> - Endpoint to connect to an GitHub Models chat model.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="endpoint" href="#endpoint" class="">
+         endpoint</a> - Endpoint to connect to an GitHub Models chat model.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>STRING</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>no-services</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>STRING</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>no-services</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -269,50 +305,53 @@
     "restart-required" : "no-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="frequency-penalty" href="#frequency-penalty" class="">frequency-penalty</a> - Frequency penalty of the GitHub Models chat model.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="frequency-penalty" href="#frequency-penalty" class="">
+         frequency-penalty</a> - Frequency penalty of the GitHub Models chat model.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>DOUBLE</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>no-services</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>DOUBLE</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>no-services</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -328,50 +367,53 @@
     "restart-required" : "no-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="log-requests-responses" href="#log-requests-responses" class="">log-requests-responses</a> - Enabling the tracing of requests and responses to GitHub Models.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="log-requests-responses" href="#log-requests-responses" class="">
+         log-requests-responses</a> - Enabling the tracing of requests and responses to GitHub Models.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>BOOLEAN</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>no-services</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>BOOLEAN</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>no-services</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -387,50 +429,53 @@
     "restart-required" : "no-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="max-retries" href="#max-retries" class="">max-retries</a> - The number of token retries when sending a request to GitHub Models.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="max-retries" href="#max-retries" class="">
+         max-retries</a> - The number of token retries when sending a request to GitHub Models.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>INT</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>no-services</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>INT</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>no-services</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -446,54 +491,57 @@
     "restart-required" : "no-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="max-token" href="#max-token" class="">max-token</a> - The number of token returned by the GitHub Models chat model.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="max-token" href="#max-token" class="">
+         max-token</a> - The number of token returned by the GitHub Models chat model.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>INT</td>
-                </tr>
-                <tr>
-                    <td>Default Value</td>
-                    <td>1000</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>no-services</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>INT</td>
+        </tr>
+        <tr>
+          <td>Default Value</td>
+          <td>1000</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>no-services</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -510,46 +558,49 @@
     "restart-required" : "no-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="model-name" href="#model-name" class="">model-name</a> - Name of the model served by GitHub Models.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="model-name" href="#model-name" class="">
+         model-name</a> - Name of the model served by GitHub Models.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>STRING</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>no-services</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>STRING</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>no-services</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -567,50 +618,53 @@
     "restart-required" : "no-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="presence-penalty" href="#presence-penalty" class="">presence-penalty</a> - Presence penalty of the GitHub Models chat model.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="presence-penalty" href="#presence-penalty" class="">
+         presence-penalty</a> - Presence penalty of the GitHub Models chat model.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>DOUBLE</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>no-services</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>DOUBLE</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>no-services</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -626,57 +680,60 @@
     "restart-required" : "no-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="response-format" href="#response-format" class="">response-format</a> - The format of the response from GitHub Models.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="response-format" href="#response-format" class="">
+         response-format</a> - The format of the response from GitHub Models.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>STRING</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>no-services</td>
-                </tr>
-                <tr>
-                    <td>Allowed Values</td>
-                    <td>
-                        JSON<br />
-                        TEXT<br />
-                    </td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>STRING</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>no-services</td>
+        </tr>
+        <tr>
+          <td>Allowed Values</td>
+          <td>
+            JSON<br />
+            TEXT<br />
+          </td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -696,50 +753,53 @@
     "restart-required" : "no-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="seed" href="#seed" class="">seed</a> - Seed of the GitHub Models chat model.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="seed" href="#seed" class="">
+         seed</a> - Seed of the GitHub Models chat model.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>LONG</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>no-services</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>LONG</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>no-services</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -755,56 +815,59 @@
     "restart-required" : "no-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="service-version" href="#service-version" class="">service-version</a> - Version of GitHub Models to use.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="service-version" href="#service-version" class="">
+         service-version</a> - Version of GitHub Models to use.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>STRING</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>no-services</td>
-                </tr>
-                <tr>
-                    <td>Allowed Values</td>
-                    <td>
-                        2024-05-01-preview<br />
-                    </td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>STRING</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>no-services</td>
+        </tr>
+        <tr>
+          <td>Allowed Values</td>
+          <td>
+            2024-05-01-preview<br />
+          </td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -826,54 +889,57 @@
     "restart-required" : "no-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="streaming" href="#streaming" class="">streaming</a> - Whether to create a token streaming chat language model or not.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="streaming" href="#streaming" class="">
+         streaming</a> - Whether to create a token streaming chat language model or not.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>BOOLEAN</td>
-                </tr>
-                <tr>
-                    <td>Default Value</td>
-                    <td>false</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>no-services</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>BOOLEAN</td>
+        </tr>
+        <tr>
+          <td>Default Value</td>
+          <td>false</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>no-services</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -890,50 +956,53 @@
     "restart-required" : "no-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="temperature" href="#temperature" class="">temperature</a> - Temperature of the GitHub Models chat model.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="temperature" href="#temperature" class="">
+         temperature</a> - Temperature of the GitHub Models chat model.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>DOUBLE</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>no-services</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>DOUBLE</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>no-services</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -949,50 +1018,53 @@
     "restart-required" : "no-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="top-p" href="#top-p" class="">top-p</a> - Top P of the GitHub Models chat model.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="top-p" href="#top-p" class="">
+         top-p</a> - Top P of the GitHub Models chat model.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>DOUBLE</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>no-services</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>DOUBLE</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>no-services</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -1008,50 +1080,53 @@
     "restart-required" : "no-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="user-agent-suffix" href="#user-agent-suffix" class="">user-agent-suffix</a> - Suffix to the user-agent.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="user-agent-suffix" href="#user-agent-suffix" class="">
+         user-agent-suffix</a> - Suffix to the user-agent.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>STRING</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>no-services</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>STRING</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>no-services</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -1069,17 +1144,20 @@
     "restart-required" : "no-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
 </ul>
 <h2>Operations (3)</h2>
 <ul class="operations">
   <li>
-    <span class="toggle-link"><a id="add" href="#add" class="">add</a> - This operation adds a GitHub Models chat model.</span>
+    <span class="toggle-link">
+      <a id="add" href="#add" class="">
+      add</a> - This operation adds a GitHub Models chat model.
+    </span>
     <div class="collapsible">
 
 
@@ -1240,7 +1318,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "add",
     "description" : "This operation adds a GitHub Models chat model.",
@@ -1453,7 +1531,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="chat" href="#chat" class="">chat</a> - Simple operation to send a user message to the LLM.</span>
+    <span class="toggle-link">
+      <a id="chat" href="#chat" class="">
+      chat</a> - Simple operation to send a user message to the LLM.
+    </span>
     <div class="collapsible">
 
 
@@ -1492,7 +1573,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "chat",
     "description" : "Simple operation to send a user message to the LLM.",
@@ -1523,7 +1604,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="remove" href="#remove" class="">remove</a> - This operation removes a GitHub Models chat model.</span>
+    <span class="toggle-link">
+      <a id="remove" href="#remove" class="">
+      remove</a> - This operation removes a GitHub Models chat model.
+    </span>
     <div class="collapsible">
 
 
@@ -1534,7 +1618,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "remove",
     "description" : "This operation removes a GitHub Models chat model.",
@@ -1550,6 +1634,42 @@
         </tr>
       </table>
     </div>
+  </li>
+</ul>
+<h2>Galleon Features</h2>
+<p>Galleon features are to be used when creating Galleon feature-packs.</p>
+<ul class="attributes">
+  <li>
+  <span class="toggle-link">subsystem.ai.github-chat-model</span>
+  <div class="collapsible">
+    <div class="code-block-container">
+      <pre>
+        <code id="feature" class="language-xml">
+&lt;feature spec="subsystem.ai.github-chat-model"&gt;
+  &lt;param name="github-chat-model" value="{resource name}"/&gt;
+  &lt;param name="api-key" value="{value}"/&gt;
+  &lt;param name="connect-timeout" value="{value}"/&gt;
+  &lt;param name="custom-headers" value="{value}"/&gt;
+  &lt;param name="endpoint" value="{value}"/&gt;
+  &lt;param name="frequency-penalty" value="{value}"/&gt;
+  &lt;param name="log-requests-responses" value="{value}"/&gt;
+  &lt;param name="max-retries" value="{value}"/&gt;
+  &lt;param name="max-token" value="{value}"/&gt;
+  &lt;param name="model-name" value="{value}"/&gt;
+  &lt;param name="presence-penalty" value="{value}"/&gt;
+  &lt;param name="response-format" value="{value}"/&gt;
+  &lt;param name="seed" value="{value}"/&gt;
+  &lt;param name="service-version" value="{value}"/&gt;
+  &lt;param name="streaming" value="{value}"/&gt;
+  &lt;param name="temperature" value="{value}"/&gt;
+  &lt;param name="top-p" value="{value}"/&gt;
+  &lt;param name="user-agent-suffix" value="{value}"/&gt;
+&lt;feature/&gt;
+        </code>
+      </pre>
+      <button class="copy-btn" onclick="copyToClipboard('feature')" title="Copy to clipboard">📋</button>
+    </div>
+  </div>
   </li>
 </ul>
 </div>

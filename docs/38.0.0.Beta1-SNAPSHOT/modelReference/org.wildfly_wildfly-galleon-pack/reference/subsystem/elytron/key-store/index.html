@@ -1,72 +1,99 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Model Reference for key-store</title>
-    <link rel="stylesheet" href="../../../../styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
-    <script src="../../../../scripts.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Management API  Reference for key-store</title>
+  <link rel="stylesheet" href="../../../../styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+  <script src="../../../../scripts.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
 </head>
 <body>
 <div class="container">
-<header class="card-header">
+  <header class="card-header">
 <div>
-    <nav aria-label="Breadcrumb" class="breadcrumb">
-        <ol>
-            <li>
-                <a href="../../../index.html">home</a>
-            </li>
-            <li>
-                <a href="../../../subsystem/elytron/index.html">subsystem=elytron</a>
-            </li>
-            <li>key-store</li>
-        </ol>
-    </nav>
-</div>    <h1>Model Reference for key-store</h1>
+  <nav aria-label="Breadcrumb" class="breadcrumb">
+    <ol>
+      <li>
+        <a href="../../../index.html">root</a>
+      </li>
+      <li>
+        <a href="../../../subsystem/elytron/index.html">subsystem=elytron</a>
+      </li>
+      <li>key-store</li>
+    </ol>
+  </nav>
+</div>    <h1>Management API Reference for key-store</h1>
     <p>A KeyStore definition.</p>
-</header>
+
+  </header>
+<h2>Provided Capabilities (1)</h2>
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Dynamic</th>
+    <th>Other provider points</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><a href="https://github.com/wildfly/wildfly-capabilities/tree/main/org/wildfly/security/key-store/capability.adoc">org.wildfly.security.key-store</a></td>
+    <td>true</td>
+    <td>
+      <a href="../../../subsystem/elytron/ldap-key-store/index.html">/subsystem=elytron/ldap-key-store=*</a> <br/>
+      <a href="../../../subsystem/elytron/filtering-key-store/index.html">/subsystem=elytron/filtering-key-store=*</a> <br/>
+      <a href="../../../subsystem/security/elytron-key-store/index.html">/subsystem=security/elytron-key-store=*</a> <br/>
+      <a href="../../../subsystem/security/elytron-trust-store/index.html">/subsystem=security/elytron-trust-store=*</a> <br/>
+    </td>
+  </tr>
+  </tbody>
+</table>
 <h2>Attributes (13)</h2>
 <ul class="attributes">
-    <li>
-        <span class="toggle-link"><a id="alias-filter" href="#alias-filter" class="">alias-filter</a> - A filter to apply to the aliases returned from the KeyStore, can either be a comma separated list of aliases to return or one of the following formats ALL:-alias1:-alias2, NONE:+alias1:+alias2</span>
-        <div class="collapsible">
+  <li>
+    <span class="toggle-link">
+      <a id="alias-filter" href="#alias-filter" class="">
+         alias-filter</a> - A filter to apply to the aliases returned from the KeyStore, can either be a comma separated list of aliases to return or one of the following formats ALL:-alias1:-alias2, NONE:+alias1:+alias2
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>STRING</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>all-services</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>STRING</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>all-services</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -84,42 +111,45 @@
     "restart-required" : "all-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="credential-reference" href="#credential-reference" class="">credential-reference</a> - The reference to credential stored in CredentialStore under defined alias or clear text password.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="credential-reference" href="#credential-reference" class="">
+         credential-reference</a> - The reference to credential stored in CredentialStore under defined alias or clear text password.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>OBJECT</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>all-services</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>OBJECT</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>all-services</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -188,42 +218,45 @@
     "restart-required" : "all-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="loaded-provider" href="#loaded-provider" class="">loaded-provider</a> - Information about the provider that was used for this KeyStore.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="loaded-provider" href="#loaded-provider" class="">
+         loaded-provider</a> - Information about the provider that was used for this KeyStore.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>OBJECT</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>runtime</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-only</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>OBJECT</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>runtime</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-only</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -275,38 +308,41 @@
     "restart-required" : null,
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="modified" href="#modified" class="">modified</a> - Indicates if the in-memory representation of the KeyStore has been changed since it was last loaded or stored.  Note: For some providers updates may be immediate without further load or store calls.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="modified" href="#modified" class="">
+         modified</a> - Indicates if the in-memory representation of the KeyStore has been changed since it was last loaded or stored.  Note: For some providers updates may be immediate without further load or store calls.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>BOOLEAN</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>runtime</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-only</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>BOOLEAN</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>runtime</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-only</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -322,50 +358,53 @@
     "restart-required" : null,
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="path" href="#path" class="">path</a> - The path to the KeyStore file.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="path" href="#path" class="">
+         path</a> - The path to the KeyStore file.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>STRING</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>all-services</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>STRING</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>all-services</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -384,50 +423,53 @@
     "restart-required" : "all-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="provider-name" href="#provider-name" class="">provider-name</a> - The name of the provider to use to load the KeyStore, disables searching for the first Provider that can create a KeyStore of the specified type.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="provider-name" href="#provider-name" class="">
+         provider-name</a> - The name of the provider to use to load the KeyStore, disables searching for the first Provider that can create a KeyStore of the specified type.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>STRING</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>all-services</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>STRING</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>all-services</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -446,46 +488,49 @@
     "restart-required" : "all-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="providers" href="#providers" class="">providers</a> - A reference to the providers that should be used to obtain the list of Provider instances to search, if not specified the global list of providers will be used instead.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="providers" href="#providers" class="">
+         providers</a> - A reference to the providers that should be used to obtain the list of Provider instances to search, if not specified the global list of providers will be used instead.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>STRING</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>all-services</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>STRING</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>all-services</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -504,46 +549,49 @@
     "storage" : "configuration",
     "restart-required" : "all-services"
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="relative-to" href="#relative-to" class="">relative-to</a> - The base path this store is relative to.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="relative-to" href="#relative-to" class="">
+         relative-to</a> - The base path this store is relative to.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>STRING</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>all-services</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>STRING</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>all-services</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -563,54 +611,57 @@
     "restart-required" : "all-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="required" href="#required" class="">required</a> - Is the file required to exist at the time the KeyStore service starts?</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="required" href="#required" class="">
+         required</a> - Is the file required to exist at the time the KeyStore service starts?
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>BOOLEAN</td>
-                </tr>
-                <tr>
-                    <td>Default Value</td>
-                    <td>false</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>all-services</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>BOOLEAN</td>
+        </tr>
+        <tr>
+          <td>Default Value</td>
+          <td>false</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>all-services</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -629,38 +680,41 @@
     "restart-required" : "all-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="size" href="#size" class="">size</a> - The number of entries in the KeyStore.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="size" href="#size" class="">
+         size</a> - The number of entries in the KeyStore.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>INT</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>runtime</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-only</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>INT</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>runtime</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-only</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -676,49 +730,52 @@
     "restart-required" : null,
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="state" href="#state" class="">state</a> - The state of the underlying service that represents this KeyStore at runtime, if it is anything other than UP runtime operations will not be available.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="state" href="#state" class="">
+         state</a> - The state of the underlying service that represents this KeyStore at runtime, if it is anything other than UP runtime operations will not be available.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>STRING</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>runtime</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-only</td>
-                </tr>
-                <tr>
-                    <td>Allowed Values</td>
-                    <td>
-                        DOWN<br />
-                        STARTING<br />
-                        START_FAILED<br />
-                        UP<br />
-                        STOPPING<br />
-                        REMOVED<br />
-                    </td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>STRING</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>runtime</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-only</td>
+        </tr>
+        <tr>
+          <td>Allowed Values</td>
+          <td>
+            DOWN<br />
+            STARTING<br />
+            START_FAILED<br />
+            UP<br />
+            STOPPING<br />
+            REMOVED<br />
+          </td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -744,38 +801,41 @@
     "restart-required" : null,
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="synchronized" href="#synchronized" class="">synchronized</a> - The time this KeyStore was last loaded or saved. Note: Some providers may continue to apply updates after the KeyStore was loaded within the application server.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="synchronized" href="#synchronized" class="">
+         synchronized</a> - The time this KeyStore was last loaded or saved. Note: Some providers may continue to apply updates after the KeyStore was loaded within the application server.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>STRING</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>runtime</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-only</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>STRING</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>runtime</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-only</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -793,50 +853,53 @@
     "restart-required" : null,
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="type" href="#type" class="">type</a> - The type of the KeyStore, used when creating the new KeyStore instance.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="type" href="#type" class="">
+         type</a> - The type of the KeyStore, used when creating the new KeyStore instance.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>STRING</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>all-services</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>STRING</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>all-services</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -855,17 +918,20 @@
     "restart-required" : "all-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
 </ul>
 <h2>Operations (15)</h2>
 <ul class="operations">
   <li>
-    <span class="toggle-link"><a id="add" href="#add" class="">add</a> - Add a new KeyStore definition.</span>
+    <span class="toggle-link">
+      <a id="add" href="#add" class="">
+      add</a> - Add a new KeyStore definition.
+    </span>
     <div class="collapsible">
 
 
@@ -954,7 +1020,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "add",
     "description" : "Add a new KeyStore definition.",
@@ -1121,7 +1187,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="change-alias" href="#change-alias" class="">change-alias</a> - Move an existing KeyStore entry to a new alias.</span>
+    <span class="toggle-link">
+      <a id="change-alias" href="#change-alias" class="">
+      change-alias</a> - Move an existing KeyStore entry to a new alias.
+    </span>
     <div class="collapsible">
 
 
@@ -1170,7 +1239,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "change-alias",
     "description" : "Move an existing KeyStore entry to a new alias.",
@@ -1274,7 +1343,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="export-certificate" href="#export-certificate" class="">export-certificate</a> - Export a certificate from a KeyStore entry to a file.</span>
+    <span class="toggle-link">
+      <a id="export-certificate" href="#export-certificate" class="">
+      export-certificate</a> - Export a certificate from a KeyStore entry to a file.
+    </span>
     <div class="collapsible">
 
 
@@ -1331,7 +1403,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "export-certificate",
     "description" : "Export a certificate from a KeyStore entry to a file.",
@@ -1397,7 +1469,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="generate-certificate-signing-request" href="#generate-certificate-signing-request" class="">generate-certificate-signing-request</a> - Generate a PKCS #10 certificate signing request.</span>
+    <span class="toggle-link">
+      <a id="generate-certificate-signing-request" href="#generate-certificate-signing-request" class="">
+      generate-certificate-signing-request</a> - Generate a PKCS #10 certificate signing request.
+    </span>
     <div class="collapsible">
 
 
@@ -1478,7 +1553,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "generate-certificate-signing-request",
     "description" : "Generate a PKCS #10 certificate signing request.",
@@ -1668,7 +1743,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="generate-key-pair" href="#generate-key-pair" class="">generate-key-pair</a> - Generate a key pair and wrap the resulting public key in a self-signed X.509 certificate. The generated private key and self-signed certificate will be added to the KeyStore.</span>
+    <span class="toggle-link">
+      <a id="generate-key-pair" href="#generate-key-pair" class="">
+      generate-key-pair</a> - Generate a key pair and wrap the resulting public key in a self-signed X.509 certificate. The generated private key and self-signed certificate will be added to the KeyStore.
+    </span>
     <div class="collapsible">
 
 
@@ -1765,7 +1843,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "generate-key-pair",
     "description" : "Generate a key pair and wrap the resulting public key in a self-signed X.509 certificate. The generated private key and self-signed certificate will be added to the KeyStore.",
@@ -1979,7 +2057,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="import-certificate" href="#import-certificate" class="">import-certificate</a> - Import a certificate or certificate chain from a file into a KeyStore entry.</span>
+    <span class="toggle-link">
+      <a id="import-certificate" href="#import-certificate" class="">
+      import-certificate</a> - Import a certificate or certificate chain from a file into a KeyStore entry.
+    </span>
     <div class="collapsible">
 
 
@@ -2052,7 +2133,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "import-certificate",
     "description" : "Import a certificate or certificate chain from a file into a KeyStore entry.",
@@ -2191,7 +2272,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="load" href="#load" class="">load</a> - Load the KeyStore, if the KeyStore is file backed this will involve re-reading the contents of the file.</span>
+    <span class="toggle-link">
+      <a id="load" href="#load" class="">
+      load</a> - Load the KeyStore, if the KeyStore is file backed this will involve re-reading the contents of the file.
+    </span>
     <div class="collapsible">
 
 
@@ -2202,7 +2286,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "load",
     "description" : "Load the KeyStore, if the KeyStore is file backed this will involve re-reading the contents of the file.",
@@ -2219,7 +2303,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="obtain-certificate" href="#obtain-certificate" class="">obtain-certificate</a> - Obtain a signed certificate from a certificate authority and store it in a KeyStore entry.</span>
+    <span class="toggle-link">
+      <a id="obtain-certificate" href="#obtain-certificate" class="">
+      obtain-certificate</a> - Obtain a signed certificate from a certificate authority and store it in a KeyStore entry.
+    </span>
     <div class="collapsible">
 
 
@@ -2308,7 +2395,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "obtain-certificate",
     "description" : "Obtain a signed certificate from a certificate authority and store it in a KeyStore entry.",
@@ -2477,7 +2564,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="read-alias" href="#read-alias" class="">read-alias</a> - Read an alias from a KeyStore.</span>
+    <span class="toggle-link">
+      <a id="read-alias" href="#read-alias" class="">
+      read-alias</a> - Read an alias from a KeyStore.
+    </span>
     <div class="collapsible">
 
 
@@ -2518,7 +2608,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "read-alias",
     "description" : "Read an alias from a KeyStore.",
@@ -2559,7 +2649,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="read-aliases" href="#read-aliases" class="">read-aliases</a> - Read aliases from a KeyStore.</span>
+    <span class="toggle-link">
+      <a id="read-aliases" href="#read-aliases" class="">
+      read-aliases</a> - Read aliases from a KeyStore.
+    </span>
     <div class="collapsible">
 
 
@@ -2600,7 +2693,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "read-aliases",
     "description" : "Read aliases from a KeyStore.",
@@ -2641,7 +2734,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="remove" href="#remove" class="">remove</a> - Remove the KeyStore definition.</span>
+    <span class="toggle-link">
+      <a id="remove" href="#remove" class="">
+      remove</a> - Remove the KeyStore definition.
+    </span>
     <div class="collapsible">
 
 
@@ -2652,7 +2748,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "remove",
     "description" : "Remove the KeyStore definition.",
@@ -2670,7 +2766,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="remove-alias" href="#remove-alias" class="">remove-alias</a> - Remove an alias from a KeyStore.</span>
+    <span class="toggle-link">
+      <a id="remove-alias" href="#remove-alias" class="">
+      remove-alias</a> - Remove an alias from a KeyStore.
+    </span>
     <div class="collapsible">
 
 
@@ -2703,7 +2802,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "remove-alias",
     "description" : "Remove an alias from a KeyStore.",
@@ -2731,7 +2830,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="revoke-certificate" href="#revoke-certificate" class="">revoke-certificate</a> - Revoke a signed certificate.</span>
+    <span class="toggle-link">
+      <a id="revoke-certificate" href="#revoke-certificate" class="">
+      revoke-certificate</a> - Revoke a signed certificate.
+    </span>
     <div class="collapsible">
 
 
@@ -2788,7 +2890,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "revoke-certificate",
     "description" : "Revoke a signed certificate.",
@@ -2866,7 +2968,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="should-renew-certificate" href="#should-renew-certificate" class="">should-renew-certificate</a> - Check if a signed certificate is due for renewal.</span>
+    <span class="toggle-link">
+      <a id="should-renew-certificate" href="#should-renew-certificate" class="">
+      should-renew-certificate</a> - Check if a signed certificate is due for renewal.
+    </span>
     <div class="collapsible">
 
 
@@ -2907,7 +3012,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "should-renew-certificate",
     "description" : "Check if a signed certificate is due for renewal.",
@@ -2950,7 +3055,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="store" href="#store" class="">store</a> - Store the KeyStore to file, this operation will fail for any KeyStore instances not backed by a file.  If the file does not exist and it was not flagged as required it will be created.</span>
+    <span class="toggle-link">
+      <a id="store" href="#store" class="">
+      store</a> - Store the KeyStore to file, this operation will fail for any KeyStore instances not backed by a file.  If the file does not exist and it was not flagged as required it will be created.
+    </span>
     <div class="collapsible">
 
 
@@ -2961,7 +3069,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "store",
     "description" : "Store the KeyStore to file, this operation will fail for any KeyStore instances not backed by a file.  If the file does not exist and it was not flagged as required it will be created.",
@@ -2976,6 +3084,33 @@
         </tr>
       </table>
     </div>
+  </li>
+</ul>
+<h2>Galleon Features</h2>
+<p>Galleon features are to be used when creating Galleon feature-packs.</p>
+<ul class="attributes">
+  <li>
+  <span class="toggle-link">subsystem.elytron.key-store</span>
+  <div class="collapsible">
+    <div class="code-block-container">
+      <pre>
+        <code id="feature" class="language-xml">
+&lt;feature spec="subsystem.elytron.key-store"&gt;
+  &lt;param name="key-store" value="{resource name}"/&gt;
+  &lt;param name="alias-filter" value="{value}"/&gt;
+  &lt;param name="credential-reference" value="{value}"/&gt;
+  &lt;param name="path" value="{value}"/&gt;
+  &lt;param name="provider-name" value="{value}"/&gt;
+  &lt;param name="providers" value="{value}"/&gt;
+  &lt;param name="relative-to" value="{value}"/&gt;
+  &lt;param name="required" value="{value}"/&gt;
+  &lt;param name="type" value="{value}"/&gt;
+&lt;feature/&gt;
+        </code>
+      </pre>
+      <button class="copy-btn" onclick="copyToClipboard('feature')" title="Copy to clipboard">📋</button>
+    </div>
+  </div>
   </li>
 </ul>
 </div>

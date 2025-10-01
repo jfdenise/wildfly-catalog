@@ -56,7 +56,7 @@
     "layers" : [ "keycloak-client-saml", "keycloak-client-saml-ejb", "keycloak-saml" ],
     "modelReference" : "modelReference/org.keycloak_keycloak-saml-adapter-galleon-pack/reference/index.html"
   }, {
-    "mavenCoordinates" : "org.wildfly.extras.grpc:wildfly-grpc-feature-pack:0.1.13-SNAPSHOT",
+    "mavenCoordinates" : "org.wildfly.extras.grpc:wildfly-grpc-feature-pack:0.1.14-SNAPSHOT",
     "name" : "WildFly gRPC :: Feature Pack",
     "description" : "Parent for modules with code. Contains dependencies and plugin management",
     "licenses" : [ "Apache License, Version 2.0" ],
@@ -103,6 +103,7 @@
     "name" : "AI",
     "functionalities" : [ {
       "name" : "ai",
+      "stability" : "experimental",
       "dependencies" : [ ],
       "managementModel" : {
         "subsystem" : {
@@ -112,10 +113,9 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.ai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for Langchain4j",
-      "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.class",
         "value" : "dev.langchain4j.*,org.eclipse.microprofile.ai.llm.*",
@@ -130,6 +130,7 @@
       "glowDiscoverable" : true
     }, {
       "name" : "chat-memory-provider",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -175,11 +176,10 @@
         "system-properties" : [ "org.wildfly.ai.chat-memory.session" ],
         "environment-variables" : [ "CHAT_MEMORY_SESSION" ]
       } ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.ai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for Langchain4j ChatMemoryProvider",
       "glowAddOn" : "chat-memory-provider",
-      "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.annotation.field.value",
         "value" : "dev.langchain4j.cdi.spi.RegisterAIService,chatMemoryProviderName=chat-memory",
@@ -199,6 +199,7 @@
       "glowDiscoverable" : true
     }, {
       "name" : "default-embedding-content-retriever",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -249,11 +250,10 @@
         "system-properties" : [ "org.wildfly.ai.embedding.retriever.min.score" ],
         "environment-variables" : [ "EMBEDDING_RETRIEVER_MIN_SCORE" ]
       } ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.ai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Defining a default in-memory content retriever for RAG",
       "glowAddOn" : "default-embedding-content-retriever",
-      "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.annotation.field.value",
         "value" : "dev.langchain4j.cdi.spi.RegisterAIService,contentRetrieverName=embedding-store-retriever",
@@ -273,6 +273,7 @@
       "glowDiscoverable" : true
     }, {
       "name" : "gemini-chat-model",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -327,11 +328,10 @@
         "system-properties" : [ "org.wildfly.ai.gemini.chat.model.name" ],
         "environment-variables" : [ "GEMINI_CHAT_MODEL_NAME" ]
       } ],
-      "packages" : [ "dev.langchain4j.gemini" ],
+      "packages" : [ "dev.langchain4j.gemini", "org.wildfly.extension.ai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for Gemini chat model",
       "glowAddOn" : "gemini-chat-model",
-      "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.annotation.field.value",
         "value" : "dev.langchain4j.cdi.spi.RegisterAIService,chatModelName=gemini",
@@ -351,6 +351,7 @@
       "glowDiscoverable" : true
     }, {
       "name" : "gemini-streaming-chat-model",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -409,11 +410,10 @@
         "system-properties" : [ "org.wildfly.ai.gemini.chat.model.name" ],
         "environment-variables" : [ "GEMINI_CHAT_MODEL_NAME" ]
       } ],
-      "packages" : [ "dev.langchain4j.gemini" ],
+      "packages" : [ "dev.langchain4j.gemini", "org.wildfly.extension.ai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for Gemini streaming chat model",
       "glowAddOn" : "gemini-chat-model",
-      "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.annotation.field.value",
         "value" : "dev.langchain4j.cdi.spi.RegisterAIService,streamingChatModelName=streaming-gemini",
@@ -433,6 +433,7 @@
       "glowDiscoverable" : true
     }, {
       "name" : "github-chat-model",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -487,11 +488,10 @@
         "system-properties" : [ "org.wildfly.ai.github.chat.model.name" ],
         "environment-variables" : [ "GITHUB_CHAT_MODEL_NAME" ]
       } ],
-      "packages" : [ "dev.langchain4j.github" ],
+      "packages" : [ "com.azure", "dev.langchain4j.github", "org.wildfly.extension.ai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for GitHub chat model",
       "glowAddOn" : "github-chat-model",
-      "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.annotation.field.value",
         "value" : "dev.langchain4j.cdi.spi.RegisterAIService,chatModelName=github",
@@ -511,6 +511,7 @@
       "glowDiscoverable" : true
     }, {
       "name" : "github-streaming-chat-model",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -582,11 +583,10 @@
         "system-properties" : [ "org.wildfly.ai.github.chat.model.name" ],
         "environment-variables" : [ "GITHUB_CHAT_MODEL_NAME" ]
       } ],
-      "packages" : [ "dev.langchain4j.github" ],
+      "packages" : [ "com.azure", "dev.langchain4j.github", "org.apache.commons.logging", "org.apache.logging.log4j.api", "org.jboss.as.logging", "org.jboss.logging.jul-to-slf4j-stub", "org.slf4j", "org.slf4j.impl", "org.wildfly.extension.ai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for GitHub streaming chat model",
       "glowAddOn" : "github-chat-model",
-      "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.annotation.field.value",
         "value" : "dev.langchain4j.cdi.spi.RegisterAIService,streamingChatModelName=streaming-github",
@@ -606,6 +606,7 @@
       "glowDiscoverable" : true
     }, {
       "name" : "groq-chat-model",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -669,11 +670,10 @@
         "system-properties" : [ "org.wildfly.ai.groq.chat.model.name" ],
         "environment-variables" : [ "GROQ_CHAT_MODEL_NAME" ]
       } ],
-      "packages" : [ "dev.langchain4j.openai" ],
+      "packages" : [ "dev.langchain4j.openai", "org.wildfly.extension.ai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for Groq chat model",
       "glowAddOn" : "groq-chat-model",
-      "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.annotation.field.value",
         "value" : "dev.langchain4j.cdi.spi.RegisterAIService,chatModelName=groq",
@@ -693,6 +693,7 @@
       "glowDiscoverable" : true
     }, {
       "name" : "groq-streaming-chat-model",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -760,11 +761,10 @@
         "system-properties" : [ "org.wildfly.ai.groq.chat.model.name" ],
         "environment-variables" : [ "GROQ_CHAT_MODEL_NAME" ]
       } ],
-      "packages" : [ "dev.langchain4j.openai" ],
+      "packages" : [ "dev.langchain4j.openai", "org.wildfly.extension.ai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for Groq streaming chat model",
       "glowAddOn" : "groq-chat-model",
-      "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.annotation.field.value",
         "value" : "dev.langchain4j.cdi.spi.RegisterAIService,streamingChatModelName=streaming-groq",
@@ -784,6 +784,7 @@
       "glowDiscoverable" : true
     }, {
       "name" : "in-memory-embedding-model-all-minilm-l6-v2",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -810,14 +811,14 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ "dev.langchain4j.embeddings.all-minilm-l6-v2" ],
+      "packages" : [ "dev.langchain4j.embeddings.all-minilm-l6-v2", "org.wildfly.extension.ai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for a sentenceTransformers all-MiniLM-L6-v2 embedding model that runs within your Java application's process.",
       "glowAddOn" : "in-memory-embedding-model-all-minilm-l6-v2",
-      "stability" : "experimental",
       "glowDiscoverable" : false
     }, {
       "name" : "in-memory-embedding-model-all-minilm-l6-v2-q",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -844,14 +845,14 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ "dev.langchain4j.embeddings.all-minilm-l6-v2-q" ],
+      "packages" : [ "dev.langchain4j.embeddings.all-minilm-l6-v2-q", "org.wildfly.extension.ai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for a quantized sentenceTransformers all-MiniLM-L6-v2 embedding model that runs within your Java application's process.",
       "glowAddOn" : "in-memory-embedding-model-all-minilm-l6-v2-q",
-      "stability" : "experimental",
       "glowDiscoverable" : false
     }, {
       "name" : "in-memory-embedding-model-bge-small-en",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -878,14 +879,14 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ "dev.langchain4j.embeddings.bge-small-en" ],
+      "packages" : [ "dev.langchain4j.embeddings.bge-small-en", "org.wildfly.extension.ai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for BAAI bge-small-en embedding model that runs within your Java application's process.",
       "glowAddOn" : "in-memory-embedding-model-bge-small-en",
-      "stability" : "experimental",
       "glowDiscoverable" : false
     }, {
       "name" : "in-memory-embedding-model-bge-small-en-q",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -912,14 +913,14 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ "dev.langchain4j.embeddings.bge-small-en-q" ],
+      "packages" : [ "dev.langchain4j.embeddings.bge-small-en-q", "org.wildfly.extension.ai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for quantized BAAI bge-small-en embedding model that runs within your Java application's process.",
       "glowAddOn" : "in-memory-embedding-model-bge-small-en-q",
-      "stability" : "experimental",
       "glowDiscoverable" : false
     }, {
       "name" : "in-memory-embedding-model-bge-small-en-v15",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -946,14 +947,14 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ "dev.langchain4j.embeddings.bge-small-en-v15" ],
+      "packages" : [ "dev.langchain4j.embeddings.bge-small-en-v15", "org.wildfly.extension.ai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for BAAI bge-small-en-v1.5 embedding model that runs within your Java application's process.",
       "glowAddOn" : "in-memory-embedding-model-bge-small-en-v15",
-      "stability" : "experimental",
       "glowDiscoverable" : false
     }, {
       "name" : "in-memory-embedding-model-bge-small-en-v15-q",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -980,14 +981,14 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ "dev.langchain4j.embeddings.bge-small-en-v15-q" ],
+      "packages" : [ "dev.langchain4j.embeddings.bge-small-en-v15-q", "org.wildfly.extension.ai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for quantized BAAI bge-small-en-v1.5 embedding model that runs within your Java application's process.",
       "glowAddOn" : "in-memory-embedding-model-bge-small-en-v15-q",
-      "stability" : "experimental",
       "glowDiscoverable" : false
     }, {
       "name" : "in-memory-embedding-model-e5-small-v2",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -1014,14 +1015,14 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ "dev.langchain4j.embeddings.e5-small-v2" ],
+      "packages" : [ "dev.langchain4j.embeddings.e5-small-v2", "org.wildfly.extension.ai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for Microsoft E5-small-v2 embedding model that runs within your Java application's process.",
       "glowAddOn" : "in-memory-embedding-model-e5-small-v2",
-      "stability" : "experimental",
       "glowDiscoverable" : false
     }, {
       "name" : "in-memory-embedding-model-e5-small-v2-q",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -1048,14 +1049,14 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ "dev.langchain4j.embeddings.e5-small-v2-q" ],
+      "packages" : [ "dev.langchain4j.embeddings.e5-small-v2-q", "org.wildfly.extension.ai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for quantized Microsoft E5-small-v2 embedding model that runs within your Java application's process.",
       "glowAddOn" : "in-memory-embedding-model-e5-small-v2-q",
-      "stability" : "experimental",
       "glowDiscoverable" : false
     }, {
       "name" : "in-memory-embedding-store",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -1087,11 +1088,10 @@
         "system-properties" : [ "org.wildfly.ai.in-memory.embedding.file" ],
         "environment-variables" : [ "IN_MEMORY_EMBEDDING_FILE" ]
       } ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.ai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for in memory embedding store.",
       "glowAddOn" : "in-memory-embedding-store",
-      "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.configuration",
         "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-ai-feature-pack/refs/tags/0.5.0/doc/glow-layer-doc/in-memory-embedding-store/env.yaml",
@@ -1106,6 +1106,7 @@
       "glowDiscoverable" : true
     }, {
       "name" : "mcp-client-sse",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -1198,11 +1199,10 @@
         "system-properties" : [ "org.wildfly.ai.mcp.client.sse.path" ],
         "environment-variables" : [ "MCP_CLIENT_SSE_PATH" ]
       } ],
-      "packages" : [ "dev.langchain4j.mcp-client" ],
+      "packages" : [ "dev.langchain4j.mcp-client", "org.wildfly.extension.ai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for integrating MCP tools via SSE.",
       "glowAddOn" : "mcp-client-sse",
-      "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.annotation.field.value",
         "value" : "dev.langchain4j.cdi.spi.RegisterAIService,toolProviderName=mcp",
@@ -1217,6 +1217,7 @@
       "glowDiscoverable" : true
     }, {
       "name" : "mcp-client-stdio",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -1253,11 +1254,10 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ "dev.langchain4j.mcp-client" ],
+      "packages" : [ "dev.langchain4j.mcp-client", "org.wildfly.extension.ai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for integrating MCP tools via Stdio.",
       "glowAddOn" : "mcp-client-sse",
-      "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.annotation.field.value",
         "value" : "dev.langchain4j.cdi.spi.RegisterAIService,toolProviderName=mcp-stdio",
@@ -1267,6 +1267,7 @@
       "glowDiscoverable" : true
     }, {
       "name" : "mistral-ai-chat-model",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -1330,11 +1331,10 @@
         "system-properties" : [ "org.wildfly.ai.mistral.chat.model.name" ],
         "environment-variables" : [ "MISTRAL_CHAT_MODEL_NAME" ]
       } ],
-      "packages" : [ "dev.langchain4j.openai" ],
+      "packages" : [ "dev.langchain4j.mistral-ai", "dev.langchain4j.openai", "org.wildfly.extension.ai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for Mistral AI chat model",
       "glowAddOn" : "mistral-ai-chat-model",
-      "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.annotation.field.value",
         "value" : "dev.langchain4j.cdi.spi.RegisterAIService,chatModelName=mistral",
@@ -1354,6 +1354,7 @@
       "glowDiscoverable" : true
     }, {
       "name" : "mistral-ai-streaming-chat-model",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -1421,11 +1422,10 @@
         "system-properties" : [ "org.wildfly.ai.mistral.chat.model.name" ],
         "environment-variables" : [ "MISTRAL_CHAT_MODEL_NAME" ]
       } ],
-      "packages" : [ "dev.langchain4j.openai" ],
+      "packages" : [ "dev.langchain4j.mistral-ai", "dev.langchain4j.openai", "org.wildfly.extension.ai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for Mistral AI streaming chat model",
       "glowAddOn" : "mistral-ai-chat-model",
-      "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.annotation.field.value",
         "value" : "dev.langchain4j.cdi.spi.RegisterAIService,streamingChatModelName=streaming-mistral",
@@ -1445,6 +1445,7 @@
       "glowDiscoverable" : true
     }, {
       "name" : "neo4j-content-retriever",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -1455,7 +1456,6 @@
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for Neo4J as a content retriever",
       "glowAddOn" : "neo4j-content-retriever",
-      "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.annotation.field.value",
         "value" : "dev.langchain4j.cdi.spi.RegisterAIService,contentRetrieverName=neo4j-retriever",
@@ -1475,6 +1475,7 @@
       "glowDiscoverable" : true
     }, {
       "name" : "neo4j-embedding-store",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -1529,11 +1530,10 @@
         "system-properties" : [ "org.wildfly.ai.neo4j.username" ],
         "environment-variables" : [ "NEO4J_USER" ]
       } ],
-      "packages" : [ "dev.langchain4j.neo4j" ],
+      "packages" : [ "dev.langchain4j.neo4j", "org.wildfly.extension.ai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for Neo4J as embedding store",
       "glowAddOn" : "neo4j-embedding-store",
-      "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.configuration",
         "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-ai-feature-pack/refs/heads/main/doc/glow-layer-doc/neo4j-embedding-store/env.yaml",
@@ -1548,6 +1548,7 @@
       "glowDiscoverable" : true
     }, {
       "name" : "ollama-chat-model",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -1615,11 +1616,10 @@
         "system-properties" : [ "org.wildfly.ai.ollama.chat.temperature" ],
         "environment-variables" : [ "OLLAMA_CHAT_TEMPERATURE" ]
       } ],
-      "packages" : [ "dev.langchain4j.ollama" ],
+      "packages" : [ "dev.langchain4j.ollama", "org.wildfly.extension.ai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for Ollama chat model",
       "glowAddOn" : "ollama-chat-model",
-      "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.annotation.field.value",
         "value" : "dev.langchain4j.cdi.spi.RegisterAIService,chatModelName=ollama",
@@ -1639,6 +1639,7 @@
       "glowDiscoverable" : true
     }, {
       "name" : "ollama-embedding-model",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -1693,11 +1694,10 @@
         "system-properties" : [ "org.wildfly.ai.ollama.embedding.model.name" ],
         "environment-variables" : [ "OLLAMA_EMBEDDING_MODEL_NAME" ]
       } ],
-      "packages" : [ "dev.langchain4j.ollama" ],
+      "packages" : [ "dev.langchain4j.ollama", "org.wildfly.extension.ai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for Ollama as an embedding model.",
       "glowAddOn" : "ollama-embedding-model",
-      "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.configuration",
         "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-ai-feature-pack/refs/heads/main/doc/glow-layer-doc/ollama-embedding-model/env.yaml",
@@ -1707,6 +1707,7 @@
       "glowDiscoverable" : true
     }, {
       "name" : "ollama-neo4j-content-retriever",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -1805,11 +1806,10 @@
         "system-properties" : [ "org.wildfly.ai.ollama.chat.model.name" ],
         "environment-variables" : [ "OLLAMA_NEO4J_CHAT_MODEL_NAME" ]
       } ],
-      "packages" : [ "dev.langchain4j.ollama" ],
+      "packages" : [ "dev.langchain4j.neo4j", "dev.langchain4j.ollama", "org.wildfly.extension.ai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for Neo4J as a content retriever using Ollama model to generate GrapQL queries.",
       "glowAddOn" : "neo4j-content-retriever",
-      "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.annotation.field.value",
         "value" : "dev.langchain4j.cdi.spi.RegisterAIService,contentRetrieverName=ollama-neo4j-retriever",
@@ -1829,6 +1829,7 @@
       "glowDiscoverable" : true
     }, {
       "name" : "ollama-streaming-chat-model",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -1900,11 +1901,10 @@
         "system-properties" : [ "org.wildfly.ai.ollama.chat.temperature" ],
         "environment-variables" : [ "OLLAMA_CHAT_TEMPERATURE" ]
       } ],
-      "packages" : [ "dev.langchain4j.ollama" ],
+      "packages" : [ "dev.langchain4j.ollama", "org.wildfly.extension.ai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for Ollama streaming chat model",
       "glowAddOn" : "ollama-chat-model",
-      "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.annotation.field.value",
         "value" : "dev.langchain4j.cdi.spi.RegisterAIService,streamingChatModelName=streaming-ollama",
@@ -1924,6 +1924,7 @@
       "glowDiscoverable" : true
     }, {
       "name" : "openai-chat-model",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -1987,11 +1988,10 @@
         "system-properties" : [ "org.wildfly.ai.openai.chat.model.name" ],
         "environment-variables" : [ "OPENAI_CHAT_MODEL_NAME" ]
       } ],
-      "packages" : [ "dev.langchain4j.openai" ],
+      "packages" : [ "dev.langchain4j.openai", "org.wildfly.extension.ai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for OpenAI chat model",
       "glowAddOn" : "openai-chat-model",
-      "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.annotation.field.value",
         "value" : "dev.langchain4j.cdi.spi.RegisterAIService,chatModelName=openai",
@@ -2011,6 +2011,7 @@
       "glowDiscoverable" : true
     }, {
       "name" : "openai-neo4j-content-retriever",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -2114,11 +2115,10 @@
         "system-properties" : [ "org.wildfly.ai.openai.chat.model.name" ],
         "environment-variables" : [ "OPENAI_NEO4J_CHAT_MODEL_NAME" ]
       } ],
-      "packages" : [ "dev.langchain4j.openai" ],
+      "packages" : [ "dev.langchain4j.neo4j", "dev.langchain4j.openai", "org.wildfly.extension.ai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for Neo4J as a content retriever using Open AI model to generate GrapQL queries.",
       "glowAddOn" : "neo4j-content-retriever",
-      "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.annotation.field.value",
         "value" : "dev.langchain4j.cdi.spi.RegisterAIService,contentRetrieverName=openai-neo4j-retriever",
@@ -2138,6 +2138,7 @@
       "glowDiscoverable" : true
     }, {
       "name" : "openai-streaming-chat-model",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -2205,11 +2206,10 @@
         "system-properties" : [ "org.wildfly.ai.openai.chat.model.name" ],
         "environment-variables" : [ "OPENAI_CHAT_MODEL_NAME" ]
       } ],
-      "packages" : [ "dev.langchain4j.openai" ],
+      "packages" : [ "dev.langchain4j.openai", "org.wildfly.extension.ai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for OpenAI streaming chat model",
       "glowAddOn" : "openai-chat-model",
-      "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.annotation.field.value",
         "value" : "dev.langchain4j.cdi.spi.RegisterAIService,streamingChatModelName=streaming-openai",
@@ -2229,6 +2229,7 @@
       "glowDiscoverable" : true
     }, {
       "name" : "weaviate-embedding-store",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -2307,11 +2308,10 @@
         "system-properties" : [ "org.wildfly.ai.weaviate.ssl-enabled" ],
         "environment-variables" : [ "WEAVIATE_SSL_ENABLED" ]
       } ],
-      "packages" : [ "dev.langchain4j.weaviate" ],
+      "packages" : [ "dev.langchain4j.weaviate", "org.wildfly.extension.ai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for Weaviate embedding store.",
       "glowAddOn" : "weaviate-embedding-store",
-      "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.configuration",
         "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-ai-feature-pack/refs/heads/main/doc/glow-layer-doc/weaviate-embedding-store/env.yaml",
@@ -2326,6 +2326,7 @@
       "glowDiscoverable" : true
     }, {
       "name" : "web-search-engines",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ai",
         "optional" : false
@@ -2353,11 +2354,10 @@
         "system-properties" : [ ],
         "environment-variables" : [ "TAVILY_API_KEY" ]
       } ],
-      "packages" : [ "dev.langchain4j.web-search-engines" ],
+      "packages" : [ "dev.langchain4j.web-search-engines", "org.wildfly.extension.ai" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for Web Search Engines as content retriever.",
       "glowAddOn" : "web-search-engines",
-      "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.configuration",
         "value" : "https://raw.githubusercontent.com/wildfly-extras/wildfly-ai-feature-pack/refs/heads/main/doc/glow-layer-doc/web-search-engines/env.yaml",
@@ -3978,7 +3978,7 @@
         "system-properties" : [ "jboss.bind.address" ],
         "environment-variables" : [ ]
       } ],
-      "packages" : [ "modules.all" ],
+      "packages" : [ "jakarta.json.api", "modules.all", "org.glassfish.javax.el", "org.hibernate", "org.hibernate.envers", "org.hibernate.search.mapper.orm", "org.jboss.as.clustering.infinispan", "org.jboss.as.clustering.jgroups", "org.jboss.as.ee", "org.jboss.as.ejb3", "org.jboss.as.jpa", "org.jboss.as.naming", "org.jboss.as.webservices", "org.jboss.invocation", "org.jboss.remoting", "org.wildfly.extension.clustering.ejb", "org.wildfly.extension.clustering.server", "org.wildfly.extension.clustering.singleton", "org.wildfly.extension.clustering.web", "org.wildfly.extension.discovery", "org.wildfly.extension.undertow", "org.wildfly.naming" ],
       "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
       "description" : "A default configuration for the cloud. Note that all JBoss Modules modules are provisioned.",
       "glowDiscoverable" : false
@@ -4036,7 +4036,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.jboss.as.domain-http-error-context" ],
       "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
       "description" : "Support for securing deployment with OIDC, adjusted for the cloud",
       "glowRules" : [ {
@@ -4108,7 +4108,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.apache.activemq.artemis", "org.apache.activemq.artemis.journal", "org.wildfly.extension.messaging-activemq" ],
       "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
       "description" : "Support for an embedded Apache Activemq Artemis Jakarta Messaging broker, adjusted for the cloud",
       "glowDiscoverable" : false
@@ -4134,7 +4134,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.jboss.as.clustering.infinispan", "org.wildfly.extension.clustering.server" ],
       "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
       "description" : "Support for JPA (using the latest WildFly supported Hibernate release), adjusted for the cloud",
       "glowDiscoverable" : false
@@ -4173,7 +4173,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.jboss.as.clustering.infinispan", "org.wildfly.extension.clustering.server" ],
       "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
       "description" : "Support for JPA with a distributed second level cache, adjusted for the cloud",
       "glowRules" : [ {
@@ -4295,7 +4295,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.jboss.as.domain-http-error-context" ],
       "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
       "description" : "WildFly Management, adjusted for the cloud",
       "glowRules" : [ {
@@ -4371,7 +4371,7 @@
         "system-properties" : [ "jboss.tx.node.id" ],
         "environment-variables" : [ ]
       } ],
-      "packages" : [ ],
+      "packages" : [ "org.jboss.as.transactions" ],
       "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
       "description" : "WildFly transactions subsystem, adjusted for the cloud",
       "glowDiscoverable" : false
@@ -4440,7 +4440,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.undertow" ],
       "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
       "description" : "WildFly undertow subsystem, adjusted for the cloud",
       "glowRules" : [ {
@@ -4500,7 +4500,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.jboss.as.clustering.infinispan", "org.wildfly.extension.clustering.server" ],
       "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
       "description" : "Support for distributable web applications. Configures a non-local Infinispan-based container web cache for data session handling suitable to clustering environments, adjusted for the cloud.",
       "glowRules" : [ {
@@ -4531,7 +4531,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.jboss.as.webservices" ],
       "feature-pack" : "org.wildfly.cloud:wildfly-cloud-galleon-pack:8.0.1.Final-SNAPSHOT",
       "description" : "Support for Jakarta XML Web Services, adjusted for the cloud",
       "glowDiscoverable" : false
@@ -6979,7 +6979,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ "com.ibm.db2" ],
+      "packages" : [ "com.ibm.db2", "org.jboss.as.connector" ],
       "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:11.0.1.Final-SNAPSHOT",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.xml-path",
@@ -7467,7 +7467,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ "org.mariadb.jdbc" ],
+      "packages" : [ "org.jboss.as.connector", "org.mariadb.jdbc" ],
       "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:11.0.1.Final-SNAPSHOT",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.xml-path",
@@ -7763,7 +7763,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ "com.microsoft.sqlserver" ],
+      "packages" : [ "com.microsoft.sqlserver", "org.jboss.as.connector" ],
       "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:11.0.1.Final-SNAPSHOT",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.xml-path",
@@ -8059,7 +8059,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ "com.mysql.jdbc" ],
+      "packages" : [ "com.mysql.jdbc", "org.jboss.as.connector" ],
       "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:11.0.1.Final-SNAPSHOT",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.xml-path",
@@ -8355,7 +8355,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ "com.oracle.database.jdbc" ],
+      "packages" : [ "com.oracle.database.jdbc", "org.jboss.as.connector" ],
       "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:11.0.1.Final-SNAPSHOT",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.xml-path",
@@ -8651,7 +8651,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ "org.postgresql.jdbc" ],
+      "packages" : [ "org.jboss.as.connector", "org.postgresql.jdbc" ],
       "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:11.0.1.Final-SNAPSHOT",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.xml-path",
@@ -8697,7 +8697,9 @@
           }
         },
         "server-root" : {
-          "/" : { }
+          "/" : {
+            "_address" : "modelReference/org.wildfly.generative-ai_wildfly-ai-feature-pack/reference/index.html"
+          }
         },
         "socket-binding-group" : {
           "standard-sockets" : {
@@ -9207,7 +9209,7 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ "com.h2database.h2database" ],
+      "packages" : [ "com.h2database.h2database", "org.jboss.as.connector" ],
       "feature-pack" : "org.wildfly:wildfly-datasources-galleon-pack:11.0.1.Final-SNAPSHOT",
       "glowDiscoverable" : false
     }, {
@@ -11466,6 +11468,7 @@
       "glowDiscoverable" : true
     }, {
       "name" : "myfaces",
+      "stability" : "default",
       "dependencies" : [ {
         "name" : "cdi",
         "optional" : false
@@ -11486,11 +11489,10 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ "jakarta.faces.impl.myfaces", "jakarta.faces.api.myfaces", "org.jboss.as.jsf-injection.myfaces" ],
+      "packages" : [ "jakarta.faces.api.myfaces", "jakarta.faces.impl.myfaces", "org.jboss.as.jsf", "org.jboss.as.jsf-injection.myfaces" ],
       "feature-pack" : "org.wildfly:wildfly-myfaces-feature-pack:2.0.1.Final-SNAPSHOT",
       "description" : "Support for Jakarta Faces, MyFaces implementation.",
       "glowAddOn" : "myfaces",
-      "stability" : "default",
       "glowDiscoverable" : false
     }, {
       "name" : "naming",
@@ -12249,6 +12251,7 @@
     "name" : "MCP",
     "functionalities" : [ {
       "name" : "mcp",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ee-concurrency",
         "optional" : false
@@ -12261,10 +12264,9 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.mcp" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for exposing MCP tools.",
-      "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.class",
         "value" : "org.wildfly.mcp.api.*",
@@ -12279,6 +12281,7 @@
       "glowDiscoverable" : true
     }, {
       "name" : "mcp-server",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "mcp",
         "optional" : false
@@ -12309,10 +12312,9 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.mcp" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for exposing MCP tools via SSE.",
-      "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.class",
         "value" : "org.wildfly.mcp.api.*",
@@ -12473,6 +12475,7 @@
       "glowDiscoverable" : true
     }, {
       "name" : "microprofile-graphql",
+      "stability" : "community",
       "dependencies" : [ {
         "name" : "cdi",
         "optional" : false
@@ -12491,10 +12494,9 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ "org.wildfly.extension.microprofile.graphql-smallrye", "org.wildfly.extension.microprofile.graphql-client-smallrye", "io.smallrye.graphql", "io.smallrye.graphql.api", "io.smallrye.graphql.client.common", "io.smallrye.graphql.client.vertx", "io.smallrye.graphql.client.api" ],
+      "packages" : [ "io.smallrye.graphql", "io.smallrye.graphql.api", "io.smallrye.graphql.client.api", "io.smallrye.graphql.client.common", "io.smallrye.graphql.client.vertx", "org.wildfly.extension.microprofile.graphql-client-smallrye", "org.wildfly.extension.microprofile.graphql-smallrye" ],
       "feature-pack" : "org.wildfly.extras.graphql:wildfly-microprofile-graphql-feature-pack:2.6.0.Final-SNAPSHOT",
       "description" : "Support for microprofile graphql",
-      "stability" : "community",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.annotations",
         "value" : "org.eclipse.microprofile.graphql",
@@ -13102,6 +13104,7 @@
     "name" : "RPC (Remote Procedure Call)",
     "functionalities" : [ {
       "name" : "grpc",
+      "stability" : "preview",
       "dependencies" : [ {
         "name" : "cdi",
         "optional" : false
@@ -13136,14 +13139,13 @@
       "configurations" : [ {
         "_address" : "modelReference/org.wildfly_wildfly-galleon-pack/reference/socket-binding-group/socket-binding/index.html#port",
         "attribute" : "port",
-        "system-properties" : [ ],
-        "environment-variables" : [ "jboss.grpc.port" ]
+        "system-properties" : [ "jboss.grpc.port" ],
+        "environment-variables" : [ ]
       } ],
-      "packages" : [ ],
-      "feature-pack" : "org.wildfly.extras.grpc:wildfly-grpc-feature-pack:0.1.13-SNAPSHOT",
+      "packages" : [ "org.wildfly.extension.grpc" ],
+      "feature-pack" : "org.wildfly.extras.grpc:wildfly-grpc-feature-pack:0.1.14-SNAPSHOT",
       "description" : "Support for gRPC.",
       "glowAddOn" : "grpc",
-      "stability" : "preview",
       "glowDiscoverable" : false
     }, {
       "name" : "iiop-openjdk",
@@ -13325,6 +13327,7 @@
       "glowDiscoverable" : true
     }, {
       "name" : "keycloak-client-saml",
+      "stability" : "default",
       "dependencies" : [ {
         "name" : "keycloak-saml",
         "optional" : false
@@ -13434,11 +13437,10 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.undertow" ],
       "feature-pack" : "org.keycloak:keycloak-saml-adapter-galleon-pack:999.0.0-SNAPSHOT",
       "description" : "Support for securing your Web deployments with the keyloack SAML protocol.",
       "note" : "Not to be used when provisioning for the cloud if you are using the env variables to automatically configure SAML (SSO_URL, SSO_REALM).",
-      "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.inclusion-mode",
         "value" : "all-dependencies",
@@ -13448,6 +13450,7 @@
       "glowDiscoverable" : true
     }, {
       "name" : "keycloak-client-saml-ejb",
+      "stability" : "default",
       "dependencies" : [ {
         "name" : "keycloak-client-saml",
         "optional" : false
@@ -13473,11 +13476,10 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.jboss.as.ejb3" ],
       "feature-pack" : "org.keycloak:keycloak-saml-adapter-galleon-pack:999.0.0-SNAPSHOT",
       "description" : "Support for securing your EJB with the keyloack SAML protocol.",
       "note" : "Not to be used when provisioning for the cloud if you are using the env variables to automatically configure SAML (SSO_URL, SSO_REALM).",
-      "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.inclusion-mode",
         "value" : "all-dependencies",
@@ -13487,6 +13489,7 @@
       "glowDiscoverable" : true
     }, {
       "name" : "keycloak-saml",
+      "stability" : "default",
       "dependencies" : [ {
         "name" : "ee",
         "optional" : false
@@ -13505,10 +13508,9 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ "docs.licenses" ],
+      "packages" : [ "docs.licenses", "org.keycloak.keycloak-jboss-adapter-core", "org.keycloak.keycloak-saml-adapter-subsystem" ],
       "feature-pack" : "org.keycloak:keycloak-saml-adapter-galleon-pack:999.0.0-SNAPSHOT",
       "description" : "Add the keyloack SAML subsystem to the server configuration.",
-      "stability" : "default",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.xml-path",
         "value" : "/WEB-INF/web.xml,/web-app/login-config/auth-method,KEYCLOAK-SAML",
@@ -13567,6 +13569,7 @@
     "name" : "WASM",
     "functionalities" : [ {
       "name" : "wasm",
+      "stability" : "experimental",
       "dependencies" : [ {
         "name" : "ee-concurrency",
         "optional" : false
@@ -13579,10 +13582,9 @@
         }
       },
       "configurations" : [ ],
-      "packages" : [ ],
+      "packages" : [ "org.wildfly.extension.wasm" ],
       "feature-pack" : "org.wildfly.generative-ai:wildfly-ai-feature-pack:1.0.0-SNAPSHOT",
       "description" : "Support for WASM WASI.",
-      "stability" : "experimental",
       "glowRules" : [ {
         "name" : "org.wildfly.rule.class",
         "value" : "org.wildfly.wasm.api.*",

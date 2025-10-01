@@ -1,70 +1,95 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Model Reference for subsystem=microprofile-opentracing-smallrye</title>
-    <link rel="stylesheet" href="../../../styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
-    <script src="../../../scripts.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Management API  Reference for subsystem=microprofile-opentracing-smallrye</title>
+  <link rel="stylesheet" href="../../../styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+  <script src="../../../scripts.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
 </head>
 <body>
 <div class="container">
-<header class="card-header">
+  <header class="card-header">
 <div>
-    <nav aria-label="Breadcrumb" class="breadcrumb">
-        <ol>
-            <li>
-                <a href="../../index.html">home</a>
-            </li>
-            <li>subsystem=microprofile-opentracing-smallrye</li>
-        </ol>
-    </nav>
-</div>    <h1>Model Reference for subsystem=microprofile-opentracing-smallrye</h1>
+  <nav aria-label="Breadcrumb" class="breadcrumb">
+    <ol>
+      <li>
+        <a href="../../index.html">root</a>
+      </li>
+      <li>subsystem=microprofile-opentracing-smallrye</li>
+    </ol>
+  </nav>
+</div>    <h1>Management API Reference for subsystem=microprofile-opentracing-smallrye</h1>
     <p>WildFly Extension for MicroProfile OpenTracing With SmallRye.</p>
-</header>
+
+  </header>
 <h2>Children (1)</h2>
 <ul class="children">
-    <li>
-        <a href="jaeger-tracer/index.html">jaeger-tracer</a>
+  <li>
+    <a href="jaeger-tracer/index.html" class="">jaeger-tracer</a>
+  </li>
 </ul>
+<h2>Provided Capabilities (1)</h2>
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Dynamic</th>
+    <th>Other provider points</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><a href="https://github.com/wildfly/wildfly-capabilities/tree/main/org/wildfly/microprofile/opentracing/capability.adoc">org.wildfly.microprofile.opentracing</a></td>
+    <td>false</td>
+    <td>
+      <p>none</p>
+    </td>
+  </tr>
+  </tbody>
+</table>
 <h2>Attributes (1)</h2>
 <ul class="attributes">
-    <li>
-        <span class="toggle-link"><a id="default-tracer" href="#default-tracer" class="">default-tracer</a> - Default tracer for the deployments if none is defined.</span>
-        <div class="collapsible">
+  <li>
+    <span class="toggle-link">
+      <a id="default-tracer" href="#default-tracer" class="">
+         default-tracer</a> - Default tracer for the deployments if none is defined.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>STRING</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>all-services</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>STRING</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>all-services</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -82,17 +107,20 @@
     "storage" : "configuration",
     "restart-required" : "all-services"
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
 </ul>
 <h2>Operations (4)</h2>
 <ul class="operations">
   <li>
-    <span class="toggle-link"><a id="add" href="#add" class="">add</a> - Add the subsystem.</span>
+    <span class="toggle-link">
+      <a id="add" href="#add" class="">
+      add</a> - Add the subsystem.
+    </span>
     <div class="collapsible">
 
 
@@ -125,7 +153,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "add",
     "description" : "Add the subsystem.",
@@ -154,7 +182,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="describe-migration" href="#describe-migration" class="">describe-migration</a> - Describe all the steps to migrate legacy MicroProfile OpenTracing subsystem resources to the new OpenTelemetry subsystem.</span>
+    <span class="toggle-link">
+      <a id="describe-migration" href="#describe-migration" class="">
+      describe-migration</a> - Describe all the steps to migrate legacy MicroProfile OpenTracing subsystem resources to the new OpenTelemetry subsystem.
+    </span>
     <div class="collapsible">
 
 
@@ -199,7 +230,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "describe-migration",
     "description" : "Describe all the steps to migrate legacy MicroProfile OpenTracing subsystem resources to the new OpenTelemetry subsystem.",
@@ -251,7 +282,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="migrate" href="#migrate" class="">migrate</a> - Migrate legacy MicroProfile OpenTracing subsystem resources to the new OpenTelemetry subsystem. Returns true if the subsystem migration has been actually performed and false otherwise.</span>
+    <span class="toggle-link">
+      <a id="migrate" href="#migrate" class="">
+      migrate</a> - Migrate legacy MicroProfile OpenTracing subsystem resources to the new OpenTelemetry subsystem. Returns true if the subsystem migration has been actually performed and false otherwise.
+    </span>
     <div class="collapsible">
 
 
@@ -296,7 +330,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "migrate",
     "description" : "Migrate legacy MicroProfile OpenTracing subsystem resources to the new OpenTelemetry subsystem. Returns true if the subsystem migration has been actually performed and false otherwise.",
@@ -348,7 +382,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="remove" href="#remove" class="">remove</a> - Remove the subsystem.</span>
+    <span class="toggle-link">
+      <a id="remove" href="#remove" class="">
+      remove</a> - Remove the subsystem.
+    </span>
     <div class="collapsible">
 
 
@@ -359,7 +396,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "remove",
     "description" : "Remove the subsystem.",
@@ -375,6 +412,25 @@
         </tr>
       </table>
     </div>
+  </li>
+</ul>
+<h2>Galleon Features</h2>
+<p>Galleon features are to be used when creating Galleon feature-packs.</p>
+<ul class="attributes">
+  <li>
+  <span class="toggle-link">subsystem.microprofile-opentracing-smallrye</span>
+  <div class="collapsible">
+    <div class="code-block-container">
+      <pre>
+        <code id="feature" class="language-xml">
+&lt;feature spec="subsystem.microprofile-opentracing-smallrye"&gt;
+  &lt;param name="default-tracer" value="{value}"/&gt;
+&lt;feature/&gt;
+        </code>
+      </pre>
+      <button class="copy-btn" onclick="copyToClipboard('feature')" title="Copy to clipboard">📋</button>
+    </div>
+  </div>
   </li>
 </ul>
 </div>

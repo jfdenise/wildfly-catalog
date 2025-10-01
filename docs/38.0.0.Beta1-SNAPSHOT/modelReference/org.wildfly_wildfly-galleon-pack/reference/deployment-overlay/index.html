@@ -1,40 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Model Reference for deployment-overlay</title>
-    <link rel="stylesheet" href="../../styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
-    <script src="../../scripts.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Management API  Reference for deployment-overlay</title>
+  <link rel="stylesheet" href="../../styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+  <script src="../../scripts.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
 </head>
 <body>
 <div class="container">
-<header class="card-header">
+  <header class="card-header">
 <div>
-    <nav aria-label="Breadcrumb" class="breadcrumb">
-        <ol>
-            <li>
-                <a href="../index.html">home</a>
-            </li>
-            <li>deployment-overlay</li>
-        </ol>
-    </nav>
-</div>    <h1>Model Reference for deployment-overlay</h1>
+  <nav aria-label="Breadcrumb" class="breadcrumb">
+    <ol>
+      <li>
+        <a href="../index.html">root</a>
+      </li>
+      <li>deployment-overlay</li>
+    </ol>
+  </nav>
+</div>    <h1>Management API Reference for deployment-overlay</h1>
     <p>A deployment overlay</p>
-</header>
+
+  </header>
 <h2>Children (2)</h2>
 <ul class="children">
-    <li>
-        <a href="content/index.html">content</a>
-    <li>
-        <a href="deployment/index.html">deployment</a>
+  <li>
+    <a href="content/index.html" class="">content</a>
+  </li>
+  <li>
+    <a href="deployment/index.html" class="">deployment</a>
+  </li>
 </ul>
 <h2>Operations (3)</h2>
 <ul class="operations">
   <li>
-    <span class="toggle-link"><a id="add" href="#add" class="">add</a> - Adds a deployment overlay</span>
+    <span class="toggle-link">
+      <a id="add" href="#add" class="">
+      add</a> - Adds a deployment overlay
+    </span>
     <div class="collapsible">
 
 
@@ -45,7 +51,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "add",
     "description" : "Adds a deployment overlay",
@@ -62,7 +68,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="redeploy-links" href="#redeploy-links" class="">redeploy-links</a> - Redeploys the deployments affected by this overlay.</span>
+    <span class="toggle-link">
+      <a id="redeploy-links" href="#redeploy-links" class="">
+      redeploy-links</a> - Redeploys the deployments affected by this overlay.
+    </span>
     <div class="collapsible">
 
 
@@ -95,7 +104,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "redeploy-links",
     "description" : "Redeploys the deployments affected by this overlay.",
@@ -126,7 +135,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="remove" href="#remove" class="">remove</a> - Removes a deployment overlay</span>
+    <span class="toggle-link">
+      <a id="remove" href="#remove" class="">
+      remove</a> - Removes a deployment overlay
+    </span>
     <div class="collapsible">
 
 
@@ -137,7 +149,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "remove",
     "description" : "Removes a deployment overlay",
@@ -153,6 +165,25 @@
         </tr>
       </table>
     </div>
+  </li>
+</ul>
+<h2>Galleon Features</h2>
+<p>Galleon features are to be used when creating Galleon feature-packs.</p>
+<ul class="attributes">
+  <li>
+  <span class="toggle-link">deployment-overlay</span>
+  <div class="collapsible">
+    <div class="code-block-container">
+      <pre>
+        <code id="feature" class="language-xml">
+&lt;feature spec="deployment-overlay"&gt;
+  &lt;param name="deployment-overlay" value="{resource name}"/&gt;
+&lt;feature/&gt;
+        </code>
+      </pre>
+      <button class="copy-btn" onclick="copyToClipboard('feature')" title="Copy to clipboard">📋</button>
+    </div>
+  </div>
   </li>
 </ul>
 </div>

@@ -1,76 +1,122 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Model Reference for ldap-realm</title>
-    <link rel="stylesheet" href="../../../../styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
-    <script src="../../../../scripts.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Management API  Reference for ldap-realm</title>
+  <link rel="stylesheet" href="../../../../styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+  <script src="../../../../scripts.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
 </head>
 <body>
 <div class="container">
-<header class="card-header">
+  <header class="card-header">
 <div>
-    <nav aria-label="Breadcrumb" class="breadcrumb">
-        <ol>
-            <li>
-                <a href="../../../index.html">home</a>
-            </li>
-            <li>
-                <a href="../../../subsystem/elytron/index.html">subsystem=elytron</a>
-            </li>
-            <li>ldap-realm</li>
-        </ol>
-    </nav>
-</div>    <h1>Model Reference for ldap-realm</h1>
+  <nav aria-label="Breadcrumb" class="breadcrumb">
+    <ol>
+      <li>
+        <a href="../../../index.html">root</a>
+      </li>
+      <li>
+        <a href="../../../subsystem/elytron/index.html">subsystem=elytron</a>
+      </li>
+      <li>ldap-realm</li>
+    </ol>
+  </nav>
+</div>    <h1>Management API Reference for ldap-realm</h1>
     <p>A security realm definition backed by LDAP.</p>
-</header>
+
+  </header>
+<h2>Provided Capabilities (2)</h2>
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Dynamic</th>
+    <th>Other provider points</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td><a href="https://github.com/wildfly/wildfly-capabilities/tree/main/org/wildfly/security/security-realm/capability.adoc">org.wildfly.security.security-realm</a></td>
+    <td>true</td>
+    <td>
+      <a href="../../../subsystem/elytron/jaas-realm/index.html">/subsystem=elytron/jaas-realm=*</a> <br/>
+      <a href="../../../subsystem/elytron/jdbc-realm/index.html">/subsystem=elytron/jdbc-realm=*</a> <br/>
+      <a href="../../../subsystem/elytron/filesystem-realm/index.html">/subsystem=elytron/filesystem-realm=*</a> <br/>
+      <a href="../../../subsystem/elytron/token-realm/index.html">/subsystem=elytron/token-realm=*</a> <br/>
+      <a href="../../../subsystem/elytron/distributed-realm/index.html">/subsystem=elytron/distributed-realm=*</a> <br/>
+      <a href="../../../subsystem/elytron/key-store-realm/index.html">/subsystem=elytron/key-store-realm=*</a> <br/>
+      <a href="../../../subsystem/elytron/failover-realm/index.html">/subsystem=elytron/failover-realm=*</a> <br/>
+      <a href="../../../subsystem/security/elytron-realm/index.html">/subsystem=security/elytron-realm=*</a> <br/>
+      <a href="../../../subsystem/elytron/custom-modifiable-realm/index.html">/subsystem=elytron/custom-modifiable-realm=*</a> <br/>
+      <a href="../../../subsystem/elytron/identity-realm/index.html">/subsystem=elytron/identity-realm=*</a> <br/>
+      <a href="../../../subsystem/elytron/aggregate-realm/index.html">/subsystem=elytron/aggregate-realm=*</a> <br/>
+      <a href="../../../subsystem/elytron/properties-realm/index.html">/subsystem=elytron/properties-realm=*</a> <br/>
+      <a href="../../../subsystem/elytron/caching-realm/index.html">/subsystem=elytron/caching-realm=*</a> <br/>
+      <a href="../../../subsystem/elytron/custom-realm/index.html">/subsystem=elytron/custom-realm=*</a> <br/>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="https://github.com/wildfly/wildfly-capabilities/tree/main/org/wildfly/security/modifiable-security-realm/capability.adoc">org.wildfly.security.modifiable-security-realm</a></td>
+    <td>true</td>
+    <td>
+      <a href="../../../subsystem/elytron/filesystem-realm/index.html">/subsystem=elytron/filesystem-realm=*</a> <br/>
+      <a href="../../../subsystem/elytron/custom-modifiable-realm/index.html">/subsystem=elytron/custom-modifiable-realm=*</a> <br/>
+      <a href="../../../subsystem/elytron/token-realm/index.html">/subsystem=elytron/token-realm=*</a> <br/>
+    </td>
+  </tr>
+  </tbody>
+</table>
 <h2>Attributes (6)</h2>
 <ul class="attributes">
-    <li>
-        <span class="toggle-link"><a id="allow-blank-password" href="#allow-blank-password" class="">allow-blank-password</a> - Does this realm support blank password direct verification? Blank password attempt will be rejected otherwise.</span>
-        <div class="collapsible">
+  <li>
+    <span class="toggle-link">
+      <a id="allow-blank-password" href="#allow-blank-password" class="">
+         allow-blank-password</a> - Does this realm support blank password direct verification? Blank password attempt will be rejected otherwise.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>BOOLEAN</td>
-                </tr>
-                <tr>
-                    <td>Default Value</td>
-                    <td>false</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>all-services</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>BOOLEAN</td>
+        </tr>
+        <tr>
+          <td>Default Value</td>
+          <td>false</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>all-services</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -88,42 +134,45 @@
     "restart-required" : "all-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="dir-context" href="#dir-context" class="">dir-context</a> - The configuration to connect to a LDAP server.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="dir-context" href="#dir-context" class="">
+         dir-context</a> - The configuration to connect to a LDAP server.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>STRING</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>all-services</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>STRING</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>all-services</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -141,54 +190,57 @@
     "storage" : "configuration",
     "restart-required" : "all-services"
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="direct-verification" href="#direct-verification" class="">direct-verification</a> - Does this realm support verification of credentials by directly connecting to LDAP as the account being authenticated?</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="direct-verification" href="#direct-verification" class="">
+         direct-verification</a> - Does this realm support verification of credentials by directly connecting to LDAP as the account being authenticated?
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>BOOLEAN</td>
-                </tr>
-                <tr>
-                    <td>Default Value</td>
-                    <td>false</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>all-services</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>BOOLEAN</td>
+        </tr>
+        <tr>
+          <td>Default Value</td>
+          <td>false</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>all-services</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -205,54 +257,57 @@
     "restart-required" : "all-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="hash-charset" href="#hash-charset" class="">hash-charset</a> - The character set to use when converting the password string to a byte array.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="hash-charset" href="#hash-charset" class="">
+         hash-charset</a> - The character set to use when converting the password string to a byte array.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>STRING</td>
-                </tr>
-                <tr>
-                    <td>Default Value</td>
-                    <td>UTF-8</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>resource-services</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>STRING</td>
+        </tr>
+        <tr>
+          <td>Default Value</td>
+          <td>UTF-8</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>resource-services</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -269,61 +324,64 @@
     "restart-required" : "resource-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="hash-encoding" href="#hash-encoding" class="">hash-encoding</a> - The string format for the password if it is not stored in plain text.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="hash-encoding" href="#hash-encoding" class="">
+         hash-encoding</a> - The string format for the password if it is not stored in plain text.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>STRING</td>
-                </tr>
-                <tr>
-                    <td>Default Value</td>
-                    <td>base64</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>resource-services</td>
-                </tr>
-                <tr>
-                    <td>Allowed Values</td>
-                    <td>
-                        base64<br />
-                        hex<br />
-                    </td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>STRING</td>
+        </tr>
+        <tr>
+          <td>Default Value</td>
+          <td>base64</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>resource-services</td>
+        </tr>
+        <tr>
+          <td>Allowed Values</td>
+          <td>
+            base64<br />
+            hex<br />
+          </td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -344,42 +402,45 @@
     "restart-required" : "resource-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="identity-mapping" href="#identity-mapping" class="">identity-mapping</a> - The configuration options that define how principals are mapped to their corresponding entries in the underlying LDAP server.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="identity-mapping" href="#identity-mapping" class="">
+         identity-mapping</a> - The configuration options that define how principals are mapped to their corresponding entries in the underlying LDAP server.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>OBJECT</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>all-services</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>OBJECT</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>all-services</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -817,17 +878,20 @@
     "restart-required" : "all-services",
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
 </ul>
 <h2>Operations (8)</h2>
 <ul class="operations">
   <li>
-    <span class="toggle-link"><a id="add" href="#add" class="">add</a> - The add operation for the security realm.</span>
+    <span class="toggle-link">
+      <a id="add" href="#add" class="">
+      add</a> - The add operation for the security realm.
+    </span>
     <div class="collapsible">
 
 
@@ -900,7 +964,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "add",
     "description" : "The add operation for the security realm.",
@@ -1413,7 +1477,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="add-identity" href="#add-identity" class="">add-identity</a> - Add an identity to a security realm.</span>
+    <span class="toggle-link">
+      <a id="add-identity" href="#add-identity" class="">
+      add-identity</a> - Add an identity to a security realm.
+    </span>
     <div class="collapsible">
 
 
@@ -1446,7 +1513,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "add-identity",
     "description" : "Add an identity to a security realm.",
@@ -1474,7 +1541,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="add-identity-attribute" href="#add-identity-attribute" class="">add-identity-attribute</a> - Add an attribute to an existing identity.</span>
+    <span class="toggle-link">
+      <a id="add-identity-attribute" href="#add-identity-attribute" class="">
+      add-identity-attribute</a> - Add an attribute to an existing identity.
+    </span>
     <div class="collapsible">
 
 
@@ -1523,7 +1593,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "add-identity-attribute",
     "description" : "Add an attribute to an existing identity.",
@@ -1580,7 +1650,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="read-identity" href="#read-identity" class="">read-identity</a> - Read an identity from a security realm if it exists.</span>
+    <span class="toggle-link">
+      <a id="read-identity" href="#read-identity" class="">
+      read-identity</a> - Read an identity from a security realm if it exists.
+    </span>
     <div class="collapsible">
 
 
@@ -1613,7 +1686,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "read-identity",
     "description" : "Read an identity from a security realm if it exists.",
@@ -1641,7 +1714,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="remove" href="#remove" class="">remove</a> - The remove operation for the security realm.</span>
+    <span class="toggle-link">
+      <a id="remove" href="#remove" class="">
+      remove</a> - The remove operation for the security realm.
+    </span>
     <div class="collapsible">
 
 
@@ -1652,7 +1728,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "remove",
     "description" : "The remove operation for the security realm.",
@@ -1670,7 +1746,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="remove-identity" href="#remove-identity" class="">remove-identity</a> - Remove an identity from a security realm.</span>
+    <span class="toggle-link">
+      <a id="remove-identity" href="#remove-identity" class="">
+      remove-identity</a> - Remove an identity from a security realm.
+    </span>
     <div class="collapsible">
 
 
@@ -1703,7 +1782,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "remove-identity",
     "description" : "Remove an identity from a security realm.",
@@ -1731,7 +1810,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="remove-identity-attribute" href="#remove-identity-attribute" class="">remove-identity-attribute</a> - Remove an attribute to an existing identity.</span>
+    <span class="toggle-link">
+      <a id="remove-identity-attribute" href="#remove-identity-attribute" class="">
+      remove-identity-attribute</a> - Remove an attribute to an existing identity.
+    </span>
     <div class="collapsible">
 
 
@@ -1780,7 +1862,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "remove-identity-attribute",
     "description" : "Remove an attribute to an existing identity.",
@@ -1837,7 +1919,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="set-password" href="#set-password" class="">set-password</a> - Add a password to an existing identity.</span>
+    <span class="toggle-link">
+      <a id="set-password" href="#set-password" class="">
+      set-password</a> - Add a password to an existing identity.
+    </span>
     <div class="collapsible">
 
 
@@ -1926,7 +2011,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "set-password",
     "description" : "Add a password to an existing identity.",
@@ -2317,6 +2402,31 @@
         </tr>
       </table>
     </div>
+  </li>
+</ul>
+<h2>Galleon Features</h2>
+<p>Galleon features are to be used when creating Galleon feature-packs.</p>
+<ul class="attributes">
+  <li>
+  <span class="toggle-link">subsystem.elytron.ldap-realm</span>
+  <div class="collapsible">
+    <div class="code-block-container">
+      <pre>
+        <code id="feature" class="language-xml">
+&lt;feature spec="subsystem.elytron.ldap-realm"&gt;
+  &lt;param name="ldap-realm" value="{resource name}"/&gt;
+  &lt;param name="allow-blank-password" value="{value}"/&gt;
+  &lt;param name="dir-context" value="{value}"/&gt;
+  &lt;param name="direct-verification" value="{value}"/&gt;
+  &lt;param name="hash-charset" value="{value}"/&gt;
+  &lt;param name="hash-encoding" value="{value}"/&gt;
+  &lt;param name="identity-mapping" value="{value}"/&gt;
+&lt;feature/&gt;
+        </code>
+      </pre>
+      <button class="copy-btn" onclick="copyToClipboard('feature')" title="Copy to clipboard">📋</button>
+    </div>
+  </div>
   </li>
 </ul>
 </div>

@@ -1,67 +1,71 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Model Reference for queue</title>
-    <link rel="stylesheet" href="../../../../../styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
-    <script src="../../../../../scripts.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Management API  Reference for queue</title>
+  <link rel="stylesheet" href="../../../../../styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+  <script src="../../../../../scripts.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
 </head>
 <body>
 <div class="container">
-<header class="card-header">
+  <header class="card-header">
 <div>
-    <nav aria-label="Breadcrumb" class="breadcrumb">
-        <ol>
-            <li>
-                <a href="../../../../index.html">home</a>
-            </li>
-            <li>
-                <a href="../../../../subsystem/messaging-activemq/index.html">subsystem=messaging-activemq</a>
-            </li>
-            <li>
-                <a href="../../../../subsystem/messaging-activemq/server/index.html">server</a>
-            </li>
-            <li>queue</li>
-        </ol>
-    </nav>
-</div>    <h1>Model Reference for queue</h1>
+  <nav aria-label="Breadcrumb" class="breadcrumb">
+    <ol>
+      <li>
+        <a href="../../../../index.html">root</a>
+      </li>
+      <li>
+        <a href="../../../../subsystem/messaging-activemq/index.html">subsystem=messaging-activemq</a>
+      </li>
+      <li>
+        <a href="../../../../subsystem/messaging-activemq/server/index.html">server</a>
+      </li>
+      <li>queue</li>
+    </ol>
+  </nav>
+</div>    <h1>Management API Reference for queue</h1>
     <p>A Queue.</p>
-</header>
+
+  </header>
 <h2>Attributes (14)</h2>
 <ul class="attributes">
-    <li>
-        <span class="toggle-link"><a id="consumer-count" href="#consumer-count" class="">consumer-count</a> - The number of consumers consuming messages from this queue.</span>
-        <div class="collapsible">
+  <li>
+    <span class="toggle-link">
+      <a id="consumer-count" href="#consumer-count" class="">
+         consumer-count</a> - The number of consumers consuming messages from this queue.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>INT</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>runtime</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>metric</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>INT</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>runtime</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>metric</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -77,46 +81,49 @@
     "restart-required" : null,
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="dead-letter-address" href="#dead-letter-address" class="">dead-letter-address</a> - The address to send the queue's dead messages to.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="dead-letter-address" href="#dead-letter-address" class="">
+         dead-letter-address</a> - The address to send the queue's dead messages to.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>STRING</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>runtime</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-only</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>STRING</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>runtime</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-only</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -134,38 +141,41 @@
     "restart-required" : null,
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="delivering-count" href="#delivering-count" class="">delivering-count</a> - The number of messages that this queue is currently delivering to its consumers.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="delivering-count" href="#delivering-count" class="">
+         delivering-count</a> - The number of messages that this queue is currently delivering to its consumers.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>INT</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>runtime</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>metric</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>INT</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>runtime</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>metric</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -181,50 +191,53 @@
     "restart-required" : null,
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="durable" href="#durable" class="">durable</a> - Defines whether the queue is durable.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="durable" href="#durable" class="">
+         durable</a> - Defines whether the queue is durable.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>BOOLEAN</td>
-                </tr>
-                <tr>
-                    <td>Default Value</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-only</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>BOOLEAN</td>
+        </tr>
+        <tr>
+          <td>Default Value</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-only</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -241,46 +254,49 @@
     "restart-required" : null,
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="expiry-address" href="#expiry-address" class="">expiry-address</a> - The address to send the queue's expired messages to.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="expiry-address" href="#expiry-address" class="">
+         expiry-address</a> - The address to send the queue's expired messages to.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>STRING</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>runtime</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-only</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>STRING</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>runtime</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-only</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -298,46 +314,49 @@
     "restart-required" : null,
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="filter" href="#filter" class="">filter</a> - A queue message filter definition. An undefined or empty filter will match all messages.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="filter" href="#filter" class="">
+         filter</a> - A queue message filter definition. An undefined or empty filter will match all messages.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>STRING</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-only</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>STRING</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-only</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -355,38 +374,41 @@
     "restart-required" : null,
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="id" href="#id" class="">id</a> - The id of the queue.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="id" href="#id" class="">
+         id</a> - The id of the queue.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>LONG</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>runtime</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-only</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>LONG</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>runtime</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-only</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -402,38 +424,41 @@
     "restart-required" : null,
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="message-count" href="#message-count" class="">message-count</a> - The number of messages currently in this queue.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="message-count" href="#message-count" class="">
+         message-count</a> - The number of messages currently in this queue.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>LONG</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>runtime</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>metric</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>LONG</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>runtime</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>metric</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -449,38 +474,41 @@
     "restart-required" : null,
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="messages-added" href="#messages-added" class="">messages-added</a> - The number of messages added to this queue since it was created.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="messages-added" href="#messages-added" class="">
+         messages-added</a> - The number of messages added to this queue since it was created.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>LONG</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>runtime</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>metric</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>LONG</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>runtime</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>metric</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -496,38 +524,41 @@
     "restart-required" : null,
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="paused" href="#paused" class="">paused</a> - Whether the queue is paused.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="paused" href="#paused" class="">
+         paused</a> - Whether the queue is paused.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>BOOLEAN</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>runtime</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-only</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>BOOLEAN</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>runtime</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-only</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -543,42 +574,45 @@
     "restart-required" : null,
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="queue-address" href="#queue-address" class="">queue-address</a> - The queue address defines what address is used for routing messages.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="queue-address" href="#queue-address" class="">
+         queue-address</a> - The queue address defines what address is used for routing messages.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>STRING</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-only</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>STRING</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-only</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -596,57 +630,60 @@
     "restart-required" : null,
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="routing-type" href="#routing-type" class="">routing-type</a> - Routing type of the queue.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="routing-type" href="#routing-type" class="">
+         routing-type</a> - Routing type of the queue.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>STRING</td>
-                </tr>
-                <tr>
-                    <td>Default Value</td>
-                    <td>MULTICAST</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-only</td>
-                </tr>
-                <tr>
-                    <td>Allowed Values</td>
-                    <td>
-                        MULTICAST<br />
-                        ANYCAST<br />
-                    </td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>STRING</td>
+        </tr>
+        <tr>
+          <td>Default Value</td>
+          <td>MULTICAST</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-only</td>
+        </tr>
+        <tr>
+          <td>Allowed Values</td>
+          <td>
+            MULTICAST<br />
+            ANYCAST<br />
+          </td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -667,38 +704,41 @@
     "restart-required" : null,
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="scheduled-count" href="#scheduled-count" class="">scheduled-count</a> - The number of scheduled messages in this queue.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="scheduled-count" href="#scheduled-count" class="">
+         scheduled-count</a> - The number of scheduled messages in this queue.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>LONG</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>runtime</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>metric</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>LONG</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>runtime</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>metric</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -714,38 +754,41 @@
     "restart-required" : null,
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="temporary" href="#temporary" class="">temporary</a> - Whether the queue is temporary.</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="temporary" href="#temporary" class="">
+         temporary</a> - Whether the queue is temporary.
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>BOOLEAN</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>runtime</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-only</td>
-                </tr>
-                <tr>
-                    <td>Stability Level</td>
-                    <td>default</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>BOOLEAN</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>runtime</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-only</td>
+        </tr>
+        <tr>
+          <td>Stability Level</td>
+          <td>default</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -761,17 +804,20 @@
     "restart-required" : null,
     "capability-reference" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
 </ul>
 <h2>Operations (27)</h2>
 <ul class="operations">
   <li>
-    <span class="toggle-link"><a id="add" href="#add" class="">add</a> - Operation adding a core queue.</span>
+    <span class="toggle-link">
+      <a id="add" href="#add" class="">
+      add</a> - Operation adding a core queue.
+    </span>
     <div class="collapsible">
 
 
@@ -828,7 +874,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "add",
     "description" : "Operation adding a core queue.",
@@ -896,7 +942,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="change-message-priority" href="#change-message-priority" class="">change-message-priority</a> - Change the priority of the message corresponding to the given message-id.</span>
+    <span class="toggle-link">
+      <a id="change-message-priority" href="#change-message-priority" class="">
+      change-message-priority</a> - Change the priority of the message corresponding to the given message-id.
+    </span>
     <div class="collapsible">
 
 
@@ -943,7 +992,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "change-message-priority",
     "description" : "Change the priority of the message corresponding to the given message-id.",
@@ -988,7 +1037,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="change-messages-priority" href="#change-messages-priority" class="">change-messages-priority</a> - Change the priority of the messages corresponding to the given filter.</span>
+    <span class="toggle-link">
+      <a id="change-messages-priority" href="#change-messages-priority" class="">
+      change-messages-priority</a> - Change the priority of the messages corresponding to the given filter.
+    </span>
     <div class="collapsible">
 
 
@@ -1035,7 +1087,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "change-messages-priority",
     "description" : "Change the priority of the messages corresponding to the given filter.",
@@ -1082,7 +1134,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="count-messages" href="#count-messages" class="">count-messages</a> - Returns the number of the messages in the queue matching the given filter.</span>
+    <span class="toggle-link">
+      <a id="count-messages" href="#count-messages" class="">
+      count-messages</a> - Returns the number of the messages in the queue matching the given filter.
+    </span>
     <div class="collapsible">
 
 
@@ -1121,7 +1176,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "count-messages",
     "description" : "Returns the number of the messages in the queue matching the given filter.",
@@ -1151,7 +1206,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="expire-message" href="#expire-message" class="">expire-message</a> - Expire the message corresponding to the given message-id.</span>
+    <span class="toggle-link">
+      <a id="expire-message" href="#expire-message" class="">
+      expire-message</a> - Expire the message corresponding to the given message-id.
+    </span>
     <div class="collapsible">
 
 
@@ -1190,7 +1248,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "expire-message",
     "description" : "Expire the message corresponding to the given message-id.",
@@ -1221,7 +1279,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="expire-messages" href="#expire-messages" class="">expire-messages</a> - Expire the messages matching the given filter.</span>
+    <span class="toggle-link">
+      <a id="expire-messages" href="#expire-messages" class="">
+      expire-messages</a> - Expire the messages matching the given filter.
+    </span>
     <div class="collapsible">
 
 
@@ -1260,7 +1321,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "expire-messages",
     "description" : "Expire the messages matching the given filter.",
@@ -1293,7 +1354,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="list-consumers-as-json" href="#list-consumers-as-json" class="">list-consumers-as-json</a> - List all the existing consumers on the queue as a string in JSON format.</span>
+    <span class="toggle-link">
+      <a id="list-consumers-as-json" href="#list-consumers-as-json" class="">
+      list-consumers-as-json</a> - List all the existing consumers on the queue as a string in JSON format.
+    </span>
     <div class="collapsible">
 
 
@@ -1310,7 +1374,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "list-consumers-as-json",
     "description" : "List all the existing consumers on the queue as a string in JSON format.",
@@ -1332,7 +1396,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="list-delivering-messages" href="#list-delivering-messages" class="">list-delivering-messages</a> - List the messages are currently being delivered.</span>
+    <span class="toggle-link">
+      <a id="list-delivering-messages" href="#list-delivering-messages" class="">
+      list-delivering-messages</a> - List the messages are currently being delivered.
+    </span>
     <div class="collapsible">
 
 
@@ -1451,7 +1518,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "list-delivering-messages",
     "description" : "List the messages are currently being delivered.",
@@ -1587,7 +1654,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="list-delivering-messages-as-json" href="#list-delivering-messages-as-json" class="">list-delivering-messages-as-json</a> - List the messages are currently being delivered as a string in JSON format</span>
+    <span class="toggle-link">
+      <a id="list-delivering-messages-as-json" href="#list-delivering-messages-as-json" class="">
+      list-delivering-messages-as-json</a> - List the messages are currently being delivered as a string in JSON format
+    </span>
     <div class="collapsible">
 
 
@@ -1604,7 +1674,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "list-delivering-messages-as-json",
     "description" : "List the messages are currently being delivered as a string in JSON format",
@@ -1626,7 +1696,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="list-message-counter-as-html" href="#list-message-counter-as-html" class="">list-message-counter-as-html</a> - List the message counter as a string in HTML format.</span>
+    <span class="toggle-link">
+      <a id="list-message-counter-as-html" href="#list-message-counter-as-html" class="">
+      list-message-counter-as-html</a> - List the message counter as a string in HTML format.
+    </span>
     <div class="collapsible">
 
 
@@ -1643,7 +1716,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "list-message-counter-as-html",
     "description" : "List the message counter as a string in HTML format.",
@@ -1665,7 +1738,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="list-message-counter-as-json" href="#list-message-counter-as-json" class="">list-message-counter-as-json</a> - List the message counter as a string in JSON format.</span>
+    <span class="toggle-link">
+      <a id="list-message-counter-as-json" href="#list-message-counter-as-json" class="">
+      list-message-counter-as-json</a> - List the message counter as a string in JSON format.
+    </span>
     <div class="collapsible">
 
 
@@ -1682,7 +1758,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "list-message-counter-as-json",
     "description" : "List the message counter as a string in JSON format.",
@@ -1704,7 +1780,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="list-message-counter-history-as-html" href="#list-message-counter-history-as-html" class="">list-message-counter-history-as-html</a> - List the message counter history.</span>
+    <span class="toggle-link">
+      <a id="list-message-counter-history-as-html" href="#list-message-counter-history-as-html" class="">
+      list-message-counter-history-as-html</a> - List the message counter history.
+    </span>
     <div class="collapsible">
 
 
@@ -1721,7 +1800,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "list-message-counter-history-as-html",
     "description" : "List the message counter history.",
@@ -1743,7 +1822,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="list-message-counter-history-as-json" href="#list-message-counter-history-as-json" class="">list-message-counter-history-as-json</a> - List the message counter history as a string in JSON format.</span>
+    <span class="toggle-link">
+      <a id="list-message-counter-history-as-json" href="#list-message-counter-history-as-json" class="">
+      list-message-counter-history-as-json</a> - List the message counter history as a string in JSON format.
+    </span>
     <div class="collapsible">
 
 
@@ -1760,7 +1842,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "list-message-counter-history-as-json",
     "description" : "List the message counter history as a string in JSON format.",
@@ -1782,7 +1864,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="list-messages" href="#list-messages" class="">list-messages</a> - List all messages in the queue that match the filter</span>
+    <span class="toggle-link">
+      <a id="list-messages" href="#list-messages" class="">
+      list-messages</a> - List all messages in the queue that match the filter
+    </span>
     <div class="collapsible">
 
 
@@ -1901,7 +1986,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "list-messages",
     "description" : "List all messages in the queue that match the filter",
@@ -2022,7 +2107,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="list-messages-as-json" href="#list-messages-as-json" class="">list-messages-as-json</a> - List all messages in the queue that match the filter and return them as a string in JSON format.</span>
+    <span class="toggle-link">
+      <a id="list-messages-as-json" href="#list-messages-as-json" class="">
+      list-messages-as-json</a> - List all messages in the queue that match the filter and return them as a string in JSON format.
+    </span>
     <div class="collapsible">
 
 
@@ -2061,7 +2149,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "list-messages-as-json",
     "description" : "List all messages in the queue that match the filter and return them as a string in JSON format.",
@@ -2094,7 +2182,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="list-scheduled-messages" href="#list-scheduled-messages" class="">list-scheduled-messages</a> - List the messages scheduled for delivery.</span>
+    <span class="toggle-link">
+      <a id="list-scheduled-messages" href="#list-scheduled-messages" class="">
+      list-scheduled-messages</a> - List the messages scheduled for delivery.
+    </span>
     <div class="collapsible">
 
 
@@ -2191,7 +2282,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "list-scheduled-messages",
     "description" : "List the messages scheduled for delivery.",
@@ -2301,7 +2392,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="list-scheduled-messages-as-json" href="#list-scheduled-messages-as-json" class="">list-scheduled-messages-as-json</a> - List the messages scheduled for delivery as a string in JSON format.</span>
+    <span class="toggle-link">
+      <a id="list-scheduled-messages-as-json" href="#list-scheduled-messages-as-json" class="">
+      list-scheduled-messages-as-json</a> - List the messages scheduled for delivery as a string in JSON format.
+    </span>
     <div class="collapsible">
 
 
@@ -2318,7 +2412,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "list-scheduled-messages-as-json",
     "description" : "List the messages scheduled for delivery as a string in JSON format.",
@@ -2340,7 +2434,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="move-message" href="#move-message" class="">move-message</a> - Move the message corresponding to the given message-id to another queue</span>
+    <span class="toggle-link">
+      <a id="move-message" href="#move-message" class="">
+      move-message</a> - Move the message corresponding to the given message-id to another queue
+    </span>
     <div class="collapsible">
 
 
@@ -2395,7 +2492,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "move-message",
     "description" : "Move the message corresponding to the given message-id to another queue",
@@ -2450,7 +2547,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="move-messages" href="#move-messages" class="">move-messages</a> - Move the messages corresponding to the given filter to another queue.</span>
+    <span class="toggle-link">
+      <a id="move-messages" href="#move-messages" class="">
+      move-messages</a> - Move the messages corresponding to the given filter to another queue.
+    </span>
     <div class="collapsible">
 
 
@@ -2505,7 +2605,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "move-messages",
     "description" : "Move the messages corresponding to the given filter to another queue.",
@@ -2562,7 +2662,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="pause" href="#pause" class="">pause</a> - Pause the queue.</span>
+    <span class="toggle-link">
+      <a id="pause" href="#pause" class="">
+      pause</a> - Pause the queue.
+    </span>
     <div class="collapsible">
 
 
@@ -2573,7 +2676,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "pause",
     "description" : "Pause the queue.",
@@ -2590,7 +2693,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="remove" href="#remove" class="">remove</a> - Operation removing an existing queue.</span>
+    <span class="toggle-link">
+      <a id="remove" href="#remove" class="">
+      remove</a> - Operation removing an existing queue.
+    </span>
     <div class="collapsible">
 
 
@@ -2601,7 +2707,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "remove",
     "description" : "Operation removing an existing queue.",
@@ -2619,7 +2725,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="remove-message" href="#remove-message" class="">remove-message</a> - Remove the message corresponding to the given message-id.</span>
+    <span class="toggle-link">
+      <a id="remove-message" href="#remove-message" class="">
+      remove-message</a> - Remove the message corresponding to the given message-id.
+    </span>
     <div class="collapsible">
 
 
@@ -2658,7 +2767,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "remove-message",
     "description" : "Remove the message corresponding to the given message-id.",
@@ -2689,7 +2798,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="remove-messages" href="#remove-messages" class="">remove-messages</a> - Remove messages matching the given filter from the queue.</span>
+    <span class="toggle-link">
+      <a id="remove-messages" href="#remove-messages" class="">
+      remove-messages</a> - Remove messages matching the given filter from the queue.
+    </span>
     <div class="collapsible">
 
 
@@ -2728,7 +2840,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "remove-messages",
     "description" : "Remove messages matching the given filter from the queue.",
@@ -2761,7 +2873,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="reset-message-counter" href="#reset-message-counter" class="">reset-message-counter</a> - Reset the message counters.</span>
+    <span class="toggle-link">
+      <a id="reset-message-counter" href="#reset-message-counter" class="">
+      reset-message-counter</a> - Reset the message counters.
+    </span>
     <div class="collapsible">
 
 
@@ -2772,7 +2887,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "reset-message-counter",
     "description" : "Reset the message counters.",
@@ -2789,7 +2904,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="resume" href="#resume" class="">resume</a> - Resume the queue.</span>
+    <span class="toggle-link">
+      <a id="resume" href="#resume" class="">
+      resume</a> - Resume the queue.
+    </span>
     <div class="collapsible">
 
 
@@ -2800,7 +2918,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "resume",
     "description" : "Resume the queue.",
@@ -2817,7 +2935,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="send-message-to-dead-letter-address" href="#send-message-to-dead-letter-address" class="">send-message-to-dead-letter-address</a> - Send the message corresponding to the given message-id to this queue's Dead Letter Address.</span>
+    <span class="toggle-link">
+      <a id="send-message-to-dead-letter-address" href="#send-message-to-dead-letter-address" class="">
+      send-message-to-dead-letter-address</a> - Send the message corresponding to the given message-id to this queue's Dead Letter Address.
+    </span>
     <div class="collapsible">
 
 
@@ -2856,7 +2977,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "send-message-to-dead-letter-address",
     "description" : "Send the message corresponding to the given message-id to this queue's Dead Letter Address.",
@@ -2887,7 +3008,10 @@
     </div>
   </li>
   <li>
-    <span class="toggle-link"><a id="send-messages-to-dead-letter-address" href="#send-messages-to-dead-letter-address" class="">send-messages-to-dead-letter-address</a> - Send the messages corresponding to the given filter to this queue's Dead Letter Address.</span>
+    <span class="toggle-link">
+      <a id="send-messages-to-dead-letter-address" href="#send-messages-to-dead-letter-address" class="">
+      send-messages-to-dead-letter-address</a> - Send the messages corresponding to the given filter to this queue's Dead Letter Address.
+    </span>
     <div class="collapsible">
 
 
@@ -2926,7 +3050,7 @@
           <td class="toggle-link">Raw DMR model</td>
           <td class="collapsible">
             <div class="code-block-container">
-                            <pre><code class="language-json">
+              <pre><code class="language-json">
 {
     "operation-name" : "send-messages-to-dead-letter-address",
     "description" : "Send the messages corresponding to the given filter to this queue's Dead Letter Address.",
@@ -2957,6 +3081,30 @@
         </tr>
       </table>
     </div>
+  </li>
+</ul>
+<h2>Galleon Features</h2>
+<p>Galleon features are to be used when creating Galleon feature-packs.</p>
+<ul class="attributes">
+  <li>
+  <span class="toggle-link">subsystem.messaging-activemq.server.queue</span>
+  <div class="collapsible">
+    <div class="code-block-container">
+      <pre>
+        <code id="feature" class="language-xml">
+&lt;feature spec="subsystem.messaging-activemq.server.queue"&gt;
+  &lt;param name="queue" value="{resource name}"/&gt;
+  &lt;param name="server" value="{resource name}"/&gt;
+  &lt;param name="durable" value="{value}"/&gt;
+  &lt;param name="filter" value="{value}"/&gt;
+  &lt;param name="queue-address" value="{value}"/&gt;
+  &lt;param name="routing-type" value="{value}"/&gt;
+&lt;feature/&gt;
+        </code>
+      </pre>
+      <button class="copy-btn" onclick="copyToClipboard('feature')" title="Copy to clipboard">📋</button>
+    </div>
+  </div>
   </li>
 </ul>
 </div>

@@ -109,7 +109,8 @@ public class Main {
                 try {
                     unzip(docFile, tmp);
                     Path metadataFile = tmp.resolve("doc/META-INF/metadata.json");
-                    Path modelFile = tmp.resolve("doc/META-INF/model.json");
+                    Path modelFile = tmp.resolve("doc/META-INF/management-api.json");
+                    Path featuresFile = tmp.resolve("doc/META-INF/features.json");
                     JsonNode subCatalog = mapper.readTree(metadataFile.toFile().toURI().toURL());
                     String name = subCatalog.get("name").asText();
                     fpNode.put("name", name);
@@ -135,7 +136,7 @@ public class Main {
                         //JsonNode model = mapper.readTree(modelFile.toFile().toURI().toURL());
                         String directoryName = (coords[0] + '_' + artifactId);
                         fpNode.put("modelReference", "modelReference/" + directoryName + "/reference/index.html");
-                        DocGenerator.generateModel(modelReferenceTargetDirectory.resolve(directoryName), modelFile);
+                        DocGenerator.generateModel(modelReferenceTargetDirectory.resolve(directoryName), modelFile, featuresFile);
                     }
                     generateCatalog(subCatalog, glowRulesDescriptions, categories, mapper, modelReferenceTargetDirectory);
                 } finally {
@@ -356,6 +357,9 @@ public class Main {
 
     private static String formatURL(String url) {
         //System.out.println("ORIGINAL URL " + url);
+        if("/server-root=/".equals(url)) {
+           url="";
+        }
         url = url.replaceAll("=\\*", "");
         url = url.replaceAll("=", "/");
         int i = url.lastIndexOf("@@@");
@@ -367,16 +371,13 @@ public class Main {
         if (!url.endsWith("/")) {
             url += "/";
         }
-        // We have an issue with jgroups, protcol and transport, no URL for them.
+        // We have an issue with jgroups, protocol and transport, no URL for them.
         if (url.equals("/subsystem/jgroups/stack/transport/") || url.equals("/subsystem/jgroups/stack/protocol/")) {
             url = "/subsystem/jgroups/stack/";
         }
         url += "index.html";
         if (attributeName != null) {
             url += "#"+attributeName;
-        }
-        if (url.equals("/index.html")) {
-            url = null;
         }
         return url;
     }
@@ -398,7 +399,7 @@ public class Main {
                 } else {
                     String foundURL = findURL(rootDir, url);
                     if (foundURL == null) {
-                        System.out.println("Url not found for " + url);
+                        System.out.println("Url not found for " + url + " address was " + n.asText());
                         ((ObjectNode) model).remove("_address");
                     } else {
                         ((ObjectNode) model).put("_address", foundURL);

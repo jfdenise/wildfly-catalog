@@ -1,75 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Model Reference for IDP</title>
-    <link rel="stylesheet" href="../../../../../../styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
-    <script src="../../../../../../scripts.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Management API  Reference for IDP</title>
+  <link rel="stylesheet" href="../../../../../../styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+  <script src="../../../../../../scripts.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
 </head>
 <body>
 <div class="container">
-<header class="card-header">
+  <header class="card-header">
 <div>
-    <nav aria-label="Breadcrumb" class="breadcrumb">
-        <ol>
-            <li>
-                <a href="../../../../../index.html">home</a>
-            </li>
-            <li>
-                <a href="../../../../../subsystem/keycloak-saml/index.html">subsystem=keycloak-saml</a>
-            </li>
-            <li>
-                <a href="../../../../../subsystem/keycloak-saml/secure-deployment/index.html">secure-deployment</a>
-            </li>
-            <li>
-                <a href="../../../../../subsystem/keycloak-saml/secure-deployment/SP/index.html">SP</a>
-            </li>
-            <li>IDP</li>
-        </ol>
-    </nav>
-</div>    <h1>Model Reference for IDP</h1>
+  <nav aria-label="Breadcrumb" class="breadcrumb">
+    <ol>
+      <li>
+        <a href="../../../../../index.html">root</a>
+      </li>
+      <li>
+        <a href="../../../../../subsystem/keycloak-saml/index.html">subsystem=keycloak-saml</a>
+      </li>
+      <li>
+        <a href="../../../../../subsystem/keycloak-saml/secure-deployment/index.html">secure-deployment</a>
+      </li>
+      <li>
+        <a href="../../../../../subsystem/keycloak-saml/secure-deployment/SP/index.html">SP</a>
+      </li>
+      <li>IDP</li>
+    </ol>
+  </nav>
+</div>    <h1>Management API Reference for IDP</h1>
     <p>An identity provider configuration</p>
-</header>
+
+  </header>
 <h2>Children (1)</h2>
 <ul class="children">
-    <li>
-        <a href="Key/index.html">Key</a>
+  <li>
+    <a href="Key/index.html" class="">Key</a>
+  </li>
 </ul>
 <h2>Attributes (8)</h2>
 <ul class="attributes">
-    <li>
-        <span class="toggle-link"><a id="AllowedClockSkew" href="#AllowedClockSkew" class="">AllowedClockSkew</a> - Allowed clock skew between the IDP and the SP</span>
-        <div class="collapsible">
+  <li>
+    <span class="toggle-link">
+      <a id="AllowedClockSkew" href="#AllowedClockSkew" class="">
+         AllowedClockSkew</a> - Allowed clock skew between the IDP and the SP
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>OBJECT</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>no-services</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>OBJECT</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>no-services</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -115,42 +120,45 @@
     "capability-reference" : null,
     "stability" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="HttpClient" href="#HttpClient" class="">HttpClient</a> - Configuration of HTTP client used for automatic retrieval of certificates for signature validation</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="HttpClient" href="#HttpClient" class="">
+         HttpClient</a> - Configuration of HTTP client used for automatic retrieval of certificates for signature validation
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>OBJECT</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>no-services</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>OBJECT</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>no-services</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -277,38 +285,41 @@
     "capability-reference" : null,
     "stability" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="SingleLogoutService" href="#SingleLogoutService" class="">SingleLogoutService</a> - Single logout configuration</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="SingleLogoutService" href="#SingleLogoutService" class="">
+         SingleLogoutService</a> - Single logout configuration
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>OBJECT</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>no-services</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>OBJECT</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>no-services</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -406,38 +417,41 @@
     "capability-reference" : null,
     "stability" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="SingleSignOnService" href="#SingleSignOnService" class="">SingleSignOnService</a> - Single sign-on configuration</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="SingleSignOnService" href="#SingleSignOnService" class="">
+         SingleSignOnService</a> - Single sign-on configuration
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>OBJECT</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>no-services</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>OBJECT</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>no-services</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -526,46 +540,49 @@
     "capability-reference" : null,
     "stability" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="metadataUrl" href="#metadataUrl" class="">metadataUrl</a> - The URL used to retrieve the IDP metadata from</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="metadataUrl" href="#metadataUrl" class="">
+         metadataUrl</a> - The URL used to retrieve the IDP metadata from
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>STRING</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Does the attribute allow expression?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>no-services</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>STRING</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Does the attribute allow expression?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>no-services</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -583,42 +600,45 @@
     "capability-reference" : null,
     "stability" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="signatureAlgorithm" href="#signatureAlgorithm" class="">signatureAlgorithm</a> - Signature algorithm</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="signatureAlgorithm" href="#signatureAlgorithm" class="">
+         signatureAlgorithm</a> - Signature algorithm
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>STRING</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>no-services</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>STRING</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>no-services</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -636,42 +656,45 @@
     "capability-reference" : null,
     "stability" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="signatureCanonicalizationMethod" href="#signatureCanonicalizationMethod" class="">signatureCanonicalizationMethod</a> - Signature canonicalization method</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="signatureCanonicalizationMethod" href="#signatureCanonicalizationMethod" class="">
+         signatureCanonicalizationMethod</a> - Signature canonicalization method
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>STRING</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>no-services</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>STRING</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>no-services</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -689,42 +712,45 @@
     "capability-reference" : null,
     "stability" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
-    <li>
-        <span class="toggle-link"><a id="signaturesRequired" href="#signaturesRequired" class="">signaturesRequired</a> - Require signatures for SingleSignOnService and SingleLogoutService</span>
-        <div class="collapsible">
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="signaturesRequired" href="#signaturesRequired" class="">
+         signaturesRequired</a> - Require signatures for SingleSignOnService and SingleLogoutService
+    </span>
+    <div class="collapsible">
 
 
-            <table>
-                <tr>
-                    <td>Type</td>
-                    <td>BOOLEAN</td>
-                </tr>
-                <tr>
-                    <td>Is the attribute nillable?</td>
-                    <td>true</td>
-                </tr>
-                <tr>
-                    <td>Where is the attribute stored?</td>
-                    <td>configuration</td>
-                </tr>
-                <tr>
-                    <td>Access Type</td>
-                    <td>read-write</td>
-                </tr>
-                <tr>
-                    <td>Is restarted required?</td>
-                    <td>no-services</td>
-                </tr>
-                <tr>
-                    <td class="toggle-link">Raw DMR model</td>
-                    <td class="collapsible">
-                        <div class="code-block-container">
+      <table>
+        <tr>
+          <td>Type</td>
+          <td>BOOLEAN</td>
+        </tr>
+        <tr>
+          <td>Is the attribute nillable?</td>
+          <td>true</td>
+        </tr>
+        <tr>
+          <td>Where is the attribute stored?</td>
+          <td>configuration</td>
+        </tr>
+        <tr>
+          <td>Access Type</td>
+          <td>read-write</td>
+        </tr>
+        <tr>
+          <td>Is restarted required?</td>
+          <td>no-services</td>
+        </tr>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
                             <pre><code class="language-json">
 {
     "type" : {
@@ -740,12 +766,560 @@
     "capability-reference" : null,
     "stability" : null
 }</code></pre>
-                        </div>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </li>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+</ul>
+<h2>Operations (2)</h2>
+<ul class="operations">
+  <li>
+    <span class="toggle-link">
+      <a id="add" href="#add" class="">
+      add</a> - Add an identity provider
+    </span>
+    <div class="collapsible">
+
+
+      <table>
+        <thead>
+        <tr>
+          <th>Request Parameter</th>
+          <th>Type</th>
+          <th>Required</th>
+          <th>Expressions Allowed</th>
+          <th>Default value</th>
+          <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>AllowedClockSkew</td>
+          <td>OBJECT</td>
+          <td>false</td>
+          <td>false</td>
+          <td></td>
+          <td>Allowed clock skew between the IDP and the SP</td>
+        </tr>
+        <tr>
+          <td>HttpClient</td>
+          <td>OBJECT</td>
+          <td>false</td>
+          <td>false</td>
+          <td></td>
+          <td>Configuration of HTTP client used for automatic retrieval of certificates for signature validation</td>
+        </tr>
+        <tr>
+          <td>SingleLogoutService</td>
+          <td>OBJECT</td>
+          <td>true</td>
+          <td>false</td>
+          <td></td>
+          <td>Single logout configuration</td>
+        </tr>
+        <tr>
+          <td>SingleSignOnService</td>
+          <td>OBJECT</td>
+          <td>true</td>
+          <td>false</td>
+          <td></td>
+          <td>Single sign-on configuration</td>
+        </tr>
+        <tr>
+          <td>metadataUrl</td>
+          <td>STRING</td>
+          <td>false</td>
+          <td>true</td>
+          <td></td>
+          <td>The URL used to retrieve the IDP metadata from</td>
+        </tr>
+        <tr>
+          <td>signatureAlgorithm</td>
+          <td>STRING</td>
+          <td>false</td>
+          <td>false</td>
+          <td></td>
+          <td>Signature algorithm</td>
+        </tr>
+        <tr>
+          <td>signatureCanonicalizationMethod</td>
+          <td>STRING</td>
+          <td>false</td>
+          <td>false</td>
+          <td></td>
+          <td>Signature canonicalization method</td>
+        </tr>
+        <tr>
+          <td>signaturesRequired</td>
+          <td>BOOLEAN</td>
+          <td>false</td>
+          <td>false</td>
+          <td></td>
+          <td>Require signatures for SingleSignOnService and SingleLogoutService</td>
+        </tr>
+        </tbody>
+      </table>
+
+
+      <table>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
+              <pre><code class="language-json">
+{
+    "operation-name" : "add",
+    "description" : "Add an identity provider",
+    "request-properties" : {
+        "AllowedClockSkew" : {
+            "type" : {
+                "TYPE_MODEL_VALUE" : "OBJECT"
+            },
+            "description" : "Allowed clock skew between the IDP and the SP",
+            "expressions-allowed" : false,
+            "required" : false,
+            "nillable" : true,
+            "value-type" : {
+                "unit" : {
+                    "type" : {
+                        "TYPE_MODEL_VALUE" : "STRING"
+                    },
+                    "description" : "Time unit for the value of the clock skew. Values: MINUTES, SECONDS, MILLISECONDS, MICROSECONDS, NANOSECONDS",
+                    "expressions-allowed" : true,
+                    "required" : false,
+                    "nillable" : true,
+                    "default" : "SECONDS",
+                    "allowed" : [
+                        "MINUTES",
+                        "SECONDS",
+                        "MILLISECONDS",
+                        "MICROSECONDS",
+                        "NANOSECONDS"
+                    ]
+                },
+                "value" : {
+                    "type" : {
+                        "TYPE_MODEL_VALUE" : "INT"
+                    },
+                    "description" : "Allowed clock skew value between the IDP and the SP",
+                    "expressions-allowed" : true,
+                    "required" : true,
+                    "nillable" : false,
+                    "min" : 1,
+                    "max" : 2147483647
+                }
+            }
+        },
+        "HttpClient" : {
+            "type" : {
+                "TYPE_MODEL_VALUE" : "OBJECT"
+            },
+            "description" : "Configuration of HTTP client used for automatic retrieval of certificates for signature validation",
+            "expressions-allowed" : false,
+            "required" : false,
+            "nillable" : true,
+            "value-type" : {
+                "allowAnyHostname" : {
+                    "type" : {
+                        "TYPE_MODEL_VALUE" : "BOOLEAN"
+                    },
+                    "description" : "Define if hostname validation should be disabled (true) or not (false)",
+                    "expressions-allowed" : true,
+                    "required" : false,
+                    "nillable" : true
+                },
+                "clientKeystore" : {
+                    "type" : {
+                        "TYPE_MODEL_VALUE" : "STRING"
+                    },
+                    "description" : "Path to the keystore that contains client certificates for two-way SSL",
+                    "expressions-allowed" : true,
+                    "required" : false,
+                    "nillable" : true,
+                    "min-length" : 1,
+                    "max-length" : 2147483647
+                },
+                "clientKeystorePassword" : {
+                    "type" : {
+                        "TYPE_MODEL_VALUE" : "STRING"
+                    },
+                    "description" : "The keystore password",
+                    "expressions-allowed" : true,
+                    "required" : false,
+                    "nillable" : true,
+                    "min-length" : 1,
+                    "max-length" : 2147483647
+                },
+                "connectionPoolSize" : {
+                    "type" : {
+                        "TYPE_MODEL_VALUE" : "INT"
+                    },
+                    "description" : "The number of pooled connections",
+                    "expressions-allowed" : true,
+                    "required" : false,
+                    "nillable" : true
+                },
+                "disableTrustManager" : {
+                    "type" : {
+                        "TYPE_MODEL_VALUE" : "BOOLEAN"
+                    },
+                    "description" : "Define if SSL certificate validation should be disabled (true) or not (false)",
+                    "expressions-allowed" : true,
+                    "required" : false,
+                    "nillable" : true
+                },
+                "proxyUrl" : {
+                    "type" : {
+                        "TYPE_MODEL_VALUE" : "STRING"
+                    },
+                    "description" : "URL to the HTTP proxy, if applicable",
+                    "expressions-allowed" : true,
+                    "required" : false,
+                    "nillable" : true,
+                    "min-length" : 1,
+                    "max-length" : 2147483647
+                },
+                "truststore" : {
+                    "type" : {
+                        "TYPE_MODEL_VALUE" : "STRING"
+                    },
+                    "description" : "Path to the truststore used to validate the IDP certificates",
+                    "expressions-allowed" : true,
+                    "required" : false,
+                    "nillable" : true,
+                    "min-length" : 1,
+                    "max-length" : 2147483647
+                },
+                "truststorePassword" : {
+                    "type" : {
+                        "TYPE_MODEL_VALUE" : "STRING"
+                    },
+                    "description" : "The truststore password",
+                    "expressions-allowed" : true,
+                    "required" : false,
+                    "nillable" : true,
+                    "min-length" : 1,
+                    "max-length" : 2147483647
+                },
+                "socketTimeout" : {
+                    "type" : {
+                        "TYPE_MODEL_VALUE" : "LONG"
+                    },
+                    "description" : "Timeout for socket waiting for data in milliseconds",
+                    "expressions-allowed" : true,
+                    "required" : false,
+                    "nillable" : true
+                },
+                "connectionTimeout" : {
+                    "type" : {
+                        "TYPE_MODEL_VALUE" : "LONG"
+                    },
+                    "description" : "Timeout for establishing the connection with the remote host in milliseconds",
+                    "expressions-allowed" : true,
+                    "required" : false,
+                    "nillable" : true
+                },
+                "connectionTtl" : {
+                    "type" : {
+                        "TYPE_MODEL_VALUE" : "LONG"
+                    },
+                    "description" : "The connection time to live in milliseconds",
+                    "expressions-allowed" : true,
+                    "required" : false,
+                    "nillable" : true
+                }
+            }
+        },
+        "SingleLogoutService" : {
+            "type" : {
+                "TYPE_MODEL_VALUE" : "OBJECT"
+            },
+            "description" : "Single logout configuration",
+            "expressions-allowed" : false,
+            "required" : true,
+            "nillable" : false,
+            "value-type" : {
+                "validateRequestSignature" : {
+                    "type" : {
+                        "TYPE_MODEL_VALUE" : "BOOLEAN"
+                    },
+                    "description" : "Validate a SingleLogoutService request signature",
+                    "expressions-allowed" : false,
+                    "required" : false,
+                    "nillable" : true
+                },
+                "validateResponseSignature" : {
+                    "type" : {
+                        "TYPE_MODEL_VALUE" : "BOOLEAN"
+                    },
+                    "description" : "Validate a SingleLogoutService response signature",
+                    "expressions-allowed" : false,
+                    "required" : false,
+                    "nillable" : true
+                },
+                "signRequest" : {
+                    "type" : {
+                        "TYPE_MODEL_VALUE" : "BOOLEAN"
+                    },
+                    "description" : "Sign SingleLogoutService requests",
+                    "expressions-allowed" : false,
+                    "required" : false,
+                    "nillable" : true
+                },
+                "signResponse" : {
+                    "type" : {
+                        "TYPE_MODEL_VALUE" : "BOOLEAN"
+                    },
+                    "description" : "Sign SingleLogoutService responses",
+                    "expressions-allowed" : false,
+                    "required" : false,
+                    "nillable" : true
+                },
+                "requestBinding" : {
+                    "type" : {
+                        "TYPE_MODEL_VALUE" : "STRING"
+                    },
+                    "description" : "HTTP method to use for request",
+                    "expressions-allowed" : false,
+                    "required" : false,
+                    "nillable" : true,
+                    "min-length" : 1,
+                    "max-length" : 2147483647
+                },
+                "responseBinding" : {
+                    "type" : {
+                        "TYPE_MODEL_VALUE" : "STRING"
+                    },
+                    "description" : "HTTP method to use for response",
+                    "expressions-allowed" : false,
+                    "required" : false,
+                    "nillable" : true,
+                    "min-length" : 1,
+                    "max-length" : 2147483647
+                },
+                "postBindingUrl" : {
+                    "type" : {
+                        "TYPE_MODEL_VALUE" : "STRING"
+                    },
+                    "description" : "Endpoint URL for posting",
+                    "expressions-allowed" : false,
+                    "required" : false,
+                    "nillable" : true,
+                    "min-length" : 1,
+                    "max-length" : 2147483647
+                },
+                "redirectBindingUrl" : {
+                    "type" : {
+                        "TYPE_MODEL_VALUE" : "STRING"
+                    },
+                    "description" : "Endpoint URL for redirects",
+                    "expressions-allowed" : false,
+                    "required" : false,
+                    "nillable" : true,
+                    "min-length" : 1,
+                    "max-length" : 2147483647
+                }
+            }
+        },
+        "SingleSignOnService" : {
+            "type" : {
+                "TYPE_MODEL_VALUE" : "OBJECT"
+            },
+            "description" : "Single sign-on configuration",
+            "expressions-allowed" : false,
+            "required" : true,
+            "nillable" : false,
+            "value-type" : {
+                "signRequest" : {
+                    "type" : {
+                        "TYPE_MODEL_VALUE" : "BOOLEAN"
+                    },
+                    "description" : "Sign SSO requests",
+                    "expressions-allowed" : false,
+                    "required" : false,
+                    "nillable" : true
+                },
+                "validateResponseSignature" : {
+                    "type" : {
+                        "TYPE_MODEL_VALUE" : "BOOLEAN"
+                    },
+                    "description" : "Validate an SSO response signature",
+                    "expressions-allowed" : false,
+                    "required" : false,
+                    "nillable" : true
+                },
+                "validateAssertionSignature" : {
+                    "type" : {
+                        "TYPE_MODEL_VALUE" : "BOOLEAN"
+                    },
+                    "description" : "Validate an SSO assertion signature",
+                    "expressions-allowed" : false,
+                    "required" : false,
+                    "nillable" : true
+                },
+                "requestBinding" : {
+                    "type" : {
+                        "TYPE_MODEL_VALUE" : "STRING"
+                    },
+                    "description" : "HTTP method to use for requests",
+                    "expressions-allowed" : false,
+                    "required" : false,
+                    "nillable" : true,
+                    "min-length" : 1,
+                    "max-length" : 2147483647
+                },
+                "responseBinding" : {
+                    "type" : {
+                        "TYPE_MODEL_VALUE" : "STRING"
+                    },
+                    "description" : "HTTP method to use for responses",
+                    "expressions-allowed" : false,
+                    "required" : false,
+                    "nillable" : true,
+                    "min-length" : 1,
+                    "max-length" : 2147483647
+                },
+                "bindingUrl" : {
+                    "type" : {
+                        "TYPE_MODEL_VALUE" : "STRING"
+                    },
+                    "description" : "SSO endpoint URL",
+                    "expressions-allowed" : false,
+                    "required" : false,
+                    "nillable" : true,
+                    "min-length" : 1,
+                    "max-length" : 2147483647
+                },
+                "assertionConsumerServiceUrl" : {
+                    "type" : {
+                        "TYPE_MODEL_VALUE" : "STRING"
+                    },
+                    "description" : "Endpoint of Assertion Consumer Service at SP",
+                    "expressions-allowed" : false,
+                    "required" : false,
+                    "nillable" : true,
+                    "min-length" : 1,
+                    "max-length" : 2147483647
+                }
+            }
+        },
+        "metadataUrl" : {
+            "type" : {
+                "TYPE_MODEL_VALUE" : "STRING"
+            },
+            "description" : "The URL used to retrieve the IDP metadata from",
+            "expressions-allowed" : true,
+            "required" : false,
+            "nillable" : true,
+            "min-length" : 1,
+            "max-length" : 2147483647
+        },
+        "signatureAlgorithm" : {
+            "type" : {
+                "TYPE_MODEL_VALUE" : "STRING"
+            },
+            "description" : "Signature algorithm",
+            "expressions-allowed" : false,
+            "required" : false,
+            "nillable" : true,
+            "min-length" : 1,
+            "max-length" : 2147483647
+        },
+        "signatureCanonicalizationMethod" : {
+            "type" : {
+                "TYPE_MODEL_VALUE" : "STRING"
+            },
+            "description" : "Signature canonicalization method",
+            "expressions-allowed" : false,
+            "required" : false,
+            "nillable" : true,
+            "min-length" : 1,
+            "max-length" : 2147483647
+        },
+        "signaturesRequired" : {
+            "type" : {
+                "TYPE_MODEL_VALUE" : "BOOLEAN"
+            },
+            "description" : "Require signatures for SingleSignOnService and SingleLogoutService",
+            "expressions-allowed" : false,
+            "required" : false,
+            "nillable" : true
+        }
+    },
+    "reply-properties" : {},
+    "read-only" : false,
+    "runtime-only" : false,
+    "stability" : null
+}</code></pre>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+  <li>
+    <span class="toggle-link">
+      <a id="remove" href="#remove" class="">
+      remove</a> - Remove an identity provider
+    </span>
+    <div class="collapsible">
+
+
+
+
+      <table>
+        <tr>
+          <td class="toggle-link">Raw DMR model</td>
+          <td class="collapsible">
+            <div class="code-block-container">
+              <pre><code class="language-json">
+{
+    "operation-name" : "remove",
+    "description" : "Remove an identity provider",
+    "request-properties" : {},
+    "reply-properties" : {},
+    "read-only" : false,
+    "restart-required" : "all-services",
+    "runtime-only" : false,
+    "stability" : null
+}</code></pre>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </li>
+</ul>
+<h2>Galleon Features</h2>
+<p>Galleon features are to be used when creating Galleon feature-packs.</p>
+<ul class="attributes">
+  <li>
+  <span class="toggle-link">subsystem.keycloak-saml.secure-deployment.SP.IDP</span>
+  <div class="collapsible">
+    <div class="code-block-container">
+      <pre>
+        <code id="feature" class="language-xml">
+&lt;feature spec="subsystem.keycloak-saml.secure-deployment.SP.IDP"&gt;
+  &lt;param name="IDP" value="{resource name}"/&gt;
+  &lt;param name="SP" value="{resource name}"/&gt;
+  &lt;param name="secure-deployment" value="{resource name}"/&gt;
+  &lt;param name="AllowedClockSkew" value="{value}"/&gt;
+  &lt;param name="HttpClient" value="{value}"/&gt;
+  &lt;param name="SingleLogoutService" value="{value}"/&gt;
+  &lt;param name="SingleSignOnService" value="{value}"/&gt;
+  &lt;param name="metadataUrl" value="{value}"/&gt;
+  &lt;param name="signatureAlgorithm" value="{value}"/&gt;
+  &lt;param name="signatureCanonicalizationMethod" value="{value}"/&gt;
+  &lt;param name="signaturesRequired" value="{value}"/&gt;
+&lt;feature/&gt;
+        </code>
+      </pre>
+      <button class="copy-btn" onclick="copyToClipboard('feature')" title="Copy to clipboard">📋</button>
+    </div>
+  </div>
+  </li>
 </ul>
 </div>
 </body>
