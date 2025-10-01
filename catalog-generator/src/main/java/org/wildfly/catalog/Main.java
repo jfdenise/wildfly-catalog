@@ -416,7 +416,7 @@ public class Main {
                 if (pathFile.getParent().equals(fpDir.toPath())) {
                     return null;
                 }
-                return "modelReference/" + fpDir.getName() + "/reference/" + path;
+                return "featurePacks/" + fpDir.getName() + "/doc/reference/" + path;
             }
         }
         return null;
