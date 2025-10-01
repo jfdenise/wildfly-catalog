@@ -111,6 +111,7 @@ public class Main {
                     Path metadataFile = tmp.resolve("doc/META-INF/metadata.json");
                     Path modelFile = tmp.resolve("doc/META-INF/management-api.json");
                     Path featuresFile = tmp.resolve("doc/META-INF/features.json");
+                    Path logMessages = tmp.resolve("doc/log-message-reference.html");
                     JsonNode subCatalog = mapper.readTree(metadataFile.toFile().toURI().toURL());
                     String name = subCatalog.get("name").asText();
                     fpNode.put("name", name);
@@ -132,11 +133,15 @@ public class Main {
                     for (String n : layersSet) {
                         layersArrayTarget.add(n);
                     }
+                    String directoryName = (coords[0] + '_' + artifactId);
                     if (Files.exists(modelFile)) {
                         //JsonNode model = mapper.readTree(modelFile.toFile().toURI().toURL());
-                        String directoryName = (coords[0] + '_' + artifactId);
                         fpNode.put("modelReference", "modelReference/" + directoryName + "/reference/index.html");
                         DocGenerator.generateModel(modelReferenceTargetDirectory.resolve(directoryName), modelFile, featuresFile);
+                    }
+                    if (Files.exists(logMessages)) {
+                        Files.copy(logMessages, modelReferenceTargetDirectory.resolve(directoryName).resolve(logMessages.getFileName().toString()), StandardCopyOption.REPLACE_EXISTING);
+                        fpNode.put("logMessagesReference", "modelReference/" + directoryName + "/" + logMessages.getFileName().toString());
                     }
                     generateCatalog(subCatalog, glowRulesDescriptions, categories, mapper, modelReferenceTargetDirectory);
                 } finally {

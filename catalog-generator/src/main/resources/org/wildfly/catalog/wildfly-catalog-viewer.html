@@ -640,6 +640,32 @@
                         modelRefContainer.appendChild(fieldDiv);
                         detailsDiv.appendChild(modelRefContainer);
                     }
+                    
+                    if (fp.logMessagesReference && typeof fp.logMessagesReference === 'string' && fp.logMessagesReference.trim() !== '') {
+                        const logMessagesReferenceContainer = document.createElement('div');
+                        logMessagesReferenceContainer.style.marginTop = '10px';
+                        const logMessagesReferenceLink = document.createElement('a');
+                        logMessagesReferenceLink.href = fp.logMessagesReference;
+                        logMessagesReferenceLink.textContent = fp.logMessagesReference;
+                        logMessagesReferenceLink.target = '_blank';
+                        logMessagesReferenceLink.rel = 'noopener noreferrer';
+                        const fieldDiv = document.createElement('div');
+                        const strongLabel = document.createElement('strong');
+                        strongLabel.textContent = `Log and Exception Message Code:`;
+                        fieldDiv.appendChild(strongLabel);
+                        if (legendData['logMessagesReference']) {
+                            const tooltipIcon = document.createElement('span');
+                            tooltipIcon.className = 'tooltip-icon';
+                            tooltipIcon.textContent = '?';
+                            tooltipIcon.dataset.tooltipText = legendData['logMessagesReference'];
+                            tooltipIcon.addEventListener('click', showTooltip);
+                            fieldDiv.appendChild(tooltipIcon);
+                        }
+                        fieldDiv.appendChild(document.createTextNode(' '));
+                        fieldDiv.appendChild(modelRefLink);
+                        logMessagesReferenceContainer.appendChild(fieldDiv);
+                        detailsDiv.appendChild(logMessagesReferenceContainer);
+                    }
 
                     if (fp.mavenCoordinates) {
                         const coordsContainer = document.createElement('div');

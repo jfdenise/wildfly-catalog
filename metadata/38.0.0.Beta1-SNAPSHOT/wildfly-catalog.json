@@ -26,6 +26,7 @@
         "dependencies": "The list of layers this layer depends on. Those layers are also provisioned when this layer is provisioned.",
         "configurations": "Environment variables and system properties that can be used to configure the layer.",
         "modelReference": "The model reference of the resources that this feature-pack can provision",
+        "logMessagesReference": "The log and exception messages codes and descriptions",
         "mavenCoordinates": "The Maven GroupId, ArtifactId and Version of the feature-pack",
         "featurePackLocation": " The XML content to configure the WildFly Maven Plugin to use this feature-pack",
         "packages": "The packages (generally JBoss Modules modules) that this layer provision in addition of implict extension module.",
