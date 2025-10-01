@@ -1,0 +1,211 @@
+{
+  "groupId" : "org.keycloak",
+  "artifactId" : "keycloak-saml-adapter-galleon-pack",
+  "version" : "999.0.0-SNAPSHOT",
+  "name" : "Keycloak Galleon Feature Pack: SAML Adapter",
+  "description" : "",
+  "licenses" : [ "Apache License, Version 2.0" ],
+  "url" : "http://keycloak.org/keycloak-distribution-parent/galleon-feature-packs-parent/keycloak-saml-adapter-galleon-pack",
+  "scm-url" : "https://github.com/keycloak/keycloak/tree/master/keycloak-distribution-parent/galleon-feature-packs-parent/keycloak-saml-adapter-galleon-pack/",
+  "layers" : [ {
+    "name" : "keycloak-saml",
+    "stability" : "default",
+    "dependencies" : [ {
+      "name" : "ee",
+      "optional" : false
+    }, {
+      "name" : "elytron",
+      "optional" : false
+    }, {
+      "name" : "undertow",
+      "optional" : false
+    } ],
+    "managementModel" : {
+      "subsystem" : {
+        "keycloak-saml" : {
+          "_address" : "/subsystem=keycloak-saml"
+        }
+      }
+    },
+    "properties" : [ {
+      "name" : "org.wildfly.category",
+      "value" : "Security"
+    }, {
+      "name" : "org.wildfly.description",
+      "value" : "Add the keyloack SAML subsystem to the server configuration."
+    }, {
+      "name" : "org.wildfly.rule.xml-path",
+      "value" : "/WEB-INF/web.xml,/web-app/login-config/auth-method,KEYCLOAK-SAML"
+    } ],
+    "configurations" : [ ],
+    "packages" : [ "docs.licenses", "org.keycloak.keycloak-jboss-adapter-core", "org.keycloak.keycloak-saml-adapter-subsystem" ]
+  }, {
+    "name" : "keycloak-client-saml-ejb",
+    "stability" : "default",
+    "dependencies" : [ {
+      "name" : "keycloak-client-saml",
+      "optional" : false
+    }, {
+      "name" : "ejb-lite",
+      "optional" : false
+    } ],
+    "managementModel" : {
+      "subsystem" : {
+        "ejb3" : {
+          "_address" : "/subsystem=ejb3",
+          "application-security-domain" : {
+            "other" : {
+              "_address" : "/subsystem=ejb3/application-security-domain=*",
+              "attributes" : [ {
+                "name" : "security-domain",
+                "value" : "KeycloakDomain",
+                "_address" : "/subsystem=ejb3/application-security-domain=*@@@security-domain"
+              } ]
+            }
+          }
+        }
+      }
+    },
+    "properties" : [ {
+      "name" : "org.wildfly.rule.inclusion-mode",
+      "value" : "all-dependencies"
+    }, {
+      "name" : "org.wildfly.note",
+      "value" : "Not to be used when provisioning for the cloud if you are using the env variables to automatically configure SAML (SSO_URL, SSO_REALM)."
+    }, {
+      "name" : "org.wildfly.category",
+      "value" : "Security"
+    }, {
+      "name" : "org.wildfly.description",
+      "value" : "Support for securing your EJB with the keyloack SAML protocol."
+    } ],
+    "configurations" : [ ],
+    "packages" : [ "org.jboss.as.ejb3" ]
+  }, {
+    "name" : "keycloak-client-saml",
+    "stability" : "default",
+    "dependencies" : [ {
+      "name" : "keycloak-saml",
+      "optional" : false
+    } ],
+    "managementModel" : {
+      "subsystem" : {
+        "elytron" : {
+          "_address" : "/subsystem=elytron",
+          "aggregate-http-server-mechanism-factory" : {
+            "keycloak-http-server-mechanism-factory" : {
+              "_address" : "/subsystem=elytron/aggregate-http-server-mechanism-factory=*",
+              "attributes" : [ {
+                "name" : "http-server-mechanism-factories",
+                "value" : "[keycloak-saml-http-server-mechanism-factory, global]",
+                "_address" : "/subsystem=elytron/aggregate-http-server-mechanism-factory=*@@@http-server-mechanism-factories"
+              } ]
+            }
+          },
+          "constant-realm-mapper" : {
+            "keycloak-saml-realm-mapper" : {
+              "_address" : "/subsystem=elytron/constant-realm-mapper=*",
+              "attributes" : [ {
+                "name" : "realm-name",
+                "value" : "KeycloakSAMLRealm",
+                "_address" : "/subsystem=elytron/constant-realm-mapper=*@@@realm-name"
+              } ]
+            }
+          },
+          "custom-realm" : {
+            "KeycloakSAMLRealm" : {
+              "_address" : "/subsystem=elytron/custom-realm=*",
+              "attributes" : [ {
+                "name" : "class-name",
+                "value" : "org.keycloak.adapters.saml.elytron.KeycloakSecurityRealm",
+                "_address" : "/subsystem=elytron/custom-realm=*@@@class-name"
+              }, {
+                "name" : "module",
+                "value" : "org.keycloak.keycloak-saml-wildfly-elytron-adapter",
+                "_address" : "/subsystem=elytron/custom-realm=*@@@module"
+              } ]
+            }
+          },
+          "http-authentication-factory" : {
+            "keycloak-http-authentication" : {
+              "_address" : "/subsystem=elytron/http-authentication-factory=*",
+              "attributes" : [ {
+                "name" : "http-server-mechanism-factory",
+                "value" : "keycloak-http-server-mechanism-factory",
+                "_address" : "/subsystem=elytron/http-authentication-factory=*@@@http-server-mechanism-factory"
+              }, {
+                "name" : "mechanism-configurations",
+                "value" : "[{mechanism-name=KEYCLOAK-SAML,mechanism-realm-configurations=[{realm-name=KeycloakSAMLRealm,realm-mapper=keycloak-saml-realm-mapper}]}]",
+                "_address" : "/subsystem=elytron/http-authentication-factory=*@@@mechanism-configurations"
+              }, {
+                "name" : "security-domain",
+                "value" : "KeycloakDomain",
+                "_address" : "/subsystem=elytron/http-authentication-factory=*@@@security-domain"
+              } ]
+            }
+          },
+          "security-domain" : {
+            "KeycloakDomain" : {
+              "_address" : "/subsystem=elytron/security-domain=*",
+              "attributes" : [ {
+                "name" : "default-realm",
+                "value" : "KeycloakSAMLRealm",
+                "_address" : "/subsystem=elytron/security-domain=*@@@default-realm"
+              }, {
+                "name" : "permission-mapper",
+                "value" : "default-permission-mapper",
+                "_address" : "/subsystem=elytron/security-domain=*@@@permission-mapper"
+              }, {
+                "name" : "realms",
+                "value" : "[{realm=KeycloakSAMLRealm}]",
+                "_address" : "/subsystem=elytron/security-domain=*@@@realms"
+              }, {
+                "name" : "security-event-listener",
+                "value" : "local-audit",
+                "_address" : "/subsystem=elytron/security-domain=*@@@security-event-listener"
+              } ]
+            }
+          },
+          "service-loader-http-server-mechanism-factory" : {
+            "keycloak-saml-http-server-mechanism-factory" : {
+              "_address" : "/subsystem=elytron/service-loader-http-server-mechanism-factory=*",
+              "attributes" : [ {
+                "name" : "module",
+                "value" : "org.keycloak.keycloak-saml-wildfly-elytron-adapter",
+                "_address" : "/subsystem=elytron/service-loader-http-server-mechanism-factory=*@@@module"
+              } ]
+            }
+          }
+        },
+        "undertow" : {
+          "_address" : "/subsystem=undertow",
+          "application-security-domain" : {
+            "other" : {
+              "_address" : "/subsystem=undertow/application-security-domain=*",
+              "attributes" : [ {
+                "name" : "http-authentication-factory",
+                "value" : "keycloak-http-authentication",
+                "_address" : "/subsystem=undertow/application-security-domain=*@@@http-authentication-factory"
+              } ]
+            }
+          }
+        }
+      }
+    },
+    "properties" : [ {
+      "name" : "org.wildfly.rule.inclusion-mode",
+      "value" : "all-dependencies"
+    }, {
+      "name" : "org.wildfly.note",
+      "value" : "Not to be used when provisioning for the cloud if you are using the env variables to automatically configure SAML (SSO_URL, SSO_REALM)."
+    }, {
+      "name" : "org.wildfly.category",
+      "value" : "Security"
+    }, {
+      "name" : "org.wildfly.description",
+      "value" : "Support for securing your Web deployments with the keyloack SAML protocol."
+    } ],
+    "configurations" : [ ],
+    "packages" : [ "org.wildfly.extension.undertow" ]
+  } ]
+}

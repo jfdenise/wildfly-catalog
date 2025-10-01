@@ -1,0 +1,710 @@
+{
+    "subsystem.keycloak-saml" : {
+        "name" : "subsystem.keycloak-saml",
+        "annotation" : {
+            "name" : "add",
+            "addr-params" : "subsystem",
+            "op-params" : ""
+        },
+        "params" : [
+            {
+                "name" : "subsystem",
+                "default" : "keycloak-saml",
+                "feature-id" : true
+            },
+            {
+                "name" : "extension",
+                "default" : "org.keycloak.keycloak-saml-adapter-subsystem"
+            }
+        ],
+        "refs" : [{
+            "feature" : "extension",
+            "include" : true
+        }],
+        "packages" : [
+            {"package" : "org.keycloak.keycloak-jboss-adapter-core"},
+            {"package" : "org.keycloak.keycloak-saml-adapter-subsystem"}
+        ]
+    },
+    "subsystem.keycloak-saml.secure-deployment" : {
+        "name" : "subsystem.keycloak-saml.secure-deployment",
+        "annotation" : {
+            "name" : "add",
+            "addr-params" : "host,subsystem,secure-deployment",
+            "op-params" : ""
+        },
+        "params" : [
+            {
+                "name" : "subsystem",
+                "default" : "keycloak-saml",
+                "feature-id" : true
+            },
+            {
+                "name" : "secure-deployment",
+                "feature-id" : true
+            },
+            {
+                "name" : "host",
+                "feature-id" : true,
+                "default" : "GLN_UNDEFINED"
+            }
+        ],
+        "refs" : [{"feature" : "subsystem.keycloak-saml"}]
+    },
+    "subsystem.keycloak-saml.secure-deployment.SP" : {
+        "name" : "subsystem.keycloak-saml.secure-deployment.SP",
+        "annotation" : {
+            "name" : "add",
+            "addr-params" : "host,subsystem,secure-deployment,SP",
+            "op-params" : "PrincipalNameMapping-attribute-name,PrincipalNameMapping-policy,RoleIdentifiers,autodetectBearerOnly,forceAuthentication,isPassive,keepDOMAssertion,logoutPage,nameIDPolicyFormat,roleMappingsProviderConfig,roleMappingsProviderId,sslPolicy,turnOffChangeSessionIdOnLogin"
+        },
+        "params" : [
+            {
+                "name" : "subsystem",
+                "default" : "keycloak-saml",
+                "feature-id" : true
+            },
+            {
+                "name" : "secure-deployment",
+                "feature-id" : true
+            },
+            {
+                "name" : "SP",
+                "feature-id" : true
+            },
+            {
+                "name" : "PrincipalNameMapping-attribute-name",
+                "nillable" : true
+            },
+            {
+                "name" : "PrincipalNameMapping-policy",
+                "nillable" : true
+            },
+            {
+                "name" : "RoleIdentifiers",
+                "nillable" : true,
+                "type" : "List<String>"
+            },
+            {
+                "name" : "autodetectBearerOnly",
+                "nillable" : true
+            },
+            {
+                "name" : "forceAuthentication",
+                "nillable" : true
+            },
+            {
+                "name" : "isPassive",
+                "nillable" : true
+            },
+            {
+                "name" : "keepDOMAssertion",
+                "nillable" : true
+            },
+            {
+                "name" : "logoutPage",
+                "nillable" : true
+            },
+            {
+                "name" : "nameIDPolicyFormat",
+                "nillable" : true
+            },
+            {
+                "name" : "roleMappingsProviderConfig",
+                "nillable" : true
+            },
+            {
+                "name" : "roleMappingsProviderId",
+                "nillable" : true
+            },
+            {
+                "name" : "sslPolicy",
+                "nillable" : true
+            },
+            {
+                "name" : "turnOffChangeSessionIdOnLogin",
+                "nillable" : true
+            },
+            {
+                "name" : "host",
+                "feature-id" : true,
+                "default" : "GLN_UNDEFINED"
+            }
+        ],
+        "refs" : [
+            {"feature" : "subsystem.keycloak-saml.secure-deployment"},
+            {"feature" : "subsystem.keycloak-saml"}
+        ]
+    },
+    "subsystem.keycloak-saml.secure-deployment.SP.IDP" : {
+        "name" : "subsystem.keycloak-saml.secure-deployment.SP.IDP",
+        "annotation" : {
+            "name" : "add",
+            "addr-params" : "host,subsystem,secure-deployment,SP,IDP",
+            "op-params" : "AllowedClockSkew,HttpClient,SingleLogoutService,SingleSignOnService,metadataUrl,signatureAlgorithm,signatureCanonicalizationMethod,signaturesRequired"
+        },
+        "params" : [
+            {
+                "name" : "subsystem",
+                "default" : "keycloak-saml",
+                "feature-id" : true
+            },
+            {
+                "name" : "secure-deployment",
+                "feature-id" : true
+            },
+            {
+                "name" : "SP",
+                "feature-id" : true
+            },
+            {
+                "name" : "IDP",
+                "feature-id" : true
+            },
+            {
+                "name" : "AllowedClockSkew",
+                "nillable" : true
+            },
+            {
+                "name" : "HttpClient",
+                "nillable" : true
+            },
+            {"name" : "SingleLogoutService"},
+            {"name" : "SingleSignOnService"},
+            {
+                "name" : "metadataUrl",
+                "nillable" : true
+            },
+            {
+                "name" : "signatureAlgorithm",
+                "nillable" : true
+            },
+            {
+                "name" : "signatureCanonicalizationMethod",
+                "nillable" : true
+            },
+            {
+                "name" : "signaturesRequired",
+                "nillable" : true
+            },
+            {
+                "name" : "host",
+                "feature-id" : true,
+                "default" : "GLN_UNDEFINED"
+            }
+        ],
+        "refs" : [
+            {"feature" : "subsystem.keycloak-saml.secure-deployment.SP"},
+            {"feature" : "subsystem.keycloak-saml.secure-deployment"},
+            {"feature" : "subsystem.keycloak-saml"}
+        ]
+    },
+    "subsystem.keycloak-saml.secure-deployment.SP.IDP.AllowedClockSkew" : {
+        "name" : "subsystem.keycloak-saml.secure-deployment.SP.IDP.AllowedClockSkew",
+        "annotation" : {
+            "name" : "write-attribute",
+            "complex-attribute" : "AllowedClockSkew",
+            "addr-params" : "host,subsystem,secure-deployment,SP,IDP",
+            "op-params" : "unit,value"
+        },
+        "refs" : [{"feature" : "subsystem.keycloak-saml.secure-deployment.SP.IDP"}],
+        "params" : [
+            {
+                "name" : "subsystem",
+                "default" : "keycloak-saml",
+                "feature-id" : true
+            },
+            {
+                "name" : "secure-deployment",
+                "feature-id" : true
+            },
+            {
+                "name" : "SP",
+                "feature-id" : true
+            },
+            {
+                "name" : "IDP",
+                "feature-id" : true
+            },
+            {
+                "name" : "unit",
+                "nillable" : true
+            },
+            {"name" : "value"},
+            {
+                "name" : "host",
+                "feature-id" : true,
+                "default" : "GLN_UNDEFINED"
+            }
+        ]
+    },
+    "subsystem.keycloak-saml.secure-deployment.SP.IDP.HttpClient" : {
+        "name" : "subsystem.keycloak-saml.secure-deployment.SP.IDP.HttpClient",
+        "annotation" : {
+            "name" : "write-attribute",
+            "complex-attribute" : "HttpClient",
+            "addr-params" : "host,subsystem,secure-deployment,SP,IDP",
+            "op-params" : "allowAnyHostname,clientKeystore,clientKeystorePassword,connectionPoolSize,disableTrustManager,proxyUrl,truststore,truststorePassword,socketTimeout,connectionTimeout,connectionTtl"
+        },
+        "refs" : [{"feature" : "subsystem.keycloak-saml.secure-deployment.SP.IDP"}],
+        "params" : [
+            {
+                "name" : "subsystem",
+                "default" : "keycloak-saml",
+                "feature-id" : true
+            },
+            {
+                "name" : "secure-deployment",
+                "feature-id" : true
+            },
+            {
+                "name" : "SP",
+                "feature-id" : true
+            },
+            {
+                "name" : "IDP",
+                "feature-id" : true
+            },
+            {
+                "name" : "allowAnyHostname",
+                "nillable" : true
+            },
+            {
+                "name" : "clientKeystore",
+                "nillable" : true
+            },
+            {
+                "name" : "clientKeystorePassword",
+                "nillable" : true
+            },
+            {
+                "name" : "connectionPoolSize",
+                "nillable" : true
+            },
+            {
+                "name" : "disableTrustManager",
+                "nillable" : true
+            },
+            {
+                "name" : "proxyUrl",
+                "nillable" : true
+            },
+            {
+                "name" : "truststore",
+                "nillable" : true
+            },
+            {
+                "name" : "truststorePassword",
+                "nillable" : true
+            },
+            {
+                "name" : "socketTimeout",
+                "nillable" : true
+            },
+            {
+                "name" : "connectionTimeout",
+                "nillable" : true
+            },
+            {
+                "name" : "connectionTtl",
+                "nillable" : true
+            },
+            {
+                "name" : "host",
+                "feature-id" : true,
+                "default" : "GLN_UNDEFINED"
+            }
+        ]
+    },
+    "subsystem.keycloak-saml.secure-deployment.SP.IDP.Key" : {
+        "name" : "subsystem.keycloak-saml.secure-deployment.SP.IDP.Key",
+        "annotation" : {
+            "name" : "add",
+            "addr-params" : "host,subsystem,secure-deployment,SP,IDP,Key",
+            "op-params" : "CertificatePem,KeyStore,PrivateKeyPem,PublicKeyPem,encryption,signing"
+        },
+        "params" : [
+            {
+                "name" : "subsystem",
+                "default" : "keycloak-saml",
+                "feature-id" : true
+            },
+            {
+                "name" : "secure-deployment",
+                "feature-id" : true
+            },
+            {
+                "name" : "SP",
+                "feature-id" : true
+            },
+            {
+                "name" : "IDP",
+                "feature-id" : true
+            },
+            {
+                "name" : "Key",
+                "feature-id" : true
+            },
+            {
+                "name" : "CertificatePem",
+                "nillable" : true
+            },
+            {
+                "name" : "KeyStore",
+                "nillable" : true
+            },
+            {
+                "name" : "PrivateKeyPem",
+                "nillable" : true
+            },
+            {
+                "name" : "PublicKeyPem",
+                "nillable" : true
+            },
+            {
+                "name" : "encryption",
+                "nillable" : true
+            },
+            {
+                "name" : "signing",
+                "nillable" : true
+            },
+            {
+                "name" : "host",
+                "feature-id" : true,
+                "default" : "GLN_UNDEFINED"
+            }
+        ],
+        "refs" : [
+            {"feature" : "subsystem.keycloak-saml.secure-deployment.SP.IDP"},
+            {"feature" : "subsystem.keycloak-saml.secure-deployment.SP"},
+            {"feature" : "subsystem.keycloak-saml.secure-deployment"},
+            {"feature" : "subsystem.keycloak-saml"}
+        ]
+    },
+    "subsystem.keycloak-saml.secure-deployment.SP.IDP.Key.KeyStore" : {
+        "name" : "subsystem.keycloak-saml.secure-deployment.SP.IDP.Key.KeyStore",
+        "annotation" : {
+            "name" : "write-attribute",
+            "complex-attribute" : "KeyStore",
+            "addr-params" : "host,subsystem,secure-deployment,SP,IDP,Key",
+            "op-params" : "resource,password,file,type,alias,PrivateKey-alias,PrivateKey-password,Certificate-alias"
+        },
+        "refs" : [{"feature" : "subsystem.keycloak-saml.secure-deployment.SP.IDP.Key"}],
+        "params" : [
+            {
+                "name" : "subsystem",
+                "default" : "keycloak-saml",
+                "feature-id" : true
+            },
+            {
+                "name" : "secure-deployment",
+                "feature-id" : true
+            },
+            {
+                "name" : "SP",
+                "feature-id" : true
+            },
+            {
+                "name" : "IDP",
+                "feature-id" : true
+            },
+            {
+                "name" : "Key",
+                "feature-id" : true
+            },
+            {
+                "name" : "resource",
+                "nillable" : true
+            },
+            {
+                "name" : "password",
+                "nillable" : true
+            },
+            {
+                "name" : "file",
+                "nillable" : true
+            },
+            {
+                "name" : "type",
+                "nillable" : true
+            },
+            {
+                "name" : "alias",
+                "nillable" : true
+            },
+            {
+                "name" : "PrivateKey-alias",
+                "nillable" : true
+            },
+            {
+                "name" : "PrivateKey-password",
+                "nillable" : true
+            },
+            {
+                "name" : "Certificate-alias",
+                "nillable" : true
+            },
+            {
+                "name" : "host",
+                "feature-id" : true,
+                "default" : "GLN_UNDEFINED"
+            }
+        ]
+    },
+    "subsystem.keycloak-saml.secure-deployment.SP.IDP.SingleLogoutService" : {
+        "name" : "subsystem.keycloak-saml.secure-deployment.SP.IDP.SingleLogoutService",
+        "annotation" : {
+            "name" : "write-attribute",
+            "complex-attribute" : "SingleLogoutService",
+            "addr-params" : "host,subsystem,secure-deployment,SP,IDP",
+            "op-params" : "validateRequestSignature,validateResponseSignature,signRequest,signResponse,requestBinding,responseBinding,postBindingUrl,redirectBindingUrl"
+        },
+        "refs" : [{"feature" : "subsystem.keycloak-saml.secure-deployment.SP.IDP"}],
+        "params" : [
+            {
+                "name" : "subsystem",
+                "default" : "keycloak-saml",
+                "feature-id" : true
+            },
+            {
+                "name" : "secure-deployment",
+                "feature-id" : true
+            },
+            {
+                "name" : "SP",
+                "feature-id" : true
+            },
+            {
+                "name" : "IDP",
+                "feature-id" : true
+            },
+            {
+                "name" : "validateRequestSignature",
+                "nillable" : true
+            },
+            {
+                "name" : "validateResponseSignature",
+                "nillable" : true
+            },
+            {
+                "name" : "signRequest",
+                "nillable" : true
+            },
+            {
+                "name" : "signResponse",
+                "nillable" : true
+            },
+            {
+                "name" : "requestBinding",
+                "nillable" : true
+            },
+            {
+                "name" : "responseBinding",
+                "nillable" : true
+            },
+            {
+                "name" : "postBindingUrl",
+                "nillable" : true
+            },
+            {
+                "name" : "redirectBindingUrl",
+                "nillable" : true
+            },
+            {
+                "name" : "host",
+                "feature-id" : true,
+                "default" : "GLN_UNDEFINED"
+            }
+        ]
+    },
+    "subsystem.keycloak-saml.secure-deployment.SP.IDP.SingleSignOnService" : {
+        "name" : "subsystem.keycloak-saml.secure-deployment.SP.IDP.SingleSignOnService",
+        "annotation" : {
+            "name" : "write-attribute",
+            "complex-attribute" : "SingleSignOnService",
+            "addr-params" : "host,subsystem,secure-deployment,SP,IDP",
+            "op-params" : "signRequest,validateResponseSignature,validateAssertionSignature,requestBinding,responseBinding,bindingUrl,assertionConsumerServiceUrl"
+        },
+        "refs" : [{"feature" : "subsystem.keycloak-saml.secure-deployment.SP.IDP"}],
+        "params" : [
+            {
+                "name" : "subsystem",
+                "default" : "keycloak-saml",
+                "feature-id" : true
+            },
+            {
+                "name" : "secure-deployment",
+                "feature-id" : true
+            },
+            {
+                "name" : "SP",
+                "feature-id" : true
+            },
+            {
+                "name" : "IDP",
+                "feature-id" : true
+            },
+            {
+                "name" : "signRequest",
+                "nillable" : true
+            },
+            {
+                "name" : "validateResponseSignature",
+                "nillable" : true
+            },
+            {
+                "name" : "validateAssertionSignature",
+                "nillable" : true
+            },
+            {
+                "name" : "requestBinding",
+                "nillable" : true
+            },
+            {
+                "name" : "responseBinding",
+                "nillable" : true
+            },
+            {
+                "name" : "bindingUrl",
+                "nillable" : true
+            },
+            {
+                "name" : "assertionConsumerServiceUrl",
+                "nillable" : true
+            },
+            {
+                "name" : "host",
+                "feature-id" : true,
+                "default" : "GLN_UNDEFINED"
+            }
+        ]
+    },
+    "subsystem.keycloak-saml.secure-deployment.SP.Key" : {
+        "name" : "subsystem.keycloak-saml.secure-deployment.SP.Key",
+        "annotation" : {
+            "name" : "add",
+            "addr-params" : "host,subsystem,secure-deployment,SP,Key",
+            "op-params" : "CertificatePem,KeyStore,PrivateKeyPem,PublicKeyPem,encryption,signing"
+        },
+        "params" : [
+            {
+                "name" : "subsystem",
+                "default" : "keycloak-saml",
+                "feature-id" : true
+            },
+            {
+                "name" : "secure-deployment",
+                "feature-id" : true
+            },
+            {
+                "name" : "SP",
+                "feature-id" : true
+            },
+            {
+                "name" : "Key",
+                "feature-id" : true
+            },
+            {
+                "name" : "CertificatePem",
+                "nillable" : true
+            },
+            {
+                "name" : "KeyStore",
+                "nillable" : true
+            },
+            {
+                "name" : "PrivateKeyPem",
+                "nillable" : true
+            },
+            {
+                "name" : "PublicKeyPem",
+                "nillable" : true
+            },
+            {
+                "name" : "encryption",
+                "nillable" : true
+            },
+            {
+                "name" : "signing",
+                "nillable" : true
+            },
+            {
+                "name" : "host",
+                "feature-id" : true,
+                "default" : "GLN_UNDEFINED"
+            }
+        ],
+        "refs" : [
+            {"feature" : "subsystem.keycloak-saml.secure-deployment.SP"},
+            {"feature" : "subsystem.keycloak-saml.secure-deployment"},
+            {"feature" : "subsystem.keycloak-saml"}
+        ]
+    },
+    "subsystem.keycloak-saml.secure-deployment.SP.Key.KeyStore" : {
+        "name" : "subsystem.keycloak-saml.secure-deployment.SP.Key.KeyStore",
+        "annotation" : {
+            "name" : "write-attribute",
+            "complex-attribute" : "KeyStore",
+            "addr-params" : "host,subsystem,secure-deployment,SP,Key",
+            "op-params" : "resource,password,file,type,alias,PrivateKey-alias,PrivateKey-password,Certificate-alias"
+        },
+        "refs" : [{"feature" : "subsystem.keycloak-saml.secure-deployment.SP.Key"}],
+        "params" : [
+            {
+                "name" : "subsystem",
+                "default" : "keycloak-saml",
+                "feature-id" : true
+            },
+            {
+                "name" : "secure-deployment",
+                "feature-id" : true
+            },
+            {
+                "name" : "SP",
+                "feature-id" : true
+            },
+            {
+                "name" : "Key",
+                "feature-id" : true
+            },
+            {
+                "name" : "resource",
+                "nillable" : true
+            },
+            {
+                "name" : "password",
+                "nillable" : true
+            },
+            {
+                "name" : "file",
+                "nillable" : true
+            },
+            {
+                "name" : "type",
+                "nillable" : true
+            },
+            {
+                "name" : "alias",
+                "nillable" : true
+            },
+            {
+                "name" : "PrivateKey-alias",
+                "nillable" : true
+            },
+            {
+                "name" : "PrivateKey-password",
+                "nillable" : true
+            },
+            {
+                "name" : "Certificate-alias",
+                "nillable" : true
+            },
+            {
+                "name" : "host",
+                "feature-id" : true,
+                "default" : "GLN_UNDEFINED"
+            }
+        ]
+    }
+}

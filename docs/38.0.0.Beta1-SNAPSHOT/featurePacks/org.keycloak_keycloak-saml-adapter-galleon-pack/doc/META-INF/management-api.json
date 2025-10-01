@@ -1,0 +1,2045 @@
+{
+    "children" : {"subsystem" : {
+        "model-description" : {"keycloak-saml" : {
+            "description" : "Keycloak adapter subsystem",
+            "attributes" : {},
+            "operations" : {
+                "add" : {
+                    "operation-name" : "add",
+                    "description" : "Operation Adds Keycloak adapter subsystem",
+                    "request-properties" : {},
+                    "reply-properties" : {},
+                    "read-only" : false,
+                    "restart-required" : "all-services",
+                    "runtime-only" : false
+                },
+                "remove" : {
+                    "operation-name" : "remove",
+                    "description" : "Operation removes Keycloak adapter subsystem",
+                    "request-properties" : {},
+                    "reply-properties" : {},
+                    "read-only" : false,
+                    "restart-required" : "all-services",
+                    "runtime-only" : false
+                }
+            },
+            "notifications" : null,
+            "children" : {"secure-deployment" : {
+                "description" : "A deployment secured by Keycloak.",
+                "model-description" : {"*" : {
+                    "description" : "A deployment secured by Keycloak",
+                    "attributes" : {},
+                    "operations" : {
+                        "add" : {
+                            "operation-name" : "add",
+                            "description" : "Add a deployment to be secured by Keycloak",
+                            "request-properties" : {},
+                            "reply-properties" : {},
+                            "read-only" : false,
+                            "runtime-only" : false
+                        },
+                        "remove" : {
+                            "operation-name" : "remove",
+                            "description" : "Remove a deployment to be secured by Keycloak",
+                            "request-properties" : {},
+                            "reply-properties" : {},
+                            "read-only" : false,
+                            "restart-required" : "all-services",
+                            "runtime-only" : false
+                        }
+                    },
+                    "notifications" : null,
+                    "children" : {"SP" : {
+                        "description" : "A security provider configuration for secure deployment",
+                        "model-description" : {"*" : {
+                            "description" : "A security provider configuration for secure deployment",
+                            "attributes" : {
+                                "PrincipalNameMapping-attribute-name" : {
+                                    "type" : {
+                                        "TYPE_MODEL_VALUE" : "STRING"
+                                    },
+                                    "description" : "Principal name mapping attribute name",
+                                    "expressions-allowed" : false,
+                                    "required" : false,
+                                    "nillable" : true,
+                                    "min-length" : 1,
+                                    "max-length" : 2147483647,
+                                    "access-type" : "read-write",
+                                    "storage" : "configuration",
+                                    "restart-required" : "no-services"
+                                },
+                                "PrincipalNameMapping-policy" : {
+                                    "type" : {
+                                        "TYPE_MODEL_VALUE" : "STRING"
+                                    },
+                                    "description" : "Principal name mapping policy",
+                                    "expressions-allowed" : false,
+                                    "required" : false,
+                                    "nillable" : true,
+                                    "min-length" : 1,
+                                    "max-length" : 2147483647,
+                                    "access-type" : "read-write",
+                                    "storage" : "configuration",
+                                    "restart-required" : "no-services"
+                                },
+                                "RoleIdentifiers" : {
+                                    "type" : {
+                                        "TYPE_MODEL_VALUE" : "LIST"
+                                    },
+                                    "description" : "Role identifiers",
+                                    "expressions-allowed" : false,
+                                    "required" : false,
+                                    "nillable" : true,
+                                    "min-length" : 0,
+                                    "max-length" : 2147483647,
+                                    "value-type" : {
+                                        "TYPE_MODEL_VALUE" : "STRING"
+                                    },
+                                    "access-type" : "read-write",
+                                    "storage" : "configuration",
+                                    "restart-required" : "no-services"
+                                },
+                                "autodetectBearerOnly" : {
+                                    "type" : {
+                                        "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                    },
+                                    "description" : "Set to true if the application serves both a web application and web services (e.g. SOAP or REST). It allows redirection of unauthenticated users of the web application to the Keycloak login page, but send an HTTP 401 status code to unauthenticated SOAP or REST clients instead",
+                                    "expressions-allowed" : true,
+                                    "required" : false,
+                                    "nillable" : true,
+                                    "access-type" : "read-write",
+                                    "storage" : "configuration",
+                                    "restart-required" : "no-services"
+                                },
+                                "forceAuthentication" : {
+                                    "type" : {
+                                        "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                    },
+                                    "description" : "Redirected unauthenticated request to a login page",
+                                    "expressions-allowed" : false,
+                                    "required" : false,
+                                    "nillable" : true,
+                                    "access-type" : "read-write",
+                                    "storage" : "configuration",
+                                    "restart-required" : "no-services"
+                                },
+                                "isPassive" : {
+                                    "type" : {
+                                        "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                    },
+                                    "description" : "If user isn't logged in just return with an error.  Used to check if a user is already logged in or not",
+                                    "expressions-allowed" : false,
+                                    "required" : false,
+                                    "nillable" : true,
+                                    "access-type" : "read-write",
+                                    "storage" : "configuration",
+                                    "restart-required" : "no-services"
+                                },
+                                "keepDOMAssertion" : {
+                                    "type" : {
+                                        "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                    },
+                                    "description" : "Attribute to inject the DOM representation of the assertion into the SamlPrincipal (respecting the original syntax)",
+                                    "expressions-allowed" : false,
+                                    "required" : false,
+                                    "nillable" : true,
+                                    "access-type" : "read-write",
+                                    "storage" : "configuration",
+                                    "restart-required" : "no-services"
+                                },
+                                "logoutPage" : {
+                                    "type" : {
+                                        "TYPE_MODEL_VALUE" : "STRING"
+                                    },
+                                    "description" : "URI to a logout page",
+                                    "expressions-allowed" : false,
+                                    "required" : false,
+                                    "nillable" : true,
+                                    "min-length" : 1,
+                                    "max-length" : 2147483647,
+                                    "access-type" : "read-write",
+                                    "storage" : "configuration",
+                                    "restart-required" : "no-services"
+                                },
+                                "nameIDPolicyFormat" : {
+                                    "type" : {
+                                        "TYPE_MODEL_VALUE" : "STRING"
+                                    },
+                                    "description" : "Name ID policy format URN",
+                                    "expressions-allowed" : false,
+                                    "required" : false,
+                                    "nillable" : true,
+                                    "min-length" : 1,
+                                    "max-length" : 2147483647,
+                                    "access-type" : "read-write",
+                                    "storage" : "configuration",
+                                    "restart-required" : "no-services"
+                                },
+                                "roleMappingsProviderConfig" : {
+                                    "type" : {
+                                        "TYPE_MODEL_VALUE" : "OBJECT"
+                                    },
+                                    "description" : "The configuration properties of the role mappings provider",
+                                    "expressions-allowed" : false,
+                                    "required" : false,
+                                    "nillable" : true,
+                                    "value-type" : {
+                                        "TYPE_MODEL_VALUE" : "STRING"
+                                    },
+                                    "access-type" : "read-write",
+                                    "storage" : "configuration",
+                                    "restart-required" : "no-services"
+                                },
+                                "roleMappingsProviderId" : {
+                                    "type" : {
+                                        "TYPE_MODEL_VALUE" : "STRING"
+                                    },
+                                    "description" : "The string that identifies the role mappings provider to be used within the SP",
+                                    "expressions-allowed" : false,
+                                    "required" : false,
+                                    "nillable" : true,
+                                    "min-length" : 1,
+                                    "max-length" : 2147483647,
+                                    "access-type" : "read-write",
+                                    "storage" : "configuration",
+                                    "restart-required" : "no-services"
+                                },
+                                "sslPolicy" : {
+                                    "type" : {
+                                        "TYPE_MODEL_VALUE" : "STRING"
+                                    },
+                                    "description" : "SSL Policy to use",
+                                    "expressions-allowed" : false,
+                                    "required" : false,
+                                    "nillable" : true,
+                                    "min-length" : 1,
+                                    "max-length" : 2147483647,
+                                    "access-type" : "read-write",
+                                    "storage" : "configuration",
+                                    "restart-required" : "no-services"
+                                },
+                                "turnOffChangeSessionIdOnLogin" : {
+                                    "type" : {
+                                        "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                    },
+                                    "description" : "The session id is changed by default on a successful login.  Change this to true if you want to turn this off",
+                                    "expressions-allowed" : false,
+                                    "required" : false,
+                                    "nillable" : true,
+                                    "access-type" : "read-write",
+                                    "storage" : "configuration",
+                                    "restart-required" : "no-services"
+                                }
+                            },
+                            "operations" : {
+                                "add" : {
+                                    "operation-name" : "add",
+                                    "description" : "Add a security provider configuration to deployment secured by Keycloak SAML",
+                                    "request-properties" : {
+                                        "PrincipalNameMapping-attribute-name" : {
+                                            "type" : {
+                                                "TYPE_MODEL_VALUE" : "STRING"
+                                            },
+                                            "description" : "Principal name mapping attribute name",
+                                            "expressions-allowed" : false,
+                                            "required" : false,
+                                            "nillable" : true,
+                                            "min-length" : 1,
+                                            "max-length" : 2147483647
+                                        },
+                                        "PrincipalNameMapping-policy" : {
+                                            "type" : {
+                                                "TYPE_MODEL_VALUE" : "STRING"
+                                            },
+                                            "description" : "Principal name mapping policy",
+                                            "expressions-allowed" : false,
+                                            "required" : false,
+                                            "nillable" : true,
+                                            "min-length" : 1,
+                                            "max-length" : 2147483647
+                                        },
+                                        "RoleIdentifiers" : {
+                                            "type" : {
+                                                "TYPE_MODEL_VALUE" : "LIST"
+                                            },
+                                            "description" : "Role identifiers",
+                                            "expressions-allowed" : false,
+                                            "required" : false,
+                                            "nillable" : true,
+                                            "min-length" : 0,
+                                            "max-length" : 2147483647,
+                                            "value-type" : {
+                                                "TYPE_MODEL_VALUE" : "STRING"
+                                            }
+                                        },
+                                        "autodetectBearerOnly" : {
+                                            "type" : {
+                                                "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                            },
+                                            "description" : "Set to true if the application serves both a web application and web services (e.g. SOAP or REST). It allows redirection of unauthenticated users of the web application to the Keycloak login page, but send an HTTP 401 status code to unauthenticated SOAP or REST clients instead",
+                                            "expressions-allowed" : true,
+                                            "required" : false,
+                                            "nillable" : true
+                                        },
+                                        "forceAuthentication" : {
+                                            "type" : {
+                                                "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                            },
+                                            "description" : "Redirected unauthenticated request to a login page",
+                                            "expressions-allowed" : false,
+                                            "required" : false,
+                                            "nillable" : true
+                                        },
+                                        "isPassive" : {
+                                            "type" : {
+                                                "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                            },
+                                            "description" : "If user isn't logged in just return with an error.  Used to check if a user is already logged in or not",
+                                            "expressions-allowed" : false,
+                                            "required" : false,
+                                            "nillable" : true
+                                        },
+                                        "keepDOMAssertion" : {
+                                            "type" : {
+                                                "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                            },
+                                            "description" : "Attribute to inject the DOM representation of the assertion into the SamlPrincipal (respecting the original syntax)",
+                                            "expressions-allowed" : false,
+                                            "required" : false,
+                                            "nillable" : true
+                                        },
+                                        "logoutPage" : {
+                                            "type" : {
+                                                "TYPE_MODEL_VALUE" : "STRING"
+                                            },
+                                            "description" : "URI to a logout page",
+                                            "expressions-allowed" : false,
+                                            "required" : false,
+                                            "nillable" : true,
+                                            "min-length" : 1,
+                                            "max-length" : 2147483647
+                                        },
+                                        "nameIDPolicyFormat" : {
+                                            "type" : {
+                                                "TYPE_MODEL_VALUE" : "STRING"
+                                            },
+                                            "description" : "Name ID policy format URN",
+                                            "expressions-allowed" : false,
+                                            "required" : false,
+                                            "nillable" : true,
+                                            "min-length" : 1,
+                                            "max-length" : 2147483647
+                                        },
+                                        "roleMappingsProviderConfig" : {
+                                            "type" : {
+                                                "TYPE_MODEL_VALUE" : "OBJECT"
+                                            },
+                                            "description" : "The configuration properties of the role mappings provider",
+                                            "expressions-allowed" : false,
+                                            "required" : false,
+                                            "nillable" : true,
+                                            "value-type" : {
+                                                "TYPE_MODEL_VALUE" : "STRING"
+                                            }
+                                        },
+                                        "roleMappingsProviderId" : {
+                                            "type" : {
+                                                "TYPE_MODEL_VALUE" : "STRING"
+                                            },
+                                            "description" : "The string that identifies the role mappings provider to be used within the SP",
+                                            "expressions-allowed" : false,
+                                            "required" : false,
+                                            "nillable" : true,
+                                            "min-length" : 1,
+                                            "max-length" : 2147483647
+                                        },
+                                        "sslPolicy" : {
+                                            "type" : {
+                                                "TYPE_MODEL_VALUE" : "STRING"
+                                            },
+                                            "description" : "SSL Policy to use",
+                                            "expressions-allowed" : false,
+                                            "required" : false,
+                                            "nillable" : true,
+                                            "min-length" : 1,
+                                            "max-length" : 2147483647
+                                        },
+                                        "turnOffChangeSessionIdOnLogin" : {
+                                            "type" : {
+                                                "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                            },
+                                            "description" : "The session id is changed by default on a successful login.  Change this to true if you want to turn this off",
+                                            "expressions-allowed" : false,
+                                            "required" : false,
+                                            "nillable" : true
+                                        }
+                                    },
+                                    "reply-properties" : {},
+                                    "read-only" : false,
+                                    "runtime-only" : false
+                                },
+                                "remove" : {
+                                    "operation-name" : "remove",
+                                    "description" : "Remove a security provider definition from deployment secured by Keycloak SAML",
+                                    "request-properties" : {},
+                                    "reply-properties" : {},
+                                    "read-only" : false,
+                                    "restart-required" : "all-services",
+                                    "runtime-only" : false
+                                }
+                            },
+                            "notifications" : null,
+                            "children" : {
+                                "Key" : {
+                                    "description" : "A key definition",
+                                    "model-description" : {"*" : {
+                                        "description" : "A key configuration for service provider or identity provider",
+                                        "attributes" : {
+                                            "CertificatePem" : {
+                                                "type" : {
+                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                },
+                                                "description" : "Certificate key string in pem format",
+                                                "expressions-allowed" : false,
+                                                "required" : false,
+                                                "nillable" : true,
+                                                "min-length" : 1,
+                                                "max-length" : 2147483647,
+                                                "access-type" : "read-write",
+                                                "storage" : "configuration",
+                                                "restart-required" : "no-services"
+                                            },
+                                            "KeyStore" : {
+                                                "type" : {
+                                                    "TYPE_MODEL_VALUE" : "OBJECT"
+                                                },
+                                                "description" : "Key store definition",
+                                                "expressions-allowed" : false,
+                                                "required" : false,
+                                                "nillable" : true,
+                                                "value-type" : {
+                                                    "resource" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                        },
+                                                        "description" : "Key store resource URI",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "min-length" : 1,
+                                                        "max-length" : 2147483647
+                                                    },
+                                                    "password" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                        },
+                                                        "description" : "Key store password",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "min-length" : 1,
+                                                        "max-length" : 2147483647
+                                                    },
+                                                    "file" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                        },
+                                                        "description" : "Key store filesystem path",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "min-length" : 1,
+                                                        "max-length" : 2147483647
+                                                    },
+                                                    "type" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                        },
+                                                        "description" : "Key store format",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "min-length" : 1,
+                                                        "max-length" : 2147483647
+                                                    },
+                                                    "alias" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                        },
+                                                        "description" : "Key alias",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "min-length" : 1,
+                                                        "max-length" : 2147483647
+                                                    },
+                                                    "PrivateKey-alias" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                        },
+                                                        "description" : "Private key alias",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "min-length" : 1,
+                                                        "max-length" : 2147483647
+                                                    },
+                                                    "PrivateKey-password" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                        },
+                                                        "description" : "Private key password",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "min-length" : 1,
+                                                        "max-length" : 2147483647
+                                                    },
+                                                    "Certificate-alias" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                        },
+                                                        "description" : "Certificate alias",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "min-length" : 1,
+                                                        "max-length" : 2147483647
+                                                    }
+                                                },
+                                                "access-type" : "read-write",
+                                                "storage" : "configuration",
+                                                "restart-required" : "no-services"
+                                            },
+                                            "PrivateKeyPem" : {
+                                                "type" : {
+                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                },
+                                                "description" : "Private key string in pem format",
+                                                "expressions-allowed" : false,
+                                                "required" : false,
+                                                "nillable" : true,
+                                                "min-length" : 1,
+                                                "max-length" : 2147483647,
+                                                "access-type" : "read-write",
+                                                "storage" : "configuration",
+                                                "restart-required" : "no-services"
+                                            },
+                                            "PublicKeyPem" : {
+                                                "type" : {
+                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                },
+                                                "description" : "Public key string in pem format",
+                                                "expressions-allowed" : false,
+                                                "required" : false,
+                                                "nillable" : true,
+                                                "min-length" : 1,
+                                                "max-length" : 2147483647,
+                                                "access-type" : "read-write",
+                                                "storage" : "configuration",
+                                                "restart-required" : "no-services"
+                                            },
+                                            "encryption" : {
+                                                "type" : {
+                                                    "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                                },
+                                                "description" : "Key can be used for encryption",
+                                                "expressions-allowed" : false,
+                                                "required" : false,
+                                                "nillable" : true,
+                                                "access-type" : "read-write",
+                                                "storage" : "configuration",
+                                                "restart-required" : "no-services"
+                                            },
+                                            "signing" : {
+                                                "type" : {
+                                                    "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                                },
+                                                "description" : "Key can be used for signing",
+                                                "expressions-allowed" : false,
+                                                "required" : false,
+                                                "nillable" : true,
+                                                "access-type" : "read-write",
+                                                "storage" : "configuration",
+                                                "restart-required" : "no-services"
+                                            }
+                                        },
+                                        "operations" : {
+                                            "add" : {
+                                                "operation-name" : "add",
+                                                "description" : "Add a key definition",
+                                                "request-properties" : {
+                                                    "CertificatePem" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                        },
+                                                        "description" : "Certificate key string in pem format",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "min-length" : 1,
+                                                        "max-length" : 2147483647
+                                                    },
+                                                    "KeyStore" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "OBJECT"
+                                                        },
+                                                        "description" : "Key store definition",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "value-type" : {
+                                                            "resource" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "Key store resource URI",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "min-length" : 1,
+                                                                "max-length" : 2147483647
+                                                            },
+                                                            "password" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "Key store password",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "min-length" : 1,
+                                                                "max-length" : 2147483647
+                                                            },
+                                                            "file" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "Key store filesystem path",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "min-length" : 1,
+                                                                "max-length" : 2147483647
+                                                            },
+                                                            "type" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "Key store format",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "min-length" : 1,
+                                                                "max-length" : 2147483647
+                                                            },
+                                                            "alias" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "Key alias",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "min-length" : 1,
+                                                                "max-length" : 2147483647
+                                                            },
+                                                            "PrivateKey-alias" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "Private key alias",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "min-length" : 1,
+                                                                "max-length" : 2147483647
+                                                            },
+                                                            "PrivateKey-password" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "Private key password",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "min-length" : 1,
+                                                                "max-length" : 2147483647
+                                                            },
+                                                            "Certificate-alias" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "Certificate alias",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "min-length" : 1,
+                                                                "max-length" : 2147483647
+                                                            }
+                                                        }
+                                                    },
+                                                    "PrivateKeyPem" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                        },
+                                                        "description" : "Private key string in pem format",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "min-length" : 1,
+                                                        "max-length" : 2147483647
+                                                    },
+                                                    "PublicKeyPem" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                        },
+                                                        "description" : "Public key string in pem format",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "min-length" : 1,
+                                                        "max-length" : 2147483647
+                                                    },
+                                                    "encryption" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                                        },
+                                                        "description" : "Key can be used for encryption",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true
+                                                    },
+                                                    "signing" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                                        },
+                                                        "description" : "Key can be used for signing",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true
+                                                    }
+                                                },
+                                                "reply-properties" : {},
+                                                "read-only" : false,
+                                                "runtime-only" : false
+                                            },
+                                            "remove" : {
+                                                "operation-name" : "remove",
+                                                "description" : "Remove a key definition",
+                                                "request-properties" : {},
+                                                "reply-properties" : {},
+                                                "read-only" : false,
+                                                "restart-required" : "all-services",
+                                                "runtime-only" : false
+                                            }
+                                        },
+                                        "notifications" : null,
+                                        "children" : {}
+                                    }}
+                                },
+                                "IDP" : {
+                                    "description" : "Identity provider definition",
+                                    "model-description" : {"*" : {
+                                        "description" : "An identity provider configuration",
+                                        "attributes" : {
+                                            "AllowedClockSkew" : {
+                                                "type" : {
+                                                    "TYPE_MODEL_VALUE" : "OBJECT"
+                                                },
+                                                "description" : "Allowed clock skew between the IDP and the SP",
+                                                "expressions-allowed" : false,
+                                                "required" : false,
+                                                "nillable" : true,
+                                                "value-type" : {
+                                                    "unit" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                        },
+                                                        "description" : "Time unit for the value of the clock skew. Values: MINUTES, SECONDS, MILLISECONDS, MICROSECONDS, NANOSECONDS",
+                                                        "expressions-allowed" : true,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "default" : "SECONDS",
+                                                        "allowed" : [
+                                                            "MINUTES",
+                                                            "SECONDS",
+                                                            "MILLISECONDS",
+                                                            "MICROSECONDS",
+                                                            "NANOSECONDS"
+                                                        ]
+                                                    },
+                                                    "value" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "INT"
+                                                        },
+                                                        "description" : "Allowed clock skew value between the IDP and the SP",
+                                                        "expressions-allowed" : true,
+                                                        "required" : true,
+                                                        "nillable" : false,
+                                                        "min" : 1,
+                                                        "max" : 2147483647
+                                                    }
+                                                },
+                                                "access-type" : "read-write",
+                                                "storage" : "configuration",
+                                                "restart-required" : "no-services"
+                                            },
+                                            "HttpClient" : {
+                                                "type" : {
+                                                    "TYPE_MODEL_VALUE" : "OBJECT"
+                                                },
+                                                "description" : "Configuration of HTTP client used for automatic retrieval of certificates for signature validation",
+                                                "expressions-allowed" : false,
+                                                "required" : false,
+                                                "nillable" : true,
+                                                "value-type" : {
+                                                    "allowAnyHostname" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                                        },
+                                                        "description" : "Define if hostname validation should be disabled (true) or not (false)",
+                                                        "expressions-allowed" : true,
+                                                        "required" : false,
+                                                        "nillable" : true
+                                                    },
+                                                    "clientKeystore" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                        },
+                                                        "description" : "Path to the keystore that contains client certificates for two-way SSL",
+                                                        "expressions-allowed" : true,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "min-length" : 1,
+                                                        "max-length" : 2147483647
+                                                    },
+                                                    "clientKeystorePassword" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                        },
+                                                        "description" : "The keystore password",
+                                                        "expressions-allowed" : true,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "min-length" : 1,
+                                                        "max-length" : 2147483647
+                                                    },
+                                                    "connectionPoolSize" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "INT"
+                                                        },
+                                                        "description" : "The number of pooled connections",
+                                                        "expressions-allowed" : true,
+                                                        "required" : false,
+                                                        "nillable" : true
+                                                    },
+                                                    "disableTrustManager" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                                        },
+                                                        "description" : "Define if SSL certificate validation should be disabled (true) or not (false)",
+                                                        "expressions-allowed" : true,
+                                                        "required" : false,
+                                                        "nillable" : true
+                                                    },
+                                                    "proxyUrl" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                        },
+                                                        "description" : "URL to the HTTP proxy, if applicable",
+                                                        "expressions-allowed" : true,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "min-length" : 1,
+                                                        "max-length" : 2147483647
+                                                    },
+                                                    "truststore" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                        },
+                                                        "description" : "Path to the truststore used to validate the IDP certificates",
+                                                        "expressions-allowed" : true,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "min-length" : 1,
+                                                        "max-length" : 2147483647
+                                                    },
+                                                    "truststorePassword" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                        },
+                                                        "description" : "The truststore password",
+                                                        "expressions-allowed" : true,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "min-length" : 1,
+                                                        "max-length" : 2147483647
+                                                    },
+                                                    "socketTimeout" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "LONG"
+                                                        },
+                                                        "description" : "Timeout for socket waiting for data in milliseconds",
+                                                        "expressions-allowed" : true,
+                                                        "required" : false,
+                                                        "nillable" : true
+                                                    },
+                                                    "connectionTimeout" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "LONG"
+                                                        },
+                                                        "description" : "Timeout for establishing the connection with the remote host in milliseconds",
+                                                        "expressions-allowed" : true,
+                                                        "required" : false,
+                                                        "nillable" : true
+                                                    },
+                                                    "connectionTtl" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "LONG"
+                                                        },
+                                                        "description" : "The connection time to live in milliseconds",
+                                                        "expressions-allowed" : true,
+                                                        "required" : false,
+                                                        "nillable" : true
+                                                    }
+                                                },
+                                                "access-type" : "read-write",
+                                                "storage" : "configuration",
+                                                "restart-required" : "no-services"
+                                            },
+                                            "SingleLogoutService" : {
+                                                "type" : {
+                                                    "TYPE_MODEL_VALUE" : "OBJECT"
+                                                },
+                                                "description" : "Single logout configuration",
+                                                "expressions-allowed" : false,
+                                                "required" : true,
+                                                "nillable" : false,
+                                                "value-type" : {
+                                                    "validateRequestSignature" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                                        },
+                                                        "description" : "Validate a SingleLogoutService request signature",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true
+                                                    },
+                                                    "validateResponseSignature" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                                        },
+                                                        "description" : "Validate a SingleLogoutService response signature",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true
+                                                    },
+                                                    "signRequest" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                                        },
+                                                        "description" : "Sign SingleLogoutService requests",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true
+                                                    },
+                                                    "signResponse" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                                        },
+                                                        "description" : "Sign SingleLogoutService responses",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true
+                                                    },
+                                                    "requestBinding" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                        },
+                                                        "description" : "HTTP method to use for request",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "min-length" : 1,
+                                                        "max-length" : 2147483647
+                                                    },
+                                                    "responseBinding" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                        },
+                                                        "description" : "HTTP method to use for response",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "min-length" : 1,
+                                                        "max-length" : 2147483647
+                                                    },
+                                                    "postBindingUrl" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                        },
+                                                        "description" : "Endpoint URL for posting",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "min-length" : 1,
+                                                        "max-length" : 2147483647
+                                                    },
+                                                    "redirectBindingUrl" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                        },
+                                                        "description" : "Endpoint URL for redirects",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "min-length" : 1,
+                                                        "max-length" : 2147483647
+                                                    }
+                                                },
+                                                "access-type" : "read-write",
+                                                "storage" : "configuration",
+                                                "restart-required" : "no-services"
+                                            },
+                                            "SingleSignOnService" : {
+                                                "type" : {
+                                                    "TYPE_MODEL_VALUE" : "OBJECT"
+                                                },
+                                                "description" : "Single sign-on configuration",
+                                                "expressions-allowed" : false,
+                                                "required" : true,
+                                                "nillable" : false,
+                                                "value-type" : {
+                                                    "signRequest" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                                        },
+                                                        "description" : "Sign SSO requests",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true
+                                                    },
+                                                    "validateResponseSignature" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                                        },
+                                                        "description" : "Validate an SSO response signature",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true
+                                                    },
+                                                    "validateAssertionSignature" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                                        },
+                                                        "description" : "Validate an SSO assertion signature",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true
+                                                    },
+                                                    "requestBinding" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                        },
+                                                        "description" : "HTTP method to use for requests",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "min-length" : 1,
+                                                        "max-length" : 2147483647
+                                                    },
+                                                    "responseBinding" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                        },
+                                                        "description" : "HTTP method to use for responses",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "min-length" : 1,
+                                                        "max-length" : 2147483647
+                                                    },
+                                                    "bindingUrl" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                        },
+                                                        "description" : "SSO endpoint URL",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "min-length" : 1,
+                                                        "max-length" : 2147483647
+                                                    },
+                                                    "assertionConsumerServiceUrl" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                        },
+                                                        "description" : "Endpoint of Assertion Consumer Service at SP",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "min-length" : 1,
+                                                        "max-length" : 2147483647
+                                                    }
+                                                },
+                                                "access-type" : "read-write",
+                                                "storage" : "configuration",
+                                                "restart-required" : "no-services"
+                                            },
+                                            "metadataUrl" : {
+                                                "type" : {
+                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                },
+                                                "description" : "The URL used to retrieve the IDP metadata from",
+                                                "expressions-allowed" : true,
+                                                "required" : false,
+                                                "nillable" : true,
+                                                "min-length" : 1,
+                                                "max-length" : 2147483647,
+                                                "access-type" : "read-write",
+                                                "storage" : "configuration",
+                                                "restart-required" : "no-services"
+                                            },
+                                            "signatureAlgorithm" : {
+                                                "type" : {
+                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                },
+                                                "description" : "Signature algorithm",
+                                                "expressions-allowed" : false,
+                                                "required" : false,
+                                                "nillable" : true,
+                                                "min-length" : 1,
+                                                "max-length" : 2147483647,
+                                                "access-type" : "read-write",
+                                                "storage" : "configuration",
+                                                "restart-required" : "no-services"
+                                            },
+                                            "signatureCanonicalizationMethod" : {
+                                                "type" : {
+                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                },
+                                                "description" : "Signature canonicalization method",
+                                                "expressions-allowed" : false,
+                                                "required" : false,
+                                                "nillable" : true,
+                                                "min-length" : 1,
+                                                "max-length" : 2147483647,
+                                                "access-type" : "read-write",
+                                                "storage" : "configuration",
+                                                "restart-required" : "no-services"
+                                            },
+                                            "signaturesRequired" : {
+                                                "type" : {
+                                                    "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                                },
+                                                "description" : "Require signatures for SingleSignOnService and SingleLogoutService",
+                                                "expressions-allowed" : false,
+                                                "required" : false,
+                                                "nillable" : true,
+                                                "access-type" : "read-write",
+                                                "storage" : "configuration",
+                                                "restart-required" : "no-services"
+                                            }
+                                        },
+                                        "operations" : {
+                                            "add" : {
+                                                "operation-name" : "add",
+                                                "description" : "Add an identity provider",
+                                                "request-properties" : {
+                                                    "AllowedClockSkew" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "OBJECT"
+                                                        },
+                                                        "description" : "Allowed clock skew between the IDP and the SP",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "value-type" : {
+                                                            "unit" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "Time unit for the value of the clock skew. Values: MINUTES, SECONDS, MILLISECONDS, MICROSECONDS, NANOSECONDS",
+                                                                "expressions-allowed" : true,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "default" : "SECONDS",
+                                                                "allowed" : [
+                                                                    "MINUTES",
+                                                                    "SECONDS",
+                                                                    "MILLISECONDS",
+                                                                    "MICROSECONDS",
+                                                                    "NANOSECONDS"
+                                                                ]
+                                                            },
+                                                            "value" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "INT"
+                                                                },
+                                                                "description" : "Allowed clock skew value between the IDP and the SP",
+                                                                "expressions-allowed" : true,
+                                                                "required" : true,
+                                                                "nillable" : false,
+                                                                "min" : 1,
+                                                                "max" : 2147483647
+                                                            }
+                                                        }
+                                                    },
+                                                    "HttpClient" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "OBJECT"
+                                                        },
+                                                        "description" : "Configuration of HTTP client used for automatic retrieval of certificates for signature validation",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "value-type" : {
+                                                            "allowAnyHostname" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                                                },
+                                                                "description" : "Define if hostname validation should be disabled (true) or not (false)",
+                                                                "expressions-allowed" : true,
+                                                                "required" : false,
+                                                                "nillable" : true
+                                                            },
+                                                            "clientKeystore" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "Path to the keystore that contains client certificates for two-way SSL",
+                                                                "expressions-allowed" : true,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "min-length" : 1,
+                                                                "max-length" : 2147483647
+                                                            },
+                                                            "clientKeystorePassword" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "The keystore password",
+                                                                "expressions-allowed" : true,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "min-length" : 1,
+                                                                "max-length" : 2147483647
+                                                            },
+                                                            "connectionPoolSize" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "INT"
+                                                                },
+                                                                "description" : "The number of pooled connections",
+                                                                "expressions-allowed" : true,
+                                                                "required" : false,
+                                                                "nillable" : true
+                                                            },
+                                                            "disableTrustManager" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                                                },
+                                                                "description" : "Define if SSL certificate validation should be disabled (true) or not (false)",
+                                                                "expressions-allowed" : true,
+                                                                "required" : false,
+                                                                "nillable" : true
+                                                            },
+                                                            "proxyUrl" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "URL to the HTTP proxy, if applicable",
+                                                                "expressions-allowed" : true,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "min-length" : 1,
+                                                                "max-length" : 2147483647
+                                                            },
+                                                            "truststore" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "Path to the truststore used to validate the IDP certificates",
+                                                                "expressions-allowed" : true,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "min-length" : 1,
+                                                                "max-length" : 2147483647
+                                                            },
+                                                            "truststorePassword" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "The truststore password",
+                                                                "expressions-allowed" : true,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "min-length" : 1,
+                                                                "max-length" : 2147483647
+                                                            },
+                                                            "socketTimeout" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "LONG"
+                                                                },
+                                                                "description" : "Timeout for socket waiting for data in milliseconds",
+                                                                "expressions-allowed" : true,
+                                                                "required" : false,
+                                                                "nillable" : true
+                                                            },
+                                                            "connectionTimeout" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "LONG"
+                                                                },
+                                                                "description" : "Timeout for establishing the connection with the remote host in milliseconds",
+                                                                "expressions-allowed" : true,
+                                                                "required" : false,
+                                                                "nillable" : true
+                                                            },
+                                                            "connectionTtl" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "LONG"
+                                                                },
+                                                                "description" : "The connection time to live in milliseconds",
+                                                                "expressions-allowed" : true,
+                                                                "required" : false,
+                                                                "nillable" : true
+                                                            }
+                                                        }
+                                                    },
+                                                    "SingleLogoutService" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "OBJECT"
+                                                        },
+                                                        "description" : "Single logout configuration",
+                                                        "expressions-allowed" : false,
+                                                        "required" : true,
+                                                        "nillable" : false,
+                                                        "value-type" : {
+                                                            "validateRequestSignature" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                                                },
+                                                                "description" : "Validate a SingleLogoutService request signature",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true
+                                                            },
+                                                            "validateResponseSignature" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                                                },
+                                                                "description" : "Validate a SingleLogoutService response signature",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true
+                                                            },
+                                                            "signRequest" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                                                },
+                                                                "description" : "Sign SingleLogoutService requests",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true
+                                                            },
+                                                            "signResponse" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                                                },
+                                                                "description" : "Sign SingleLogoutService responses",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true
+                                                            },
+                                                            "requestBinding" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "HTTP method to use for request",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "min-length" : 1,
+                                                                "max-length" : 2147483647
+                                                            },
+                                                            "responseBinding" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "HTTP method to use for response",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "min-length" : 1,
+                                                                "max-length" : 2147483647
+                                                            },
+                                                            "postBindingUrl" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "Endpoint URL for posting",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "min-length" : 1,
+                                                                "max-length" : 2147483647
+                                                            },
+                                                            "redirectBindingUrl" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "Endpoint URL for redirects",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "min-length" : 1,
+                                                                "max-length" : 2147483647
+                                                            }
+                                                        }
+                                                    },
+                                                    "SingleSignOnService" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "OBJECT"
+                                                        },
+                                                        "description" : "Single sign-on configuration",
+                                                        "expressions-allowed" : false,
+                                                        "required" : true,
+                                                        "nillable" : false,
+                                                        "value-type" : {
+                                                            "signRequest" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                                                },
+                                                                "description" : "Sign SSO requests",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true
+                                                            },
+                                                            "validateResponseSignature" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                                                },
+                                                                "description" : "Validate an SSO response signature",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true
+                                                            },
+                                                            "validateAssertionSignature" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                                                },
+                                                                "description" : "Validate an SSO assertion signature",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true
+                                                            },
+                                                            "requestBinding" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "HTTP method to use for requests",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "min-length" : 1,
+                                                                "max-length" : 2147483647
+                                                            },
+                                                            "responseBinding" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "HTTP method to use for responses",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "min-length" : 1,
+                                                                "max-length" : 2147483647
+                                                            },
+                                                            "bindingUrl" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "SSO endpoint URL",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "min-length" : 1,
+                                                                "max-length" : 2147483647
+                                                            },
+                                                            "assertionConsumerServiceUrl" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "Endpoint of Assertion Consumer Service at SP",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "min-length" : 1,
+                                                                "max-length" : 2147483647
+                                                            }
+                                                        }
+                                                    },
+                                                    "metadataUrl" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                        },
+                                                        "description" : "The URL used to retrieve the IDP metadata from",
+                                                        "expressions-allowed" : true,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "min-length" : 1,
+                                                        "max-length" : 2147483647
+                                                    },
+                                                    "signatureAlgorithm" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                        },
+                                                        "description" : "Signature algorithm",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "min-length" : 1,
+                                                        "max-length" : 2147483647
+                                                    },
+                                                    "signatureCanonicalizationMethod" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                        },
+                                                        "description" : "Signature canonicalization method",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "min-length" : 1,
+                                                        "max-length" : 2147483647
+                                                    },
+                                                    "signaturesRequired" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                                        },
+                                                        "description" : "Require signatures for SingleSignOnService and SingleLogoutService",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true
+                                                    }
+                                                },
+                                                "reply-properties" : {},
+                                                "read-only" : false,
+                                                "runtime-only" : false
+                                            },
+                                            "remove" : {
+                                                "operation-name" : "remove",
+                                                "description" : "Remove an identity provider",
+                                                "request-properties" : {},
+                                                "reply-properties" : {},
+                                                "read-only" : false,
+                                                "restart-required" : "all-services",
+                                                "runtime-only" : false
+                                            }
+                                        },
+                                        "notifications" : null,
+                                        "children" : {"Key" : {
+                                            "description" : "Key definition for identity provider",
+                                            "model-description" : {"*" : {
+                                                "description" : "A key configuration for service provider or identity provider",
+                                                "attributes" : {
+                                                    "CertificatePem" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                        },
+                                                        "description" : "Certificate key string in pem format",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "min-length" : 1,
+                                                        "max-length" : 2147483647,
+                                                        "access-type" : "read-write",
+                                                        "storage" : "configuration",
+                                                        "restart-required" : "no-services"
+                                                    },
+                                                    "KeyStore" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "OBJECT"
+                                                        },
+                                                        "description" : "Key store definition",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "value-type" : {
+                                                            "resource" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "Key store resource URI",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "min-length" : 1,
+                                                                "max-length" : 2147483647
+                                                            },
+                                                            "password" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "Key store password",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "min-length" : 1,
+                                                                "max-length" : 2147483647
+                                                            },
+                                                            "file" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "Key store filesystem path",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "min-length" : 1,
+                                                                "max-length" : 2147483647
+                                                            },
+                                                            "type" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "Key store format",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "min-length" : 1,
+                                                                "max-length" : 2147483647
+                                                            },
+                                                            "alias" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "Key alias",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "min-length" : 1,
+                                                                "max-length" : 2147483647
+                                                            },
+                                                            "PrivateKey-alias" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "Private key alias",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "min-length" : 1,
+                                                                "max-length" : 2147483647
+                                                            },
+                                                            "PrivateKey-password" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "Private key password",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "min-length" : 1,
+                                                                "max-length" : 2147483647
+                                                            },
+                                                            "Certificate-alias" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "Certificate alias",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "min-length" : 1,
+                                                                "max-length" : 2147483647
+                                                            }
+                                                        },
+                                                        "access-type" : "read-write",
+                                                        "storage" : "configuration",
+                                                        "restart-required" : "no-services"
+                                                    },
+                                                    "PrivateKeyPem" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                        },
+                                                        "description" : "Private key string in pem format",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "min-length" : 1,
+                                                        "max-length" : 2147483647,
+                                                        "access-type" : "read-write",
+                                                        "storage" : "configuration",
+                                                        "restart-required" : "no-services"
+                                                    },
+                                                    "PublicKeyPem" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                        },
+                                                        "description" : "Public key string in pem format",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "min-length" : 1,
+                                                        "max-length" : 2147483647,
+                                                        "access-type" : "read-write",
+                                                        "storage" : "configuration",
+                                                        "restart-required" : "no-services"
+                                                    },
+                                                    "encryption" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                                        },
+                                                        "description" : "Key can be used for encryption",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "access-type" : "read-write",
+                                                        "storage" : "configuration",
+                                                        "restart-required" : "no-services"
+                                                    },
+                                                    "signing" : {
+                                                        "type" : {
+                                                            "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                                        },
+                                                        "description" : "Key can be used for signing",
+                                                        "expressions-allowed" : false,
+                                                        "required" : false,
+                                                        "nillable" : true,
+                                                        "access-type" : "read-write",
+                                                        "storage" : "configuration",
+                                                        "restart-required" : "no-services"
+                                                    }
+                                                },
+                                                "operations" : {
+                                                    "add" : {
+                                                        "operation-name" : "add",
+                                                        "description" : "Add a key definition",
+                                                        "request-properties" : {
+                                                            "CertificatePem" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "Certificate key string in pem format",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "min-length" : 1,
+                                                                "max-length" : 2147483647
+                                                            },
+                                                            "KeyStore" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "OBJECT"
+                                                                },
+                                                                "description" : "Key store definition",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "value-type" : {
+                                                                    "resource" : {
+                                                                        "type" : {
+                                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                                        },
+                                                                        "description" : "Key store resource URI",
+                                                                        "expressions-allowed" : false,
+                                                                        "required" : false,
+                                                                        "nillable" : true,
+                                                                        "min-length" : 1,
+                                                                        "max-length" : 2147483647
+                                                                    },
+                                                                    "password" : {
+                                                                        "type" : {
+                                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                                        },
+                                                                        "description" : "Key store password",
+                                                                        "expressions-allowed" : false,
+                                                                        "required" : false,
+                                                                        "nillable" : true,
+                                                                        "min-length" : 1,
+                                                                        "max-length" : 2147483647
+                                                                    },
+                                                                    "file" : {
+                                                                        "type" : {
+                                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                                        },
+                                                                        "description" : "Key store filesystem path",
+                                                                        "expressions-allowed" : false,
+                                                                        "required" : false,
+                                                                        "nillable" : true,
+                                                                        "min-length" : 1,
+                                                                        "max-length" : 2147483647
+                                                                    },
+                                                                    "type" : {
+                                                                        "type" : {
+                                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                                        },
+                                                                        "description" : "Key store format",
+                                                                        "expressions-allowed" : false,
+                                                                        "required" : false,
+                                                                        "nillable" : true,
+                                                                        "min-length" : 1,
+                                                                        "max-length" : 2147483647
+                                                                    },
+                                                                    "alias" : {
+                                                                        "type" : {
+                                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                                        },
+                                                                        "description" : "Key alias",
+                                                                        "expressions-allowed" : false,
+                                                                        "required" : false,
+                                                                        "nillable" : true,
+                                                                        "min-length" : 1,
+                                                                        "max-length" : 2147483647
+                                                                    },
+                                                                    "PrivateKey-alias" : {
+                                                                        "type" : {
+                                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                                        },
+                                                                        "description" : "Private key alias",
+                                                                        "expressions-allowed" : false,
+                                                                        "required" : false,
+                                                                        "nillable" : true,
+                                                                        "min-length" : 1,
+                                                                        "max-length" : 2147483647
+                                                                    },
+                                                                    "PrivateKey-password" : {
+                                                                        "type" : {
+                                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                                        },
+                                                                        "description" : "Private key password",
+                                                                        "expressions-allowed" : false,
+                                                                        "required" : false,
+                                                                        "nillable" : true,
+                                                                        "min-length" : 1,
+                                                                        "max-length" : 2147483647
+                                                                    },
+                                                                    "Certificate-alias" : {
+                                                                        "type" : {
+                                                                            "TYPE_MODEL_VALUE" : "STRING"
+                                                                        },
+                                                                        "description" : "Certificate alias",
+                                                                        "expressions-allowed" : false,
+                                                                        "required" : false,
+                                                                        "nillable" : true,
+                                                                        "min-length" : 1,
+                                                                        "max-length" : 2147483647
+                                                                    }
+                                                                }
+                                                            },
+                                                            "PrivateKeyPem" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "Private key string in pem format",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "min-length" : 1,
+                                                                "max-length" : 2147483647
+                                                            },
+                                                            "PublicKeyPem" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "STRING"
+                                                                },
+                                                                "description" : "Public key string in pem format",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true,
+                                                                "min-length" : 1,
+                                                                "max-length" : 2147483647
+                                                            },
+                                                            "encryption" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                                                },
+                                                                "description" : "Key can be used for encryption",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true
+                                                            },
+                                                            "signing" : {
+                                                                "type" : {
+                                                                    "TYPE_MODEL_VALUE" : "BOOLEAN"
+                                                                },
+                                                                "description" : "Key can be used for signing",
+                                                                "expressions-allowed" : false,
+                                                                "required" : false,
+                                                                "nillable" : true
+                                                            }
+                                                        },
+                                                        "reply-properties" : {},
+                                                        "read-only" : false,
+                                                        "runtime-only" : false
+                                                    },
+                                                    "remove" : {
+                                                        "operation-name" : "remove",
+                                                        "description" : "Remove a key definition",
+                                                        "request-properties" : {},
+                                                        "reply-properties" : {},
+                                                        "read-only" : false,
+                                                        "restart-required" : "all-services",
+                                                        "runtime-only" : false
+                                                    }
+                                                },
+                                                "notifications" : null,
+                                                "children" : {}
+                                            }}
+                                        }}
+                                    }}
+                                }
+                            }
+                        }}
+                    }}
+                }}
+            }},
+            "address" : [[{
+                "subsystem" : "keycloak-saml"
+            }]]
+        }},
+        "description" : "The subsystems that make up the server's profile."
+    }},
+    "description" : "Keycloak Galleon Feature Pack: SAML Adapter",
+    "possible-capabilities" : [
+        {
+            "name" : "org.wildfly.management.audit.handler",
+            "dynamic" : true,
+            "registration-points" : [
+                "/core-service=management/access=audit/syslog-handler=*/protocol=tls/authentication=truststore",
+                "/core-service=management/access=audit/syslog-handler=*/protocol=tls/authentication=client-certificate-store"
+            ]
+        },
+        {
+            "name" : "org.wildfly.management.configuration.changes",
+            "dynamic" : false,
+            "registration-points" : ["/core-service=management/service=configuration-changes"]
+        },
+        {
+            "name" : "org.wildfly.management.console-availability",
+            "dynamic" : false,
+            "registration-points" : ["/"]
+        },
+        {
+            "name" : "org.wildfly.management.executor",
+            "dynamic" : false,
+            "registration-points" : ["/"]
+        },
+        {
+            "name" : "org.wildfly.management.expression-resolver-extension-registry",
+            "dynamic" : false,
+            "registration-points" : ["/"]
+        },
+        {
+            "name" : "org.wildfly.management.external-module",
+            "dynamic" : false,
+            "registration-points" : ["/"]
+        },
+        {
+            "name" : "org.wildfly.management.http-interface",
+            "dynamic" : false,
+            "registration-points" : ["/core-service=management/management-interface=http-interface"]
+        },
+        {
+            "name" : "org.wildfly.management.http.extensible",
+            "dynamic" : false,
+            "registration-points" : ["/core-service=management/management-interface=http-interface"]
+        },
+        {
+            "name" : "org.wildfly.management.identity",
+            "dynamic" : false,
+            "registration-points" : ["/core-service=management/access=identity"]
+        },
+        {
+            "name" : "org.wildfly.management.model-controller-client-factory",
+            "dynamic" : false,
+            "registration-points" : ["/"]
+        },
+        {
+            "name" : "org.wildfly.management.native-interface",
+            "dynamic" : false,
+            "registration-points" : ["/core-service=management/management-interface=native-interface"]
+        },
+        {
+            "name" : "org.wildfly.management.notification-handler-registry",
+            "dynamic" : false,
+            "registration-points" : ["/"]
+        },
+        {
+            "name" : "org.wildfly.management.path",
+            "dynamic" : true,
+            "registration-points" : ["/path=*"]
+        },
+        {
+            "name" : "org.wildfly.management.path-manager",
+            "dynamic" : false,
+            "registration-points" : ["/"]
+        },
+        {
+            "name" : "org.wildfly.management.path.jboss.controller.temp.dir",
+            "dynamic" : false,
+            "registration-points" : ["/"]
+        },
+        {
+            "name" : "org.wildfly.management.path.jboss.home.dir",
+            "dynamic" : false,
+            "registration-points" : ["/"]
+        },
+        {
+            "name" : "org.wildfly.management.path.jboss.server.base.dir",
+            "dynamic" : false,
+            "registration-points" : ["/"]
+        },
+        {
+            "name" : "org.wildfly.management.path.jboss.server.config.dir",
+            "dynamic" : false,
+            "registration-points" : ["/"]
+        },
+        {
+            "name" : "org.wildfly.management.path.jboss.server.data.dir",
+            "dynamic" : false,
+            "registration-points" : ["/"]
+        },
+        {
+            "name" : "org.wildfly.management.path.jboss.server.log.dir",
+            "dynamic" : false,
+            "registration-points" : ["/"]
+        },
+        {
+            "name" : "org.wildfly.management.path.jboss.server.temp.dir",
+            "dynamic" : false,
+            "registration-points" : ["/"]
+        },
+        {
+            "name" : "org.wildfly.management.process-state-notifier",
+            "dynamic" : false,
+            "registration-points" : ["/"]
+        },
+        {
+            "name" : "org.wildfly.management.socket-binding-manager",
+            "dynamic" : false,
+            "registration-points" : ["/socket-binding-group=*"]
+        },
+        {
+            "name" : "org.wildfly.network.interface",
+            "dynamic" : true,
+            "registration-points" : ["/interface=*"]
+        },
+        {
+            "name" : "org.wildfly.network.outbound-socket-binding",
+            "dynamic" : true,
+            "registration-points" : [
+                "/socket-binding-group=*/remote-destination-outbound-socket-binding=*",
+                "/socket-binding-group=*/local-destination-outbound-socket-binding=*"
+            ]
+        },
+        {
+            "name" : "org.wildfly.network.socket-binding",
+            "dynamic" : true,
+            "registration-points" : ["/socket-binding-group=*/socket-binding=*"]
+        },
+        {
+            "name" : "org.wildfly.server.suspend-controller",
+            "dynamic" : false,
+            "registration-points" : ["/"]
+        }
+    ]
+}

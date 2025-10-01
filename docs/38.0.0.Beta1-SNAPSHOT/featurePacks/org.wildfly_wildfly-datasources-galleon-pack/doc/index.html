@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Documentation for Drivers and datasources for WildFly</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+  <script src="scripts.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h1>Documentation for Drivers and datasources for WildFly</h1>
+  <p>Drivers and datasources for WildFly</p>
+  <h2>Maven Coordinates</h2>
+  <div class="code-block-container">
+    <pre>
+        <code id="maven-dependency" class="language-xml">
+&lt;dependency>
+  &lt;groupId>org.wildfly&lt;/groupId>
+  &lt;artifactId>wildfly-datasources-galleon-pack&lt;/artifactId>
+  &lt;version>11.0.1.Final-SNAPSHOT&lt;/version>
+&lt;/dependency>
+        </code>
+    </pre>
+    <button class="copy-btn" onclick="copyToClipboard('maven-dependency')" title="Copy to clipboard">📋</button>
+  </div>
+  <h3>Feature Pack Location</h3>
+  <div class="code-block-container">
+    <pre>
+        <code id="feature-pack-location" class="language-xml">
+&lt;feature-pack>
+    &lt;location>org.wildfly:wildfly-datasources-galleon-pack:11.0.1.Final-SNAPSHOT&lt;/location>
+&lt;/feature-pack>
+        </code>
+    </pre>
+    <button class="copy-btn" onclick="copyToClipboard('feature-pack-location')" title="Copy to clipboard">📋</button>
+  </div>
+
+
+  <h2>Provided Layers</h2>
+  <div class="table-of-contents">
+    <ul>
+      <li><a href="#layer-db2-datasource">db2-datasource</a></li>
+      <li><a href="#layer-db2-default-datasource">db2-default-datasource</a></li>
+      <li><a href="#layer-db2-driver">db2-driver</a></li>
+      <li><a href="#layer-h2database-datasource">h2database-datasource</a></li>
+      <li><a href="#layer-h2database-default-datasource">h2database-default-datasource</a></li>
+      <li><a href="#layer-h2database-driver">h2database-driver</a></li>
+      <li><a href="#layer-mariadb-datasource">mariadb-datasource</a></li>
+      <li><a href="#layer-mariadb-default-datasource">mariadb-default-datasource</a></li>
+      <li><a href="#layer-mariadb-driver">mariadb-driver</a></li>
+      <li><a href="#layer-mssqlserver-datasource">mssqlserver-datasource</a></li>
+      <li><a href="#layer-mssqlserver-default-datasource">mssqlserver-default-datasource</a></li>
+      <li><a href="#layer-mssqlserver-driver">mssqlserver-driver</a></li>
+      <li><a href="#layer-mysql-datasource">mysql-datasource</a></li>
+      <li><a href="#layer-mysql-default-datasource">mysql-default-datasource</a></li>
+      <li><a href="#layer-mysql-driver">mysql-driver</a></li>
+      <li><a href="#layer-oracle-datasource">oracle-datasource</a></li>
+      <li><a href="#layer-oracle-default-datasource">oracle-default-datasource</a></li>
+      <li><a href="#layer-oracle-driver">oracle-driver</a></li>
+      <li><a href="#layer-postgresql-datasource">postgresql-datasource</a></li>
+      <li><a href="#layer-postgresql-default-datasource">postgresql-default-datasource</a></li>
+      <li><a href="#layer-postgresql-driver">postgresql-driver</a></li>
+    </ul>
+  </div>
+  <h3 id="layer-db2-datasource">db2-datasource</h3>
+  <h4 class="toggle-link">
+    <a href="#">Dependencies</a>
+  </h4>
+  <ul class="collapsible">
+    <li><a href="#layer-datasources">datasources</a> -  <em> required </em></li>
+    <li><a href="#layer-db2-driver">db2-driver</a> -  <em> required </em></li>
+  </ul>
+  <h4 class="toggle-link">
+    <a href="#">Layer Properties</a>
+  </h4>
+  <ul class="collapsible">
+    <li>org.wildfly.category&nbsp;=&nbsp;Database</li>
+    <li>org.wildfly.rule.add-on&nbsp;=&nbsp;database,db2</li>
+    <li>org.wildfly.rule.add-on-depends-on&nbsp;=&nbsp;only:datasources</li>
+    <li>org.wildfly.rule.add-on-description&nbsp;=&nbsp;Documentation in https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</li>
+    <li>org.wildfly.rule.add-on-fix-unbound-datasources&nbsp;=&nbsp;JNDI env,DB2_JNDI=##ITEM##</li>
+    <li>org.wildfly.rule.configuration&nbsp;=&nbsp;https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/db2/env.yaml</li>
+  </ul>
+  <h3 id="layer-db2-default-datasource">db2-default-datasource</h3>
+  <h4 class="toggle-link">
+    <a href="#">Dependencies</a>
+  </h4>
+  <ul class="collapsible">
+    <li><a href="#layer-datasources">datasources</a> -  <em> required </em></li>
+    <li><a href="#layer-db2-datasource">db2-datasource</a> -  <em> required </em></li>
+  </ul>
+  <h4 class="toggle-link">
+    <a href="#">Layer Properties</a>
+  </h4>
+  <ul class="collapsible">
+    <li>org.wildfly.category&nbsp;=&nbsp;Database</li>
+    <li>org.wildfly.rule.add-on&nbsp;=&nbsp;database,db2:default</li>
+    <li>org.wildfly.rule.add-on-depends-on&nbsp;=&nbsp;only:datasources</li>
+    <li>org.wildfly.rule.add-on-description&nbsp;=&nbsp;Documentation in https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</li>
+    <li>org.wildfly.rule.add-on-fix-no-default-datasource&nbsp;=&nbsp;</li>
+    <li>org.wildfly.rule.configuration&nbsp;=&nbsp;https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/db2/env.yaml</li>
+  </ul>
+  <h3 id="layer-db2-driver">db2-driver</h3>
+  <h4 class="toggle-link">
+    <a href="#">Dependencies</a>
+  </h4>
+  <ul class="collapsible">
+    <li><a href="#layer-datasources">datasources</a> -  <em> required </em></li>
+  </ul>
+  <h4 class="toggle-link">
+    <a href="#">Layer Properties</a>
+  </h4>
+  <ul class="collapsible">
+    <li>org.wildfly.category&nbsp;=&nbsp;Database</li>
+    <li>org.wildfly.rule.annotation.field.value-className&nbsp;=&nbsp;jakarta.annotation.sql.DataSourceDefinition,className=com.ibm.db2.jcc.*</li>
+    <li>org.wildfly.rule.annotation.field.value-url&nbsp;=&nbsp;jakarta.annotation.sql.DataSourceDefinition,url=jdbc:db2:*</li>
+    <li>org.wildfly.rule.xml-path&nbsp;=&nbsp;[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/datasource/driver,db2</li>
+    <li>org.wildfly.rule.xml-path-xa&nbsp;=&nbsp;[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/xa-datasource/driver,db2</li>
+  </ul>
+  <h4 class="toggle-link">
+    <a href="#">Packages</a>
+  </h4>
+  <ul class="collapsible">
+    <li>com.ibm.db2</li>
+    <li>org.jboss.as.connector</li>
+  </ul>
+  <h3 id="layer-h2database-datasource">h2database-datasource</h3>
+  <h4 class="toggle-link">
+    <a href="#">Dependencies</a>
+  </h4>
+  <ul class="collapsible">
+    <li><a href="#layer-h2database-driver">h2database-driver</a> -  <em> required </em></li>
+  </ul>
+  <h3 id="layer-h2database-default-datasource">h2database-default-datasource</h3>
+  <h4 class="toggle-link">
+    <a href="#">Dependencies</a>
+  </h4>
+  <ul class="collapsible">
+    <li><a href="#layer-h2database-datasource">h2database-datasource</a> -  <em> required </em></li>
+  </ul>
+  <h3 id="layer-h2database-driver">h2database-driver</h3>
+  <h4 class="toggle-link">
+    <a href="#">Packages</a>
+  </h4>
+  <ul class="collapsible">
+    <li>com.h2database.h2database</li>
+    <li>org.jboss.as.connector</li>
+  </ul>
+  <h3 id="layer-mariadb-datasource">mariadb-datasource</h3>
+  <h4 class="toggle-link">
+    <a href="#">Dependencies</a>
+  </h4>
+  <ul class="collapsible">
+    <li><a href="#layer-datasources">datasources</a> -  <em> required </em></li>
+    <li><a href="#layer-mariadb-driver">mariadb-driver</a> -  <em> required </em></li>
+  </ul>
+  <h4 class="toggle-link">
+    <a href="#">Layer Properties</a>
+  </h4>
+  <ul class="collapsible">
+    <li>org.wildfly.category&nbsp;=&nbsp;Database</li>
+    <li>org.wildfly.rule.add-on&nbsp;=&nbsp;database,mariadb</li>
+    <li>org.wildfly.rule.add-on-depends-on&nbsp;=&nbsp;only:datasources</li>
+    <li>org.wildfly.rule.add-on-description&nbsp;=&nbsp;Documentation in https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</li>
+    <li>org.wildfly.rule.add-on-fix-unbound-datasources&nbsp;=&nbsp;JNDI env,MARIADB_JNDI=##ITEM##</li>
+    <li>org.wildfly.rule.configuration&nbsp;=&nbsp;https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/mariadb/env.yaml</li>
+  </ul>
+  <h3 id="layer-mariadb-default-datasource">mariadb-default-datasource</h3>
+  <h4 class="toggle-link">
+    <a href="#">Dependencies</a>
+  </h4>
+  <ul class="collapsible">
+    <li><a href="#layer-datasources">datasources</a> -  <em> required </em></li>
+    <li><a href="#layer-mariadb-datasource">mariadb-datasource</a> -  <em> required </em></li>
+  </ul>
+  <h4 class="toggle-link">
+    <a href="#">Layer Properties</a>
+  </h4>
+  <ul class="collapsible">
+    <li>org.wildfly.category&nbsp;=&nbsp;Database</li>
+    <li>org.wildfly.rule.add-on&nbsp;=&nbsp;database,mariadb:default</li>
+    <li>org.wildfly.rule.add-on-depends-on&nbsp;=&nbsp;only:datasources</li>
+    <li>org.wildfly.rule.add-on-description&nbsp;=&nbsp;Documentation in https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</li>
+    <li>org.wildfly.rule.add-on-fix-no-default-datasource&nbsp;=&nbsp;</li>
+    <li>org.wildfly.rule.configuration&nbsp;=&nbsp;https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/mariadb/env.yaml</li>
+  </ul>
+  <h3 id="layer-mariadb-driver">mariadb-driver</h3>
+  <h4 class="toggle-link">
+    <a href="#">Dependencies</a>
+  </h4>
+  <ul class="collapsible">
+    <li><a href="#layer-datasources">datasources</a> -  <em> required </em></li>
+  </ul>
+  <h4 class="toggle-link">
+    <a href="#">Layer Properties</a>
+  </h4>
+  <ul class="collapsible">
+    <li>org.wildfly.category&nbsp;=&nbsp;Database</li>
+    <li>org.wildfly.rule.annotation.field.value-className&nbsp;=&nbsp;jakarta.annotation.sql.DataSourceDefinition,className=org.mariadb.*</li>
+    <li>org.wildfly.rule.annotation.field.value-url&nbsp;=&nbsp;jakarta.annotation.sql.DataSourceDefinition,url=jdbc:mariadb:*</li>
+    <li>org.wildfly.rule.xml-path&nbsp;=&nbsp;[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/datasource/driver,mariadb</li>
+    <li>org.wildfly.rule.xml-path-xa&nbsp;=&nbsp;[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/xa-datasource/driver,mariadb</li>
+  </ul>
+  <h4 class="toggle-link">
+    <a href="#">Packages</a>
+  </h4>
+  <ul class="collapsible">
+    <li>org.jboss.as.connector</li>
+    <li>org.mariadb.jdbc</li>
+  </ul>
+  <h3 id="layer-mssqlserver-datasource">mssqlserver-datasource</h3>
+  <h4 class="toggle-link">
+    <a href="#">Dependencies</a>
+  </h4>
+  <ul class="collapsible">
+    <li><a href="#layer-datasources">datasources</a> -  <em> required </em></li>
+    <li><a href="#layer-mssqlserver-driver">mssqlserver-driver</a> -  <em> required </em></li>
+  </ul>
+  <h4 class="toggle-link">
+    <a href="#">Layer Properties</a>
+  </h4>
+  <ul class="collapsible">
+    <li>org.wildfly.category&nbsp;=&nbsp;Database</li>
+    <li>org.wildfly.rule.add-on&nbsp;=&nbsp;database,mssqlserver</li>
+    <li>org.wildfly.rule.add-on-depends-on&nbsp;=&nbsp;only:datasources</li>
+    <li>org.wildfly.rule.add-on-description&nbsp;=&nbsp;Documentation in https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</li>
+    <li>org.wildfly.rule.add-on-fix-unbound-datasources&nbsp;=&nbsp;JNDI env,MSSQLSERVER_JNDI=##ITEM##</li>
+    <li>org.wildfly.rule.configuration&nbsp;=&nbsp;https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/mssqlserver/env.yaml</li>
+  </ul>
+  <h3 id="layer-mssqlserver-default-datasource">mssqlserver-default-datasource</h3>
+  <h4 class="toggle-link">
+    <a href="#">Dependencies</a>
+  </h4>
+  <ul class="collapsible">
+    <li><a href="#layer-datasources">datasources</a> -  <em> required </em></li>
+    <li><a href="#layer-mssqlserver-datasource">mssqlserver-datasource</a> -  <em> required </em></li>
+  </ul>
+  <h4 class="toggle-link">
+    <a href="#">Layer Properties</a>
+  </h4>
+  <ul class="collapsible">
+    <li>org.wildfly.category&nbsp;=&nbsp;Database</li>
+    <li>org.wildfly.rule.add-on&nbsp;=&nbsp;database,mssqlserver:default</li>
+    <li>org.wildfly.rule.add-on-depends-on&nbsp;=&nbsp;only:datasources</li>
+    <li>org.wildfly.rule.add-on-description&nbsp;=&nbsp;Documentation in https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</li>
+    <li>org.wildfly.rule.add-on-fix-no-default-datasource&nbsp;=&nbsp;</li>
+    <li>org.wildfly.rule.configuration&nbsp;=&nbsp;https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/mssqlserver/env.yaml</li>
+  </ul>
+  <h3 id="layer-mssqlserver-driver">mssqlserver-driver</h3>
+  <h4 class="toggle-link">
+    <a href="#">Dependencies</a>
+  </h4>
+  <ul class="collapsible">
+    <li><a href="#layer-datasources">datasources</a> -  <em> required </em></li>
+  </ul>
+  <h4 class="toggle-link">
+    <a href="#">Layer Properties</a>
+  </h4>
+  <ul class="collapsible">
+    <li>org.wildfly.category&nbsp;=&nbsp;Database</li>
+    <li>org.wildfly.rule.annotation.field.value-className&nbsp;=&nbsp;jakarta.annotation.sql.DataSourceDefinition,className=com.microsoft.*</li>
+    <li>org.wildfly.rule.annotation.field.value-url&nbsp;=&nbsp;jakarta.annotation.sql.DataSourceDefinition,url=jdbc:sqlserver:*</li>
+    <li>org.wildfly.rule.xml-path&nbsp;=&nbsp;[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/datasource/driver,mssqlserver</li>
+    <li>org.wildfly.rule.xml-path-xa&nbsp;=&nbsp;[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/xa-datasource/driver,mssqlserver</li>
+  </ul>
+  <h4 class="toggle-link">
+    <a href="#">Packages</a>
+  </h4>
+  <ul class="collapsible">
+    <li>com.microsoft.sqlserver</li>
+    <li>org.jboss.as.connector</li>
+  </ul>
+  <h3 id="layer-mysql-datasource">mysql-datasource</h3>
+  <h4 class="toggle-link">
+    <a href="#">Dependencies</a>
+  </h4>
+  <ul class="collapsible">
+    <li><a href="#layer-datasources">datasources</a> -  <em> required </em></li>
+    <li><a href="#layer-mysql-driver">mysql-driver</a> -  <em> required </em></li>
+  </ul>
+  <h4 class="toggle-link">
+    <a href="#">Layer Properties</a>
+  </h4>
+  <ul class="collapsible">
+    <li>org.wildfly.category&nbsp;=&nbsp;Database</li>
+    <li>org.wildfly.rule.add-on&nbsp;=&nbsp;database,mysql</li>
+    <li>org.wildfly.rule.add-on-depends-on&nbsp;=&nbsp;only:datasources</li>
+    <li>org.wildfly.rule.add-on-description&nbsp;=&nbsp;Documentation in https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</li>
+    <li>org.wildfly.rule.add-on-fix-unbound-datasources&nbsp;=&nbsp;JNDI env,MYSQL_JNDI=##ITEM##</li>
+    <li>org.wildfly.rule.configuration&nbsp;=&nbsp;https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/mysql/env.yaml</li>
+  </ul>
+  <h3 id="layer-mysql-default-datasource">mysql-default-datasource</h3>
+  <h4 class="toggle-link">
+    <a href="#">Dependencies</a>
+  </h4>
+  <ul class="collapsible">
+    <li><a href="#layer-datasources">datasources</a> -  <em> required </em></li>
+    <li><a href="#layer-mysql-datasource">mysql-datasource</a> -  <em> required </em></li>
+  </ul>
+  <h4 class="toggle-link">
+    <a href="#">Layer Properties</a>
+  </h4>
+  <ul class="collapsible">
+    <li>org.wildfly.category&nbsp;=&nbsp;Database</li>
+    <li>org.wildfly.rule.add-on&nbsp;=&nbsp;database,mysql:default</li>
+    <li>org.wildfly.rule.add-on-depends-on&nbsp;=&nbsp;only:datasources</li>
+    <li>org.wildfly.rule.add-on-description&nbsp;=&nbsp;Documentation in https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</li>
+    <li>org.wildfly.rule.add-on-fix-no-default-datasource&nbsp;=&nbsp;</li>
+    <li>org.wildfly.rule.configuration&nbsp;=&nbsp;https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/mysql/env.yaml</li>
+  </ul>
+  <h3 id="layer-mysql-driver">mysql-driver</h3>
+  <h4 class="toggle-link">
+    <a href="#">Dependencies</a>
+  </h4>
+  <ul class="collapsible">
+    <li><a href="#layer-datasources">datasources</a> -  <em> required </em></li>
+  </ul>
+  <h4 class="toggle-link">
+    <a href="#">Layer Properties</a>
+  </h4>
+  <ul class="collapsible">
+    <li>org.wildfly.category&nbsp;=&nbsp;Database</li>
+    <li>org.wildfly.rule.annotation.field.value-className&nbsp;=&nbsp;jakarta.annotation.sql.DataSourceDefinition,className=com.mysql.*</li>
+    <li>org.wildfly.rule.annotation.field.value-url&nbsp;=&nbsp;jakarta.annotation.sql.DataSourceDefinition,url=jdbc:mysql:*</li>
+    <li>org.wildfly.rule.xml-path&nbsp;=&nbsp;[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/datasource/driver,mysql</li>
+    <li>org.wildfly.rule.xml-path-xa&nbsp;=&nbsp;[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/xa-datasource/driver,mysql</li>
+  </ul>
+  <h4 class="toggle-link">
+    <a href="#">Packages</a>
+  </h4>
+  <ul class="collapsible">
+    <li>com.mysql.jdbc</li>
+    <li>org.jboss.as.connector</li>
+  </ul>
+  <h3 id="layer-oracle-datasource">oracle-datasource</h3>
+  <h4 class="toggle-link">
+    <a href="#">Dependencies</a>
+  </h4>
+  <ul class="collapsible">
+    <li><a href="#layer-datasources">datasources</a> -  <em> required </em></li>
+    <li><a href="#layer-oracle-driver">oracle-driver</a> -  <em> required </em></li>
+  </ul>
+  <h4 class="toggle-link">
+    <a href="#">Layer Properties</a>
+  </h4>
+  <ul class="collapsible">
+    <li>org.wildfly.category&nbsp;=&nbsp;Database</li>
+    <li>org.wildfly.rule.add-on&nbsp;=&nbsp;database,oracle</li>
+    <li>org.wildfly.rule.add-on-depends-on&nbsp;=&nbsp;only:datasources</li>
+    <li>org.wildfly.rule.add-on-description&nbsp;=&nbsp;Documentation in https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</li>
+    <li>org.wildfly.rule.add-on-fix-unbound-datasources&nbsp;=&nbsp;JNDI env,ORACLE_JNDI=##ITEM##</li>
+    <li>org.wildfly.rule.configuration&nbsp;=&nbsp;https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/oracle/env.yaml</li>
+  </ul>
+  <h3 id="layer-oracle-default-datasource">oracle-default-datasource</h3>
+  <h4 class="toggle-link">
+    <a href="#">Dependencies</a>
+  </h4>
+  <ul class="collapsible">
+    <li><a href="#layer-datasources">datasources</a> -  <em> required </em></li>
+    <li><a href="#layer-oracle-datasource">oracle-datasource</a> -  <em> required </em></li>
+  </ul>
+  <h4 class="toggle-link">
+    <a href="#">Layer Properties</a>
+  </h4>
+  <ul class="collapsible">
+    <li>org.wildfly.category&nbsp;=&nbsp;Database</li>
+    <li>org.wildfly.rule.add-on&nbsp;=&nbsp;database,oracle:default</li>
+    <li>org.wildfly.rule.add-on-depends-on&nbsp;=&nbsp;only:datasources</li>
+    <li>org.wildfly.rule.add-on-description&nbsp;=&nbsp;Documentation in https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</li>
+    <li>org.wildfly.rule.add-on-fix-no-default-datasource&nbsp;=&nbsp;</li>
+    <li>org.wildfly.rule.configuration&nbsp;=&nbsp;https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/oracle/env.yaml</li>
+  </ul>
+  <h3 id="layer-oracle-driver">oracle-driver</h3>
+  <h4 class="toggle-link">
+    <a href="#">Dependencies</a>
+  </h4>
+  <ul class="collapsible">
+    <li><a href="#layer-datasources">datasources</a> -  <em> required </em></li>
+  </ul>
+  <h4 class="toggle-link">
+    <a href="#">Layer Properties</a>
+  </h4>
+  <ul class="collapsible">
+    <li>org.wildfly.category&nbsp;=&nbsp;Database</li>
+    <li>org.wildfly.rule.annotation.field.value-className&nbsp;=&nbsp;jakarta.annotation.sql.DataSourceDefinition,className=oracle.jdbc.*</li>
+    <li>org.wildfly.rule.annotation.field.value-url&nbsp;=&nbsp;jakarta.annotation.sql.DataSourceDefinition,url=jdbc:oracle:*</li>
+    <li>org.wildfly.rule.xml-path&nbsp;=&nbsp;[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/datasource/driver,oracle</li>
+    <li>org.wildfly.rule.xml-path-xa&nbsp;=&nbsp;[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/xa-datasource/driver,oracle</li>
+  </ul>
+  <h4 class="toggle-link">
+    <a href="#">Packages</a>
+  </h4>
+  <ul class="collapsible">
+    <li>com.oracle.database.jdbc</li>
+    <li>org.jboss.as.connector</li>
+  </ul>
+  <h3 id="layer-postgresql-datasource">postgresql-datasource</h3>
+  <h4 class="toggle-link">
+    <a href="#">Dependencies</a>
+  </h4>
+  <ul class="collapsible">
+    <li><a href="#layer-datasources">datasources</a> -  <em> required </em></li>
+    <li><a href="#layer-postgresql-driver">postgresql-driver</a> -  <em> required </em></li>
+  </ul>
+  <h4 class="toggle-link">
+    <a href="#">Layer Properties</a>
+  </h4>
+  <ul class="collapsible">
+    <li>org.wildfly.category&nbsp;=&nbsp;Database</li>
+    <li>org.wildfly.rule.add-on&nbsp;=&nbsp;database,postgresql</li>
+    <li>org.wildfly.rule.add-on-depends-on&nbsp;=&nbsp;only:datasources</li>
+    <li>org.wildfly.rule.add-on-description&nbsp;=&nbsp;Documentation in https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</li>
+    <li>org.wildfly.rule.add-on-fix-unbound-datasources&nbsp;=&nbsp;JNDI env,POSTGRESQL_JNDI=##ITEM##</li>
+    <li>org.wildfly.rule.configuration&nbsp;=&nbsp;https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/postgresql/env.yaml</li>
+  </ul>
+  <h3 id="layer-postgresql-default-datasource">postgresql-default-datasource</h3>
+  <h4 class="toggle-link">
+    <a href="#">Dependencies</a>
+  </h4>
+  <ul class="collapsible">
+    <li><a href="#layer-datasources">datasources</a> -  <em> required </em></li>
+    <li><a href="#layer-postgresql-datasource">postgresql-datasource</a> -  <em> required </em></li>
+  </ul>
+  <h4 class="toggle-link">
+    <a href="#">Layer Properties</a>
+  </h4>
+  <ul class="collapsible">
+    <li>org.wildfly.category&nbsp;=&nbsp;Database</li>
+    <li>org.wildfly.rule.add-on&nbsp;=&nbsp;database,postgresql:default</li>
+    <li>org.wildfly.rule.add-on-depends-on&nbsp;=&nbsp;only:datasources</li>
+    <li>org.wildfly.rule.add-on-description&nbsp;=&nbsp;Documentation in https://github.com/wildfly-extras/wildfly-datasources-galleon-pack</li>
+    <li>org.wildfly.rule.add-on-fix-no-default-datasource&nbsp;=&nbsp;</li>
+    <li>org.wildfly.rule.configuration&nbsp;=&nbsp;https://raw.githubusercontent.com/wildfly-extras/wildfly-datasources-galleon-pack/main/doc/postgresql/env.yaml</li>
+  </ul>
+  <h3 id="layer-postgresql-driver">postgresql-driver</h3>
+  <h4 class="toggle-link">
+    <a href="#">Dependencies</a>
+  </h4>
+  <ul class="collapsible">
+    <li><a href="#layer-datasources">datasources</a> -  <em> required </em></li>
+  </ul>
+  <h4 class="toggle-link">
+    <a href="#">Layer Properties</a>
+  </h4>
+  <ul class="collapsible">
+    <li>org.wildfly.category&nbsp;=&nbsp;Database</li>
+    <li>org.wildfly.rule.annotation.field.value-className&nbsp;=&nbsp;jakarta.annotation.sql.DataSourceDefinition,className=org.postgresql.*</li>
+    <li>org.wildfly.rule.annotation.field.value-url&nbsp;=&nbsp;jakarta.annotation.sql.DataSourceDefinition,url=jdbc:postgresql:*</li>
+    <li>org.wildfly.rule.xml-path&nbsp;=&nbsp;[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/datasource/driver,postgresql</li>
+    <li>org.wildfly.rule.xml-path-xa&nbsp;=&nbsp;[/META-INF/*.xml,/WEB-INF/*.xml],/datasources/xa-datasource/driver,postgresql</li>
+  </ul>
+  <h4 class="toggle-link">
+    <a href="#">Packages</a>
+  </h4>
+  <ul class="collapsible">
+    <li>org.jboss.as.connector</li>
+    <li>org.postgresql.jdbc</li>
+  </ul>
+
+  <h2>About</h2>
+  <p>
+    This feature pack is hosted at  <a href="https://github.com/wildfly/wildfly-datasources-galleon-pack">https://github.com/wildfly/wildfly-datasources-galleon-pack</a>
+  </p>
+  <p>
+    Source code of this feature pack is hosted at <a href="https://github.com/wildfly/wildfly-datasources-galleon-pack">https://github.com/wildfly/wildfly-datasources-galleon-pack</a>
+  </p>
+  <p>This feature pack is licensed under:</p>
+  <ul>
+    <li>Apache License, Version 2.0</li>
+  </ul>
+</div>
+</body>
+</html>

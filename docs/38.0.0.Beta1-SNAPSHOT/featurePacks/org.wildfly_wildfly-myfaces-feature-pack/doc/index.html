@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Documentation for MyFaces 4 Support for WildFly - Feature Pack</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" rel="stylesheet" />
+  <script src="scripts.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <h1>Documentation for MyFaces 4 Support for WildFly - Feature Pack</h1>
+  <p>MyFaces 4 Support for WildFly - Feature Pack</p>
+  <h2>Maven Coordinates</h2>
+  <div class="code-block-container">
+    <pre>
+        <code id="maven-dependency" class="language-xml">
+&lt;dependency>
+  &lt;groupId>org.wildfly&lt;/groupId>
+  &lt;artifactId>wildfly-myfaces-feature-pack&lt;/artifactId>
+  &lt;version>2.0.1.Final-SNAPSHOT&lt;/version>
+&lt;/dependency>
+        </code>
+    </pre>
+    <button class="copy-btn" onclick="copyToClipboard('maven-dependency')" title="Copy to clipboard">📋</button>
+  </div>
+  <h3>Feature Pack Location</h3>
+  <div class="code-block-container">
+    <pre>
+        <code id="feature-pack-location" class="language-xml">
+&lt;feature-pack>
+    &lt;location>org.wildfly:wildfly-myfaces-feature-pack:2.0.1.Final-SNAPSHOT&lt;/location>
+&lt;/feature-pack>
+        </code>
+    </pre>
+    <button class="copy-btn" onclick="copyToClipboard('feature-pack-location')" title="Copy to clipboard">📋</button>
+  </div>
+
+
+  <h2>Provided Layers</h2>
+  <div class="table-of-contents">
+    <ul>
+      <li><a href="#layer-myfaces">myfaces</a></li>
+    </ul>
+  </div>
+  <h3 id="layer-myfaces">myfaces</h3>
+  <h4 class="toggle-link">
+    <a href="#">Dependencies</a>
+  </h4>
+  <ul class="collapsible">
+    <li><a href="#layer-cdi">cdi</a> -  <em> required </em></li>
+    <li><a href="#layer-jsf">jsf</a> -  <em> required </em></li>
+  </ul>
+  <h4 class="toggle-link">
+    <a href="#">Layer Properties</a>
+  </h4>
+  <ul class="collapsible">
+    <li>org.wildfly.category&nbsp;=&nbsp;Jakarta EE</li>
+    <li>org.wildfly.description&nbsp;=&nbsp;Support for Jakarta Faces, MyFaces implementation.</li>
+    <li>org.wildfly.rule.add-on&nbsp;=&nbsp;jsf,myfaces</li>
+    <li>org.wildfly.rule.add-on-depends-on&nbsp;=&nbsp;only:jsf</li>
+    <li>org.wildfly.rule.add-on-description&nbsp;=&nbsp;Support for MyFaces.</li>
+  </ul>
+  <h4 class="toggle-link">
+    <a href="#">Packages</a>
+  </h4>
+  <ul class="collapsible">
+    <li>jakarta.faces.api.myfaces</li>
+    <li>jakarta.faces.impl.myfaces</li>
+    <li>org.jboss.as.jsf</li>
+    <li>org.jboss.as.jsf-injection.myfaces</li>
+  </ul>
+
+  <h2>About</h2>
+  <p>
+    This feature pack is hosted at  <a href="http://www.jboss.org/wildfly-myfaces-feature-pack-parent/wildfly-myfaces-feature-pack">http://www.jboss.org/wildfly-myfaces-feature-pack-parent/wildfly-myfaces-feature-pack</a>
+  </p>
+  <p>
+    Source code of this feature pack is hosted at <a href="https://github.com/wildfly-extras/wildfly-myfaces-feature-pack/wildfly-myfaces-feature-pack">https://github.com/wildfly-extras/wildfly-myfaces-feature-pack/wildfly-myfaces-feature-pack</a>
+  </p>
+  <p>This feature pack is licensed under:</p>
+  <ul>
+    <li>Apache License, Version 2.0</li>
+  </ul>
+</div>
+</body>
+</html>
