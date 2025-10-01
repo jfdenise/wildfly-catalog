@@ -125,7 +125,7 @@ public class Main {
                 fpNode.put("modelReference", "featurePacks/" + directoryName + "/doc/reference/index.html");
             }
             if (Files.exists(logMessages)) {
-                fpNode.put("logMessagesReference", "modelReference/" + directoryName + "/doc/" + logMessages.getFileName().toString());
+                fpNode.put("logMessagesReference", "featurePacks/" + directoryName + "/doc/" + logMessages.getFileName().toString());
             }
             generateCatalog(subCatalog, glowRulesDescriptions, categories, mapper, featurePacksTargetDirectory);
         }
