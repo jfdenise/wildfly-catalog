@@ -37,7 +37,6 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
-import org.wildfly.galleon.plugin.doc.generator.DocGenerator;
 
 public class Main {
 
@@ -49,9 +48,9 @@ public class Main {
         boolean validateOnly = Boolean.getBoolean("validateOnly");
         Path rootDirectory = Paths.get("../docs");
         Path targetDirectory = rootDirectory.resolve(wildflyVersion).toAbsolutePath();
-        Path modelReferenceTargetDirectory = targetDirectory.resolve("modelReference");
+        Path featurePacksTargetDirectory = targetDirectory.resolve("featurePacks");
         if (!validateOnly) {
-            Files.createDirectories(modelReferenceTargetDirectory);
+            Files.createDirectories(featurePacksTargetDirectory);
         } else {
             System.out.println("Validate only that we can build a catalog");
         }
@@ -74,81 +73,61 @@ public class Main {
             glowRulesDescriptions.load(in);
         }
         Map<String, Map<String, JsonNode>> categories = new TreeMap<>();
-        // Old way, based on URL online.
-        if (node.has("content")) {
-            ArrayNode an = (ArrayNode) node.get("content");
-            Iterator<JsonNode> it = an.elements();
-            while (it.hasNext()) {
-                JsonNode remoteMetadata = it.next();
-                String metadataUrl = remoteMetadata.get("url").asText();
-                JsonNode subCatalog = mapper.readTree(new URL(metadataUrl));
-                generateCatalog(subCatalog, glowRulesDescriptions, categories, mapper, modelReferenceTargetDirectory);
-            }
-        } else {
-            String url = node.get("knownFeaturePacks").asText();
-            JsonNode fpList = mapper.readTree(new URL(url));
-            ArrayNode fps = (ArrayNode) fpList.get("featurePacks");
-            Iterator<JsonNode> it = fps.elements();
-            ArrayNode featurePacks = mapper.createArrayNode();
-            target.set("featurePacks", featurePacks);
-            while (it.hasNext()) {
-                ObjectNode fpNode = mapper.createObjectNode();
-                featurePacks.add(fpNode);
-                String fp = it.next().asText();
-                System.out.println("FP " + fp);
-                fpNode.put("mavenCoordinates", fp);
-                // Mimic what we would do using maven. here we expect all to be in the cache
-                Path home = Paths.get(System.getProperty("user.home")).resolve(".m2").resolve("repository");
-                String[] coords = fp.split(":");
-                String groupId = coords[0].replaceAll("\\.", File.separator);
-                String artifactId = coords[1];
-                String version = coords[2];
-                String metadataFileName = artifactId + "-" + version + "-doc.zip";
-                Path docFile = home.resolve(groupId).resolve(artifactId).resolve(version).resolve(metadataFileName);
-                Path tmp = Files.createTempDirectory("wildfly-catalog-tmp");
-                try {
-                    unzip(docFile, tmp);
-                    Path metadataFile = tmp.resolve("doc/META-INF/metadata.json");
-                    Path modelFile = tmp.resolve("doc/META-INF/management-api.json");
-                    Path featuresFile = tmp.resolve("doc/META-INF/features.json");
-                    Path modelReference = tmp.resolve("doc/reference");
-                    Path logMessages = tmp.resolve("doc/log-message-reference.html");
-                    JsonNode subCatalog = mapper.readTree(metadataFile.toFile().toURI().toURL());
-                    String name = subCatalog.get("name").asText();
-                    fpNode.put("name", name);
-                    fpNode.put("description", subCatalog.get("description").asText());
-                    fpNode.putIfAbsent("licenses", subCatalog.get("licenses"));
-                    fpNode.put("projectURL", subCatalog.get("url").asText());
-                    fpNode.put("scmURL", subCatalog.get("scm-url").asText());
-                    ArrayNode layersArray = (ArrayNode) subCatalog.get("layers");
-                    Iterator<JsonNode> layers = layersArray.elements();
-                    ArrayNode layersArrayTarget = mapper.createArrayNode();
-                    fpNode.set("layers", layersArrayTarget);
-                    Set<String> layersSet = new TreeSet<>();
-                    while (layers.hasNext()) {
-                        JsonNode layer = layers.next();
-                        if (!isInternalLayer(layer)) {
-                            layersSet.add(layer.get("name").asText());
-                        }
-                    }
-                    for (String n : layersSet) {
-                        layersArrayTarget.add(n);
-                    }
-                    String directoryName = (coords[0] + '_' + artifactId);
-                    if (Files.exists(modelFile)) {
-                        //JsonNode model = mapper.readTree(modelFile.toFile().toURI().toURL());
-                        fpNode.put("modelReference", "modelReference/" + directoryName + "/reference/index.html");
-                        DocGenerator.generateModel(modelReferenceTargetDirectory.resolve(directoryName), modelFile, featuresFile);
-                    }
-                    if (Files.exists(logMessages)) {
-                        Files.copy(logMessages, modelReferenceTargetDirectory.resolve(directoryName).resolve(logMessages.getFileName().toString()), StandardCopyOption.REPLACE_EXISTING);
-                        fpNode.put("logMessagesReference", "modelReference/" + directoryName + "/" + logMessages.getFileName().toString());
-                    }
-                    generateCatalog(subCatalog, glowRulesDescriptions, categories, mapper, modelReferenceTargetDirectory);
-                } finally {
-                    recursiveDelete(tmp);
+        String url = node.get("knownFeaturePacks").asText();
+        JsonNode fpList = mapper.readTree(new URL(url));
+        ArrayNode fps = (ArrayNode) fpList.get("featurePacks");
+        Iterator<JsonNode> it = fps.elements();
+        ArrayNode featurePacks = mapper.createArrayNode();
+        target.set("featurePacks", featurePacks);
+        while (it.hasNext()) {
+            ObjectNode fpNode = mapper.createObjectNode();
+            featurePacks.add(fpNode);
+            String fp = it.next().asText();
+            System.out.println("FP " + fp);
+            fpNode.put("mavenCoordinates", fp);
+            // Mimic what we would do using maven. here we expect all to be in the cache
+            Path home = Paths.get(System.getProperty("user.home")).resolve(".m2").resolve("repository");
+            String[] coords = fp.split(":");
+            String groupId = coords[0].replaceAll("\\.", File.separator);
+            String artifactId = coords[1];
+            String version = coords[2];
+            String metadataFileName = artifactId + "-" + version + "-doc.zip";
+            Path docFile = home.resolve(groupId).resolve(artifactId).resolve(version).resolve(metadataFileName);
+            String directoryName = (coords[0] + '_' + artifactId);
+            Path fpDirectory = featurePacksTargetDirectory.resolve(directoryName);
+            unzip(docFile, fpDirectory);
+            Path metadataFile = fpDirectory.resolve("doc/META-INF/metadata.json");
+            Path modelFile = fpDirectory.resolve("doc/META-INF/management-api.json");
+            Path logMessages = fpDirectory.resolve("doc/log-message-reference.html");
+            JsonNode subCatalog = mapper.readTree(metadataFile.toFile().toURI().toURL());
+            String name = subCatalog.get("name").asText();
+            fpNode.put("name", name);
+            fpNode.put("description", subCatalog.get("description").asText());
+            fpNode.putIfAbsent("licenses", subCatalog.get("licenses"));
+            fpNode.put("projectURL", subCatalog.get("url").asText());
+            fpNode.put("scmURL", subCatalog.get("scm-url").asText());
+            ArrayNode layersArray = (ArrayNode) subCatalog.get("layers");
+            Iterator<JsonNode> layers = layersArray.elements();
+            ArrayNode layersArrayTarget = mapper.createArrayNode();
+            fpNode.set("layers", layersArrayTarget);
+            Set<String> layersSet = new TreeSet<>();
+            while (layers.hasNext()) {
+                JsonNode layer = layers.next();
+                if (!isInternalLayer(layer)) {
+                    layersSet.add(layer.get("name").asText());
                 }
             }
+            for (String n : layersSet) {
+                layersArrayTarget.add(n);
+            }
+
+            if (Files.exists(modelFile)) {
+                fpNode.put("modelReference", "featurePacks/" + directoryName + "/doc/reference/index.html");
+            }
+            if (Files.exists(logMessages)) {
+                fpNode.put("logMessagesReference", "modelReference/" + directoryName + "/doc/" + logMessages.getFileName().toString());
+            }
+            generateCatalog(subCatalog, glowRulesDescriptions, categories, mapper, featurePacksTargetDirectory);
         }
         ArrayNode categoriesArray = mapper.createArrayNode();
         target.putIfAbsent("categories", categoriesArray);
@@ -363,8 +342,8 @@ public class Main {
 
     private static String formatURL(String url) {
         //System.out.println("ORIGINAL URL " + url);
-        if("/server-root=/".equals(url)) {
-           url="";
+        if ("/server-root=/".equals(url)) {
+            url = "";
         }
         url = url.replaceAll("=\\*", "");
         url = url.replaceAll("=", "/");
@@ -383,7 +362,7 @@ public class Main {
         }
         url += "index.html";
         if (attributeName != null) {
-            url += "#"+attributeName;
+            url += "#" + attributeName;
         }
         return url;
     }
@@ -431,7 +410,7 @@ public class Main {
             formattedPath = formattedPath.substring(0, i);
         }
         for (File fpDir : rootDir.toFile().listFiles()) {
-            Path pathFile = fpDir.toPath().resolve("reference").resolve(formattedPath);
+            Path pathFile = fpDir.toPath().resolve("doc").resolve("reference").resolve(formattedPath);
             if (Files.exists(pathFile)) {
                 // No need for the fp root index.
                 if (pathFile.getParent().equals(fpDir.toPath())) {
