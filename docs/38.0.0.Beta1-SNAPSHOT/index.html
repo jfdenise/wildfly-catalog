@@ -179,6 +179,50 @@
             margin-bottom: 20px; 
             margin-top: 30px;    
         }
+        /* Tab interface styles */
+        .tabs {
+            margin: 1rem 0;
+        }
+
+        .tab-list {
+            display: flex;
+            margin-bottom: 0;
+            list-style: none;
+            padding: 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        .tab-label {
+            background: none;
+            border: none;
+            padding: 0.75rem 1rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            font-family: inherit;
+            position: relative;
+            flex: 1;
+            text-align: center;
+            border-radius: 0;
+        }
+
+        .tab-label:hover {
+            background-color: #e5e7eb;
+        }
+
+        .tab-label.active {
+            font-weight: bold;
+            background-color: #f5f2f0;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -216,6 +260,16 @@
     <script>
         let activeTooltip = null;
         let originalJsonData = null;
+
+        // Coordinates
+        function switchTab(buttonToEnable, activeId, toDisableId, buttonToDisable) {
+            buttonToEnable.classList.add('active');
+            buttonToEnable.setAttribute('aria-selected', 'true');
+            document.getElementById(activeId).classList.add('active');
+            document.getElementById(toDisableId).classList.remove('active');
+            buttonToDisable.classList.remove('active');
+            buttonToDisable.setAttribute('aria-selected', 'false');
+        }
 
         function getSortedCategories(categoriesArray) {
             if (!categoriesArray || !Array.isArray(categoriesArray)) return [];
@@ -486,7 +540,7 @@
                     fpContainer.classList.toggle('visible');
                     fpArrow.classList.toggle('expanded');
                 });
-
+                i = 0;
                 jsonData.featurePacks.forEach(fp => {
                     const fpDiv = document.createElement('div');
                     fpDiv.className = 'category';
@@ -670,48 +724,65 @@
                     if (fp.mavenCoordinates) {
                         const coordsContainer = document.createElement('div');
                         coordsContainer.style.marginTop = '10px';
-                        const strongLabel = document.createElement('strong');
-                        strongLabel.textContent = 'Feature Pack Location:';
-                        coordsContainer.appendChild(strongLabel);
-                        if (legendData.featurePackLocation) {
-                            const tooltipIcon = document.createElement('span');
-                            tooltipIcon.className = 'tooltip-icon';
-                            tooltipIcon.textContent = '?';
-                            tooltipIcon.dataset.tooltipText = legendData.featurePackLocation;
-                            tooltipIcon.addEventListener('click', showTooltip);
-                            coordsContainer.appendChild(tooltipIcon);
-                        }
-                        const pre = document.createElement('pre');
-                        pre.style.backgroundColor = '#f0f8ff';
-                        pre.style.border = '1px solid #cce';
-                        pre.style.borderRadius = '4px';
-                        pre.style.padding = '10px';
-                        const code = document.createElement('code');
-                        const locationString = fp.mavenCoordinates || '';
-                        code.textContent = `<feature-pack>\n    <location>${locationString}</location>\n</feature-pack>`;
-                        pre.appendChild(code);
-                        coordsContainer.appendChild(pre);
-                        detailsDiv.appendChild(coordsContainer);
-
-                        const mvnCoordsContainer = document.createElement('div');
-                        mvnCoordsContainer.style.marginTop = '10px';
                         const strongLabel2 = document.createElement('strong');
-                        strongLabel2.textContent = 'Maven Coordinates:';
-                        mvnCoordsContainer.appendChild(strongLabel2);
+                        strongLabel2.textContent = 'Coordinates:';
+                        coordsContainer.appendChild(strongLabel2);
+                        const tabsContainer = document.createElement('div');
+                        coordsContainer.appendChild(tabsContainer);
+                        tabsContainer.className = 'tabs';
+                        const u = document.createElement('ul');
+                        u.className = 'tab-list';
+                        u.role = 'tablist';
+                        tabsContainer.appendChild(u);
+                        const li1 = document.createElement('li');
+                        u.appendChild(li1);
+                        const mavenLabel = document.createElement('div');
+                        mavenLabel.className = 'tab-label active';
+                        li1.appendChild(mavenLabel);
+                        const target = 'maven-tab' + i;
+                        const target2 = 'feature-location-tab' + i;
+                        mavenLabel.role = "tab";
+                        mavenLabel.ariaSelected = true;
+                        mavenLabel.ariaControls = target;
+                        mavenLabel.textContent = 'Maven Dependency';
                         if (legendData.mavenCoordinates) {
                             const tooltipIcon = document.createElement('span');
                             tooltipIcon.className = 'tooltip-icon';
                             tooltipIcon.textContent = '?';
                             tooltipIcon.dataset.tooltipText = legendData.mavenCoordinates;
                             tooltipIcon.addEventListener('click', showTooltip);
-                            mvnCoordsContainer.appendChild(tooltipIcon);
+                            mavenLabel.appendChild(tooltipIcon);
                         }
-                        const pre2 = document.createElement('pre');
-                        pre2.style.backgroundColor = '#f0f8ff';
-                        pre2.style.border = '1px solid #cce';
-                        pre2.style.borderRadius = '4px';
-                        pre2.style.padding = '10px';
-                        const code2 = document.createElement('code');
+
+                        const li2 = document.createElement('li');
+                        u.appendChild(li2);
+                        const fplLabel = document.createElement('div');
+                        fplLabel.className = 'tab-label';
+                        li2.appendChild(fplLabel);
+                        fplLabel.className = 'tab-label';
+                        fplLabel.role = "tab";
+                        fplLabel.ariaSelected = false;
+                        fplLabel.ariaControls = target2;
+                        fplLabel.textContent = 'Feature Pack Location';
+                        if (legendData.featurePackLocation) {
+                            const tooltipIcon = document.createElement('span');
+                            tooltipIcon.className = 'tooltip-icon';
+                            tooltipIcon.textContent = '?';
+                            tooltipIcon.dataset.tooltipText = legendData.featurePackLocation;
+                            tooltipIcon.addEventListener('click', showTooltip);
+                            fplLabel.appendChild(tooltipIcon);
+                        }
+
+                        const mavenTab = document.createElement('div');
+                        mavenTab.className = "tab-content active";
+                        mavenTab.role = "tabpanel";
+                        mavenTab.id = target;
+                        const preMaven = document.createElement('pre');
+                        preMaven.style.backgroundColor = '#f0f8ff';
+                        preMaven.style.border = '1px solid #cce';
+                        preMaven.style.borderRadius = '4px';
+                        preMaven.style.padding = '10px';
+                        const codeMaven = document.createElement('code');
                         const parts = fp.mavenCoordinates.split(':');
                         const groupId = parts[0] || '';
                         const artifactId = parts[1] || '';
@@ -724,15 +795,35 @@
     <artifactId>${artifactId}</artifactId>
     <version>${version}</version>
 </dependency>`;
-                            code2.textContent = xmlString;
+                            codeMaven.textContent = xmlString;
                         } else {
-                            code2.textContent = fp.mavenCoordinates; 
+                            codeMaven.textContent = fp.mavenCoordinates; 
                         }
-                        pre2.appendChild(code2);
-                        mvnCoordsContainer.appendChild(pre2);
-                        detailsDiv.appendChild(mvnCoordsContainer);
+                        preMaven.appendChild(codeMaven);
+                        mavenTab.appendChild(preMaven);
+                        tabsContainer.appendChild(mavenTab);
+                        
+                        const fpLocationTab = document.createElement('div');
+                        fpLocationTab.className = "tab-content";
+                        fpLocationTab.role = "tabpanel";
+                        fpLocationTab.id = target2;
+                        const preFpLocation = document.createElement('pre');
+                        preFpLocation.style.backgroundColor = '#f0f8ff';
+                        preFpLocation.style.border = '1px solid #cce';
+                        preFpLocation.style.borderRadius = '4px';
+                        preFpLocation.style.padding = '10px';
+                        const codeFpLocation = document.createElement('code');
+                        const locationString = fp.mavenCoordinates || '';
+                        codeFpLocation.textContent = `<feature-pack>\n    <location>${locationString}</location>\n</feature-pack>`;
+                        preFpLocation.appendChild(codeFpLocation);
+                        fpLocationTab.appendChild(preFpLocation);
+                        tabsContainer.appendChild(fpLocationTab);
+                        detailsDiv.appendChild(coordsContainer);
+                        
+                        mavenLabel.addEventListener("click", function() { switchTab(mavenLabel, target, target2, fplLabel);  }, false);
+                        fplLabel.addEventListener("click", function() { switchTab(fplLabel, target2, target, mavenLabel);  }, false);
                     }
-
+                    i = i + 1;
                     if (fp.layers && Array.isArray(fp.layers) && fp.layers.length > 0) {
                         const fpLayersContainer = document.createElement('div');
                         fpLayersContainer.className = 'fp-layers-container';
