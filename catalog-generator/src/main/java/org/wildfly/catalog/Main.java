@@ -111,6 +111,7 @@ public class Main {
                     Path metadataFile = tmp.resolve("doc/META-INF/metadata.json");
                     Path modelFile = tmp.resolve("doc/META-INF/management-api.json");
                     Path featuresFile = tmp.resolve("doc/META-INF/features.json");
+                    Path modelReference = tmp.resolve("doc/reference");
                     Path logMessages = tmp.resolve("doc/log-message-reference.html");
                     JsonNode subCatalog = mapper.readTree(metadataFile.toFile().toURI().toURL());
                     String name = subCatalog.get("name").asText();
