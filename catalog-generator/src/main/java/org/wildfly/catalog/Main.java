@@ -171,7 +171,7 @@ public class Main {
             //Check if the index already exists
             boolean exists = false;
             for (String line : lines) {
-                if (line.contains(wildflyVersion)) {
+                if (line.contains(newEntry)) {
                     exists = true;
                     break;
                 }
