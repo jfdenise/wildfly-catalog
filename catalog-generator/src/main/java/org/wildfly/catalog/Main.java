@@ -37,6 +37,9 @@ import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
+import org.jboss.galleon.universe.maven.MavenArtifact;
+import org.jboss.galleon.universe.maven.repo.MavenRepoManager;
+import org.wildfly.glow.maven.MavenResolver;
 
 public class Main {
 
@@ -45,6 +48,7 @@ public class Main {
         if (wildflyVersion == null) {
             throw new Exception("-Dwildfly-version=<version> must be set");
         }
+        MavenRepoManager resolver = MavenResolver.newMavenResolver();
         boolean validateOnly = Boolean.getBoolean("validateOnly");
         Path rootDirectory = Paths.get("../docs");
         Path targetDirectory = rootDirectory.resolve(wildflyVersion).toAbsolutePath();
@@ -83,16 +87,12 @@ public class Main {
             ObjectNode fpNode = mapper.createObjectNode();
             featurePacks.add(fpNode);
             String fp = it.next().asText();
-            System.out.println("FP " + fp);
             fpNode.put("mavenCoordinates", fp);
-            // Mimic what we would do using maven. here we expect all to be in the cache
-            Path home = Paths.get(System.getProperty("user.home")).resolve(".m2").resolve("repository");
             String[] coords = fp.split(":");
-            String groupId = coords[0].replaceAll("\\.", File.separator);
+            String groupId = coords[0];
             String artifactId = coords[1];
             String version = coords[2];
-            String metadataFileName = artifactId + "-" + version + "-doc.zip";
-            Path docFile = home.resolve(groupId).resolve(artifactId).resolve(version).resolve(metadataFileName);
+            Path docFile = resolveMavenArtifact(resolver, groupId, artifactId, version, "doc", "zip");
             String directoryName = (coords[0] + '_' + artifactId);
             Path fpDirectory = featurePacksTargetDirectory.resolve(directoryName);
             unzip(docFile, fpDirectory);
@@ -503,5 +503,17 @@ public class Main {
             });
         } catch (IOException e) {
         }
+    }
+    
+    private static Path resolveMavenArtifact(MavenRepoManager resolver, String groupId, String artifactId, String version, String classifier, String extension) throws Exception {
+        MavenArtifact artifact = new MavenArtifact();
+        artifact.setGroupId(groupId);
+        artifact.setArtifactId(artifactId);
+        artifact.setVersion(version);
+        artifact.setClassifier(classifier);
+        artifact.setExtension(extension);
+        resolver.resolve(artifact);
+        System.out.println("Maven resolution of " + artifact);
+        return artifact.getPath();
     }
 }

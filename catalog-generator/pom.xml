@@ -12,6 +12,8 @@
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <version.com.fasterxml.jackson>2.18.2</version.com.fasterxml.jackson>
+    <version.org.wildfly.glow>1.5.1.Final</version.org.wildfly.glow>
     <exec.mainClass>org.wildfly.catalog.Main</exec.mainClass>
   </properties>
   <name>Generate WildFly catalog</name>
@@ -20,12 +22,12 @@
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
-      <version>2.18.2</version>
+      <version>${version.com.fasterxml.jackson}</version>
     </dependency>
     <dependency>
-        <groupId>org.wildfly.galleon-plugins</groupId>
-        <artifactId>doc-gen</artifactId>
-        <version>7.4.1.Final-SNAPSHOT</version>
+        <groupId>org.wildfly.glow</groupId>
+        <artifactId>wildfly-glow-maven-resolver</artifactId>
+        <version>${version.org.wildfly.glow}</version>
     </dependency>
   </dependencies>
 </project>

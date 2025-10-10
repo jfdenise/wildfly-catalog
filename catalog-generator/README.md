@@ -1,5 +1,9 @@
-#A catalog generator
+# WildFly catalog generator
 
+## Build the project
 mvn clean install
-MAVEN_OPTS="-agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=y" mvn exec:java -Dwildfly-version=36.0.1.Final "-agentlib:jdwp=transport=dt_socket,address=8000,server=y,suspend=y"
+
+## Generate a catalog for a WildFly version
+
+mvn exec:java -Dwildfly-version=<WildFly Version> 
 
