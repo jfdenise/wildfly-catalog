@@ -3,7 +3,9 @@ name: WildFly Catalog generation - CI on Merge
 on:
   push:
     branches:
-      - 'main'
+      - "!*"
+    tags:
+      - "v_*"
 jobs:
   build:
     name: ${{ matrix.os }}-jdk${{ matrix.java }}
@@ -44,3 +46,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
+          force: true
+          tags: true
