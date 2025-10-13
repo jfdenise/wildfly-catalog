@@ -25,6 +25,7 @@ jobs:
         with:
           java-version: ${{ matrix.java }}
           distribution: 'temurin'
+          cache: maven
       - name: Validate catalog generation
         run: |
           ./build-catalog.sh -DvalidateOnly=true
