@@ -1,18 +1,17 @@
 #!/bin/bash
 
 set -e
-
-if [ -z "$1" ]; then
-  echo "The new WildFly version must be passed as argument"
+latest=$( tail -n 1 versions.txt )
+if [ -z "$latest" ]; then
+  echo "No WildFly version found in versions.txt"
   exit 1
 fi
 
-cd catalog-generator
+echo "Building the catalog for WildFly $latest"
+pushd catalog-generator
 mvn clean install
-mvn exec:java "-Dwildfly-version=${1}"
-
-echo "DONE!"
-echo "Commit all and push to the main branch"
+mvn exec:java "-Dwildfly-version=${latest}" "$@"
+popd
 
 
 

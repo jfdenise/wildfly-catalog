@@ -7,3 +7,7 @@ mvn clean install
 
 mvn exec:java -Dwildfly-version=<WildFly Version> 
 
+## Validate only
+
+mvn exec:java -Dwildfly-version=<WildFly Version> -DvalidateOnly=true
+
