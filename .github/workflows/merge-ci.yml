@@ -26,11 +26,7 @@ jobs:
           distribution: 'temurin'
       - name: Catalog generation
         run: |
-          version=$(cat version.txt)
-          cd catalog-generator
-          #mvn clean install
-          #mvn exec:java -Dwildfly-version=$version
-          cd ..
+          ./build-catalog.sh 
           changes="$(git status --porcelain)"
           if [ -n "$changes" ]; then
             # Commit the changes.
