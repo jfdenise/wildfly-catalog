@@ -58,15 +58,10 @@ public class Main {
         } else {
             System.out.println("Validate only that we can build a catalog");
         }
-
-        Path inputMetadata = Paths.get("../metadata/" + wildflyVersion + "/wildfly-catalog.json").toAbsolutePath();
-        if (!Files.exists(inputMetadata)) {
-            throw new Exception("File doesn't exist " + inputMetadata + ". Can't enerate catalog");
-        }
         ObjectMapper mapper = new ObjectMapper();
-        JsonNode node = mapper.readTree(inputMetadata.toFile());
+        JsonNode node = mapper.readTree(String.join("", patchFile("wildfly-catalog-metadata.json", wildflyVersion)));
         ObjectNode target = mapper.createObjectNode();
-        target.put("description", "WildFly " + wildflyVersion + " provisioning catalog");
+        target.put("description", node.get("description").asText());
         target.set("documentation", node.get("documentation"));
         target.set("legend", node.get("legend"));
 
@@ -150,19 +145,7 @@ public class Main {
         if (!validateOnly) {
             Path viewer = targetDirectory.resolve("index.html");
             Files.deleteIfExists(viewer);
-            try (InputStream stream = Main.class.getResourceAsStream("wildfly-catalog-viewer.html")) {
-                try (InputStreamReader inputStreamReader = new InputStreamReader(stream, StandardCharsets.UTF_8)) {
-                    try (BufferedReader bufferedReader = new BufferedReader(inputStreamReader)) {
-                        List<String> lines = bufferedReader.lines().collect(Collectors.toList());
-                        List<String> targetLines = new ArrayList<>();
-                        for (String line : lines) {
-                            line = line.replace("###REPLACE_WILDFLY_VERSION###", wildflyVersion);
-                            targetLines.add(line);
-                        }
-                        Files.write(viewer, targetLines);
-                    }
-                }
-            }
+            Files.write(viewer, patchFile("wildfly-catalog-viewer.html", wildflyVersion));
             String replaceTag = "<!-- ####REPLACE_LAST_VERSION#### -->";
             String newEntry = "<li><a href=\"" + wildflyVersion + "/index.html\">" + wildflyVersion + "</a></li>";
             // Update index
@@ -193,6 +176,22 @@ public class Main {
             }
         } else {
             System.out.println("WildFly catalog generation validated");
+        }
+    }
+
+    private static List<String> patchFile(String resource, String wildflyVersion) throws Exception {
+        try (InputStream stream = Main.class.getResourceAsStream(resource)) {
+            try (InputStreamReader inputStreamReader = new InputStreamReader(stream, StandardCharsets.UTF_8)) {
+                try (BufferedReader bufferedReader = new BufferedReader(inputStreamReader)) {
+                    List<String> lines = bufferedReader.lines().collect(Collectors.toList());
+                    List<String> targetLines = new ArrayList<>();
+                    for (String line : lines) {
+                        line = line.replace("###REPLACE_WILDFLY_VERSION###", wildflyVersion);
+                        targetLines.add(line);
+                    }
+                    return targetLines;
+                }
+            }
         }
     }
 
