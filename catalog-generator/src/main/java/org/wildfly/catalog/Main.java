@@ -43,13 +43,16 @@ import org.wildfly.glow.maven.MavenResolver;
 
 public class Main {
 
+    private static final String VERSION_PROP = "wildfly-version";
+    private static final String VALIDATE_PROP = "validateOnly";
+
     public static void main(String[] args) throws Exception {
-        String wildflyVersion = System.getProperty("wildfly-version");
+        String wildflyVersion = System.getProperty(VERSION_PROP);
         if (wildflyVersion == null) {
-            throw new Exception("-Dwildfly-version=<version> must be set");
+            throw new Exception("-D" + VERSION_PROP + "=<version> must be set");
         }
         MavenRepoManager resolver = MavenResolver.newMavenResolver();
-        boolean validateOnly = Boolean.getBoolean("validateOnly");
+        boolean validateOnly = Boolean.getBoolean(VALIDATE_PROP);
         Path rootDirectory = Paths.get("../docs");
         Path targetDirectory = rootDirectory.resolve(wildflyVersion).toAbsolutePath();
         Path featurePacksTargetDirectory = targetDirectory.resolve("featurePacks");
@@ -295,7 +298,6 @@ public class Main {
             }
             if (nodes.containsKey(layerName)) {
                 // add all dependencies
-                System.out.println("OVERRIDEN !!!!! " + layerName);
                 JsonNode overriden = nodes.get(layerName);
                 ArrayNode deps = (ArrayNode) layer.get("dependencies");
                 if (deps != null) {
@@ -340,7 +342,6 @@ public class Main {
     }
 
     private static String formatURL(String url) {
-        //System.out.println("ORIGINAL URL " + url);
         if ("/server-root=/".equals(url)) {
             url = "";
         }
@@ -377,7 +378,6 @@ public class Main {
             JsonNode n = model.get("_address");
             if (n != null) {
                 String url = formatURL(n.asText());
-                //System.out.println("URL " + url);
                 if (url == null) {
                     ((ObjectNode) model).remove("_address");
                 } else {
@@ -503,7 +503,7 @@ public class Main {
         } catch (IOException e) {
         }
     }
-    
+
     private static Path resolveMavenArtifact(MavenRepoManager resolver, String groupId, String artifactId, String version, String classifier, String extension) throws Exception {
         MavenArtifact artifact = new MavenArtifact();
         artifact.setGroupId(groupId);
