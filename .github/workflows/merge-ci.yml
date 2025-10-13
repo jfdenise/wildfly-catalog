@@ -24,6 +24,7 @@ jobs:
         with:
           java-version: ${{ matrix.java }}
           distribution: 'temurin'
+          cache: maven
       - name: Catalog generation
         run: |
           ./build-catalog.sh 
