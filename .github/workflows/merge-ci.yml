@@ -40,12 +40,6 @@ jobs:
             echo "NEED_PUSH=true" >> "$GITHUB_ENV"
           fi
         shell: bash
-      - name: Push changes
-        if: env.NEED_PUSH == 'true'
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
       - name: Push tag
         if: env.NEED_PUSH == 'true'
         uses: ad-m/github-push-action@master
@@ -54,3 +48,9 @@ jobs:
           branch: ${{ github.ref }}
           force: true
           tags: true
+      - name: Push changes to main branch
+        if: env.NEED_PUSH == 'true'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
