@@ -15,9 +15,27 @@
     <version.com.fasterxml.jackson>2.18.2</version.com.fasterxml.jackson>
     <version.org.wildfly.glow>1.5.1.Final</version.org.wildfly.glow>
     <exec.mainClass>org.wildfly.catalog.Main</exec.mainClass>
+    <wildfly.repo.scm.connection>git@github.com:wildfly-extras/wildfly-catalog.git</wildfly.repo.scm.connection>
+    <wildfly.repo.scm.url>https://github.com/wildfly-extras/wildfly-catalog</wildfly.repo.scm.url>
   </properties>
-  <name>Generate WildFly catalog</name>
-  <description>Generate WildFly catalog</description>
+  <name>WildFly catalog generator</name>
+  <description>WildFly catalog generator</description>
+  <url>https://github.com/wildfly-extras/wildfly-catalog</url>
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>wildfly.org</id>
+      <name>WildFly Community</name>
+      <organization>wildfly.org</organization>
+      <organizationUrl>http://wildfly.org</organizationUrl>
+    </developer>
+  </developers>
   <dependencies>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
@@ -25,9 +43,15 @@
       <version>${version.com.fasterxml.jackson}</version>
     </dependency>
     <dependency>
-        <groupId>org.wildfly.glow</groupId>
-        <artifactId>wildfly-glow-maven-resolver</artifactId>
-        <version>${version.org.wildfly.glow}</version>
+      <groupId>org.wildfly.glow</groupId>
+      <artifactId>wildfly-glow-maven-resolver</artifactId>
+      <version>${version.org.wildfly.glow}</version>
     </dependency>
   </dependencies>
+  <scm>
+    <connection>scm:git:${wildfly.repo.scm.connection}</connection>
+    <developerConnection>scm:git:${wildfly.repo.scm.connection}</developerConnection>
+    <url>${wildfly.repo.scm.url}</url>
+    <tag>HEAD</tag>
+  </scm>
 </project>
